@@ -2,8 +2,8 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const random = require('randomize');
 const ytdl = require('ytdl-core');
-const sql = require('sqlite');
-sql.open("./score.sqlite");
+/*const sql = require('sqlite');
+sql.open("./score.sqlite");*/
 
 /*Play Audio Function*/
 function play(connection, message) {
@@ -675,7 +675,7 @@ client.on("message", (message) => { //When a message is sent.
 		return
 	}
 
-	//SQLite stores levels, adds an XP point for every message, and notifies users when they level up.
+	/*//SQLite stores levels, adds an XP point for every message, and notifies users when they level up.
 	sql.get(`SELECT * FROM scores WHERE userId ="${message.author.id}"`).then(row => {
 		if (!row) { //Initializes a row for a user if they do not currently have one.
 			sql.run("INSERT INTO scores (userId, points, level, cooldown, hopefragments) VALUES (?, ?, ?, ?, ?)", [message.author.id, 1, 0, 'hi', 0, ]);
@@ -709,7 +709,7 @@ client.on("message", (message) => { //When a message is sent.
 		sql.run("CREATE TABLE IF NOT EXISTS scores (userId TEXT, points INTEGER, level INTEGER, cooldown TEXT, hopefragments INTEGER)").then(() => {
 			sql.run("INSERT INTO scores (userId, points, level, cooldown, hopefragments) VALUES (?, ?, ?, ?, ?)", [message.author.id, 1, 0, 'hi', 0]);
 		});
-	});
+	});*/
 
 	if (!message.content.startsWith(prefix)) return;
 	if (message.guild.id === "455218035507331072") { //Kaeno Shinjomu Discord
@@ -4838,7 +4838,7 @@ client.on("message", (message) => { //When a message is sent.
 		message.channel.send("Pong!");
 		return MM_InProgress = false;
 	}
-	if (command === "rank") {
+	/*if (command === "rank") {
 		if (message.content.search("476831906835464205") != -1) return;
 		if (message.content.search("<@!") != -1 && message.content.search(message.author.id) === -1) {
 			sql.get(`SELECT * FROM scores WHERE userId ="${message.mentions.members.first().id}"`).then(row => {
@@ -4866,7 +4866,7 @@ client.on("message", (message) => { //When a message is sent.
 			inboxChannel.send(`${message.author.username} has tried to check the rank of everyone.`)
 			message.channel.send("You can't check everyone's level!")
 		}
-	}
+	}*/
 	if (command === "credits") {
 		message.channel.send({
 			embed: {
