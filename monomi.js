@@ -1838,7 +1838,7 @@ client.on("message", (message) => { //When a message is sent.
 			}
 			if (args[1] === "25" || args[1].toLowerCase().search("tenome") != -1) {
 				studentID = "Name: Tenome\nTalent: Ghostwriter\nSex: Male\nStatus: Deceased\n\nShoe Size: ??\nHeight: ?'?\"\nWeight: ???\nBlood Type: ??\nBirthday: ??/??\nAge: 15";
-				studentIDPicture = "";
+				studentIDPicture = "https://imgur.com/TM8FYjl.png";
 			}
 			if (args[1] === "26" || args[1].toLowerCase().search("wolf") != -1) {
 				studentID = "Name: Wolfgang Schwarz\nTalent: Combat Medic\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 6'5\"\nWeight: 246\nBlood Type: A\nBirthday: 12/07\nAge: 18";
@@ -2546,706 +2546,595 @@ client.on("message", (message) => { //When a message is sent.
 		correctness = 0;
 		noIcon = "https://imgur.com/OVPTMGn.png";
 		students = [
-			/*1*/
-			/*0*/ {
+			/*1*/ /*0*/ {
 				name: "Aika Mahaya",
 				clues: ["blond", "The murderer left a footprint in size **8 or 9 women's** and size **6 or 7 men's**.", "There was a puddle of vomit at the scene.", "A music note hair pin was found on the ground of the scene.", "A necklace was found on the victim's body.", "A microphone with blood on it was found hidden away at the scene."],
 				img: "https://imgur.com/bwCpEuF.png",
 				imgDead: "https://imgur.com/sGjckJ3.png"
 			},
-			/*1*/
-			/*1*/ {
+			/*1*/ /*1*/ {
 				name: "Aiko Hikaru",
 				clues: ["pink", "The murderer left a footprint in size **10 or 11 women's** and size **8 or 9 men's**.", "A heart-shaped pin was found at the scene.", "There were smears of eye shadow found on the victim."],
 				img: "https://imgur.com/obSzp4m.png",
 				imgDead: "https://imgur.com/9e2GDAr.png"
 			},
-			/*1*/
-			/*2*/ {
+			/*1*/ /*2*/ {
 				name: "Anaelle Hamaan",
 				clues: ["brown", "The murderer did not leave any footprints.", "A scrap of black fabric was found in the victim's palm.", "A pair of scissors were found at the scene.", "The murderer's profile picture is Lisa Simpson.", "Shreds from a dress were found at the scene.", "A scrap of red and blue fabric was found clutched in the victim's hand.", "A scrap of striped fabric was found on the floor of the scene.", "A scrap of orange fabric was found at the scene."],
 				img: "https://imgur.com/Yz4wANs.png",
 				imgDead: "https://imgur.com/4HOZ1QT.png"
 			},
-			/*1*/
-			/*+3+*/ {
+			/*1*/ /*+3+*/ {
 				name: "Anya Sakaguchi",
 				clues: ["sunset", "The murderer did not leave any footprints.", "", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*1*/
-			/*+4+*/ {
+			/*1*/ /*+4+*/ {
 				name: "Anzu Kofuku",
 				clues: ["brown", "The murderer did not leave any footprints.", "A few pieces of currency were found in the victim's pocket.", "Coins were found in the victim's mouth.", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*1*/
-			/*5*/ {
+			/*1*/ /*5*/ {
 				name: "Ara Ayao",
 				clues: ["black", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "The scent of a sweet perfume lingers at the scene.", "The victim was wounded in six different areas on their body.", "The victim's body is badly mutilated."],
 				img: "https://imgur.com/2EO9cr4.png",
 				imgDead: "https://imgur.com/3fZhaHt.png"
 			},
-			/*1*/
-			/*+6+*/ {
+			/*1*/ /*+6+*/ {
 				name: "Aurélie Cartier",
 				clues: ["red", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "A bloody dance blade was found at the scene.", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*1*/
-			/*7*/ {
+			/*1*/ /*7*/ {
 				name: "Cheisu Maeda",
 				clues: ["blond", "The murderer left a footprint in size **12 or 13 women's** and size **10 or 11 men's**.", "A magnifying glass was found at the scene.", "Torn pieces of a burnt note were found at the scene.", "A silver ring was found at the scene."],
 				img: "https://imgur.com/j0rMrbk.png",
 				imgDead: "https://imgur.com/IaXHEeK.png"
 			},
-			/*1*/
-			/*8*/ {
+			/*1*/ /*8*/ {
 				name: "Hachi Hiruma",
 				clues: ["blond", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "On a nearby surface to the victim, there are thirteen notches carved into the wall.", "There were traces of a nicely scented dust at the scene.", "An empty journal was left near the victim.", "The temperature of the room the victim was found in was incredibly high.", "There was a yellow puddle of a mystery liquid found at the scene."],
 				img: "https://imgur.com/aEGV6Wc.png",
 				imgDead: "https://imgur.com/GFrnNjz.png"
 			},
-			/*1*/
-			/*9*/ {
+			/*1*/ /*9*/ {
 				name: "Hoshi Chiura",
 				clues: ["black", "The murderer left a footprint in size **10 or 11 women's** and size **8 or 9 men's**.", "A suicide note was found next to the victim.", "A scrap of orange fabric was found at the scene.", "A death poem was stuffed into the victim's pocket."],
 				img: "https://imgur.com/LpnuQFy.png",
 				imgDead: "https://imgur.com/OBjKPR9.png"
 			},
-			/*1*/
-			/*+10+*/ {
+			/*1*/ /*+10+*/ {
 				name: "Jacek Żeglarski",
 				clues: ["blond", "The murderer left a footprint in size **11 or 12 women's** and size **9 or 10 men's**.", "Pellets of animal feed were found near the body.", "A leash was fastened around the victim's neck."],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*1*/
-			/*11*/ {
+			/*1*/ /*11*/ {
 				name: "Jeong Park",
 				clues: ["black", "The murderer left a footprint in size **5 or 6 women's** and size **3 or 4 men's**.", "A bloody sports ball was found at the scene.", "There were smears of concealer found on the victim."],
 				img: "https://imgur.com/oSsUnKC.png",
 				imgDead: "https://imgur.com/JK7VKYy.png"
 			},
-			/*1*/
-			/*+12+*/ {
+			/*1*/ /*+12+*/ {
 				name: "Kazuya Harada",
 				clues: ["brown", "The murderer did not leave any footprints.", "A saw was found at the scene.", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*1*/
-			/*13*/ {
+			/*1*/ /*13*/ {
 				name: "Kiro Karasu",
 				clues: ["platinum blond", "The murderer left a footprint in size **11 or 12 women's** and size **9 or 10 men's**.", "An arrow was found at the scene.", "There were darts found in the victim's body."],
 				img: "https://imgur.com/v7vk5gF.png",
 				imgDead: "https://imgur.com/v7vk5gF.png"
 			},
-			/*1*/
-			/*14*/ {
+			/*1*/ /*14*/ {
 				name: "Kyoung-mi Park",
 				clues: ["black", "The murderer left a footprint in size **5 or 6 women's** and size **3 or 4 men's**.", "There were smears of eye shadow found on the victim.", "A microphone with blood on it was found hidden away at the scene."],
 				img: "https://imgur.com/8Cdt3c4.png",
 				imgDead: "https://imgur.com/fZoA401.png"
 			},
-			/*1*/
-			/*15*/ {
+			/*1*/ /*15*/ {
 				name: "Masayuuki Taisho",
 				clues: ["white", "The murderer left a footprint in size **11 or 12 women's** and size **9 or 10 men's**.", "A cat hair pin was found on the ground of the scene.", "A single, red eye contact was found at the scene."],
 				img: "https://imgur.com/slaH7mk.png",
 				imgDead: "https://imgur.com/CLYSgcS.png"
 			},
-			/*1*/
-			/*+16+*/ {
+			/*1*/ /*+16+*/ {
 				name: "Megu Kojima",
 				clues: ["black", "The murderer left a footprint in size **5 or 6 women's** and size **3 or 4 men's**.", "Shreds from a dress were found at the scene.", "The scent of a sweet perfume lingers at the scene.", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*1*/
-			/*17*/ {
+			/*1*/ /*17*/ {
 				name: "Minako Kaoru",
 				clues: ["pink", "The murderer did not leave any footprints.", "A custom-made knife was found at the scene.", "A sheath was slung around the victim's body.", "A bamboo sword was left at the scene."],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*1*/
-			/*+18+*/ {
+			/*1*/ /*+18+*/ {
 				name: "Miyuki Ataru",
 				clues: ["black", "The murderer did not leave any footprints.", "A bloody sports ball was found at the scene.", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*1*/
-			/*19*/ {
+			/*1*/ /*19*/ {
 				name: "Mori Hibana",
 				clues: ["brown", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "A pendulum was found at the scene.", "The victim had recently been drugged or poisoned."],
 				img: "https://imgur.com/AFaAdCo.png",
 				imgDead: "https://imgur.com/8gr4Hgg.png"
 			},
-			/*1*/
-			/*+20+*/ {
+			/*1*/ /*+20+*/ {
 				name: "Noriko Suzuki",
 				clues: ["black", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "A pawn was found tucked into the victim's pocket.", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*1*/
-			/*+21+*/ {
+			/*1*/ /*+21+*/ {
 				name: "Ryu Akahoshi",
 				clues: ["black", "The murderer left a footprint in size **11 or 12 women's** and size **9 or 10 men's**.", "", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*1*/
-			/*22*/ {
+			/*1*/ /*22*/ {
 				name: "S'ad Ludópata",
 				clues: ["brown", "The murderer left a footprint in size **12 or 13 women's** and size **10 or 11 men's**.", "The victim was crucified.", "A pIona string was found at the scene.", "A heart ring was found at the scene.", "A gold-plated ace was found at the scene.", "A mystery novel titled *The Kidnapped* was found at the scene.", "Coins were found in the victim's mouth."],
 				img: "https://imgur.com/GxVIfNW.png",
 				imgDead: "https://imgur.com/AZzj22b.png"
 			},
-			/*1*/
-			/*23*/ {
+			/*1*/ /*23*/ {
 				name: "Shiba Mikio",
 				clues: ["purple", "The murderer left a footprint in size **10 or 11 women's** and size **8 or 9 men's**.", "A suicide note was found next to the victim.", "Flowers petals were found at the scene.", "A heart-shaped pin was found at the scene.", "A love letter was left in the victim's hands."],
 				img: "https://imgur.com/dYJgZl5.png",
 				imgDead: "https://imgur.com/p51f8Vu.png"
 			},
-			/*1*/
-			/*+24+*/ {
+			/*1*/ /*+24+*/ {
 				name: "Stella Hunter",
 				clues: ["pink", "The murderer did not leave any footprints.", "", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*1*/
-			/*+25+*/ {
+			/*1*/ /*+25+*/ {
 				name: "Tenshi Kawada",
 				clues: ["black", "The murderer left a footprint in size **12 or 13 women's** and size **10 or 11 men's**.", "", ""],
 				img: "https://imgur.com/BzUAKy1.png",
 				imgDead: "https://imgur.com/txWQ7vg.png"
 			},
-			/*1*/
-			/*+26+*/ {
+			/*1*/ /*+26+*/ {
 				name: "Tezuku Imou",
 				clues: ["green", "The murderer did not leave any footprints.", "", ""],
 				img: "https://imgur.com/vqxvUSV.png",
 				imgDead: "https://imgur.com/vqxvUSV.png"
 			},
-			/*1*/
-			/*27*/ {
+			/*1*/ /*27*/ {
 				name: "Théo Dubois",
 				clues: ["black", "The murderer did not leave any footprints.", "The tip of an arrow was found at the scene.", "An arrow was found at the scene.", "A feather was found at the scene."],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*1*/
-			/*+28+*/ {
+			/*1*/ /*+28+*/ {
 				name: "Ximena Colomar",
 				clues: ["purple", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*1*/
-			/*29*/ {
+			/*1*/ /*29*/ {
 				name: "Yukine Sakurai",
 				clues: ["brown", "The murderer left a footprint in size **12 or 13 women's** and size **10 or 11 men's**.", "Rose petals were found around the victim's body.", "A lotus petal was found near the victim.", "Who?", "Flowers petals were found at the scene."],
 				img: "https://imgur.com/2RJbb52.png",
 				imgDead: "https://imgur.com/RQcTnkM.png"
 			},
-			/*2*/
-			/*+30+*/ {
+			/*2*/ /*+30+*/ {
 				name: "Akiko",
 				clues: ["purple", "The murderer left a footprint in size **5 or 6 women's** and size **3 or 4 men's**.", "", ""],
 				img: "https://imgur.com/Cpdhi9T.png",
 				imgDead: "https://imgur.com/m5AuVzR.png"
 			},
-			/*2*/
-			/*+31+*/ {
+			/*2*/ /*+31+*/ {
 				name: "Arisa Shokohou",
 				clues: ["brown", "The murderer left a footprint in size **5 or 6 women's** and size **3 or 4 men's**.", "", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*2*/
-			/*32*/ {
+			/*2*/ /*32*/ {
 				name: "Ale del Prieto",
 				clues: ["brown", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "A candy wrapper labeled 'Awake' was found at the scene.", "A silver ring was found at the scene.", "A set of defibrillation pads were found on the victim.", "A magnifying glass was found at the scene.", "A feather was found at the scene."],
 				img: "https://imgur.com/Sag0SRp.png",
 				imgDead: "https://imgur.com/QL0lrYX.png"
 			},
-			/*2*/
-			/*+33+*/ {
+			/*2*/ /*+33+*/ {
 				name: "Asahi Fukuzawa",
 				clues: ["black", "The murderer left a footprint in size **11 or 12 women's** and size **9 or 10 men's**.", "A necklace was found on the victim's body.", ""],
 				img: "https://imgur.com/GdXygwN.png",
 				imgDead: "https://imgur.com/Em8I0vn.png"
 			},
-			/*2*/
-			/*34*/ {
+			/*2*/ /*34*/ {
 				name: "Chika Miyasaki",
 				clues: ["strawberry blond", "The murderer left a footprint in size **4 or 5 women's** and size **2 or 3 men's**.", "The murder was executed incredibly extravagantly.", "A custom-made knife was found at the scene.", "Cups of strawberry soda were laid out on a table at the scene."],
 				img: "https://imgur.com/iuVJkKq.png",
 				imgDead: "https://imgur.com/zZmXZ3L.png"
 			},
-			/*2*/
-			/*35*/ {
+			/*2*/ /*35*/ {
 				name: "Chikako Kaetsu",
 				clues: ["blue-green", "The murderer left a footprint in size **9 or 10 women's** and size **7 or 8 men's**.", "A cross was carved into the victim's abdomen.", "A red string with tape on one end was found at the scene.", "There are the scribblings of a madman looking for an answer all over the scene."],
 				img: "https://imgur.com/4yEQVlf.png",
 				imgDead: "https://imgur.com/FWQz2dg.png"
 			},
-			/*2*/
-			/*36*/ {
+			/*2*/ /*36*/ {
 				name: "Eiichi Ryozo",
 				clues: ["black", "The murderer left a footprint in size **12 or 13 women's** and size **10 or 11 men's**.", "The victim's body is badly mutilated.", "The victim had recently been drugged or poisoned.", "A vial of poison was found at the scene.", "A broken bottle of poison was found at the scene."],
 				img: "https://imgur.com/BCdEZNm.png",
 				imgDead: "https://imgur.com/yT8Hw90.png"
 			},
-			/*2*/
-			/*37*/ {
+			/*2*/ /*37*/ {
 				name: "Eiji Ryozo",
 				clues: ["black", "The murderer left a footprint in size **8 or 9 women's** and size **6 or 7 men's**.", "A pair of scissors were found at the scene.", "The victim was killed with flawless medical precision.", "A saw was found at the scene."],
 				img: "https://imgur.com/JTrNk47.png",
 				imgDead: "https://imgur.com/yXcQod3.png"
 			},
-			/*2*/
-			/*38*/ {
+			/*2*/ /*38*/ {
 				name: "Fenikku Hinotama",
 				clues: ["brown", "The murderer left a footprint in size **9 or 10 women's** and size **7 or 8 men's**.", "An empty bottle of soda was found at the scene.", "A rainbow button was found at the scene.", "A bloody baton was found nearby the victim.", "A scrap of red and blue fabric was found clutched in the victim's hand."],
 				img: "https://imgur.com/snh70TO.png",
 				imgDead: "https://imgur.com/mrkyS90.png"
 			},
-			/*2*/
-			/*39*/ {
+			/*2*/ /*39*/ {
 				name: "Hana Kageriri",
 				clues: ["pink", "The murderer left a footprint in size **8 or 9 women's** and size **6 or 7 men's**.", "A wooden cross was found at the scene.", "The scent of a sweet perfume lingers at the scene.", "The victim was covered in a tangle of strings."],
 				img: "https://imgur.com/c210v7y.png",
 				imgDead: "https://imgur.com/DXvdBWV.png"
 			},
-			/*2*/
-			/*+40+*/ {
+			/*2*/ /*+40+*/ {
 				name: "Hideo Takayama",
 				clues: ["black", "The murderer left a footprint in size **12 or 13 women's** and size **10 or 11 men's**.", "Small pieces of machinery were found at the scene.", ""],
 				img: "https://imgur.com/9WXv5Q9.png",
 				imgDead: "https://imgur.com/Fho6zUC.png"
 			},
-			/*2*/
-			/*41*/ {
+			/*2*/ /*41*/ {
 				name: "Isha Kalki",
 				clues: ["red", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "A yellow hair clip was found on the ground of the scene.", "A black tennis shoe was left behind at the scene.", "The victim had recently been drugged or poisoned."],
 				img: "https://imgur.com/xj1HMXu.png",
 				imgDead: "https://imgur.com/W40ausU.png"
 			},
-			/*2*/
-			/*42*/ {
+			/*2*/ /*42*/ {
 				name: "Kagami Hannei",
 				clues: ["orange", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "A crime insignia was carved into the victim's shoulder blade.", "Shreds from a dress were found at the scene.", "A small, dripping trail of blood leads away from the body.", "A silver ring was found at the scene.", "A small bracelet was found at the scene.", "A gold, hoop earring was found at the scene.", "A necklace was found on the victim's body."],
 				img: "https://imgur.com/PZVqARe.png",
 				imgDead: "https://imgur.com/Z6itjUB.png"
 			},
-			/*2*/
-			/*43*/ {
+			/*2*/ /*43*/ {
 				name: "Kaipo Uilani Iona",
 				clues: ["brown", "The murderer left a footprint in size **8 or 9 women's** and size **6 or 7 men's**.", "The footprints appear to be from flip flops.", "Pellets of animal feed were found near the body.", "A feather was found at the scene."],
 				img: "https://imgur.com/WQFawIm.png",
 				imgDead: "https://imgur.com/ysWxzwW.png"
 			},
-			/*2*/
-			/*+44+*/ {
+			/*2*/ /*+44+*/ {
 				name: "Katashi Maeda",
 				clues: ["blond", "The murderer left a footprint in size **11 or 12 women's** and size **9 or 10 men's**.", "", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*2*/
-			/*45*/ {
+			/*2*/ /*45*/ {
 				name: "Kouki Yoshida",
 				clues: ["red", "The murderer left a footprint in size **10 or 11 women's** and size **8 or 9 men's**.", "There is no evidence of the killer touching the victim.", "A red ribbon was found at the scene.", "A penny, heads up, was found at the scene."],
 				img: "https://imgur.com/NIZr23N.png",
 				imgDead: "https://imgur.com/jRRhUog.png"
 			},
-			/*2*/
-			/*46*/ {
+			/*2*/ /*46*/ {
 				name: "Kyabetsu Retesu",
 				clues: ["green", "The murderer left a footprint in size **9 or 10 women's** and size **7 or 8 men's**.", "Rose petals were found around the victim's body.", "Flowers petals were found at the scene.", "The footprints appear to be from flip flops.", "A lotus petal was found near the victim.", "There is an apologetic note laid within the victim's hands, written in Japanese."],
 				img: "https://imgur.com/CgLyIGN.png",
 				imgDead: "https://imgur.com/bIJp1Pe.png"
 			},
-			/*2*/
-			/*47*/ {
+			/*2*/ /*47*/ {
 				name: "Michel Voigt",
 				clues: ["black", "The murderer left a footprint in size **10 or 11 women's** and size **8 or 9 men's**.", "The victim was crucified.", "A wooden cross was found at the scene."],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*2*/
-			/*+48+*/ {
+			/*2*/ /*+48+*/ {
 				name: "Monika Minami",
 				clues: ["blond", "The murderer left a footprint in size **6 or 7 women's** and size **4 or 5 men's**.", "", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*2*/
-			/*49*/ {
+			/*2*/ /*49*/ {
 				name: "Rosendo Paulo Ochoa Merlo",
 				clues: ["brown", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "A bloody sports ball was found at the scene.", "A necklace was found on the victim's body."],
 				img: "https://imgur.com/uwXd769.png",
 				imgDead: "https://imgur.com/xaeT5eO.png"
 			},
-			/*2*/
-			/*50*/ {
+			/*2*/ /*50*/ {
 				name: "Saeko Kiyomizu",
 				clues: ["black", "The murderer left a footprint in size **6 or 7 women's** and size **4 or 5 men's**.", "The victim was crucified.", "A shattered cup of tea was found at the scene.", "A vial of poison was found at the scene.", "A broken bottle of poison was found at the scene."],
 				img: "https://imgur.com/AKg0jAY.png",
 				imgDead: "https://imgur.com/tejkibh.png"
 			},
-			/*2*/
-			/*51*/ {
+			/*2*/ /*51*/ {
 				name: "Sora Kenshin",
 				clues: ["black", "The murderer left a footprint in size **12 or 13 women's** and size **10 or 11 men's**.", "A laceration was carved into the victim's arm in the shape of a cityscape."],
 				img: "https://imgur.com/wdNGgRH.png",
 				imgDead: "https://imgur.com/FIblYyB.png"
 			},
-			/*2*/
-			/*+52+*/ {
+			/*2*/ /*+52+*/ {
 				name: "Souma Shimizu",
 				clues: ["brown", "The murderer left a footprint in size **12 or 13 women's** and size **10 or 11 men's**.", "A red hair clip was found on the ground of the scene.", "A gun was found at the scene.", "A silver ring was found at the scene.", ""],
 				img: "https://imgur.com/9CoACWR.png",
 				imgDead: "https://imgur.com/KJm9xdB.png"
 			},
-			/*2*/
-			/*53*/ {
+			/*2*/ /*53*/ {
 				name: "Tomomi Kashichi",
 				clues: ["brown", "The murderer left a footprint in size **12 or 13 women's** and size **10 or 11 men's**.", "Small but valuable possessions were taken off of the body, most likely as a keepsake.", "Small pieces of machinery were found at the scene."],
 				img: "https://imgur.com/OVjt8y0.png",
 				imgDead: "https://imgur.com/7laDvmv.png"
 			},
-			/*2*/
-			/*54*/ {
+			/*2*/ /*54*/ {
 				name: "Tsuyo Kogiyumi",
 				clues: ["white", "The murderer left a footprint in size **5 or 6 women's** and size **3 or 4 men's**.", "A shattered test tube was found at the scene.", "The scent of a sweet perfume lingers at the scene.", "A necklace was found on the victim's body.", "A torn out page from a book was found at the scene."],
 				img: "https://imgur.com/jHf6p7i.png",
 				imgDead: "https://imgur.com/bo05YOC.png"
 			},
-			/*2*/
-			/*+55+*/ {
+			/*2*/ /*+55+*/ {
 				name: "Yuna Akahoshi",
 				clues: ["white", "The murderer left a footprint in size **6 or 7 women's** and size **4 or 5 men's**.", "", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*2*/
-			/*+56+*/ {
+			/*2*/ /*+56+*/ {
 				name: "Yuuya Michimiya",
 				clues: ["strawberry blond", "The murderer left a footprint in size **10 or 11 women's** and size **8 or 9 men's**.", "A few pieces of currency were found in the victim's pocket.", "Coins were found in the victim's mouth.", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*3*/
-			/*57*/ {
+			/*3*/ /*57*/ {
 				name: "Aemele Dèjré",
 				clues: ["green", "The murderer left a footprint in size **4 or 5 women's** and size **2 or 3 men's**.", "The victim was found in their favorite place.", "The victim was found without their clothing.", "The victim is covered in a mixture of sweat and saliva."],
 				img: "https://imgur.com/nxt9OCI.png",
 				imgDead: "https://imgur.com/igCOVGX.png"
 			},
-			/*4*/
-			/*+58+*/ {
+			/*4*/ /*+58+*/ {
 				name: "Agnes María Camila Zalweski-Chavarría",
 				clues: ["black", "The murderer left a footprint in size **8 or 9 women's** and size **6 or 7 men's**.", "", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*3*/
-			/*59*/ {
+			/*3*/ /*59*/ {
 				name: "Areli Vepkhia",
 				clues: ["black and white", "The murderer left a footprint in size **13 or 14 women's** and size **11 or 12 men's**.", "The victim's body is badly mutilated.", "There are scratch marks on the victim's abdomen.", "There is a large bite mark on the victim's arm.", "A snapped, orange headband was found at the scene."],
 				img: "https://imgur.com/4IQsA40.png",
 				imgDead: "https://imgur.com/yhR9yqN.png"
 			},
-			/*3*/
-			/*+60+*/ {
+			/*3*/ /*+60+*/ {
 				name: "Ayuma Tanaka",
 				clues: ["orange", "The murderer left a footprint in size **12 or 13 women's** and size **9 or 10 men's**.", "A golden ring was found near the victim's body.", "The victim was stabbed with a pocket knife.", "The scent of something burning lingers at the scene."],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*3*/
-			/*61*/ {
+			/*3*/ /*61*/ {
 				name: "Cecilio Gonzalo Calles Cárdenas",
 				clues: ["brown", "The murderer left a footprint in size **10 or 11 women's** and size **8 or 9 men's**.", "A patch of a country's flag was found in the pocket of the victim.", "A pair of goggles was found at the scene.", "The murder was performed very efficiently."],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*3*/
-			/*62*/ {
+			/*3*/ /*62*/ {
 				name: "Daichi Ichihara",
 				clues: ["red", "The murderer left a footprint in size **11 or 12 women's** and size **9 or 10 men's**.", "The victim's body was set in the center of a pentagram.", "A wooden cross was found at the scene."],
 				img: "https://imgur.com/qT8oKQu.png",
 				imgDead: "https://imgur.com/SGynT97.png"
 			},
-			/*3*/
-			/*63*/ {
+			/*3*/ /*63*/ {
 				name: "Dia Ramos",
 				clues: ["purple", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "A gold, hoop earring was found at the scene.", "An orange scrunchy was found at the scene.", "There were smears of concealer found on the victim."],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*3*/
-			/*64*/ {
+			/*3*/ /*64*/ {
 				name: "Inugami Uzuki",
 				clues: ["red", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "The victim's body is badly mutilated.", "A mask was found at the scene.", "There are scratch marks on the victim's abdomen.", "Motor oil was found smeared on a nearby surface at the scene.", "Traces of spray paint was found on the victim's arms and hands.", "A leash was fastened around the victim's neck.", "There is a large bite mark on the victim's arm.", "A patch of a country's flag was found in the pocket of the victim."],
 				img: "https://imgur.com/ZHW10pn.png",
 				imgDead: "https://imgur.com/Qn5Eycg.png"
 			},
-			/*3*/
-			/*65*/ {
+			/*3*/ /*65*/ {
 				name: "Jomei Hoshino",
 				clues: ["blue", "The murderer left a footprint in size **11 or 12 women's** and size **9 or 10 men's**.", "The scent of something burning lingers at the scene.", "The victim's body is badly mutilated.", "The temperature of the room the victim was found in was incredibly high.", "There were traces of gasoline at the scene.", "The victim's body was completely burned.", "A lighter was found at the scene."],
 				img: "https://imgur.com/YywS5LK.png",
 				imgDead: "https://imgur.com/SaZa5dH.png"
 			},
-			/*3*/
-			/*66*/ {
+			/*3*/ /*66*/ {
 				name: "Junko Saitou",
 				clues: ["black", "The murderer left a footprint in size **6 or 7 women's** and size **4 or 5 men's**.", "A death poem was stuffed into the victim's pocket.", "A scrap of striped fabric was found on the floor of the scene.", "There was a puddle of vomit at the scene."],
 				img: "https://imgur.com/TZeW9L7.png",
 				imgDead: "https://imgur.com/FNk7e3E.png"
 			},
-			/*3*/
-			/*67*/ {
+			/*3*/ /*67*/ {
 				name: "Kirakira Kyuti",
 				clues: ["blond", "The murderer left a footprint in size **5 or 6 in children's**.", "There is no evidence of the killer touching the victim.", "A hair clip was found on the ground of the scene.", "A megaphone was found at the scene."],
 				img: "https://imgur.com/zz98AMQ.png",
 				imgDead: "https://imgur.com/OJF4cgL.png"
 			},
-			/*3*/
-			/*+68+*/ {
+			/*3*/ /*+68+*/ {
 				name: "Kumiko Yeun",
 				clues: ["black", "The murderer left a footprint in size **6 or 7 women's** and size **4 or 5 men's**.", "A microphone with blood on it was found hidden away at the scene.", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*4*/
-			/*69*/ {
+			/*4*/ /*69*/ {
 				name: "Kyosuke Maki",
 				clues: ["brown", "The murderer left a footprint in size **11 or 12 women's** and size **9 or 10 men's**", "A red hair clip was found on the ground of the scene.", "The scent of a strong cologne lingers at the scene.", "The victim's body is badly mutilated."],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*3*/
-			/*70*/ {
+			/*3*/ /*70*/ {
 				name: "Mariko Murakami",
 				clues: ["purple", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "A scrap of black fabric was found in the victim's palm.", "A red hair pin was found at the scene.", "The victim was crucified.", "A bamboo sword was left at the scene."],
 				img: "https://imgur.com/9RRSa6h.png",
 				imgDead: "https://imgur.com/cAXqJnH.png"
 			},
-			/*3*/
-			/*71*/ {
+			/*3*/ /*71*/ {
 				name: "Megami Himura",
 				clues: ["blue", "The murderer left a footprint in size **6 or 7 women's** and size **4 or 5 men's**.", "Rose petals were found around the victim's body.", "Bobby pins were found at the scene.", "A scrap of striped fabric was found on the floor of the scene."],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*3*/
-			/*+72+*/ {
+			/*3*/ /*+72+*/ {
 				name: "Melchor Guadalupe Paz de la Cruz",
 				clues: ["brown", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "A megaphone was found at the scene.", ""],
 				img: "https://imgur.com/9cVr7mL.png",
 				imgDead: "https://imgur.com/PeLVeBZ.png"
 			},
-			/*_*/
-			/*73*/ {
+			/*_*/ /*73*/ {
 				name: "Miyuki Hayashi",
 				clues: ["blue", "The murderer left a footprint in size **6 or 7 women's** and size **4 or 5 men's**.", "The temperature of the room the victim was found in was incredibly high.", "The scent of something burning lingers at the scene.", "The victim's body is badly mutilated.", "A purple hair pin was found on the ground of the scene.", "There were smears of eye shadow found on the victim.", "There were traces of gasoline at the scene."],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*3*/
-			/*+74+*/ {
+			/*3*/ /*+74+*/ {
 				name: "Nikki Cox",
 				clues: ["orange", "The murderer left a footprint in size **8 or 9 women's** and size **6 or 7 men's**.", "", ""],
 				img: "https://i.imgur.com/llvFlee.png",
 				imgDead: "https://imgur.com/pu3hvDH.png"
 			},
-			/*3*/
-			/*+75+*/ {
+			/*3*/ /*+75+*/ {
 				name: "Renata de Santis",
 				clues: ["brown", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "", ""],
 				img: "https://imgur.com/Dgij3oX.png",
 				imgDead: "https://imgur.com/NSiPSIz.png"
 			},
-			/*3*/
-			/*76*/ {
+			/*3*/ /*76*/ {
 				name: "Ryoushi Nobuori",
 				clues: ["red-violet", "The murderer left a footprint in size **8 or 9 women's** and size **6 or 7 men's**.", "A mystery novel titled *The Kidnapped* was found at the scene.", "A torn out page from a book was found at the scene.", "A headband was found at the scene.", "A book full of children's stories was found at the scene."],
 				img: "https://imgur.com/r9KKua3.png",
 				imgDead: "https://imgur.com/9se7jzq.png"
 			},
-			/*3*/
-			/*+77+*/ {
+			/*3*/ /*+77+*/ {
 				name: "Santo Verdugo Bautista",
 				clues: ["brown", "The murderer left a footprint in size **11 or 12 women's** and size **9 or 10 men's**.", "The victim was found without their clothing.", "The victim was killed with flawless medical precision.", "An El Diablo chicle cigarillo was stuffed into the victim's mouth.", "A single Hummingbird alebrije earring was found at the scene.", "Photos of bodies were found at the scene.", "A gun was found at the scene."],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*3*/
-			/*78*/ {
+			/*3*/ /*78*/ {
 				name: "Shinji Minoru",
 				clues: ["brown", "The murderer left a foot print in size **11 or 12 women's** and size **9 or 10 men's**.", "A scribbled note was left behind at the scene.", "A blue pen was left behind at the scene.", "The victim had recently been drugged or poisoned."],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*3*/
-			/*79*/ {
+			/*3*/ /*79*/ {
 				name: "Wolfgang Schwarz",
 				clues: ["black", "The murderer left a footprint in size **12 or 13 women's** and size **10 or 11 men's**.", "The scene faintly smells of pine trees.", "The victim was killed with flawless medical precision.", "A saw was found at the scene.", "A patch of a country's flag was found in the pocket of the victim.", ""],
 				img: "https://imgur.com/zleZ5xc.png",
 				imgDead: "https://imgur.com/pBSO3cM.png"
 			},
-			/*U*/
-			/*+80+*/ {
+			/*U*/ /*+80+*/ {
 				name: "Kotone Fukuzawa",
 				clues: ["black", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "The victim's body is badly mutilated.", ""],
 				img: "https://imgur.com/OTttz9N.png",
 				imgDead: "https://imgur.com/sEoHbXr.png"
 			},
-			/*3*/
-			/*+81+*/ {
+			/*3*/ /*+81+*/ {
 				name: "Ruslan Eun-Kyung Kraus",
 				clues: ["brown", "The murderer left a footprint in size **11 or 12 women's** and size **9 or 10 men's**.", "", ""],
 				img: "https://imgur.com/8LA7hg8.png",
 				imgDead: "https://imgur.com/ffO9rMi.png"
 			},
-			/*3*/
-			/*+82+*/ {
+			/*3*/ /*+82+*/ {
 				name: "Isago Achikita",
 				clues: ["pink", "The murderer left a footprint in size **6 or 7 women's** and size **4 or 5 men's**.", "Traces of gold leaf were found at the scene.", "A scrap of black fabric was found in the victim's palm."],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*3*/
-			/*+83+*/ {
+			/*3*/ /*+83+*/ {
 				name: "Piper McCullough",
 				clues: ["green", "The murderer left a footprint in size **5 or 6 women's** and size **3 or 4 men's**.", "An American flag was tucked into the victim's clothing.", ""],
 				img: "https://imgur.com/Zxcprq2.png",
 				imgDead: "https://imgur.com/yuOgons.png"
 			},
-			/*3*/
-			/*+84+*/ {
+			/*3*/ /*+84+*/ {
 				name: "Charles Miller",
 				clues: ["blond", "The murderer left a footprint in size **10 or 11 women's** and size **8 or 9 men's**.", "An American flag was tucked into the victim's clothing.", "A carton of milk was found under the victim's body."],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*3*/
-			/*+85+*/ {
+			/*3*/ /*+85+*/ {
 				name: "Tenome",
 				clues: ["gray", "The murderer did not leave any footprints.", "", ""],
-				img: noIcon,
-				imgDead: noIcon
+				img: "https://imgur.com/7Pr58FI.png",
+				imgDead: "https://imgur.com/TM8FYjl.png"
 			},
-			/*X*/
-			/*86*/ {
+			/*X*/ /*86*/ {
 				name: "SECRET TIME BABY!"
 			},
-			/*87*/
-			{
+			/*87*/ {
 				name: "SECRET TIME BABY!"
 			},
-			/*88*/
-			{
+			/*88*/ {
 				name: "SECRET TIME BABY!"
 			},
-			/*89*/
-			{
+			/*89*/ {
 				name: "SECRET TIME BABY!"
 			},
-			/*90*/
-			{
+			/*90*/ {
 				name: "SUICIDE"
 			},
-			/*91*/
-			{
+			/*91*/ {
 				name: "SUICIDE"
 			},
-			/*92*/
-			{
+			/*92*/ {
 				name: "SUICIDE"
 			},
-			/*93*/
-			{
+			/*93*/ {
 				name: "SUICIDE"
 			},
-			/*94*/
-			{
+			/*94*/ {
 				name: "SUICIDE"
 			},
-			/*95*/
-			{
+			/*95*/ {
 				name: "SUICIDE"
 			},
-			/*96*/
-			{
+			/*96*/ {
 				name: "SUICIDE"
 			},
-			/*97*/
-			{
+			/*97*/ {
 				name: "SUICIDE"
 			},
-			/*98*/
-			{
+			/*98*/ {
 				name: "SUICIDE"
 			},
-			/*99*/
-			{
+			/*99*/ {
 				name: "DOUBLE MURDER!!"
 			},
-			/*100*/
-			{
+			/*100*/ {
 				name: "DOUBLE MURDER!!"
 			},
-			/*101*/
-			{
+			/*101*/ {
 				name: "DOUBLE MURDER!!"
 			},
-			/*102*/
-			{
+			/*102*/ {
 				name: "DOUBLE MURDER!!"
 			},
-			/*103*/
-			{
+			/*103*/ {
 				name: "DOUBLE MURDER!!"
 			},
-			/*104*/
-			{
+			/*104*/ {
 				name: "DOUBLE MURDER!!"
 			},
-			/*105*/
-			{
+			/*105*/ {
 				name: "DOUBLE MURDER!!"
 			},
-			/*106*/
-			{
+			/*106*/ {
 				name: "DOUBLE MURDER!!"
 			},
-			/*107*/
-			{
+			/*107*/ {
 				name: "DOUBLE MURDER!!"
 			},
-			/*108*/
-			{
+			/*108*/ {
 				name: "DOUBLE MURDER!!"
 			},
-			/*109*/
-			{
+			/*109*/ {
 				name: "DOUBLE MURDER!!"
 			},
-			/*110*/
-			{
+			/*110*/ {
 				name: "DOUBLE MURDER!!"
 			},
 		];
