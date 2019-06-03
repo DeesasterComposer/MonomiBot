@@ -1522,7 +1522,6 @@ client.on("message", (message) => { //When a message is sent.
 			if (args[1] === "28" || args[1].toLowerCase().search("tenshi") != -1) {page = 28}
 			if (args[1] === "29" || args[1].toLowerCase().search("theo") != -1 || args[1].toLowerCase().search("théo") != -1) {page = 29}
 			if (args[1] === "30" || args[1].toLowerCase().search("yukine") != -1 || args[1].toLowerCase().search("who") != -1) {page = 30}
-			if (page === 0) {return message.channel.send("I'm sorry, but this student does not exist!  Please make sure that you entered the correct information!")}
 			if (Number.isInteger(args[1] * 1) === true) {
 				inboxChannel.send(`${message.author.username} has looked at student ${args[1]}'s file from the first class.`)
 			}
@@ -1590,40 +1589,37 @@ client.on("message", (message) => { //When a message is sent.
 				x++;
 			}
 			
-			if (args[1] === "1" || args[1].toLowerCase().search("akiko") != -1) {let page = 1}
-			if (args[1] === "2" || args[1].toLowerCase().search("arisa") != -1) {let page = 2}
-			if (args[1] === "3" || (args[1].toLowerCase().search("chika") != -1 && args[1].toLowerCase().search("chikako") === -1)) {let page = 3}
-			if (args[1] === "4" || args[1].toLowerCase().search("eiji") != -1) {let page = 4}
-			if (args[1] === "5" || args[1].toLowerCase().search("hana") != -1) {let page = 5}
-			if (args[1] === "6" || args[1].toLowerCase().search("kagami") != -1 || args[1].toLowerCase().search("bitch") != -1) {let page = 6}
-			if (args[1] === "7" || args[1].toLowerCase().search("monika") != -1) {let page = 7}
-			if (args[1] === "8" || args[1].toLowerCase().search("saeko") != -1) {let page = 8}
-			if (args[1] === "9" || args[1].toLowerCase().search("tsuyo") != -1) {let page = 9}
-			if (args[1] === "10" || args[1].toLowerCase().search("yuna") != -1) {let page = 10}
-			if (args[1] === "11" || args[1].toLowerCase().search("ale") != -1) {let page = 11}
-			if (args[1] === "12" || args[1].toLowerCase().search("asahi") != -1) {let page = 12}
-			if (args[1] === "13" || args[1].toLowerCase().search("chikako") != -1 || (args[1].toLowerCase().search("chik") != -1 && args[1].toLowerCase().search("chika") === -1)) {let page = 13}
-			if (args[1] === "14" || args[1].toLowerCase().search("eiichi") != -1) {let page = 14}
-			if (args[1] === "15" || args[1].toLowerCase().search("fenikku") != -1) {let page = 15}
-			if (args[1] === "16" || args[1].toLowerCase().search("hideo") != -1) {let page = 16}
-			if (args[1] === "17" || args[1].toLowerCase().search("isha") != -1) {let page = 17}
-			if (args[1] === "18" || args[1].toLowerCase().search("kaipo") != -1) {let page = 18}
-			if (args[1] === "19" || args[1].toLowerCase().search("katashi") != -1) {let page = 19}
-			if (args[1] === "20" || args[1].toLowerCase().search("kouki") != -1) {let page = 20}
-			if (args[1] === "21" || args[1].toLowerCase().search("kyabetsu") != -1) {let page = 21}
-			if (args[1] === "22" || args[1].toLowerCase().search("michel") != -1) {let page = 22}
-			if (args[1] === "23" || args[1].toLowerCase().search("renzo") != -1 || args[1].toLowerCase().search("rosendo") != -1) {let page = 23}
-			if (args[1] === "24" || args[1].toLowerCase().search("sora") != -1 || args[1].toLowerCase().search("silencer") != -1 || (args[1].toLowerCase().search("the") != -1 && args[2].toLowerCase().search("silencer") != -1)) {let page = 24}
-			if (args[1] === "25" || args[1].toLowerCase().search("souma") != -1 || args[1].toLowerCase().search("naoki") != -1) {let page = 25}
-			if (args[1] === "26" || args[1].toLowerCase().search("tomomi") != -1) {let page = 26}
-			if (args[1] === "27" || args[1].toLowerCase().search("yuuya") != -1) {let page = 27}
-			if (args[1].toLowerCase().search("eito") != -1) {let page = 28}
+			if (args[1] === "1" || args[1].toLowerCase().search("akiko") != -1) {page = 1}
+			if (args[1] === "2" || args[1].toLowerCase().search("arisa") != -1) {page = 2}
+			if (args[1] === "3" || (args[1].toLowerCase().search("chika") != -1 && args[1].toLowerCase().search("chikako") === -1)) {page = 3}
+			if (args[1] === "4" || args[1].toLowerCase().search("eiji") != -1) {page = 4}
+			if (args[1] === "5" || args[1].toLowerCase().search("hana") != -1) {page = 5}
+			if (args[1] === "6" || args[1].toLowerCase().search("kagami") != -1 || args[1].toLowerCase().search("bitch") != -1) {page = 6}
+			if (args[1] === "7" || args[1].toLowerCase().search("monika") != -1) {page = 7}
+			if (args[1] === "8" || args[1].toLowerCase().search("saeko") != -1) {page = 8}
+			if (args[1] === "9" || args[1].toLowerCase().search("tsuyo") != -1) {page = 9}
+			if (args[1] === "10" || args[1].toLowerCase().search("yuna") != -1) {page = 10}
+			if (args[1] === "11" || args[1].toLowerCase().search("ale") != -1) {page = 11}
+			if (args[1] === "12" || args[1].toLowerCase().search("asahi") != -1) {page = 12}
+			if (args[1] === "13" || args[1].toLowerCase().search("chikako") != -1 || (args[1].toLowerCase().search("chik") != -1 && args[1].toLowerCase().search("chika") === -1)) {page = 13}
+			if (args[1] === "14" || args[1].toLowerCase().search("eiichi") != -1) {page = 14}
+			if (args[1] === "15" || args[1].toLowerCase().search("fenikku") != -1) {page = 15}
+			if (args[1] === "16" || args[1].toLowerCase().search("hideo") != -1) {page = 16}
+			if (args[1] === "17" || args[1].toLowerCase().search("isha") != -1) {page = 17}
+			if (args[1] === "18" || args[1].toLowerCase().search("kaipo") != -1) {page = 18}
+			if (args[1] === "19" || args[1].toLowerCase().search("katashi") != -1) {page = 19}
+			if (args[1] === "20" || args[1].toLowerCase().search("kouki") != -1) {page = 20}
+			if (args[1] === "21" || args[1].toLowerCase().search("kyabetsu") != -1) {page = 21}
+			if (args[1] === "22" || args[1].toLowerCase().search("michel") != -1) {page = 22}
+			if (args[1] === "23" || args[1].toLowerCase().search("renzo") != -1 || args[1].toLowerCase().search("rosendo") != -1) {page = 23}
+			if (args[1] === "24" || args[1].toLowerCase().search("sora") != -1 || args[1].toLowerCase().search("silencer") != -1 || (args[1].toLowerCase().search("the") != -1 && args[2].toLowerCase().search("silencer") != -1)) {page = 24}
+			if (args[1] === "25" || args[1].toLowerCase().search("souma") != -1 || args[1].toLowerCase().search("naoki") != -1) {page = 25}
+			if (args[1] === "26" || args[1].toLowerCase().search("tomomi") != -1) {page = 26}
+			if (args[1] === "27" || args[1].toLowerCase().search("yuuya") != -1) {page = 27}
+			if (args[1].toLowerCase().search("eito") != -1) {page = 28}
 			if (args[1].toLowerCase().search("junko") != -1 && args[1].toLowerCase().search("inu") != -1 && message.author.id === "334575513857163266") {
 				possibleReplies = ["how long will it take you, Mel...","**Mel.**","jesus christ! How many times is this going to happen, Mel?","I will literally vore you if you do that again, Mel.","***Mel.***","do it one more time, I dare you Mel.","you've got to be doing this on purpose now, right Mel?","I've had it up to here with you, Mel.","stop doing this, Mel!","why do you keep doing this, Mel?"];
 				return message.reply(random(possibleReplies));
-			}
-			if (page === 0) {
-				return message.channel.send("I'm sorry, but this student does not exist!  Please make sure that you entered the correct information!")
 			}
 			if (Number.isInteger(args[1] * 1) === true) {
 				inboxChannel.send(`${message.author.username} has looked at student ${args[1]}'s file from the second class.`)
@@ -1689,42 +1685,39 @@ client.on("message", (message) => { //When a message is sent.
 				x++;
 			}
 
-			if (args[1] === "1" || args[1].toLowerCase().search("aemele") != -1) {let page = 1}
-			if (args[1] === "2" || args[1].toLowerCase().search("dia") != -1) {let page = 2}
-			if (args[1] === "3" || args[1].toLowerCase().search("kumi") != -1 || args[1].toLowerCase().search("ga") != -1) {let page = 3}
-			if (args[1] === "4" || args[1].toLowerCase().search("inu") != -1) {let page = 4}
-			if (args[1] === "5" || args[1].toLowerCase().search("isago") != -1) {let page = 5}
-			if (args[1] === "6" || args[1].toLowerCase().search("junko") != -1 || args[1].toLowerCase().search("byakko") != -1) {let page = 6}
-			if (args[1] === "7" || args[1].toLowerCase().search("kira") != -1) {let page = 7}
-			if (args[1] === "8" || args[1].toLowerCase().search("mariko") != -1) {let page = 8}
-			if (args[1] === "9" || args[1].toLowerCase().search("megami") != -1) {let page = 9}
+			if (args[1] === "1" || args[1].toLowerCase().search("aemele") != -1) {page = 1}
+			if (args[1] === "2" || args[1].toLowerCase().search("dia") != -1) {page = 2}
+			if (args[1] === "3" || args[1].toLowerCase().search("kumi") != -1 || args[1].toLowerCase().search("ga") != -1) {page = 3}
+			if (args[1] === "4" || args[1].toLowerCase().search("inu") != -1) {page = 4}
+			if (args[1] === "5" || args[1].toLowerCase().search("isago") != -1) {page = 5}
+			if (args[1] === "6" || args[1].toLowerCase().search("junko") != -1 || args[1].toLowerCase().search("byakko") != -1) {page = 6}
+			if (args[1] === "7" || args[1].toLowerCase().search("kira") != -1) {page = 7}
+			if (args[1] === "8" || args[1].toLowerCase().search("mariko") != -1) {page = 8}
+			if (args[1] === "9" || args[1].toLowerCase().search("megami") != -1) {page = 9}
 			if (args[1].toLowerCase().search("therealnikki") != -1) {
 				embed.setDescription("Name: Nikki Cox\nTalent: Adult Film Actress\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'9\"\nWeight: 131\nBlood Type: B\nBirthday: 09/08\nAge: 19").setThumbnail("https://imgur.com/zvw2WGR.png")
 				return message.channel.send(embed)
 			}
-			if (args[1] === "10" || args[1].toLowerCase().search("nikki") != -1 && args[1].toLowerCase().search("therealnikki") === -1) {let page = 10}
-			if (args[1] === "11" || args[1].toLowerCase().search("piper") != -1) {let page = 11}
-			if (args[1] === "12" || args[1].toLowerCase().search("renata") != -1) {let page = 12}
-			if (args[1] === "13" || args[1].toLowerCase().search("areli") != -1) {let page = 13}
-			if (args[1] === "14" || args[1].toLowerCase().search("ayuma") != -1) {let page = 14}
+			if (args[1] === "10" || args[1].toLowerCase().search("nikki") != -1 && args[1].toLowerCase().search("therealnikki") === -1) {page = 10}
+			if (args[1] === "11" || args[1].toLowerCase().search("piper") != -1) {page = 11}
+			if (args[1] === "12" || args[1].toLowerCase().search("renata") != -1) {page = 12}
+			if (args[1] === "13" || args[1].toLowerCase().search("areli") != -1) {page = 13}
+			if (args[1] === "14" || args[1].toLowerCase().search("ayuma") != -1) {page = 14}
 			if (args[1].toLowerCase().search("cecil") != -1 && args[1].toLowerCase().search("cecilio") === -1) {
 				return message.reply("**No.**");
 			}
-			if (args[1] === "15" || args[1].toLowerCase().search("cecilio") != -1) {let page = 15}
-			if (args[1] === "16" || args[1].toLowerCase().search("charles") != -1 || args[1].toLowerCase().search("chad") != -1) {let page = 16}
-			if (args[1] === "17" || args[1].toLowerCase().search("daichi") != -1) {let page = 17}
-			if (args[1] === "18" || args[1].toLowerCase().search("federico") != -1) {let page = 18}
-			if (args[1] === "19" || args[1].toLowerCase().search("jomei") != -1) {let page = 19}
-			if (args[1] === "20" || args[1].toLowerCase().search("mel") != -1 && args[1].toLowerCase().search("aemele") === -1) {let page = 20}
-			if (args[1] === "21" || args[1].toLowerCase().search("ruslan") != -1) {let page = 21}
-			if (args[1] === "22" || args[1].toLowerCase().search("ryoushi") != -1) {let page = 22}
-			if (args[1] === "23" || args[1].toLowerCase().search("santo") != -1) {let page = 23}
-			if (args[1] === "24" || args[1].toLowerCase().search("shinji") != -1) {let page = 24}
-			if (args[1] === "25" || args[1].toLowerCase().search("tenome") != -1) {let page = 25}
-			if (args[1] === "26" || args[1].toLowerCase().search("wolf") != -1) {let page = 26}
-			if (page === 0) {
-				return message.channel.send("I'm sorry, but this student does not exist!  Please make sure that you entered the correct information!")
-			}
+			if (args[1] === "15" || args[1].toLowerCase().search("cecilio") != -1) {page = 15}
+			if (args[1] === "16" || args[1].toLowerCase().search("charles") != -1 || args[1].toLowerCase().search("chad") != -1) {page = 16}
+			if (args[1] === "17" || args[1].toLowerCase().search("daichi") != -1) {page = 17}
+			if (args[1] === "18" || args[1].toLowerCase().search("federico") != -1) {page = 18}
+			if (args[1] === "19" || args[1].toLowerCase().search("jomei") != -1) {page = 19}
+			if (args[1] === "20" || args[1].toLowerCase().search("mel") != -1 && args[1].toLowerCase().search("aemele") === -1) {page = 20}
+			if (args[1] === "21" || args[1].toLowerCase().search("ruslan") != -1) {page = 21}
+			if (args[1] === "22" || args[1].toLowerCase().search("ryoushi") != -1) {page = 22}
+			if (args[1] === "23" || args[1].toLowerCase().search("santo") != -1) {page = 23}
+			if (args[1] === "24" || args[1].toLowerCase().search("shinji") != -1) {page = 24}
+			if (args[1] === "25" || args[1].toLowerCase().search("tenome") != -1) {page = 25}
+			if (args[1] === "26" || args[1].toLowerCase().search("wolf") != -1) {page = 26}
 			if (Number.isInteger(args[1] * 1) === true) {
 				inboxChannel.send(`${message.author.username} has looked at student ${args[1]}'s file from the third class.`)
 			}
@@ -1764,11 +1757,8 @@ client.on("message", (message) => { //When a message is sent.
 				x++;
 			}
 
-			if (args[1] === "NUMBER" || args[1].toLowerCase().search("aggi") != -1 || args[1].toLowerCase().search("agnes") != -1) {let page = 1}
-			if (args[1] === "NUMBER" || args[1].toLowerCase().search("miyuki") != -1) {let page = 2}
-			if (page === 0) {
-				return message.channel.send("I'm sorry, but this student does not exist!  Please make sure that you entered the correct information!")
-			}
+			if (args[1] === "NUMBER" || args[1].toLowerCase().search("aggi") != -1 || args[1].toLowerCase().search("agnes") != -1) {page = 1}
+			if (args[1] === "NUMBER" || args[1].toLowerCase().search("miyuki") != -1) {page = 2}
 			if (Number.isInteger(args[1] * 1) === true) {
 				inboxChannel.send(`${message.author.username} has looked at student ${args[1]}'s file from the third class.`)
 			}
@@ -1800,21 +1790,21 @@ client.on("message", (message) => { //When a message is sent.
 				if (thumbnail === "") {
 					thumbnail = "https://imgur.com/OVPTMGn.png";
 				};
-				currentPage = {
-					text: classList[x].studentID,
-					thumbnail: thumbnail
-				}
+				currentPage = {text: classList[x].studentID, thumbnail: thumbnail}
 				pages.push(currentPage);
 				x++;
 			}
 
-			if (args[1].toLowerCase().search("kotone") != -1) {let page = 1}
-			if (args[1].toLowerCase().search("monobi") != -1) {let page = 2}
+			if (args[1].toLowerCase().search("kotone") != -1) {page = 1}
+			if (args[1].toLowerCase().search("monobi") != -1) {page = 2}
 			inboxChannel.send(`${message.author.username} has looked at ${args[1].toUpperCase().slice(0, 1)}${args[1].toLowerCase().slice(1)}'s file.`);
 		}
 		if (args[0] === "talents") {
 			message.channel.send("```Cl.  Talent               Name\n3    Activist             Melchor Guadalupe Paz de la Cruz\n1    Actress              Ara Ayao\n3    Adult Film Actress   Nikki Cox\n1    Animal Caretaker     Jacek Żeglarski\n1    Archer               Théo Dubois\n2    Assassin             Chika Miyasaki\n1    Astronomer           Hoshi Chiura\n1    Balance (Blogger)    Masayuuki Taisho\n1    Baseball Player      Miyuki Ataru\n2    Birdwatcher          Kaipo Uilani Iona\n2    Biologist            Tsuyo Kogiyumi\n1    Blogger (Balance)    Masayuuki Taisho\n2    Bomb Maker           Monika Minami\n1    Botanist             Yukine Sakurai\n1    Boxer                Tezuku Imou\n3    Cadet                Piper McCullough\n3    Cheerleader          Dia Ramos\n2    Chemist              Eiichi Ryozo\n1    Chess Champion       Noriko Suzuki\n2    Clairvoyant          Akiko\n3    Combat Medic         Wolfgang Schwarz\n2    Conspiracy Theorist  Chikako Kaetsu\n3    Coroner              Santo Verdugo Bautista\n3    Counselor            Ayuma Tanaka\n1    Counterfeiter        Anzu Kofuku\n1    Cryptologist         Hachi Hiruma\n1    Dancer               Ryu Akahoshi\n2    Daredevil            Sora Kenshin\n1    Detective            Cheisu Maeda\n1    Digital Composer     Aika Mahaya\n2    Doll Maker           Yuna Akahoshi\n1    Fashion Designer     Anaelle Hamaan\n1    Figure Skater        Aurélie Cartier\nX    Fire Dancer          Miyuki Hayashi\n2    Florist              Kyabetsu Retesu\n1    Fortnite Gamer       Stella Hunter\n2    Fútbol Player        Rosendo Paulo Ochoa Merlo\n1    Gambler              S'ad Ludópata\n3    Ghostwriter          Tenome\n3    Graffiti Artist      Inugami Uzuki\n1    Hacker               Ximena Colomar\n3    Heiress              Renata de Santis\n3    Horror Novelist      Junko Saitou\n1    Hypnotist            Mori Hibana```");
 			return message.channel.send("```2    Jeweler              Kagami Hannei\n2    Inventor             Hideo Takayama\n2    Lawyer               Ale del Prieto\n3    Lion Tamer           Areli Vepkhia\n2    Lucky Student        Kouki Yoshida\n3    Luthier              Ruslan Eun-Kyung Kraus\n2    Maid                 Saeko Kiyomizu\n1    Makeup Artist        Aiko Hikaru\n3    Magical Girl         Kirakira Kyuti\n1    Magician             Anya Sakaguchi\n2    Manipulator (Poet)   Souma Shimizu\n3    Martial Artist       Mariko Nakamura\n1    Matchmaker           Shiba Mikio\n3    Milkman              Charles Miller\n1    Model                Megu Kojima\n3    Mythologist          Isago Achikita\n2    Opera Singer         Arisa Shokuhou\n3    Pianist              Federico Navarro\n3    Pilot                Cecilio Gonzalo Calles Cárdenas\n2    Philanthropist       Yuuya Michimiya\n3    Physicist            Shinji Minoru\n2    Poet (Manipulator)   Souma Shimizu\n1    Prince               Kiro Karasu\n2    Puppeteer            Hana Kageriri\n3    Pyromaniac           Jomei Hoshino\n2    Ringmaster           Fenikku Hinotama\n3    Rock Star            Kumiko Yeun\n3    Satanist             Daichi Ichihara\n1    Singer               Kyoung-mi Park\n2    Spy                  Isha Kalki\n3    Stalker              Aemele Dèjré\n3    Storyteller          Ryoushi Nobuori\n2    Surgeon              Eiji Ryozo\n2    Swimmer              Katashi Maeda\n1    Swordsman            Minako Kaoru\n2    Technician           Tomomi Kashichi\n1    Tennis Player        Jeong Park\n2    Theologist           Michel Voigt\n1    Therapist            Tenshi Kawada\n3    Tragedian            Megami Himura\n4    Voice Actor          Agnes María Camila Zalweski-Chavarría\n2    Violinist            Asahi Fukuzawa\n1    Woodworker           Kazuya Harada```");
+		}
+		if (page === 0) {
+			return message.channel.send("I'm sorry, but this student does not exist!  Please make sure that you entered the correct information!")
 		}
 		embed.setDescription(pages[page - 1].text);
 		embed.setThumbnail(pages[page - 1].thumbnail)
@@ -1841,7 +1831,7 @@ client.on("message", (message) => { //When a message is sent.
 				})
 
 				forwards.on('collect', r => {
-					if (page === pageAmount) return;
+					if (page === classList.length) return;
 					page++;
 					embed.setDescription(pages[page - 1].text);
 					embed.setThumbnail(pages[page - 1].thumbnail)
