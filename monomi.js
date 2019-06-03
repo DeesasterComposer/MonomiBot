@@ -1464,7 +1464,8 @@ client.on("message", (message) => { //When a message is sent.
 				{ studentID: "Name: Théo Dubois\nTalent: Archer\nSex: Male\nStatus: Rescued\n\nShoe Size: Unavailable\nHeight: 5'7\"\nWeight: 141\nBlood Type: AB\nBirthday: 03/27\nAge: 17", studentIDPicture: "" },
 				{ studentID: "Name: Yukine Sakurai\nTalent: Botanist\nSex: Male\nStatus: Rescued\n\nShoe Size: 10.5\nHeight: 5'8\"\nWeight: 135\nBlood Type: O\nBirthday: 12/13\nAge: 16", studentIDPicture: "https://imgur.com/2RJbb52.png" }
 			]
-			
+			names = ["aika", "anaelle", "anya", "ara", "aurelie", "aurélie", "hachi", "jeong", "kyoung", "megu", "minako", "mori", "noriko", "stella", "tezuku", "ximena", "aiko", "anzu", "cheisu", "hoshi", "jacek", "kazuya", "kiro", "yuuki", "miyuki", "ryu", "s'ad", "shiba", "tenshi", "theo", "théo", "yukine", "who"];
+
 			if (args.length === 1) { //Class Roster Simple
 				message.channel.send("```##  Sex and Name          Talent\n11  F Mori Hibana         Hypnotist\n25  M Ryu Akahoshi        Dancer\n27  M Shiba Mikio         Matchmaker\n29  M Théo Dubois         Archer\n30  M Yukine Sakurai      Botanist\n\n    Mastermind\n23  M Masayuuki Taisho    Balance (Blogger)\n\n    Deceased Students\n1   F Aika Mahaya         Digital Composer\n2   F Anaelle Hamaan      Fashion Designer\n3   F Anya Sakaguchi      Magician\n4   F Ara Ayao            Actress\n5   F Aurélie Cartier     Figure Skater\n6   F Hachi Hiruma        Cryptologist\n7   F Jeong Park          Tennis Player\n8   F Kyoung-mi Park      Singer\n9   F Megu Kojima         Model\n10  F Minako Kaoru        Swordsman\n12  F Noriko Suzuki       Chess Champion\n13  F Stella Hunter       Fortnite Gamer\n14  F Tezuku Imou         Boxer\n15  F Ximena Colomar      Hacker\n16  M Aiko Hikaru         Makeup Artist\n17  M Anzu Kofuku         Counterfeiter\n18  M Cheisu Maeda        Detective\n19  M Hoshi Chiura        Astronomer\n20  M Jacek Żeglarski     Animal Caretaker\n21  M Kazuya Harada       Woodworker\n22  M Kiro Karasu         Prince\n24  M Miyuki Ataru        Baseball Player\n26  M S'ad Ludópata       Gambler\n28  M Tenshi Kawada       Therapist```")
 				inboxChannel.send(`${message.author.username} has looked at the first class' roster.`);
@@ -1489,8 +1490,6 @@ client.on("message", (message) => { //When a message is sent.
 				pages.push(currentPage);
 				x++;
 			}
-
-			let page = 1;
 
 			if (args[1] === "1" || args[1].toLowerCase().search("aika") != -1) {page = 1}
 			if (args[1] === "2" || args[1].toLowerCase().search("anaelle") != -1) {page = 2}
@@ -1530,11 +1529,12 @@ client.on("message", (message) => { //When a message is sent.
 				}
 			}
 			if (Number.isInteger(args[1] * 1) === false) {
-				if (studentID === "") {} else {
-					inboxChannel.send(`${message.author.username} has looked at ${args[1].toUpperCase().slice(0, 1)}${args[1].toLowerCase().slice(1)}'s file from the first class.`)
+				if (names.search(args[1]) === -1) {
+					return message.channel.send("I'm sorry, but this student does not exist!  Please make sure that you entered the correct name!")
 				}
+				inboxChannel.send(`${message.author.username} has looked at ${args[1].toUpperCase().slice(0, 1)}${args[1].toLowerCase().slice(1)}'s file from the first class.`)
 			}
-			
+
 			embed.setDescription(pages[page - 1].text);
 			embed.setThumbnail(pages[page - 1].thumbnail)
 			message.channel.send(embed).then(msg => {
@@ -1554,7 +1554,7 @@ client.on("message", (message) => { //When a message is sent.
 					backwards.on('collect', r => {
 						if (page === 1) return;
 						page--;
-						embed.setDescription(pages[page - 1]);
+						embed.setDescription(pages[page - 1].text);
 						embed.setThumbnail(pages[page - 1].thumbnail)
 						msg.edit(embed)
 					})
@@ -1562,7 +1562,7 @@ client.on("message", (message) => { //When a message is sent.
 					forwards.on('collect', r => {
 						if (page === pages.length) return;
 						page++;
-						embed.setDescription(pages[page - 1]);
+						embed.setDescription(pages[page - 1].text);
 						embed.setThumbnail(pages[page - 1].thumbnail)
 						msg.edit(embed)
 					})
