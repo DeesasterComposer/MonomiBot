@@ -1,0 +1,25 @@
+{
+
+    "name": "MonomiBot",
+
+    "description": "No one will ever see this part so this description has no purpose :)",
+
+    "version": "0.0.0",
+
+    "main": "monomi.js",
+
+    "scripts": {
+
+        "start": "node monomi.js"
+
+    },
+
+    "dependencies": {
+
+        "discord.js": "11.1.0",
+
+        "request": "2.81.0"
+
+    }
+
+}
