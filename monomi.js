@@ -1529,7 +1529,7 @@ client.on("message", (message) => { //When a message is sent.
 				}
 			}
 			if (Number.isInteger(args[1] * 1) === false) {
-				if (names.search(args[1]) === -1) {
+				if (names.toString().search(args[1]) === -1) {
 					return message.channel.send("I'm sorry, but this student does not exist!  Please make sure that you entered the correct name!")
 				}
 				inboxChannel.send(`${message.author.username} has looked at ${args[1].toUpperCase().slice(0, 1)}${args[1].toLowerCase().slice(1)}'s file from the first class.`)
