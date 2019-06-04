@@ -4321,6 +4321,15 @@ client.on("message", (message) => { //When a message is sent.
 				origin: ["glücklich (Grmn)","enlightened"]
 			},
 			{
+				word: "grimendous",
+				syllables: "gri·men·dous",
+				pronounce: "/ɡriˈmendəs/",
+				types: "adjective",
+				definition: "very great in grimness.",
+				synonymof: ["dreadful","frightening","scary"],
+				origin: ["grim","tremendous"]
+			},
+			{
 				word: "imparable",
 				syllables: "im·par·a·ble",
 				pronounce: "/iˈmpärəb(ə)l/",
