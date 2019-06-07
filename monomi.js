@@ -1639,7 +1639,7 @@ client.on("message", (message) => { //When a message is sent.
 				{ studentID: "Name: Kirakira Kyuti\nTalent: Magical Girl\nSex: Female\nStatus: Alive\n\nShoe Size: 6 (Children's)\nHeight: 4'11\"\nWeight: 97\nBlood Type: A\nBirthday: 09/07\nAge: 14", studentIDPicture: "https://imgur.com/zz98AMQ.png" },
 				{ studentID: "Name: Mariko Murakami\nTalent: Martial Artist\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'6\"\nWeight: 125\nBlood Type: AB\nBirthday: 12/12\nAge: 18", studentIDPicture: "https://imgur.com/9RRSa6h.png" },
 				{ studentID: "Name: Megami Himura\nTalent: Tragedian\nSex: Female\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'5\"\nWeight: 110\nBlood Type: A\nBirthday: 05/15\nAge: 16", studentIDPicture: "" },
-				{ studentID: "Name: Nikki Cox\nTalent: Teacher\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'9\"\nWeight: 131\nBlood Type: B\nBirthday: 09/08\nAge: 19", studentIDPicture: "https://imgur.com/llvFlee.png" },
+				{ studentID: "Name: Agnès Boniface\nPseudonym: Nikki Cox\nTalent: Adult Film Actress\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'9\"\nWeight: 131\nBlood Type: B\nBirthday: 09/08\nAge: 19", studentIDPicture: "https://imgur.com/zvw2WGR.png" }
 				{ studentID: "Name: Piper McCullough\nTalent: Cadet\nSex: Female\nStatus: Alive\n\nShoe Size: 5\nHeight: 5'1\"\nWeight: 102\nBlood Type: O\nBirthday: 03/23\nAge: 15", studentIDPicture: "https://imgur.com/Zxcprq2.png" },
 				{ studentID: "Name: Renata de Santis\nTalent: Heiress\nSex: Female\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'7\"\nWeight: 115\nBlood Type: B\nBirthday: 08/11\nAge: 17", studentIDPicture: "https://imgur.com/Dgij3oX.png" },
 				{ studentID: "Name: Areli Vepkhia\nTalent: Lion Tamer\nSex: Male\nStatus: Alive\n\nShoe Size: 12\nHeight: 6'5\"\nWeight: 260\nBlood Type: O\nBirthday: 10/29\nAge: 18", studentIDPicture: "https://imgur.com/4IQsA40.png" },
@@ -1694,11 +1694,7 @@ client.on("message", (message) => { //When a message is sent.
 			if (args[1] === "7" || args[1].toLowerCase().search("kira") != -1) {page = 7}
 			if (args[1] === "8" || args[1].toLowerCase().search("mariko") != -1) {page = 8}
 			if (args[1] === "9" || args[1].toLowerCase().search("megami") != -1) {page = 9}
-			if (args[1].toLowerCase().search("therealnikki") != -1) {
-				embed.setDescription("Name: Nikki Cox\nTalent: Adult Film Actress\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'9\"\nWeight: 131\nBlood Type: B\nBirthday: 09/08\nAge: 19").setThumbnail("https://imgur.com/zvw2WGR.png")
-				return message.channel.send(embed)
-			}
-			if (args[1] === "10" || args[1].toLowerCase().search("nikki") != -1 && args[1].toLowerCase().search("therealnikki") === -1) {page = 10}
+			if (args[1] === "10" || (args[1].toLowerCase().search("nikki") != -1 || args[1].toLowerCase().search("agnes") != -1)) {page = 10}
 			if (args[1] === "11" || args[1].toLowerCase().search("piper") != -1) {page = 11}
 			if (args[1] === "12" || args[1].toLowerCase().search("renata") != -1) {page = 12}
 			if (args[1] === "13" || args[1].toLowerCase().search("areli") != -1) {page = 13}
