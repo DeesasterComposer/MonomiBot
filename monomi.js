@@ -4493,7 +4493,7 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/ˈterəfəˌkāt/",
 				types: "verb",
 				definition: "to induce a sense of terror or dread onto someone.",
-				symnonymof: ["scare","spook","terrify"],
+				synonymof: ["scare","spook","terrify"],
 				origin: ["terrify","allocate"]
 			},
 			{
