@@ -4489,10 +4489,10 @@ client.on("message", (message) => { //When a message is sent.
 			},
 			{
 				word: "terrificate",
-				syllables: "terrificate",
-				pronounce: "//",
+				syllables: "ter·ri·fi·cate",
+				pronounce: "/ˈterəfəˌkāt/",
 				types: "verb",
-				definition: "to induce terror or shock onto someone.",
+				definition: "to induce a sense of terror or dread onto someone.",
 				symnonymof: ["scare","spook","terrify"],
 				origin: ["terrify","allocate"]
 			},
