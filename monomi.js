@@ -4488,6 +4488,15 @@ client.on("message", (message) => { //When a message is sent.
 				origin: ["talent"]
 			},
 			{
+				word: "terrificate",
+				syllables: "terrificate",
+				pronounce: "//",
+				types: "verb",
+				definition: "to induce terror or shock onto someone.",
+				symnonymof: ["scare","spook","terrify"],
+				origin: ["terrify","allocate"]
+			},
+			{
 				word: "think-not-know-not",
 				syllables: "think-not-know-not",
 				pronounce: "/THiNGk-nät-nō-nät/",
