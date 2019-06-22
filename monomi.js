@@ -4272,6 +4272,15 @@ client.on("message", (message) => { //When a message is sent.
 				origin: ["dislocate", "locational"]
 			},
 			{
+				word: "enpain",
+				syllables: "en·pain",
+				pronounce: "/inˈpānd, enˈpānd/",
+				types: "verb",
+				definition: "to be inflicted with pain.",
+				synonymof: ["pain","hurt"],
+				origin: false
+			},
+			{
 				word: "enplormatory",
 				syllables: "en·plor·ma·tor·y",
 				pronounce: "/inˈplôrməˌtôrē, enˈplôrməˌtôrē/",
