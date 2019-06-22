@@ -4274,7 +4274,7 @@ client.on("message", (message) => { //When a message is sent.
 			{
 				word: "enpain",
 				syllables: "en·pain",
-				pronounce: "/inˈpānd, enˈpānd/",
+				pronounce: "/inˈpān, enˈpān/",
 				types: "verb",
 				definition: "to be inflicted with pain.",
 				synonymof: ["pain","hurt"],
