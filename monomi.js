@@ -1222,6 +1222,23 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				})
 			};
+			if (args[0] === "roomies") {
+				message.channel.send({
+					embed: {
+						color: 15285149,
+						title: "Command 'roomies'",
+						fields: [{
+							name: ":heart_exclamation: Usage",
+							value: "`m!roomies`\n`m!roomies [1-12]`\n`m!roomies [student]`",
+						},
+						{
+							name: ":heart_exclamation: Description",
+							value: "Monomi gives a list of every room on the killing school ride, as well as descriptions and inhabitants of each!"
+						}
+						]
+					}
+				})
+			}
 		} else {
 			inboxChannel.send(`${message.author.username} has asked for help from Monomi.`);
 			message.channel.send({
@@ -1235,7 +1252,7 @@ client.on("message", (message) => { //When a message is sent.
 						},
 						{
 							name: ":heart_exclamation: Class",
-							value: "`roster` `sprites`"
+							value: "`roster` `roomies` `sprites`"
 						},
 						{
 							name: ":heart_exclamation: Fun",
