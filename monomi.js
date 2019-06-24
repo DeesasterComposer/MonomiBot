@@ -1965,6 +1965,7 @@ client.on("message", (message) => { //When a message is sent.
 		else {
 			embed.setAuthor("Killing School Ride Room Arrangements");
 			for (x = 0; x < 4; x++) {
+				room = rooms[x];
 				if (room.people.length === 2) {
 					roomInhabitants = room.people[0] + " and " + room.people[1];
 				}
