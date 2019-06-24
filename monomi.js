@@ -4443,6 +4443,15 @@ client.on("message", (message) => { //When a message is sent.
 				origin: ["publish", "complement"]
 			},
 			{
+				word: "say-so",
+				syllables: "say·so",
+				pronounce: "/ˈsā ˌsō/",
+				types: "noun",
+				definition: "a claim, typically without evidence.",
+				synonymof: ["claim","statement"],
+				origin: false
+			},
+			{
 				word: "schegenda",
 				syllables: "sche·gen·da",
 				pronounce: "/ˈskeˈjendə/",
