@@ -1634,7 +1634,7 @@ client.on("message", (message) => { //When a message is sent.
 				{ studentID: "Name: Dia Ramos\nTalent: Cheerleader\nSex: Female\nStatus: Alive\n\nShoe Size: 7.5\nHeight: 5'2\"\nWeight: 117\nBlood Type: O\nBirthday: 08/13\nAge: 18", studentIDPicture: "" },
 				{ studentID: "Name: Kumiko Yeun\nStage Name: KUMI!\nTalent: Rock Star\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'7\"\nWeight: 103\nBlood Type: AB\nBirthday: 06/16\nAge: 18", studentIDPicture: "" },
 				{ studentID: "Name: Inugami Uzuki\nTalent: Graffiti Artist\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'6\"\nWeight: 135\nBlood Type: O\nBirthday: 03/24\nAge: 17", studentIDPicture: "https://imgur.com/ZHW10pn.png" },
-				{ studentID: "Name: Isago Achikita\nTalent: Mythologist\nSex: Female\nStatus: Alive\n\nShoe Size: 6.5\nHeight: 5'5\"\nWeight: 119\nBlood Type: AB\nBirthday: 02/29\nAge: 18", studentIDPicture: "" },
+				{ studentID: "Name: Isago Achikita\nTalent: Mythologist\nSex: Female\nStatus: Alive\n\nShoe Size: 6.5\nHeight: 5'5\"\nWeight: 119\nBlood Type: AB\nBirthday: 02/29\nAge: 18", studentIDPicture: "https://imgur.com/KNHhTlL.png" },
 				{ studentID: "Name: Junko Saitou\nPen Name: Kisei Keukegen\nTalent: Horror Novelist\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'5\"\nWeight: 109\nBlood Type: AB\nBirthday: 01/06\nAge: 18", studentIDPicture: "https://imgur.com/TZeW9L7.png" },
 				{ studentID: "Name: Kirakira Kyuti\nTalent: Magical Girl\nSex: Female\nStatus: Alive\n\nShoe Size: 6 (Children's)\nHeight: 4'11\"\nWeight: 97\nBlood Type: A\nBirthday: 09/07\nAge: 14", studentIDPicture: "https://imgur.com/zz98AMQ.png" },
 				{ studentID: "Name: Mariko Murakami\nTalent: Martial Artist\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'6\"\nWeight: 125\nBlood Type: AB\nBirthday: 12/12\nAge: 18", studentIDPicture: "https://imgur.com/9RRSa6h.png" },
@@ -3098,8 +3098,8 @@ client.on("message", (message) => { //When a message is sent.
 			/*3*/ /*+82+*/ {
 				name: "Isago Achikita",
 				clues: ["pink", "The murderer left a footprint in size **6 or 7 women's** and size **4 or 5 men's**.", "Traces of gold leaf were found at the scene.", "A scrap of black fabric was found in the victim's palm."],
-				img: noIcon,
-				imgDead: noIcon
+				img: "https://imgur.com/YHZZoys.png",
+				imgDead: "https://imgur.com/KNHhTlL.png"
 			},
 			/*3*/ /*+83+*/ {
 				name: "Piper McCullough",
