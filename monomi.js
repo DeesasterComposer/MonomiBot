@@ -1843,7 +1843,7 @@ client.on("message", (message) => { //When a message is sent.
 		rooms = [
 			{
 				number: "1",
-				description: "Aemele and Junko's room is very dark. On one wall, pictures of various people are found. Another wall seems to be painted to look like a sewer. There is a constant sound of dripping water but upon further examination, it is just a music player on loop. There are two identical twin sized beds on one side of the room with a nightstand beside each. On each stand is a clown-shaped lamp, resembling a populer 2017 movie character. There is a bathroom and a closet on the left wall.",
+				description: "Aemele and Junko's room is very dark. On one wall, pictures of various people are found. Another wall seems to be painted to look like a sewer. There is a constant sound of dripping water but upon further examination, it is just a music player on loop. There are two identical twin sized beds on one side of the room with a nightstand beside each. On each stand is a clown-shaped lamp, resembling a popular 2017 movie character. There is a bathroom and a closet on the left wall.",
 				people: ["Aemele", "Junko"]
 			},
 			{
@@ -1853,7 +1853,7 @@ client.on("message", (message) => { //When a message is sent.
 			},
 			{
 				number: "3",
-				description: "Dia and the Tenome's room is extremely modern-looking, to the poting of being boring and bland, starting with the walls being a borh, off-white color. Despite the expensive-looking furniture, the colors are dark and muted, adding no personality whatsoever to the room. It is also very cold. Next to the door is a sleek, black coat rack, and on the left wall is a desk, supported by the wall rather than the floor, and a chair with it. On the north wall, there is a queen-sized, black-sheeted bed, and an identical one across from it. The floor is rosewood and a black shag rug covers part of the floor. On the south wall is a wardrobe and dresser, both black in color. On the left wall, by the desk, is the bathroom, which matches the blandness of the main room.",
+				description: "Dia and the Tenome's room is extremely modern-looking, to the point of being boring and bland, starting with the walls being a boring, off-white color. Despite the expensive-looking furniture, the colors are dark and muted, adding no personality whatsoever to the room. It is also very cold. Next to the door is a sleek, black coat rack, and on the left wall is a desk, supported by the wall rather than the floor, and a chair with it. On the north wall, there is a queen-sized, black-sheeted bed, and an identical one across from it. The floor is rosewood and a black shag rug covers part of the floor. On the south wall is a wardrobe and dresser, both black in color. On the left wall, by the desk, is the bathroom, which matches the blandness of the main room.",
 				people: ["Dia", "Tenome"]
 			},
 			{
@@ -1878,7 +1878,7 @@ client.on("message", (message) => { //When a message is sent.
 			},
 			{
 				number: "8",
-				description: "Melchor and Magami's room is very... dramatic. From the dark, moody lighting to the contrasting ivory furniture, it screams the word. On the other hand, the room is actually rather charming, despite being incredibly visually busy. It looks to be quite the mess, like a show or protest had just occurred. The occasional birght color streaks the wall. A table stands in the middle of the room with a bouquet of a dozen roses, half of them wilted. On the south wall is a bunk bed with a nightstand beside it. On the left wall, there is a closet and bathroom.",
+				description: "Melchor and Magami's room is very... dramatic. From the dark, moody lighting to the contrasting ivory furniture, it screams the word. On the other hand, the room is actually rather charming, despite being incredibly visually busy. It looks to be quite the mess, like a show or protest had just occurred. The occasional bright color streaks the wall. A table stands in the middle of the room with a bouquet of a dozen roses, half of them wilted. On the south wall is a bunk bed with a nightstand beside it. On the left wall, there is a closet and bathroom.",
 				people: ["Melchor", "Megami"]
 			},
 			{
@@ -1888,12 +1888,12 @@ client.on("message", (message) => { //When a message is sent.
 			},
 			{
 				number: "10",
-				description: "Shinji and Wolfgang's room is probably the most normal room on the train. The walls inside are navy blue, giving the room a rather distinguished feel. The periodic table is hung up on the left wall, but almost every element is blacked out. The remaining elements spell out 'LiFeSPan.' A table sits below it with various candles, a Newton's cradle, and a box for first aid. There are two indetical twin sized beds as well, separated by two nightstands. The bathroom and closet are located on the left wall.",
+				description: "Shinji and Wolfgang's room is probably the most normal room on the train. The walls inside are navy blue, giving the room a rather distinguished feel. The periodic table is hung up on the left wall, but almost every element is blacked out. The remaining elements spell out 'LiFeSPan.' A table sits below it with various candles, a Newton's cradle, and a box for first aid. There are two identical twin sized beds as well, separated by two nightstands. The bathroom and closet are located on the left wall.",
 				people: ["Shinji", "Wolfgang"]
 			},
 			{
 				number: "11",
-				description: "Kumi and Kirakira's room is very cute and soft. The walls are painted a pastel pink hue, and matching carpet covers the floor. The walls are entirely covered in posters of various magical girl characters, and of popular K-Pop girl groups. There are two queen-sized Sailor Moon themed beds with two nightstands in-between them. Across from the beds are a pair of dressers. There is also a spotlight in a corner beside the beds, controlled by a panel by the door. Beside the spotlight is the bathroom, and udnerneath it is a shelf, where manga, albums, stuffed animals, and a pink stereo are stored.",
+				description: "Kumi and Kirakira's room is very cute and soft. The walls are painted a pastel pink hue, and matching carpet covers the floor. The walls are entirely covered in posters of various magical girl characters, and of popular K-Pop girl groups. There are two queen-sized Sailor Moon themed beds with two nightstands in-between them. Across from the beds are a pair of dressers. There is also a spotlight in a corner beside the beds, controlled by a panel by the door. Beside the spotlight is the bathroom, and underneath it is a shelf, where manga, albums, stuffed animals, and a pink stereo are stored.",
 				people: ["Kumi", "Kirakira"]
 			},
 			{
@@ -1963,7 +1963,17 @@ client.on("message", (message) => { //When a message is sent.
 			return message.channel.send(embed);
 		}
 		else {
-
+			embed.setAuthor("Killing School Ride Room Arrangements");
+			for (room in rooms) {
+				if (room.people.length === 2) {
+					roomInhabitants = room.people[0] + " and " + room.people[1];
+				}
+				else if (room.people.length === 3) {
+					roomInhabitants = room.people[0] + ", " + room.people[1] + " and " + room.people[2];
+				}
+				embed.addField(`Room #${room.number}`, `${roomInhabitants}`)
+			}
+			return message.channel.send(embed);
 		}
 	}
 	if (command === "sprites") {
