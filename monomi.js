@@ -4511,6 +4511,15 @@ client.on("message", (message) => { //When a message is sent.
 				origin: ["grim","tremendous"]
 			},
 			{
+				word: "hardcoming",
+				syllables: "hard·com·ing",
+				pronounce: "/härdˈkəmiNG/",
+				types: "noun",
+				definition: "something that is difficult to overcome.",
+				synonymof: ["obstacle","hardship","complication"],
+				origin: ["hardship","coming"]
+			},
+			{
 				word: "imparable",
 				syllables: "im·par·a·ble",
 				pronounce: "/iˈmpärəb(ə)l/",
@@ -4626,6 +4635,33 @@ client.on("message", (message) => { //When a message is sent.
 				definition: "the action of publishing of something or being published.",
 				synonymof: false,
 				origin: ["publish", "complement"]
+			},
+			{
+				word: "ranquish",
+				syllables: "ran·quish",
+				pronounce: "/rānˈkwiSH/",
+				types: "noun",
+				definition: "bitter or resentful suffering.",
+				synonymof: false,
+				origin: ["rancor","anguish"]
+			},
+			{
+				word: "ranquish",
+				syllables: "ran·quish",
+				pronounce: "/rānˈkwiSH/",
+				types: "verb",
+				definition: "be very bitterly suffering over something.",
+				synonymof: false,
+				origin: ["rancor","anguish"]
+			},
+			{
+				word: "ranquishment",
+				syllables: "ran·quish·ment",
+				pronounce: "/rānˈkwiSHmənt/",
+				types: "noun",
+				definition: "something or someone that causes one to be ranquished.",
+				synonymof: false,
+				origin: ["ranquish"]
 			},
 			{
 				word: "say-so",
