@@ -4322,6 +4322,15 @@ client.on("message", (message) => { //When a message is sent.
 				origin: ["a- (none)", "comfort"]
 			},
 			{
+				word: "acomfortment",
+				syllables: "a·com·fort·ment",
+				pronounce: "/āˈkəmfərtmənt/",
+				types: "noun",
+				definition: "the ability to be uncomfortable in a situation.",
+				synonymof: false,
+				origin: ["acomfort"]
+			},
+			{
 				word: "articling",
 				syllables: "ar·ti·cling",
 				pronounce: "/ˈärdəkliNG/",
@@ -4590,6 +4599,15 @@ client.on("message", (message) => { //When a message is sent.
 				definition: "to be of a nature that is seemingly supernatural yet partially explainable.",
 				synonymof: false,
 				origin: ["paranormal", "phenomenal"]
+			},
+			{
+				word: "pixelography",
+				syllables: "pix·el·og·ra·phy",
+				pronounce: "/ˈpiksəläɡrəfē/",
+				types: "noun",
+				definition: "a collection of digital images that, when put together, form an animated image.",
+				synonymof: ["video","gif","animation"],
+				origin: ["pixel","-ography"]
 			},
 			{
 				word: "publishment",
