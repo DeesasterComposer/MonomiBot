@@ -4385,6 +4385,15 @@ client.on("message", (message) => { //When a message is sent.
 				origin: ["comrade", "pride"]
 			},
 			{
+				word: "cudpanion",
+				syllables: "cud pan ion",
+				pronounce: "/ˈkədˈpanyən/",
+				types: "noun",
+				definition: "a friend who is highly affectionate.",
+				synonymof: ["friend","*moirail*","companion","buddy"],
+				origin: ["cuddle","companion"]
+			},
+			{
 				word: "decaint",
 				syllables: "dec·aint",
 				pronounce: "/ˈdēkānt/",
