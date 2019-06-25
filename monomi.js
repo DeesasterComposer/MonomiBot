@@ -4870,12 +4870,10 @@ client.on("message", (message) => { //When a message is sent.
 
 			entryFields = [];
 			for (x in words) {
-				if (words.toString().search(args[0].toLowerCase()) != -1) {
-					requestedWord = dictionary[words.indexOf(args[0].toLowerCase())];
+				if (words[x].toString() === args[0].toLowerCase()) {
+					requestedWord = dictionary[x];
 					descData = "**" + requestedWord.syllables + "** " + requestedWord.pronounce;
-					words.splice(words.indexOf(args[0].toLowerCase()), 1, {
-						word: 'hi'
-					});
+					words.splice(words[x], 1, { word: 'hi' });
 					fieldData = "1. " + requestedWord.definition;
 					if (requestedWord.synonymof != false) {
 						fieldData = fieldData + "\nsynonyms: ";
@@ -4887,7 +4885,7 @@ client.on("message", (message) => { //When a message is sent.
 					embed.addField(`${requestedWord.types}`, `${fieldData}`);
 					continue;
 				};
-				break;
+				continue;
 			};
 
 			if (requestedWord.origin != false) {
