@@ -1442,7 +1442,7 @@ client.on("message", (message) => { //When a message is sent.
 	//Kaeno Commands
 	if (command === "roster" || command === "class" || command === "r") {
 		let embed = new Discord.RichEmbed()
-			.setColor(15285149)
+			.setColor(13959168)
 		
 		let pages = [];
 		let page = 0;
@@ -1662,7 +1662,7 @@ client.on("message", (message) => { //When a message is sent.
 				{ studentID: "Name: Areli Vepkhia\nTalent: Lion Tamer\nSex: Male\nStatus: Alive\n\nShoe Size: 12\nHeight: 6'5\"\nWeight: 260\nBlood Type: O\nBirthday: 10/29\nAge: 18", studentIDPicture: "https://imgur.com/4IQsA40.png" },
 				{ studentID: "Name: Ayuma Tanaka\nTalent: Counselor\nSex: Male\nStatus: Alive\n\nShoe Size: 9\nHeight: 5'4\"\nWeight: 150\nBlood Type: B\nBirthday: 10/17\nAge: 18", studentIDPicture: "" },
 				{ studentID: "Name: Cecilio Gonzalo Calles Cárdenas\nTalent: Pilot\nSex: Male\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'8\"\nWeight: 157\nBlood Type: B\nBirthday: 05/03\nAge: 17", studentIDPicture: "" },
-				{ studentID: "Name: Charles Miller\nTalent: Milkman\nSex: Male\nStatus: Deceased\n\nShoe Size: 9\nHeight: 5'11\"\nWeight: 143\nBlood Type: Chocolate\nBirthday: 01/11\nAge: 18", studentIDPicture: "" },
+				{ studentID: "Name: Charles Miller\nTalent: Milkman\nSex: Male\nStatus: Deceased\n\nShoe Size: 9\nHeight: 5'11\"\nWeight: 143\nBlood Type: Chocolate\nBirthday: 01/11\nAge: 18", studentIDPicture: "https://imgur.com/YKzsYOU.png" },
 				{ studentID: "Name: Daichi Ichihara\nTalent: Satanist\nSex: Male\nStatus: Alive\n\nShoe Size: 9\nHeight: 5'8\"\nWeight: 143\nBlood Type: O\nBirthday: 09/23\nAge: 17", studentIDPicture: "https://imgur.com/qT8oKQu.png" },
 				{ studentID: "Name: Federico Navarro\nTalent: Pianist\nSex: Male\nStatus: Alive\n\nShoe Size: 5\nHeight: 5'0\"\nWeight: 99\nBlood Type: A\nBirthday: 02/16\nAge: 15", studentIDPicture: "" },
 				{ studentID: "Name: Jomei Hoshino\nTalent: Pyromaniac\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'11\"\nWeight: 152\nBlood Type: B\nBirthday: 12/17\nAge: 18", studentIDPicture: "https://imgur.com/YywS5LK.png" },
@@ -1855,7 +1855,7 @@ client.on("message", (message) => { //When a message is sent.
 	}
 	if (command === "roomies") {
 		let embed = new Discord.RichEmbed()
-			.setColor(15285149)
+			.setColor(13959168)
 		
 		rooms = [
 			{
@@ -3127,8 +3127,8 @@ client.on("message", (message) => { //When a message is sent.
 			/*3*/ /*+84+*/ {
 				name: "Charles Miller",
 				clues: ["blond", "The murderer left a footprint in size **10 or 11 women's** and size **8 or 9 men's**.", "An American flag was tucked into the victim's clothing.", "A carton of milk was found under the victim's body."],
-				img: noIcon,
-				imgDead: noIcon
+				img: "https://imgur.com/gbrgAJL.png",
+				imgDead: "https://imgur.com/YKzsYOU.png"
 			},
 			/*3*/ /*+85+*/ {
 				name: "Tenome",
