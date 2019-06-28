@@ -4331,6 +4331,15 @@ client.on("message", (message) => { //When a message is sent.
 				origin: ["acomfort"]
 			},
 			{
+				word: "anxieffy",
+				syllables: "an·xi·ef·fy",
+				pronounce: "/aNGˈzīəfī/",
+				types: "verb",
+				definition: "to induce someone or something with anxiety.",
+				synonymof: ["scare","terrificate","startle","stress out"],
+				origin: ["anxiety"]
+			},
+			{
 				word: "articling",
 				syllables: "ar·ti·cling",
 				pronounce: "/ˈärdəkliNG/",
