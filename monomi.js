@@ -4367,6 +4367,15 @@ client.on("message", (message) => { //When a message is sent.
 				origin: ["bonne (fr)", "terrific"]
 			},
 			{
+				word: "champaign",
+				syllables: "cham·paign",
+				pronounce: "ˈCHampān/",
+				types: "verb",
+				definition: "to make people or animals battle one another.",
+				synonymof: ["pit"],
+				origin: ["champion","campaign"]
+			},
+			{
 				word: "chewery",
 				syllables: "chew·er·y",
 				pronounce: "/CHo͞o(ə)rē/",
@@ -4563,6 +4572,15 @@ client.on("message", (message) => { //When a message is sent.
 				definition: "a child.",
 				synonymof: ["child", "offspring", "kin"],
 				origin: ["kin", "offspring"]
+			},
+			{
+				word: "lax",
+				syllables: "lax",
+				pronounce: "/laks/",
+				types: "verb",
+				definition: "make or become less tense or anxious.",
+				synonymof: ["relax","unwind","loosen up","ease up/off"],
+				origin: ["relax"]
 			},
 			{
 				word: "lesserly",
