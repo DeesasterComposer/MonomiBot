@@ -4502,6 +4502,15 @@ client.on("message", (message) => { //When a message is sent.
 				origin: ["explore", "investigate"]
 			},
 			{
+				word: "flayorsman",
+				syllables: "flay·ors·man",
+				pronounce: "/flāər/",
+				types: "noun",
+				definition: "*offensive*, a man who is attracted to other men.",
+				synonymof: ["f\*\*\*\*\*","gay","homosexual"],
+				origin: false
+			},
+			{
 				word: "flower-scramble",
 				syllables: "flo·wer-scram·ble",
 				pronounce: "/ˈflou(ə)rˈskrambəl/",
