@@ -4504,7 +4504,7 @@ client.on("message", (message) => { //When a message is sent.
 			{
 				word: "flayorsman",
 				syllables: "flay·ors·man",
-				pronounce: "/flāər/",
+				pronounce: "/flāərzmən/",
 				types: "noun",
 				definition: "*offensive*, a man who is attracted to other men.",
 				synonymof: ["f\*\*\*\*\*","gay","homosexual"],
