@@ -4507,7 +4507,7 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/flāərzmən/",
 				types: "noun",
 				definition: "*offensive*, a man who is attracted to other men.",
-				synonymof: ["f\*\*\*\*\*","gay","homosexual"],
+				synonymof: ["f\*g","gay","homosexual"],
 				origin: false
 			},
 			{
