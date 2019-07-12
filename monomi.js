@@ -4349,6 +4349,24 @@ client.on("message", (message) => { //When a message is sent.
 				origin: ["article", "cling"]
 			},
 			{
+				word: "artisanic",
+				syllables: "ar·ti·san·ic",
+				pronounce: "/ˈärdəzənik/",
+				types: "adjective",
+				definition: "being highly skilled in a skilled trade that involves making things by hand.",
+				synonymof: ["talented","artful","crafty"],
+				origin: ["artisan"]
+			},
+			{
+				word: "artisanic",
+				syllables: "ar·ti·san·ic",
+				pronounce: "/ˈärdəzənik/",
+				types: "adjective",
+				definition: "being an artisan.",
+				synonymof: ["talented","artful","skilled"],
+				origin: ["artisan"]
+			},
+			{
 				word: "bequip",
 				syllables: "be·quip",
 				pronounce: "/bəˈkwip, bēˈkwip/",
@@ -4437,6 +4455,15 @@ client.on("message", (message) => { //When a message is sent.
 				definition: "explain in detail.",
 				synonymof: ["describe", "tell"],
 				origin: ["detail", "tell"]
+			},
+			{
+				word: "dictionarial",
+				syllables: "dic·tion·ar·i·al",
+				pronounce: "/ˈdikSHəˌnerēəl/",
+				types: "adjective",
+				definition: "having a large vocabulary and demonstrating proper use of such.",
+				synonymof: ["eloquent","articulate","fluent","well-spoken"],
+				origin: ["diction"]
 			},
 			{
 				word: "difert",
