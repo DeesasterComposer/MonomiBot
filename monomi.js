@@ -4484,6 +4484,24 @@ client.on("message", (message) => { //When a message is sent.
 				origin: ["dislocate", "locational"]
 			},
 			{
+				word: "encease",
+				syllables: "en·cease",
+				pronounce: "/inˈsēs,enˈsēs/",
+				types: "verb",
+				definition: ["to stop doing something."],
+				synonymof: ["stop","halt","end"],
+				origin: ["cease"]
+			},
+			{
+				word: "enceased",
+				syllables: "en·ceased",
+				pronounce: "/inˈsēst,enˈsēst/",
+				types: "adjective",
+				definition: ["having been stopped.","being deceased."],
+				synonymof: ["stopped","deceased","dead"],
+				origin: ["encease"]
+			},
+			{
 				word: "enpain",
 				syllables: "en·pain",
 				pronounce: "/inˈpān, enˈpān/",
