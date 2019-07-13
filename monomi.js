@@ -4925,14 +4925,15 @@ client.on("message", (message) => { //When a message is sent.
 			entryFields = [];
 			for (x in words) {
 				if (words[x].toString() === args[0].toLowerCase()) {
+					fieldData = "";
 					requestedWord = dictionary[x];
 					descData = "**" + requestedWord.syllables + "** " + requestedWord.pronounce;
 					words.splice(words[x], 1, { word: 'hi' });
-					for (z in words[x].definition) {
-						fieldData = (z+1) + ". " + requestedWord.definition[z] + "\n";
+					for (z in requestedWord.definition) {
+						fieldData = fieldData + ((z * 1) + 1) + ". " + requestedWord.definition[z] + "\n";
 					}
 					if (requestedWord.synonymof != false) {
-						fieldData = fieldData + "\nsynonyms: ";
+						fieldData = fieldData + "synonyms: ";
 						for (y in requestedWord.synonymof) {
 							fieldData = fieldData + requestedWord.synonymof[y] + ", ";
 						};
