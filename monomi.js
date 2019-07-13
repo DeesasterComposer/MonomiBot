@@ -1672,7 +1672,7 @@ client.on("message", (message) => { //When a message is sent.
 				{ studentID: "Name: Santo Verdugo Bautista\nTalent: Coroner\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 128\nBlood Type: O\nBirthday: 02/11\nAge: 17", studentIDPicture: "" },
 				{ studentID: "Name: Shinji Minoru\nTalent: Physicist\nSex: Male\nStatus: Alive\n\nShoe Size: 9\nHeight: 5'10\"\nWeight: 125\nBlood Type: AB\nBirthday: 01/27\nAge: 18", studentIDPicture: "" },
 				{ studentID: "Name: Tenome\nTalent: Ghostwriter\nSex: Male\nStatus: Deceased\n\nShoe Size: ??\nHeight: ?'?\"\nWeight: ???\nBlood Type: ??\nBirthday: ??/??\nAge: 15", studentIDPicture: "https://imgur.com/TM8FYjl.png" },
-				{ studentID: "Name: Wolfgang Schwarz\nTalent: Combat Medic\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 6'5\"\nWeight: 246\nBlood Type: A\nBirthday: 12/07\nAge: ??", studentIDPicture: "https://imgur.com/zleZ5xc.png" },
+				{ studentID: "Name: Wolfgang Schwarz\nTalent: Combat Medic\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 6'5\"\nWeight: 246\nBlood Type: A\nBirthday: 12/07\nAge: ??", studentIDPicture: "https://imgur.com/iHn6DX9.png" },
 			]
 			
 			if (args.length === 1) {
@@ -3097,8 +3097,8 @@ client.on("message", (message) => { //When a message is sent.
 			/*3*/ /*79*/ {
 				name: "Wolfgang Schwarz",
 				clues: ["black", "The murderer left a footprint in size **12 or 13 women's** and size **10 or 11 men's**.", "The scene faintly smells of pine trees.", "The victim was killed with flawless medical precision.", "A saw was found at the scene.", "A patch of a country's flag was found in the pocket of the victim.", ""],
-				img: "https://imgur.com/zleZ5xc.png",
-				imgDead: "https://imgur.com/pBSO3cM.png"
+				img: "https://imgur.com/iHn6DX9.png",
+				imgDead: "https://imgur.com/pU54JIU.png"
 			},
 			/*U*/ /*+80+*/ {
 				name: "Kotone Fukuzawa",
