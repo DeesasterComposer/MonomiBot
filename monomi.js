@@ -4929,7 +4929,7 @@ client.on("message", (message) => { //When a message is sent.
 					descData = "**" + requestedWord.syllables + "** " + requestedWord.pronounce;
 					words.splice(words[x], 1, { word: 'hi' });
 					for (z in words[x].definition) {
-						fieldData = (z+1) + ". " + requestedWord.definition + "\n";
+						fieldData = (z+1) + ". " + requestedWord.definition[z] + "\n";
 					}
 					if (requestedWord.synonymof != false) {
 						fieldData = fieldData + "\nsynonyms: ";
