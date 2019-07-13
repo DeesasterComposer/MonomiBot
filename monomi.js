@@ -4835,6 +4835,15 @@ client.on("message", (message) => { //When a message is sent.
 				origin: ["going to"]
 			},
 			{
+				word: "tranqualm",
+				syllables: "tran·qualm",
+				pronounce: "/trāNGkwä(l)m/",
+				types: "verb",
+				definition: ["become more at ease.","put someone at ease."],
+				synonymof: ["lax","comfort","calm down"],
+				origin: ["tranquil","quell","calm"]
+			},
+			{
 				word: "venquire",
 				syllables: "ven·quire",
 				pronounce: "/ˈvenˈkwīr/",
