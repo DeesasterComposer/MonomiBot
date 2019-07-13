@@ -4308,7 +4308,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "a·com·fort",
 				pronounce: "/āˈkəmfərt/",
 				types: "noun",
-				definition: "a state without comfort.",
+				definition: ["a state without comfort."],
 				synonymof: ["discomfort"],
 				origin: ["a- (none)", "comfort"]
 			},
@@ -4317,7 +4317,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "a·com·fort",
 				pronounce: "/āˈkəmfərt/",
 				types: "verb",
-				definition: "make (someone) feel a lack of comfort.",
+				definition: ["make (someone) feel a lack of comfort."],
 				synonymof: ["discomfort"],
 				origin: ["a- (none)", "comfort"]
 			},
@@ -4326,7 +4326,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "a·com·fort·ment",
 				pronounce: "/āˈkəmfərtmənt/",
 				types: "noun",
-				definition: "the ability to be uncomfortable in a situation.",
+				definition: ["the ability to be uncomfortable in a situation."],
 				synonymof: false,
 				origin: ["acomfort"]
 			},
@@ -4335,7 +4335,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "an·xi·ef·fy",
 				pronounce: "/aNGˈzīəfī/",
 				types: "verb",
-				definition: "to induce someone or something with anxiety.",
+				definition: ["to induce someone or something with anxiety."],
 				synonymof: ["scare","terrificate","startle","stress out"],
 				origin: ["anxiety"]
 			},
@@ -4344,7 +4344,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "ar·ti·cling",
 				pronounce: "/ˈärdəkliNG/",
 				types: "noun",
-				definition: "a covering designed to go over something, typically a person's body.",
+				definition: ["a covering designed to go over something, typically a person's body."],
 				synonymof: ["cover", "jacket", "sleeve"],
 				origin: ["article", "cling"]
 			},
@@ -4353,17 +4353,8 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "ar·ti·san·ic",
 				pronounce: "/ˈärdəzənik/",
 				types: "adjective",
-				definition: "being highly skilled in a skilled trade that involves making things by hand.",
-				synonymof: ["talented","artful","crafty"],
-				origin: ["artisan"]
-			},
-			{
-				word: "artisanic",
-				syllables: "ar·ti·san·ic",
-				pronounce: "/ˈärdəzənik/",
-				types: "adjective",
-				definition: "being an artisan.",
-				synonymof: ["talented","artful","skilled"],
+				definition: ["being highly skilled in a skilled trade that involves making things by hand.","being an artisan."],
+				synonymof: ["talented","artful","skilled","crafty"],
 				origin: ["artisan"]
 			},
 			{
@@ -4371,7 +4362,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "be·quip",
 				pronounce: "/bəˈkwip, bēˈkwip/",
 				types: "verb",
-				definition: "harass or bully someone.",
+				definition: ["harass or bully someone."],
 				synonymof: ["harass", "bully", "oppress"],
 				origin: ["quip"]
 			},
@@ -4380,7 +4371,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "bon·ni·fic",
 				pronounce: "/ˈbänēfik/",
 				types: "adjective",
-				definition: "to be of a pleasant nature.",
+				definition: ["to be of a pleasant nature."],
 				synonymof: ["excellent", "magnificent", "good", "terrific"],
 				origin: ["bonne (fr)", "terrific"]
 			},
@@ -4389,7 +4380,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "cham·paign",
 				pronounce: "ˈCHampān/",
 				types: "verb",
-				definition: "to make people or animals battle one another.",
+				definition: ["to make people or animals battle one another."],
 				synonymof: ["pit"],
 				origin: ["champion","campaign"]
 			},
@@ -4398,7 +4389,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "chew·er·y",
 				pronounce: "/CHo͞o(ə)rē/",
 				types: "noun",
-				definition: "a place where people eat.",
+				definition: ["a place where people eat."],
 				synonymof: ["cafeteria", "canteen", "restaurant", "buffet"],
 				origin: ["chew", "brewery"]
 			},
@@ -4407,7 +4398,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "cir·cum·ming",
 				pronounce: "/ˈsərkəmˌmiNG, ˈsərkəmiNG/",
 				types: "noun",
-				definition: "one's current state.",
+				definition: ["one's current state."],
 				synonymof: ["circumstance", "happenstance", "situation"],
 				origin: ["circumstance", "happening"]
 			},
@@ -4416,7 +4407,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "com·pride",
 				pronounce: "/ˈkämˌprīd/",
 				types: "noun",
-				definition: "a person that one holds in high regard.",
+				definition: ["a person that one holds in high regard."],
 				synonymof: ["role model", "comrade", "friend", "companion"],
 				origin: ["comrade", "pride"]
 			},
@@ -4425,7 +4416,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "cud pan ion",
 				pronounce: "/ˈkədˈpanyən/",
 				types: "noun",
-				definition: "a friend who is highly affectionate.",
+				definition: ["a friend who is highly affectionate."],
 				synonymof: ["friend","*moirail*","companion","buddy"],
 				origin: ["cuddle","companion"]
 			},
@@ -4434,7 +4425,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "dec·aint",
 				pronounce: "/ˈdēkānt/",
 				types: "verb",
-				definition: "make something decorative.",
+				definition: ["make something decorative."],
 				synonymof: ["detail", "decorate", "ornament", "adorn"],
 				origin: ["decorate", "paint"]
 			},
@@ -4443,7 +4434,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "de·lec·ti·cious",
 				pronounce: "/dəˈlektiSHəs/",
 				types: "adjective",
-				definition: "to be of good taste.",
+				definition: ["to be of good taste."],
 				synonymof: ["delicious", "delectable", "appetizing"],
 				origin: ["delicious", "delectable"]
 			},
@@ -4452,7 +4443,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "de·tell",
 				pronounce: "/dəˈtel/",
 				types: "verb",
-				definition: "explain in detail.",
+				definition: ["explain in detail."],
 				synonymof: ["describe", "tell"],
 				origin: ["detail", "tell"]
 			},
@@ -4461,7 +4452,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "dic·tion·ar·i·al",
 				pronounce: "/ˈdikSHəˌnerēəl/",
 				types: "adjective",
-				definition: "having a large vocabulary and demonstrating proper use of such.",
+				definition: ["having a large vocabulary and demonstrating proper use of such."],
 				synonymof: ["eloquent","articulate","fluent","well-spoken"],
 				origin: ["diction"]
 			},
@@ -4470,7 +4461,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "di·fert",
 				pronounce: "/dəˈfərt, dīˈfərt/",
 				types: "verb",
-				definition: "differ from the original source.",
+				definition: ["differ from the original source."],
 				synonymof: ["differ"],
 				origin: ["divert", "differ"]
 			},
@@ -4479,7 +4470,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "dif·ful·tu·ous",
 				pronounce: "/ˈdifəlCHo͞oəs/",
 				types: "adjective",
-				definition: "requiring greater effort than a typical task.",
+				definition: ["requiring greater effort than a typical task."],
 				synonymof: ["difficult","challenging","strenuous","demanding"],
 				origin: ["difficult", "tumultuous"]
 			},
@@ -4488,7 +4479,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "dis·lo·ca·tion·al",
 				pronounce: "/ˈdisləˌkāSH(ə)n(ə)l, disˈlōˌkāSH(ə)n(ə)l/",
 				types: "adjective",
-				definition: "to not be able to be located due to changing positions too frequently.",
+				definition: ["to not be able to be located due to changing positions too frequently."],
 				synonymof: false,
 				origin: ["dislocate", "locational"]
 			},
@@ -4497,7 +4488,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "en·pain",
 				pronounce: "/inˈpān, enˈpān/",
 				types: "verb",
-				definition: "to be inflicted with pain.",
+				definition: ["to be inflicted with pain."],
 				synonymof: ["pain","hurt"],
 				origin: false
 			},
@@ -4506,7 +4497,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "en·plor·ma·tor·y",
 				pronounce: "/inˈplôrməˌtôrē, enˈplôrməˌtôrē/",
 				types: "adjective",
-				definition: "grand and impressive.",
+				definition: ["grand and impressive."],
 				synonymof: ["grand", "impressive", "large", "astonishing"],
 				origin: false
 			},
@@ -4515,7 +4506,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "eu·phor·ize",
 				pronounce: "/yo͞oˈfôrīz/",
 				types: "verb",
-				definition: "make something or someone happy, typically to a high degree.",
+				definition: ["make something or someone happy, typically to a high degree."],
 				synonymof: ["cheer", "gladden", "hearten","glücken"],
 				origin: ["euphoria"]
 			},
@@ -4524,7 +4515,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "ex·plor·ri·gate",
 				pronounce: "/ikˈsplôrəˌɡāt/",
 				types: "verb",
-				definition: "to look at something thoroughly as to take in all of its details, typically a place.",
+				definition: ["to look at something thoroughly as to take in all of its details, typically a place."],
 				synonymof: ["explore", "investigate", "inspect", "survey"],
 				origin: ["explore", "investigate"]
 			},
@@ -4533,7 +4524,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "flay·ors·man",
 				pronounce: "/flāərzmən/",
 				types: "noun",
-				definition: "*offensive*, a man who is attracted to other men.",
+				definition: ["*offensive*, a man who is attracted to other men."],
 				synonymof: ["f\*g","gay","homosexual"],
 				origin: false
 			},
@@ -4542,7 +4533,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "flo·wer-scram·ble",
 				pronounce: "/ˈflou(ə)rˈskrambəl/",
 				types: "noun",
-				definition: "an assortment of flowers, typically in an art piece.",
+				definition: ["an assortment of flowers, typically in an art piece."],
 				synonymof: ["patch of flowers", "flowerbed"],
 				origin: false
 			},
@@ -4551,7 +4542,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "glück·ened",
 				pronounce: "/glǘckenˈlītnd/",
 				types: "adjective",
-				definition: "made happy.",
+				definition: ["made happy."],
 				synonymof: ["euphorized", "gladdened","cheered up"],
 				origin: ["glücklich (Grmn)","enlightened"]
 			},
@@ -4560,7 +4551,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "gri·men·dous",
 				pronounce: "/ɡriˈmendəs/",
 				types: "adjective",
-				definition: "very great in grimness.",
+				definition: ["very great in grimness."],
 				synonymof: ["dreadful","frightening","scary"],
 				origin: ["grim","tremendous"]
 			},
@@ -4569,7 +4560,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "hard·com·ing",
 				pronounce: "/härdˈkəmiNG/",
 				types: "noun",
-				definition: "something that is difficult to overcome.",
+				definition: ["something that is difficult to overcome."],
 				synonymof: ["obstacle","hardship","complication"],
 				origin: ["hardship","coming"]
 			},
@@ -4578,7 +4569,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "im·par·a·ble",
 				pronounce: "/iˈmpärəb(ə)l/",
 				types: "adjective",
-				definition: "cannot be replaced.",
+				definition: ["cannot be replaced."],
 				synonymof: ["priceless", "irreplaceable"],
 				origin: false
 			},
@@ -4587,7 +4578,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "in·ter·ro·gate",
 				pronounce: "/inˈterəˌɡət/",
 				types: "noun",
-				definition: "a question of interrogative nature.",
+				definition: ["a question of interrogative nature."],
 				synonymof: ["question"],
 				origin: ["interrogate"]
 			},
@@ -4596,7 +4587,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "kee·pance",
 				pronounce: "/kēpəns/",
 				types: "noun",
-				definition: "and act of keeping something.",
+				definition: ["and act of keeping something."],
 				synonymof: false,
 				origin: ["keep"]
 			},
@@ -4605,7 +4596,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "kin·spr·ing",
 				pronounce: "/kinspriNG/",
 				types: "noun",
-				definition: "a child.",
+				definition: ["a child."],
 				synonymof: ["child", "offspring", "kin"],
 				origin: ["kin", "offspring"]
 			},
@@ -4614,7 +4605,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "lax",
 				pronounce: "/laks/",
 				types: "verb",
-				definition: "make or become less tense or anxious.",
+				definition: ["make or become less tense or anxious."],
 				synonymof: ["relax","unwind","loosen up","ease up/off"],
 				origin: ["relax"]
 			},
@@ -4623,16 +4614,16 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "less·er·ly",
 				pronounce: "/ˈlesərlē/",
 				types: "adverb",
-				definition: "in a manner that is lesser to something else.",
-				synonymof: [""],
-				origin: [""]
+				definition: ["in a manner that is lesser to something else."],
+				synonymof: false,
+				origin: false
 			},
 			{
 				word: "logion",
 				syllables: "lo·gion",
 				pronounce: "/lōjin/",
 				types: "noun",
-				definition: "a place covering a large area of land that isn't confined to political boundaries of countries.",
+				definition: ["a place covering a large area of land that isn't confined to political boundaries of countries."],
 				synonymof: false,
 				origin: ["location", "region"]
 			},
@@ -4641,7 +4632,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "ma·tri·mar·i·al",
 				pronounce: "/ˈmatrəˈmerēəl/",
 				types: "adjective",
-				definition: "of or relating to marriage.",
+				definition: ["of or relating to marriage."],
 				synonymof: ["marital", "matrimonial"],
 				origin: ["matrimony", "marital"]
 			},
@@ -4650,7 +4641,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "no·ve·ma·tion",
 				pronounce: "/ˈnōvəˈmāSH(ə)n/",
 				types: "noun",
-				definition: "a book of considerable length.",
+				definition: ["a book of considerable length."],
 				synonymof: ["novel", "war and peace"],
 				origin: ["novel", "animation"]
 			},
@@ -4659,7 +4650,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "occ·u·pan·ion",
 				pronounce: "/ˌäkyəˈpanyən/",
 				types: "noun",
-				definition: "an item or object belonging to someone.",
+				definition: ["an item or object belonging to someone."],
 				synonymof: ["belonging", "possession", "property"],
 				origin: ["occupancy", "companion"]
 			},
@@ -4668,7 +4659,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "occ·u·zen",
 				pronounce: "/ˌäkyəˈzən/",
 				types: "noun",
-				definition: "someone that occupies a place.",
+				definition: ["someone that occupies a place."],
 				synonymof: ["occupant", "resident", "denizen", "citizen"],
 				origin: ["occupant", "denizen"]
 			},
@@ -4677,7 +4668,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "para·phe·nom·e·nal",
 				pronounce: "/ˈperəˌfəˈnämənəl/",
 				types: "adjective",
-				definition: "to be of a nature that is seemingly supernatural yet partially explainable.",
+				definition: ["to be of a nature that is seemingly supernatural yet partially explainable."],
 				synonymof: false,
 				origin: ["paranormal", "phenomenal"]
 			},
@@ -4686,7 +4677,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "pix·el·og·ra·phy",
 				pronounce: "/ˈpiksəläɡrəfē/",
 				types: "noun",
-				definition: "a collection of digital images that, when put together, form an animated image.",
+				definition: ["a collection of digital images that, when put together, form an animated image."],
 				synonymof: ["video","gif","animation"],
 				origin: ["pixel","-ography"]
 			},
@@ -4695,7 +4686,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "pub·lish·ment",
 				pronounce: "/ˈpəbliSHmənt/",
 				types: "noun",
-				definition: "the action of publishing of something or being published.",
+				definition: ["the action of publishing of something or being published."],
 				synonymof: false,
 				origin: ["publish", "complement"]
 			},
@@ -4704,7 +4695,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "ran·quish",
 				pronounce: "/rānˈkwiSH/",
 				types: "noun",
-				definition: "bitter or resentful suffering.",
+				definition: ["bitter or resentful suffering."],
 				synonymof: false,
 				origin: ["rancor","anguish"]
 			},
@@ -4713,7 +4704,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "ran·quish",
 				pronounce: "/rānˈkwiSH/",
 				types: "verb",
-				definition: "be very bitterly suffering over something.",
+				definition: ["be very bitterly suffering over something."],
 				synonymof: false,
 				origin: ["rancor","anguish"]
 			},
@@ -4722,7 +4713,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "ran·quish·ment",
 				pronounce: "/rānˈkwiSHmənt/",
 				types: "noun",
-				definition: "something or someone that causes one to be ranquished.",
+				definition: ["something or someone that causes one to be ranquished."],
 				synonymof: false,
 				origin: ["ranquish"]
 			},
@@ -4731,7 +4722,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "say·so",
 				pronounce: "/ˈsā ˌsō/",
 				types: "noun",
-				definition: "a claim, typically without evidence.",
+				definition: ["a claim, typically without evidence."],
 				synonymof: ["claim","statement"],
 				origin: false
 			},
@@ -4740,7 +4731,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "sche·gen·da",
 				pronounce: "/ˈskeˈjendə/",
 				types: "noun",
-				definition: "a plan that is set to take place over a period of time.",
+				definition: ["a plan that is set to take place over a period of time."],
 				synonymof: ["plan", "agenda", "program", "schedule"],
 				origin: ["schedule", "agenda"]
 			},
@@ -4749,7 +4740,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "spend·able",
 				pronounce: "/spendəb(ə)l/",
 				types: "noun",
-				definition: "currency.",
+				definition: ["currency."],
 				synonymof: ["money", "spense", "currency"],
 				origin: false
 			},
@@ -4758,7 +4749,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "spend·able",
 				pronounce: "/spendəb(ə)l/",
 				types: "adjective",
-				definition: "to be able to be spent.",
+				definition: ["to be able to be spent."],
 				synonymof: false,
 				origin: false
 			},
@@ -4767,7 +4758,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "spense",
 				pronounce: "/spens/",
 				types: "noun",
-				definition: "currency.",
+				definition: ["currency."],
 				synonymof: ["money", "currency", "spendable"],
 				origin: ["expense", "spend"]
 			},
@@ -4776,7 +4767,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "splour·ish·ment",
 				pronounce: "/splôriSHmənt/",
 				types: "noun",
-				definition: "the rapid growth of something.",
+				definition: ["the rapid growth of something."],
 				synonymof: false,
 				origin: ["splash", "flourish"]
 			},
@@ -4785,7 +4776,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "tal·en·tu·al",
 				pronounce: "/ˈtalən(t)SH(o͞o)əl/",
 				types: "adjective",
-				definition: "of or relating to a talent that something or someone has.",
+				definition: ["of or relating to a talent that something or someone has."],
 				synonymof: false,
 				origin: ["talent"]
 			},
@@ -4794,7 +4785,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "ter·ri·fi·cate",
 				pronounce: "/ˈterəfəˌkāt/",
 				types: "verb",
-				definition: "to induce a sense of terror or dread onto someone.",
+				definition: ["to induce a sense of terror or dread onto someone."],
 				synonymof: ["scare","spook","terrify"],
 				origin: ["terrify","allocate"]
 			},
@@ -4803,7 +4794,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "thie·ver·ize",
 				pronounce: "/THēvəˌrīz/",
 				types: "verb",
-				definition: "to steal something or from someone.",
+				definition: ["to steal something or from someone."],
 				synonymof: ["steal","snatch","take","theive"],
 				origin: ["theive","-ize"]
 			},
@@ -4812,7 +4803,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "think-not-know-not",
 				pronounce: "/THiNGk-nät-nō-nät/",
 				types: "adjective; phrase of think",
-				definition: "an expression of speech meaning that someone or something is not aware of something obvious before them.",
+				definition: ["an expression of speech meaning that someone or something is not aware of something obvious before them."],
 				synonymof: false,
 				origin: false
 			},
@@ -4821,7 +4812,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "to·go·ing",
 				pronounce: "/to͞oˈɡōiNG/",
 				types: "noun",
-				definition: "the path that something or someone takes to get somewhere.",
+				definition: ["the path that something or someone takes to get somewhere."],
 				synonymof: ["path", "journey", "route"],
 				origin: ["going to"]
 			},
@@ -4830,7 +4821,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "ven·quire",
 				pronounce: "/ˈvenˈkwīr/",
 				types: "verb",
-				definition: "to ask (someone) with confidence about what the answer will be.",
+				definition: ["to ask (someone) with confidence about what the answer will be."],
 				synonymof: ["ask", "inquire"],
 				origin: ["venture", "inquire"]
 			},
@@ -4839,7 +4830,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "ver·u·nym",
 				pronounce: "/ˈvero͞oˌnim/",
 				types: "noun",
-				definition: "the true name of something or someone.",
+				definition: ["the true name of something or someone."],
 				synonymof: false,
 				origin: ["veru- (ltn)", "-nym"]
 			},
@@ -4937,7 +4928,9 @@ client.on("message", (message) => { //When a message is sent.
 					requestedWord = dictionary[x];
 					descData = "**" + requestedWord.syllables + "** " + requestedWord.pronounce;
 					words.splice(words[x], 1, { word: 'hi' });
-					fieldData = "1. " + requestedWord.definition;
+					for (z in words[x].definition) {
+						fieldData = (z+1) + ". " + requestedWord.definition + "\n";
+					}
 					if (requestedWord.synonymof != false) {
 						fieldData = fieldData + "\nsynonyms: ";
 						for (y in requestedWord.synonymof) {
