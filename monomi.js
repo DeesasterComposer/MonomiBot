@@ -4700,6 +4700,15 @@ client.on("message", (message) => { //When a message is sent.
 				origin: ["pixel","-ography"]
 			},
 			{
+				word: "psychocity",
+				syllables: "psy·cho·ci·ty",
+				pronounce: "/ˈsīkäsədē/",
+				types: "noun",
+				definition: ["an intrusive and often maligned thought."],
+				synonymof: false,
+				origin: ["psychological","atrocity"]
+			},
+			{
 				word: "publishment",
 				syllables: "pub·lish·ment",
 				pronounce: "/ˈpəbliSHmənt/",
