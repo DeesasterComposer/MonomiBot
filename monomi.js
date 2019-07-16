@@ -4358,6 +4358,15 @@ client.on("message", (message) => { //When a message is sent.
 				origin: ["artisan"]
 			},
 			{
+				word: "bebuse",
+				syllables: "be·buse",
+				pronounce: "/bəˈbyo͞oz/",
+				types: "verb",
+				definition: ["be in bad shape, usually by way of violence and battery."],
+				synonymof: ["beat","batter","abuse","damage"],
+				origin: ["beat","abuse"]
+			},
+			{
 				word: "bequip",
 				syllables: "be·quip",
 				pronounce: "/bəˈkwip, bēˈkwip/",
@@ -4583,6 +4592,15 @@ client.on("message", (message) => { //When a message is sent.
 				origin: ["hardship","coming"]
 			},
 			{
+				word: "hospitareousness",
+				syllables: "hospitareousness",
+				pronounce: "/ˌhäspəterēəsnəs/",
+				types: "noun",
+				definition: ["being generous and kind; friendly."],
+				synonymof: ["friendliness","hospitality","hospitableness","warmth"],
+				origin: ["hospitality"]
+			},
+			{
 				word: "imparable",
 				syllables: "im·par·a·ble",
 				pronounce: "/iˈmpärəb(ə)l/",
@@ -4592,6 +4610,15 @@ client.on("message", (message) => { //When a message is sent.
 				origin: false
 			},
 			{
+				word: "incination",
+				syllables: "in·cin·a·tion",
+				pronounce: "/inˈsinˈāSH(ə)n/",
+				types: "noun",
+				definition: ["a burn."],
+				synonymof: ["burn"],
+				origin: ["incendiary","incineration"]
+			},
+			{
 				word: "interrogate",
 				syllables: "in·ter·ro·gate",
 				pronounce: "/inˈterəˌɡət/",
@@ -4599,6 +4626,15 @@ client.on("message", (message) => { //When a message is sent.
 				definition: ["a question of interrogative nature."],
 				synonymof: ["question"],
 				origin: ["interrogate"]
+			},
+			{
+				word: "joke-poke",
+				syllables: "joke·poke",
+				pronounce: "/jōkˌpōk/",
+				types: "verb (phrase)",
+				definition: ["make fun of in a mocking way."],
+				synonymof: ["make fun","joke","satirize"],
+				origin: false
 			},
 			{
 				word: "keepance",
