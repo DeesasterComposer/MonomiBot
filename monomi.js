@@ -4731,7 +4731,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "pa·le·o·rede",
 				pronounce: "/ˌpālēəˈrēd/",
 				types: "noun",
-				definition: ["old diction; archaic words.","*to Ruslan* all English words, excluding Russpeak words."],
+				definition: ["old diction; archaic words.","*to Ruslan*, all English words, excluding Russpeak words."],
 				synonymof: false,
 				origin: ["paleo- (grk)","rede (grmn)"]
 			},
