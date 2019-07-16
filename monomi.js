@@ -4331,6 +4331,15 @@ client.on("message", (message) => { //When a message is sent.
 				origin: ["acomfort"]
 			},
 			{
+				word: "alipart",
+				syllables: "al·i·part",
+				pronounce: "/ˈaləˈpärt/",
+				types: "noun",
+				definition: ["an ingredient in a recipe.","an added ingredient."],
+				synonymof: ["ingredient"],
+				origin: ["aliment (archaic)","part"]
+			},
+			{
 				word: "anxieffy",
 				syllables: "an·xi·ef·fy",
 				pronounce: "/aNGˈzīəfī/",
@@ -4718,6 +4727,15 @@ client.on("message", (message) => { //When a message is sent.
 				origin: ["occupant", "denizen"]
 			},
 			{
+				word: "paleorede",
+				syllables: "pa·le·o·rede",
+				pronounce: "/ˌpālēəˈrēd/",
+				types: "noun",
+				definition: ["old diction; archaic words.","*to Ruslan* all English words, excluding Russpeak words."],
+				synonymof: false,
+				origin: ["paleo- (grk)","rede (grmn)"]
+			},
+			{
 				word: "paraphenomenal",
 				syllables: "para·phe·nom·e·nal",
 				pronounce: "/ˈperəˌfəˈnämənəl/",
@@ -4797,6 +4815,15 @@ client.on("message", (message) => { //When a message is sent.
 				definition: ["a plan that is set to take place over a period of time."],
 				synonymof: ["plan", "agenda", "program", "schedule"],
 				origin: ["schedule", "agenda"]
+			},
+			{
+				word: "scrouvenge",
+				syllables: "scrou·venge",
+				prounounce: "/skrouvenj/",
+				types: "verb",
+				definition: ["search for whatever is available."],
+				synonymof: ["search","scavenge","scrounge"],
+				origin: ["scrounge","scavenge"]
 			},
 			{
 				word: "spendable",
