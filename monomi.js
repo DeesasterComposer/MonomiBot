@@ -4718,6 +4718,15 @@ client.on("message", (message) => { //When a message is sent.
 				origin: ["medication","sedation"]
 			},
 			{
+				word: "misaction",
+				syllables: "mis·ac·tion",
+				pronounce: "/məˈsakSH(ə)n/",
+				types: "noun",
+				definition: ["an action that was commited on accident."],
+				synonymof: ["accident"],
+				origin: ["misdeed","action"]
+			},
+			{
 				word: "novemation",
 				syllables: "no·ve·ma·tion",
 				pronounce: "/ˈnōvəˈmāSH(ə)n/",
