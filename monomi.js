@@ -4574,6 +4574,15 @@ client.on("message", (message) => { //When a message is sent.
 				origin: false
 			},
 			{
+				word: "gauwnd",
+				syllables: "gauwnd",
+				pronounce: "/ɡônd/",
+				types: "noun",
+				definition: ["an injury to living tissue of any kind."],
+				synonymof: ["wound","injury","gash"],
+				origin: false
+			},
+			{
 				word: "gluckened",
 				syllables: "glück·ened",
 				pronounce: "/glǘckenˈlītnd/",
@@ -4698,6 +4707,15 @@ client.on("message", (message) => { //When a message is sent.
 				definition: ["of or relating to marriage."],
 				synonymof: ["marital", "matrimonial"],
 				origin: ["matrimony", "marital"]
+			},
+			{
+				word: "medicidation",
+				syllables: "med·i·ci·da·tion",
+				pronounce: "/ˈmedəsəˈdāSH(ə)n/",
+				types: "noun",
+				definition: ["a treatment for an injury or illness."],
+				synonymof: ["medicine","treatment","surgery","therapy"],
+				origin: ["medication","sedation"]
 			},
 			{
 				word: "novemation",
@@ -4914,6 +4932,15 @@ client.on("message", (message) => { //When a message is sent.
 				definition: ["become more at ease.","put someone at ease."],
 				synonymof: ["lax","comfort","calm down"],
 				origin: ["tranquil","quell","calm"]
+			},
+			{
+				word: "unenpain",
+				syllables: "un·en·pain",
+				pronounce: "/ˌənˈinˈpān, ˌənˈenˈpān/",
+				types: "verb",
+				definition: ["to remove pain."],
+				synonymof: ["heal","aid","cure","sap"],
+				origin: ["enpain"]
 			},
 			{
 				word: "venquire",
