@@ -4679,7 +4679,7 @@ client.on("message", (message) => { //When a message is sent.
 				types: "noun",
 				definition: ["a room with a toilet, washbasin, and bath or shower; a bathroom.","a room where one washes themselves"],
 				synonymof: ["bathroom","lavatory","showerroom","washroom","restroom"],
-				origin: ["laver (Fr)","room"]
+				origin: ["laver (fr)","room"]
 			},
 			{
 				word: "lax",
