@@ -4673,6 +4673,15 @@ client.on("message", (message) => { //When a message is sent.
 				origin: ["kin", "offspring"]
 			},
 			{
+				word: "laveroom",
+				syllables: "lave·room",
+				pronounce: "/ˈlävro͞om,ˈlävro͝om/",
+				types: "noun",
+				definition: ["a room with a toilet, washbasin, and bath or shower; a bathroom.","a room where one washes themselves"],
+				synonymof: ["bathroom","lavatory","showerroom","washroom","restroom"],
+				origin: ["laver (Fr)","room"]
+			},
+			{
 				word: "lax",
 				syllables: "lax",
 				pronounce: "/laks/",
