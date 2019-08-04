@@ -4826,6 +4826,15 @@ client.on("message", (message) => { //When a message is sent.
 				origin: ["ranquish"]
 			},
 			{
+				word: "savienger",
+				syllables: "sav·i·eng·er",
+				pronounce: "/ˈsāvyenjər/",
+				types: "noun",
+				definition: ["a person who has helped someone in a great time of need, often one of a life or death matter."],
+				synonymof: ["hero","idol","savior"],
+				origin: ["savior","avenger"]
+			},
+			{
 				word: "say-so",
 				syllables: "say·so",
 				pronounce: "/ˈsā ˌsō/",
@@ -4846,7 +4855,7 @@ client.on("message", (message) => { //When a message is sent.
 			{
 				word: "scrouvenge",
 				syllables: "scrou·venge",
-				prounounce: "/skrouvenj/",
+				pronounce: "/skrouvenj/",
 				types: "verb",
 				definition: ["search for whatever is available."],
 				synonymof: ["search","scavenge","scrounge"],
@@ -4896,6 +4905,15 @@ client.on("message", (message) => { //When a message is sent.
 				definition: ["of or relating to a talent that something or someone has."],
 				synonymof: false,
 				origin: ["talent"]
+			},
+			{
+				word: "tarnant",
+				syllables: "tar·nant",
+				pronounce: "/tärˈnənt/",
+				types: "noun",
+				definition: ["cloth used to compress or concele injuries."],
+				synonymof: ["bandage","dressing"],
+				origin: false
 			},
 			{
 				word: "terrificate",
