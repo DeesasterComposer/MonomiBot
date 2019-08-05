@@ -4790,6 +4790,15 @@ client.on("message", (message) => { //When a message is sent.
 				origin: ["pixel","-ography"]
 			},
 			{
+				word: "promitation",
+				syllables: "prom·i·ta·tion",
+				pronounce: "/präməˈtāSH(ə)n/",
+				types: "noun",
+				definition: ["a call to action."],
+				synonymof: ["motive","reason"],
+				origin: false
+			},
+			{
 				word: "psychocity",
 				syllables: "psy·cho·ci·ty",
 				pronounce: "/ˈsīkäsədē/",
