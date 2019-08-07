@@ -4583,9 +4583,18 @@ client.on("message", (message) => { //When a message is sent.
 				origin: false
 			},
 			{
+				word: "glossening",
+				syllables: "glos·sen·ing",
+				pronounce: "/ɡläseniNG,ɡlôseniNG/",
+				types: "noun",
+				definition: ["a quick examination (of something).","a short look through of a book or text."],
+				synonymof: false,
+				origin: ["gloss over"]
+			},
+			{
 				word: "gluckened",
 				syllables: "glück·ened",
-				pronounce: "/glǘckenˈlītnd/",
+				pronounce: "/glǘckend/",
 				types: "adjective",
 				definition: ["made happy."],
 				synonymof: ["euphorized", "gladdened","cheered up"],
@@ -4635,6 +4644,15 @@ client.on("message", (message) => { //When a message is sent.
 				definition: ["a burn."],
 				synonymof: ["burn"],
 				origin: ["incendiary","incineration"]
+			},
+			{
+				word: "infigure",
+				syllables: "infigure",
+				pronounce: "/inˈfiɡyər/",
+				types: "verb",
+				definition: ["hold (someone) captive in an inescapable place."],
+				synonymof: ["trap","hold captive","confine"],
+				origin: false
 			},
 			{
 				word: "interrogate",
