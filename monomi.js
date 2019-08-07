@@ -4647,7 +4647,7 @@ client.on("message", (message) => { //When a message is sent.
 			},
 			{
 				word: "infigure",
-				syllables: "infigure",
+				syllables: "in·fig·ure",
 				pronounce: "/inˈfiɡyər/",
 				types: "verb",
 				definition: ["hold (someone) captive in an inescapable place."],
