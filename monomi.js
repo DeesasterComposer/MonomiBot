@@ -1648,7 +1648,7 @@ client.on("message", (message) => { //When a message is sent.
 		if (args[0] === "3") { //Class 03 (Monokuma Train, Killing School Ride)
 			classList = [
 				{ studentID: "Name: Aemele Dèjré\nTalent: Stalker\nSex: Female\nStatus: Alive\n\nShoe Size: 5\nHeight: 5'5\"\nWeight: 114\nBlood Type: B\nBirthday: 09/01\nAge: 18", studentIDPicture: "https://imgur.com/nxt9OCI.png" },
-				{ studentID: "Name: Dia Ramos\nTalent: Cheerleader\nSex: Female\nStatus: Alive\n\nShoe Size: 7.5\nHeight: 5'2\"\nWeight: 117\nBlood Type: O\nBirthday: 08/13\nAge: 18", studentIDPicture: "" },
+				{ studentID: "Name: Dia Ramos\nTalent: Cheerleader\nSex: Female\nStatus: Alive\n\nShoe Size: 7.5\nHeight: 5'2\"\nWeight: 117\nBlood Type: O\nBirthday: 08/13\nAge: 18", studentIDPicture: "https://imgur.com/luniZC4.png" },
 				{ studentID: "Name: Kumiko Yeun\nStage Name: KUMI!\nTalent: Rock Star\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'7\"\nWeight: 103\nBlood Type: AB\nBirthday: 06/16\nAge: 18", studentIDPicture: "" },
 				{ studentID: "Name: Inugami Uzuki\nTalent: Graffiti Artist\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'6\"\nWeight: 135\nBlood Type: O\nBirthday: 03/24\nAge: 17", studentIDPicture: "https://imgur.com/ZHW10pn.png" },
 				{ studentID: "Name: Isago Achikita\nTalent: Mythologist\nSex: Female\nStatus: Deceased\n\nShoe Size: 6.5\nHeight: 5'5\"\nWeight: 119\nBlood Type: AB\nBirthday: 02/29\nAge: 18", studentIDPicture: "https://imgur.com/KNHhTlL.png" },
@@ -1669,7 +1669,7 @@ client.on("message", (message) => { //When a message is sent.
 				{ studentID: "Name: Melchor Guadalupe Paz de la Cruz\nTalent: Activist\nSex: Male\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'11\"\nWeight: 110\nBlood Type: A\nBirthday: 02/29\nAge: 17", studentIDPicture: "https://imgur.com/9cVr7mL.png" },
 				{ studentID: "Name: Ruslan Eun-Kyung Kraus\nTalent: Luthier\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 6'1\"\nWeight: 157\nBlood Type: B\nBirthday: 03/02\nAge: 17", studentIDPicture: "https://imgur.com/8LA7hg8.png" },
 				{ studentID: "Name: Ryoushi Nobuori\nTalent: Storyteller\nSex: Male\nStatus: Deceased\n\nShoe Size: 7\nHeight: 5'6\"\nWeight: 111\nBlood Type: A\nBirthday: 12/25\nAge: 16", studentIDPicture: "https://imgur.com/9se7jzq.png" },
-				{ studentID: "Name: Santo Verdugo Bautista\nTalent: Coroner\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 128\nBlood Type: O\nBirthday: 02/11\nAge: 17", studentIDPicture: "" },
+				{ studentID: "Name: Santo Verdugo Bautista\nTalent: Coroner\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 128\nBlood Type: O\nBirthday: 02/11\nAge: 17", studentIDPicture: "https://imgur.com/PoUqQIr.png" },
 				{ studentID: "Name: Shinji Minoru\nTalent: Physicist\nSex: Male\nStatus: Alive\n\nShoe Size: 9\nHeight: 5'10\"\nWeight: 125\nBlood Type: AB\nBirthday: 01/27\nAge: 18", studentIDPicture: "" },
 				{ studentID: "Name: Tenome\nTalent: Ghostwriter\nSex: Male\nStatus: Deceased\n\nShoe Size: ??\nHeight: ?'?\"\nWeight: ???\nBlood Type: ??\nBirthday: ??/??\nAge: 15", studentIDPicture: "https://imgur.com/TM8FYjl.png" },
 				{ studentID: "Name: Wolfgang Schwarz\nTalent: Combat Medic\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 6'5\"\nWeight: 246\nBlood Type: A\nBirthday: 12/07\nAge: ??", studentIDPicture: "https://imgur.com/iHn6DX9.png" },
@@ -3001,8 +3001,8 @@ client.on("message", (message) => { //When a message is sent.
 			/*3*/ /*63*/ {
 				name: "Dia Ramos",
 				clues: ["purple", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "A gold, hoop earring was found at the scene.", "An orange scrunchy was found at the scene.", "There were smears of concealer found on the victim."],
-				img: noIcon,
-				imgDead: noIcon
+				img: "https://imgur.com/luniZC4.png",
+				imgDead: "https://imgur.com/yPCaMoU.png"
 			},
 			/*3*/ /*64*/ {
 				name: "Inugami Uzuki",
@@ -3085,8 +3085,8 @@ client.on("message", (message) => { //When a message is sent.
 			/*3*/ /*+77+*/ {
 				name: "Santo Verdugo Bautista",
 				clues: ["brown", "The murderer left a footprint in size **11 or 12 women's** and size **9 or 10 men's**.", "The victim was found without their clothing.", "The victim was killed with flawless medical precision.", "An El Diablo chicle cigarillo was stuffed into the victim's mouth.", "A single Hummingbird alebrije earring was found at the scene.", "Photos of bodies were found at the scene.", "A gun was found at the scene."],
-				img: noIcon,
-				imgDead: noIcon
+				img: "https://imgur.com/PoUqQIr.png",
+				imgDead: "https://imgur.com/GVglgya.png"
 			},
 			/*3*/ /*78*/ {
 				name: "Shinji Minoru",
