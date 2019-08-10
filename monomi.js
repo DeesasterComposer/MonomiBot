@@ -75,7 +75,7 @@ var currentlyPlaying = null;
 /*Important Info*/
 var creatorID = 105368288170622976;
 var hostID = 418119973227986955;
-var version = "3.0.1";
+var version = "3.0.2";
 
 /*Murder Mystery*/
 MM_InProgress = false;
