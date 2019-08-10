@@ -73,7 +73,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.0.5";
+var version = "3.0.6";
 
 /*Murder Mystery*/
 MM_InProgress = false;
@@ -3171,7 +3171,7 @@ client.on("message", (message) => { //When a message is sent.
 				message.channel.send(embed);
 			}
 			if (args[1] === "-a") {
-				for (x = 0; x < students.length; x++) {
+				for (x = 0; x < 1; x++) {
 					cluesData = "";
 					embed.setThumbnail(students[x].imgDead);
 					embed.addField("Hair Color", `${students[x].clues[0]}`);
@@ -4340,7 +4340,7 @@ client.on("message", (message) => { //When a message is sent.
 			{
 				word: "behidger",
 				syllables: "be·hid·ger",
-				pronounce: "behidger",
+				pronounce: "/bəˈhijər, bēˈhijər/",
 				types: "verb",
 				definition: ["hinder (someone's) knowledge of a topic or subject.","prevent (someone) from learning about something."],
 				synonymof: ["shield","hide","protect from"],
@@ -4525,6 +4525,15 @@ client.on("message", (message) => { //When a message is sent.
 				definition: ["to look at something thoroughly as to take in all of its details, typically a place."],
 				synonymof: ["explore", "investigate", "inspect", "survey"],
 				origin: ["explore", "investigate"]
+			},
+			{
+				word: "felize",
+				syllables: "fe·lize",
+				pronounce: "/ˈfēˌlīz/",
+				types: "verb",
+				definition: ["touch (someone)","touch (something) to learn about it"],
+				synonymof: ["touch","feel","explore"],
+				origin: ["feel","realize"]
 			},
 			{
 				word: "flayorsman",
