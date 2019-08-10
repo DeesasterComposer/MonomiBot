@@ -73,7 +73,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.0.1";
+var version = "3.0.2";
 
 /*Murder Mystery*/
 MM_InProgress = false;
@@ -3171,16 +3171,16 @@ client.on("message", (message) => { //When a message is sent.
 				message.channel.send(embed);
 			}
 			if (args[1] === "-a") {
-				for (x = 0; x < 1; x++) {
+				if (args[2] && Number.isInteger(args[2] * 1) === true) {
 					cluesData = "";
-					embed.setThumbnail(students[x].imgDead);
-					embed.setImage(students[x].img)
-					embed.addField("Student", `${students[x].name} (${x} in Array)`);
-					embed.addField("Hair Color", `${students[x].clues[0]}`);
-					embed.addField("Shoe Size", `${students[x].clues[1]}`);
-					for (y = 2; y < students[x].clues.length; y++) {
-						if (students[x].clues[y] != "") {
-							cluesData += `${y - 1}. ${students[x].clues[y]}\n`;
+					embed.setThumbnail(students[args[2]].imgDead);
+					embed.setImage(students[args[2]].img)
+					embed.addField("Student", `${students[args[2]].name} (${args[2]} in Array)`);
+					embed.addField("Hair Color", `${students[args[2]].clues[0]}`);
+					embed.addField("Shoe Size", `${students[args[2]].clues[1]}`);
+					for (y = 2; y < students[args[2]].clues.length; y++) {
+						if (students[args[2]].clues[y] != "") {
+							cluesData += `${y - 1}. ${students[args[2]].clues[y]}\n`;
 						}
 						else {
 							cluesData += `${y - 1}. Empty clue.\n`;
@@ -3188,6 +3188,26 @@ client.on("message", (message) => { //When a message is sent.
 					}
 					embed.addField("Clues", `${cluesData}`);
 					message.channel.send(embed);
+				}
+				else if (!args[2]) {
+					for (x = 0; x < 3; x++) {
+						cluesData = "";
+						embed.setThumbnail(students[x].imgDead);
+						embed.setImage(students[x].img)
+						embed.addField("Student", `${students[x].name} (${x} in Array)`);
+						embed.addField("Hair Color", `${students[x].clues[0]}`);
+						embed.addField("Shoe Size", `${students[x].clues[1]}`);
+						for (y = 2; y < students[x].clues.length; y++) {
+							if (students[x].clues[y] != "") {
+								cluesData += `${y - 1}. ${students[x].clues[y]}\n`;
+							}
+							else {
+								cluesData += `${y - 1}. Empty clue.\n`;
+							}
+						}
+						embed.addField("Clues", `${cluesData}`);
+						message.channel.send(embed);
+					}
 				}
 			}
 			MM_InProgress = false;
