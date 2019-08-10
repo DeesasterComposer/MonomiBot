@@ -5,7 +5,7 @@ const ytdl = require('ytdl-core');
 /*const sql = require('sqlite');
 sql.open("./score.sqlite");*/
 
-/*Play Audio Function*/
+/*Functions*/
 function play(connection, message) {
 	var server = servers[message.guild.id];
 
@@ -32,9 +32,7 @@ function play(connection, message) {
 			connection.disconnect();
 		}
 	});
-}
-
-/*Move Array Item Function*/
+};
 function move(arr, queueShiftFrom, queueShiftTo, message) {
 	while (queueShiftFrom < 0) {
 		queueShiftFrom += arr.length;
@@ -50,9 +48,7 @@ function move(arr, queueShiftFrom, queueShiftTo, message) {
 	}
 	arr.splice(queueShiftTo, 0, arr.splice(queueShiftFrom, 1)[0]);
 	return message.channel.send(`:white_check_mark: Monomi has moved \`${arr[queueShiftTo].title}\` to position ${queueShiftTo}.`);
-}
-
-/*Shuffle Array Function*/
+};
 function shuffle(array) {
 	var currentIndex = array.length;
 	var temporaryValue, randomIndex;
@@ -69,22 +65,21 @@ function shuffle(array) {
 	return array;
 };
 
-/*Radio Variables*/
+/*Radio Variables*/ //NOW OBSOLETE
 var list = "";
 var servers = {};
 var loopSetting = false;
 var loopQueueSetting = false;
 var currentlyPlaying = null;
 
-/*Important User IDs*/
+/*Important Info*/
 creatorID = 105368288170622976;
 hostID = 418119973227986955;
+version = "3.0.1";
 
-/*Murder Mystery Variables*/
+/*Murder Mystery*/
 MM_InProgress = false;
-
-/*Murder Mystery Generate Overlapping Clues Function*/
-function generateOverlapClues(murderer, evidenceClue) {
+function generateOverlapClues(murderer, evidenceClue) { //Generates overlapping clues for murders
 	if ((murderer.name === "Aiko Hikaru" || murderer.name === "Shiba Mikio") && evidenceClue === "A heart-shaped pin was found at the scene.") {
 		falseAnswer1 = students[1];
 		falseAnswer2 = students[23];
@@ -329,9 +324,7 @@ function generateOverlapClues(murderer, evidenceClue) {
 		falseAnswer2 = students[84];
 	}
 }
-
-/*Murder Mystery Generate Hair Clues Function*/
-function generateHairClue(hairMurderer, hairA, hairB, hairC, hairD, hairE) {
+function generateHairClue(hairMurderer, hairA, hairB, hairC, hairD, hairE) { //Generates hair clues for murders
 	falseHair1 = random([hairA, hairB]);
 	falseHair2 = random([hairC, hairD, hairE]);
 
@@ -353,9 +346,7 @@ function generateHairClue(hairMurderer, hairA, hairB, hairC, hairD, hairE) {
 		hairClue = `There were three strands of **${suspectHairs[0]}** hair found at the scene.`;
 	}
 }
-
-/*Murder Mystery Generate Murder Scenario*/
-function generateMurderScenario() {
+function generateMurderScenario() { //Generates a murder scenario
 	scenarios = [
 		`The victim was found in their dormitory's bathroom, propped against the wall of the shower.`,
 		`The victim was found tied up to two pieces of exercise equipment, suspended in the air and bloody.`,
@@ -1246,7 +1237,28 @@ client.on("message", (message) => { //When a message is sent.
 						]
 					}
 				})
-			}
+			};
+			if (args[0] === "version" || args[0] === "v") {
+				message.channel.send({
+					embed: {
+						color: 15285149,
+						title: "Command 'version'",
+						fields: [{
+							name: ":heart_exclamation: Usage",
+							value: "`m!version`",
+						},
+						{
+							name: ":heart_exclamation: Aliases",
+							value: "`m!v`",
+						},
+						{
+							name: ":heart_exclamation: Description",
+							value: "Monomi tells the version of her programming she is running!"
+						}
+						]
+					}
+				})
+			};
 		} else {
 			inboxChannel.send(`${message.author.username} has asked for help from Monomi.`);
 			message.channel.send({
@@ -3151,7 +3163,7 @@ client.on("message", (message) => { //When a message is sent.
 		];
 		murderType = random(murderRandomize);
 
-		if (args[0] === "debug" && message.author.id === creatorID) {
+		if (args[0] === "debug" && message.author.id === creatorID) { //Debug Mode
 			let embed = new Discord.RichEmbed()
 				.setColor(13959168)
 				.setFooter(`Monomi's Murder Mystery | Debug`);
@@ -3178,731 +3190,19 @@ client.on("message", (message) => { //When a message is sent.
 				}
 			}
 		}
-
-		/*Murders*/
-		if (murderType === "murder") {
-			murderer = random(students);
-			murdererEvidence = murderer.clues;
-			murdererHair = murdererEvidence.shift();
-			shoeClue = murdererEvidence.shift();
-			evidenceClue = random(murdererEvidence);
-			if (evidenceClue === "") { //THIS IS TEMP UNTIL ALL STUDENTS HAVE THEIR APPROPRIATE EVIDENCE.
-				evidenceClue = random(murdererEvidence);
-				if (evidenceClue === "") {
-					evidenceClue = `I'm super sorry, but you've recieved a blank clue!  This will be fixed soon enough, so for now hang in there, tiger!`;
-				}
-			}
-
-			falseAnswer1 = random(students);
-			falseAnswer2 = random(students);
-			falseAnswer3 = random(students);
-			falseAnswer4 = random(students);
-			falseAnswer5 = random(students);
-
-			generateOverlapClues(murderer, evidenceClue);
-
-			victim = random(students);
-			while (murderer === victim) {
-				victim = random(students);
-			}
-
-			while (falseAnswer1 === murderer || falseAnswer1 === victim) {
-				falseAnswer1 = random(students);
-			}
-			while (falseAnswer2 === falseAnswer1 || falseAnswer2 === murderer || falseAnswer2 === victim) {
-				falseAnswer2 = random(students);
-			}
-			while (falseAnswer3 === falseAnswer1 || falseAnswer3 === falseAnswer2 || falseAnswer3 === murderer || falseAnswer3 === victim) {
-				falseAnswer3 = random(students);
-			}
-			while (falseAnswer4 === falseAnswer1 || falseAnswer4 === falseAnswer2 || falseAnswer4 === falseAnswer3 || falseAnswer4 === murderer || falseAnswer4 === victim) {
-				falseAnswer4 = random(students);
-			}
-			while (falseAnswer5 === falseAnswer1 || falseAnswer5 === falseAnswer2 || falseAnswer5 === falseAnswer3 || falseAnswer5 === falseAnswer4 || falseAnswer5 === murderer || falseAnswer5 === victim) {
-				falseAnswer5 = random(students);
-			}
-
-			generateHairClue(murdererHair, falseAnswer1.clues[0], falseAnswer2.clues[0], falseAnswer3.clues[0], falseAnswer4.clues[0], falseAnswer5.clues[0]);
-
-			clues = `1. ${hairClue}\n2. ${shoeClue}\n3. ${evidenceClue}`;
-
-			answers = shuffle([murderer, falseAnswer1, falseAnswer2, falseAnswer3, falseAnswer4, falseAnswer5]);
-			if (murderer === answers[0]) {
-				correctAnswer = "🇦";
-			}
-			if (murderer === answers[1]) {
-				correctAnswer = "🇧";
-			}
-			if (murderer === answers[2]) {
-				correctAnswer = "🇨";
-			}
-			if (murderer === answers[3]) {
-				correctAnswer = "🇩";
-			}
-			if (murderer === answers[4]) {
-				correctAnswer = "🇪";
-			}
-			if (murderer === answers[5]) {
-				correctAnswer = "🇫";
-			}
-
-			generateMurderScenario();
-
-			/*Specific Murders*/
-			if (murderer.name === "Jeong Park" && victim.name === "Kyoung-mi Park") {
-				murderScene = "Jeong killed Kyoung-mi.";
-			}
-			if (murderer.name === "Aiko Hikaru" && victim.name === "Jeong Park") {
-				murderScene = "Aiko killed Jeong.";
-			}
-			if (murderer.name === "Tezuku Imou" && victim.name === "Stella Hunter") {
-				murderScene = "Tezuku killed Stella.";
-			}
-			if (murderer.name === "S'ad Ludópata" && victim.name === "Aurélie Cartier") {
-				murderScene = "S'ad killed Aurélie.";
-			}
-			if (murderer.name === "Tenshi Kawada" && victim.name === "Noriko Suzuki") {
-				murderScene = "The victim was found laying on a couch in the library.  Her eyes are closed and her face is covered in reddish purple spots.";
-			}
-			if (murderer.name === "Ara Ayao" && victim.name === "Megu Kojima") {
-				murderScene = "The victim was found sprawled out on the bathroom floor with a clean knife nearby. Her eyes have been gouged out and she's covered in cuts and bruises.";
-			}
-			if (murderer.name === "Hachi Hiruma" && victim.name === "Aika Mahaya") {
-				murderScene = "The victim was found lying in a bush in the greenhouse, a bottle of poison next to her in pieces and a knife in a nearby bush.  Her body is completely dry, no moisture whatsoever, and there is no evidence that she was involved in a struggle."
-			}
-			if (murderer.name === "Hoshi Chiura" && victim.name === "Anya Sakaguchi") {
-				murderScene = "Hoshi killed Ayna.";
-			}
-			if (murderer.name === "Kiro Karasu" && victim.name === "Ximena Colomar") {
-				murderScene = "Kiro killed Ximena.";
-			}
-			if (murderer.name === "Cheisu Maeda" && victim.name === "Masayuuki Taisho") {
-				murderScene = "Cheisu killed(?) Masayuuki.";
-			}
-			if (murderer.name === "Tomomi Kashichi" && victim.name === "Rosendo Paulo Ochoa Merlo") {
-				murderScene = "Tomomi killed Renzo.";
-			}
-			if (murderer.name === "Saeko Kiyomizu" && victim.name === "Katashi Maeda") {
-				murderScene = "Saeko killed Katashi.";
-			}
-			if (murderer.name === "Eiji Ryozo" && victim.name === "Kaipo Uilani Iona") {
-				murderScene = "The victim was found on the roof of Kamukura Hotel, with their arms spread out from their sides. His abdomen has been cut open down the middle and his organs have been removed. A splattered trail of blood leads from the body to the roof's exhaust fan, and there are two sets of bloody aprons and gloves near the body. A duffel bag containing a glass bottle, rib shear, and handsaw is also present.";
-			}
-			if (murderer.name === "Hana Kageriri" && victim.name === "Michel Voigt") {
-				murderScene = "Hana killed Michel.";
-			}
-			if (murderer.name === "Ale del Prieto" && victim.name === "Kagami Hannei") {
-				murderScene = "Ale killed Kagami.";
-			}
-			if (murderer.name === "Sora Kenshin" && victim.name === "Chika Miyasaki") {
-				murderScene = "The Silencer killed Chika.";
-			}
-			if (murderer.name === "Isha Kalki" && victim.name === "Kyabetsu Retesu") {
-				murderScene = "Isha assisted Kyabetsu in killing himself.";
-			}
-
-			message.channel.send({
-				embed: {
-					color: 13959168,
-					title: `Monomi's Murder Mystery: ${victim.name} was found dead!`,
-					"thumbnail": {
-						"url": `${victim.imgDead}`
-					},
-					description: `${murderScene}\n\n**__Clues:__**\n${clues}\n\n**__Who dunnit?__**\nA) ${answers[0].name}\nB) ${answers[1].name}\nC) ${answers[2].name}\nD) ${answers[3].name}\nE) ${answers[4].name}\nF) ${answers[5].name}`
-				}
-			}).then(msg => {
-				msg.react("🇦")
-					.then(() => MM_InProgress = true)
-					.then(() => msg.react("🇧"))
-					.then(() => MM_InProgress = true)
-					.then(() => msg.react("🇨"))
-					.then(() => MM_InProgress = true)
-					.then(() => msg.react("🇩"))
-					.then(() => MM_InProgress = true)
-					.then(() => msg.react("🇪"))
-					.then(() => MM_InProgress = true)
-					.then(() => msg.react("🇫"))
-					.then(() => MM_InProgress = true)
-					.then(() => msg.awaitReactions(filter, {
-						max: 1,
-						time: 120000,
-						errors: ['time']
-					}))
-					.then(collected => {
-						MM_InProgress = false;
-						if (correctness === 1) {
-							inboxChannel.send({
-								embed: {
-									color: 15285149,
-									title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
-									"thumbnail": {
-										"url": "https://imgur.com/OokvPxl.png"
-									},
-									description: `${message.author.username} successfully identified the murderer.`,
-									fields: [{
-											"name": "Murderer:",
-											"value": `${murderer.name}`
-										},
-										{
-											"name": "Victim:",
-											"value": `${victim.name}`
-										},
-										{
-											"name": "Incorrect Answers:",
-											"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}\n${falseAnswer5.name}`
-										}
-									]
-								}
-							})
-							return message.channel.send({
-								embed: {
-									color: 164352,
-									title: `Correct!`,
-									"thumbnail": {
-										"url": murderer.img
-									},
-									description: `The murderer was ${murderer.name}!`
-								}
-							})
-						};
-						if (correctness === 2) {
-							inboxChannel.send({
-								embed: {
-									color: 15285149,
-									title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
-									"thumbnail": {
-										"url": "https://imgur.com/eTreUA6.png"
-									},
-									description: `${message.author.username} didn't identify the murderer.`,
-									fields: [{
-											"name": "Murderer:",
-											"value": `${murderer.name}`
-										},
-										{
-											"name": "Victim:",
-											"value": `${victim.name}`
-										},
-										{
-											"name": "Incorrect Answers:",
-											"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}\n${falseAnswer5.name}`
-										}
-									]
-								}
-							})
-							return message.channel.send({
-								embed: {
-									color: 13959168,
-									title: `Wrong!`,
-									"thumbnail": {
-										"url": murderer.img
-									},
-									description: `The murderer was ${murderer.name}!`
-								}
-							})
-						};
-					}).catch(() => {
-						MM_InProgress = false;
-						inboxChannel.send({
-							embed: {
-								color: 15285149,
-								title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
-								"thumbnail": {
-									"url": "https://imgur.com/eTreUA6.png"
-								},
-								description: `${message.author.username} ran out of time before identifying the murderer.`,
-								fields: [{
-										"name": "Murderer:",
-										"value": `${murderer.name}`
-									},
-									{
-										"name": "Victim:",
-										"value": `${victim.name}`
-									},
-									{
-										"name": "Incorrect Answers:",
-										"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}\n${falseAnswer5.name}`
-									}
-								]
-							}
-						});
-						return message.channel.send({
-							embed: {
-								color: 13959168,
-								title: `You ran out of time!`,
-								"thumbnail": {
-									"url": murderer.img
-								},
-								description: `The murderer was ${murderer.name}!`
-							}
-						})
-					})
-			})
-		}
-		/*Secrets*/
-		if (murderType === "secret") {
-			secretMurderers = [
-				/*0+*/
-				{
-					name: "Kaiya Sasaki",
-					desc: "Kaiya Sasaki, the *original* botanist.",
-					img: noIcon
-				},
-				/*1+*/
-				{
-					name: "Eito Ryozo",
-					desc: "Iͯͧͤ̀̽͑̃ͫ̎͐͌͋ͬ͆̃̚͜҉̶̡̟̦͉̣̠̱̺̫̟̪̦̦̘̞͟'̧̺̠̝̳͉̪͔̗ͥ̑̈́ͫ̌̇̈́mͧͫ̉̓̚҉̴̨̻̳̲̭̮̩̟̼͙̞̦̮̺ ̷̨̼̘̩͇͉̙͙͙̰̜̲͙̣̯͛̍ͦͧͩ͊̃ͬ̿͞h̵͇̦̦̺̻̻͇ͥ̃́̂͐̏̕e̴ͬ̾̇̄͐̎ͮͨͥ̈ͯ̄̽ͣͯ҉̮̥̠̠̣̹̻͕̳͇͍r͓̙͎̼̠̝͔͍̭̪̯̜͚̖̹̝͛̋̾̐̓ͯͧͤ͛͂͒͘͘͟͞é̴̡͎̘͍͈̟͈͈͎̘̍͒ͩͫ̐ͤ̂͒̆̑̏͋̿͒̿̾.̵̈ͨ̈́͗͏̼̪̮͖̘̦̭̩̭͉̘͍͟͡",
-					img: "https://imgur.com/M4cALh8.png"
-				},
-				/*2+*/
-				{
-					name: "Luca Schwarz",
-					desc: "He was lost to time.",
-					img: "https://imgur.com/mz4UEx1.png"
-				},
-				/*{name:"Monobi",clues:["","",""],img:"https://imgur.com/CiGJlAd.png",imgDead:"https://imgur.com/WPWHetx.png"},
-				{name:"Monomi",clues:["","",""],img:"https://imgur.com/OokvPxl.png",imgDead:"https://imgur.com/eTreUA6.png"},
-				{name:"Monokuma",clues:["","",""],img:"https://imgur.com/TBfkvBA.png",imgDead:"https://imgur.com/o3o1RNN.png"}*/
-			];
-
-			secretScenario = random(secretMurderers);
-
-			MM_InProgress = false;
-			return message.channel.send({
-				embed: {
-					color: 13959168,
-					title: `Monomi's Murder Mystery: A Secret!`,
-					"thumbnail": {
-						"url": `${secretScenario.img}`
-					},
-					description: `${secretScenario.desc}`
-				}
-			})
-		}
-		/*Suicides*/
-		if (murderType === "suicide") {
-
-			murderer = random(students);
-			victim = random(students);
-
-			MM_InProgress = false;
-			return message.channel.send({
-				embed: {
-					color: 13959168,
-					title: `Monomi's Murder Mystery: ${victim.name} was found dead!`,
-					"thumbnail": {
-						"url": `${victim.imgDead}`
-					},
-					description: `Wowwee!  This isn't a secret, but it's certainly an incomplete feature!  Cases of suicide will be coming as soon as Dee can figure out a way to implement the idea!`
-				}
-			})
-		}
-		/*Double Murders*/
-		if (murderType === "doublemurder") {
-			doubleMurderRandomize = [
-				"two murderers",
-				"two murderers",
-				"two murderers",
-				"two murderers",
-				"two murderers",
-				"two murderers",
-				"one murderer",
-				"one murderer",
-				"one murderer",
-				"one murderer",
-				"one murderer",
-				"one murderer",
-				"murder-suicide",
-				"murder-suicide",
-			]
-			murderType = random(doubleMurderRandomize);
-
-			if (murderType === "two murderers") {
-				murderer1 = random(students);
-				murdererEvidence = murderer1.clues;
-				murdererHairBackup = {
-					clues: [murderer1.clues[0]]
-				};
-				murdererHair = murdererEvidence.shift();
-				shoeClue = murdererEvidence.shift();
-				evidenceClue = random(murdererEvidence);
-				if (evidenceClue === "") { //THIS IS TEMP UNTIL ALL STUDENTS HAVE THEIR APPROPRIATE EVIDENCE.
-					evidenceClue = random(murdererEvidence);
-					if (evidenceClue === "") {
-						evidenceClue = `I'm super sorry, but you've recieved a blank clue!  This will be fixed soon enough, so for now hang in there, tiger!`;
-					}
-				}
-
-				murderer2 = random(students);
-				victim1 = random(students);
-				victim2 = random(students);
-
-				while (murderer1 === murderer2) {
-					murderer2 = random(students);
-				}
-				while (murderer1 === victim1 || murderer2 === victim1) {
-					victim1 = random(students);
-				}
-				while (murderer1 === victim2 || murderer2 === victim2 || victim1 === victim2) {
-					victim2 = random(students);
-				}
-
-				falseAnswer1 = random(students);
-				falseAnswer2 = random(students);
-				falseAnswer3 = random(students);
-				falseAnswer4 = random(students);
-
-				generateOverlapClues(murderer1, evidenceClue);
-
-				while (falseAnswer1 === murderer1 || falseAnswer1 === murderer2 || falseAnswer1 === victim1 || falseAnswer1 === victim2) {
-					falseAnswer1 = random(students);
-				}
-				while (falseAnswer2 === falseAnswer1 || falseAnswer2 === murderer1 || falseAnswer2 === murderer2 || falseAnswer2 === victim1 || falseAnswer2 === victim2) {
-					falseAnswer2 = random(students);
-				}
-				while (falseAnswer3 === falseAnswer1 || falseAnswer3 === falseAnswer2 || falseAnswer3 === murderer1 || falseAnswer3 === murderer2 || falseAnswer3 === victim1 || falseAnswer3 === victim2) {
-					falseAnswer3 = random(students);
-				}
-				while (falseAnswer4 === falseAnswer1 || falseAnswer4 === falseAnswer2 || falseAnswer4 === falseAnswer3 || falseAnswer4 === murderer1 || falseAnswer4 === murderer2 || falseAnswer4 === victim1 || falseAnswer4 === victim2) {
-					falseAnswer4 = random(students);
-				}
-
-				generateHairClue(murdererHair, murderer2.clues[0], falseAnswer1.clues[0], falseAnswer2.clues[0], falseAnswer3.clues[0], falseAnswer4.clues[0]);
-
-				clues = `1. ${hairClue}\n2. ${shoeClue}\n3. ${evidenceClue}`;
-
-				answers = shuffle([murderer1, murderer2, falseAnswer1, falseAnswer2, falseAnswer3, falseAnswer4]);
-				if (murderer1 === answers[0]) {
-					correctAnswer = "🇦";
-				}
-				if (murderer1 === answers[1]) {
-					correctAnswer = "🇧";
-				}
-				if (murderer1 === answers[2]) {
-					correctAnswer = "🇨";
-				}
-				if (murderer1 === answers[3]) {
-					correctAnswer = "🇩";
-				}
-				if (murderer1 === answers[4]) {
-					correctAnswer = "🇪";
-				}
-				if (murderer1 === answers[5]) {
-					correctAnswer = "🇫";
-				}
-
-				generateMurderScenario();
-
-				/*Specific Murders Go Here*/
-
-				message.channel.send({
-					embed: {
-						color: 13959168,
-						title: `Monomi's Murder Mystery: ${victim1.name} was found dead!`,
-						"thumbnail": {
-							"url": `${victim1.imgDead}`
-						},
-						description: `${murderScene}\n\n**__Clues:__**\n${clues}\n\n**__Who dunnit?__**\nA) ${answers[0].name}\nB) ${answers[1].name}\nC) ${answers[2].name}\nD) ${answers[3].name}\nE) ${answers[4].name}\nF) ${answers[5].name}`
-					}
-				}).then(msg => {
-					msg.react("🇦")
-						.then(() => MM_InProgress = true)
-						.then(() => msg.react("🇧"))
-						.then(() => MM_InProgress = true)
-						.then(() => msg.react("🇨"))
-						.then(() => MM_InProgress = true)
-						.then(() => msg.react("🇩"))
-						.then(() => MM_InProgress = true)
-						.then(() => msg.react("🇪"))
-						.then(() => MM_InProgress = true)
-						.then(() => msg.react("🇫"))
-						.then(() => MM_InProgress = true)
-						.then(() => msg.awaitReactions(filter, {
-							max: 1,
-							time: 120000,
-							errors: ['time']
-						}))
-						.then(collected => {
-							if (correctness === 1) {
-								message.channel.send({
-									embed: {
-										color: 164352,
-										title: `Correct!`,
-										"thumbnail": {
-											"url": murderer1.img
-										},
-										description: `The murderer was ${murderer1.name}!\n\nHowever, it appears that this was a double murder!`
-									}
-								})
-
-								murdererEvidence = murderer2.clues;
-								murdererHair = murdererEvidence.shift();
-								shoeClue = murdererEvidence.shift();
-								evidenceClue = random(murdererEvidence);
-								if (evidenceClue === "") { //THIS IS TEMP UNTIL ALL STUDENTS HAVE THEIR APPROPRIATE EVIDENCE.
-									evidenceClue = random(murdererEvidence);
-									if (evidenceClue === "") {
-										evidenceClue = `I'm super sorry, but you've recieved a blank clue!  This will be fixed soon enough, so for now hang in there, tiger!`;
-									}
-								}
-
-								generateHairClue(murdererHair, murdererHairBackup, falseAnswer1.clues[0], falseAnswer2.clues[0], falseAnswer3.clues[0], falseAnswer4.clues[0]);
-
-								clues = `1. ${hairClue}\n2. ${shoeClue}\n3. ${evidenceClue}`;
-
-								answers = shuffle([murderer2, falseAnswer1, falseAnswer2, falseAnswer3, falseAnswer4]);
-								if (murderer2 === answers[0]) {
-									correctAnswer = "🇦";
-								}
-								if (murderer2 === answers[1]) {
-									correctAnswer = "🇧";
-								}
-								if (murderer2 === answers[2]) {
-									correctAnswer = "🇨";
-								}
-								if (murderer2 === answers[3]) {
-									correctAnswer = "🇩";
-								}
-								if (murderer2 === answers[4]) {
-									correctAnswer = "🇪";
-								}
-
-								generateMurderScenario();
-
-								setTimeout(function () {
-									message.channel.send({
-										embed: {
-											color: 13959168,
-											title: `Monomi's Murder Mystery: ${victim2.name} was found dead!`,
-											"thumbnail": {
-												"url": `${victim2.imgDead}`
-											},
-											description: `${murderScene}\n\n**__Clues:__**\n${clues}\n\n**__Who dunnit?__**\nA) ${answers[0].name}\nB) ${answers[1].name}\nC) ${answers[2].name}\nD) ${answers[3].name}\nE) ${answers[4].name}\nF) Same Murderer`
-										}
-									}).then(msg => {
-										msg.react("🇦")
-											.then(() => MM_InProgress = true)
-											.then(() => msg.react("🇧"))
-											.then(() => MM_InProgress = true)
-											.then(() => msg.react("🇨"))
-											.then(() => MM_InProgress = true)
-											.then(() => msg.react("🇩"))
-											.then(() => MM_InProgress = true)
-											.then(() => msg.react("🇪"))
-											.then(() => MM_InProgress = true)
-											.then(() => msg.react("🇫"))
-											.then(() => MM_InProgress = true)
-											.then(() => msg.awaitReactions(filter, {
-												max: 1,
-												time: 120000,
-												erros: ['time']
-											}))
-											.then(collected => {
-												MM_InProgress = false;
-												if (correctness === 1) {
-													inboxChannel.send({
-														embed: {
-															color: 15285149,
-															title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
-															"thumbnail": {
-																"url": "https://imgur.com/OokvPxl.png"
-															},
-															description: `${message.author.username} successfully identified the murderers.`,
-															fields: [{
-																	"name": "Murderers:",
-																	"value": `${murderer1.name} and ${murderer2.name}`
-																},
-																{
-																	"name": "Victims:",
-																	"value": `${victim1.name} and ${victim2.name}`
-																},
-																{
-																	"name": "Incorrect Answers:",
-																	"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}`
-																}
-															]
-														}
-													})
-													return message.channel.send({
-														embed: {
-															color: 164352,
-															title: `Correct!`,
-															"thumbnail": {
-																"url": murderer2.img
-															},
-															description: `The murderer was ${murderer2.name}!`
-														}
-													})
-												};
-												if (correctness === 2) {
-													inboxChannel.send({
-														embed: {
-															color: 15285149,
-															title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
-															"thumbnail": {
-																"url": "https://imgur.com/eTreUA6.png"
-															},
-															description: `${message.author.username} didn't identify the second murderer.`,
-															fields: [{
-																	"name": "Murderers:",
-																	"value": `${murderer1.name} and ${murderer2.name}`
-																},
-																{
-																	"name": "Victims:",
-																	"value": `${victim1.name} and ${victim2.name}`
-																},
-																{
-																	"name": "Incorrect Answers:",
-																	"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}`
-																}
-															]
-														}
-													})
-													return message.channel.send({
-														embed: {
-															color: 13959168,
-															title: `Wrong!`,
-															"thumbnail": {
-																"url": murderer2.img
-															},
-															description: `The murderer was ${murderer2.name}!`
-														}
-													})
-												};
-											}).catch(() => {
-												MM_InProgress = false;
-												inboxChannel.send({
-													embed: {
-														color: 15285149,
-														title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
-														"thumbnail": {
-															"url": "https://imgur.com/eTreUA6.png"
-														},
-														description: `${message.author.username} ran out of time before identifying the second murderer.`,
-														fields: [{
-																"name": "Murderers:",
-																"value": `${murderer1.name} and ${murderer2.name}`
-															},
-															{
-																"name": "Victims:",
-																"value": `${victim1.name} and ${victim2.name}`
-															},
-															{
-																"name": "Incorrect Answers:",
-																"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}`
-															}
-														]
-													}
-												})
-												return message.channel.send({
-													embed: {
-														color: 13959168,
-														title: `You ran out of time!`,
-														"thumbnail": {
-															"url": murderer2.img
-														},
-														description: `The murderer was ${murderer2.name}!`
-													}
-												})
-											})
-									})
-								}, 2000)
-							};
-							if (correctness === 2) {
-								MM_InProgress = false;
-								inboxChannel.send({
-									embed: {
-										color: 15285149,
-										title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
-										"thumbnail": {
-											"url": "https://imgur.com/eTreUA6.png"
-										},
-										description: `${message.author.username} didn't identify the first murderer.`,
-										fields: [{
-												"name": "Murderers:",
-												"value": `${murderer1.name} and ${murderer2.name}`
-											},
-											{
-												"name": "Victims:",
-												"value": `${victim1.name} and ${victim2.name}`
-											},
-											{
-												"name": "Incorrect Answers:",
-												"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}`
-											}
-										]
-									}
-								})
-								return message.channel.send({
-									embed: {
-										color: 13959168,
-										title: `Wrong!`,
-										"thumbnail": {
-											"url": murderer1.img
-										},
-										description: `The murderer was ${murderer1.name}!`
-									}
-								})
-							}
-						}).catch(() => {
-							MM_InProgress = false;
-							inboxChannel.send({
-								embed: {
-									color: 15285149,
-									title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
-									"thumbnail": {
-										"url": "https://imgur.com/eTreUA6.png"
-									},
-									description: `${message.author.username} ran out of time before identifying the first murderer.`,
-									fields: [{
-											"name": "Murderers:",
-											"value": `${murderer1.name} and ${murderer2.name}`
-										},
-										{
-											"name": "Victims:",
-											"value": `${victim1.name} and ${victim2.name}`
-										},
-										{
-											"name": "Incorrect Answers:",
-											"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}`
-										}
-									]
-								}
-							})
-							return message.channel.send({
-								embed: {
-									color: 13959168,
-									title: `You ran out of time!`,
-									"thumbnail": {
-										"url": murderer1.img
-									},
-									description: `The murderer was ${murderer1.name}!`
-								}
-							})
-						})
-				})
-			}
-			if (murderType === "one murderer") {
+		else { //The Game
+			/*Murders*/
+			if (murderType === "murder") {
 				murderer = random(students);
 				murdererEvidence = murderer.clues;
 				murdererHair = murdererEvidence.shift();
 				shoeClue = murdererEvidence.shift();
-				murdererEvidence = shuffle(murdererEvidence);
-				evidenceClue = murdererEvidence.shift();
+				evidenceClue = random(murdererEvidence);
 				if (evidenceClue === "") { //THIS IS TEMP UNTIL ALL STUDENTS HAVE THEIR APPROPRIATE EVIDENCE.
 					evidenceClue = random(murdererEvidence);
 					if (evidenceClue === "") {
 						evidenceClue = `I'm super sorry, but you've recieved a blank clue!  This will be fixed soon enough, so for now hang in there, tiger!`;
 					}
-				}
-
-				victim1 = random(students);
-				victim2 = random(students);
-
-				while (murderer === victim1) {
-					victim1 = random(students);
-				}
-				while (murderer === victim2 || victim1 === victim2) {
-					victim2 = random(students);
 				}
 
 				falseAnswer1 = random(students);
@@ -3913,19 +3213,24 @@ client.on("message", (message) => { //When a message is sent.
 
 				generateOverlapClues(murderer, evidenceClue);
 
-				while (falseAnswer1 === murderer || falseAnswer1 === victim1 || falseAnswer1 === victim2) {
+				victim = random(students);
+				while (murderer === victim) {
+					victim = random(students);
+				}
+
+				while (falseAnswer1 === murderer || falseAnswer1 === victim) {
 					falseAnswer1 = random(students);
 				}
-				while (falseAnswer2 === falseAnswer1 || falseAnswer2 === murderer || falseAnswer2 === victim1 || falseAnswer2 === victim2) {
+				while (falseAnswer2 === falseAnswer1 || falseAnswer2 === murderer || falseAnswer2 === victim) {
 					falseAnswer2 = random(students);
 				}
-				while (falseAnswer3 === falseAnswer1 || falseAnswer3 === falseAnswer2 || falseAnswer3 === murderer || falseAnswer3 === victim1 || falseAnswer3 === victim2) {
+				while (falseAnswer3 === falseAnswer1 || falseAnswer3 === falseAnswer2 || falseAnswer3 === murderer || falseAnswer3 === victim) {
 					falseAnswer3 = random(students);
 				}
-				while (falseAnswer4 === falseAnswer1 || falseAnswer4 === falseAnswer2 || falseAnswer4 === falseAnswer3 || falseAnswer4 === murderer || falseAnswer4 === victim1 || falseAnswer4 === victim2) {
+				while (falseAnswer4 === falseAnswer1 || falseAnswer4 === falseAnswer2 || falseAnswer4 === falseAnswer3 || falseAnswer4 === murderer || falseAnswer4 === victim) {
 					falseAnswer4 = random(students);
 				}
-				while (falseAnswer5 === falseAnswer1 || falseAnswer5 === falseAnswer2 || falseAnswer5 === falseAnswer3 || falseAnswer5 === falseAnswer4 || falseAnswer5 === murderer || falseAnswer5 === victim1 || falseAnswer5 === victim2) {
+				while (falseAnswer5 === falseAnswer1 || falseAnswer5 === falseAnswer2 || falseAnswer5 === falseAnswer3 || falseAnswer5 === falseAnswer4 || falseAnswer5 === murderer || falseAnswer5 === victim) {
 					falseAnswer5 = random(students);
 				}
 
@@ -3955,14 +3260,65 @@ client.on("message", (message) => { //When a message is sent.
 
 				generateMurderScenario();
 
-				/*Specific Murders Go Here*/
+				/*Specific Murders*/
+				if (murderer.name === "Jeong Park" && victim.name === "Kyoung-mi Park") {
+					murderScene = "Jeong killed Kyoung-mi.";
+				}
+				if (murderer.name === "Aiko Hikaru" && victim.name === "Jeong Park") {
+					murderScene = "Aiko killed Jeong.";
+				}
+				if (murderer.name === "Tezuku Imou" && victim.name === "Stella Hunter") {
+					murderScene = "Tezuku killed Stella.";
+				}
+				if (murderer.name === "S'ad Ludópata" && victim.name === "Aurélie Cartier") {
+					murderScene = "S'ad killed Aurélie.";
+				}
+				if (murderer.name === "Tenshi Kawada" && victim.name === "Noriko Suzuki") {
+					murderScene = "The victim was found laying on a couch in the library.  Her eyes are closed and her face is covered in reddish purple spots.";
+				}
+				if (murderer.name === "Ara Ayao" && victim.name === "Megu Kojima") {
+					murderScene = "The victim was found sprawled out on the bathroom floor with a clean knife nearby. Her eyes have been gouged out and she's covered in cuts and bruises.";
+				}
+				if (murderer.name === "Hachi Hiruma" && victim.name === "Aika Mahaya") {
+					murderScene = "The victim was found lying in a bush in the greenhouse, a bottle of poison next to her in pieces and a knife in a nearby bush.  Her body is completely dry, no moisture whatsoever, and there is no evidence that she was involved in a struggle."
+				}
+				if (murderer.name === "Hoshi Chiura" && victim.name === "Anya Sakaguchi") {
+					murderScene = "Hoshi killed Ayna.";
+				}
+				if (murderer.name === "Kiro Karasu" && victim.name === "Ximena Colomar") {
+					murderScene = "Kiro killed Ximena.";
+				}
+				if (murderer.name === "Cheisu Maeda" && victim.name === "Masayuuki Taisho") {
+					murderScene = "Cheisu killed(?) Masayuuki.";
+				}
+				if (murderer.name === "Tomomi Kashichi" && victim.name === "Rosendo Paulo Ochoa Merlo") {
+					murderScene = "Tomomi killed Renzo.";
+				}
+				if (murderer.name === "Saeko Kiyomizu" && victim.name === "Katashi Maeda") {
+					murderScene = "Saeko killed Katashi.";
+				}
+				if (murderer.name === "Eiji Ryozo" && victim.name === "Kaipo Uilani Iona") {
+					murderScene = "The victim was found on the roof of Kamukura Hotel, with their arms spread out from their sides. His abdomen has been cut open down the middle and his organs have been removed. A splattered trail of blood leads from the body to the roof's exhaust fan, and there are two sets of bloody aprons and gloves near the body. A duffel bag containing a glass bottle, rib shear, and handsaw is also present.";
+				}
+				if (murderer.name === "Hana Kageriri" && victim.name === "Michel Voigt") {
+					murderScene = "Hana killed Michel.";
+				}
+				if (murderer.name === "Ale del Prieto" && victim.name === "Kagami Hannei") {
+					murderScene = "Ale killed Kagami.";
+				}
+				if (murderer.name === "Sora Kenshin" && victim.name === "Chika Miyasaki") {
+					murderScene = "The Silencer killed Chika.";
+				}
+				if (murderer.name === "Isha Kalki" && victim.name === "Kyabetsu Retesu") {
+					murderScene = "Isha assisted Kyabetsu in killing himself.";
+				}
 
 				message.channel.send({
 					embed: {
 						color: 13959168,
-						title: `Monomi's Murder Mystery: ${victim1.name} was found dead!`,
+						title: `Monomi's Murder Mystery: ${victim.name} was found dead!`,
 						"thumbnail": {
-							"url": `${victim1.imgDead}`
+							"url": `${victim.imgDead}`
 						},
 						description: `${murderScene}\n\n**__Clues:__**\n${clues}\n\n**__Who dunnit?__**\nA) ${answers[0].name}\nB) ${answers[1].name}\nC) ${answers[2].name}\nD) ${answers[3].name}\nE) ${answers[4].name}\nF) ${answers[5].name}`
 					}
@@ -3985,177 +3341,43 @@ client.on("message", (message) => { //When a message is sent.
 							errors: ['time']
 						}))
 						.then(collected => {
+							MM_InProgress = false;
 							if (correctness === 1) {
-								message.channel.send({
+								inboxChannel.send({
+									embed: {
+										color: 15285149,
+										title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
+										"thumbnail": {
+											"url": "https://imgur.com/OokvPxl.png"
+										},
+										description: `${message.author.username} successfully identified the murderer.`,
+										fields: [{
+												"name": "Murderer:",
+												"value": `${murderer.name}`
+											},
+											{
+												"name": "Victim:",
+												"value": `${victim.name}`
+											},
+											{
+												"name": "Incorrect Answers:",
+												"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}\n${falseAnswer5.name}`
+											}
+										]
+									}
+								})
+								return message.channel.send({
 									embed: {
 										color: 164352,
 										title: `Correct!`,
 										"thumbnail": {
 											"url": murderer.img
 										},
-										description: `The murderer was ${murderer.name}!\n\nHowever, it appears that this was a double murder!`
+										description: `The murderer was ${murderer.name}!`
 									}
 								})
-
-								evidenceClue = random(murdererEvidence);
-								if (evidenceClue === "") { //THIS IS TEMP UNTIL ALL STUDENTS HAVE THEIR APPROPRIATE EVIDENCE.
-									evidenceClue = random(murdererEvidence);
-									if (evidenceClue === "") {
-										evidenceClue = `I'm super sorry, but you've recieved a blank clue!  This will be fixed soon enough, so for now hang in there, tiger!`;
-									}
-								}
-
-								generateHairClue(murdererHair, falseAnswer1.clues[0], falseAnswer2.clues[0], falseAnswer3.clues[0], falseAnswer4.clues[0], falseAnswer5.clues[0]);
-
-								clues = `1. ${hairClue}\n2. ${shoeClue}\n3. ${evidenceClue}`;
-
-								answers = shuffle([falseAnswer1, falseAnswer2, falseAnswer3, falseAnswer4, falseAnswer5]);
-								correctAnswer = "🇫";
-
-								generateMurderScenario();
-
-								setTimeout(function () {
-									message.channel.send({
-										embed: {
-											color: 13959168,
-											title: `Monomi's Murder Mystery: ${victim2.name} was found dead!`,
-											"thumbnail": {
-												"url": `${victim2.imgDead}`
-											},
-											description: `${murderScene}\n\n**__Clues:__**\n${clues}\n\n**__Who dunnit?__**\nA) ${answers[0].name}\nB) ${answers[1].name}\nC) ${answers[2].name}\nD) ${answers[3].name}\nE) ${answers[4].name}\nF) Same Murderer`
-										}
-									}).then(msg => {
-										msg.react("🇦")
-											.then(() => MM_InProgress = true)
-											.then(() => msg.react("🇧"))
-											.then(() => MM_InProgress = true)
-											.then(() => msg.react("🇨"))
-											.then(() => MM_InProgress = true)
-											.then(() => msg.react("🇩"))
-											.then(() => MM_InProgress = true)
-											.then(() => msg.react("🇪"))
-											.then(() => MM_InProgress = true)
-											.then(() => msg.react("🇫"))
-											.then(() => MM_InProgress = true)
-											.then(() => msg.awaitReactions(filter, {
-												max: 1,
-												time: 120000,
-												erros: ['time']
-											}))
-											.then(collected => {
-												MM_InProgress = false;
-												if (correctness === 1) {
-													inboxChannel.send({
-														embed: {
-															color: 15285149,
-															title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
-															"thumbnail": {
-																"url": "https://imgur.com/OokvPxl.png"
-															},
-															description: `${message.author.username} successfully identified the murderer.`,
-															fields: [{
-																	"name": "Murderer:",
-																	"value": `${murderer.name}`
-																},
-																{
-																	"name": "Victims:",
-																	"value": `${victim1.name} and ${victim2.name}`
-																},
-																{
-																	"name": "Incorrect Answers:",
-																	"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}\n${falseAnswer5.name}`
-																}
-															]
-														}
-													})
-													return message.channel.send({
-														embed: {
-															color: 164352,
-															title: `Correct!`,
-															"thumbnail": {
-																"url": murderer.img
-															},
-															description: `The murderer was ${murderer.name}!`
-														}
-													})
-												};
-												if (correctness === 2) {
-													inboxChannel.send({
-														embed: {
-															color: 15285149,
-															title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
-															"thumbnail": {
-																"url": "https://imgur.com/eTreUA6.png"
-															},
-															description: `${message.author.username} didn't identify the murderer.`,
-															fields: [{
-																	"name": "Murderer:",
-																	"value": `${murderer.name}`
-																},
-																{
-																	"name": "Victims:",
-																	"value": `${victim1.name} and ${victim2.name}`
-																},
-																{
-																	"name": "Incorrect Answers:",
-																	"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}\n${falseAnswer5.name}`
-																}
-															]
-														}
-													})
-													return message.channel.send({
-														embed: {
-															color: 13959168,
-															title: `Wrong!`,
-															"thumbnail": {
-																"url": murderer.img
-															},
-															description: `The murderer was ${murderer.name}!`
-														}
-													})
-												};
-											}).catch(() => {
-												message.channel.send("Yuh");
-												MM_InProgress = false;
-												inboxChannel.send({
-													embed: {
-														color: 15285149,
-														title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
-														"thumbnail": {
-															"url": "https://imgur.com/eTreUA6.png"
-														},
-														description: `${message.author.username} ran out of time before identifying the murderer.`,
-														fields: [{
-																"name": "Murderer:",
-																"value": `${murderer.name}`
-															},
-															{
-																"name": "Victims:",
-																"value": `${victim1.name} and ${victim2.name}`
-															},
-															{
-																"name": "Incorrect Answers:",
-																"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}\n${falseAnswer5.name}`
-															}
-														]
-													}
-												})
-												return message.channel.send({
-													embed: {
-														color: 13959168,
-														title: `You ran out of time!`,
-														"thumbnail": {
-															"url": murderer.img
-														},
-														description: `The murderer was ${murderer.name}!`
-													}
-												})
-											})
-									})
-								}, 2000)
 							};
 							if (correctness === 2) {
-								MM_InProgress = false;
 								inboxChannel.send({
 									embed: {
 										color: 15285149,
@@ -4169,8 +3391,8 @@ client.on("message", (message) => { //When a message is sent.
 												"value": `${murderer.name}`
 											},
 											{
-												"name": "Victims:",
-												"value": `${victim1.name} and ${victim2.name}`
+												"name": "Victim:",
+												"value": `${victim.name}`
 											},
 											{
 												"name": "Incorrect Answers:",
@@ -4189,7 +3411,7 @@ client.on("message", (message) => { //When a message is sent.
 										description: `The murderer was ${murderer.name}!`
 									}
 								})
-							}
+							};
 						}).catch(() => {
 							MM_InProgress = false;
 							inboxChannel.send({
@@ -4205,8 +3427,8 @@ client.on("message", (message) => { //When a message is sent.
 											"value": `${murderer.name}`
 										},
 										{
-											"name": "Victims:",
-											"value": `${victim1.name} and ${victim2.name}`
+											"name": "Victim:",
+											"value": `${victim.name}`
 										},
 										{
 											"name": "Incorrect Answers:",
@@ -4214,7 +3436,7 @@ client.on("message", (message) => { //When a message is sent.
 										}
 									]
 								}
-							})
+							});
 							return message.channel.send({
 								embed: {
 									color: 13959168,
@@ -4228,13 +3450,51 @@ client.on("message", (message) => { //When a message is sent.
 						})
 				})
 			}
-			if (murderType === "murder-suicide") {
-				murderer = random(students);
+			/*Secrets*/
+			if (murderType === "secret") {
+				secretMurderers = [
+					/*0+*/
+					{
+						name: "Kaiya Sasaki",
+						desc: "Kaiya Sasaki, the *original* botanist.",
+						img: noIcon
+					},
+					/*1+*/
+					{
+						name: "Eito Ryozo",
+						desc: "Iͯͧͤ̀̽͑̃ͫ̎͐͌͋ͬ͆̃̚͜҉̶̡̟̦͉̣̠̱̺̫̟̪̦̦̘̞͟'̧̺̠̝̳͉̪͔̗ͥ̑̈́ͫ̌̇̈́mͧͫ̉̓̚҉̴̨̻̳̲̭̮̩̟̼͙̞̦̮̺ ̷̨̼̘̩͇͉̙͙͙̰̜̲͙̣̯͛̍ͦͧͩ͊̃ͬ̿͞h̵͇̦̦̺̻̻͇ͥ̃́̂͐̏̕e̴ͬ̾̇̄͐̎ͮͨͥ̈ͯ̄̽ͣͯ҉̮̥̠̠̣̹̻͕̳͇͍r͓̙͎̼̠̝͔͍̭̪̯̜͚̖̹̝͛̋̾̐̓ͯͧͤ͛͂͒͘͘͟͞é̴̡͎̘͍͈̟͈͈͎̘̍͒ͩͫ̐ͤ̂͒̆̑̏͋̿͒̿̾.̵̈ͨ̈́͗͏̼̪̮͖̘̦̭̩̭͉̘͍͟͡",
+						img: "https://imgur.com/M4cALh8.png"
+					},
+					/*2+*/
+					{
+						name: "Luca Schwarz",
+						desc: "He was lost to time.",
+						img: "https://imgur.com/mz4UEx1.png"
+					},
+					/*{name:"Monobi",clues:["","",""],img:"https://imgur.com/CiGJlAd.png",imgDead:"https://imgur.com/WPWHetx.png"},
+					{name:"Monomi",clues:["","",""],img:"https://imgur.com/OokvPxl.png",imgDead:"https://imgur.com/eTreUA6.png"},
+					{name:"Monokuma",clues:["","",""],img:"https://imgur.com/TBfkvBA.png",imgDead:"https://imgur.com/o3o1RNN.png"}*/
+				];
 
+				secretScenario = random(secretMurderers);
+
+				MM_InProgress = false;
+				return message.channel.send({
+					embed: {
+						color: 13959168,
+						title: `Monomi's Murder Mystery: A Secret!`,
+						"thumbnail": {
+							"url": `${secretScenario.img}`
+						},
+						description: `${secretScenario.desc}`
+					}
+				})
+			}
+			/*Suicides*/
+			if (murderType === "suicide") {
+
+				murderer = random(students);
 				victim = random(students);
-				while (victim === murderer) {
-					victim = random(students);
-				}
 
 				MM_InProgress = false;
 				return message.channel.send({
@@ -4244,9 +3504,762 @@ client.on("message", (message) => { //When a message is sent.
 						"thumbnail": {
 							"url": `${victim.imgDead}`
 						},
-						description: `Wowwee!  This isn't a secret, but it's certainly an incomplete feature!  Cases of murder-suicides will be coming as soon as Dee can figure out a way to implement the idea!`
+						description: `Wowwee!  This isn't a secret, but it's certainly an incomplete feature!  Cases of suicide will be coming as soon as Dee can figure out a way to implement the idea!`
 					}
 				})
+			}
+			/*Double Murders*/
+			if (murderType === "doublemurder") {
+				doubleMurderRandomize = [
+					"two murderers",
+					"two murderers",
+					"two murderers",
+					"two murderers",
+					"two murderers",
+					"two murderers",
+					"one murderer",
+					"one murderer",
+					"one murderer",
+					"one murderer",
+					"one murderer",
+					"one murderer",
+					"murder-suicide",
+					"murder-suicide",
+				]
+				murderType = random(doubleMurderRandomize);
+
+				if (murderType === "two murderers") {
+					murderer1 = random(students);
+					murdererEvidence = murderer1.clues;
+					murdererHairBackup = {
+						clues: [murderer1.clues[0]]
+					};
+					murdererHair = murdererEvidence.shift();
+					shoeClue = murdererEvidence.shift();
+					evidenceClue = random(murdererEvidence);
+					if (evidenceClue === "") { //THIS IS TEMP UNTIL ALL STUDENTS HAVE THEIR APPROPRIATE EVIDENCE.
+						evidenceClue = random(murdererEvidence);
+						if (evidenceClue === "") {
+							evidenceClue = `I'm super sorry, but you've recieved a blank clue!  This will be fixed soon enough, so for now hang in there, tiger!`;
+						}
+					}
+
+					murderer2 = random(students);
+					victim1 = random(students);
+					victim2 = random(students);
+
+					while (murderer1 === murderer2) {
+						murderer2 = random(students);
+					}
+					while (murderer1 === victim1 || murderer2 === victim1) {
+						victim1 = random(students);
+					}
+					while (murderer1 === victim2 || murderer2 === victim2 || victim1 === victim2) {
+						victim2 = random(students);
+					}
+
+					falseAnswer1 = random(students);
+					falseAnswer2 = random(students);
+					falseAnswer3 = random(students);
+					falseAnswer4 = random(students);
+
+					generateOverlapClues(murderer1, evidenceClue);
+
+					while (falseAnswer1 === murderer1 || falseAnswer1 === murderer2 || falseAnswer1 === victim1 || falseAnswer1 === victim2) {
+						falseAnswer1 = random(students);
+					}
+					while (falseAnswer2 === falseAnswer1 || falseAnswer2 === murderer1 || falseAnswer2 === murderer2 || falseAnswer2 === victim1 || falseAnswer2 === victim2) {
+						falseAnswer2 = random(students);
+					}
+					while (falseAnswer3 === falseAnswer1 || falseAnswer3 === falseAnswer2 || falseAnswer3 === murderer1 || falseAnswer3 === murderer2 || falseAnswer3 === victim1 || falseAnswer3 === victim2) {
+						falseAnswer3 = random(students);
+					}
+					while (falseAnswer4 === falseAnswer1 || falseAnswer4 === falseAnswer2 || falseAnswer4 === falseAnswer3 || falseAnswer4 === murderer1 || falseAnswer4 === murderer2 || falseAnswer4 === victim1 || falseAnswer4 === victim2) {
+						falseAnswer4 = random(students);
+					}
+
+					generateHairClue(murdererHair, murderer2.clues[0], falseAnswer1.clues[0], falseAnswer2.clues[0], falseAnswer3.clues[0], falseAnswer4.clues[0]);
+
+					clues = `1. ${hairClue}\n2. ${shoeClue}\n3. ${evidenceClue}`;
+
+					answers = shuffle([murderer1, murderer2, falseAnswer1, falseAnswer2, falseAnswer3, falseAnswer4]);
+					if (murderer1 === answers[0]) {
+						correctAnswer = "🇦";
+					}
+					if (murderer1 === answers[1]) {
+						correctAnswer = "🇧";
+					}
+					if (murderer1 === answers[2]) {
+						correctAnswer = "🇨";
+					}
+					if (murderer1 === answers[3]) {
+						correctAnswer = "🇩";
+					}
+					if (murderer1 === answers[4]) {
+						correctAnswer = "🇪";
+					}
+					if (murderer1 === answers[5]) {
+						correctAnswer = "🇫";
+					}
+
+					generateMurderScenario();
+
+					/*Specific Murders Go Here*/
+
+					message.channel.send({
+						embed: {
+							color: 13959168,
+							title: `Monomi's Murder Mystery: ${victim1.name} was found dead!`,
+							"thumbnail": {
+								"url": `${victim1.imgDead}`
+							},
+							description: `${murderScene}\n\n**__Clues:__**\n${clues}\n\n**__Who dunnit?__**\nA) ${answers[0].name}\nB) ${answers[1].name}\nC) ${answers[2].name}\nD) ${answers[3].name}\nE) ${answers[4].name}\nF) ${answers[5].name}`
+						}
+					}).then(msg => {
+						msg.react("🇦")
+							.then(() => MM_InProgress = true)
+							.then(() => msg.react("🇧"))
+							.then(() => MM_InProgress = true)
+							.then(() => msg.react("🇨"))
+							.then(() => MM_InProgress = true)
+							.then(() => msg.react("🇩"))
+							.then(() => MM_InProgress = true)
+							.then(() => msg.react("🇪"))
+							.then(() => MM_InProgress = true)
+							.then(() => msg.react("🇫"))
+							.then(() => MM_InProgress = true)
+							.then(() => msg.awaitReactions(filter, {
+								max: 1,
+								time: 120000,
+								errors: ['time']
+							}))
+							.then(collected => {
+								if (correctness === 1) {
+									message.channel.send({
+										embed: {
+											color: 164352,
+											title: `Correct!`,
+											"thumbnail": {
+												"url": murderer1.img
+											},
+											description: `The murderer was ${murderer1.name}!\n\nHowever, it appears that this was a double murder!`
+										}
+									})
+
+									murdererEvidence = murderer2.clues;
+									murdererHair = murdererEvidence.shift();
+									shoeClue = murdererEvidence.shift();
+									evidenceClue = random(murdererEvidence);
+									if (evidenceClue === "") { //THIS IS TEMP UNTIL ALL STUDENTS HAVE THEIR APPROPRIATE EVIDENCE.
+										evidenceClue = random(murdererEvidence);
+										if (evidenceClue === "") {
+											evidenceClue = `I'm super sorry, but you've recieved a blank clue!  This will be fixed soon enough, so for now hang in there, tiger!`;
+										}
+									}
+
+									generateHairClue(murdererHair, murdererHairBackup, falseAnswer1.clues[0], falseAnswer2.clues[0], falseAnswer3.clues[0], falseAnswer4.clues[0]);
+
+									clues = `1. ${hairClue}\n2. ${shoeClue}\n3. ${evidenceClue}`;
+
+									answers = shuffle([murderer2, falseAnswer1, falseAnswer2, falseAnswer3, falseAnswer4]);
+									if (murderer2 === answers[0]) {
+										correctAnswer = "🇦";
+									}
+									if (murderer2 === answers[1]) {
+										correctAnswer = "🇧";
+									}
+									if (murderer2 === answers[2]) {
+										correctAnswer = "🇨";
+									}
+									if (murderer2 === answers[3]) {
+										correctAnswer = "🇩";
+									}
+									if (murderer2 === answers[4]) {
+										correctAnswer = "🇪";
+									}
+
+									generateMurderScenario();
+
+									setTimeout(function () {
+										message.channel.send({
+											embed: {
+												color: 13959168,
+												title: `Monomi's Murder Mystery: ${victim2.name} was found dead!`,
+												"thumbnail": {
+													"url": `${victim2.imgDead}`
+												},
+												description: `${murderScene}\n\n**__Clues:__**\n${clues}\n\n**__Who dunnit?__**\nA) ${answers[0].name}\nB) ${answers[1].name}\nC) ${answers[2].name}\nD) ${answers[3].name}\nE) ${answers[4].name}\nF) Same Murderer`
+											}
+										}).then(msg => {
+											msg.react("🇦")
+												.then(() => MM_InProgress = true)
+												.then(() => msg.react("🇧"))
+												.then(() => MM_InProgress = true)
+												.then(() => msg.react("🇨"))
+												.then(() => MM_InProgress = true)
+												.then(() => msg.react("🇩"))
+												.then(() => MM_InProgress = true)
+												.then(() => msg.react("🇪"))
+												.then(() => MM_InProgress = true)
+												.then(() => msg.react("🇫"))
+												.then(() => MM_InProgress = true)
+												.then(() => msg.awaitReactions(filter, {
+													max: 1,
+													time: 120000,
+													erros: ['time']
+												}))
+												.then(collected => {
+													MM_InProgress = false;
+													if (correctness === 1) {
+														inboxChannel.send({
+															embed: {
+																color: 15285149,
+																title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
+																"thumbnail": {
+																	"url": "https://imgur.com/OokvPxl.png"
+																},
+																description: `${message.author.username} successfully identified the murderers.`,
+																fields: [{
+																		"name": "Murderers:",
+																		"value": `${murderer1.name} and ${murderer2.name}`
+																	},
+																	{
+																		"name": "Victims:",
+																		"value": `${victim1.name} and ${victim2.name}`
+																	},
+																	{
+																		"name": "Incorrect Answers:",
+																		"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}`
+																	}
+																]
+															}
+														})
+														return message.channel.send({
+															embed: {
+																color: 164352,
+																title: `Correct!`,
+																"thumbnail": {
+																	"url": murderer2.img
+																},
+																description: `The murderer was ${murderer2.name}!`
+															}
+														})
+													};
+													if (correctness === 2) {
+														inboxChannel.send({
+															embed: {
+																color: 15285149,
+																title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
+																"thumbnail": {
+																	"url": "https://imgur.com/eTreUA6.png"
+																},
+																description: `${message.author.username} didn't identify the second murderer.`,
+																fields: [{
+																		"name": "Murderers:",
+																		"value": `${murderer1.name} and ${murderer2.name}`
+																	},
+																	{
+																		"name": "Victims:",
+																		"value": `${victim1.name} and ${victim2.name}`
+																	},
+																	{
+																		"name": "Incorrect Answers:",
+																		"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}`
+																	}
+																]
+															}
+														})
+														return message.channel.send({
+															embed: {
+																color: 13959168,
+																title: `Wrong!`,
+																"thumbnail": {
+																	"url": murderer2.img
+																},
+																description: `The murderer was ${murderer2.name}!`
+															}
+														})
+													};
+												}).catch(() => {
+													MM_InProgress = false;
+													inboxChannel.send({
+														embed: {
+															color: 15285149,
+															title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
+															"thumbnail": {
+																"url": "https://imgur.com/eTreUA6.png"
+															},
+															description: `${message.author.username} ran out of time before identifying the second murderer.`,
+															fields: [{
+																	"name": "Murderers:",
+																	"value": `${murderer1.name} and ${murderer2.name}`
+																},
+																{
+																	"name": "Victims:",
+																	"value": `${victim1.name} and ${victim2.name}`
+																},
+																{
+																	"name": "Incorrect Answers:",
+																	"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}`
+																}
+															]
+														}
+													})
+													return message.channel.send({
+														embed: {
+															color: 13959168,
+															title: `You ran out of time!`,
+															"thumbnail": {
+																"url": murderer2.img
+															},
+															description: `The murderer was ${murderer2.name}!`
+														}
+													})
+												})
+										})
+									}, 2000)
+								};
+								if (correctness === 2) {
+									MM_InProgress = false;
+									inboxChannel.send({
+										embed: {
+											color: 15285149,
+											title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
+											"thumbnail": {
+												"url": "https://imgur.com/eTreUA6.png"
+											},
+											description: `${message.author.username} didn't identify the first murderer.`,
+											fields: [{
+													"name": "Murderers:",
+													"value": `${murderer1.name} and ${murderer2.name}`
+												},
+												{
+													"name": "Victims:",
+													"value": `${victim1.name} and ${victim2.name}`
+												},
+												{
+													"name": "Incorrect Answers:",
+													"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}`
+												}
+											]
+										}
+									})
+									return message.channel.send({
+										embed: {
+											color: 13959168,
+											title: `Wrong!`,
+											"thumbnail": {
+												"url": murderer1.img
+											},
+											description: `The murderer was ${murderer1.name}!`
+										}
+									})
+								}
+							}).catch(() => {
+								MM_InProgress = false;
+								inboxChannel.send({
+									embed: {
+										color: 15285149,
+										title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
+										"thumbnail": {
+											"url": "https://imgur.com/eTreUA6.png"
+										},
+										description: `${message.author.username} ran out of time before identifying the first murderer.`,
+										fields: [{
+												"name": "Murderers:",
+												"value": `${murderer1.name} and ${murderer2.name}`
+											},
+											{
+												"name": "Victims:",
+												"value": `${victim1.name} and ${victim2.name}`
+											},
+											{
+												"name": "Incorrect Answers:",
+												"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}`
+											}
+										]
+									}
+								})
+								return message.channel.send({
+									embed: {
+										color: 13959168,
+										title: `You ran out of time!`,
+										"thumbnail": {
+											"url": murderer1.img
+										},
+										description: `The murderer was ${murderer1.name}!`
+									}
+								})
+							})
+					})
+				}
+				if (murderType === "one murderer") {
+					murderer = random(students);
+					murdererEvidence = murderer.clues;
+					murdererHair = murdererEvidence.shift();
+					shoeClue = murdererEvidence.shift();
+					murdererEvidence = shuffle(murdererEvidence);
+					evidenceClue = murdererEvidence.shift();
+					if (evidenceClue === "") { //THIS IS TEMP UNTIL ALL STUDENTS HAVE THEIR APPROPRIATE EVIDENCE.
+						evidenceClue = random(murdererEvidence);
+						if (evidenceClue === "") {
+							evidenceClue = `I'm super sorry, but you've recieved a blank clue!  This will be fixed soon enough, so for now hang in there, tiger!`;
+						}
+					}
+
+					victim1 = random(students);
+					victim2 = random(students);
+
+					while (murderer === victim1) {
+						victim1 = random(students);
+					}
+					while (murderer === victim2 || victim1 === victim2) {
+						victim2 = random(students);
+					}
+
+					falseAnswer1 = random(students);
+					falseAnswer2 = random(students);
+					falseAnswer3 = random(students);
+					falseAnswer4 = random(students);
+					falseAnswer5 = random(students);
+
+					generateOverlapClues(murderer, evidenceClue);
+
+					while (falseAnswer1 === murderer || falseAnswer1 === victim1 || falseAnswer1 === victim2) {
+						falseAnswer1 = random(students);
+					}
+					while (falseAnswer2 === falseAnswer1 || falseAnswer2 === murderer || falseAnswer2 === victim1 || falseAnswer2 === victim2) {
+						falseAnswer2 = random(students);
+					}
+					while (falseAnswer3 === falseAnswer1 || falseAnswer3 === falseAnswer2 || falseAnswer3 === murderer || falseAnswer3 === victim1 || falseAnswer3 === victim2) {
+						falseAnswer3 = random(students);
+					}
+					while (falseAnswer4 === falseAnswer1 || falseAnswer4 === falseAnswer2 || falseAnswer4 === falseAnswer3 || falseAnswer4 === murderer || falseAnswer4 === victim1 || falseAnswer4 === victim2) {
+						falseAnswer4 = random(students);
+					}
+					while (falseAnswer5 === falseAnswer1 || falseAnswer5 === falseAnswer2 || falseAnswer5 === falseAnswer3 || falseAnswer5 === falseAnswer4 || falseAnswer5 === murderer || falseAnswer5 === victim1 || falseAnswer5 === victim2) {
+						falseAnswer5 = random(students);
+					}
+
+					generateHairClue(murdererHair, falseAnswer1.clues[0], falseAnswer2.clues[0], falseAnswer3.clues[0], falseAnswer4.clues[0], falseAnswer5.clues[0]);
+
+					clues = `1. ${hairClue}\n2. ${shoeClue}\n3. ${evidenceClue}`;
+
+					answers = shuffle([murderer, falseAnswer1, falseAnswer2, falseAnswer3, falseAnswer4, falseAnswer5]);
+					if (murderer === answers[0]) {
+						correctAnswer = "🇦";
+					}
+					if (murderer === answers[1]) {
+						correctAnswer = "🇧";
+					}
+					if (murderer === answers[2]) {
+						correctAnswer = "🇨";
+					}
+					if (murderer === answers[3]) {
+						correctAnswer = "🇩";
+					}
+					if (murderer === answers[4]) {
+						correctAnswer = "🇪";
+					}
+					if (murderer === answers[5]) {
+						correctAnswer = "🇫";
+					}
+
+					generateMurderScenario();
+
+					/*Specific Murders Go Here*/
+
+					message.channel.send({
+						embed: {
+							color: 13959168,
+							title: `Monomi's Murder Mystery: ${victim1.name} was found dead!`,
+							"thumbnail": {
+								"url": `${victim1.imgDead}`
+							},
+							description: `${murderScene}\n\n**__Clues:__**\n${clues}\n\n**__Who dunnit?__**\nA) ${answers[0].name}\nB) ${answers[1].name}\nC) ${answers[2].name}\nD) ${answers[3].name}\nE) ${answers[4].name}\nF) ${answers[5].name}`
+						}
+					}).then(msg => {
+						msg.react("🇦")
+							.then(() => MM_InProgress = true)
+							.then(() => msg.react("🇧"))
+							.then(() => MM_InProgress = true)
+							.then(() => msg.react("🇨"))
+							.then(() => MM_InProgress = true)
+							.then(() => msg.react("🇩"))
+							.then(() => MM_InProgress = true)
+							.then(() => msg.react("🇪"))
+							.then(() => MM_InProgress = true)
+							.then(() => msg.react("🇫"))
+							.then(() => MM_InProgress = true)
+							.then(() => msg.awaitReactions(filter, {
+								max: 1,
+								time: 120000,
+								errors: ['time']
+							}))
+							.then(collected => {
+								if (correctness === 1) {
+									message.channel.send({
+										embed: {
+											color: 164352,
+											title: `Correct!`,
+											"thumbnail": {
+												"url": murderer.img
+											},
+											description: `The murderer was ${murderer.name}!\n\nHowever, it appears that this was a double murder!`
+										}
+									})
+
+									evidenceClue = random(murdererEvidence);
+									if (evidenceClue === "") { //THIS IS TEMP UNTIL ALL STUDENTS HAVE THEIR APPROPRIATE EVIDENCE.
+										evidenceClue = random(murdererEvidence);
+										if (evidenceClue === "") {
+											evidenceClue = `I'm super sorry, but you've recieved a blank clue!  This will be fixed soon enough, so for now hang in there, tiger!`;
+										}
+									}
+
+									generateHairClue(murdererHair, falseAnswer1.clues[0], falseAnswer2.clues[0], falseAnswer3.clues[0], falseAnswer4.clues[0], falseAnswer5.clues[0]);
+
+									clues = `1. ${hairClue}\n2. ${shoeClue}\n3. ${evidenceClue}`;
+
+									answers = shuffle([falseAnswer1, falseAnswer2, falseAnswer3, falseAnswer4, falseAnswer5]);
+									correctAnswer = "🇫";
+
+									generateMurderScenario();
+
+									setTimeout(function () {
+										message.channel.send({
+											embed: {
+												color: 13959168,
+												title: `Monomi's Murder Mystery: ${victim2.name} was found dead!`,
+												"thumbnail": {
+													"url": `${victim2.imgDead}`
+												},
+												description: `${murderScene}\n\n**__Clues:__**\n${clues}\n\n**__Who dunnit?__**\nA) ${answers[0].name}\nB) ${answers[1].name}\nC) ${answers[2].name}\nD) ${answers[3].name}\nE) ${answers[4].name}\nF) Same Murderer`
+											}
+										}).then(msg => {
+											msg.react("🇦")
+												.then(() => MM_InProgress = true)
+												.then(() => msg.react("🇧"))
+												.then(() => MM_InProgress = true)
+												.then(() => msg.react("🇨"))
+												.then(() => MM_InProgress = true)
+												.then(() => msg.react("🇩"))
+												.then(() => MM_InProgress = true)
+												.then(() => msg.react("🇪"))
+												.then(() => MM_InProgress = true)
+												.then(() => msg.react("🇫"))
+												.then(() => MM_InProgress = true)
+												.then(() => msg.awaitReactions(filter, {
+													max: 1,
+													time: 120000,
+													erros: ['time']
+												}))
+												.then(collected => {
+													MM_InProgress = false;
+													if (correctness === 1) {
+														inboxChannel.send({
+															embed: {
+																color: 15285149,
+																title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
+																"thumbnail": {
+																	"url": "https://imgur.com/OokvPxl.png"
+																},
+																description: `${message.author.username} successfully identified the murderer.`,
+																fields: [{
+																		"name": "Murderer:",
+																		"value": `${murderer.name}`
+																	},
+																	{
+																		"name": "Victims:",
+																		"value": `${victim1.name} and ${victim2.name}`
+																	},
+																	{
+																		"name": "Incorrect Answers:",
+																		"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}\n${falseAnswer5.name}`
+																	}
+																]
+															}
+														})
+														return message.channel.send({
+															embed: {
+																color: 164352,
+																title: `Correct!`,
+																"thumbnail": {
+																	"url": murderer.img
+																},
+																description: `The murderer was ${murderer.name}!`
+															}
+														})
+													};
+													if (correctness === 2) {
+														inboxChannel.send({
+															embed: {
+																color: 15285149,
+																title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
+																"thumbnail": {
+																	"url": "https://imgur.com/eTreUA6.png"
+																},
+																description: `${message.author.username} didn't identify the murderer.`,
+																fields: [{
+																		"name": "Murderer:",
+																		"value": `${murderer.name}`
+																	},
+																	{
+																		"name": "Victims:",
+																		"value": `${victim1.name} and ${victim2.name}`
+																	},
+																	{
+																		"name": "Incorrect Answers:",
+																		"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}\n${falseAnswer5.name}`
+																	}
+																]
+															}
+														})
+														return message.channel.send({
+															embed: {
+																color: 13959168,
+																title: `Wrong!`,
+																"thumbnail": {
+																	"url": murderer.img
+																},
+																description: `The murderer was ${murderer.name}!`
+															}
+														})
+													};
+												}).catch(() => {
+													message.channel.send("Yuh");
+													MM_InProgress = false;
+													inboxChannel.send({
+														embed: {
+															color: 15285149,
+															title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
+															"thumbnail": {
+																"url": "https://imgur.com/eTreUA6.png"
+															},
+															description: `${message.author.username} ran out of time before identifying the murderer.`,
+															fields: [{
+																	"name": "Murderer:",
+																	"value": `${murderer.name}`
+																},
+																{
+																	"name": "Victims:",
+																	"value": `${victim1.name} and ${victim2.name}`
+																},
+																{
+																	"name": "Incorrect Answers:",
+																	"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}\n${falseAnswer5.name}`
+																}
+															]
+														}
+													})
+													return message.channel.send({
+														embed: {
+															color: 13959168,
+															title: `You ran out of time!`,
+															"thumbnail": {
+																"url": murderer.img
+															},
+															description: `The murderer was ${murderer.name}!`
+														}
+													})
+												})
+										})
+									}, 2000)
+								};
+								if (correctness === 2) {
+									MM_InProgress = false;
+									inboxChannel.send({
+										embed: {
+											color: 15285149,
+											title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
+											"thumbnail": {
+												"url": "https://imgur.com/eTreUA6.png"
+											},
+											description: `${message.author.username} didn't identify the murderer.`,
+											fields: [{
+													"name": "Murderer:",
+													"value": `${murderer.name}`
+												},
+												{
+													"name": "Victims:",
+													"value": `${victim1.name} and ${victim2.name}`
+												},
+												{
+													"name": "Incorrect Answers:",
+													"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}\n${falseAnswer5.name}`
+												}
+											]
+										}
+									})
+									return message.channel.send({
+										embed: {
+											color: 13959168,
+											title: `Wrong!`,
+											"thumbnail": {
+												"url": murderer.img
+											},
+											description: `The murderer was ${murderer.name}!`
+										}
+									})
+								}
+							}).catch(() => {
+								MM_InProgress = false;
+								inboxChannel.send({
+									embed: {
+										color: 15285149,
+										title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
+										"thumbnail": {
+											"url": "https://imgur.com/eTreUA6.png"
+										},
+										description: `${message.author.username} ran out of time before identifying the murderer.`,
+										fields: [{
+												"name": "Murderer:",
+												"value": `${murderer.name}`
+											},
+											{
+												"name": "Victims:",
+												"value": `${victim1.name} and ${victim2.name}`
+											},
+											{
+												"name": "Incorrect Answers:",
+												"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}\n${falseAnswer5.name}`
+											}
+										]
+									}
+								})
+								return message.channel.send({
+									embed: {
+										color: 13959168,
+										title: `You ran out of time!`,
+										"thumbnail": {
+											"url": murderer.img
+										},
+										description: `The murderer was ${murderer.name}!`
+									}
+								})
+							})
+					})
+				}
+				if (murderType === "murder-suicide") {
+					murderer = random(students);
+
+					victim = random(students);
+					while (victim === murderer) {
+						victim = random(students);
+					}
+
+					MM_InProgress = false;
+					return message.channel.send({
+						embed: {
+							color: 13959168,
+							title: `Monomi's Murder Mystery: ${victim.name} was found dead!`,
+							"thumbnail": {
+								"url": `${victim.imgDead}`
+							},
+							description: `Wowwee!  This isn't a secret, but it's certainly an incomplete feature!  Cases of murder-suicides will be coming as soon as Dee can figure out a way to implement the idea!`
+						}
+					})
+				}
 			}
 		}
 	}
@@ -5110,6 +5123,9 @@ client.on("message", (message) => { //When a message is sent.
 		inboxChannel.send(`${message.author.username} has pinged!`);
 		message.channel.send("Pong!");
 		return MM_InProgress = false;
+	}
+	if (command === "version" || command === "v") {
+		message.channel.send(`This is version ${version} of MonomiBot!`);
 	}
 	/*if (command === "rank") {
 		if (message.content.search("476831906835464205") != -1) return;
