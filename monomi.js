@@ -3185,6 +3185,7 @@ client.on("message", (message) => { //When a message is sent.
 						}
 					}
 					embed.addField("Clues", `${cluesData}`);
+					message.channel.send(embed);
 					message.channel.send({ embed: { "image": { "url": students[x].img } } });
 				}
 			}
