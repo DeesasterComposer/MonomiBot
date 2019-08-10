@@ -3164,7 +3164,7 @@ client.on("message", (message) => { //When a message is sent.
 		if (args[0] === "debug") { //Debug Mode
 			let embed = new Discord.RichEmbed()
 				.setColor(13959168)
-				.setFooter(`Monomi's Murder Mystery | Debug Menu`);
+				.setFooter(`Monomi's Murder Mystery | Debug Mode`);
 
 			if (args[1] === "-t") { //Type of Murder
 				embed.setDescription(`The murder type chosen was: ${murderType}`);
@@ -3190,7 +3190,7 @@ client.on("message", (message) => { //When a message is sent.
 					message.channel.send(embed);
 				}
 				else if (!args[2]) {
-					for (x = 0; x < students.length - 1; x++) {
+					for (x = 0; x < students.length; x++) {
 						cluesData = "";
 						let embed = new Discord.RichEmbed()
 							.setColor(13959168)
@@ -3210,7 +3210,6 @@ client.on("message", (message) => { //When a message is sent.
 						}
 						embed.addField("Clues", `${cluesData}`);
 						message.channel.send(embed);
-
 					}
 				}
 			}
