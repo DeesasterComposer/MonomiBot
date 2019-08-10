@@ -3210,7 +3210,6 @@ client.on("message", (message) => { //When a message is sent.
 						}
 						embed.addField("Clues", `${cluesData}`);
 						message.channel.send(embed);
-						setTimeout (function() {continue;}, 5000);
 					}
 				}
 			}
