@@ -73,7 +73,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.0.6";
+var version = "3.0.1";
 
 /*Murder Mystery*/
 MM_InProgress = false;
@@ -3174,6 +3174,8 @@ client.on("message", (message) => { //When a message is sent.
 				for (x = 0; x < 1; x++) {
 					cluesData = "";
 					embed.setThumbnail(students[x].imgDead);
+					embed.setImage(students[x].img)
+					embed.addField("Student", `${students[x].name} (${x} in Array)`);
 					embed.addField("Hair Color", `${students[x].clues[0]}`);
 					embed.addField("Shoe Size", `${students[x].clues[1]}`);
 					for (y = 2; y < students[x].clues.length; y++) {
@@ -3186,7 +3188,6 @@ client.on("message", (message) => { //When a message is sent.
 					}
 					embed.addField("Clues", `${cluesData}`);
 					message.channel.send(embed);
-					message.channel.send({ embed: { "image": { "url": students[x].img } } });
 				}
 			}
 			MM_InProgress = false;
