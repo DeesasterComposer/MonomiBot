@@ -69,14 +69,18 @@ function shuffle(array) {
 	return array;
 };
 
-// /*Radio Variables*/
+/*Radio Variables*/
 var list = "";
 var servers = {};
 var loopSetting = false;
 var loopQueueSetting = false;
 var currentlyPlaying = null;
 
-// /*Murder Mystery Variables*/
+/*Important User IDs*/
+creatorID = 105368288170622976;
+hostID = 418119973227986955;
+
+/*Murder Mystery Variables*/
 MM_InProgress = false;
 
 /*Murder Mystery Generate Overlapping Clues Function*/
@@ -1038,7 +1042,7 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				})
 			};
-			if (args[0] === 'rusdefine') {
+			if (args[0] === 'rusdefine' || args[0] === 'russpeak') {
 				message.channel.send({
 					embed: {
 						color: 13959168,
@@ -1049,6 +1053,10 @@ client.on("message", (message) => { //When a message is sent.
 						fields: [{
 								name: ":heart_exclamation: Usage",
 								value: "`m!rusdefine`\n`m!rusdefine [word]`",
+							},
+							{
+								name: ":heart_exclamation: Aliases",
+								value: "`m!russpeak`",
 							},
 							{
 								name: ":heart_exclamation: Description",
@@ -1859,62 +1867,62 @@ client.on("message", (message) => { //When a message is sent.
 		
 		rooms = [
 			{
-				number: "1",
+				number: "1 (C1)",
 				description: "Aemele and Junko's room is very dark. On one wall, pictures of various people are found. Another wall seems to be painted to look like a sewer. There is a constant sound of dripping water but upon further examination, it is just a music player on loop. There are two identical twin sized beds on one side of the room with a nightstand beside each. On each stand is a clown-shaped lamp, resembling a popular 2017 movie character. There is a bathroom and a closet on the left wall.",
 				people: ["Aemele", "Junko"]
 			},
 			{
-				number: "2",
+				number: "2 (C1)",
 				description: "Renata, Cecilio, and Daichi's room has a metal, military-style bunk bed that sits on the south side of the room, and a matching single bed on the north. Beside the beds are metal dressers and lockers, meant to serve as storage units for the students. The room is quite modest overall, with cream-painted walls and a simple ivory tile floor. A red pentagram has been spray-painted to the floor. On the wall between the beds, there is an oil painting of what appears to be Monokuma, one half of him dressed in the robes of Jesus, and the other half with a devil horn and pitchfork. A gay pride flag hangs beside the painting, and underneath both of them, like a shrine of sorts, sits a metal nightstand with copes of the Bible and the Satanic Bible on it. The bathroom is beside the door.",
 				people: ["Renata", "Cecilio", "Daichi"]
 			},
 			{
-				number: "3",
+				number: "3 (C1)",
 				description: "Dia and the Tenome's room is extremely modern-looking, to the point of being boring and bland, starting with the walls being a boring, off-white color. Despite the expensive-looking furniture, the colors are dark and muted, adding no personality whatsoever to the room. It is also very cold. Next to the door is a sleek, black coat rack, and on the left wall is a desk, supported by the wall rather than the floor, and a chair with it. On the north wall, there is a queen-sized, black-sheeted bed, and an identical one across from it. The floor is rosewood and a black shag rug covers part of the floor. On the south wall is a wardrobe and dresser, both black in color. On the left wall, by the desk, is the bathroom, which matches the blandness of the main room.",
 				people: ["Dia", "Tenome"]
 			},
 			{
-				number: "4",
+				number: "4 (C1)",
 				description: "Nikki and Federico's room is very reminiscent of a busy elementary classroom. The walls, which were painted to have living crayons and the such, are decorated with inspirational posters, one being Monokuma hanging from a tree with the words 'HANG IN THERE' written on it. There is a rug on the floor, the kind one would find in a classroom, which is very piano-based. There is a cartoon image of a piano in the middle, surrounded by various musical notes. Twin beds are located beside each other, and a bathroom and rather large closet are located on the left wall.",
 				people: ["Nikki", "Federico"]
 			},
 			{
-				number: "5",
+				number: "5 (C2)",
 				description: "Jomei and Ryoushi's room is very fiery—literally. The walls are covered in Hotwheel-looking flame designs. On the south wall is a book shelf, but upon opening the books, one would find that all the pages are burnt. There is a distinct smell of fire and smoke that fills the room at all times, though it is especially prevalent at night. There are two queen beds located opposite to each other and on the left wall, there are two separate closets and a bathroom.",
 				people: ["Ryoushi", "Jomei"]
 			},
 			{
-				number: "6",
+				number: "6 (C2)",
 				description: "Areli, Mariko, and Ruslan's room is best described as a meat locker. Upon entering, visitors are met with a sharp chill. In a corner of the room, bloodied meat hangs, by string from the ceiling, causing a constant dripping sound as the blood slowly drains into a bucket. The room is devoid of almost any color, being mostly entirely white. Three cots lie on the ground, with fur blankets laid upon them to protect students from the cold. There are boxes across from each cot for storage. There is no bathroom.",
 				people: ["Areli","Mariko","Ruslan"]
 			},
 			{
-				number: "7",
+				number: "7 (C2)",
 				description: "Charles and Inugami's room screams American pride. It sticks to freedom's color scheme, which is red, white, and blue. The walls are painted in red and white stripes, and the entirety of the furniture is blue. The floor is hardwood. Spanning most of the left wall is the flag of the United States of America; there is also a mini-fridge, stocked with all types of milk, ranging from chocolate to soy to half-and-half. On the ceiling are glowing stars that glow vibrantly in the dark. There are two dressers on the south wall, fittingly painted red, white, and blue. Two patriotic queen sizes beds complete the look, one underneath the flag and the other on the adjacent wall. The bathroom is located on the empty wall.",
 				people: ["Charles", "Inugami"]
 			},
 			{
-				number: "8",
+				number: "8 (C2)",
 				description: "Melchor and Magami's room is very... dramatic. From the dark, moody lighting to the contrasting ivory furniture, it screams the word. On the other hand, the room is actually rather charming, despite being incredibly visually busy. It looks to be quite the mess, like a show or protest had just occurred. The occasional bright color streaks the wall. A table stands in the middle of the room with a bouquet of a dozen roses, half of them wilted. On the south wall is a bunk bed with a nightstand beside it. On the left wall, there is a closet and bathroom.",
 				people: ["Melchor", "Megami"]
 			},
 			{
-				number: "9",
+				number: "9 (C3)",
 				description: "Ayuma and Santo's room is shrouded in a haunting aura. As soon as you step in, the scent of death is overwhelming, and the colors are extremely dulled down. The floor of the room is tiled. The left wall is lined with fridges, each suspiciously the size of a human body. Cabinets are found across from the fridges, and carry an assortment of medical tools and clothing. In place of beds, there are two dissection tables, complete with a drain in the center to rid of any unnecessary fluids. The floor tiles appear to be stained with blood. There is no bathroom.",
 				people: ["Ayuma", "Santo"]
 			},
 			{
-				number: "10",
+				number: "10 (C3)",
 				description: "Shinji and Wolfgang's room is probably the most normal room on the train. The walls inside are navy blue, giving the room a rather distinguished feel. The periodic table is hung up on the left wall, but almost every element is blacked out. The remaining elements spell out 'LiFeSPan.' A table sits below it with various candles, a Newton's cradle, and a box for first aid. There are two identical twin sized beds as well, separated by two nightstands. The bathroom and closet are located on the left wall.",
 				people: ["Shinji", "Wolfgang"]
 			},
 			{
-				number: "11",
+				number: "11 (C3)",
 				description: "Kumi and Kirakira's room is very cute and soft. The walls are painted a pastel pink hue, and matching carpet covers the floor. The walls are entirely covered in posters of various magical girl characters, and of popular K-Pop girl groups. There are two queen-sized Sailor Moon themed beds with two nightstands in-between them. Across from the beds are a pair of dressers. There is also a spotlight in a corner beside the beds, controlled by a panel by the door. Beside the spotlight is the bathroom, and underneath it is a shelf, where manga, albums, stuffed animals, and a pink stereo are stored.",
 				people: ["Kumi", "Kirakira"]
 			},
 			{
-				number: "12",
+				number: "12 (Car 3)",
 				description: "Piper and Isago's room is chaotic down to every last detail, it looks as though a tornado ran through the place or, in other words, the Gods have been at war. Various parts of the room are singed and burnt, as though they had been struck by lightning or set on fire. The colors are also eye-bleeding, from the bright assortment of hues on the wall to the vibrant pink carpet. There are two queen beds, each piled high with brightly colored, tack blankets. Cat print, camouflage, whatever you can think of, there is a blanket of it in their room. There are also two wooden dressers in the back of the room, both covered almost entirely in stickers and making it near impossible to tell that they are wooden. Beside them is the bathroom.",
 				people: ["Piper", "Isago"]
 			}
@@ -2575,7 +2583,7 @@ client.on("message", (message) => { //When a message is sent.
 			file: "https://imgur.com/M4cALh8.png"
 		})
 	}
-	if (command === ":)") {
+	if (command === ":)" && (message.author.id === creatorID)) {
 		if (!servers[message.guild.id]) servers[message.guild.id] = {
 			queue: []
 		}
@@ -3135,88 +3143,45 @@ client.on("message", (message) => { //When a message is sent.
 				clues: ["gray", "The murderer did not leave any footprints.", "", ""],
 				img: "https://imgur.com/7Pr58FI.png",
 				imgDead: "https://imgur.com/TM8FYjl.png"
-			},
-			/*X*/ /*86*/ {
-				name: "SECRET TIME BABY!"
-			},
-			/*87*/ {
-				name: "SECRET TIME BABY!"
-			},
-			/*88*/ {
-				name: "SECRET TIME BABY!"
-			},
-			/*89*/ {
-				name: "SECRET TIME BABY!"
-			},
-			/*90*/ {
-				name: "SUICIDE"
-			},
-			/*91*/ {
-				name: "SUICIDE"
-			},
-			/*92*/ {
-				name: "SUICIDE"
-			},
-			/*93*/ {
-				name: "SUICIDE"
-			},
-			/*94*/ {
-				name: "SUICIDE"
-			},
-			/*95*/ {
-				name: "SUICIDE"
-			},
-			/*96*/ {
-				name: "SUICIDE"
-			},
-			/*97*/ {
-				name: "SUICIDE"
-			},
-			/*98*/ {
-				name: "SUICIDE"
-			},
-			/*99*/ {
-				name: "DOUBLE MURDER!!"
-			},
-			/*100*/ {
-				name: "DOUBLE MURDER!!"
-			},
-			/*101*/ {
-				name: "DOUBLE MURDER!!"
-			},
-			/*102*/ {
-				name: "DOUBLE MURDER!!"
-			},
-			/*103*/ {
-				name: "DOUBLE MURDER!!"
-			},
-			/*104*/ {
-				name: "DOUBLE MURDER!!"
-			},
-			/*105*/ {
-				name: "DOUBLE MURDER!!"
-			},
-			/*106*/ {
-				name: "DOUBLE MURDER!!"
-			},
-			/*107*/ {
-				name: "DOUBLE MURDER!!"
-			},
-			/*108*/ {
-				name: "DOUBLE MURDER!!"
-			},
-			/*109*/ {
-				name: "DOUBLE MURDER!!"
-			},
-			/*110*/ {
-				name: "DOUBLE MURDER!!"
-			},
+			}
 		];
 
-		murderer = random(students);
+		murderRandomize = [
+			"murder", "murder", "murder", "murder", "doublemurder", "doublemurder", "doublemurder", "suicide", "suicide", "secret", "murder", "murder", "murder", "murder", "doublemurder", "doublemurder", "doublemurder", "suicide", "suicide", "secret"
+		];
+		murderType = random(murderRandomize);
+
+		if (args[0] === "debug" && message.author.id === creatorID) {
+			let embed = new Discord.RichEmbed()
+				.setColor(13959168)
+				.setFooter(`Monomi's Murder Mystery | Debug`);
+
+			if (args.toString().search("-t") != -1) { //Type of Murder
+				message.channel.send(`The murder type chosen was: ${murderType}`);
+			}
+			if (args.toString().search("-a") != -1) {
+				for (x in students) {
+					cluesData = "";
+					embed.setThumbnail(students[x].imgDead);
+					embed.addField("Hair Color", `${students[x].clues[0]}`);
+					embed.addField("Shoe Size", `${students[x].clues[1]}`);
+					for (y = 2; y < students[x].clues.length; y++) {
+						if (students[x].clues[y] != "") {
+							cluesData += `${y - 1}. ${students[x].clues[y]}\n`;
+						}
+						else {
+							cluesData += `${y - 1}. Empty clue.\n`;
+						}
+					}
+					embed.addField("Clues", `${cluesData}`);
+					message.channel.send({ embed: { "image": { "url": students[x].img } } });
+				}
+			}
+		}
 
 		/*Murders*/
-		if (murderer.name != "SECRET TIME BABY!" && murderer.name != "SUICIDE" && murderer.name != "DOUBLE MURDER!!") {
+		if (murderType === "murder") {
+			murderer = random(students);
 			murdererEvidence = murderer.clues;
 			murdererHair = murdererEvidence.shift();
 			shoeClue = murdererEvidence.shift();
@@ -3237,23 +3202,23 @@ client.on("message", (message) => { //When a message is sent.
 			generateOverlapClues(murderer, evidenceClue);
 
 			victim = random(students);
-			while (murderer === victim || victim.name === "SECRET TIME BABY!" || victim.name === "SUICIDE" || victim.name === "DOUBLE MURDER!!") {
+			while (murderer === victim) {
 				victim = random(students);
 			}
 
-			while (falseAnswer1.name === "SECRET TIME BABY!" || falseAnswer1.name === "DOUBLE MURDER!!" || falseAnswer1.name === "SUICIDE" || falseAnswer1 === murderer || falseAnswer1 === victim) {
+			while (falseAnswer1 === murderer || falseAnswer1 === victim) {
 				falseAnswer1 = random(students);
 			}
-			while (falseAnswer2.name === "SECRET TIME BABY!" || falseAnswer2.name === "DOUBLE MURDER!!" || falseAnswer2.name === "SUICIDE" || falseAnswer2 === falseAnswer1 || falseAnswer2 === murderer || falseAnswer2 === victim) {
+			while (falseAnswer2 === falseAnswer1 || falseAnswer2 === murderer || falseAnswer2 === victim) {
 				falseAnswer2 = random(students);
 			}
-			while (falseAnswer3.name === "SECRET TIME BABY!" || falseAnswer3.name === "DOUBLE MURDER!!" || falseAnswer3.name === "SUICIDE" || falseAnswer3 === falseAnswer1 || falseAnswer3 === falseAnswer2 || falseAnswer3 === murderer || falseAnswer3 === victim) {
+			while (falseAnswer3 === falseAnswer1 || falseAnswer3 === falseAnswer2 || falseAnswer3 === murderer || falseAnswer3 === victim) {
 				falseAnswer3 = random(students);
 			}
-			while (falseAnswer4.name === "SECRET TIME BABY!" || falseAnswer4.name === "DOUBLE MURDER!!" || falseAnswer4.name === "SUICIDE" || falseAnswer4 === falseAnswer1 || falseAnswer4 === falseAnswer2 || falseAnswer4 === falseAnswer3 || falseAnswer4 === murderer || falseAnswer4 === victim) {
+			while (falseAnswer4 === falseAnswer1 || falseAnswer4 === falseAnswer2 || falseAnswer4 === falseAnswer3 || falseAnswer4 === murderer || falseAnswer4 === victim) {
 				falseAnswer4 = random(students);
 			}
-			while (falseAnswer5.name === "SECRET TIME BABY!" || falseAnswer5.name === "DOUBLE MURDER!!" || falseAnswer5.name === "SUICIDE" || falseAnswer5 === falseAnswer1 || falseAnswer5 === falseAnswer2 || falseAnswer5 === falseAnswer3 || falseAnswer5 === falseAnswer4 || falseAnswer5 === murderer || falseAnswer5 === victim) {
+			while (falseAnswer5 === falseAnswer1 || falseAnswer5 === falseAnswer2 || falseAnswer5 === falseAnswer3 || falseAnswer5 === falseAnswer4 || falseAnswer5 === murderer || falseAnswer5 === victim) {
 				falseAnswer5 = random(students);
 			}
 
@@ -3474,7 +3439,7 @@ client.on("message", (message) => { //When a message is sent.
 			})
 		}
 		/*Secrets*/
-		if (murderer.name === "SECRET TIME BABY!") {
+		if (murderType === "secret") {
 			secretMurderers = [
 				/*0+*/
 				{
@@ -3501,10 +3466,6 @@ client.on("message", (message) => { //When a message is sent.
 
 			secretScenario = random(secretMurderers);
 
-			while (secretScenario.name === "SECRET TIME BABY!" || secretScenario.name === "SUICIDE" || secretScenario.name === "DOUBLE MURDER!!") {
-				secretScenario = random(students);
-			}
-
 			MM_InProgress = false;
 			return message.channel.send({
 				embed: {
@@ -3518,13 +3479,10 @@ client.on("message", (message) => { //When a message is sent.
 			})
 		}
 		/*Suicides*/
-		if (murderer.name === "SUICIDE") {
+		if (murderType === "suicide") {
 
 			murderer = random(students);
 			victim = random(students);
-			while (victim.name === "SECRET TIME BABY!" || victim.name === "SUICIDE" || victim.name === "DOUBLE MURDER!!") {
-				victim = random(students);
-			}
 
 			MM_InProgress = false;
 			return message.channel.send({
@@ -3539,7 +3497,7 @@ client.on("message", (message) => { //When a message is sent.
 			})
 		}
 		/*Double Murders*/
-		if (murderer.name === "DOUBLE MURDER!!") {
+		if (murderType === "doublemurder") {
 			doubleMurderRandomize = [
 				"two murderers",
 				"two murderers",
@@ -3560,9 +3518,6 @@ client.on("message", (message) => { //When a message is sent.
 
 			if (murderType === "two murderers") {
 				murderer1 = random(students);
-				while (murderer1.name === "SECRET TIME BABY!" || murderer1.name === "SUICIDE" || murderer1.name === "DOUBLE MURDER!!") {
-					murderer1 = random(students);
-				}
 				murdererEvidence = murderer1.clues;
 				murdererHairBackup = {
 					clues: [murderer1.clues[0]]
@@ -3581,13 +3536,13 @@ client.on("message", (message) => { //When a message is sent.
 				victim1 = random(students);
 				victim2 = random(students);
 
-				while (murderer1 === murderer2 || murderer2.name === "SECRET TIME BABY!" || murderer2.name === "SUICIDE" || murderer2.name === "DOUBLE MURDER!!") {
+				while (murderer1 === murderer2) {
 					murderer2 = random(students);
 				}
-				while (murderer1 === victim1 || murderer2 === victim1 || victim1.name === "SECRET TIME BABY!" || victim1.name === "SUICIDE" || victim1.name === "DOUBLE MURDER!!") {
+				while (murderer1 === victim1 || murderer2 === victim1) {
 					victim1 = random(students);
 				}
-				while (murderer1 === victim2 || murderer2 === victim2 || victim1 === victim2 || victim2.name === "SECRET TIME BABY!" || victim2.name === "SUICIDE" || victim2.name === "DOUBLE MURDER!!") {
+				while (murderer1 === victim2 || murderer2 === victim2 || victim1 === victim2) {
 					victim2 = random(students);
 				}
 
@@ -3598,16 +3553,16 @@ client.on("message", (message) => { //When a message is sent.
 
 				generateOverlapClues(murderer1, evidenceClue);
 
-				while (falseAnswer1.name === "SECRET TIME BABY!" || falseAnswer1.name === "DOUBLE MURDER!!" || falseAnswer1 === murderer1 || falseAnswer1 === murderer2 || falseAnswer1 === victim1 || falseAnswer1 === victim2) {
+				while (falseAnswer1 === murderer1 || falseAnswer1 === murderer2 || falseAnswer1 === victim1 || falseAnswer1 === victim2) {
 					falseAnswer1 = random(students);
 				}
-				while (falseAnswer2.name === "SECRET TIME BABY!" || falseAnswer2.name === "DOUBLE MURDER!!" || falseAnswer2.name === "SUICIDE" || falseAnswer2 === falseAnswer1 || falseAnswer2 === murderer1 || falseAnswer2 === murderer2 || falseAnswer2 === victim1 || falseAnswer2 === victim2) {
+				while (falseAnswer2 === falseAnswer1 || falseAnswer2 === murderer1 || falseAnswer2 === murderer2 || falseAnswer2 === victim1 || falseAnswer2 === victim2) {
 					falseAnswer2 = random(students);
 				}
-				while (falseAnswer3.name === "SECRET TIME BABY!" || falseAnswer3.name === "DOUBLE MURDER!!" || falseAnswer3.name === "SUICIDE" || falseAnswer3 === falseAnswer1 || falseAnswer3 === falseAnswer2 || falseAnswer3 === murderer1 || falseAnswer3 === murderer2 || falseAnswer3 === victim1 || falseAnswer3 === victim2) {
+				while (falseAnswer3 === falseAnswer1 || falseAnswer3 === falseAnswer2 || falseAnswer3 === murderer1 || falseAnswer3 === murderer2 || falseAnswer3 === victim1 || falseAnswer3 === victim2) {
 					falseAnswer3 = random(students);
 				}
-				while (falseAnswer4.name === "SECRET TIME BABY!" || falseAnswer4.name === "DOUBLE MURDER!!" || falseAnswer4.name === "SUICIDE" || falseAnswer4 === falseAnswer1 || falseAnswer4 === falseAnswer2 || falseAnswer4 === falseAnswer3 || falseAnswer4 === murderer1 || falseAnswer4 === murderer2 || falseAnswer4 === victim1 || falseAnswer4 === victim2) {
+				while (falseAnswer4 === falseAnswer1 || falseAnswer4 === falseAnswer2 || falseAnswer4 === falseAnswer3 || falseAnswer4 === murderer1 || falseAnswer4 === murderer2 || falseAnswer4 === victim1 || falseAnswer4 === victim2) {
 					falseAnswer4 = random(students);
 				}
 
@@ -3928,9 +3883,6 @@ client.on("message", (message) => { //When a message is sent.
 			}
 			if (murderType === "one murderer") {
 				murderer = random(students);
-				while (murderer.name === "SECRET TIME BABY!" || murderer.name === "SUICIDE" || murderer.name === "DOUBLE MURDER!!") {
-					murderer = random(students);
-				}
 				murdererEvidence = murderer.clues;
 				murdererHair = murdererEvidence.shift();
 				shoeClue = murdererEvidence.shift();
@@ -3946,10 +3898,10 @@ client.on("message", (message) => { //When a message is sent.
 				victim1 = random(students);
 				victim2 = random(students);
 
-				while (murderer === victim1 || victim1.name === "SECRET TIME BABY!" || victim1.name === "SUICIDE" || victim1.name === "DOUBLE MURDER!!") {
+				while (murderer === victim1) {
 					victim1 = random(students);
 				}
-				while (murderer === victim2 || victim1 === victim2 || victim2.name === "SECRET TIME BABY!" || victim2.name === "SUICIDE" || victim2.name === "DOUBLE MURDER!!") {
+				while (murderer === victim2 || victim1 === victim2) {
 					victim2 = random(students);
 				}
 
@@ -3961,19 +3913,19 @@ client.on("message", (message) => { //When a message is sent.
 
 				generateOverlapClues(murderer, evidenceClue);
 
-				while (falseAnswer1.name === "SECRET TIME BABY!" || falseAnswer1.name === "DOUBLE MURDER!!" || falseAnswer1.name === "SUICIDE" || falseAnswer1 === murderer || falseAnswer1 === victim1 || falseAnswer1 === victim2) {
+				while (falseAnswer1 === murderer || falseAnswer1 === victim1 || falseAnswer1 === victim2) {
 					falseAnswer1 = random(students);
 				}
-				while (falseAnswer2.name === "SECRET TIME BABY!" || falseAnswer2.name === "DOUBLE MURDER!!" || falseAnswer2.name === "SUICIDE" || falseAnswer2 === falseAnswer1 || falseAnswer2 === murderer || falseAnswer2 === victim1 || falseAnswer2 === victim2) {
+				while (falseAnswer2 === falseAnswer1 || falseAnswer2 === murderer || falseAnswer2 === victim1 || falseAnswer2 === victim2) {
 					falseAnswer2 = random(students);
 				}
-				while (falseAnswer3.name === "SECRET TIME BABY!" || falseAnswer3.name === "DOUBLE MURDER!!" || falseAnswer3.name === "SUICIDE" || falseAnswer3 === falseAnswer1 || falseAnswer3 === falseAnswer2 || falseAnswer3 === murderer || falseAnswer3 === victim1 || falseAnswer3 === victim2) {
+				while (falseAnswer3 === falseAnswer1 || falseAnswer3 === falseAnswer2 || falseAnswer3 === murderer || falseAnswer3 === victim1 || falseAnswer3 === victim2) {
 					falseAnswer3 = random(students);
 				}
-				while (falseAnswer4.name === "SECRET TIME BABY!" || falseAnswer4.name === "DOUBLE MURDER!!" || falseAnswer4.name === "SUICIDE" || falseAnswer4 === falseAnswer1 || falseAnswer4 === falseAnswer2 || falseAnswer4 === falseAnswer3 || falseAnswer4 === murderer || falseAnswer4 === victim1 || falseAnswer4 === victim2) {
+				while (falseAnswer4 === falseAnswer1 || falseAnswer4 === falseAnswer2 || falseAnswer4 === falseAnswer3 || falseAnswer4 === murderer || falseAnswer4 === victim1 || falseAnswer4 === victim2) {
 					falseAnswer4 = random(students);
 				}
-				while (falseAnswer5.name === "SECRET TIME BABY!" || falseAnswer5.name === "DOUBLE MURDER!!" || falseAnswer5.name === "SUICIDE" || falseAnswer5 === falseAnswer1 || falseAnswer5 === falseAnswer2 || falseAnswer5 === falseAnswer3 || falseAnswer5 === falseAnswer4 || falseAnswer5 === murderer || falseAnswer5 === victim1 || falseAnswer5 === victim2) {
+				while (falseAnswer5 === falseAnswer1 || falseAnswer5 === falseAnswer2 || falseAnswer5 === falseAnswer3 || falseAnswer5 === falseAnswer4 || falseAnswer5 === murderer || falseAnswer5 === victim1 || falseAnswer5 === victim2) {
 					falseAnswer5 = random(students);
 				}
 
@@ -4278,12 +4230,9 @@ client.on("message", (message) => { //When a message is sent.
 			}
 			if (murderType === "murder-suicide") {
 				murderer = random(students);
-				while (murderer.name === "SECRET TIME BABY!" || murderer.name === "SUICIDE" || murderer.name === "DOUBLE MURDER!!") {
-					murderer = random(students);
-				}
 
 				victim = random(students);
-				while (victim.name === "SECRET TIME BABY!" || victim.name === "SUICIDE" || victim.name === "DOUBLE MURDER!!" || victim === murderer) {
+				while (victim === murderer) {
 					victim = random(students);
 				}
 
@@ -4301,7 +4250,7 @@ client.on("message", (message) => { //When a message is sent.
 			}
 		}
 	}
-	if (command === "rusdefine") {
+	if (command === "rusdefine" || command === "russpeak") {
 		dictionary = [
 			{
 				word: "acomfort",
@@ -4374,6 +4323,15 @@ client.on("message", (message) => { //When a message is sent.
 				definition: ["be in bad shape, usually by way of violence and battery."],
 				synonymof: ["beat","batter","abuse","damage"],
 				origin: ["beat","abuse"]
+			},
+			{
+				word: "behidger",
+				syllables: "be·hid·ger",
+				pronounce: "behidger",
+				types: "verb",
+				definition: ["hinder (someone's) knowledge of a topic or subject.","prevent (someone) from learning about something."],
+				synonymof: ["shield","hide","protect from"],
+				origin: ["begrudingly","hinder"]
 			},
 			{
 				word: "bequip",
