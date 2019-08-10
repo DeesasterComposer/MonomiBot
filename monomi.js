@@ -75,7 +75,7 @@ var currentlyPlaying = null;
 /*Important Info*/
 var creatorID = 105368288170622976;
 var hostID = 418119973227986955;
-var version = "3.0.3";
+var version = "3.0.4";
 
 /*Murder Mystery*/
 MM_InProgress = false;
@@ -3172,7 +3172,7 @@ client.on("message", (message) => { //When a message is sent.
 				message.channel.send(`The murder type chosen was: ${murderType}`);
 			}
 			if (args[1] === "-a") {
-				for (x in students) {
+				for (x = 0; x < students.length; x++) {
 					cluesData = "";
 					embed.setThumbnail(students[x].imgDead);
 					embed.addField("Hair Color", `${students[x].clues[0]}`);
