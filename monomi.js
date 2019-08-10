@@ -73,9 +73,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var creatorID = 105368288170622976;
-var hostID = 418119973227986955;
-var version = "3.0.4";
+var version = "3.0.5";
 
 /*Murder Mystery*/
 MM_InProgress = false;
@@ -3169,7 +3167,8 @@ client.on("message", (message) => { //When a message is sent.
 				.setFooter(`Monomi's Murder Mystery | Debug`);
 
 			if (args[1] === "-t") { //Type of Murder
-				message.channel.send(`The murder type chosen was: ${murderType}`);
+				embed.setDescription(`The murder type chosen was: ${murderType}`);
+				message.channel.send(embed);
 			}
 			if (args[1] === "-a") {
 				for (x = 0; x < students.length; x++) {
