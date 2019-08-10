@@ -3190,7 +3190,7 @@ client.on("message", (message) => { //When a message is sent.
 					message.channel.send(embed);
 				}
 				else if (!args[2]) {
-					for (x = 0; x < 3; x++) {
+					for (x = 0; x < students.length; x++) {
 						cluesData = "";
 						let embed = new Discord.RichEmbed()
 							.setColor(13959168)
@@ -3210,6 +3210,7 @@ client.on("message", (message) => { //When a message is sent.
 						}
 						embed.addField("Clues", `${cluesData}`);
 						message.channel.send(embed);
+						setTimeout (function() {continue;}, 5000);
 					}
 				}
 			}
