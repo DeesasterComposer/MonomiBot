@@ -75,7 +75,7 @@ var currentlyPlaying = null;
 /*Important Info*/
 var creatorID = 105368288170622976;
 var hostID = 418119973227986955;
-var version = "3.0.2";
+var version = "3.0.3";
 
 /*Murder Mystery*/
 MM_InProgress = false;
@@ -3168,10 +3168,10 @@ client.on("message", (message) => { //When a message is sent.
 				.setColor(13959168)
 				.setFooter(`Monomi's Murder Mystery | Debug`);
 
-			if (args.shift().toString().search("-t") != -1) { //Type of Murder
+			if (args[1] === "-t") { //Type of Murder
 				message.channel.send(`The murder type chosen was: ${murderType}`);
 			}
-			if (args.shift().toString().search("-a") != -1) {
+			if (args[1] === "-a") {
 				for (x in students) {
 					cluesData = "";
 					embed.setThumbnail(students[x].imgDead);
@@ -3189,6 +3189,7 @@ client.on("message", (message) => { //When a message is sent.
 					message.channel.send({ embed: { "image": { "url": students[x].img } } });
 				}
 			}
+			MM_InProgress = false;
 		}
 		else { //The Game
 			/*Murders*/
