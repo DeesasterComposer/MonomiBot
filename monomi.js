@@ -73,9 +73,9 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-creatorID = 105368288170622976;
-hostID = 418119973227986955;
-version = "3.0.1";
+var creatorID = 105368288170622976;
+var hostID = 418119973227986955;
+var version = "3.0.1";
 
 /*Murder Mystery*/
 MM_InProgress = false;
@@ -2595,7 +2595,7 @@ client.on("message", (message) => { //When a message is sent.
 			file: "https://imgur.com/M4cALh8.png"
 		})
 	}
-	if (command === ":)" && (message.author.id === creatorID)) {
+	if (command === ":)") {
 		if (!servers[message.guild.id]) servers[message.guild.id] = {
 			queue: []
 		}
@@ -3163,15 +3163,15 @@ client.on("message", (message) => { //When a message is sent.
 		];
 		murderType = random(murderRandomize);
 
-		if (args[0] === "debug" && message.author.id === creatorID) { //Debug Mode
+		if (args[0] === "debug") { //Debug Mode
 			let embed = new Discord.RichEmbed()
 				.setColor(13959168)
 				.setFooter(`Monomi's Murder Mystery | Debug`);
 
-			if (args.toString().search("-t") != -1) { //Type of Murder
+			if (args.shift().toString().search("-t") != -1) { //Type of Murder
 				message.channel.send(`The murder type chosen was: ${murderType}`);
 			}
-			if (args.toString().search("-a") != -1) {
+			if (args.shift().toString().search("-a") != -1) {
 				for (x in students) {
 					cluesData = "";
 					embed.setThumbnail(students[x].imgDead);
