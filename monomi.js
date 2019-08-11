@@ -3168,6 +3168,11 @@ client.on("message", (message) => { //When a message is sent.
 
 			if (args[1] === "-t") { //Murder Type Frequency Test\
 				quantity = 25;
+				resultsMurder = 0;
+				resultsDoubleMurder = 0;
+				resultsSuicide = 0;
+				resultsSecret = 0;
+
 				if (args[2] && Number.isInteger(args[2] * 1) === true) {
 					quantity = args[2];
 				}
@@ -3175,8 +3180,26 @@ client.on("message", (message) => { //When a message is sent.
 				for (x = 0; x < quantity; x++) {
 					testResults.push(random(murderRandomize));
 				}
+				while (testResults.length != 0) {
+					if (testResults.shift() === "murder") {
+						resultsMurder += 1;
+						continue;
+					}
+					if (testResults.shift() === "doublemurder") {
+						resultsDoubleMurder += 1;
+						continue;
+					}
+					if (testResults.shift() === "suicide") {
+						resultsSuicide += 1;
+						continue;
+					}
+					if (testResults.shift() === "secret") {
+						resultsSecret += 1;
+						continue;
+					}
+				}
 				embed.setTitle(`Murder Type Results`)
-				embed.setDescription(`The results are in! ${testResults}`);
+				embed.setDescription(`The results are in!\nMurder(s): ${resultsMurder}\nDouble Murder(s): ${resultsDoubleMurder}\nSuicide(s): ${resultsSuicide}\nSecret Scenario(s): ${resultsSecret}`);
 				message.channel.send(embed);
 			}
 			if (args[1] === "-a") {
