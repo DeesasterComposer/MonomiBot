@@ -3166,8 +3166,17 @@ client.on("message", (message) => { //When a message is sent.
 				.setColor(13959168)
 				.setFooter(`Monomi's Murder Mystery | Debug Mode`);
 
-			if (args[1] === "-t") { //Type of Murder
-				embed.setDescription(`The murder type chosen was: ${murderType}`);
+			if (args[1] === "-t") { //Murder Type Frequency Test\
+				quantity = 25;
+				if (args[2] && Number.isInteger(args[2] * 1) === true) {
+					quantity = args[2];
+				}
+				testResults = [murderType];
+				for (x = 0; x < quantity; x++) {
+					testResults.append(random(random(murderRandomize)))
+				}
+				embed.setTitle(`Murder Type Results`)
+				embed.setDescription(`The results are in! ${testResults}`);
 				message.channel.send(embed);
 			}
 			if (args[1] === "-a") {
@@ -3194,7 +3203,7 @@ client.on("message", (message) => { //When a message is sent.
 						cluesData = "";
 						let embed = new Discord.RichEmbed()
 							.setColor(13959168)
-							.setFooter(`Monomi's Murder Mystery | Debug Menu`);
+							.setFooter(`Monomi's Murder Mystery | Debug Mode`);
 						embed.setThumbnail(students[x].imgDead);
 						embed.setImage(students[x].img)
 						embed.addField("Student", `${students[x].name} (${x} in Array)`);
