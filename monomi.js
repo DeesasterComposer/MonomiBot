@@ -4768,7 +4768,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "mae·al·i·ty",
 				pronounce: "/māˈalədē/",
 				types: "noun",
-				definition: ["the state of being male"],
+				definition: ["the state of being male."],
 				synonymof: false,
 				origin: ["male","reality"]
 			},
@@ -4942,6 +4942,15 @@ client.on("message", (message) => { //When a message is sent.
 				definition: ["search for whatever is available."],
 				synonymof: ["search","scavenge","scrounge"],
 				origin: ["scrounge","scavenge"]
+			},
+			{
+				word: "self-flayor",
+				syllables: "self-fla·yor",
+				pronounce: "/ˌselfflāər/",
+				types: "noun",
+				definition: ["a homophobic person who is also gay, usually a man","a gay homophobic man."],
+				synonymof: ["gay homophobic"],
+				origin: ["self","flayorsman"]
 			},
 			{
 				word: "spendable",
