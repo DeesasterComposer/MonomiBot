@@ -3176,26 +3176,26 @@ client.on("message", (message) => { //When a message is sent.
 				if (args[2] && Number.isInteger(args[2] * 1) === true) {
 					quantity = args[2];
 				}
-				testResults = [murderType];
+				testResults = [];
 				for (x = 0; x < quantity; x++) {
 					testResults.push(random(murderRandomize));
 				}
 				while (testResults.length != 0) {
-					if (testResults.shift() === "murder") {
+					if (testResults[0] === "murder") {
 						resultsMurder += 1;
-						continue;
+						testResults.shift();
 					}
-					if (testResults.shift() === "doublemurder") {
+					else if (testResults[0] === "doublemurder") {
 						resultsDoubleMurder += 1;
-						continue;
+						testResults.shift();
 					}
-					if (testResults.shift() === "suicide") {
+					else if (testResults[0] === "suicide") {
 						resultsSuicide += 1;
-						continue;
+						testResults.shift();
 					}
-					if (testResults.shift() === "secret") {
+					else if (testResults[0] === "secret") {
 						resultsSecret += 1;
-						continue;
+						testResults.shift();
 					}
 				}
 				embed.setTitle(`Murder Type Results`)
@@ -4762,6 +4762,15 @@ client.on("message", (message) => { //When a message is sent.
 				definition: ["a place covering a large area of land that isn't confined to political boundaries of countries."],
 				synonymof: false,
 				origin: ["location", "region"]
+			},
+			{
+				word: "maeality",
+				syllables: "mae·al·i·ty",
+				pronounce: "/māˈalədē/",
+				types: "noun",
+				definition: ["the state of being male"],
+				synonymof: false,
+				origin: ["male","reality"]
 			},
 			{
 				word: "matrimarial",
