@@ -3173,7 +3173,7 @@ client.on("message", (message) => { //When a message is sent.
 				}
 				testResults = [murderType];
 				for (x = 0; x < quantity; x++) {
-					testResults.append(random(random(murderRandomize)))
+					testResults.push(random(murderRandomize));
 				}
 				embed.setTitle(`Murder Type Results`)
 				embed.setDescription(`The results are in! ${testResults}`);
