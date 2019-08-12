@@ -494,7 +494,7 @@ client.on("ready", () => { //When Monomi is turned on.
 	//Initializes the inbox location.
 	const inboxGuild = client.guilds.find('id', '480549161201041418');
 	const inboxChannel = inboxGuild.channels.find('name', 'monomi-inbox');
-	inboxChannel.send("Monomi has been turned on.");
+	inboxChannel.send(`Monomi has been turned on at ${currentDate.getTime()}.`);
 	console.log("Monomi has arrived on the island!");
 
 	const kaenoShinjomuServer = client.guilds.find('id', '455218035507331072')
