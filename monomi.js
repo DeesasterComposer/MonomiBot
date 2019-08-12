@@ -64,10 +64,18 @@ function shuffle(array) {
 	}
 	return array;
 };
+function shutdown() {
+	const inboxGuild = client.guilds.find('id', '480549161201041418');
+	const inboxChannel = inboxGuild.channels.find('name', 'monomi-inbox');
+	
+	inboxChannel.send("Monomi has been turned off.")
+	console.log("Monomi has left the island!");
+	setTimeout(function () {process.exit()}, 1000);
+};
 function checkBirthdays(birthday) {
-	let today = currentDate.getDate();
-	let month = currentDate.getMonth();
-	return  (birthday.day === today && birthday.month === month + 1);
+	const kaenoShinjomuServer = client.guilds.find('id', '455218035507331072')
+	const birthdayChannel = kaenoShinjomuServer.channels.find('name', 'birthdays');
+	return birthday.day === currentDate.getDate().toString() && birthday.month === (currentDate.getMonth() + 1).toString();
 }
 
 /*Radio Variables*/ //NOW OBSOLETE
@@ -78,10 +86,11 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.1.0";
+var version = "test from bot";
 
 /*Birthday Notifications*/
-const birthdays = [
+var currentDate = new Date();
+var birthdays = [
 	{name:"Aika Mahaya",pronoun:"her",day:"21",month:"6"},
 	{name:"Anaelle Hamaan",pronoun:"her",day:"20",month:"6"},
 	{name:"Anya Sakaguchi and S'ad Ludópata",pronoun:"them both",day:"10",month:"4"},
@@ -153,8 +162,7 @@ const birthdays = [
 	{name:"Ruslan Eun-Kyung Kraus",pronoun:"ihm",day:"2",month:"3"},
 	{name:"Santo Verdugo Bautista",pronoun:"him",day:"11",month:"2"},
 	{name:"Shinji Minoru",pronoun:"him",day:"27",month:"1"},
-	{name:"Wolfgang Schwarz",pronoun:"ihm",day:"7",month:"12"},
-	{name:"test",pronoun:"it",day:"12",month:"8"},
+	{name:"Wolfgang Schwarz",pronoun:"ihm",day:"7",month:"12"}
 ]
 
 /*Murder Mystery*/
@@ -490,21 +498,26 @@ const monomi_trial7 = "https://imgur.com/cP4pGHR.png" //Mushrooms BDSM
 const monomi_trial8 = "https://imgur.com/pDtdNiZ.png" //Scared BDSM
 
 client.on("ready", () => { //When Monomi is turned on.
-	var currentDate = new Date();
-	
 	//Initializes the inbox location.
 	const inboxGuild = client.guilds.find('id', '480549161201041418');
 	const inboxChannel = inboxGuild.channels.find('name', 'monomi-inbox');
-	inboxChannel.send(`Monomi has been turned on at ${currentDate.getTime()}.`);
+	inboxChannel.send(`Monomi has been turned on.`);
 	console.log("Monomi has arrived on the island!");
 	
 	const kaenoShinjomuServer = client.guilds.find('id', '455218035507331072')
 	const birthdayChannel = kaenoShinjomuServer.channels.find('name', 'birthdays');
-	if (birthdays.find(checkBirthdays) != undefined && birthdays.find(checkBirthdays) != null) {
+	if (birthdays.find(checkBirthdays) != undefined) {
 		todaysBirthday = birthdays.find(checkBirthdays);
-		birthdayChannel.send(`${todaysBirthday}`)
-		//birthdayChannel.send(`${todaysBirthday.name}'s birthday is today! Wish ${todaysBirthday.pronoun} a happy birthday!`);
+		birthdayChannel.send({
+			embed: {
+				"title": "Happy Birthday!",
+				"description": `${todaysBirthday.name}'s birthday is today! Wish ${todaysBirthday.pronoun} a happy birthday! @.everyone`,
+				"color": 15285149,
+				"thumbnail": {"url": "https://i.pinimg.com/originals/fe/28/11/fe2811dbce3c72825f1463761ad1f674.jpg"}
+			}
+		})
 	}
+	setTimeout(shutdown, 43200000); //12 Restart Period
 
 	client.user.setPresence({ //Sets Monomi's discord status
 		status: 'dnd',
@@ -1345,11 +1358,6 @@ client.on("message", (message) => { //When a message is sent.
 
 	//Admin Commands
 	if (command === "shutdown" || command === "s") {
-		function shutdown() {
-			console.log("");
-			console.log("Monomi has left the island!");
-			process.exit()
-		};
 		if (message.author.discriminator == '7134') {
 			inboxChannel.send("Monomi has been turned off.")
 			message.channel.send("Good night, everyone!  Love love!");
