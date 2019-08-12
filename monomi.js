@@ -538,8 +538,6 @@ client.on('guildMemberAdd', member => { //Upon the joining of a member to a guil
 
 let prefix = "m!"; //Sets the command prefix to m!
 client.on("message", (message) => { //When a message is sent.
-	currentDate = new Date();
-
 	if (message.author.bot === true) return; //If the message is from a bot, ignore it.
 
 	//Initializes the inbox location.
