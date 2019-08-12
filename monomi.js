@@ -490,7 +490,7 @@ const monomi_trial7 = "https://imgur.com/cP4pGHR.png" //Mushrooms BDSM
 const monomi_trial8 = "https://imgur.com/pDtdNiZ.png" //Scared BDSM
 
 client.on("ready", () => { //When Monomi is turned on.
-	const currentDate = new Date();
+	var currentDate = new Date();
 	
 	//Initializes the inbox location.
 	const inboxGuild = client.guilds.find('id', '480549161201041418');
