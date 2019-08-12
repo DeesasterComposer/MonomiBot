@@ -64,6 +64,11 @@ function shuffle(array) {
 	}
 	return array;
 };
+function checkBirthdays(birthday) {
+	let today = currentDate.getDate();
+	let month = currentDate.getMonth();
+	return  (birthday.day === today && birthday.month === month + 1);
+}
 
 /*Radio Variables*/ //NOW OBSOLETE
 var list = "";
@@ -74,6 +79,84 @@ var currentlyPlaying = null;
 
 /*Important Info*/
 var version = "3.0.2";
+
+/*Birthday Notifications*/
+const currentDate = new Date();
+const birthdays = [
+	{name:"Aika Mahaya",pronoun:"her",day:"21",month:"6"},
+	{name:"Anaelle Hamaan",pronoun:"her",day:"20",month:"6"},
+	{name:"Anya Sakaguchi and S'ad Ludópata",pronoun:"them both",day:"10",month:"4"},
+	{name:"Ara Ayao",pronoun:"her",day:"15",month:"8"},
+	{name:"Aurélie Cartier",pronoun:"her",day:"9",month:"1"},
+	{name:"Hachi Hiruma",pronoun:"her",day:"9",month:"11"},
+	{name:"Fenikku Hinotama, Jeong and Kyoung-mi Park",pronoun:"them all",day:"29",month:"5"},
+	{name:"Megu Kojima",pronoun:"her",day:"15",month:"4"},
+	{name:"Minako Kaoru",pronoun:"her",day:"7",month:"8"},
+	{name:"Mori Hibana",pronoun:"her",day:"4",month:"1"},
+	{name:"Noriko Suzuki",pronoun:"her",day:"9",month:"6"},
+	{name:"Stella Hunter",pronoun:"her",day:"24",month:"5"},
+	{name:"Hoshi Chiura and Tezuku Imou",pronoun:"them both",day:"31",month:"10"},
+	{name:"Ximena Colomar",pronoun:"her",day:"7",month:"2"},
+	{name:"Aiko Hikaru",pronoun:"him",day:"14",month:"6"},
+	{name:"Anzu Kofuku",pronoun:"him",day:"25",month:"1"},
+	{name:"Arisa Shokuhou and Cheisu Maeda",pronoun:"them both",day:"13",month:"11"},
+	{name:"Jacek Żeglarski",pronoun:"him",day:"3",month:"10"},
+	{name:"Kazuya Harada",pronoun:"him",day:"13",month:"8"},
+	{name:"Kiro Karasu",pronoun:"him",day:"17",month:"8"},
+	{name:"Masayuuki Taisho",pronoun:"him",day:"25",month:"11"},
+	{name:"Miyuki Ataru",pronoun:"him",day:"23",month:"7"},
+	{name:"Ryu Akahoshi",pronoun:"him",day:"6",month:"4"},
+	{name:"Kotone Fukuzawa and Shiba Mikio",pronoun:"them both",day:"4",month:"11"},
+	{name:"Tenshi Kawada",pronoun:"him",day:"11",month:"6"},
+	{name:"Théo Dubois",pronoun:"him",day:"27",month:"3"},
+	{name:"Yukine Sakurai",pronoun:"him",day:"13",month:"12"},
+	{name:"Akiko",pronoun:"her",day:"13",month:"3"},
+	{name:"Chika Miyasaki and Souma Shimizu",pronoun:"them both",day:"20",month:"3"},
+	{name:"Eiji Ryozo",pronoun:"her",day:"1",month:"11"},
+	{name:"Hana Kageriri",pronoun:"her",day:"12",month:"11"},
+	{name:"Kagami Hannei",pronoun:"her",day:"14",month:"9"},
+	{name:"Monika Minami",pronoun:"her",day:"1",month:"4"},
+	{name:"Kouki Yoshida and Saeko Kiyomizu",pronoun:"them both",day:"15",month:"9"},
+	{name:"Tsuyo Kogiyumi",pronoun:"her",day:"25",month:"8"},
+	{name:"Yuna Akahoshi",pronoun:"her",day:"25",month:"6"},
+	{name:"Ale del Prieto",pronoun:"him",day:"22",month:"5"},
+	{name:"Asahi Fukuzawa",pronoun:"him",day:"27",month:"8"},
+	{name:"Chikako Kaetsu",pronoun:"him",day:"26",month:"4"},
+	{name:"Eiichi Ryozo",pronoun:"him",day:"6",month:"6"},
+	{name:"Hideo Takayama",pronoun:"him",day:"2",month:"12"},
+	{name:"Isha Kalki",pronoun:"him",day:"31",month:"5"},
+	{name:"Kaipo Uilani Iona",pronoun:"him",day:"13",month:"10"},
+	{name:"Katashi Maeda",pronoun:"him",day:"20",month:"4"},
+	{name:"Kyabetsu Retasu",pronoun:"him",day:"17",month:"2"},
+	{name:"Michel Voigt and Ryoushi Nobuori",pronoun:"them both",day:"25",month:"12"},
+	{name:"Dia Ramos and Rosendo Paulo Ochoa Merlo",pronoun:"them both",day:"10",month:"8"},
+	{name:"Sora Kenshin",pronoun:"him",day:"1",month:"6"},
+	{name:"Tomomi Kashichi",pronoun:"him",day:"17",month:"4"},
+	{name:"Yuuya Michimiya",pronoun:"him",day:"13",month:"4"},
+	{name:"Aemele Dèjré",pronoun:"her",day:"1",month:"9"},
+	{name:"Kumiko Yeun",pronoun:"her",day:"16",month:"6"},
+	{name:"Inugami Izuki",pronoun:"her",day:"24",month:"3"},
+	{name:"Junko Saitou",pronoun:"her",day:"6",month:"1"},
+	{name:"Kira Kurushimi",pronoun:"her",day:"6",month:"1"},
+	{name:"Mariko Murakami",pronoun:"her",day:"12",month:"12"},
+	{name:"Megami Himura",pronoun:"her",day:"15",month:"5"},
+	{name:"Nikki Boniface",pronoun:"à elle",day:"8",month:"9"},
+	{name:"Piper McCullough",pronoun:"her",day:"23",month:"3"},
+	{name:"Renata de Santis",pronoun:"her",day:"11",month:"8"},
+	{name:"Areli Vephkia",pronoun:"him",day:"29",month:"10"},
+	{name:"Ayuma Tanaka",pronoun:"him",day:"17",month:"10"},
+	{name:"Cecilio Gonzalo Calles Cárdenas",pronoun:"him",day:"3",month:"5"},
+	{name:"Charles 'Chad' Miller",pronoun:"him",day:"11",month:"1"},
+	{name:"Daichi Ichihara",pronoun:"him",day:"23",month:"9"},
+	{name:"Federico Navarro",pronoun:"him",day:"16",month:"2"},
+	{name:"Jomei Hoshino",pronoun:"him",day:"17",month:"12"},
+	{name:"Melchor Guadalupe Paz de la Cruz",pronoun:"him",day:"29",month:"2"},
+	{name:"Ruslan Eun-Kyung Kraus",pronoun:"ihm",day:"2",month:"3"},
+	{name:"Santo Verdugo Bautista",pronoun:"him",day:"11",month:"2"},
+	{name:"Shinji Minoru",pronoun:"him",day:"27",month:"1"},
+	{name:"Wolfgang Schwarz",pronoun:"ihm",day:"7",month:"12"},
+	{name:"test",pronoun:"it",day:"12",month:"8"},
+]
 
 /*Murder Mystery*/
 MM_InProgress = false;
@@ -216,11 +299,11 @@ function generateOverlapClues(murderer, evidenceClue) { //Generates overlapping 
 		falseAnswer1 = students[72];
 		falseAnswer2 = students[67];
 	}
-	if ((murderer.name === "Yukine Sakurai" || murderer.name === "Kyabetsu Retesu") && evidenceClue === "A lotus petal was found near the victim.") {
+	if ((murderer.name === "Yukine Sakurai" || murderer.name === "Kyabetsu Retasu") && evidenceClue === "A lotus petal was found near the victim.") {
 		falseAnswer1 = students[29];
 		falseAnswer2 = students[46];
 	}
-	if ((murderer.name === "Kaipo Uilani Iona" || murderer.name === "Kyabetsu Retesu") && evidenceClue === "The footprints appear to be from flip flops.") {
+	if ((murderer.name === "Kaipo Uilani Iona" || murderer.name === "Kyabetsu Retasu") && evidenceClue === "The footprints appear to be from flip flops.") {
 		falseAnswer1 = students[43];
 		falseAnswer2 = students[46];
 	}
@@ -252,12 +335,12 @@ function generateOverlapClues(murderer, evidenceClue) { //Generates overlapping 
 		falseAnswer2 = students[2];
 		falseAnswer3 = students[16];
 	}
-	if ((murderer.name === "Yukine Sakurai" || murderer.name === "Kyabetsu Retesu" || murderer.name === "Shiba Mikio") && evidenceClue === "Flowers petals were found at the scene.") {
+	if ((murderer.name === "Yukine Sakurai" || murderer.name === "Kyabetsu Retasu" || murderer.name === "Shiba Mikio") && evidenceClue === "Flowers petals were found at the scene.") {
 		falseAnswer1 = students[29];
 		falseAnswer2 = students[46];
 		falseAnswer3 = students[23];
 	}
-	if ((murderer.name === "Yukine Sakurai" || murderer.name === "Kyabetsu Retesu" || murderer.name === "Megami Himura") && evidenceClue === "Rose petals were found around the victim's body.") {
+	if ((murderer.name === "Yukine Sakurai" || murderer.name === "Kyabetsu Retasu" || murderer.name === "Megami Himura") && evidenceClue === "Rose petals were found around the victim's body.") {
 		falseAnswer1 = students[29];
 		falseAnswer2 = students[46];
 		falseAnswer3 = students[71];
@@ -411,6 +494,13 @@ client.on("ready", () => { //When Monomi is turned on.
 	//Initializes the inbox location.
 	const inboxGuild = client.guilds.find('id', '480549161201041418');
 	const inboxChannel = inboxGuild.channels.find('name', 'monomi-inbox');
+	const birthdayChannel = client.guilds.find('id', '455218035507331072').channels.find('name', 'birthdays');
+	currentDate = new Date();
+	if (birthdays.find(checkBirthdays)) {
+		todaysBirthday = birthdays.find(checkBirthdays);
+		birthdayChannel.send(`${todaysBirthday}`)
+		birthdayChannel.send(`${todaysBirthday.name}'s birthday is today! Wish ${todaysBirthday.pronoun} a happy birthday!`);
+	}
 	//Notifies the console and inbox that Monomi has been activated.
 	console.log("");
 	console.log("Monomi has arrived on the island!");
@@ -445,6 +535,8 @@ client.on('guildMemberAdd', member => { //Upon the joining of a member to a guil
 
 let prefix = "m!"; //Sets the command prefix to m!
 client.on("message", (message) => { //When a message is sent.
+	currentDate = new Date();
+
 	if (message.author.bot === true) return; //If the message is from a bot, ignore it.
 
 	//Initializes the inbox location.
@@ -667,42 +759,6 @@ client.on("message", (message) => { //When a message is sent.
 		});
 		return
 	}
-
-	/*//SQLite stores levels, adds an XP point for every message, and notifies users when they level up.
-	sql.get(`SELECT * FROM scores WHERE userId ="${message.author.id}"`).then(row => {
-		if (!row) { //Initializes a row for a user if they do not currently have one.
-			sql.run("INSERT INTO scores (userId, points, level, cooldown, hopefragments) VALUES (?, ?, ?, ?, ?)", [message.author.id, 1, 0, 'hi', 0, ]);
-		} else { //If they do have one, however.
-			let curLevel = Math.floor(0.1 * Math.sqrt(row.points + 1));
-			if (curLevel > row.level) {
-				row.level = curLevel;
-				sql.run(`UPDATE scores SET points = ${row.points + 1}, level = ${row.level} WHERE userId = ${message.author.id}`);
-				if (message.guild.id === "405902161411833856") { //Gaymers
-					if (message.channel.name === "rants-and-vents" || message.channel.name === "introductions" || message.channel.name === "announcements-and-server-discussion" || message.channel.name === "rules" || message.channel.name === "server-info") {
-						return
-					} else {
-						message.reply(`you've leveled up to level **${curLevel}**! You're doing great! Keep it up!`);
-						message.channel.send({
-							embed: {
-								color: 15285149,
-								"image": {
-									"url": monomi_06
-								}
-							}
-						}).then(msg => {
-							msg.delete(10000)
-						});
-					}
-				}
-			}
-			sql.run(`UPDATE scores SET points = ${row.points + 1} WHERE userId = ${message.author.id}`);
-		}
-	}).catch(() => { //Initializes a row for a user if they do not currently have one.
-		console.error;
-		sql.run("CREATE TABLE IF NOT EXISTS scores (userId TEXT, points INTEGER, level INTEGER, cooldown TEXT, hopefragments INTEGER)").then(() => {
-			sql.run("INSERT INTO scores (userId, points, level, cooldown, hopefragments) VALUES (?, ?, ?, ?, ?)", [message.author.id, 1, 0, 'hi', 0]);
-		});
-	});*/
 
 	if (!message.content.startsWith(prefix)) return;
 	if (message.guild.id === "455218035507331072") { //Kaeno Shinjomu Discord
@@ -1587,7 +1643,7 @@ client.on("message", (message) => { //When a message is sent.
 				{ studentID: "Name: Kaipo Uilani Iona\nTalent: Birdwatcher\nSex: Male\nStatus: Rescued\n\nShoe Size: 7\nHeight: 5'2\"\nWeight: 98\nBlood Type: O\nBirthday: 10/13\nAge: 15", studentIDPicture: "https://imgur.com/WQFawIm.png" },
 				{ studentID: "Name: Katashi Maeda\nTalent: Swimmer\nSex: Male\nStatus: Rescued\n\nShoe Size: 9\nHeight: 5'8\"\nWeight: 157\nBlood Type: O\nBirthday: 04/20\nAge: 17", studentIDPicture: "" },
 				{ studentID: "Name: Kouki Yoshida\nTalent: Lucky Student\nSex: Male\nStatus: Terminated\n\nShoe Size: 9\nHeight: 5'11\"\nWeight: 140\nBlood Type: B\nBirthday: 09/15\nAge: 18", studentIDPicture: "https://imgur.com/jRRhUog.png" },
-				{ studentID: "Name: Kyabetsu Retesu\nTalent: Florist\nSex: Male\nStatus: Rescued\n\nShoe Size: 8\nHeight: 5'9\"\nWeight: 147\nBlood Type: AB\nBirthday: 02/17\nAge: 16", studentIDPicture: "https://imgur.com/CgLyIGN.png" },
+				{ studentID: "Name: Kyabetsu Retasu\nTalent: Florist\nSex: Male\nStatus: Rescued\n\nShoe Size: 8\nHeight: 5'9\"\nWeight: 147\nBlood Type: AB\nBirthday: 02/17\nAge: 16", studentIDPicture: "https://imgur.com/CgLyIGN.png" },
 				{ studentID: "Name: Michel Voigt\nTalent: Theologist\nSex: Male\nStatus: Rescued\n\nShoe Size: 8\nHeight: 5'5\"\nWeight: 119\nBlood Type: A\nBirthday: 12/25\nAge: 16", studentIDPicture: "" },
 				{ studentID: "Name: Rosendo Paulo Ochoa Merlo\nTalent: Fútbol Player\nSex: Male\nStatus: Rescued\n\nShoe Size: 5.5\nHeight: 5'1\"\nWeight: 110\nBlood Type: O\nBirthday: 08/10\nAge: 15", studentIDPicture: "https://imgur.com/uwXd769.png" },
 				{ studentID: "Name: Sora Kenshin\nAlias: The Silencer\nTalent: Daredevil\nSex: Male\nStatus: Rescued\n\nShoe Size: 11\nHeight: 5'9\"\nWeight: 120\nBlood Type: AB\nBirthday: 06/01\nAge: 17", studentIDPicture: "https://imgur.com/wdNGgRH.png" },
@@ -1598,13 +1654,13 @@ client.on("message", (message) => { //When a message is sent.
 			]
 		
 			if (args.length === 1) {
-				message.channel.send("```##  Sex and Name          Talent\n9   F Tsuyo Kogiyumi      Biologist\n12  M Asahi Fukuzawa      Violinist\n15  M Fenikku Hinotama    Ringmaster\n16  M Hideo Takayama      Inventor\n25  M Souma Shimizu       Manipulator (Poet)\n\n    Mastermind\n3   F Chika Miyasaki      Assassin\n\n    Deceased Students\n1   F Akiko _______       Clairvoyant\n2   F Arisa Shokuhou      Opera Singer\n4   F Eiji Ryozo          Surgeon\n5   F Hana Kageriri       Puppeteer\n6   F Kagami Hannei       Jeweler\n7   F Monika Minami       Bomb Maker\n8   F Saeko Kiyomizu      Maid\n10  F Yuna Akahoshi       Doll Maker\n11  M Ale del Prieto      Lawyer\n13  M Chikako Kaetsu      Conspiracy Theorist\n14  M Eiichi Ryozo        Chemist\n17  M Isha Kalki          Spy\n18  M Kaipo Uilani Iona   Birdwatcher\n19  M Katashi Maeda       Swimmer\n20  M Kouki Yoshida       Lucky Student\n21  M Kyabetsu Retesu     Florist\n22  M Michel Voigt        Theologist\n23  M Renzo Ochoa         Fútbol Player\n24  M Sora Kenshin        Daredevil\n26  M Tomomi Kashichi     Technician\n27  M Yuuya Michimiya     Philanthropist```");
+				message.channel.send("```##  Sex and Name          Talent\n9   F Tsuyo Kogiyumi      Biologist\n12  M Asahi Fukuzawa      Violinist\n15  M Fenikku Hinotama    Ringmaster\n16  M Hideo Takayama      Inventor\n25  M Souma Shimizu       Manipulator (Poet)\n\n    Mastermind\n3   F Chika Miyasaki      Assassin\n\n    Deceased Students\n1   F Akiko _______       Clairvoyant\n2   F Arisa Shokuhou      Opera Singer\n4   F Eiji Ryozo          Surgeon\n5   F Hana Kageriri       Puppeteer\n6   F Kagami Hannei       Jeweler\n7   F Monika Minami       Bomb Maker\n8   F Saeko Kiyomizu      Maid\n10  F Yuna Akahoshi       Doll Maker\n11  M Ale del Prieto      Lawyer\n13  M Chikako Kaetsu      Conspiracy Theorist\n14  M Eiichi Ryozo        Chemist\n17  M Isha Kalki          Spy\n18  M Kaipo Uilani Iona   Birdwatcher\n19  M Katashi Maeda       Swimmer\n20  M Kouki Yoshida       Lucky Student\n21  M Kyabetsu Retasu     Florist\n22  M Michel Voigt        Theologist\n23  M Renzo Ochoa         Fútbol Player\n24  M Sora Kenshin        Daredevil\n26  M Tomomi Kashichi     Technician\n27  M Yuuya Michimiya     Philanthropist```");
 				inboxChannel.send(`${message.author.username} has looked at the second class' roster.`);
 				return;
 			}
 			if (args[1].toLowerCase() === "total") {
 				message.channel.send("```##  Sex and Name        Shoe Size    Height    Weight    Blood Type    Birthday    Age    Talent\n9   F Tsuyo Kogiyumi    6            5'1\"      104       O             08/25       17     Biologist\n12  M Asahi Fukuzawa    10           5'7\"      124       O             08/27       18     Violinist\n15  M Fenikku Hinotama  8            5'1\"      95        O             05/29       14     Ringmaster\n16  M Hideo Takayama    10           6'2\"      193       AB            12/02       18     Inventor\n25  M Souma Shimizu     10           5'10\"     130       AB            03/20       17     Manipulator (Poet)\n\n    Mastermind\n3   F Chika Miyasaki    4            5'2\"      92        A             03/20       16     Assassin\n\n    Deceased Students\n1   F Akiko _______     6.5          5'4\"      103       B             03/13       16     Clairvoyant\n2   F Arisa Shokuhou    6            5'2\"      106       A             11/13       17     Opera Singer\n4   F Eiji Ryozo        8            5'7\"      111       B             11/01       16     Surgeon\n5   F Hana Kageriri     9            5'5\"      105       B             11/12       17     Puppeteer\n6   F Kagami Hannei     7.5          5'11\"     129       A             09/14       18     Jeweler\n7   F Monika Minami     6.5          4'9\"      80        AB            04/01       15     Bomb Maker\n8   F Saeko Kiyomizu    6/6.5        5'7\"      110       O             09/15       17     Maid```");
-				message.channel.send("```\n10  F Yuna Akahoshi     6            5'3\"      110       A             06/25       15     Doll Maker\n11  M Ale del Prieto    6            5'6\"      124       AB            05/22       18     Lawyer\n13  M Chikako Kaetsu    7.5          5'8\"      142       O             04/26       18     Conspiracy Theorist\n14  M Eiichi Ryozo      10           6'0\"      137       AB            06/06       18     Chemist\n17  M Isha Kalki        5            5'1\"      95        O             05/31       16     Spy\n18  M Kaipo Uilani Iona 7            5'2\"      98        O             10/13       15     Birdwatcher\n19  M Katashi Maeda     9            5'8\"      157       O             04/20       17     Swimmer\n20  M Kouki Yoshida     9            5'11\"     140       B             09/15       18     Lucky Student\n21  M Kyabetsu Retesu   8            5'9\"      147       AB            02/17       16     Florist\n22  M Michel Voigt      8            5'5\"      119       A             12/25       16     Theologist\n23  M Renzo Ochoa       5.5          5'1\"      110       O             08/10       15     Fútbol Player\n24  M Sora Kenshin      11           5'9\"      120       AB            06/01       17     Daredevil\n26  M Tomomi Kashichi   10.5         5'8\"      137       A             04/17       17     Technician\n27  M Yuuya Michimiya   9            5'6\"      148       AB            04/13       16     Philanthropist\n```");
+				message.channel.send("```\n10  F Yuna Akahoshi     6            5'3\"      110       A             06/25       15     Doll Maker\n11  M Ale del Prieto    6            5'6\"      124       AB            05/22       18     Lawyer\n13  M Chikako Kaetsu    7.5          5'8\"      142       O             04/26       18     Conspiracy Theorist\n14  M Eiichi Ryozo      10           6'0\"      137       AB            06/06       18     Chemist\n17  M Isha Kalki        5            5'1\"      95        O             05/31       16     Spy\n18  M Kaipo Uilani Iona 7            5'2\"      98        O             10/13       15     Birdwatcher\n19  M Katashi Maeda     9            5'8\"      157       O             04/20       17     Swimmer\n20  M Kouki Yoshida     9            5'11\"     140       B             09/15       18     Lucky Student\n21  M Kyabetsu Retasu   8            5'9\"      147       AB            02/17       16     Florist\n22  M Michel Voigt      8            5'5\"      119       A             12/25       16     Theologist\n23  M Renzo Ochoa       5.5          5'1\"      110       O             08/10       15     Fútbol Player\n24  M Sora Kenshin      11           5'9\"      120       AB            06/01       17     Daredevil\n26  M Tomomi Kashichi   10.5         5'8\"      137       A             04/17       17     Technician\n27  M Yuuya Michimiya   9            5'6\"      148       AB            04/13       16     Philanthropist\n```");
 				inboxChannel.send(`${message.author.username} has looked at the full version of the second class' roster.`);
 				return;
 			}
@@ -1831,7 +1887,7 @@ client.on("message", (message) => { //When a message is sent.
 			inboxChannel.send(`${message.author.username} has looked at ${args[1].toUpperCase().slice(0, 1)}${args[1].toLowerCase().slice(1)}'s file.`);
 		}
 		if (args[0] === "talents") {
-			message.channel.send("```Cl.  Talent               Name\n3    Activist             Melchor Guadalupe Paz de la Cruz\n1    Actress              Ara Ayao\n3    Adult Film Actress   Nikki Cox\n1    Animal Caretaker     Jacek Żeglarski\n1    Archer               Théo Dubois\n2    Assassin             Chika Miyasaki\n1    Astronomer           Hoshi Chiura\n1    Balance (Blogger)    Masayuuki Taisho\n1    Baseball Player      Miyuki Ataru\n2    Birdwatcher          Kaipo Uilani Iona\n2    Biologist            Tsuyo Kogiyumi\n1    Blogger (Balance)    Masayuuki Taisho\n2    Bomb Maker           Monika Minami\n1    Botanist             Yukine Sakurai\n1    Boxer                Tezuku Imou\n3    Cadet                Piper McCullough\n3    Cheerleader          Dia Ramos\n2    Chemist              Eiichi Ryozo\n1    Chess Champion       Noriko Suzuki\n2    Clairvoyant          Akiko\n3    Combat Medic         Wolfgang Schwarz\n2    Conspiracy Theorist  Chikako Kaetsu\n3    Coroner              Santo Verdugo Bautista\n3    Counselor            Ayuma Tanaka\n1    Counterfeiter        Anzu Kofuku\n1    Cryptologist         Hachi Hiruma\n1    Dancer               Ryu Akahoshi\n2    Daredevil            Sora Kenshin\n1    Detective            Cheisu Maeda\n1    Digital Composer     Aika Mahaya\n2    Doll Maker           Yuna Akahoshi\n1    Fashion Designer     Anaelle Hamaan\n1    Figure Skater        Aurélie Cartier\nX    Fire Dancer          Miyuki Hayashi\n2    Florist              Kyabetsu Retesu\n1    Fortnite Gamer       Stella Hunter\n2    Fútbol Player        Rosendo Paulo Ochoa Merlo\n1    Gambler              S'ad Ludópata\n3    Ghostwriter          Tenome\n3    Graffiti Artist      Inugami Uzuki\n1    Hacker               Ximena Colomar\n3    Heiress              Renata de Santis\n3    Horror Novelist      Junko Saitou\n1    Hypnotist            Mori Hibana```");
+			message.channel.send("```Cl.  Talent               Name\n3    Activist             Melchor Guadalupe Paz de la Cruz\n1    Actress              Ara Ayao\n3    Adult Film Actress   Nikki Cox\n1    Animal Caretaker     Jacek Żeglarski\n1    Archer               Théo Dubois\n2    Assassin             Chika Miyasaki\n1    Astronomer           Hoshi Chiura\n1    Balance (Blogger)    Masayuuki Taisho\n1    Baseball Player      Miyuki Ataru\n2    Birdwatcher          Kaipo Uilani Iona\n2    Biologist            Tsuyo Kogiyumi\n1    Blogger (Balance)    Masayuuki Taisho\n2    Bomb Maker           Monika Minami\n1    Botanist             Yukine Sakurai\n1    Boxer                Tezuku Imou\n3    Cadet                Piper McCullough\n3    Cheerleader          Dia Ramos\n2    Chemist              Eiichi Ryozo\n1    Chess Champion       Noriko Suzuki\n2    Clairvoyant          Akiko\n3    Combat Medic         Wolfgang Schwarz\n2    Conspiracy Theorist  Chikako Kaetsu\n3    Coroner              Santo Verdugo Bautista\n3    Counselor            Ayuma Tanaka\n1    Counterfeiter        Anzu Kofuku\n1    Cryptologist         Hachi Hiruma\n1    Dancer               Ryu Akahoshi\n2    Daredevil            Sora Kenshin\n1    Detective            Cheisu Maeda\n1    Digital Composer     Aika Mahaya\n2    Doll Maker           Yuna Akahoshi\n1    Fashion Designer     Anaelle Hamaan\n1    Figure Skater        Aurélie Cartier\nX    Fire Dancer          Miyuki Hayashi\n2    Florist              Kyabetsu Retasu\n1    Fortnite Gamer       Stella Hunter\n2    Fútbol Player        Rosendo Paulo Ochoa Merlo\n1    Gambler              S'ad Ludópata\n3    Ghostwriter          Tenome\n3    Graffiti Artist      Inugami Uzuki\n1    Hacker               Ximena Colomar\n3    Heiress              Renata de Santis\n3    Horror Novelist      Junko Saitou\n1    Hypnotist            Mori Hibana```");
 			return message.channel.send("```2    Jeweler              Kagami Hannei\n2    Inventor             Hideo Takayama\n2    Lawyer               Ale del Prieto\n3    Lion Tamer           Areli Vepkhia\n2    Lucky Student        Kouki Yoshida\n3    Luthier              Ruslan Eun-Kyung Kraus\n2    Maid                 Saeko Kiyomizu\n1    Makeup Artist        Aiko Hikaru\n3    Magical Girl         Kirakira Kyuti\n1    Magician             Anya Sakaguchi\n2    Manipulator (Poet)   Souma Shimizu\n3    Martial Artist       Mariko Nakamura\n1    Matchmaker           Shiba Mikio\n3    Milkman              Charles Miller\n1    Model                Megu Kojima\n3    Mythologist          Isago Achikita\n2    Opera Singer         Arisa Shokuhou\n3    Pianist              Federico Navarro\n3    Pilot                Cecilio Gonzalo Calles Cárdenas\n2    Philanthropist       Yuuya Michimiya\n3    Physicist            Shinji Minoru\n2    Poet (Manipulator)   Souma Shimizu\n1    Prince               Kiro Karasu\n2    Puppeteer            Hana Kageriri\n3    Pyromaniac           Jomei Hoshino\n2    Ringmaster           Fenikku Hinotama\n3    Rock Star            Kumiko Yeun\n3    Satanist             Daichi Ichihara\n1    Singer               Kyoung-mi Park\n2    Spy                  Isha Kalki\n3    Stalker              Aemele Dèjré\n3    Storyteller          Ryoushi Nobuori\n2    Surgeon              Eiji Ryozo\n2    Swimmer              Katashi Maeda\n1    Swordsman            Minako Kaoru\n2    Technician           Tomomi Kashichi\n1    Tennis Player        Jeong Park\n2    Theologist           Michel Voigt\n1    Therapist            Tenshi Kawada\n3    Tragedian            Megami Himura\n4    Voice Actor          Agnes María Camila Zalweski-Chavarría\n2    Violinist            Asahi Fukuzawa\n1    Woodworker           Kazuya Harada```");
 		}
 		if (page === 0) {
@@ -2915,7 +2971,7 @@ client.on("message", (message) => { //When a message is sent.
 				imgDead: "https://imgur.com/jRRhUog.png"
 			},
 			/*2*/ /*46*/ {
-				name: "Kyabetsu Retesu",
+				name: "Kyabetsu Retasu",
 				clues: ["green", "The murderer left a footprint in size **9 or 10 women's** and size **7 or 8 men's**.", "Rose petals were found around the victim's body.", "Flowers petals were found at the scene.", "The footprints appear to be from flip flops.", "A lotus petal was found near the victim.", "There is an apologetic note laid within the victim's hands, written in Japanese."],
 				img: "https://imgur.com/CgLyIGN.png",
 				imgDead: "https://imgur.com/bIJp1Pe.png"
@@ -3366,7 +3422,7 @@ client.on("message", (message) => { //When a message is sent.
 				if (murderer.name === "Sora Kenshin" && victim.name === "Chika Miyasaki") {
 					murderScene = "The Silencer killed Chika.";
 				}
-				if (murderer.name === "Isha Kalki" && victim.name === "Kyabetsu Retesu") {
+				if (murderer.name === "Isha Kalki" && victim.name === "Kyabetsu Retasu") {
 					murderScene = "Isha assisted Kyabetsu in killing himself.";
 				}
 
@@ -4948,7 +5004,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "self-fla·yor",
 				pronounce: "/ˌselfflāər/",
 				types: "noun",
-				definition: ["a homophobic person who is also gay, usually a man","a gay homophobic man."],
+				definition: ["a homophobic person who is also gay, usually a man.","a gay homophobic man."],
 				synonymof: ["gay homophobic"],
 				origin: ["self","flayorsman"]
 			},
@@ -5211,35 +5267,6 @@ client.on("message", (message) => { //When a message is sent.
 	if (command === "version" || command === "v") {
 		message.channel.send(`This is version ${version} of MonomiBot!`);
 	}
-	/*if (command === "rank") {
-		if (message.content.search("476831906835464205") != -1) return;
-		if (message.content.search("<@!") != -1 && message.content.search(message.author.id) === -1) {
-			sql.get(`SELECT * FROM scores WHERE userId ="${message.mentions.members.first().id}"`).then(row => {
-				message.channel.send(`${client.users.find('id', message.mentions.members.first().id).username}'s current level is ${row.level} and they have ${row.points} experience!`);
-			}).catch(() => {
-				sql.run("CREATE TABLE IF NOT EXISTS scores (userId TEXT, points INTEGER, level INTEGER, cooldown STRING, hopefragments INTEGER)").then(() => {
-					sql.run("INSERT INTO scores (userId, points, level, cooldown, hopefragments) VALUES (?, ?, ?, ?, ?)", [message.mentions.members.first().id, 1, 0, 'hi', 0]);
-				});
-				message.channel.send(`${client.users.find('id', message.mentions.members.first().id).username}'s current level is ${row.level} and they have ${row.points} experience!`);
-			})
-			inboxChannel.send(`${message.author.username} has asked Monomi about ${client.users.find('id', message.mentions.members.first().id).username}'s rank!`)
-		}
-		if (message.content.search(message.author.id) != -1 || args.length === 0 || (args.length > 0 && message.content.search("@") === -1)) {
-			sql.get(`SELECT * FROM scores WHERE userId ="${message.author.id}"`).then(row => {
-				message.channel.send(`Your current level is ${row.level} and you have ${row.points} experience!`);
-			}).catch(() => {
-				sql.run("CREATE TABLE IF NOT EXISTS scores (userId TEXT, points INTEGER, level INTEGER, cooldown STRING, hopefragments INTEGER)").then(() => {
-					sql.run("INSERT INTO scores (userId, points, level, cooldown, hopefragments) VALUES (?, ?, ?, ?, ?)", [message.author.id, 1, 0, 'hi', 0]);
-				});
-				message.channel.send(`Your current level is ${row.level} and you have ${row.points} experience!`);
-			})
-			inboxChannel.send(`${message.author.username} has asked Monomi about their rank!`)
-		}
-		if (message.content.search("@everyone") != -1 || message.content.search("@here") != -1) {
-			inboxChannel.send(`${message.author.username} has tried to check the rank of everyone.`)
-			message.channel.send("You can't check everyone's level!")
-		}
-	}*/
 	if (command === "credits") {
 		message.channel.send({
 			embed: {
@@ -5253,7 +5280,7 @@ client.on("message", (message) => { //When a message is sent.
 		})
 	}
 
-	//Radio
+	//Radio //Now obsolete
 	if (!servers[message.guild.id]) servers[message.guild.id] = {
 		queue: []
 	}
