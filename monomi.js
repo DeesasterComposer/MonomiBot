@@ -499,11 +499,11 @@ client.on("ready", () => { //When Monomi is turned on.
 
 	const kaenoShinjomuServer = client.guilds.find('id', '455218035507331072')
 	const birthdayChannel = kaenoShinjomuServer.channels.find('name', 'birthdays');
-	/*if (birthdays.find(checkBirthdays) != undefined && birthdays.find(checkBirthdays) != null) {
+	if (birthdays.find(checkBirthdays) != undefined && birthdays.find(checkBirthdays) != null) {
 		todaysBirthday = birthdays.find(checkBirthdays);
 		birthdayChannel.send(`${todaysBirthday}`)
-		birthdayChannel.send(`${todaysBirthday.name}'s birthday is today! Wish ${todaysBirthday.pronoun} a happy birthday!`);
-	}*/
+		//birthdayChannel.send(`${todaysBirthday.name}'s birthday is today! Wish ${todaysBirthday.pronoun} a happy birthday!`);
+	}
 
 	client.user.setPresence({ //Sets Monomi's discord status
 		status: 'dnd',
