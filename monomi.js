@@ -86,7 +86,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "test from bot";
+var version = "3.1.0";
 
 /*Birthday Notifications*/
 var currentDate = new Date();
@@ -4519,6 +4519,15 @@ client.on("message", (message) => { //When a message is sent.
 				origin: ["comrade", "pride"]
 			},
 			{
+				word: "concreate",
+				syllables: "con·cre·ate",
+				pronounce: "/känkrēˈāt/",
+				types: "verb",
+				definition: ["create (something) out of lies.","falsify information."],
+				synonymof: ["lie","falsify","forge","fib","fabricate"],
+				origin: ["con","create"]
+			},
+			{
 				word: "cudpanion",
 				syllables: "cud pan ion",
 				pronounce: "/ˈkədˈpanyən/",
@@ -5012,6 +5021,15 @@ client.on("message", (message) => { //When a message is sent.
 				definition: ["a homophobic person who is also gay, usually a man.","a gay homophobic man."],
 				synonymof: ["gay homophobic"],
 				origin: ["self","flayorsman"]
+			},
+			{
+				word: "soulsman",
+				syllables: "souls·man",
+				pronounce: "/sōlzmən/",
+				types: "noun",
+				definition: ["person, living or deceased."],
+				synonymof: false,
+				origin: ["soul","human"]
 			},
 			{
 				word: "spendable",
