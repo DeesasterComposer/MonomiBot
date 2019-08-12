@@ -495,15 +495,16 @@ client.on("ready", () => { //When Monomi is turned on.
 	const inboxGuild = client.guilds.find('id', '480549161201041418');
 	const inboxChannel = inboxGuild.channels.find('name', 'monomi-inbox');
 	inboxChannel.send("Monomi has been turned on.")
-	
+
 	const kaenoShinjomuServer = client.guilds.find('id', '455218035507331072')
 	const birthdayChannel = kaenoShinjomuServer.channels.find('name', 'birthdays');
-	currentDate = new Date();
+	/*currentDate = new Date();
 	if (birthdays.find(checkBirthdays) != undefined && birthdays.find(checkBirthdays) != null) {
 		todaysBirthday = birthdays.find(checkBirthdays);
 		birthdayChannel.send(`${todaysBirthday}`)
 		birthdayChannel.send(`${todaysBirthday.name}'s birthday is today! Wish ${todaysBirthday.pronoun} a happy birthday!`);
-	}
+	}*/
+
 	//Notifies the console and inbox that Monomi has been activated.
 	console.log("");
 	console.log("Monomi has arrived on the island!");
