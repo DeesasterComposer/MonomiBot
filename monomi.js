@@ -511,7 +511,7 @@ client.on("ready", () => { //When Monomi is turned on.
 		birthdayChannel.send({
 			embed: {
 				"title": "Happy Birthday!",
-				"description": `${todaysBirthday.name}'s birthday is today! Wish ${todaysBirthday.pronoun} a happy birthday! @.everyone`,
+				"description": `${todaysBirthday.name}'s birthday is today! Wish ${todaysBirthday.pronoun} a happy birthday! @everyone`,
 				"color": 15285149,
 				"thumbnail": {"url": "https://i.pinimg.com/originals/fe/28/11/fe2811dbce3c72825f1463761ad1f674.jpg"}
 			}
