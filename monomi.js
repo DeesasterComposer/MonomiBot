@@ -81,7 +81,6 @@ var currentlyPlaying = null;
 var version = "3.1.0";
 
 /*Birthday Notifications*/
-const currentDate = new Date();
 const birthdays = [
 	{name:"Aika Mahaya",pronoun:"her",day:"21",month:"6"},
 	{name:"Anaelle Hamaan",pronoun:"her",day:"20",month:"6"},
@@ -491,12 +490,14 @@ const monomi_trial7 = "https://imgur.com/cP4pGHR.png" //Mushrooms BDSM
 const monomi_trial8 = "https://imgur.com/pDtdNiZ.png" //Scared BDSM
 
 client.on("ready", () => { //When Monomi is turned on.
+	const currentDate = new Date();
+	
 	//Initializes the inbox location.
 	const inboxGuild = client.guilds.find('id', '480549161201041418');
 	const inboxChannel = inboxGuild.channels.find('name', 'monomi-inbox');
 	inboxChannel.send(`Monomi has been turned on at ${currentDate.getTime()}.`);
 	console.log("Monomi has arrived on the island!");
-
+	
 	const kaenoShinjomuServer = client.guilds.find('id', '455218035507331072')
 	const birthdayChannel = kaenoShinjomuServer.channels.find('name', 'birthdays');
 	if (birthdays.find(checkBirthdays) != undefined && birthdays.find(checkBirthdays) != null) {
