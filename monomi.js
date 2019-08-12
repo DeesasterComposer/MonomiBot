@@ -494,7 +494,8 @@ client.on("ready", () => { //When Monomi is turned on.
 	//Initializes the inbox location.
 	const inboxGuild = client.guilds.find('id', '480549161201041418');
 	const inboxChannel = inboxGuild.channels.find('name', 'monomi-inbox');
-	const birthdayChannel = client.guilds.find('id', '455218035507331072').channels.find('name', 'birthdays');
+	const kaenoShinjomuServer = client.guilds.find('id', '455218035507331072')
+	const birthdayChannel = kaenoShinjomuServer.channels.find('name', 'birthdays');
 	currentDate = new Date();
 	if (birthdays.find(checkBirthdays)) {
 		todaysBirthday = birthdays.find(checkBirthdays);
