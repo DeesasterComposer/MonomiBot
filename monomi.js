@@ -494,23 +494,19 @@ client.on("ready", () => { //When Monomi is turned on.
 	//Initializes the inbox location.
 	const inboxGuild = client.guilds.find('id', '480549161201041418');
 	const inboxChannel = inboxGuild.channels.find('name', 'monomi-inbox');
-	inboxChannel.send("Monomi has been turned on.")
+	inboxChannel.send("Monomi has been turned on.");
+	console.log("Monomi has arrived on the island!");
 
 	const kaenoShinjomuServer = client.guilds.find('id', '455218035507331072')
 	const birthdayChannel = kaenoShinjomuServer.channels.find('name', 'birthdays');
-	/*currentDate = new Date();
-	if (birthdays.find(checkBirthdays) != undefined && birthdays.find(checkBirthdays) != null) {
+	currentDate = new Date();
+	/*if (birthdays.find(checkBirthdays) != undefined && birthdays.find(checkBirthdays) != null) {
 		todaysBirthday = birthdays.find(checkBirthdays);
 		birthdayChannel.send(`${todaysBirthday}`)
 		birthdayChannel.send(`${todaysBirthday.name}'s birthday is today! Wish ${todaysBirthday.pronoun} a happy birthday!`);
 	}*/
 
-	//Notifies the console and inbox that Monomi has been activated.
-	console.log("");
-	console.log("Monomi has arrived on the island!");
-	console.log("");
-	//Sets Monomi's discord status
-	client.user.setPresence({
+	client.user.setPresence({ //Sets Monomi's discord status
 		status: 'dnd',
 		game: {
 			name: "Try 'm!help'!"
