@@ -78,7 +78,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.0.2";
+var version = "3.1.0";
 
 /*Birthday Notifications*/
 const currentDate = new Date();
@@ -499,7 +499,6 @@ client.on("ready", () => { //When Monomi is turned on.
 
 	const kaenoShinjomuServer = client.guilds.find('id', '455218035507331072')
 	const birthdayChannel = kaenoShinjomuServer.channels.find('name', 'birthdays');
-	currentDate = new Date();
 	/*if (birthdays.find(checkBirthdays) != undefined && birthdays.find(checkBirthdays) != null) {
 		todaysBirthday = birthdays.find(checkBirthdays);
 		birthdayChannel.send(`${todaysBirthday}`)
