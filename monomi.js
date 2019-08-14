@@ -517,7 +517,7 @@ client.on("ready", () => { //When Monomi is turned on.
 			}
 		})
 	}
-	setTimeout(shutdown, 43200000); //12 Restart Period
+	setTimeout(shutdown, 86400000); //24 Restart Period
 
 	client.user.setPresence({ //Sets Monomi's discord status
 		status: 'dnd',
