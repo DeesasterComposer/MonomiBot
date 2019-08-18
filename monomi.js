@@ -4468,10 +4468,19 @@ client.on("message", (message) => { //When a message is sent.
 				word: "beforenoon",
 				syllables: "be·fore·noon",
 				pronounce: "/bəˈfôrno͞on/",
+				types: "noun",
+				definition: ["the time from dawn or morning to noon or lunchtime."],
+				synonymof: ["morning", "dawn"],
+				origin: ["before", "noon"]
+			},
+			{
+				word: "beforenoon",
+				syllables: "be·fore·noon",
+				pronounce: "/bəˈfôrno͞on/",
 				types: "adverb",
 				definition: ["in the beforenoon; every beforenoon."],
-				synonymof: ["morning","dawn"],
-				origin: ["before","noon"]
+				synonymof: false,
+				origin: false
 			},
 			{
 				word: "beforenoon",
@@ -4479,17 +4488,8 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/bəˈfôrno͞on/",
 				types: "exclamation",
 				definition: ["short for **good beforenoon**."],
-				synonymof: ["morning","dawn"],
-				origin: ["before","noon"]
-			},
-			{
-				word: "beforenoon",
-				syllables: "be·fore·noon",
-				pronounce: "/bəˈfôrno͞on/",
-				types: "noun",
-				definition: ["the time from dawn or morning to noon or lunchtime."],
-				synonymof: ["morning","dawn"],
-				origin: ["before","noon"]
+				synonymof: false,
+				origin: false
 			},
 			{
 				word: "behidger",
