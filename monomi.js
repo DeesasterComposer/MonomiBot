@@ -4411,6 +4411,15 @@ client.on("message", (message) => { //When a message is sent.
 				origin: ["acomfort"]
 			},
 			{
+				word: "affectioner",
+				syllables: "af·fec·tion·er",
+				pronounce: "/əˈfekSH(ə)nər/",
+				types: "noun",
+				definition: ["a person who brings happiness or love to another.","someone who bears gifts."],
+				synonymof: ["friend","giftbearer"],
+				origin: ["affection","bringer"]
+			},
+			{
 				word: "alipart",
 				syllables: "al·i·part",
 				pronounce: "/ˈaləˈpärt/",
@@ -4454,6 +4463,33 @@ client.on("message", (message) => { //When a message is sent.
 				definition: ["be in bad shape, usually by way of violence and battery."],
 				synonymof: ["beat","batter","abuse","damage"],
 				origin: ["beat","abuse"]
+			},
+			{
+				word: "beforenoon",
+				syllables: "be·fore·noon",
+				pronounce: "/bəˈfôrno͞on/",
+				types: "adverb",
+				definition: ["in the beforenoon; every beforenoon."],
+				synonymof: ["morning","dawn"],
+				origin: ["before","noon"]
+			},
+			{
+				word: "beforenoon",
+				syllables: "be·fore·noon",
+				pronounce: "/bəˈfôrno͞on/",
+				types: "exclamation",
+				definition: ["short for **good beforenoon**."],
+				synonymof: ["morning","dawn"],
+				origin: ["before","noon"]
+			},
+			{
+				word: "beforenoon",
+				syllables: "be·fore·noon",
+				pronounce: "/bəˈfôrno͞on/",
+				types: "noun",
+				definition: ["the time from dawn or morning to noon or lunchtime."],
+				synonymof: ["morning","dawn"],
+				origin: ["before","noon"]
 			},
 			{
 				word: "behidger",
