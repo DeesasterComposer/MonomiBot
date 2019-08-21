@@ -86,7 +86,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.1.2.1";
+var version = "3.1.3.0";
 
 /*Birthday Notifications*/
 var currentDate = new Date();
@@ -1359,19 +1359,27 @@ client.on("message", (message) => { //When a message is sent.
 	//Admin Commands
 	if (command === "shutdown" || command === "s") {
 		if (message.author.discriminator == '7134') {
-			inboxChannel.send("Monomi has been turned off.")
-			message.channel.send("Good night, everyone!  Love love!");
-			message.channel.send({
-				embed: {
-					color: 15285149,
-					"image": {
-						"url": monomi_05
-					}
+			if (args[0] && args[0] === "schedule") {
+				if (args[1] && Number.isInteger(args[1] * 1) === true) {
+					timeoutValue = (args[1] * 1) * 60000;
+					setTimeout(shutdown, timeoutValue);
+					message.channel.send(`Understood! In ${args[1]} minute(s), or ${timeoutValue} milliseconds, I will restart!`);
 				}
-			}).then(msg => {
-				msg.delete(5000)
-			});
-			setTimeout(shutdown, 6000);
+			}
+			else {
+				message.channel.send("Good night, everyone!  Love love!");
+				message.channel.send({
+					embed: {
+						color: 15285149,
+						"image": {
+							"url": monomi_05
+						}
+					}
+				}).then(msg => {
+					msg.delete(5000)
+				});
+				setTimeout(shutdown, 6000);
+			}
 		} else {
 			message.channel.send("Only Dee can shut me off, silly!");
 			message.channel.send({
@@ -4760,6 +4768,15 @@ client.on("message", (message) => { //When a message is sent.
 				definition: ["something that is difficult to overcome."],
 				synonymof: ["obstacle","hardship","complication"],
 				origin: ["hardship","coming"]
+			},
+			{
+				word: "homemake",
+				syllables: "home·make",
+				pronounce: "/hōmmāk/",
+				types: "verb",
+				definition: ["turn a place into an environment suitable for living","settle somewhere"],
+				synonymof: ["inhabit","settle"],
+				origin: false,
 			},
 			{
 				word: "hospitareousness",
