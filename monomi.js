@@ -86,7 +86,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.1.3.0";
+var version = "3.1.3.1";
 
 /*Birthday Notifications*/
 var currentDate = new Date();
@@ -4966,6 +4966,15 @@ client.on("message", (message) => { //When a message is sent.
 				definition: ["to be of a nature that is seemingly supernatural yet partially explainable."],
 				synonymof: false,
 				origin: ["paranormal", "phenomenal"]
+			},
+			{
+				word: "personage",
+				syllables: "personage",
+				pronounce: "/ˈpərs(ə)näj,ˈpərs(ə)näZH/",
+				types: "noun",
+				definition: ["areas of storage on one's body.","places on clothing where objects may be stored."],
+				synonymof: ["pockets","storage","baggage"],
+				origin: ["person","baggage"]
 			},
 			{
 				word: "pixelography",
