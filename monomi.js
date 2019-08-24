@@ -86,7 +86,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.1.4.1";
+var version = "3.1.4.2";
 
 /*Birthday Notifications*/
 var currentDate = new Date();
@@ -1912,8 +1912,12 @@ client.on("message", (message) => { //When a message is sent.
 		}
 		else { //DR:GA Roster
 			classList = [
+				{ studentID: "Name: Chava Hazzan\nOnline Alias: crawler190\nTalent: ARG Developer\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 4'9\"\nWeight: 90\nBlood Type: O\nBirthday: 10/28\nAge: 17", studentIDPicture: "" },
 				{ studentID: "Name: Kiku Sugimoto\nOnline Alias: DELTA\nTalent: Video Game Designer\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'7\"\nWeight: 138\nBlood Type: B\nBirthday: 06/08\nAge: 17", studentIDPicture: "https://imgur.com/qn0mdbM.png" },
 				{ studentID: "Name: Mori Hibana\nTalent: Hypnotist\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'7\"\nWeight: 142\nBlood Type: B\nBirthday: 01/04\nAge: 17", studentIDPicture: "https://imgur.com/AFaAdCo.png" },
+				{ studentID: "Name: Piper McCullough\nTalent: Cadet\nSex: Female\nStatus: Deceased\n\nShoe Size: 5\nHeight: 5'1\"\nWeight: 102\nBlood Type: O\nBirthday: 03/23\nAge: 15", studentIDPicture: "https://imgur.com/yuOgons.png" },
+				{ studentID: "Name: Adam Satou\nTalent: Stenographer\nSex: Male\nStatus: Alive\n\nShoe Size: \nHeight: #'#\"\nWeight: ###\nBlood Type: _\nBirthday: ##/##\nAge: 1#", studentIDPicture: "" },
+				{ studentID: "Name: Kaoru Saitou\nTalent: Survivalist\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 5'10\"\nWeight: 150\nBlood Type: AB\nBirthday: 07/04\nAge: 16", studentIDPicture: "" },
 			]
 
 			if (args.length === 0) {
@@ -1939,8 +1943,12 @@ client.on("message", (message) => { //When a message is sent.
 				x++;
 			}
 
-			if (args[0].toLowerCase().search("kiku") != -1 || args[0].toLowerCase().search("delta") != -1) { page = 1 }
-			if (args[0].toLowerCase().search("mori") != -1) { page = 2 }
+			if (args[0].toLowerCase().search("chava") != -1) { page = 1 }
+			if (args[0].toLowerCase().search("kiku") != -1 || args[0].toLowerCase().search("delta") != -1) { page = 2 }
+			if (args[0].toLowerCase().search("mori") != -1) { page = 3 }
+			if (args[0].toLowerCase().search("piper") != -1) { page = 4 }
+			if (args[0].toLowerCase().search("adam") != -1) { page = 5 }
+			if (args[0].toLowerCase().search("kaoru") != -1) { page = 6 }
 			inboxChannel.send(`${message.author.username} has looked at ${args[0].toUpperCase().slice(0, 1)}${args[0].toLowerCase().slice(1)}'s file.`);
 		}
 		if (page === 0) {
