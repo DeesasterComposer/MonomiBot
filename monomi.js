@@ -1927,7 +1927,7 @@ client.on("message", (message) => { //When a message is sent.
 				return;
 			}
 
-			let pageAmount = 1;
+			let pageAmount = classList.length;
 			let x = 0;
 			while (x < pageAmount) {
 				thumbnail = classList[x].studentIDPicture;
