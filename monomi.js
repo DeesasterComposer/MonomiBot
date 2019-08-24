@@ -1540,7 +1540,7 @@ client.on("message", (message) => { //When a message is sent.
 		let page = 0;
 
 		studentID = "";
-		if (message.guild.id != "598739324464267274" && message.guild.id != "480549161201041418") { //All but GA server
+		if (message.guild.id != "598739324464267274") { //All but GA server
 			if (args.length < 1 || args[0] != "1" && args[0] != "2" && args[0] != "3" && args[0] != "4" && args[0].toLowerCase() != "u" && args[0].toLowerCase() != "talents") {
 				return message.channel.send("Please specify which class (1, 2, 3, 4, U, or talents) you're checking the roster for!")
 			}
