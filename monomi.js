@@ -86,7 +86,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.1.3.1";
+var version = "3.1.4.0";
 
 /*Birthday Notifications*/
 var currentDate = new Date();
@@ -781,7 +781,12 @@ client.on("message", (message) => { //When a message is sent.
 	}
 	if (message.guild.id === "405902161411833856") { //Gaymers
 		if (message.channel.name === "rants-and-vents" || message.channel.name === "introductions" || message.channel.name === "announcements-and-server-discussion" || message.channel.name === "rules" || message.channel.name === "server-info") {
-			return
+			return;
+		}
+	}
+	if (message.guild.id === "598739324464267274") { //DR:GA Server
+		if (message.channel.name === "rants-and-vents") {
+			return;
 		}
 	}
 
@@ -1535,373 +1540,406 @@ client.on("message", (message) => { //When a message is sent.
 		let page = 0;
 
 		studentID = "";
-		if (args.length < 1 || args[0] != "1" && args[0] != "2" && args[0] != "3" && args[0] != "4" && args[0].toLowerCase() != "u" && args[0].toLowerCase() != "talents") {
-			return message.channel.send("Please specify which class (1, 2, 3, 4, U, or talents) you're checking the roster for!")
-		}
-		if (args[0] === "1") { //Class 01 (Kaeno Shinjomu Academy, The Killing School Game)
-			classList = [
-				{ studentID: "Name: Aika Mahaya\nTalent: Digital Composer\nSex: Female\nStatus: Deceased\n\nShoe Size: 9\nHeight: 5'6\"\nWeight: 137\nBlood Type: B\nBirthday: 06/21\nAge: 17", studentIDPicture: "https://imgur.com/sGjckJ3.png" },
-				{ studentID: "Name: Anaelle Hamaan\nTalent: Fashion Designer\nSex: Female\nStatus: Unknown\n\nShoe Size: Unavailable\nHeight: 5'2\"\nWeight: 104\nBlood Type: AB\nBirthday: 06/20\nAge: 16", studentIDPicture: "https://imgur.com/4HOZ1QT.png" },
-				{ studentID: "Name: Anya Sakaguchi\nTalent: Magician\nSex: Female\nStatus: Deceased\n\nShoe Size: Unavailable\nHeight: 5'4\"\nWeight: 104\nBlood Type: B\nBirthday: 04/10\nAge: 14", studentIDPicture: "" },
-				{ studentID: "Name: Ara Ayao\nTalent: Actress\nSex: Female\nStatus: Deceased\n\nShoe Size: 7\nHeight: 5'8\"\nWeight: 115\nBlood Type: B\nBirthday: 08/15\nAge: 17", studentIDPicture: "https://imgur.com/3fZhaHt.png" },
-				{ studentID: "Name: Aurélie Cartier\nTalent: Figure Skater\nSex: Female\nStatus: Deceased\n\nShoe Size: 7\nHeight: 5'7\"\nWeight: 115\nBlood Type: A\nBirthday: 01/09\nAge: 17", studentIDPicture: "" },
-				{ studentID: "Name: Hachi Hiruma\nTalent: Cryptologist\nSex: Female\nStatus: Deceased\n\nShoe Size: 7.5\nHeight: 5'7\"\nWeight: 139\nBlood Type: A\nBirthday: 11/09\nAge: 17\n\n\nPeed Herself: 13 Times", studentIDPicture: "https://imgur.com/GFrnNjz.png" },
-				{ studentID: "Name: Jeong Park\nTalent: Tennis Player\nSex: Female\nStatus: Deceased\n\nShoe Size: 6\nHeight: 5'5\"\nWeight: 105\nBlood Type: O\nBirthday: 05/29\nAge: 16", studentIDPicture: "https://imgur.com/JK7VKYy.png" },
-				{ studentID: "Name: Kyoung-mi Park\nTalent: Singer\nSex: Female\nStatus: Deceased\n\nShoe Size: 6\nHeight: 5'5\"\nWeight: 105\nBlood Type: O\nBirthday: 05/29\nAge: 16", studentIDPicture: "https://imgur.com/fZoA401.png" },
-				{ studentID: "Name: Megu Kojima\nTalent: Model\nSex: Female\nStatus: Deceased\n\nShoe Size: 6\nHeight: 5'5\"\nWeight: 99\nBlood Type: O\nBirthday: 04/15\nAge: 17", studentIDPicture: "" },
-				{ studentID: "Name: Minako Kaoru\nTalent: Swordsman\nSex: Female\nStatus: Deceased\n\nShoe Size: Unavailable\nHeight: 5'8\"\nWeight: 120\nBlood Type: O\nBirthday: 08/07\nAge: 16", studentIDPicture: "" },
-				{ studentID: "Name: Mori Hibana\nTalent: Hypnotist\nSex: Female\nStatus: Rescued\n\nShoe Size: 8\nHeight: 5'9\"\nWeight: 131\nBlood Type: B\nBirthday: 05/08\nAge: 17", studentIDPicture: "https://imgur.com/AFaAdCo.png" },
-				{ studentID: "Name: Noriko Suzuki\nTalent: Chess Champion\nSex: Female\nStatus: Deceased\n\nShoe Size: 7\nHeight: 5'3\"\nWeight: 110\nBlood Type: A\nBirthday: 06/09\nAge: 14", studentIDPicture: "" },
-				{ studentID: "Name: Stella Hunter\nTalent: Fortnite Gamer\nSex: Female\nStatus: Deceased\n\nShoe Size: Unavailable\nHeight: 5'2\"\nWeight: 102\nBlood Type: A\nBirthday: 05/24\nAge: 15\n\n\nFortnite Statistics:\nWins: 5,562\nMatches: 13,192\nWin %: 42.16\nKills: 107,180\nK/D: 14.05", studentIDPicture: "" },
-				{ studentID: "Name: Tezuku Imou\nTalent: Boxer\nSex: Female\nStatus: Deceased\n\nShoe Size: Unavailable\nHeight: 5'5\"\nWeight: 146\nBlood Type: O\nBirthday: 10/31\nAge: 16", studentIDPicture: "https://imgur.com/vqxvUSV.png"},
-				{ studentID: "Name: Ximena Colomar\nTalent: Hacker\nSex: Female\nStatus: Deceased\n\nShoe Size: 7\nHeight: 5'3\"\nWeight: 132\nBlood Type: O\nBirthday: 02/07\nAge: 17", studentIDPicture: "" },
-				{ studentID: "Name: Aiko Hikaru\nTalent: Makeup Artist\nSex: Male\nStatus: Deceased\n\nShoe Size: 8\nHeight: 5'8\"\nWeight: 135\nBlood Type: O\nBirthday: 06/14\nAge: 17", studentIDPicture: "https://imgur.com/9e2GDAr.png" },
-				{ studentID: "Name: Anzu Kofuku\nTalent: Counterfeiter\nSex: Male\nStatus: Deceased\n\nShoe Size: Unavailable\nHeight: 5'11\"\nWeight: 159\nBlood Type: AB\nBirthday: 01/25\nAge: 18", studentIDPicture: "" },
-				{ studentID: "Name: Cheisu Maeda\nTalent: Detective\nSex: Male\nStatus: Deceased\n\nShoe Size: 11\nHeight: 6'1\"\nWeight: 149\nBlood Type: B\nBirthday: 11/13\nAge: 17", studentIDPicture: "https://imgur.com/IaXHEeK.png" },
-				{ studentID: "Name: Hoshi Chiura\nTalent: Astronomer\nSex: Male\nStatus: Deceased\n\nShoe Size: 8\nHeight: 5'5\"\nWeight: 110\nBlood Type: A\nBirthday: 10/31\nAge: 16\n\n\nThree of Sevens:\nHoshi Chiura\nMasayuuki Taisho\nShiba Mikio", studentIDPicture: "https://imgur.com/OBjKPR9.png" },
-				{ studentID: "Name: Jacek Żeglarski\nTalent: Animal Caretaker\nSex: Male\nStatus: Deceased\n\nShoe Size: 10\nHeight: 5'8\"\nWeight: 162\nBlood Type: AB\nBirthday: 10/03\nAge: 15", studentIDPicture: "" },
-				{ studentID: "Name: Kazuya Harada\nTalent: Woodworker\nSex: Male\nStatus: Deceased\n\nShoe Size: Unavailable\nHeight: 5'9\"\nWeight: 145\nBlood Type: O\nBirthday: 08/13\nAge: 16", studentIDPicture: "" },
-				{ studentID: "Name: Kiro Karasu\nTalent: Prince\nSex: Male\nStatus: Deceased\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 130\nBlood Type: O\nBirthday: 08/17\nAge: 17", studentIDPicture: "https://imgur.com/v7vk5gF.png" },
-				{ studentID: "Name: Masayuuki Taisho\nTalent: Balance (Blogger)\nSex: Male\nStatus: Deceased\n\nShoe Size: 9\nHeight: 5'6\"\nWeight: 120\nBlood Type: AB\nBirthday: 11/25\nAge: 16", studentIDPicture: "https://imgur.com/CLYSgcS.png" },
-				{ studentID: "Name: Miyuki Ataru\nTalent: Baseball Player\nSex: Male\nStatus: Deceased\n\nShoe Size: Unavailable\nHeight: 6'2\"\nWeight: 140\nBlood Type: B\nBirthday: 07/23\nAge: 17", studentIDPicture:""},
-				{ studentID: "Name: Ryu Akahoshi\nTalent: Dancer\nSex: Male\nStatus: Rescued\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 150\nBlood Type: O\nBirthday: 04/06\nAge: 16", studentIDPicture: "" },
-				{ studentID: "Name: S'ad Ludópata\nTalent: Gambler\nSex: Male\nStatus: Deceased\n\nShoe Size: 10\nHeight: 6'0\"\nWeight: 144\nBlood Type: O\nBirthday: 04/10\nAge: 17\n\n\nRoyal Flush:\nCheisu Maeda, Detective (Ace of Spades)\nTenshi Kawada, Therapist (Jack of Spades)\nMasayuuki Taishi, Blogger (King of Diamonds)\nHachi Hiruma, Cryptologist (Queen of Clubs)\nS'ad Ludópata, Gambler (Ten of Clubs)", studentIDPicture: "https://imgur.com/AZzj22b.png" },
-				{ studentID: "Name: Shiba Mikio\nTalent: Matchmaker\nSex: Male\nStatus: Rescued\n\nShoe Size: 9\nHeight: 5'10\"\nWeight: 111\nBlood Type: O\nBirthday: 11/04\nAge: 17", studentIDPicture: "https://imgur.com/dYJgZl5.png" },
-				{ studentID: "Name: Tenshi Kawada\nTalent: Therapist\nSex: Male\nStatus: Deceased\n\nShoe Size: 10\nHeight: 5'8\"\nWeight: 120\nBlood Type: AB\nBirthday: 06/11\nAge: 17", studentIDPicture: "https://imgur.com/txWQ7vg.png" },
-				{ studentID: "Name: Théo Dubois\nTalent: Archer\nSex: Male\nStatus: Rescued\n\nShoe Size: Unavailable\nHeight: 5'7\"\nWeight: 141\nBlood Type: AB\nBirthday: 03/27\nAge: 17", studentIDPicture: "" },
-				{ studentID: "Name: Yukine Sakurai\nTalent: Botanist\nSex: Male\nStatus: Rescued\n\nShoe Size: 10.5\nHeight: 5'8\"\nWeight: 135\nBlood Type: O\nBirthday: 12/13\nAge: 16", studentIDPicture: "https://imgur.com/2RJbb52.png" }
-			]
-			
-			if (args.length === 1) { //Class Roster Simple
-				message.channel.send("```##  Sex and Name          Talent\n11  F Mori Hibana         Hypnotist\n25  M Ryu Akahoshi        Dancer\n27  M Shiba Mikio         Matchmaker\n29  M Théo Dubois         Archer\n30  M Yukine Sakurai      Botanist\n\n    Mastermind\n23  M Masayuuki Taisho    Balance (Blogger)\n\n    Deceased Students\n1   F Aika Mahaya         Digital Composer\n2   F Anaelle Hamaan      Fashion Designer\n3   F Anya Sakaguchi      Magician\n4   F Ara Ayao            Actress\n5   F Aurélie Cartier     Figure Skater\n6   F Hachi Hiruma        Cryptologist\n7   F Jeong Park          Tennis Player\n8   F Kyoung-mi Park      Singer\n9   F Megu Kojima         Model\n10  F Minako Kaoru        Swordsman\n12  F Noriko Suzuki       Chess Champion\n13  F Stella Hunter       Fortnite Gamer\n14  F Tezuku Imou         Boxer\n15  F Ximena Colomar      Hacker\n16  M Aiko Hikaru         Makeup Artist\n17  M Anzu Kofuku         Counterfeiter\n18  M Cheisu Maeda        Detective\n19  M Hoshi Chiura        Astronomer\n20  M Jacek Żeglarski     Animal Caretaker\n21  M Kazuya Harada       Woodworker\n22  M Kiro Karasu         Prince\n24  M Miyuki Ataru        Baseball Player\n26  M S'ad Ludópata       Gambler\n28  M Tenshi Kawada       Therapist```")
-				inboxChannel.send(`${message.author.username} has looked at the first class' roster.`);
-				return;
+		if (message.guild.id != "598739324464267274" && message.guild.id != "480549161201041418") { //All but GA server
+			if (args.length < 1 || args[0] != "1" && args[0] != "2" && args[0] != "3" && args[0] != "4" && args[0].toLowerCase() != "u" && args[0].toLowerCase() != "talents") {
+				return message.channel.send("Please specify which class (1, 2, 3, 4, U, or talents) you're checking the roster for!")
 			}
-			if (args[1].toLowerCase() === "total") { //Class Roster Total
-				message.channel.send("```##  Sex and Name       Shoe Size    Height    Weight    Blood Type    Birthday    Age    Talent\n11  F Mori Hibana      8            5'9\"      132       B             01/04       17     Hypnotist\n25  M Ryu Akahoshi     10           5'10\"     150       O             04/06       16     Dancer\n27  M Shiba Mikio      9            5'10\"     111       O             11/04       17     Matchmaker\n29  M Théo Dubois      *            5'7\"      141       AB            03/27       17     Archer\n30  M Yukine Sakurai   10.5         5'8\"      135       O             12/13       16     Botanist\n\n    Mastermind\n23  M Masayuuki Taisho 9            5'6\"      120       AB            11/25       16     Balance (Blogger)\n\n    Deceased Students\n1   F Aika Mahaya      9            5'6\"      137       B             06/21       17     Digital Composer\n2   F Anaelle Hamaan   *            5'2\"      104       AB            06/20       16     Fashion Designer\n3   F Anya Sakaguchi   *            5'4\"      104       B             04/10       14     Magician\n4   F Ara Ayao         7            5'8\"      115       B             08/15       17     Actress\n5   F Aurélie Cartier  7            5'7\"      115       A             01/09       17     Figure Skater\n6   F Hachi Hiruma     7.5          5'7\"      139       A             11/09       17     Cryptologist\n7   F Jeong Park       6            5'5\"      105       O             05/29       16     Tennis Player\n8   F Kyoung-mi Park   6            5'5\"      105       O             05/29       16     Singer```");
-				message.channel.send("```9   F Megu Kojima      6            5'5\"      99        O             04/15       17     Model\n10  F Minako Kaoru     *            5'8\"      120       O             08/07       16     Swordsman\n12  F Noriko Suzuki    7            5'3\"      110       A             06/09       14     Chess Champion\n13  F Stella Hunter    *            5'2\"      102       A             05/24       15     Fortnite Gamer\n14  F Tezuku Imou      *            5'5\"      146       O             10/31       16     Boxer\n15  F Ximena Colomar   7            5'3\"      132       O             02/07       17     Hacker\n16  M Aiko Hikaru      8            5'8\"      135       O             06/14       17     Makeup Artist\n17  M Anzu Kofuku      *            5'11\"     159       AB            01/25       18     Counterfeiter\n18  M Cheisu Maeda     11           6'1\"      149       B             11/13       17     Detective\n19  M Hoshi Chiura     8            5'5\"      110       A             10/31       16     Astronomer\n20  M Jacek Żeglarski  10           5'8\"      162       AB            10/03       15     Animal Caretaker\n21  M Kazuya Harada    *            5'9\"      145       O             08/13       16     Woodworker\n22  M Kiro Karasu      10           5'10\"     130       O             08/17       17     Prince\n24  M Miyuki Ataru     *            6'2\"      140       B             07/23       17     Baseball Player\n26  M S'ad Ludópata    10           6'0\"      144       O             04/10       17     Gambler\n28  M Tenshi Kawada    10           5'8\"      120       AB            06/11       17     Therapist\n\n*Lost due to account deletion.```");
-				inboxChannel.send(`${message.author.username} has looked at the full version of the first class' roster.`);
-				return;
-			}
-
-			let pageAmount = 30;
-			let x = 0;
-			while (x < pageAmount) {
-				thumbnail = classList[x].studentIDPicture;
-				if (thumbnail === "") {
-					thumbnail = "https://imgur.com/OVPTMGn.png";
-				};
-				currentPage = {text:classList[x].studentID,thumbnail:thumbnail}
-				pages.push(currentPage);
-				x++;
-			}
-
-			if (args[1] === "1" || args[1].toLowerCase().search("aika") != -1) {page = 1}
-			if (args[1] === "2" || args[1].toLowerCase().search("anaelle") != -1) {page = 2}
-			if (args[1] === "3" || args[1].toLowerCase().search("anya") != -1) {page = 3}
-			if (args[1] === "4" || args[1].toLowerCase().search("ara") != -1) {page = 4}
-			if (args[1] === "5" || args[1].toLowerCase().search("aurelie") != -1 || args[1].toLowerCase().search("aurélie") != -1) {page = 5}
-			if (args[1] === "6" || args[1].toLowerCase().search("hachi") != -1) {page = 6}
-			if (args[1] === "7" || args[1].toLowerCase().search("jeong") != -1) {page = 7}
-			if (args[1] === "8" || args[1].toLowerCase().search("kyoung") != -1) {page = 8}
-			if (args[1] === "9" || args[1].toLowerCase().search("megu") != -1) {page = 9}
-			if (args[1] === "10" || args[1].toLowerCase().search("minako") != -1) {page = 10}
-			if (args[1] === "11" || args[1].toLowerCase().search("mori") != -1) {page = 11}
-			if (args[1] === "12" || args[1].toLowerCase().search("noriko") != -1) {page = 12}
-			if (args[1] === "13" || args[1].toLowerCase().search("stella") != -1) {page = 13}
-			if (args[1] === "14" || args[1].toLowerCase().search("tezuku") != -1) {page = 14}
-			if (args[1] === "15" || args[1].toLowerCase().search("ximena") != -1) {page = 15}
-			if (args[1] === "16" || args[1].toLowerCase().search("aiko") != -1) {page = 16}
-			if (args[1] === "17" || args[1].toLowerCase().search("anzu") != -1) {page = 17}
-			if (args[1] === "18" || args[1].toLowerCase().search("cheisu") != -1) {page = 18}
-			if (args[1] === "19" || args[1].toLowerCase().search("hoshi") != -1) {page = 19}
-			if (args[1] === "20" || args[1].toLowerCase().search("jacek") != -1) {page = 20}
-			if (args[1] === "21" || args[1].toLowerCase().search("kazuya") != -1) {page = 21}
-			if (args[1] === "22" || args[1].toLowerCase().search("kiro") != -1) {page = 22}
-			if (args[1] === "23" || args[1].toLowerCase().search("yuuki") != -1) {page = 23}
-			if (args[1] === "24" || args[1].toLowerCase().search("miyuki") != -1) {page = 24}
-			if (args[1] === "25" || args[1].toLowerCase().search("ryu") != -1) {page = 25}
-			if (args[1] === "26" || args[1].toLowerCase().search("s'ad") != -1) {page = 26}
-			if (args[1] === "27" || args[1].toLowerCase().search("shiba") != -1) {page = 27}
-			if (args[1] === "28" || args[1].toLowerCase().search("tenshi") != -1) {page = 28}
-			if (args[1] === "29" || args[1].toLowerCase().search("theo") != -1 || args[1].toLowerCase().search("théo") != -1) {page = 29}
-			if (args[1] === "30" || args[1].toLowerCase().search("yukine") != -1 || args[1].toLowerCase().search("who") != -1) {page = 30}
-			if (Number.isInteger(args[1] * 1) === true) {
-				inboxChannel.send(`${message.author.username} has looked at student ${args[1]}'s file from the first class.`)
-			}
-			if (Number.isInteger(args[1] * 1) === false) {
-				inboxChannel.send(`${message.author.username} has looked at ${args[1].toUpperCase().slice(0, 1)}${args[1].toLowerCase().slice(1)}'s file from the first class.`)
-			}
-
-		}
-		if (args[0] === "2") { //Class 02 (Hope's Peak Academy/The Mall, The Killing School Trip)
-			classList = [
-				{ studentID: "Name: Akiko _______\nTalent: Clairvoyent\nSex: Female \nStatus: Rescued\n\nShoe Size: 6.5\nHeight: 5'4\"\nWeight: 103\nBlood Type: B\nBirthday: 03/13\nAge: 16", studentIDPicture: "https://imgur.com/Cpdhi9T.png" },
-				{ studentID: "Name: Arisa Shokuhou\nTalent: Opera Singer\nSex: Female\nStatus: Rescued\n\nShoe Size: 6\nHeight: 5'2\"\nWeight: 106\nBlood Type: A\nBirthday: 11/13\nAge: 17", studentIDPicture: "" },
-				{ studentID: "Name: Chika Miyasaki\nTalent: Assassin\nSex: Female\nStatus: Contained\n\nShoe Size: 4\nHeight: 5'2\"\nWeight: 92\nBlood Type: A\nBirthday: 03/20\nAge: 16", studentIDPicture: "https://imgur.com/zZmXZ3L.png" },
-				{ studentID: "Name: Eiji Ryozo\nTalent: Surgeon\nSex: Female\nStatus: Rescued\n\nShoe Size: 8\nHeight: 5'7\"\nWeight: 111\nBlood Type: B\nBirthday: 11/01\nAge: 16", studentIDPicture: "https://imgur.com/JTrNk47.png" },
-				{ studentID: "Name: Hana Kageriri\nTalent: Puppeteer\nSex: Female\nStatus: Rescued\n\nShoe Size: 9\nHeight: 5'5\"\nWeight: 105\nBlood Type: B\nBirthday: 11/12\nAge: 17", studentIDPicture: "https://imgur.com/c210v7y.png" },
-				{ studentID: "Name: Kagami Hannei\nTalent: Jeweler\nSex: Female\nStatus: Rescued\n\nShoe Size: 7.5\nHeight: 5'11\"\nWeight: 129\nBlood Type: A\nBirthday: 09/14\nAge: 18", studentIDPicture: "https://imgur.com/PZVqARe.png" },
-				{ studentID: "Name: Monika Minami\nTalent: Bomb Maker\nSex: Female\nStatus: Rescued\n\nShoe Size: 6.5\nHeight: 4'9\"\nWeight: 80\nBlood Type: AB\nBirthday: 04/01\nAge: 15", studentIDPicture: "" },
-				{ studentID: "Name: Saeko Kiyomizu\nTalent: Maid\nSex: Female\nStatus: Rescued\n\nShoe Size: 6/6.5\nHeight: 5'7\"\nWeight: 110\nBlood Type: O\nBirthday: 09/15\nAge: 17", studentIDPicture: "https://imgur.com/AKg0jAY.png" },
-				{ studentID: "Name: Tsuyo Kogiyumi\nTalent: Biologist\nSex: Female\nStatus: Rescued\n\nShoe Size: 6\nHeight: 5'1\"\nWeight: 104\nBlood Type: O\nBirthday: 08/25\nAge: 17", studentIDPicture: "https://imgur.com/jHf6p7i.png" },
-				{ studentID: "Name: Yuna Akahoshi\nTalent: Doll Maker\nSex: Female\nStatus: Rescued\n\nShoe Size: 6\nHeight: 5'3\"\nWeight: 110\nBlood Type: A\nBirthday: 06/25\nAge: 15", studentIDPicture: "" },
-				{ studentID: "Name: Ale del Prieto\nTalent: Lawyer\nSex: Male\nStatus: Rescued\n\nShoe Size: 6\nHeight: 5'6\"\nWeight: 124\nBlood Type: AB\nBirthday: 05/22\nAge: 18", studentIDPicture: "https://imgur.com/Sag0SRp.png" },
-				{ studentID: "Name: Asahi Fukuzawa\nTalent: Violinist\nSex: Male\nStatus: Rescued\n\nShoe Size: 10\nHeight: 5'7\"\nWeight: 124\nBlood Type: O\nBirthday: 08/27\nAge: 18", studentIDPicture: "https://imgur.com/GdXygwN.png" },
-				{ studentID: "Name: Chikako Kaetsu\nTalent: Conspiracy Theorist\nSex: Male\nStatus: Rescued\n\nShoe Size: 7.5\nHeight: 5'8\"\nWeight: 142\nBlood Type: O\nBirthday: 04/26\nAge: 18", studentIDPicture: "https://imgur.com/4yEQVlf.png" },
-				{ studentID: "Name: Eiichi Ryozo\nTalent: Chemist\nSex: Male\nStatus: Rescued\n\nShoe Size: 10\nHeight: 6'0\"\nWeight: 137\nBlood Type: AB\nBirthday: 06/06\nAge: 18", studentIDPicture: "https://imgur.com/BCdEZNm.png" },
-				{ studentID: "Name: Fenikku Hinotama\nTalent: Ringmaster\nSex: Male\nStatus: Rescued\n\nShoe Size: 8\nHeight: 5'1\"\nWeight: 95\nBlood Type: O\nBirthday: 05/29\nAge: 14", studentIDPicture: "https://imgur.com/snh70TO.png" },
-				{ studentID: "Name: Hideo Takayama\nTalent: Inventor\nSex: Male\nStatus: Rescued\n\nShoe Size: 10\nHeight: 6'2\"\nWeight: 193\nBlood Type: AB\nBirthday: 12/02\nAge: 18\n\n\nHideo loves AI dick.", studentIDPicture: "https://imgur.com/9WXv5Q9.png" },
-				{ studentID: "Name: Isha Kalki\nTalent: Spy\nSex: Male\nStatus: Rescued\n\nShoe Size: 5\nHeight: 5'1\"\nWeight: 95\nBlood Type: O\nBirthday: 05/31\nAge: 16", studentIDPicture: "https://imgur.com/xj1HMXu.png" },
-				{ studentID: "Name: Kaipo Uilani Iona\nTalent: Birdwatcher\nSex: Male\nStatus: Rescued\n\nShoe Size: 7\nHeight: 5'2\"\nWeight: 98\nBlood Type: O\nBirthday: 10/13\nAge: 15", studentIDPicture: "https://imgur.com/WQFawIm.png" },
-				{ studentID: "Name: Katashi Maeda\nTalent: Swimmer\nSex: Male\nStatus: Rescued\n\nShoe Size: 9\nHeight: 5'8\"\nWeight: 157\nBlood Type: O\nBirthday: 04/20\nAge: 17", studentIDPicture: "" },
-				{ studentID: "Name: Kouki Yoshida\nTalent: Lucky Student\nSex: Male\nStatus: Terminated\n\nShoe Size: 9\nHeight: 5'11\"\nWeight: 140\nBlood Type: B\nBirthday: 09/15\nAge: 18", studentIDPicture: "https://imgur.com/jRRhUog.png" },
-				{ studentID: "Name: Kyabetsu Retasu\nTalent: Florist\nSex: Male\nStatus: Rescued\n\nShoe Size: 8\nHeight: 5'9\"\nWeight: 147\nBlood Type: AB\nBirthday: 02/17\nAge: 16", studentIDPicture: "https://imgur.com/CgLyIGN.png" },
-				{ studentID: "Name: Michel Voigt\nTalent: Theologist\nSex: Male\nStatus: Rescued\n\nShoe Size: 8\nHeight: 5'5\"\nWeight: 119\nBlood Type: A\nBirthday: 12/25\nAge: 16", studentIDPicture: "" },
-				{ studentID: "Name: Rosendo Paulo Ochoa Merlo\nTalent: Fútbol Player\nSex: Male\nStatus: Rescued\n\nShoe Size: 5.5\nHeight: 5'1\"\nWeight: 110\nBlood Type: O\nBirthday: 08/10\nAge: 15", studentIDPicture: "https://imgur.com/uwXd769.png" },
-				{ studentID: "Name: Sora Kenshin\nAlias: The Silencer\nTalent: Daredevil\nSex: Male\nStatus: Rescued\n\nShoe Size: 11\nHeight: 5'9\"\nWeight: 120\nBlood Type: AB\nBirthday: 06/01\nAge: 17", studentIDPicture: "https://imgur.com/wdNGgRH.png" },
-				{ studentID: "Name: Souma Shimizu\nReal Name: Naoki Ishida\nTalent: Manipulator (Poet)\nSex: Male\nStatus: Rescued\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 130\nBlood Type: AB\nBirthday: 03/20\nAge: 17\n\n\n\nPoems:\nmy stacy left me\nof course, it's a fucking chad\nno one understands\n\ni'll get her back\nand that chad will be wacked\nsouma is better than chad\n\nA poem by Souma.\n\n\nmy heart burns\nbut not for you\nfor stacy\nfuck chad", studentIDPicture: "https://imgur.com/9CoACWR.png" },
-				{ studentID: "Name: Tomomi Kashichi\nTalent: Technician\nSex: Male\nStatus: Rescued\n\nShoe Size: 10.5\nHeight: 5'8\"\nWeight: 137\nBlood Type: A\nBirthday: 04/27\nAge: 17", studentIDPicture: "https://imgur.com/OVjt8y0.png" },
-				{ studentID: "Name: Yuuya Michimiya\nTalent: Philanthropist\nSex: Male\nStatus: Rescued\n\nShoe Size: 9\nHeight: 5'6\"\nWeight: 148\nBlood Type: AB\nBirthday: 04/13\nAge: 16", studentIDPicture: "" },
-				{ studentID: "Name: Eito Ryozo\nTalent: Psychologist\nSex: Male\nStatus: Deceased\n\nShoe Size: N/A\nHeight: N/A\nWeight: N/A\nBlood Type: N/A\nBirthday: N/A\nAge: 14", studentIDPicture: "https://imgur.com/M4cALh8.png" }
-			]
-		
-			if (args.length === 1) {
-				message.channel.send("```##  Sex and Name          Talent\n9   F Tsuyo Kogiyumi      Biologist\n12  M Asahi Fukuzawa      Violinist\n15  M Fenikku Hinotama    Ringmaster\n16  M Hideo Takayama      Inventor\n25  M Souma Shimizu       Manipulator (Poet)\n\n    Mastermind\n3   F Chika Miyasaki      Assassin\n\n    Deceased Students\n1   F Akiko _______       Clairvoyant\n2   F Arisa Shokuhou      Opera Singer\n4   F Eiji Ryozo          Surgeon\n5   F Hana Kageriri       Puppeteer\n6   F Kagami Hannei       Jeweler\n7   F Monika Minami       Bomb Maker\n8   F Saeko Kiyomizu      Maid\n10  F Yuna Akahoshi       Doll Maker\n11  M Ale del Prieto      Lawyer\n13  M Chikako Kaetsu      Conspiracy Theorist\n14  M Eiichi Ryozo        Chemist\n17  M Isha Kalki          Spy\n18  M Kaipo Uilani Iona   Birdwatcher\n19  M Katashi Maeda       Swimmer\n20  M Kouki Yoshida       Lucky Student\n21  M Kyabetsu Retasu     Florist\n22  M Michel Voigt        Theologist\n23  M Renzo Ochoa         Fútbol Player\n24  M Sora Kenshin        Daredevil\n26  M Tomomi Kashichi     Technician\n27  M Yuuya Michimiya     Philanthropist```");
-				inboxChannel.send(`${message.author.username} has looked at the second class' roster.`);
-				return;
-			}
-			if (args[1].toLowerCase() === "total") {
-				message.channel.send("```##  Sex and Name        Shoe Size    Height    Weight    Blood Type    Birthday    Age    Talent\n9   F Tsuyo Kogiyumi    6            5'1\"      104       O             08/25       17     Biologist\n12  M Asahi Fukuzawa    10           5'7\"      124       O             08/27       18     Violinist\n15  M Fenikku Hinotama  8            5'1\"      95        O             05/29       14     Ringmaster\n16  M Hideo Takayama    10           6'2\"      193       AB            12/02       18     Inventor\n25  M Souma Shimizu     10           5'10\"     130       AB            03/20       17     Manipulator (Poet)\n\n    Mastermind\n3   F Chika Miyasaki    4            5'2\"      92        A             03/20       16     Assassin\n\n    Deceased Students\n1   F Akiko _______     6.5          5'4\"      103       B             03/13       16     Clairvoyant\n2   F Arisa Shokuhou    6            5'2\"      106       A             11/13       17     Opera Singer\n4   F Eiji Ryozo        8            5'7\"      111       B             11/01       16     Surgeon\n5   F Hana Kageriri     9            5'5\"      105       B             11/12       17     Puppeteer\n6   F Kagami Hannei     7.5          5'11\"     129       A             09/14       18     Jeweler\n7   F Monika Minami     6.5          4'9\"      80        AB            04/01       15     Bomb Maker\n8   F Saeko Kiyomizu    6/6.5        5'7\"      110       O             09/15       17     Maid```");
-				message.channel.send("```\n10  F Yuna Akahoshi     6            5'3\"      110       A             06/25       15     Doll Maker\n11  M Ale del Prieto    6            5'6\"      124       AB            05/22       18     Lawyer\n13  M Chikako Kaetsu    7.5          5'8\"      142       O             04/26       18     Conspiracy Theorist\n14  M Eiichi Ryozo      10           6'0\"      137       AB            06/06       18     Chemist\n17  M Isha Kalki        5            5'1\"      95        O             05/31       16     Spy\n18  M Kaipo Uilani Iona 7            5'2\"      98        O             10/13       15     Birdwatcher\n19  M Katashi Maeda     9            5'8\"      157       O             04/20       17     Swimmer\n20  M Kouki Yoshida     9            5'11\"     140       B             09/15       18     Lucky Student\n21  M Kyabetsu Retasu   8            5'9\"      147       AB            02/17       16     Florist\n22  M Michel Voigt      8            5'5\"      119       A             12/25       16     Theologist\n23  M Renzo Ochoa       5.5          5'1\"      110       O             08/10       15     Fútbol Player\n24  M Sora Kenshin      11           5'9\"      120       AB            06/01       17     Daredevil\n26  M Tomomi Kashichi   10.5         5'8\"      137       A             04/17       17     Technician\n27  M Yuuya Michimiya   9            5'6\"      148       AB            04/13       16     Philanthropist\n```");
-				inboxChannel.send(`${message.author.username} has looked at the full version of the second class' roster.`);
-				return;
-			}
-
-			let pageAmount = 28;
-			let x = 0;
-			while (x < pageAmount) {
-				thumbnail = classList[x].studentIDPicture;
-				if (thumbnail === "") {
-					thumbnail = "https://imgur.com/OVPTMGn.png";
-				};
-				currentPage = {
-					text: classList[x].studentID,
-					thumbnail: thumbnail
+			if (args[0] === "1") { //Class 01 (Kaeno Shinjomu Academy, The Killing School Game)
+				classList = [
+					{ studentID: "Name: Aika Mahaya\nTalent: Digital Composer\nSex: Female\nStatus: Deceased\n\nShoe Size: 9\nHeight: 5'6\"\nWeight: 137\nBlood Type: B\nBirthday: 06/21\nAge: 17", studentIDPicture: "https://imgur.com/sGjckJ3.png" },
+					{ studentID: "Name: Anaelle Hamaan\nTalent: Fashion Designer\nSex: Female\nStatus: Unknown\n\nShoe Size: Unavailable\nHeight: 5'2\"\nWeight: 104\nBlood Type: AB\nBirthday: 06/20\nAge: 16", studentIDPicture: "https://imgur.com/4HOZ1QT.png" },
+					{ studentID: "Name: Anya Sakaguchi\nTalent: Magician\nSex: Female\nStatus: Deceased\n\nShoe Size: Unavailable\nHeight: 5'4\"\nWeight: 104\nBlood Type: B\nBirthday: 04/10\nAge: 14", studentIDPicture: "" },
+					{ studentID: "Name: Ara Ayao\nTalent: Actress\nSex: Female\nStatus: Deceased\n\nShoe Size: 7\nHeight: 5'8\"\nWeight: 115\nBlood Type: B\nBirthday: 08/15\nAge: 17", studentIDPicture: "https://imgur.com/3fZhaHt.png" },
+					{ studentID: "Name: Aurélie Cartier\nTalent: Figure Skater\nSex: Female\nStatus: Deceased\n\nShoe Size: 7\nHeight: 5'7\"\nWeight: 115\nBlood Type: A\nBirthday: 01/09\nAge: 17", studentIDPicture: "" },
+					{ studentID: "Name: Hachi Hiruma\nTalent: Cryptologist\nSex: Female\nStatus: Deceased\n\nShoe Size: 7.5\nHeight: 5'7\"\nWeight: 139\nBlood Type: A\nBirthday: 11/09\nAge: 17\n\n\nPeed Herself: 13 Times", studentIDPicture: "https://imgur.com/GFrnNjz.png" },
+					{ studentID: "Name: Jeong Park\nTalent: Tennis Player\nSex: Female\nStatus: Deceased\n\nShoe Size: 6\nHeight: 5'5\"\nWeight: 105\nBlood Type: O\nBirthday: 05/29\nAge: 16", studentIDPicture: "https://imgur.com/JK7VKYy.png" },
+					{ studentID: "Name: Kyoung-mi Park\nTalent: Singer\nSex: Female\nStatus: Deceased\n\nShoe Size: 6\nHeight: 5'5\"\nWeight: 105\nBlood Type: O\nBirthday: 05/29\nAge: 16", studentIDPicture: "https://imgur.com/fZoA401.png" },
+					{ studentID: "Name: Megu Kojima\nTalent: Model\nSex: Female\nStatus: Deceased\n\nShoe Size: 6\nHeight: 5'5\"\nWeight: 99\nBlood Type: O\nBirthday: 04/15\nAge: 17", studentIDPicture: "" },
+					{ studentID: "Name: Minako Kaoru\nTalent: Swordsman\nSex: Female\nStatus: Deceased\n\nShoe Size: Unavailable\nHeight: 5'8\"\nWeight: 120\nBlood Type: O\nBirthday: 08/07\nAge: 16", studentIDPicture: "" },
+					{ studentID: "Name: Mori Hibana\nTalent: Hypnotist\nSex: Female\nStatus: Rescued\n\nShoe Size: 8\nHeight: 5'9\"\nWeight: 131\nBlood Type: B\nBirthday: 05/08\nAge: 17", studentIDPicture: "https://imgur.com/AFaAdCo.png" },
+					{ studentID: "Name: Noriko Suzuki\nTalent: Chess Champion\nSex: Female\nStatus: Deceased\n\nShoe Size: 7\nHeight: 5'3\"\nWeight: 110\nBlood Type: A\nBirthday: 06/09\nAge: 14", studentIDPicture: "" },
+					{ studentID: "Name: Stella Hunter\nTalent: Fortnite Gamer\nSex: Female\nStatus: Deceased\n\nShoe Size: Unavailable\nHeight: 5'2\"\nWeight: 102\nBlood Type: A\nBirthday: 05/24\nAge: 15\n\n\nFortnite Statistics:\nWins: 5,562\nMatches: 13,192\nWin %: 42.16\nKills: 107,180\nK/D: 14.05", studentIDPicture: "" },
+					{ studentID: "Name: Tezuku Imou\nTalent: Boxer\nSex: Female\nStatus: Deceased\n\nShoe Size: Unavailable\nHeight: 5'5\"\nWeight: 146\nBlood Type: O\nBirthday: 10/31\nAge: 16", studentIDPicture: "https://imgur.com/vqxvUSV.png"},
+					{ studentID: "Name: Ximena Colomar\nTalent: Hacker\nSex: Female\nStatus: Deceased\n\nShoe Size: 7\nHeight: 5'3\"\nWeight: 132\nBlood Type: O\nBirthday: 02/07\nAge: 17", studentIDPicture: "" },
+					{ studentID: "Name: Aiko Hikaru\nTalent: Makeup Artist\nSex: Male\nStatus: Deceased\n\nShoe Size: 8\nHeight: 5'8\"\nWeight: 135\nBlood Type: O\nBirthday: 06/14\nAge: 17", studentIDPicture: "https://imgur.com/9e2GDAr.png" },
+					{ studentID: "Name: Anzu Kofuku\nTalent: Counterfeiter\nSex: Male\nStatus: Deceased\n\nShoe Size: Unavailable\nHeight: 5'11\"\nWeight: 159\nBlood Type: AB\nBirthday: 01/25\nAge: 18", studentIDPicture: "" },
+					{ studentID: "Name: Cheisu Maeda\nTalent: Detective\nSex: Male\nStatus: Deceased\n\nShoe Size: 11\nHeight: 6'1\"\nWeight: 149\nBlood Type: B\nBirthday: 11/13\nAge: 17", studentIDPicture: "https://imgur.com/IaXHEeK.png" },
+					{ studentID: "Name: Hoshi Chiura\nTalent: Astronomer\nSex: Male\nStatus: Deceased\n\nShoe Size: 8\nHeight: 5'5\"\nWeight: 110\nBlood Type: A\nBirthday: 10/31\nAge: 16\n\n\nThree of Sevens:\nHoshi Chiura\nMasayuuki Taisho\nShiba Mikio", studentIDPicture: "https://imgur.com/OBjKPR9.png" },
+					{ studentID: "Name: Jacek Żeglarski\nTalent: Animal Caretaker\nSex: Male\nStatus: Deceased\n\nShoe Size: 10\nHeight: 5'8\"\nWeight: 162\nBlood Type: AB\nBirthday: 10/03\nAge: 15", studentIDPicture: "" },
+					{ studentID: "Name: Kazuya Harada\nTalent: Woodworker\nSex: Male\nStatus: Deceased\n\nShoe Size: Unavailable\nHeight: 5'9\"\nWeight: 145\nBlood Type: O\nBirthday: 08/13\nAge: 16", studentIDPicture: "" },
+					{ studentID: "Name: Kiro Karasu\nTalent: Prince\nSex: Male\nStatus: Deceased\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 130\nBlood Type: O\nBirthday: 08/17\nAge: 17", studentIDPicture: "https://imgur.com/v7vk5gF.png" },
+					{ studentID: "Name: Masayuuki Taisho\nTalent: Balance (Blogger)\nSex: Male\nStatus: Deceased\n\nShoe Size: 9\nHeight: 5'6\"\nWeight: 120\nBlood Type: AB\nBirthday: 11/25\nAge: 16", studentIDPicture: "https://imgur.com/CLYSgcS.png" },
+					{ studentID: "Name: Miyuki Ataru\nTalent: Baseball Player\nSex: Male\nStatus: Deceased\n\nShoe Size: Unavailable\nHeight: 6'2\"\nWeight: 140\nBlood Type: B\nBirthday: 07/23\nAge: 17", studentIDPicture:""},
+					{ studentID: "Name: Ryu Akahoshi\nTalent: Dancer\nSex: Male\nStatus: Rescued\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 150\nBlood Type: O\nBirthday: 04/06\nAge: 16", studentIDPicture: "" },
+					{ studentID: "Name: S'ad Ludópata\nTalent: Gambler\nSex: Male\nStatus: Deceased\n\nShoe Size: 10\nHeight: 6'0\"\nWeight: 144\nBlood Type: O\nBirthday: 04/10\nAge: 17\n\n\nRoyal Flush:\nCheisu Maeda, Detective (Ace of Spades)\nTenshi Kawada, Therapist (Jack of Spades)\nMasayuuki Taishi, Blogger (King of Diamonds)\nHachi Hiruma, Cryptologist (Queen of Clubs)\nS'ad Ludópata, Gambler (Ten of Clubs)", studentIDPicture: "https://imgur.com/AZzj22b.png" },
+					{ studentID: "Name: Shiba Mikio\nTalent: Matchmaker\nSex: Male\nStatus: Rescued\n\nShoe Size: 9\nHeight: 5'10\"\nWeight: 111\nBlood Type: O\nBirthday: 11/04\nAge: 17", studentIDPicture: "https://imgur.com/dYJgZl5.png" },
+					{ studentID: "Name: Tenshi Kawada\nTalent: Therapist\nSex: Male\nStatus: Deceased\n\nShoe Size: 10\nHeight: 5'8\"\nWeight: 120\nBlood Type: AB\nBirthday: 06/11\nAge: 17", studentIDPicture: "https://imgur.com/txWQ7vg.png" },
+					{ studentID: "Name: Théo Dubois\nTalent: Archer\nSex: Male\nStatus: Rescued\n\nShoe Size: Unavailable\nHeight: 5'7\"\nWeight: 141\nBlood Type: AB\nBirthday: 03/27\nAge: 17", studentIDPicture: "" },
+					{ studentID: "Name: Yukine Sakurai\nTalent: Botanist\nSex: Male\nStatus: Rescued\n\nShoe Size: 10.5\nHeight: 5'8\"\nWeight: 135\nBlood Type: O\nBirthday: 12/13\nAge: 16", studentIDPicture: "https://imgur.com/2RJbb52.png" }
+				]
+				
+				if (args.length === 1) { //Class Roster Simple
+					message.channel.send("```##  Sex and Name          Talent\n11  F Mori Hibana         Hypnotist\n25  M Ryu Akahoshi        Dancer\n27  M Shiba Mikio         Matchmaker\n29  M Théo Dubois         Archer\n30  M Yukine Sakurai      Botanist\n\n    Mastermind\n23  M Masayuuki Taisho    Balance (Blogger)\n\n    Deceased Students\n1   F Aika Mahaya         Digital Composer\n2   F Anaelle Hamaan      Fashion Designer\n3   F Anya Sakaguchi      Magician\n4   F Ara Ayao            Actress\n5   F Aurélie Cartier     Figure Skater\n6   F Hachi Hiruma        Cryptologist\n7   F Jeong Park          Tennis Player\n8   F Kyoung-mi Park      Singer\n9   F Megu Kojima         Model\n10  F Minako Kaoru        Swordsman\n12  F Noriko Suzuki       Chess Champion\n13  F Stella Hunter       Fortnite Gamer\n14  F Tezuku Imou         Boxer\n15  F Ximena Colomar      Hacker\n16  M Aiko Hikaru         Makeup Artist\n17  M Anzu Kofuku         Counterfeiter\n18  M Cheisu Maeda        Detective\n19  M Hoshi Chiura        Astronomer\n20  M Jacek Żeglarski     Animal Caretaker\n21  M Kazuya Harada       Woodworker\n22  M Kiro Karasu         Prince\n24  M Miyuki Ataru        Baseball Player\n26  M S'ad Ludópata       Gambler\n28  M Tenshi Kawada       Therapist```")
+					inboxChannel.send(`${message.author.username} has looked at the first class' roster.`);
+					return;
 				}
-				pages.push(currentPage);
-				x++;
-			}
-			
-			if (args[1] === "1" || args[1].toLowerCase().search("akiko") != -1) {page = 1}
-			if (args[1] === "2" || args[1].toLowerCase().search("arisa") != -1) {page = 2}
-			if (args[1] === "3" || (args[1].toLowerCase().search("chika") != -1 && args[1].toLowerCase().search("chikako") === -1)) {page = 3}
-			if (args[1] === "4" || args[1].toLowerCase().search("eiji") != -1) {page = 4}
-			if (args[1] === "5" || args[1].toLowerCase().search("hana") != -1) {page = 5}
-			if (args[1] === "6" || args[1].toLowerCase().search("kagami") != -1 || args[1].toLowerCase().search("bitch") != -1) {page = 6}
-			if (args[1] === "7" || args[1].toLowerCase().search("monika") != -1) {page = 7}
-			if (args[1] === "8" || args[1].toLowerCase().search("saeko") != -1) {page = 8}
-			if (args[1] === "9" || args[1].toLowerCase().search("tsuyo") != -1) {page = 9}
-			if (args[1] === "10" || args[1].toLowerCase().search("yuna") != -1) {page = 10}
-			if (args[1] === "11" || args[1].toLowerCase().search("ale") != -1) {page = 11}
-			if (args[1] === "12" || args[1].toLowerCase().search("asahi") != -1) {page = 12}
-			if (args[1] === "13" || args[1].toLowerCase().search("chikako") != -1 || (args[1].toLowerCase().search("chik") != -1 && args[1].toLowerCase().search("chika") === -1)) {page = 13}
-			if (args[1] === "14" || args[1].toLowerCase().search("eiichi") != -1) {page = 14}
-			if (args[1] === "15" || args[1].toLowerCase().search("fenikku") != -1) {page = 15}
-			if (args[1] === "16" || args[1].toLowerCase().search("hideo") != -1) {page = 16}
-			if (args[1] === "17" || args[1].toLowerCase().search("isha") != -1) {page = 17}
-			if (args[1] === "18" || args[1].toLowerCase().search("kaipo") != -1) {page = 18}
-			if (args[1] === "19" || args[1].toLowerCase().search("katashi") != -1) {page = 19}
-			if (args[1] === "20" || args[1].toLowerCase().search("kouki") != -1) {page = 20}
-			if (args[1] === "21" || args[1].toLowerCase().search("kyabetsu") != -1) {page = 21}
-			if (args[1] === "22" || args[1].toLowerCase().search("michel") != -1) {page = 22}
-			if (args[1] === "23" || args[1].toLowerCase().search("renzo") != -1 || args[1].toLowerCase().search("rosendo") != -1) {page = 23}
-			if (args[1] === "24" || args[1].toLowerCase().search("sora") != -1 || args[1].toLowerCase().search("silencer") != -1 || (args[1].toLowerCase().search("the") != -1 && args[2].toLowerCase().search("silencer") != -1)) {page = 24}
-			if (args[1] === "25" || args[1].toLowerCase().search("souma") != -1 || args[1].toLowerCase().search("naoki") != -1) {page = 25}
-			if (args[1] === "26" || args[1].toLowerCase().search("tomomi") != -1) {page = 26}
-			if (args[1] === "27" || args[1].toLowerCase().search("yuuya") != -1) {page = 27}
-			if (args[1].toLowerCase().search("eito") != -1) {page = 28}
-			if (args[1].toLowerCase().search("junko") != -1 && args[1].toLowerCase().search("inu") != -1 && message.author.id === "334575513857163266") {
-				possibleReplies = ["how long will it take you, Mel...","**Mel.**","jesus christ! How many times is this going to happen, Mel?","I will literally vore you if you do that again, Mel.","***Mel.***","do it one more time, I dare you Mel.","you've got to be doing this on purpose now, right Mel?","I've had it up to here with you, Mel.","stop doing this, Mel!","why do you keep doing this, Mel?"];
-				return message.reply(random(possibleReplies));
-			}
-			if (Number.isInteger(args[1] * 1) === true) {
-				inboxChannel.send(`${message.author.username} has looked at student ${args[1]}'s file from the second class.`)
-			}
-			if (Number.isInteger(args[1] * 1) === false) {
-				inboxChannel.send(`${message.author.username} has looked at ${args[1].toUpperCase().slice(0, 1)}${args[1].toLowerCase().slice(1)}'s file from the second class.`)
-			}
-		}
-		if (args[0] === "3") { //Class 03 (Monokuma Train, Killing School Ride)
-			classList = [
-				{ studentID: "Name: Aemele Dèjré\nTalent: Stalker\nSex: Female\nStatus: Alive\n\nShoe Size: 5\nHeight: 5'5\"\nWeight: 114\nBlood Type: B\nBirthday: 09/01\nAge: 18", studentIDPicture: "https://imgur.com/nxt9OCI.png" },
-				{ studentID: "Name: Dia Ramos\nTalent: Cheerleader\nSex: Female\nStatus: Alive\n\nShoe Size: 7.5\nHeight: 5'2\"\nWeight: 117\nBlood Type: O\nBirthday: 08/13\nAge: 18", studentIDPicture: "https://imgur.com/luniZC4.png" },
-				{ studentID: "Name: Kumiko Yeun\nStage Name: KUMI!\nTalent: Rock Star\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'7\"\nWeight: 103\nBlood Type: AB\nBirthday: 06/16\nAge: 18", studentIDPicture: "" },
-				{ studentID: "Name: Inugami Uzuki\nTalent: Graffiti Artist\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'6\"\nWeight: 135\nBlood Type: O\nBirthday: 03/24\nAge: 17", studentIDPicture: "https://imgur.com/ZHW10pn.png" },
-				{ studentID: "Name: Isago Achikita\nTalent: Mythologist\nSex: Female\nStatus: Deceased\n\nShoe Size: 6.5\nHeight: 5'5\"\nWeight: 119\nBlood Type: AB\nBirthday: 02/29\nAge: 18", studentIDPicture: "https://imgur.com/KNHhTlL.png" },
-				{ studentID: "Name: Junko Saitou\nPen Name: Kisei Keukegen\nTalent: Horror Novelist\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'5\"\nWeight: 109\nBlood Type: AB\nBirthday: 01/06\nAge: 18", studentIDPicture: "https://imgur.com/TZeW9L7.png" },
-				{ studentID: "Name: Kira Kurushimi\nStage Name: Kirakira Kyuti\nTalent: Magical Girl\nSex: Female\nStatus: Deceased\n\nShoe Size: 6 (Children's)\nHeight: 4'11\"\nWeight: 97\nBlood Type: A\nBirthday: 09/07\nAge: 14", studentIDPicture: "https://imgur.com/OJF4cgL.png" },
-				{ studentID: "Name: Mariko Murakami\nTalent: Martial Artist\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'6\"\nWeight: 125\nBlood Type: AB\nBirthday: 12/12\nAge: 18", studentIDPicture: "https://imgur.com/9RRSa6h.png" },
-				{ studentID: "Name: Megami Himura\nTalent: Tragedian\nSex: Female\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'5\"\nWeight: 110\nBlood Type: A\nBirthday: 05/15\nAge: 16", studentIDPicture: "" },
-				{ studentID: "Name: Agnès Boniface\nPseudonym: Nikki Cox\nTalent: Adult Film Actress\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'9\"\nWeight: 131\nBlood Type: B\nBirthday: 09/08\nAge: 19", studentIDPicture: "https://imgur.com/zvw2WGR.png" },
-				{ studentID: "Name: Piper McCullough\nTalent: Cadet\nSex: Female\nStatus: Deceased\n\nShoe Size: 5\nHeight: 5'1\"\nWeight: 102\nBlood Type: O\nBirthday: 03/23\nAge: 15", studentIDPicture: "https://imgur.com/yuOgons.png" },
-				{ studentID: "Name: Renata de Santis\nTalent: Heiress\nSex: Female\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'7\"\nWeight: 115\nBlood Type: B\nBirthday: 08/11\nAge: 17", studentIDPicture: "https://imgur.com/Dgij3oX.png" },
-				{ studentID: "Name: Areli Vepkhia\nTalent: Lion Tamer\nSex: Male\nStatus: Alive\n\nShoe Size: 12\nHeight: 6'5\"\nWeight: 260\nBlood Type: O\nBirthday: 10/29\nAge: 18", studentIDPicture: "https://imgur.com/4IQsA40.png" },
-				{ studentID: "Name: Ayuma Tanaka\nTalent: Counselor\nSex: Male\nStatus: Alive\n\nShoe Size: 9\nHeight: 5'4\"\nWeight: 150\nBlood Type: B\nBirthday: 10/17\nAge: 18", studentIDPicture: "" },
-				{ studentID: "Name: Cecilio Gonzalo Calles Cárdenas\nTalent: Pilot\nSex: Male\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'8\"\nWeight: 157\nBlood Type: B\nBirthday: 05/03\nAge: 17", studentIDPicture: "" },
-				{ studentID: "Name: Charles Miller\nTalent: Milkman\nSex: Male\nStatus: Deceased\n\nShoe Size: 9\nHeight: 5'11\"\nWeight: 143\nBlood Type: Chocolate\nBirthday: 01/11\nAge: 18", studentIDPicture: "https://imgur.com/YKzsYOU.png" },
-				{ studentID: "Name: Daichi Ichihara\nTalent: Satanist\nSex: Male\nStatus: Alive\n\nShoe Size: 9\nHeight: 5'8\"\nWeight: 143\nBlood Type: O\nBirthday: 09/23\nAge: 17", studentIDPicture: "https://imgur.com/qT8oKQu.png" },
-				{ studentID: "Name: Federico Navarro\nTalent: Pianist\nSex: Male\nStatus: Deceased\n\nShoe Size: 5\nHeight: 5'0\"\nWeight: 99\nBlood Type: A\nBirthday: 02/16\nAge: 15", studentIDPicture: "https://imgur.com/MeXyfga.png" },
-				{ studentID: "Name: Jomei Hoshino\nTalent: Pyromaniac\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'11\"\nWeight: 152\nBlood Type: B\nBirthday: 12/17\nAge: 18", studentIDPicture: "https://imgur.com/YywS5LK.png" },
-				{ studentID: "Name: Melchor Guadalupe Paz de la Cruz\nTalent: Activist\nSex: Male\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'11\"\nWeight: 110\nBlood Type: A\nBirthday: 02/29\nAge: 17", studentIDPicture: "https://imgur.com/9cVr7mL.png" },
-				{ studentID: "Name: Ruslan Eun-Kyung Kraus\nTalent: Luthier\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 6'1\"\nWeight: 157\nBlood Type: B\nBirthday: 03/02\nAge: 17", studentIDPicture: "https://imgur.com/8LA7hg8.png" },
-				{ studentID: "Name: Ryoushi Nobuori\nTalent: Storyteller\nSex: Male\nStatus: Deceased\n\nShoe Size: 7\nHeight: 5'6\"\nWeight: 111\nBlood Type: A\nBirthday: 12/25\nAge: 16", studentIDPicture: "https://imgur.com/9se7jzq.png" },
-				{ studentID: "Name: Santo Verdugo Bautista\nTalent: Coroner\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 128\nBlood Type: O\nBirthday: 02/11\nAge: 17", studentIDPicture: "https://imgur.com/PoUqQIr.png" },
-				{ studentID: "Name: Shinji Minoru\nTalent: Physicist\nSex: Male\nStatus: Alive\n\nShoe Size: 9\nHeight: 5'10\"\nWeight: 125\nBlood Type: AB\nBirthday: 01/27\nAge: 18", studentIDPicture: "" },
-				{ studentID: "Name: Tenome\nTalent: Ghostwriter\nSex: Male\nStatus: Deceased\n\nShoe Size: ??\nHeight: ?'?\"\nWeight: ???\nBlood Type: ??\nBirthday: ??/??\nAge: 15", studentIDPicture: "https://imgur.com/TM8FYjl.png" },
-				{ studentID: "Name: Wolfgang Schwarz\nTalent: Combat Medic\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 6'5\"\nWeight: 246\nBlood Type: A\nBirthday: 12/07\nAge: ??", studentIDPicture: "https://imgur.com/iHn6DX9.png" },
-			]
-			
-			if (args.length === 1) {
-				message.channel.send("```##  Sex and Name                          Talent\n1   F Aemele Dèjré                        Stalker\n2   F Dia Ramos                           Cheerleader\n3   F Kumiko Yeun                         Rock Star\n4   F Inugami Uzuki                       Graffiti Artist\n6   F Junko Saitou                        Horror Novelist\n8   F Mariko Murakami                     Martial Artist\n9   F Megami Himura                       Tragedian\n10  F Nikki Cox                           Teacher\n12  F Renata de Santis                    Heiress\n13  M Areli Vepkhia                       Lion Tamer\n14  M Ayuma Tanaka                        Counselor\n15  M Cecilio Gonzalo Calles Cárdenas     Pilot\n17  M Daichi Ichihara                     Satanist\n19  M Jomei Hoshino                       Pyromaniac\n20  M Melchor Guadalupe Paz de la Cruz    Activist\n21  M Ruslan Eun-Kyung Kraus              Luthier\n23  M Santo Verdugo Bautista              Coroner\n24  M Shinji Minoru                       Physicist\n26  M Wolfgang Schwarz                    Combat Medic\n\n    Mastermind\n    Unknown\n\n    Deceased Students\n5   F Isago Achikita                      Mythologist\n7   F Kirakira Kyuti                      Magical Girl\n11  F Piper McCullough                    Cadet\n16  M Charles Miller                      Milkman\n18  M Federico Navarro                    Pianist\n22  M Ryoushi Nobuori                     Storyteller\n25  M Tenome                              Ghostwriter```");
-				inboxChannel.send(`${message.author.username} has looked at the third class' roster.`);
-				return;
-			}
-			if (args[1] === "total") {
-				message.channel.send("```##  Sex and Name         Shoe Size    Height    Weight    Blood Type    Birthday    Age    Talent\n1   F Aemele Dèjré       5            5\'5\"      114       B             09/01       18     Stalker\n2   F Dia Ramos          7.5          5\'2\"      117       O             08/13       18     Cheerleader\n3   F Kumiko Yeun        6            5\'7\"      103       AB            06/16       18     Rock Star\n4   F Inugami Uzuki      8            5\'6\"      135       O             03/24       17     Graffiti Artist\n6   F Junko Saitou       6            5\'5\"      109       AB            01/06       18     Horror Novelist\n8   F Mariko Murakami    8            5\'6\"      125       AB            12/12       18     Martial Artist\n9   F Megami Himura      7            5\'5\"      110       A             05/15       16     Tragedian\n10  F Nikki Cox          8            5\'9\"      131       B             09/08       19     Teacher\n12  F Renata de Santis   7            5\'7\"      115       B             08/11       17     Heiress\n13  M Areli Vepkhia      12           6\'5\"      260       O             10/29       18     Lion Tamer\n14  M Ayuma Tanaka       9            5\'4\"      150       B             10/17       18     Counselor\n15  M Cecilio Cárdenas   8            5\'8\"      157       B             05/03       17     Pilot```");
-				message.channel.send("```17  M Daichi Ichihara    9            5\'8\"      143       O             09/23       17     Satanist\n19  M Jomei Hoshino      10           5\'11\"     152       B             12/17       18     Pyromaniac\n20  M Melchor de la Cruz 6            5\'11\"     110       A             02/29       17     Activist\n21  M Ruslan Kraus       10           6\'1\"      157       B             03/02       17     Luthier\n23  M Santo Bautista     10           5\'10\"     128       O             02/11       17     Coroner\n24  M Shinji Minoru      9            5\'10\"     125       AB            01/27       18     Physicist\n26  M Wolfgang Schwarz   11           6\'5\"      246       A             12/07       ??     Combat Medic\n\n    Mastermind\n    Unknown\n\n    Deceased Students\n5   F Isago Achikita     6.5          5\'5\"      119       AB            02/29       18     Mythologist\n7   F Kirakira Kyuti     6 (Child's)  4\'11\"     97        A             09/07       14     Magical Girl\n11  F Piper McCullough   5            5\'1\"      102       O             03/23       15     Cadet\n16  M Charles Miller     9            5\'11\"     143       C             01/11       18     Milkman\n18  M Federico Navarro   5            5\'0\"      99        A             02/16       15     Pianist\n22  M Ryoushi Nobuori    7            5\'6\"      111       A             12/25       16     Storyteller\n25  M Tenome             ??           ?\'?\"      ???       ?             ??/??       15     Ghostwriter```");
-				inboxChannel.send(`${message.author.username} has looked at the full version of the third class roster.`);
-				return;
-			}
-
-			let pageAmount = 26;
-			let x = 0;
-			while (x < pageAmount) {
-				thumbnail = classList[x].studentIDPicture;
-				if (thumbnail === "") {
-					thumbnail = "https://imgur.com/OVPTMGn.png";
-				};
-				currentPage = {
-					text: classList[x].studentID,
-					thumbnail: thumbnail
+				if (args[1].toLowerCase() === "total") { //Class Roster Total
+					message.channel.send("```##  Sex and Name       Shoe Size    Height    Weight    Blood Type    Birthday    Age    Talent\n11  F Mori Hibana      8            5'9\"      132       B             01/04       17     Hypnotist\n25  M Ryu Akahoshi     10           5'10\"     150       O             04/06       16     Dancer\n27  M Shiba Mikio      9            5'10\"     111       O             11/04       17     Matchmaker\n29  M Théo Dubois      *            5'7\"      141       AB            03/27       17     Archer\n30  M Yukine Sakurai   10.5         5'8\"      135       O             12/13       16     Botanist\n\n    Mastermind\n23  M Masayuuki Taisho 9            5'6\"      120       AB            11/25       16     Balance (Blogger)\n\n    Deceased Students\n1   F Aika Mahaya      9            5'6\"      137       B             06/21       17     Digital Composer\n2   F Anaelle Hamaan   *            5'2\"      104       AB            06/20       16     Fashion Designer\n3   F Anya Sakaguchi   *            5'4\"      104       B             04/10       14     Magician\n4   F Ara Ayao         7            5'8\"      115       B             08/15       17     Actress\n5   F Aurélie Cartier  7            5'7\"      115       A             01/09       17     Figure Skater\n6   F Hachi Hiruma     7.5          5'7\"      139       A             11/09       17     Cryptologist\n7   F Jeong Park       6            5'5\"      105       O             05/29       16     Tennis Player\n8   F Kyoung-mi Park   6            5'5\"      105       O             05/29       16     Singer```");
+					message.channel.send("```9   F Megu Kojima      6            5'5\"      99        O             04/15       17     Model\n10  F Minako Kaoru     *            5'8\"      120       O             08/07       16     Swordsman\n12  F Noriko Suzuki    7            5'3\"      110       A             06/09       14     Chess Champion\n13  F Stella Hunter    *            5'2\"      102       A             05/24       15     Fortnite Gamer\n14  F Tezuku Imou      *            5'5\"      146       O             10/31       16     Boxer\n15  F Ximena Colomar   7            5'3\"      132       O             02/07       17     Hacker\n16  M Aiko Hikaru      8            5'8\"      135       O             06/14       17     Makeup Artist\n17  M Anzu Kofuku      *            5'11\"     159       AB            01/25       18     Counterfeiter\n18  M Cheisu Maeda     11           6'1\"      149       B             11/13       17     Detective\n19  M Hoshi Chiura     8            5'5\"      110       A             10/31       16     Astronomer\n20  M Jacek Żeglarski  10           5'8\"      162       AB            10/03       15     Animal Caretaker\n21  M Kazuya Harada    *            5'9\"      145       O             08/13       16     Woodworker\n22  M Kiro Karasu      10           5'10\"     130       O             08/17       17     Prince\n24  M Miyuki Ataru     *            6'2\"      140       B             07/23       17     Baseball Player\n26  M S'ad Ludópata    10           6'0\"      144       O             04/10       17     Gambler\n28  M Tenshi Kawada    10           5'8\"      120       AB            06/11       17     Therapist\n\n*Lost due to account deletion.```");
+					inboxChannel.send(`${message.author.username} has looked at the full version of the first class' roster.`);
+					return;
 				}
-				pages.push(currentPage);
-				x++;
-			}
 
-			if (args[1] === "1" || args[1].toLowerCase().search("aemele") != -1) {page = 1}
-			if (args[1] === "2" || args[1].toLowerCase().search("dia") != -1) {page = 2}
-			if (args[1] === "3" || args[1].toLowerCase().search("kumi") != -1 || args[1].toLowerCase().search("ga") != -1) {page = 3}
-			if (args[1] === "4" || args[1].toLowerCase().search("inu") != -1) {page = 4}
-			if (args[1] === "5" || args[1].toLowerCase().search("isago") != -1) {page = 5}
-			if (args[1] === "6" || args[1].toLowerCase().search("junko") != -1 || args[1].toLowerCase().search("byakko") != -1) {page = 6}
-			if (args[1] === "7" || args[1].toLowerCase().search("kira") != -1) {page = 7}
-			if (args[1] === "8" || args[1].toLowerCase().search("mariko") != -1) {page = 8}
-			if (args[1] === "9" || args[1].toLowerCase().search("megami") != -1) {page = 9}
-			if (args[1] === "10" || (args[1].toLowerCase().search("nikki") != -1 || args[1].toLowerCase().search("agnes") != -1)) {page = 10}
-			if (args[1] === "11" || args[1].toLowerCase().search("piper") != -1) {page = 11}
-			if (args[1] === "12" || args[1].toLowerCase().search("renata") != -1) {page = 12}
-			if (args[1] === "13" || args[1].toLowerCase().search("areli") != -1) {page = 13}
-			if (args[1] === "14" || args[1].toLowerCase().search("ayuma") != -1) {page = 14}
-			if (args[1].toLowerCase().search("cecil") != -1 && args[1].toLowerCase().search("cecilio") === -1) {
-				return message.reply("**No.**");
-			}
-			if (args[1] === "15" || args[1].toLowerCase().search("cecilio") != -1) {page = 15}
-			if (args[1] === "16" || args[1].toLowerCase().search("charles") != -1 || args[1].toLowerCase().search("chad") != -1) {page = 16}
-			if (args[1] === "17" || args[1].toLowerCase().search("daichi") != -1) {page = 17}
-			if (args[1] === "18" || args[1].toLowerCase().search("federico") != -1 || args[1].toLowerCase().search("freddy") != -1) {page = 18}
-			if (args[1] === "19" || args[1].toLowerCase().search("jomei") != -1) {page = 19}
-			if (args[1] === "20" || args[1].toLowerCase().search("mel") != -1 && args[1].toLowerCase().search("aemele") === -1) {page = 20}
-			if (args[1] === "21" || args[1].toLowerCase().search("ruslan") != -1) {page = 21}
-			if (args[1] === "22" || args[1].toLowerCase().search("ryoushi") != -1) {page = 22}
-			if (args[1] === "23" || args[1].toLowerCase().search("santo") != -1) {page = 23}
-			if (args[1] === "24" || args[1].toLowerCase().search("shinji") != -1) {page = 24}
-			if (args[1] === "25" || args[1].toLowerCase().search("tenome") != -1) {page = 25}
-			if (args[1] === "26" || args[1].toLowerCase().search("wolf") != -1) {page = 26}
-			if (Number.isInteger(args[1] * 1) === true) {
-				inboxChannel.send(`${message.author.username} has looked at student ${args[1]}'s file from the third class.`)
-			}
-			if (Number.isInteger(args[1] * 1) === false) {
-				inboxChannel.send(`${message.author.username} has looked at ${args[1].toUpperCase().slice(0, 1)}${args[1].toLowerCase().slice(1)}'s file from the third class.`)
-			}
-		}
-		if (args[0] === "4") { //Class 04 ()
-			classList = [
-				{ studentID: "Name: Agnes María Camila Zalweski-Chavarría\nTalent: Voice Actor\nSex: Male\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'2\"\nWeight: 112\nBlood Type: A\nBirthday: 04/21\nAge: 14", studentIDPicture: "" },
-				{ studentID: "Name: Miyuki Hayashi\nTalent: Fire Dancer\nSex: Female\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'5\"\nWeight: 120\nBlood Type: B\nBirthday: 05/24\nAge: 18", studentIDPicture: "" }
-			]
-			
-			if (args.length === 1) {
-				message.channel.send("Sorry, but we haven't had a fourth class yet!");
-				inboxChannel.send(`${message.author.username} has looked at the fourth class' roster.`);
-				return;
-			}
-			if (args[1] === "total") {
-				message.channel.send("Sorry, but we haven't had a fourth class yet!");
-				inboxChannel.send(`${message.author.username} has looked at the full version of the fourth class' roster.`);
-				return;
-			}
-
-			let pageAmount = 2;
-			let x = 0;
-			while (x < pageAmount) {
-				thumbnail = classList[x].studentIDPicture;
-				if (thumbnail === "") {
-					thumbnail = "https://imgur.com/OVPTMGn.png";
-				};
-				currentPage = {
-					text: classList[x].studentID,
-					thumbnail: thumbnail
+				let pageAmount = 30;
+				let x = 0;
+				while (x < pageAmount) {
+					thumbnail = classList[x].studentIDPicture;
+					if (thumbnail === "") {
+						thumbnail = "https://imgur.com/OVPTMGn.png";
+					};
+					currentPage = {text:classList[x].studentID,thumbnail:thumbnail}
+					pages.push(currentPage);
+					x++;
 				}
-				pages.push(currentPage);
-				x++;
-			}
 
-			if (args[1] === "NUMBER" || args[1].toLowerCase().search("aggi") != -1 || args[1].toLowerCase().search("agnes") != -1) {page = 1}
-			if (args[1] === "NUMBER" || args[1].toLowerCase().search("miyuki") != -1) {page = 2}
-			if (Number.isInteger(args[1] * 1) === true) {
-				inboxChannel.send(`${message.author.username} has looked at student ${args[1]}'s file from the third class.`)
+				if (args[1] === "1" || args[1].toLowerCase().search("aika") != -1) {page = 1}
+				if (args[1] === "2" || args[1].toLowerCase().search("anaelle") != -1) {page = 2}
+				if (args[1] === "3" || args[1].toLowerCase().search("anya") != -1) {page = 3}
+				if (args[1] === "4" || args[1].toLowerCase().search("ara") != -1) {page = 4}
+				if (args[1] === "5" || args[1].toLowerCase().search("aurelie") != -1 || args[1].toLowerCase().search("aurélie") != -1) {page = 5}
+				if (args[1] === "6" || args[1].toLowerCase().search("hachi") != -1) {page = 6}
+				if (args[1] === "7" || args[1].toLowerCase().search("jeong") != -1) {page = 7}
+				if (args[1] === "8" || args[1].toLowerCase().search("kyoung") != -1) {page = 8}
+				if (args[1] === "9" || args[1].toLowerCase().search("megu") != -1) {page = 9}
+				if (args[1] === "10" || args[1].toLowerCase().search("minako") != -1) {page = 10}
+				if (args[1] === "11" || args[1].toLowerCase().search("mori") != -1) {page = 11}
+				if (args[1] === "12" || args[1].toLowerCase().search("noriko") != -1) {page = 12}
+				if (args[1] === "13" || args[1].toLowerCase().search("stella") != -1) {page = 13}
+				if (args[1] === "14" || args[1].toLowerCase().search("tezuku") != -1) {page = 14}
+				if (args[1] === "15" || args[1].toLowerCase().search("ximena") != -1) {page = 15}
+				if (args[1] === "16" || args[1].toLowerCase().search("aiko") != -1) {page = 16}
+				if (args[1] === "17" || args[1].toLowerCase().search("anzu") != -1) {page = 17}
+				if (args[1] === "18" || args[1].toLowerCase().search("cheisu") != -1) {page = 18}
+				if (args[1] === "19" || args[1].toLowerCase().search("hoshi") != -1) {page = 19}
+				if (args[1] === "20" || args[1].toLowerCase().search("jacek") != -1) {page = 20}
+				if (args[1] === "21" || args[1].toLowerCase().search("kazuya") != -1) {page = 21}
+				if (args[1] === "22" || args[1].toLowerCase().search("kiro") != -1) {page = 22}
+				if (args[1] === "23" || args[1].toLowerCase().search("yuuki") != -1) {page = 23}
+				if (args[1] === "24" || args[1].toLowerCase().search("miyuki") != -1) {page = 24}
+				if (args[1] === "25" || args[1].toLowerCase().search("ryu") != -1) {page = 25}
+				if (args[1] === "26" || args[1].toLowerCase().search("s'ad") != -1) {page = 26}
+				if (args[1] === "27" || args[1].toLowerCase().search("shiba") != -1) {page = 27}
+				if (args[1] === "28" || args[1].toLowerCase().search("tenshi") != -1) {page = 28}
+				if (args[1] === "29" || args[1].toLowerCase().search("theo") != -1 || args[1].toLowerCase().search("théo") != -1) {page = 29}
+				if (args[1] === "30" || args[1].toLowerCase().search("yukine") != -1 || args[1].toLowerCase().search("who") != -1) {page = 30}
+				if (Number.isInteger(args[1] * 1) === true) {
+					inboxChannel.send(`${message.author.username} has looked at student ${args[1]}'s file from the first class.`)
+				}
+				if (Number.isInteger(args[1] * 1) === false) {
+					inboxChannel.send(`${message.author.username} has looked at ${args[1].toUpperCase().slice(0, 1)}${args[1].toLowerCase().slice(1)}'s file from the first class.`)
+				}
+
 			}
-			if (Number.isInteger(args[1] * 1) === false) {
-				inboxChannel.send(`${message.author.username} has looked at ${args[1].toUpperCase().slice(0, 1)}${args[1].toLowerCase().slice(1)}'s file from the third class.`)
+			if (args[0] === "2") { //Class 02 (Hope's Peak Academy/The Mall, The Killing School Trip)
+				classList = [
+					{ studentID: "Name: Akiko _______\nTalent: Clairvoyent\nSex: Female \nStatus: Rescued\n\nShoe Size: 6.5\nHeight: 5'4\"\nWeight: 103\nBlood Type: B\nBirthday: 03/13\nAge: 16", studentIDPicture: "https://imgur.com/Cpdhi9T.png" },
+					{ studentID: "Name: Arisa Shokuhou\nTalent: Opera Singer\nSex: Female\nStatus: Rescued\n\nShoe Size: 6\nHeight: 5'2\"\nWeight: 106\nBlood Type: A\nBirthday: 11/13\nAge: 17", studentIDPicture: "" },
+					{ studentID: "Name: Chika Miyasaki\nTalent: Assassin\nSex: Female\nStatus: Contained\n\nShoe Size: 4\nHeight: 5'2\"\nWeight: 92\nBlood Type: A\nBirthday: 03/20\nAge: 16", studentIDPicture: "https://imgur.com/zZmXZ3L.png" },
+					{ studentID: "Name: Eiji Ryozo\nTalent: Surgeon\nSex: Female\nStatus: Rescued\n\nShoe Size: 8\nHeight: 5'7\"\nWeight: 111\nBlood Type: B\nBirthday: 11/01\nAge: 16", studentIDPicture: "https://imgur.com/JTrNk47.png" },
+					{ studentID: "Name: Hana Kageriri\nTalent: Puppeteer\nSex: Female\nStatus: Rescued\n\nShoe Size: 9\nHeight: 5'5\"\nWeight: 105\nBlood Type: B\nBirthday: 11/12\nAge: 17", studentIDPicture: "https://imgur.com/c210v7y.png" },
+					{ studentID: "Name: Kagami Hannei\nTalent: Jeweler\nSex: Female\nStatus: Rescued\n\nShoe Size: 7.5\nHeight: 5'11\"\nWeight: 129\nBlood Type: A\nBirthday: 09/14\nAge: 18", studentIDPicture: "https://imgur.com/PZVqARe.png" },
+					{ studentID: "Name: Monika Minami\nTalent: Bomb Maker\nSex: Female\nStatus: Rescued\n\nShoe Size: 6.5\nHeight: 4'9\"\nWeight: 80\nBlood Type: AB\nBirthday: 04/01\nAge: 15", studentIDPicture: "" },
+					{ studentID: "Name: Saeko Kiyomizu\nTalent: Maid\nSex: Female\nStatus: Rescued\n\nShoe Size: 6/6.5\nHeight: 5'7\"\nWeight: 110\nBlood Type: O\nBirthday: 09/15\nAge: 17", studentIDPicture: "https://imgur.com/AKg0jAY.png" },
+					{ studentID: "Name: Tsuyo Kogiyumi\nTalent: Biologist\nSex: Female\nStatus: Rescued\n\nShoe Size: 6\nHeight: 5'1\"\nWeight: 104\nBlood Type: O\nBirthday: 08/25\nAge: 17", studentIDPicture: "https://imgur.com/jHf6p7i.png" },
+					{ studentID: "Name: Yuna Akahoshi\nTalent: Doll Maker\nSex: Female\nStatus: Rescued\n\nShoe Size: 6\nHeight: 5'3\"\nWeight: 110\nBlood Type: A\nBirthday: 06/25\nAge: 15", studentIDPicture: "" },
+					{ studentID: "Name: Ale del Prieto\nTalent: Lawyer\nSex: Male\nStatus: Rescued\n\nShoe Size: 6\nHeight: 5'6\"\nWeight: 124\nBlood Type: AB\nBirthday: 05/22\nAge: 18", studentIDPicture: "https://imgur.com/Sag0SRp.png" },
+					{ studentID: "Name: Asahi Fukuzawa\nTalent: Violinist\nSex: Male\nStatus: Rescued\n\nShoe Size: 10\nHeight: 5'7\"\nWeight: 124\nBlood Type: O\nBirthday: 08/27\nAge: 18", studentIDPicture: "https://imgur.com/GdXygwN.png" },
+					{ studentID: "Name: Chikako Kaetsu\nTalent: Conspiracy Theorist\nSex: Male\nStatus: Rescued\n\nShoe Size: 7.5\nHeight: 5'8\"\nWeight: 142\nBlood Type: O\nBirthday: 04/26\nAge: 18", studentIDPicture: "https://imgur.com/4yEQVlf.png" },
+					{ studentID: "Name: Eiichi Ryozo\nTalent: Chemist\nSex: Male\nStatus: Rescued\n\nShoe Size: 10\nHeight: 6'0\"\nWeight: 137\nBlood Type: AB\nBirthday: 06/06\nAge: 18", studentIDPicture: "https://imgur.com/BCdEZNm.png" },
+					{ studentID: "Name: Fenikku Hinotama\nTalent: Ringmaster\nSex: Male\nStatus: Rescued\n\nShoe Size: 8\nHeight: 5'1\"\nWeight: 95\nBlood Type: O\nBirthday: 05/29\nAge: 14", studentIDPicture: "https://imgur.com/snh70TO.png" },
+					{ studentID: "Name: Hideo Takayama\nTalent: Inventor\nSex: Male\nStatus: Rescued\n\nShoe Size: 10\nHeight: 6'2\"\nWeight: 193\nBlood Type: AB\nBirthday: 12/02\nAge: 18\n\n\nHideo loves AI dick.", studentIDPicture: "https://imgur.com/9WXv5Q9.png" },
+					{ studentID: "Name: Isha Kalki\nTalent: Spy\nSex: Male\nStatus: Rescued\n\nShoe Size: 5\nHeight: 5'1\"\nWeight: 95\nBlood Type: O\nBirthday: 05/31\nAge: 16", studentIDPicture: "https://imgur.com/xj1HMXu.png" },
+					{ studentID: "Name: Kaipo Uilani Iona\nTalent: Birdwatcher\nSex: Male\nStatus: Rescued\n\nShoe Size: 7\nHeight: 5'2\"\nWeight: 98\nBlood Type: O\nBirthday: 10/13\nAge: 15", studentIDPicture: "https://imgur.com/WQFawIm.png" },
+					{ studentID: "Name: Katashi Maeda\nTalent: Swimmer\nSex: Male\nStatus: Rescued\n\nShoe Size: 9\nHeight: 5'8\"\nWeight: 157\nBlood Type: O\nBirthday: 04/20\nAge: 17", studentIDPicture: "" },
+					{ studentID: "Name: Kouki Yoshida\nTalent: Lucky Student\nSex: Male\nStatus: Terminated\n\nShoe Size: 9\nHeight: 5'11\"\nWeight: 140\nBlood Type: B\nBirthday: 09/15\nAge: 18", studentIDPicture: "https://imgur.com/jRRhUog.png" },
+					{ studentID: "Name: Kyabetsu Retasu\nTalent: Florist\nSex: Male\nStatus: Rescued\n\nShoe Size: 8\nHeight: 5'9\"\nWeight: 147\nBlood Type: AB\nBirthday: 02/17\nAge: 16", studentIDPicture: "https://imgur.com/CgLyIGN.png" },
+					{ studentID: "Name: Michel Voigt\nTalent: Theologist\nSex: Male\nStatus: Rescued\n\nShoe Size: 8\nHeight: 5'5\"\nWeight: 119\nBlood Type: A\nBirthday: 12/25\nAge: 16", studentIDPicture: "" },
+					{ studentID: "Name: Rosendo Paulo Ochoa Merlo\nTalent: Fútbol Player\nSex: Male\nStatus: Rescued\n\nShoe Size: 5.5\nHeight: 5'1\"\nWeight: 110\nBlood Type: O\nBirthday: 08/10\nAge: 15", studentIDPicture: "https://imgur.com/uwXd769.png" },
+					{ studentID: "Name: Sora Kenshin\nAlias: The Silencer\nTalent: Daredevil\nSex: Male\nStatus: Rescued\n\nShoe Size: 11\nHeight: 5'9\"\nWeight: 120\nBlood Type: AB\nBirthday: 06/01\nAge: 17", studentIDPicture: "https://imgur.com/wdNGgRH.png" },
+					{ studentID: "Name: Souma Shimizu\nReal Name: Naoki Ishida\nTalent: Manipulator (Poet)\nSex: Male\nStatus: Rescued\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 130\nBlood Type: AB\nBirthday: 03/20\nAge: 17\n\n\n\nPoems:\nmy stacy left me\nof course, it's a fucking chad\nno one understands\n\ni'll get her back\nand that chad will be wacked\nsouma is better than chad\n\nA poem by Souma.\n\n\nmy heart burns\nbut not for you\nfor stacy\nfuck chad", studentIDPicture: "https://imgur.com/9CoACWR.png" },
+					{ studentID: "Name: Tomomi Kashichi\nTalent: Technician\nSex: Male\nStatus: Rescued\n\nShoe Size: 10.5\nHeight: 5'8\"\nWeight: 137\nBlood Type: A\nBirthday: 04/27\nAge: 17", studentIDPicture: "https://imgur.com/OVjt8y0.png" },
+					{ studentID: "Name: Yuuya Michimiya\nTalent: Philanthropist\nSex: Male\nStatus: Rescued\n\nShoe Size: 9\nHeight: 5'6\"\nWeight: 148\nBlood Type: AB\nBirthday: 04/13\nAge: 16", studentIDPicture: "" },
+					{ studentID: "Name: Eito Ryozo\nTalent: Psychologist\nSex: Male\nStatus: Deceased\n\nShoe Size: N/A\nHeight: N/A\nWeight: N/A\nBlood Type: N/A\nBirthday: N/A\nAge: 14", studentIDPicture: "https://imgur.com/M4cALh8.png" }
+				]
+			
+				if (args.length === 1) {
+					message.channel.send("```##  Sex and Name          Talent\n9   F Tsuyo Kogiyumi      Biologist\n12  M Asahi Fukuzawa      Violinist\n15  M Fenikku Hinotama    Ringmaster\n16  M Hideo Takayama      Inventor\n25  M Souma Shimizu       Manipulator (Poet)\n\n    Mastermind\n3   F Chika Miyasaki      Assassin\n\n    Deceased Students\n1   F Akiko _______       Clairvoyant\n2   F Arisa Shokuhou      Opera Singer\n4   F Eiji Ryozo          Surgeon\n5   F Hana Kageriri       Puppeteer\n6   F Kagami Hannei       Jeweler\n7   F Monika Minami       Bomb Maker\n8   F Saeko Kiyomizu      Maid\n10  F Yuna Akahoshi       Doll Maker\n11  M Ale del Prieto      Lawyer\n13  M Chikako Kaetsu      Conspiracy Theorist\n14  M Eiichi Ryozo        Chemist\n17  M Isha Kalki          Spy\n18  M Kaipo Uilani Iona   Birdwatcher\n19  M Katashi Maeda       Swimmer\n20  M Kouki Yoshida       Lucky Student\n21  M Kyabetsu Retasu     Florist\n22  M Michel Voigt        Theologist\n23  M Renzo Ochoa         Fútbol Player\n24  M Sora Kenshin        Daredevil\n26  M Tomomi Kashichi     Technician\n27  M Yuuya Michimiya     Philanthropist```");
+					inboxChannel.send(`${message.author.username} has looked at the second class' roster.`);
+					return;
+				}
+				if (args[1].toLowerCase() === "total") {
+					message.channel.send("```##  Sex and Name        Shoe Size    Height    Weight    Blood Type    Birthday    Age    Talent\n9   F Tsuyo Kogiyumi    6            5'1\"      104       O             08/25       17     Biologist\n12  M Asahi Fukuzawa    10           5'7\"      124       O             08/27       18     Violinist\n15  M Fenikku Hinotama  8            5'1\"      95        O             05/29       14     Ringmaster\n16  M Hideo Takayama    10           6'2\"      193       AB            12/02       18     Inventor\n25  M Souma Shimizu     10           5'10\"     130       AB            03/20       17     Manipulator (Poet)\n\n    Mastermind\n3   F Chika Miyasaki    4            5'2\"      92        A             03/20       16     Assassin\n\n    Deceased Students\n1   F Akiko _______     6.5          5'4\"      103       B             03/13       16     Clairvoyant\n2   F Arisa Shokuhou    6            5'2\"      106       A             11/13       17     Opera Singer\n4   F Eiji Ryozo        8            5'7\"      111       B             11/01       16     Surgeon\n5   F Hana Kageriri     9            5'5\"      105       B             11/12       17     Puppeteer\n6   F Kagami Hannei     7.5          5'11\"     129       A             09/14       18     Jeweler\n7   F Monika Minami     6.5          4'9\"      80        AB            04/01       15     Bomb Maker\n8   F Saeko Kiyomizu    6/6.5        5'7\"      110       O             09/15       17     Maid```");
+					message.channel.send("```\n10  F Yuna Akahoshi     6            5'3\"      110       A             06/25       15     Doll Maker\n11  M Ale del Prieto    6            5'6\"      124       AB            05/22       18     Lawyer\n13  M Chikako Kaetsu    7.5          5'8\"      142       O             04/26       18     Conspiracy Theorist\n14  M Eiichi Ryozo      10           6'0\"      137       AB            06/06       18     Chemist\n17  M Isha Kalki        5            5'1\"      95        O             05/31       16     Spy\n18  M Kaipo Uilani Iona 7            5'2\"      98        O             10/13       15     Birdwatcher\n19  M Katashi Maeda     9            5'8\"      157       O             04/20       17     Swimmer\n20  M Kouki Yoshida     9            5'11\"     140       B             09/15       18     Lucky Student\n21  M Kyabetsu Retasu   8            5'9\"      147       AB            02/17       16     Florist\n22  M Michel Voigt      8            5'5\"      119       A             12/25       16     Theologist\n23  M Renzo Ochoa       5.5          5'1\"      110       O             08/10       15     Fútbol Player\n24  M Sora Kenshin      11           5'9\"      120       AB            06/01       17     Daredevil\n26  M Tomomi Kashichi   10.5         5'8\"      137       A             04/17       17     Technician\n27  M Yuuya Michimiya   9            5'6\"      148       AB            04/13       16     Philanthropist\n```");
+					inboxChannel.send(`${message.author.username} has looked at the full version of the second class' roster.`);
+					return;
+				}
+
+				let pageAmount = 28;
+				let x = 0;
+				while (x < pageAmount) {
+					thumbnail = classList[x].studentIDPicture;
+					if (thumbnail === "") {
+						thumbnail = "https://imgur.com/OVPTMGn.png";
+					};
+					currentPage = {
+						text: classList[x].studentID,
+						thumbnail: thumbnail
+					}
+					pages.push(currentPage);
+					x++;
+				}
+				
+				if (args[1] === "1" || args[1].toLowerCase().search("akiko") != -1) {page = 1}
+				if (args[1] === "2" || args[1].toLowerCase().search("arisa") != -1) {page = 2}
+				if (args[1] === "3" || (args[1].toLowerCase().search("chika") != -1 && args[1].toLowerCase().search("chikako") === -1)) {page = 3}
+				if (args[1] === "4" || args[1].toLowerCase().search("eiji") != -1) {page = 4}
+				if (args[1] === "5" || args[1].toLowerCase().search("hana") != -1) {page = 5}
+				if (args[1] === "6" || args[1].toLowerCase().search("kagami") != -1 || args[1].toLowerCase().search("bitch") != -1) {page = 6}
+				if (args[1] === "7" || args[1].toLowerCase().search("monika") != -1) {page = 7}
+				if (args[1] === "8" || args[1].toLowerCase().search("saeko") != -1) {page = 8}
+				if (args[1] === "9" || args[1].toLowerCase().search("tsuyo") != -1) {page = 9}
+				if (args[1] === "10" || args[1].toLowerCase().search("yuna") != -1) {page = 10}
+				if (args[1] === "11" || args[1].toLowerCase().search("ale") != -1) {page = 11}
+				if (args[1] === "12" || args[1].toLowerCase().search("asahi") != -1) {page = 12}
+				if (args[1] === "13" || args[1].toLowerCase().search("chikako") != -1 || (args[1].toLowerCase().search("chik") != -1 && args[1].toLowerCase().search("chika") === -1)) {page = 13}
+				if (args[1] === "14" || args[1].toLowerCase().search("eiichi") != -1) {page = 14}
+				if (args[1] === "15" || args[1].toLowerCase().search("fenikku") != -1) {page = 15}
+				if (args[1] === "16" || args[1].toLowerCase().search("hideo") != -1) {page = 16}
+				if (args[1] === "17" || args[1].toLowerCase().search("isha") != -1) {page = 17}
+				if (args[1] === "18" || args[1].toLowerCase().search("kaipo") != -1) {page = 18}
+				if (args[1] === "19" || args[1].toLowerCase().search("katashi") != -1) {page = 19}
+				if (args[1] === "20" || args[1].toLowerCase().search("kouki") != -1) {page = 20}
+				if (args[1] === "21" || args[1].toLowerCase().search("kyabetsu") != -1) {page = 21}
+				if (args[1] === "22" || args[1].toLowerCase().search("michel") != -1) {page = 22}
+				if (args[1] === "23" || args[1].toLowerCase().search("renzo") != -1 || args[1].toLowerCase().search("rosendo") != -1) {page = 23}
+				if (args[1] === "24" || args[1].toLowerCase().search("sora") != -1 || args[1].toLowerCase().search("silencer") != -1 || (args[1].toLowerCase().search("the") != -1 && args[2].toLowerCase().search("silencer") != -1)) {page = 24}
+				if (args[1] === "25" || args[1].toLowerCase().search("souma") != -1 || args[1].toLowerCase().search("naoki") != -1) {page = 25}
+				if (args[1] === "26" || args[1].toLowerCase().search("tomomi") != -1) {page = 26}
+				if (args[1] === "27" || args[1].toLowerCase().search("yuuya") != -1) {page = 27}
+				if (args[1].toLowerCase().search("eito") != -1) {page = 28}
+				if (args[1].toLowerCase().search("junko") != -1 && args[1].toLowerCase().search("inu") != -1 && message.author.id === "334575513857163266") {
+					possibleReplies = ["how long will it take you, Mel...","**Mel.**","jesus christ! How many times is this going to happen, Mel?","I will literally vore you if you do that again, Mel.","***Mel.***","do it one more time, I dare you Mel.","you've got to be doing this on purpose now, right Mel?","I've had it up to here with you, Mel.","stop doing this, Mel!","why do you keep doing this, Mel?"];
+					return message.reply(random(possibleReplies));
+				}
+				if (Number.isInteger(args[1] * 1) === true) {
+					inboxChannel.send(`${message.author.username} has looked at student ${args[1]}'s file from the second class.`)
+				}
+				if (Number.isInteger(args[1] * 1) === false) {
+					inboxChannel.send(`${message.author.username} has looked at ${args[1].toUpperCase().slice(0, 1)}${args[1].toLowerCase().slice(1)}'s file from the second class.`)
+				}
+			}
+			if (args[0] === "3") { //Class 03 (Monokuma Train, Killing School Ride)
+				classList = [
+					{ studentID: "Name: Aemele Dèjré\nTalent: Stalker\nSex: Female\nStatus: Alive\n\nShoe Size: 5\nHeight: 5'5\"\nWeight: 114\nBlood Type: B\nBirthday: 09/01\nAge: 18", studentIDPicture: "https://imgur.com/nxt9OCI.png" },
+					{ studentID: "Name: Dia Ramos\nTalent: Cheerleader\nSex: Female\nStatus: Alive\n\nShoe Size: 7.5\nHeight: 5'2\"\nWeight: 117\nBlood Type: O\nBirthday: 08/13\nAge: 18", studentIDPicture: "https://imgur.com/luniZC4.png" },
+					{ studentID: "Name: Kumiko Yeun\nStage Name: KUMI!\nTalent: Rock Star\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'7\"\nWeight: 103\nBlood Type: AB\nBirthday: 06/16\nAge: 18", studentIDPicture: "" },
+					{ studentID: "Name: Inugami Uzuki\nTalent: Graffiti Artist\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'6\"\nWeight: 135\nBlood Type: O\nBirthday: 03/24\nAge: 17", studentIDPicture: "https://imgur.com/ZHW10pn.png" },
+					{ studentID: "Name: Isago Achikita\nTalent: Mythologist\nSex: Female\nStatus: Deceased\n\nShoe Size: 6.5\nHeight: 5'5\"\nWeight: 119\nBlood Type: AB\nBirthday: 02/29\nAge: 18", studentIDPicture: "https://imgur.com/KNHhTlL.png" },
+					{ studentID: "Name: Junko Saitou\nPen Name: Kisei Keukegen\nTalent: Horror Novelist\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'5\"\nWeight: 109\nBlood Type: AB\nBirthday: 01/06\nAge: 18", studentIDPicture: "https://imgur.com/TZeW9L7.png" },
+					{ studentID: "Name: Kira Kurushimi\nStage Name: Kirakira Kyuti\nTalent: Magical Girl\nSex: Female\nStatus: Deceased\n\nShoe Size: 6 (Children's)\nHeight: 4'11\"\nWeight: 97\nBlood Type: A\nBirthday: 09/07\nAge: 14", studentIDPicture: "https://imgur.com/OJF4cgL.png" },
+					{ studentID: "Name: Mariko Murakami\nTalent: Martial Artist\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'6\"\nWeight: 125\nBlood Type: AB\nBirthday: 12/12\nAge: 18", studentIDPicture: "https://imgur.com/9RRSa6h.png" },
+					{ studentID: "Name: Megami Himura\nTalent: Tragedian\nSex: Female\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'5\"\nWeight: 110\nBlood Type: A\nBirthday: 05/15\nAge: 16", studentIDPicture: "" },
+					{ studentID: "Name: Agnès Boniface\nPseudonym: Nikki Cox\nTalent: Adult Film Actress\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'9\"\nWeight: 131\nBlood Type: B\nBirthday: 09/08\nAge: 19", studentIDPicture: "https://imgur.com/zvw2WGR.png" },
+					{ studentID: "Name: Piper McCullough\nTalent: Cadet\nSex: Female\nStatus: Deceased\n\nShoe Size: 5\nHeight: 5'1\"\nWeight: 102\nBlood Type: O\nBirthday: 03/23\nAge: 15", studentIDPicture: "https://imgur.com/yuOgons.png" },
+					{ studentID: "Name: Renata de Santis\nTalent: Heiress\nSex: Female\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'7\"\nWeight: 115\nBlood Type: B\nBirthday: 08/11\nAge: 17", studentIDPicture: "https://imgur.com/Dgij3oX.png" },
+					{ studentID: "Name: Areli Vepkhia\nTalent: Lion Tamer\nSex: Male\nStatus: Alive\n\nShoe Size: 12\nHeight: 6'5\"\nWeight: 260\nBlood Type: O\nBirthday: 10/29\nAge: 18", studentIDPicture: "https://imgur.com/4IQsA40.png" },
+					{ studentID: "Name: Ayuma Tanaka\nTalent: Counselor\nSex: Male\nStatus: Alive\n\nShoe Size: 9\nHeight: 5'4\"\nWeight: 150\nBlood Type: B\nBirthday: 10/17\nAge: 18", studentIDPicture: "" },
+					{ studentID: "Name: Cecilio Gonzalo Calles Cárdenas\nTalent: Pilot\nSex: Male\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'8\"\nWeight: 157\nBlood Type: B\nBirthday: 05/03\nAge: 17", studentIDPicture: "" },
+					{ studentID: "Name: Charles Miller\nTalent: Milkman\nSex: Male\nStatus: Deceased\n\nShoe Size: 9\nHeight: 5'11\"\nWeight: 143\nBlood Type: Chocolate\nBirthday: 01/11\nAge: 18", studentIDPicture: "https://imgur.com/YKzsYOU.png" },
+					{ studentID: "Name: Daichi Ichihara\nTalent: Satanist\nSex: Male\nStatus: Alive\n\nShoe Size: 9\nHeight: 5'8\"\nWeight: 143\nBlood Type: O\nBirthday: 09/23\nAge: 17", studentIDPicture: "https://imgur.com/qT8oKQu.png" },
+					{ studentID: "Name: Federico Navarro\nTalent: Pianist\nSex: Male\nStatus: Deceased\n\nShoe Size: 5\nHeight: 5'0\"\nWeight: 99\nBlood Type: A\nBirthday: 02/16\nAge: 15", studentIDPicture: "https://imgur.com/MeXyfga.png" },
+					{ studentID: "Name: Jomei Hoshino\nTalent: Pyromaniac\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'11\"\nWeight: 152\nBlood Type: B\nBirthday: 12/17\nAge: 18", studentIDPicture: "https://imgur.com/YywS5LK.png" },
+					{ studentID: "Name: Melchor Guadalupe Paz de la Cruz\nTalent: Activist\nSex: Male\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'11\"\nWeight: 110\nBlood Type: A\nBirthday: 02/29\nAge: 17", studentIDPicture: "https://imgur.com/9cVr7mL.png" },
+					{ studentID: "Name: Ruslan Eun-Kyung Kraus\nTalent: Luthier\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 6'1\"\nWeight: 157\nBlood Type: B\nBirthday: 03/02\nAge: 17", studentIDPicture: "https://imgur.com/8LA7hg8.png" },
+					{ studentID: "Name: Ryoushi Nobuori\nTalent: Storyteller\nSex: Male\nStatus: Deceased\n\nShoe Size: 7\nHeight: 5'6\"\nWeight: 111\nBlood Type: A\nBirthday: 12/25\nAge: 16", studentIDPicture: "https://imgur.com/9se7jzq.png" },
+					{ studentID: "Name: Santo Verdugo Bautista\nTalent: Coroner\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 128\nBlood Type: O\nBirthday: 02/11\nAge: 17", studentIDPicture: "https://imgur.com/PoUqQIr.png" },
+					{ studentID: "Name: Shinji Minoru\nTalent: Physicist\nSex: Male\nStatus: Alive\n\nShoe Size: 9\nHeight: 5'10\"\nWeight: 125\nBlood Type: AB\nBirthday: 01/27\nAge: 18", studentIDPicture: "" },
+					{ studentID: "Name: Tenome\nTalent: Ghostwriter\nSex: Male\nStatus: Deceased\n\nShoe Size: ??\nHeight: ?'?\"\nWeight: ???\nBlood Type: ??\nBirthday: ??/??\nAge: 15", studentIDPicture: "https://imgur.com/TM8FYjl.png" },
+					{ studentID: "Name: Wolfgang Schwarz\nTalent: Combat Medic\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 6'5\"\nWeight: 246\nBlood Type: A\nBirthday: 12/07\nAge: ??", studentIDPicture: "https://imgur.com/iHn6DX9.png" },
+				]
+				
+				if (args.length === 1) {
+					message.channel.send("```##  Sex and Name                          Talent\n1   F Aemele Dèjré                        Stalker\n2   F Dia Ramos                           Cheerleader\n3   F Kumiko Yeun                         Rock Star\n4   F Inugami Uzuki                       Graffiti Artist\n6   F Junko Saitou                        Horror Novelist\n8   F Mariko Murakami                     Martial Artist\n9   F Megami Himura                       Tragedian\n10  F Nikki Cox                           Teacher\n12  F Renata de Santis                    Heiress\n13  M Areli Vepkhia                       Lion Tamer\n14  M Ayuma Tanaka                        Counselor\n15  M Cecilio Gonzalo Calles Cárdenas     Pilot\n17  M Daichi Ichihara                     Satanist\n19  M Jomei Hoshino                       Pyromaniac\n20  M Melchor Guadalupe Paz de la Cruz    Activist\n21  M Ruslan Eun-Kyung Kraus              Luthier\n23  M Santo Verdugo Bautista              Coroner\n24  M Shinji Minoru                       Physicist\n26  M Wolfgang Schwarz                    Combat Medic\n\n    Mastermind\n    Unknown\n\n    Deceased Students\n5   F Isago Achikita                      Mythologist\n7   F Kirakira Kyuti                      Magical Girl\n11  F Piper McCullough                    Cadet\n16  M Charles Miller                      Milkman\n18  M Federico Navarro                    Pianist\n22  M Ryoushi Nobuori                     Storyteller\n25  M Tenome                              Ghostwriter```");
+					inboxChannel.send(`${message.author.username} has looked at the third class' roster.`);
+					return;
+				}
+				if (args[1] === "total") {
+					message.channel.send("```##  Sex and Name         Shoe Size    Height    Weight    Blood Type    Birthday    Age    Talent\n1   F Aemele Dèjré       5            5\'5\"      114       B             09/01       18     Stalker\n2   F Dia Ramos          7.5          5\'2\"      117       O             08/13       18     Cheerleader\n3   F Kumiko Yeun        6            5\'7\"      103       AB            06/16       18     Rock Star\n4   F Inugami Uzuki      8            5\'6\"      135       O             03/24       17     Graffiti Artist\n6   F Junko Saitou       6            5\'5\"      109       AB            01/06       18     Horror Novelist\n8   F Mariko Murakami    8            5\'6\"      125       AB            12/12       18     Martial Artist\n9   F Megami Himura      7            5\'5\"      110       A             05/15       16     Tragedian\n10  F Nikki Cox          8            5\'9\"      131       B             09/08       19     Teacher\n12  F Renata de Santis   7            5\'7\"      115       B             08/11       17     Heiress\n13  M Areli Vepkhia      12           6\'5\"      260       O             10/29       18     Lion Tamer\n14  M Ayuma Tanaka       9            5\'4\"      150       B             10/17       18     Counselor\n15  M Cecilio Cárdenas   8            5\'8\"      157       B             05/03       17     Pilot```");
+					message.channel.send("```17  M Daichi Ichihara    9            5\'8\"      143       O             09/23       17     Satanist\n19  M Jomei Hoshino      10           5\'11\"     152       B             12/17       18     Pyromaniac\n20  M Melchor de la Cruz 6            5\'11\"     110       A             02/29       17     Activist\n21  M Ruslan Kraus       10           6\'1\"      157       B             03/02       17     Luthier\n23  M Santo Bautista     10           5\'10\"     128       O             02/11       17     Coroner\n24  M Shinji Minoru      9            5\'10\"     125       AB            01/27       18     Physicist\n26  M Wolfgang Schwarz   11           6\'5\"      246       A             12/07       ??     Combat Medic\n\n    Mastermind\n    Unknown\n\n    Deceased Students\n5   F Isago Achikita     6.5          5\'5\"      119       AB            02/29       18     Mythologist\n7   F Kirakira Kyuti     6 (Child's)  4\'11\"     97        A             09/07       14     Magical Girl\n11  F Piper McCullough   5            5\'1\"      102       O             03/23       15     Cadet\n16  M Charles Miller     9            5\'11\"     143       C             01/11       18     Milkman\n18  M Federico Navarro   5            5\'0\"      99        A             02/16       15     Pianist\n22  M Ryoushi Nobuori    7            5\'6\"      111       A             12/25       16     Storyteller\n25  M Tenome             ??           ?\'?\"      ???       ?             ??/??       15     Ghostwriter```");
+					inboxChannel.send(`${message.author.username} has looked at the full version of the third class roster.`);
+					return;
+				}
+
+				let pageAmount = 26;
+				let x = 0;
+				while (x < pageAmount) {
+					thumbnail = classList[x].studentIDPicture;
+					if (thumbnail === "") {
+						thumbnail = "https://imgur.com/OVPTMGn.png";
+					};
+					currentPage = {
+						text: classList[x].studentID,
+						thumbnail: thumbnail
+					}
+					pages.push(currentPage);
+					x++;
+				}
+
+				if (args[1] === "1" || args[1].toLowerCase().search("aemele") != -1) {page = 1}
+				if (args[1] === "2" || args[1].toLowerCase().search("dia") != -1) {page = 2}
+				if (args[1] === "3" || args[1].toLowerCase().search("kumi") != -1 || args[1].toLowerCase().search("ga") != -1) {page = 3}
+				if (args[1] === "4" || args[1].toLowerCase().search("inu") != -1) {page = 4}
+				if (args[1] === "5" || args[1].toLowerCase().search("isago") != -1) {page = 5}
+				if (args[1] === "6" || args[1].toLowerCase().search("junko") != -1 || args[1].toLowerCase().search("byakko") != -1) {page = 6}
+				if (args[1] === "7" || args[1].toLowerCase().search("kira") != -1) {page = 7}
+				if (args[1] === "8" || args[1].toLowerCase().search("mariko") != -1) {page = 8}
+				if (args[1] === "9" || args[1].toLowerCase().search("megami") != -1) {page = 9}
+				if (args[1] === "10" || (args[1].toLowerCase().search("nikki") != -1 || args[1].toLowerCase().search("agnes") != -1)) {page = 10}
+				if (args[1] === "11" || args[1].toLowerCase().search("piper") != -1) {page = 11}
+				if (args[1] === "12" || args[1].toLowerCase().search("renata") != -1) {page = 12}
+				if (args[1] === "13" || args[1].toLowerCase().search("areli") != -1) {page = 13}
+				if (args[1] === "14" || args[1].toLowerCase().search("ayuma") != -1) {page = 14}
+				if (args[1].toLowerCase().search("cecil") != -1 && args[1].toLowerCase().search("cecilio") === -1) {
+					return message.reply("**No.**");
+				}
+				if (args[1] === "15" || args[1].toLowerCase().search("cecilio") != -1) {page = 15}
+				if (args[1] === "16" || args[1].toLowerCase().search("charles") != -1 || args[1].toLowerCase().search("chad") != -1) {page = 16}
+				if (args[1] === "17" || args[1].toLowerCase().search("daichi") != -1) {page = 17}
+				if (args[1] === "18" || args[1].toLowerCase().search("federico") != -1 || args[1].toLowerCase().search("freddy") != -1) {page = 18}
+				if (args[1] === "19" || args[1].toLowerCase().search("jomei") != -1) {page = 19}
+				if (args[1] === "20" || args[1].toLowerCase().search("mel") != -1 && args[1].toLowerCase().search("aemele") === -1) {page = 20}
+				if (args[1] === "21" || args[1].toLowerCase().search("ruslan") != -1) {page = 21}
+				if (args[1] === "22" || args[1].toLowerCase().search("ryoushi") != -1) {page = 22}
+				if (args[1] === "23" || args[1].toLowerCase().search("santo") != -1) {page = 23}
+				if (args[1] === "24" || args[1].toLowerCase().search("shinji") != -1) {page = 24}
+				if (args[1] === "25" || args[1].toLowerCase().search("tenome") != -1) {page = 25}
+				if (args[1] === "26" || args[1].toLowerCase().search("wolf") != -1) {page = 26}
+				if (Number.isInteger(args[1] * 1) === true) {
+					inboxChannel.send(`${message.author.username} has looked at student ${args[1]}'s file from the third class.`)
+				}
+				if (Number.isInteger(args[1] * 1) === false) {
+					inboxChannel.send(`${message.author.username} has looked at ${args[1].toUpperCase().slice(0, 1)}${args[1].toLowerCase().slice(1)}'s file from the third class.`)
+				}
+			}
+			if (args[0] === "4") { //Class 04 ()
+				classList = [
+					{ studentID: "Name: Agnes María Camila Zalweski-Chavarría\nTalent: Voice Actor\nSex: Male\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'2\"\nWeight: 112\nBlood Type: A\nBirthday: 04/21\nAge: 14", studentIDPicture: "" },
+					{ studentID: "Name: Miyuki Hayashi\nTalent: Fire Dancer\nSex: Female\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'5\"\nWeight: 120\nBlood Type: B\nBirthday: 05/24\nAge: 18", studentIDPicture: "" }
+				]
+				
+				if (args.length === 1) {
+					message.channel.send("Sorry, but we haven't had a fourth class yet!");
+					inboxChannel.send(`${message.author.username} has looked at the fourth class' roster.`);
+					return;
+				}
+				if (args[1] === "total") {
+					message.channel.send("Sorry, but we haven't had a fourth class yet!");
+					inboxChannel.send(`${message.author.username} has looked at the full version of the fourth class' roster.`);
+					return;
+				}
+
+				let pageAmount = 2;
+				let x = 0;
+				while (x < pageAmount) {
+					thumbnail = classList[x].studentIDPicture;
+					if (thumbnail === "") {
+						thumbnail = "https://imgur.com/OVPTMGn.png";
+					};
+					currentPage = {
+						text: classList[x].studentID,
+						thumbnail: thumbnail
+					}
+					pages.push(currentPage);
+					x++;
+				}
+
+				if (args[1] === "NUMBER" || args[1].toLowerCase().search("aggi") != -1 || args[1].toLowerCase().search("agnes") != -1) {page = 1}
+				if (args[1] === "NUMBER" || args[1].toLowerCase().search("miyuki") != -1) {page = 2}
+				if (Number.isInteger(args[1] * 1) === true) {
+					inboxChannel.send(`${message.author.username} has looked at student ${args[1]}'s file from the third class.`)
+				}
+				if (Number.isInteger(args[1] * 1) === false) {
+					inboxChannel.send(`${message.author.username} has looked at ${args[1].toUpperCase().slice(0, 1)}${args[1].toLowerCase().slice(1)}'s file from the third class.`)
+				}
+			}
+			if (args[0].toLowerCase() === "u") { //Ultra Despair Girls Arc
+				classList = [
+					{ studentID: "Name: Kotone Fukuzawa\nTalent: Anarchist\nSex: Female\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'6\"\nWeight: 121\nBlood Type: AB\nBirthday: 11/04\nAge: 16", studentIDPicture: "https://imgur.com/OTttz9N.png" },
+					{ studentID: "Name: Monobi\nStatus: Alive\n\nHeight: Uhh probably pretty short\nWeight: Probably pretty heavy\nBirthday: Uhh some date I guess\nAge: I'd imagine like maybe three years old", studentIDPicture: "https://imgur.com/CiGJlAd.png" }
+				]
+				
+				if (args.length === 1) {
+					message.channel.send("Sorry, but we haven't explored the outside world yet!");
+					inboxChannel.send(`${message.author.username} has looked at the UDG roster.`);
+					return;
+				}
+				if (args[1] === "total") {
+					message.channel.send("Sorry, but we haven't explored the outside world yet!");
+					inboxChannel.send(`${message.author.username} has looked at the full version of the UDG roster.`);
+					return;
+				}
+
+				let pageAmount = 2;
+				let x = 0;
+				while (x < pageAmount) {
+					thumbnail = classList[x].studentIDPicture;
+					if (thumbnail === "") {
+						thumbnail = "https://imgur.com/OVPTMGn.png";
+					};
+					currentPage = {text: classList[x].studentID, thumbnail: thumbnail}
+					pages.push(currentPage);
+					x++;
+				}
+
+				if (args[1].toLowerCase().search("kotone") != -1) {page = 1}
+				if (args[1].toLowerCase().search("monobi") != -1) {page = 2}
+				inboxChannel.send(`${message.author.username} has looked at ${args[1].toUpperCase().slice(0, 1)}${args[1].toLowerCase().slice(1)}'s file.`);
+			}
+			if (args[0] === "talents") {
+				message.channel.send("```Cl.  Talent               Name\n3    Activist             Melchor Guadalupe Paz de la Cruz\n1    Actress              Ara Ayao\n3    Adult Film Actress   Nikki Cox\n1    Animal Caretaker     Jacek Żeglarski\n1    Archer               Théo Dubois\n2    Assassin             Chika Miyasaki\n1    Astronomer           Hoshi Chiura\n1    Balance (Blogger)    Masayuuki Taisho\n1    Baseball Player      Miyuki Ataru\n2    Birdwatcher          Kaipo Uilani Iona\n2    Biologist            Tsuyo Kogiyumi\n1    Blogger (Balance)    Masayuuki Taisho\n2    Bomb Maker           Monika Minami\n1    Botanist             Yukine Sakurai\n1    Boxer                Tezuku Imou\n3    Cadet                Piper McCullough\n3    Cheerleader          Dia Ramos\n2    Chemist              Eiichi Ryozo\n1    Chess Champion       Noriko Suzuki\n2    Clairvoyant          Akiko\n3    Combat Medic         Wolfgang Schwarz\n2    Conspiracy Theorist  Chikako Kaetsu\n3    Coroner              Santo Verdugo Bautista\n3    Counselor            Ayuma Tanaka\n1    Counterfeiter        Anzu Kofuku\n1    Cryptologist         Hachi Hiruma\n1    Dancer               Ryu Akahoshi\n2    Daredevil            Sora Kenshin\n1    Detective            Cheisu Maeda\n1    Digital Composer     Aika Mahaya\n2    Doll Maker           Yuna Akahoshi\n1    Fashion Designer     Anaelle Hamaan\n1    Figure Skater        Aurélie Cartier\nX    Fire Dancer          Miyuki Hayashi\n2    Florist              Kyabetsu Retasu\n1    Fortnite Gamer       Stella Hunter\n2    Fútbol Player        Rosendo Paulo Ochoa Merlo\n1    Gambler              S'ad Ludópata\n3    Ghostwriter          Tenome\n3    Graffiti Artist      Inugami Uzuki\n1    Hacker               Ximena Colomar\n3    Heiress              Renata de Santis\n3    Horror Novelist      Junko Saitou\n1    Hypnotist            Mori Hibana```");
+				return message.channel.send("```2    Jeweler              Kagami Hannei\n2    Inventor             Hideo Takayama\n2    Lawyer               Ale del Prieto\n3    Lion Tamer           Areli Vepkhia\n2    Lucky Student        Kouki Yoshida\n3    Luthier              Ruslan Eun-Kyung Kraus\n2    Maid                 Saeko Kiyomizu\n1    Makeup Artist        Aiko Hikaru\n3    Magical Girl         Kirakira Kyuti\n1    Magician             Anya Sakaguchi\n2    Manipulator (Poet)   Souma Shimizu\n3    Martial Artist       Mariko Nakamura\n1    Matchmaker           Shiba Mikio\n3    Milkman              Charles Miller\n1    Model                Megu Kojima\n3    Mythologist          Isago Achikita\n2    Opera Singer         Arisa Shokuhou\n3    Pianist              Federico Navarro\n3    Pilot                Cecilio Gonzalo Calles Cárdenas\n2    Philanthropist       Yuuya Michimiya\n3    Physicist            Shinji Minoru\n2    Poet (Manipulator)   Souma Shimizu\n1    Prince               Kiro Karasu\n2    Puppeteer            Hana Kageriri\n3    Pyromaniac           Jomei Hoshino\n2    Ringmaster           Fenikku Hinotama\n3    Rock Star            Kumiko Yeun\n3    Satanist             Daichi Ichihara\n1    Singer               Kyoung-mi Park\n2    Spy                  Isha Kalki\n3    Stalker              Aemele Dèjré\n3    Storyteller          Ryoushi Nobuori\n2    Surgeon              Eiji Ryozo\n2    Swimmer              Katashi Maeda\n1    Swordsman            Minako Kaoru\n2    Technician           Tomomi Kashichi\n1    Tennis Player        Jeong Park\n2    Theologist           Michel Voigt\n1    Therapist            Tenshi Kawada\n3    Tragedian            Megami Himura\n4    Voice Actor          Agnes María Camila Zalweski-Chavarría\n2    Violinist            Asahi Fukuzawa\n1    Woodworker           Kazuya Harada```");
 			}
 		}
-		if (args[0].toLowerCase() === "u") { //Ultra Despair Girls Arc
+		else { //DR:GA Roster
 			classList = [
-				{ studentID: "Name: Kotone Fukuzawa\nTalent: Anarchist\nSex: Female\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'6\"\nWeight: 121\nBlood Type: AB\nBirthday: 11/04\nAge: 16", studentIDPicture: "https://imgur.com/OTttz9N.png" },
-				{ studentID: "Name: Monobi\nStatus: Alive\n\nHeight: Uhh probably pretty short\nWeight: Probably pretty heavy\nBirthday: Uhh some date I guess\nAge: I'd imagine like maybe three years old", studentIDPicture: "https://imgur.com/CiGJlAd.png" }
+				{ studentID: "Name: Kiku Sugimoto\nOnline Alias: DELTA\nTalent: Video Game Designer\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'7\"\nWeight: 138\nBlood Type: B\nBirthday: 06/08\nAge: 17", studentIDPicture: "https://cdn.picrew.me/app/share/201908/94097_Z5WZ7Bl7.png" }
 			]
-			
-			if (args.length === 1) {
-				message.channel.send("Sorry, but we haven't explored the outside world yet!");
-				inboxChannel.send(`${message.author.username} has looked at the UDG roster.`);
+
+			if (args.length === 0) {
+				message.channel.send("Sorry, but we haven't completed the class submissions yet!");
+				inboxChannel.send(`${message.author.username} has looked at the DR:GA roster.`);
 				return;
 			}
-			if (args[1] === "total") {
-				message.channel.send("Sorry, but we haven't explored the outside world yet!");
-				inboxChannel.send(`${message.author.username} has looked at the full version of the UDG roster.`);
+			if (args[0] === "total") {
+				message.channel.send("Sorry, but we haven't completed the class submissions yet!");
+				inboxChannel.send(`${message.author.username} has looked at the full version of the DR:GA roster.`);
 				return;
 			}
 
-			let pageAmount = 2;
+			let pageAmount = 1;
 			let x = 0;
 			while (x < pageAmount) {
 				thumbnail = classList[x].studentIDPicture;
 				if (thumbnail === "") {
 					thumbnail = "https://imgur.com/OVPTMGn.png";
 				};
-				currentPage = {text: classList[x].studentID, thumbnail: thumbnail}
+				currentPage = { text: classList[x].studentID, thumbnail: thumbnail }
 				pages.push(currentPage);
 				x++;
 			}
 
-			if (args[1].toLowerCase().search("kotone") != -1) {page = 1}
-			if (args[1].toLowerCase().search("monobi") != -1) {page = 2}
-			inboxChannel.send(`${message.author.username} has looked at ${args[1].toUpperCase().slice(0, 1)}${args[1].toLowerCase().slice(1)}'s file.`);
-		}
-		if (args[0] === "talents") {
-			message.channel.send("```Cl.  Talent               Name\n3    Activist             Melchor Guadalupe Paz de la Cruz\n1    Actress              Ara Ayao\n3    Adult Film Actress   Nikki Cox\n1    Animal Caretaker     Jacek Żeglarski\n1    Archer               Théo Dubois\n2    Assassin             Chika Miyasaki\n1    Astronomer           Hoshi Chiura\n1    Balance (Blogger)    Masayuuki Taisho\n1    Baseball Player      Miyuki Ataru\n2    Birdwatcher          Kaipo Uilani Iona\n2    Biologist            Tsuyo Kogiyumi\n1    Blogger (Balance)    Masayuuki Taisho\n2    Bomb Maker           Monika Minami\n1    Botanist             Yukine Sakurai\n1    Boxer                Tezuku Imou\n3    Cadet                Piper McCullough\n3    Cheerleader          Dia Ramos\n2    Chemist              Eiichi Ryozo\n1    Chess Champion       Noriko Suzuki\n2    Clairvoyant          Akiko\n3    Combat Medic         Wolfgang Schwarz\n2    Conspiracy Theorist  Chikako Kaetsu\n3    Coroner              Santo Verdugo Bautista\n3    Counselor            Ayuma Tanaka\n1    Counterfeiter        Anzu Kofuku\n1    Cryptologist         Hachi Hiruma\n1    Dancer               Ryu Akahoshi\n2    Daredevil            Sora Kenshin\n1    Detective            Cheisu Maeda\n1    Digital Composer     Aika Mahaya\n2    Doll Maker           Yuna Akahoshi\n1    Fashion Designer     Anaelle Hamaan\n1    Figure Skater        Aurélie Cartier\nX    Fire Dancer          Miyuki Hayashi\n2    Florist              Kyabetsu Retasu\n1    Fortnite Gamer       Stella Hunter\n2    Fútbol Player        Rosendo Paulo Ochoa Merlo\n1    Gambler              S'ad Ludópata\n3    Ghostwriter          Tenome\n3    Graffiti Artist      Inugami Uzuki\n1    Hacker               Ximena Colomar\n3    Heiress              Renata de Santis\n3    Horror Novelist      Junko Saitou\n1    Hypnotist            Mori Hibana```");
-			return message.channel.send("```2    Jeweler              Kagami Hannei\n2    Inventor             Hideo Takayama\n2    Lawyer               Ale del Prieto\n3    Lion Tamer           Areli Vepkhia\n2    Lucky Student        Kouki Yoshida\n3    Luthier              Ruslan Eun-Kyung Kraus\n2    Maid                 Saeko Kiyomizu\n1    Makeup Artist        Aiko Hikaru\n3    Magical Girl         Kirakira Kyuti\n1    Magician             Anya Sakaguchi\n2    Manipulator (Poet)   Souma Shimizu\n3    Martial Artist       Mariko Nakamura\n1    Matchmaker           Shiba Mikio\n3    Milkman              Charles Miller\n1    Model                Megu Kojima\n3    Mythologist          Isago Achikita\n2    Opera Singer         Arisa Shokuhou\n3    Pianist              Federico Navarro\n3    Pilot                Cecilio Gonzalo Calles Cárdenas\n2    Philanthropist       Yuuya Michimiya\n3    Physicist            Shinji Minoru\n2    Poet (Manipulator)   Souma Shimizu\n1    Prince               Kiro Karasu\n2    Puppeteer            Hana Kageriri\n3    Pyromaniac           Jomei Hoshino\n2    Ringmaster           Fenikku Hinotama\n3    Rock Star            Kumiko Yeun\n3    Satanist             Daichi Ichihara\n1    Singer               Kyoung-mi Park\n2    Spy                  Isha Kalki\n3    Stalker              Aemele Dèjré\n3    Storyteller          Ryoushi Nobuori\n2    Surgeon              Eiji Ryozo\n2    Swimmer              Katashi Maeda\n1    Swordsman            Minako Kaoru\n2    Technician           Tomomi Kashichi\n1    Tennis Player        Jeong Park\n2    Theologist           Michel Voigt\n1    Therapist            Tenshi Kawada\n3    Tragedian            Megami Himura\n4    Voice Actor          Agnes María Camila Zalweski-Chavarría\n2    Violinist            Asahi Fukuzawa\n1    Woodworker           Kazuya Harada```");
+			if (args[0].toLowerCase().search("kiku") != -1 || args[0].toLowerCase().search("delta") != -1) { page = 1 }
+			inboxChannel.send(`${message.author.username} has looked at ${args[0].toUpperCase().slice(0, 1)}${args[0].toLowerCase().slice(1)}'s file.`);
 		}
 		if (page === 0) {
 			return message.channel.send("I'm sorry, but this student does not exist!  Please make sure that you entered the correct information!")
