@@ -1912,14 +1912,14 @@ client.on("message", (message) => { //When a message is sent.
 		}
 		else { //DR:GA Roster
 			classList = [
-				{ studentID: "Name: Chava Hazzan\nOnline Alias: crawler190\nTalent: ARG Developer\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 4'9\"\nWeight: 90\nBlood Type: O\nBirthday: 10/28\nAge: 17", studentIDPicture: "" },
+				{ studentID: "Name: Chava Hazzan\nOnline Alias: crawler190\nTalent: ARG Developer\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 4'9\"\nWeight: 90\nBlood Type: O\nBirthday: 10/28\nAge: 17", studentIDPicture: "https://imgur.com/7dWnfXm.png" },
 				{ studentID: "Name: Kiku Sugimoto\nOnline Alias: DELTA\nTalent: Video Game Designer\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'7\"\nWeight: 138\nBlood Type: B\nBirthday: 06/08\nAge: 17", studentIDPicture: "https://imgur.com/qn0mdbM.png" },
 				{ studentID: "Name: Mori Hibana\nTalent: Hypnotist\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'7\"\nWeight: 142\nBlood Type: B\nBirthday: 01/04\nAge: 17", studentIDPicture: "https://imgur.com/AFaAdCo.png" },
 				{ studentID: "Name: Piper McCullough\nTalent: Cadet\nSex: Female\nStatus: Alive\n\nShoe Size: 5\nHeight: 5'1\"\nWeight: 102\nBlood Type: O\nBirthday: 03/23\nAge: 15", studentIDPicture: "https://imgur.com/Zxcprq2.png" },
 				{ studentID: "Name: Adam Satou\nOnline Alias: KOINU\nTalent: Stenographer\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'11\"\nWeight: 160\nBlood Type: AB\nBirthday: 08/06\nAge: 17", studentIDPicture: "" },
-				{ studentID: "Name: Kaoru Saitou\nTalent: Survivalist\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 5'10\"\nWeight: 150\nBlood Type: AB\nBirthday: 07/04\nAge: 16", studentIDPicture: "" },
+				{ studentID: "Name: Kaoru Saitou\nTalent: Survivalist\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 5'10\"\nWeight: 150\nBlood Type: AB\nBirthday: 07/04\nAge: 16", studentIDPicture: "https://imgur.com/EHY8Neq.png" },
 				{ studentID: "Name: Tomomi Kashichi\nTalent: Technician\nSex: Male\nStatus: Alive\n\nShoe Size: 10.5\nHeight: 5'8\"\nWeight: 137\nBlood Type: A\nBirthday: 04/27\nAge: 17", studentIDPicture: "https://imgur.com/OVjt8y0.png" },
-				{ studentID: "Name: Xiao Ruohan\nTalent: Qin Player\nSex: Male\nStatus: Alive\n\nShoe Size: ##\nHeight: #'#\"\nWeight: ###\nBlood Type: _\nBirthday: ##/##\nAge: 1#", studentIDPicture: "" }
+				{ studentID: "Name: Xiao Ruohan\nAlias: Zhujun\nTalent: Qin Player\nSex: Male\nStatus: Alive\n\nShoe Size: ##\nHeight: #'#\"\nWeight: ###\nBlood Type: _\nBirthday: ##/##\nAge: 15", studentIDPicture: "" }
 			]
 
 			if (args.length === 0) {
