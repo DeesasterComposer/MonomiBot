@@ -86,7 +86,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.1.4.5";
+var version = "3.1.4.6";
 
 /*Birthday Notifications*/
 var currentDate = new Date();
@@ -2138,13 +2138,23 @@ client.on("message", (message) => { //When a message is sent.
 		}
 	}
 	if (command === "sprites") {
-		embedDescription = "Click on a link to view the masterposts containing all sprites for their respective classes.\n\n[**CLASS 01**](https://imgur.com/a/YKlnXcm)\n[**CLASS 01 REVAMPED**](https://imgur.com/a/5HxXTfJ)\n[**CLASS 02**](https://imgur.com/a/W6lSVxl)\n[**CLASS 02 GLITCHED**](https://imgur.com/a/qqOupuD)\n[**ULTRA DESPAIR GIRLS**](https://imgur.com/a/tBC6sWb)\n[**CLASS 03**](https://imgur.com/a/7JX0shS)";
-		if (message.guild.id === "598739324464267274" || message.guild.id === "480549161201041418") {
-			embedDescription += "\n\n[**CAMP CLASS**](https://imgur.com/a/2cX6tHS)"
+		embedDescription = "Click on a link to view the masterposts containing all sprites for their respective classes.\n\n";
+		gameName = "";
+		if (message.guild.id === "480549161201041418") {
+			gameName = "Fanganronpa Games";
+			embedDescription += "__**Kaeno Shinjomu**__\n[**CLASS 01**](https://imgur.com/a/YKlnXcm)\n[**CLASS 01 REVAMPED**](https://imgur.com/a/5HxXTfJ)\n[**CLASS 02**](https://imgur.com/a/W6lSVxl)\n[**CLASS 02 GLITCHED**](https://imgur.com/a/qqOupuD)\n[**ULTRA DESPAIR GIRLS**](https://imgur.com/a/tBC6sWb)\n[**CLASS 03**](https://imgur.com/a/7JX0shS)\n\n__**Danganronpa: A Getaway**__\n[**CAMP CLASS 01**](https://imgur.com/a/2cX6tHS)"
+		}
+		else if (message.guild.id === "598739324464267274") {
+			gameName = "Danganronpa: A Getaway";
+			embedDescription += "[**CAMP CLASS 01**](https://imgur.com/a/2cX6tHS)"
+		}
+		else if (message.guild.id === "455218035507331072") {
+			gameName = "Kaeno Shinjomu";
+			embedDescription += "[**CLASS 01**](https://imgur.com/a/YKlnXcm)\n[**CLASS 01 REVAMPED**](https://imgur.com/a/5HxXTfJ)\n[**CLASS 02**](https://imgur.com/a/W6lSVxl)\n[**CLASS 02 GLITCHED**](https://imgur.com/a/qqOupuD)\n[**ULTRA DESPAIR GIRLS**](https://imgur.com/a/tBC6sWb)\n[**CLASS 03**](https://imgur.com/a/7JX0shS)"
 		}
 		message.channel.send({
 			embed: { //Sends the student's info
-				title: "Kaeno Shinjomu Sprite Masterposts",
+				title: `${gameName} Sprite Masterposts`,
 				description: embedDescription,
 				color: 15285149
 			}
