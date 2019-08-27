@@ -86,10 +86,10 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.1.4.7";
+var version = "3.1.4.8";
 
 /*Birthday Notifications*/
-var currentDate = (new Date()).setClientTimeZoneOffset(300);
+var currentDate = new Date();
 var birthdays = [
 	{ name: "Aika Mahaya", pronoun: "her", day: "21", month: "6" },
 	{ name: "Anaelle Hamaan", pronoun: "her", day: "20", month: "6" },
@@ -502,6 +502,7 @@ client.on("ready", () => { //When Monomi is turned on.
 	const inboxGuild = client.guilds.find('id', '480549161201041418');
 	const inboxChannel = inboxGuild.channels.find('name', 'monomi-inbox');
 	inboxChannel.send(`Monomi has been turned on.`);
+	inboxChannel.send(`${currentDate}`);
 	console.log("Monomi has arrived on the island!");
 	
 	const kaenoShinjomuServer = client.guilds.find('id', '455218035507331072')
