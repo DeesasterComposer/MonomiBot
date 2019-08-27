@@ -75,7 +75,7 @@ function shutdown() {
 function checkBirthdays(birthday) {
 	const kaenoShinjomuServer = client.guilds.find('id', '455218035507331072')
 	const birthdayChannel = kaenoShinjomuServer.channels.find('name', 'birthdays');
-	return birthday.day === currentDate.getDate().toString() && birthday.month === (currentDate.getMonth() + 1).toString();
+	return birthday.day === currentDateFixed.getDate().toString() && birthday.month === (currentDateFixed.getMonth() + 1).toString();
 }
 
 /*Radio Variables*/ //NOW OBSOLETE
@@ -90,6 +90,7 @@ var version = "3.1.4.8";
 
 /*Birthday Notifications*/
 var currentDate = new Date();
+var currentDateFixed = new Date(currentDate - (300 * 60 * 1000));
 var birthdays = [
 	{ name: "Aika Mahaya", pronoun: "her", day: "21", month: "6" },
 	{ name: "Anaelle Hamaan", pronoun: "her", day: "20", month: "6" },
