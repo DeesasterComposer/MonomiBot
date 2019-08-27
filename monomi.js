@@ -86,7 +86,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.1.4.8";
+var version = "3.1.4.9";
 
 /*Birthday Notifications*/
 var currentDate = new Date();
