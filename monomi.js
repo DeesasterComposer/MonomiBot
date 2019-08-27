@@ -86,7 +86,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.1.4.6";
+var version = "3.1.4.7";
 
 /*Birthday Notifications*/
 var currentDate = new Date();
@@ -1920,7 +1920,7 @@ client.on("message", (message) => { //When a message is sent.
 				{ studentID: "Name: Piper McCullough\nTalent: Cadet\nSex: Female\nStatus: Alive\n\nShoe Size: 5\nHeight: 5'1\"\nWeight: 102\nBlood Type: O\nBirthday: 03/23\nAge: 15", studentIDPicture: "https://imgur.com/Zxcprq2.png" },
 				{ studentID: "Name: Adam Satou\nOnline Alias: KOINU\nTalent: Stenographer\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'11\"\nWeight: 160\nBlood Type: AB\nBirthday: 08/06\nAge: 17", studentIDPicture: "" },
 				{ studentID: "Name: Kaoru Saitou\nTalent: Survivalist\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 5'10\"\nWeight: 150\nBlood Type: AB\nBirthday: 07/04\nAge: 16", studentIDPicture: "https://imgur.com/EHY8Neq.png" },
-				{ studentID: "Name: Tomomi Kashichi\nTalent: Technician\nSex: Male\nStatus: Alive\n\nShoe Size: 10.5\nHeight: 5'8\"\nWeight: 137\nBlood Type: A\nBirthday: 04/27\nAge: 17", studentIDPicture: "https://imgur.com/OVjt8y0.png" },
+				{ studentID: "Name: Tomomi Kashichi\nTalent: Technician\nSex: Male\nStatus: Alive\n\nShoe Size: 10.5\nHeight: 5'8\"\nWeight: 137\nBlood Type: A\nBirthday: 04/27\nAge: 17", studentIDPicture: "https://imgur.com/5rcYSKh.png" },
 				{ studentID: "Name: Xiao Ruohan\nAlias: Zhujun\nTalent: Qin Player\nSex: Male\nStatus: Alive\n\nShoe Size: ##\nHeight: #'#\"\nWeight: ###\nBlood Type: _\nBirthday: ##/##\nAge: 15", studentIDPicture: "" }
 			]
 
