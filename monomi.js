@@ -1914,7 +1914,7 @@ client.on("message", (message) => { //When a message is sent.
 		else { //DR:GA Roster
 			classList = [
 				{ studentID: "Name: Chava Hazzan\nOnline Alias: crawler190\nTalent: ARG Developer\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 4'9\"\nWeight: 90\nBlood Type: O\nBirthday: 10/28\nAge: 17", studentIDPicture: "https://imgur.com/7dWnfXm.png" },
-				{ studentID: "Name: Hachi Hiruma\nTalent: Cryptologist\nSex: Female\nStatus: Alive\n\nShoe Size: 7.5\nHeight: 5'7\"\nWeight: 139\nBlood Type: A\nBirthday: 11/09\nAge: 17\n\n\nPeed Herself: 13 Times", studentIDPicture: "https://imgur.com/GFrnNjz.png" },
+				{ studentID: "Name: Hachi Hiruma\nTalent: Cryptologist\nSex: Female\nStatus: Alive\n\nShoe Size: 7.5\nHeight: 5'7\"\nWeight: 139\nBlood Type: A\nBirthday: 11/09\nAge: 17\n\nPeed Herself: 13 Times", studentIDPicture: "https://imgur.com/dZ1USEb.png" },
 				{ studentID: "Name: Humanity Replicated in a Neural Network (HRNN)\nNickname: Haruna\nTalent: Artificial Intelligence\nSex: N/A\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'2\"\nWeight: 135\nBlood Type: N/A\nBirthday: 02/11\nAge: 7 months (14)", studentIDPicture: "https://imgur.com/SaNTVW2.png" },
 				{ studentID: "Name: Kiku Sugimoto\nOnline Alias: DELTA\nTalent: Video Game Designer\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'7\"\nWeight: 138\nBlood Type: B\nBirthday: 06/08\nAge: 17", studentIDPicture: "https://imgur.com/qn0mdbM.png" },
 				{ studentID: "Name: Loreto Prochorillo\nTalent: Folklorico\nSex: Female\nStatus: Alive\n\nShoe Size: #\nHeight: #'#\"\nWeight: 1##\nBlood Type: _\nBirthday: ##/##\nAge: 18", studentIDPicture: "" },
