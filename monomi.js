@@ -86,7 +86,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.1.4.9";
+var version = "3.1.4.10";
 
 /*Birthday Notifications*/
 var currentDate = new Date();
@@ -1914,6 +1914,7 @@ client.on("message", (message) => { //When a message is sent.
 		else { //DR:GA Roster
 			classList = [
 				{ studentID: "Name: Chava Hazzan\nOnline Alias: crawler190\nTalent: ARG Developer\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 4'9\"\nWeight: 90\nBlood Type: O\nBirthday: 10/28\nAge: 17", studentIDPicture: "https://imgur.com/7dWnfXm.png" },
+				{ studentID: "Name: Hachi Hiruma\nTalent: Cryptologist\nSex: Female\nStatus: Alive\n\nShoe Size: 7.5\nHeight: 5'7\"\nWeight: 139\nBlood Type: A\nBirthday: 11/09\nAge: 17\n\n\nPeed Herself: 13 Times", studentIDPicture: "https://imgur.com/GFrnNjz.png" },
 				{ studentID: "Name: Humanity Replicated in a Neural Network (HRNN)\nNickname: Haruna\nTalent: Artificial Intelligence\nSex: N/A\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'2\"\nWeight: 135\nBlood Type: N/A\nBirthday: 02/11\nAge: 7 months (14)", studentIDPicture: "https://imgur.com/SaNTVW2.png" },
 				{ studentID: "Name: Kiku Sugimoto\nOnline Alias: DELTA\nTalent: Video Game Designer\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'7\"\nWeight: 138\nBlood Type: B\nBirthday: 06/08\nAge: 17", studentIDPicture: "https://imgur.com/qn0mdbM.png" },
 				{ studentID: "Name: Loreto Prochorillo\nTalent: Folklorico\nSex: Female\nStatus: Alive\n\nShoe Size: #\nHeight: #'#\"\nWeight: 1##\nBlood Type: _\nBirthday: ##/##\nAge: 18", studentIDPicture: "" },
@@ -1949,15 +1950,16 @@ client.on("message", (message) => { //When a message is sent.
 			}
 
 			if (args[0].toLowerCase().search("chava") != -1) { page = 1 }
-			if (args[0].toLowerCase().search("haruna") != -1 || args[0].toLowerCase().search("hrnn") != -1) { page = 2 }
-			if (args[0].toLowerCase().search("kiku") != -1 || args[0].toLowerCase().search("delta") != -1) { page = 3 }
-			if (args[0].toLowerCase().search("loreto") != -1) { page = 4 }
-			if (args[0].toLowerCase().search("mori") != -1) { page = 5 }
-			if (args[0].toLowerCase().search("piper") != -1) { page = 6 }
-			if (args[0].toLowerCase().search("adam") != -1 || args[0].toLowerCase().search("koinu") != -1) { page = 7 }
-			if (args[0].toLowerCase().search("kaoru") != -1) { page = 8 }
-			if (args[0].toLowerCase().search("tomomi") != -1) { page = 9 }
-			if (args[0].toLowerCase().search("xiao") != -1 || args[0].toLowerCase().search("zhujun") != -1) { page = 10 }
+			if (args[0].toLowerCase().search("hachi") != -1) { page = 2 }
+			if (args[0].toLowerCase().search("haruna") != -1 || args[0].toLowerCase().search("hrnn") != -1) { page = 3 }
+			if (args[0].toLowerCase().search("kiku") != -1 || args[0].toLowerCase().search("delta") != -1) { page = 4 }
+			if (args[0].toLowerCase().search("loreto") != -1) { page = 5 }
+			if (args[0].toLowerCase().search("mori") != -1) { page = 6 }
+			if (args[0].toLowerCase().search("piper") != -1) { page = 7 }
+			if (args[0].toLowerCase().search("adam") != -1 || args[0].toLowerCase().search("koinu") != -1) { page = 8 }
+			if (args[0].toLowerCase().search("kaoru") != -1) { page = 9 }
+			if (args[0].toLowerCase().search("tomomi") != -1) { page = 10 }
+			if (args[0].toLowerCase().search("xiao") != -1 || args[0].toLowerCase().search("zhujun") != -1) { page = 11 }
 			inboxChannel.send(`${message.author.username} has looked at ${args[0].toUpperCase().slice(0, 1)}${args[0].toLowerCase().slice(1)}'s file.`);
 		}
 		if (page === 0) {
