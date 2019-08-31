@@ -785,7 +785,7 @@ client.on("message", (message) => { //When a message is sent.
 			return;
 		}
 	}
-	if (message.guild.id === "598739324464267274") { //DR:GA Server
+	if (message.guild.id === "598739324464267274" ) { //Edgeworths Server
 		if (message.channel.name === "rants-and-vents") {
 			return;
 		}
@@ -1541,7 +1541,7 @@ client.on("message", (message) => { //When a message is sent.
 		let page = 0;
 
 		studentID = "";
-		if (message.guild.id != "598739324464267274") { //All but GA server
+		if (message.guild.id != "598739324464267274" && message.guild.id != "617202043597226009") { //All but GA server
 			if (args.length < 1 || args[0] != "1" && args[0] != "2" && args[0] != "3" && args[0] != "4" && args[0].toLowerCase() != "u" && args[0].toLowerCase() != "talents") {
 				return message.channel.send("Please specify which class (1, 2, 3, 4, U, or talents) you're checking the roster for!")
 			}
@@ -2147,7 +2147,7 @@ client.on("message", (message) => { //When a message is sent.
 			gameName = "Fanganronpa Games";
 			embedDescription += "__**Kaeno Shinjomu**__\n[**CLASS 01**](https://imgur.com/a/YKlnXcm)\n[**CLASS 01 REVAMPED**](https://imgur.com/a/5HxXTfJ)\n[**CLASS 02**](https://imgur.com/a/W6lSVxl)\n[**CLASS 02 GLITCHED**](https://imgur.com/a/qqOupuD)\n[**ULTRA DESPAIR GIRLS**](https://imgur.com/a/tBC6sWb)\n[**CLASS 03**](https://imgur.com/a/7JX0shS)\n\n__**Danganronpa: A Getaway**__\n[**CAMP CLASS 01**](https://imgur.com/a/2cX6tHS)"
 		}
-		else if (message.guild.id === "598739324464267274") {
+		else if (message.guild.id === "598739324464267274" || message.guild.id != "617202043597226009") {
 			gameName = "Danganronpa: A Getaway";
 			embedDescription += "[**CAMP CLASS 01**](https://imgur.com/a/2cX6tHS)"
 		}
