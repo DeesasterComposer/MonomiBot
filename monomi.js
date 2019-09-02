@@ -125,7 +125,7 @@ function shuffleStatus(iteration) {
 		});
 		shuffleState = 0;
 	}
-	setTimeout(recallStatusShuffle, 30000);
+	setTimeout(recallStatusShuffle, 20000);
 }
 function recallStatusShuffle() {
 	shuffleStatus(shuffleState);
