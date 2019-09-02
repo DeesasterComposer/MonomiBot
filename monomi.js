@@ -1419,6 +1419,7 @@ client.on("message", (message) => { //When a message is sent.
 			message.channel.send("Please enter valid arguments for this command!  For example: \"m!monomisay [server] [channel] [sprite (optional)] Hello world!\".");
 			return
 		};
+
 		var guildID = args[0];
 		var channelName = args[1];
 		if (Number.isInteger(guildID * 1) === false) {
@@ -1531,6 +1532,8 @@ client.on("message", (message) => { //When a message is sent.
 			if (args[2] === "monomi_trial8") {
 				var url = monomi_trial8
 			}
+			
+			message.delete(0);
 			nativeChannel.send(message.content.substring(`m!monomisay ${args[0]} ${args[1]} ${args[2]}`.length), {files: [url]});
 			inboxChannel.send(`${message.author.username} made Monomi say, "${message.content.substring(`m!monomisay ${args[0]} ${args[1]} ${args[2]}`.length)}" with the "${args[2]}" sprite.`);
 			return;
