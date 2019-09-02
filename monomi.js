@@ -86,7 +86,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.1.5.1";
+var version = "3.1.5.2";
 
 /*Birthday Notifications*/
 var currentDate = new Date();
@@ -507,7 +507,7 @@ client.on("ready", () => { //When Monomi is turned on.
 	
 	const kaenoShinjomuServer = client.guilds.find('id', '455218035507331072')
 	const birthdayChannel = kaenoShinjomuServer.channels.find('name', 'birthdays');
-	/*if (birthdays.find(checkBirthdays) != undefined) {
+	if (birthdays.find(checkBirthdays) != undefined) {
 		todaysBirthday = birthdays.find(checkBirthdays);
 		birthdayChannel.send({
 			embed: {
@@ -517,7 +517,7 @@ client.on("ready", () => { //When Monomi is turned on.
 				"thumbnail": {"url": "https://i.pinimg.com/originals/fe/28/11/fe2811dbce3c72825f1463761ad1f674.jpg"}
 			}
 		})
-	}*/
+	}
 	setTimeout(shutdown, 86400000); //24 Restart Period
 
 	client.user.setPresence({ //Sets Monomi's discord status
@@ -1926,7 +1926,7 @@ client.on("message", (message) => { //When a message is sent.
 		else { //DR:GA Roster
 			classList = [
 				{ studentID: "Name: Chava Hazzan\nOnline Alias: crawler190\nTalent: ARG Developer\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 4'9\"\nWeight: 90\nBlood Type: O\nBirthday: 10/28\nAge: 17", studentIDPicture: "https://imgur.com/7dWnfXm.png" },
-				{ studentID: "Name: Ginny\nTalent: Test Subject\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 4'10\"\nWeight: 110\nBlood Type: N/A\nBirthday: 01/01\nAge: 16", studentIDPicture: "" },
+				{ studentID: "Name: Ginny\nTalent: Test Subject\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 4'10\"\nWeight: 110\nBlood Type: N/A\nBirthday: 01/01\nAge: 16", studentIDPicture: "https://imgur.com/MJHmP1m.png" },
 				{ studentID: "Name: Humanity Replicated in a Neural Network (HRNN)\nNickname: Haruna\nTalent: Artificial Intelligence\nSex: N/A\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'2\"\nWeight: 135\nBlood Type: N/A\nBirthday: 02/11\nAge: 7 months (14)", studentIDPicture: "https://imgur.com/SaNTVW2.png" },
 				{ studentID: "Name: Kiku Sugimoto\nOnline Alias: DELTA\nTalent: Video Game Designer\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'6\"\nWeight: 138\nBlood Type: B\nBirthday: 06/08\nAge: 17", studentIDPicture: "https://imgur.com/qn0mdbM.png" },
 				{ studentID: "Name: Lilith Sonnet Biancalana\nTalent: Fashionista\nSex: Female\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'11\"\nWeight: 132\nBlood Type: AB\nBirthday: 10/30\nAge: 18", studentIDPicture: "https://imgur.com/WjvZHIw.png" },
@@ -1936,6 +1936,7 @@ client.on("message", (message) => { //When a message is sent.
 				{ studentID: "Name: Sanchia Candelaria Inés de Siguenza-Laverde\nTalent: Graffiti Artist\nSex: Female\nStatus: Alive\n\nShoe Size: 5\nHeight: 5'1\"\nWeight: 112\nBlood Type: B\nBirthday: 09/07\nAge: 17", studentIDPicture: "https://imgur.com/HCGutAi.png" },
 				{ studentID: "Name: Adam Satou\nOnline Alias: KOINU\nTalent: Stenographer\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'11\"\nWeight: 160\nBlood Type: AB\nBirthday: 08/06\nAge: 17", studentIDPicture: "" },
 				{ studentID: "Name: Amon Nkosi Kamizu Femi\nTalent: Romantic\nSex: Male\nStatus: Alive\n\nShoe Size: 8\nHeight: 6'0\"\nWeight: 164\nBlood Type: AB\nBirthday: 02/01\nAge: 17", studentIDPicture: "https://imgur.com/jtFndRU.png" },
+				{ studentID: "Name: Daichi \_\_\_\_\nTalent: \_\_\_\_\nSex: Male\nStatus: Alive\n\nShoe Size: #\nHeight: #'#\"\nWeight: 1##\nBlood Type: \_\nBirthday: ##/##\nAge: 1#", studentIDPicture: "" },
 				{ studentID: "Name: Kaoru Saitou\nTalent: Survivalist\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 5'10\"\nWeight: 150\nBlood Type: AB\nBirthday: 07/04\nAge: 16", studentIDPicture: "https://imgur.com/EHY8Neq.png" },
 				{ studentID: "Name: Pippin Barley Malt\nTalent: Confectioner\nSex: Male\nStatus: Alive\n\nShoe Size: 12\nHeight: 6'10\"\nWeight: 152\nBlood Type: N/A\nBirthday: N/A\nAge: N/A", studentIDPicture: "https://imgur.com/vsuuOIS.png" },
 				{ studentID: "Name: Tomomi Kashichi\nTalent: Technician\nSex: Male\nStatus: Alive\n\nShoe Size: 10.5\nHeight: 5'8\"\nWeight: 137\nBlood Type: A\nBirthday: 04/27\nAge: 17", studentIDPicture: "https://imgur.com/5rcYSKh.png" },
@@ -1976,10 +1977,11 @@ client.on("message", (message) => { //When a message is sent.
 			if (args[0].toLowerCase().search("sanchia") != -1) { page = 9 }
 			if (args[0].toLowerCase().search("adam") != -1 || args[0].toLowerCase().search("koinu") != -1) { page = 10 }
 			if (args[0].toLowerCase().search("amon") != -1) { page = 11 }
-			if (args[0].toLowerCase().search("kaoru") != -1) { page = 12 }
-			if (args[0].toLowerCase().search("pippin") != -1) { page = 13 }
-			if (args[0].toLowerCase().search("tomomi") != -1) { page = 14 }
-			if (args[0].toLowerCase().search("xiao") != -1 || args[0].toLowerCase().search("ruohan") != -1 || args[0].toLowerCase().search("zhujun") != -1) { page = 15 }
+			if (args[0].toLowerCase().search("amon") != -1) { page = 12 }
+			if (args[0].toLowerCase().search("kaoru") != -1) { page = 13 }
+			if (args[0].toLowerCase().search("pippin") != -1) { page = 14 }
+			if (args[0].toLowerCase().search("tomomi") != -1) { page = 15 }
+			if (args[0].toLowerCase().search("xiao") != -1 || args[0].toLowerCase().search("ruohan") != -1 || args[0].toLowerCase().search("zhujun") != -1) { page = 16 }
 			inboxChannel.send(`${message.author.username} has looked at ${args[0].toUpperCase().slice(0, 1)}${args[0].toLowerCase().slice(1)}'s file.`);
 		}
 		if (page === 0) {
