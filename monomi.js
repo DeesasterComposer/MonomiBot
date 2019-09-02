@@ -78,25 +78,25 @@ function checkBirthdays(birthday) {
 	return birthday.day === currentDateFixed.getDate().toString() && birthday.month === (currentDateFixed.getMonth() + 1).toString();
 }
 function shuffleStatus(iteration) {
-	if (iteration === 0) {
-		client.user.setPresence({ //Sets Monomi's discord status to help
-			status: 'dnd',
-			game: {
-				name: "'m!help' for help"
-			}
-		})
-		shuffleState++;
-	}
-	else if (iteration === 1) {
-		client.user.setPresence({ //Sets Monomi's discord status to version
+	if (iteration === 0) { //Sets Monomi's discord status to version
+		client.user.setPresence({ 
 			status: 'dnd',
 			game: {
 				name: `v${version} of MonomiBot`
 			}
+		})
+		shuffleState++;
+	}
+	else if (iteration === 1) { //Sets Monomi's discord status to help
+		client.user.setPresence({ 
+			status: 'dnd',
+			game: {
+				name: `'m!help' for help`
+			}
 		});
 		shuffleState++;
 	}
-	else if (iteration === 2) {
+	else if (iteration === 2) { //Sets Monomi's Discord status to splash text
 		splashStatuses = [
 			"with mice",
 			"Danganronpa",
