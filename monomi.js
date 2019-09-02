@@ -86,7 +86,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.1.5.0";
+var version = "3.1.5.1";
 
 /*Birthday Notifications*/
 var currentDate = new Date();
@@ -1406,7 +1406,7 @@ client.on("message", (message) => { //When a message is sent.
 			message.channel.send({
 				embed: {
 					color: 15285149,
-					title: "Native Message Sprites List",
+					title: "Monomi Say Sprites List",
 					"image": {
 						"url": "https://imgur.com/pitSr1L.png"
 					},
@@ -1531,15 +1531,7 @@ client.on("message", (message) => { //When a message is sent.
 			if (args[2] === "monomi_trial8") {
 				var url = monomi_trial8
 			}
-			nativeChannel.send(message.content.substring(`m!monomisay ${args[0]} ${args[1]} ${args[2]}`.length));
-			nativeChannel.send({
-				embed: {
-					color: 15285149,
-					"image": {
-						"url": url
-					}
-				}
-			});
+			nativeChannel.send(message.content.substring(`m!monomisay ${args[0]} ${args[1]} ${args[2]}`.length), {files: [url]});
 			inboxChannel.send(`${message.author.username} made Monomi say, "${message.content.substring(`m!monomisay ${args[0]} ${args[1]} ${args[2]}`.length)}" with the "${args[2]}" sprite.`);
 			return;
 		};
