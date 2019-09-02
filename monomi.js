@@ -115,7 +115,28 @@ function shuffleStatus(iteration) {
 			"stupid",
 			"dead",
 			"with lives",
-			"the piano"
+			"the piano",
+			"hooky",
+			"with fire",
+			"it cool",
+			"for keeps",
+			"Fortnite",
+			"the spoons",
+			"the victim",
+			"the long game",
+			"the ukulele",
+			"Undertale",
+			"Deltarune",
+			"Megalovania",
+			"you like a fiddle",
+			"doctor",
+			"along",
+			"ball",
+			"Five Nights at Freddy's",
+			"Five Nights at Freddy's 2",
+			"Five Nights at Freddy's 3",
+			"Five Nights at Freddy's 4",
+			"dirty",
 		]
 		client.user.setPresence({ //Sets Monomi's discord status to version
 			status: 'dnd',
@@ -139,7 +160,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.1.6.7";
+var version = "3.1.6.8";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
