@@ -86,7 +86,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.1.4.12";
+var version = "3.1.5.0";
 
 /*Birthday Notifications*/
 var currentDate = new Date();
@@ -507,7 +507,7 @@ client.on("ready", () => { //When Monomi is turned on.
 	
 	const kaenoShinjomuServer = client.guilds.find('id', '455218035507331072')
 	const birthdayChannel = kaenoShinjomuServer.channels.find('name', 'birthdays');
-	if (birthdays.find(checkBirthdays) != undefined) {
+	/*if (birthdays.find(checkBirthdays) != undefined) {
 		todaysBirthday = birthdays.find(checkBirthdays);
 		birthdayChannel.send({
 			embed: {
@@ -517,7 +517,7 @@ client.on("ready", () => { //When Monomi is turned on.
 				"thumbnail": {"url": "https://i.pinimg.com/originals/fe/28/11/fe2811dbce3c72825f1463761ad1f674.jpg"}
 			}
 		})
-	}
+	}*/
 	setTimeout(shutdown, 86400000); //24 Restart Period
 
 	client.user.setPresence({ //Sets Monomi's discord status
@@ -1410,113 +1410,128 @@ client.on("message", (message) => { //When a message is sent.
 					"image": {
 						"url": "https://imgur.com/pitSr1L.png"
 					},
-					description: "Below is a diagram containing all sprites available for use. Just put the name of the sprite before your message when using the m!nativemsg command to use one!\n\nFor example: \"m!nativemsg spam monomi_08 Hewwo!\""
+					description: "Below is a diagram containing all sprites available for use. Just put the name of the sprite before your message when using the m!monomisay command to use one!\n\nFor example: \"m!monomisay [server] [channel] [sprite] Hello world!\""
 				}
 			});
 			return
 		};
-		if (args.length <= 1) {
-			message.channel.send("Please enter valid arguments for this command!  For example: \"m!nativemsg spam Hello world!\".");
+		if (args.length <= 2) {
+			message.channel.send("Please enter valid arguments for this command!  For example: \"m!monomisay [server] [channel] [sprite (optional)] Hello world!\".");
 			return
 		};
-		var nativeGuild = client.guilds.find('id', '455218035507331072');
-		var nativeChannel = nativeGuild.channels.find('name', args[0].toLowerCase());
-		if (nativeChannel === null) {
-			message.channel.send("Please use a valid channel name!");
-			return
-		};
-		if (args[1].search("monomi_") != -1) {
-			if (args[1] === "monomi_01") {
+		var guildID = args[0];
+		var channelName = args[1];
+		if (Number.isInteger(guildID * 1) === false) {
+			if (guildID === "kaeno") {
+				guildID = "455218035507331072";
+			}
+			else if (guildID === "edgeworths") {
+				guildID = "598739324464267274";
+			}
+			else if (guildID === "drga") {
+				guildID = "617202043597226009";
+			}
+			else if (guildID === "dee") {
+				guildID = "480549161201041418";
+			}
+		}
+
+		var nativeGuild = client.guilds.find('id', guildID);
+		if (nativeGuild === null) {return message.channel.send("Please use a valid server name or ID!");};
+		var nativeChannel = nativeGuild.channels.find('name', channelName.toLowerCase());
+		if (nativeChannel === null) {return message.channel.send("Please use a valid channel name!");};
+		if (args[2].search("monomi_") != -1) {
+			if (args[2] === "monomi_01") {
 				var url = monomi_01
 			}
-			if (args[1] === "monomi_02") {
+			if (args[2] === "monomi_02") {
 				var url = monomi_02
 			}
-			if (args[1] === "monomi_03") {
+			if (args[2] === "monomi_03") {
 				var url = monomi_03
 			}
-			if (args[1] === "monomi_04") {
+			if (args[2] === "monomi_04") {
 				var url = monomi_04
 			}
-			if (args[1] === "monomi_05") {
+			if (args[2] === "monomi_05") {
 				var url = monomi_05
 			}
-			if (args[1] === "monomi_06") {
+			if (args[2] === "monomi_06") {
 				var url = monomi_06
 			}
-			if (args[1] === "monomi_07") {
+			if (args[2] === "monomi_07") {
 				var url = monomi_07
 			}
-			if (args[1] === "monomi_08") {
+			if (args[2] === "monomi_08") {
 				var url = monomi_08
 			}
-			if (args[1] === "monomi_09") {
+			if (args[2] === "monomi_09") {
 				var url = monomi_09
 			}
-			if (args[1] === "monomi_10") {
+			if (args[2] === "monomi_10") {
 				var url = monomi_10
 			}
-			if (args[1] === "monomi_11") {
+			if (args[2] === "monomi_11") {
 				var url = monomi_11
 			}
-			if (args[1] === "monomi_12") {
+			if (args[2] === "monomi_12") {
 				var url = monomi_12
 			}
-			if (args[1] === "monomi_13") {
+			if (args[2] === "monomi_13") {
 				var url = monomi_13
 			}
-			if (args[1] === "monomi_14") {
+			if (args[2] === "monomi_14") {
 				var url = monomi_14
 			}
-			if (args[1] === "monomi_15") {
+			if (args[2] === "monomi_15") {
 				var url = monomi_15
 			}
-			if (args[1] === "monomi_16") {
+			if (args[2] === "monomi_16") {
 				var url = monomi_16
 			}
-			if (args[1] === "monomi_17") {
+			if (args[2] === "monomi_17") {
 				var url = monomi_17
 			}
-			if (args[1] === "monomi_18") {
+			if (args[2] === "monomi_18") {
 				var url = monomi_18
 			}
-			if (args[1] === "monomi_19") {
+			if (args[2] === "monomi_19") {
 				var url = monomi_19
 			}
-			if (args[1] === "monomi_20") {
+			if (args[2] === "monomi_20") {
 				var url = monomi_20
 			}
-			if (args[1] === "monomi_21") {
+			if (args[2] === "monomi_21") {
 				var url = monomi_21
 			}
-			if (args[1] === "monomi_22") {
+			if (args[2] === "monomi_22") {
 				var url = monomi_22
 			}
-			if (args[1] === "monomi_trial1") {
+			if (args[2] === "monomi_trial1") {
 				var url = monomi_trial1
 			}
-			if (args[1] === "monomi_trial2") {
+			if (args[2] === "monomi_trial2") {
 				var url = monomi_trial2
 			}
-			if (args[1] === "monomi_trial3") {
+			if (args[2] === "monomi_trial3") {
 				var url = monomi_trial3
 			}
-			if (args[1] === "monomi_trial4") {
+			if (args[2] === "monomi_trial4") {
 				var url = monomi_trial4
 			}
-			if (args[1] === "monomi_trial5") {
+			if (args[2] === "monomi_trial5") {
 				var url = monomi_trial5
 			}
-			if (args[1] === "monomi_trial6") {
+			if (args[2] === "monomi_trial6") {
 				var url = monomi_trial6
 			}
-			if (args[1] === "monomi_trial7") {
+			if (args[2] === "monomi_trial7") {
 				var url = monomi_trial7
 			}
-			if (args[1] === "monomi_trial8") {
+			if (args[2] === "monomi_trial8") {
 				var url = monomi_trial8
 			}
-			nativeChannel.send(message.content.substring(`m!nativemsg ${args[0]} ${args[1]} `.length));
+			nativeChannel.send(message.content.substring(`m!monomisay ${args[0]} ${args[1]} ${args[2]}`.length));
 			nativeChannel.send({
 				embed: {
 					color: 15285149,
@@ -1525,11 +1540,13 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				}
 			});
-			inboxChannel.send(`${message.author.username} made Monomi say, "${message.content.substring(`m!nativemsg ${args[0]} ${args[1]} `.length)}" with the "${args[1]}" sprite.`);
-			return
+			inboxChannel.send(`${message.author.username} made Monomi say, "${message.content.substring(`m!monomisay ${args[0]} ${args[1]} ${args[2]}`.length)}" with the "${args[2]}" sprite.`);
+			return;
 		};
-		nativeChannel.send(message.content.substring(`m!monomisay ${args[0]} `.length));
-		inboxChannel.send(`${message.author.username} made Monomi say, "${message.content.substring(`m!nativemsg ${args[0]} `.length)}"`)
+
+		message.delete(0);
+		nativeChannel.send(message.content.substring(`m!monomisay ${args[0]} ${args[1]}`.length));
+		inboxChannel.send(`${message.author.username} made Monomi say, "${message.content.substring(`m!monomisay ${args[0]} ${args[1]}`.length)}"`)
 	}
 
 	//Kaeno Commands
@@ -1914,17 +1931,18 @@ client.on("message", (message) => { //When a message is sent.
 		else { //DR:GA Roster
 			classList = [
 				{ studentID: "Name: Chava Hazzan\nOnline Alias: crawler190\nTalent: ARG Developer\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 4'9\"\nWeight: 90\nBlood Type: O\nBirthday: 10/28\nAge: 17", studentIDPicture: "https://imgur.com/7dWnfXm.png" },
+				{ studentID: "Name: Ginny\nTalent: Test Subject\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 4'10\"\nWeight: 110\nBlood Type: N/A\nBirthday: 01/01\nAge: 16", studentIDPicture: "" },
 				{ studentID: "Name: Humanity Replicated in a Neural Network (HRNN)\nNickname: Haruna\nTalent: Artificial Intelligence\nSex: N/A\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'2\"\nWeight: 135\nBlood Type: N/A\nBirthday: 02/11\nAge: 7 months (14)", studentIDPicture: "https://imgur.com/SaNTVW2.png" },
 				{ studentID: "Name: Kiku Sugimoto\nOnline Alias: DELTA\nTalent: Video Game Designer\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'6\"\nWeight: 138\nBlood Type: B\nBirthday: 06/08\nAge: 17", studentIDPicture: "https://imgur.com/qn0mdbM.png" },
-				{ studentID: "Name: Lilith Sonnet Biancalana\nTalent: Fashionista\nSex: Female\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'11\"\nWeight: 132\nBlood Type: AB\nBirthday: 10/30\nAge: 16", studentIDPicture: "" },
+				{ studentID: "Name: Lilith Sonnet Biancalana\nTalent: Fashionista\nSex: Female\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'11\"\nWeight: 132\nBlood Type: AB\nBirthday: 10/30\nAge: 18", studentIDPicture: "https://imgur.com/WjvZHIw.png" },
 				{ studentID: "Name: Loreto Prochorillo\nTalent: Folklorico\nSex: Female\nStatus: Alive\n\nShoe Size: #\nHeight: #'#\"\nWeight: 1##\nBlood Type: _\nBirthday: ##/##\nAge: 18", studentIDPicture: "" },
 				{ studentID: "Name: Mori Hibana\nTalent: Hypnotist\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'7\"\nWeight: 142\nBlood Type: B\nBirthday: 01/04\nAge: 17", studentIDPicture: "https://imgur.com/AFaAdCo.png" },
 				{ studentID: "Name: Piper McCullough\nTalent: Cadet\nSex: Female\nStatus: Alive\n\nShoe Size: 5\nHeight: 5'1\"\nWeight: 102\nBlood Type: O\nBirthday: 03/23\nAge: 15", studentIDPicture: "https://imgur.com/Zxcprq2.png" },
-				{ studentID: "Name: Sanchia Candelaria Inés de Siguenza-Laverde\nTalent: Graffiti Artist\nSex: Female\nStatus: Alive\n\nShoe Size: 5\nHeight: 5'1\"\nWeight: 112\nBlood Type: B\nBirthday: 09/07\nAge: 17", studentIDPicture: "" },
+				{ studentID: "Name: Sanchia Candelaria Inés de Siguenza-Laverde\nTalent: Graffiti Artist\nSex: Female\nStatus: Alive\n\nShoe Size: 5\nHeight: 5'1\"\nWeight: 112\nBlood Type: B\nBirthday: 09/07\nAge: 17", studentIDPicture: "https://imgur.com/HCGutAi.png" },
 				{ studentID: "Name: Adam Satou\nOnline Alias: KOINU\nTalent: Stenographer\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'11\"\nWeight: 160\nBlood Type: AB\nBirthday: 08/06\nAge: 17", studentIDPicture: "" },
-				{ studentID: "Name: Amon Nkosi Kamizu Femi\nTalent: Romantic\nSex: Male\nStatus: Alive\n\nShoe Size: 8\nHeight: 6'0\"\nWeight: 164\nBlood Type: AB\nBirthday: 02/01\nAge: 16", studentIDPicture: "https://imgur.com/jtFndRU.png" },
+				{ studentID: "Name: Amon Nkosi Kamizu Femi\nTalent: Romantic\nSex: Male\nStatus: Alive\n\nShoe Size: 8\nHeight: 6'0\"\nWeight: 164\nBlood Type: AB\nBirthday: 02/01\nAge: 17", studentIDPicture: "https://imgur.com/jtFndRU.png" },
 				{ studentID: "Name: Kaoru Saitou\nTalent: Survivalist\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 5'10\"\nWeight: 150\nBlood Type: AB\nBirthday: 07/04\nAge: 16", studentIDPicture: "https://imgur.com/EHY8Neq.png" },
-				{ studentID: "Name: Pippin Barley Malt\nTalent: Confectioner\nSex: Male\nStatus: Alive\n\nShoe Size: 12\nHeight: 6'10\"\nWeight: 152\nBlood Type: N/A\nBirthday: N/A\nAge: N/A", studentIDPicture: "" },
+				{ studentID: "Name: Pippin Barley Malt\nTalent: Confectioner\nSex: Male\nStatus: Alive\n\nShoe Size: 12\nHeight: 6'10\"\nWeight: 152\nBlood Type: N/A\nBirthday: N/A\nAge: N/A", studentIDPicture: "https://imgur.com/vsuuOIS.png" },
 				{ studentID: "Name: Tomomi Kashichi\nTalent: Technician\nSex: Male\nStatus: Alive\n\nShoe Size: 10.5\nHeight: 5'8\"\nWeight: 137\nBlood Type: A\nBirthday: 04/27\nAge: 17", studentIDPicture: "https://imgur.com/5rcYSKh.png" },
 				{ studentID: "Name: Xiao Ruohan\nAlias: Zhujun\nTalent: Qin Player\nSex: Male\nStatus: Alive\n\nShoe Size: ##\nHeight: #'#\"\nWeight: ###\nBlood Type: _\nBirthday: ##/##\nAge: 15", studentIDPicture: "" }
 			]
@@ -1953,19 +1971,20 @@ client.on("message", (message) => { //When a message is sent.
 			}
 
 			if (args[0].toLowerCase().search("chava") != -1) { page = 1 }
-			if (args[0].toLowerCase().search("haruna") != -1 || args[0].toLowerCase().search("hrnn") != -1) { page = 2 }
-			if (args[0].toLowerCase().search("kiku") != -1 || args[0].toLowerCase().search("delta") != -1) { page = 3 }
-			if (args[0].toLowerCase().search("lilith") != -1) { page = 4 }
-			if (args[0].toLowerCase().search("loreto") != -1) { page = 5 }
-			if (args[0].toLowerCase().search("mori") != -1) { page = 6 }
-			if (args[0].toLowerCase().search("piper") != -1) { page = 7 }
+			if (args[0].toLowerCase().search("ginny") != -1) { page = 2 }
+			if (args[0].toLowerCase().search("haruna") != -1 || args[0].toLowerCase().search("hrnn") != -1) { page = 3 }
+			if (args[0].toLowerCase().search("kiku") != -1 || args[0].toLowerCase().search("delta") != -1) { page = 4 }
+			if (args[0].toLowerCase().search("lilith") != -1) { page = 5 }
+			if (args[0].toLowerCase().search("loreto") != -1) { page = 6 }
+			if (args[0].toLowerCase().search("mori") != -1) { page = 7 }
+			if (args[0].toLowerCase().search("piper") != -1) { page = 8 }
 			if (args[0].toLowerCase().search("sanchia") != -1) { page = 8 }
-			if (args[0].toLowerCase().search("adam") != -1 || args[0].toLowerCase().search("koinu") != -1) { page = 9 }
-			if (args[0].toLowerCase().search("amon") != -1) { page = 10 }
-			if (args[0].toLowerCase().search("kaoru") != -1) { page = 11 }
-			if (args[0].toLowerCase().search("pippin") != -1) { page = 12 }
-			if (args[0].toLowerCase().search("tomomi") != -1) { page = 13 }
-			if (args[0].toLowerCase().search("xiao") != -1 || args[0].toLowerCase().search("ruohan") != -1 || args[0].toLowerCase().search("zhujun") != -1) { page = 14 }
+			if (args[0].toLowerCase().search("adam") != -1 || args[0].toLowerCase().search("koinu") != -1) { page = 10 }
+			if (args[0].toLowerCase().search("amon") != -1) { page = 11 }
+			if (args[0].toLowerCase().search("kaoru") != -1) { page = 12 }
+			if (args[0].toLowerCase().search("pippin") != -1) { page = 13 }
+			if (args[0].toLowerCase().search("tomomi") != -1) { page = 14 }
+			if (args[0].toLowerCase().search("xiao") != -1 || args[0].toLowerCase().search("ruohan") != -1 || args[0].toLowerCase().search("zhujun") != -1) { page = 15 }
 			inboxChannel.send(`${message.author.username} has looked at ${args[0].toUpperCase().slice(0, 1)}${args[0].toLowerCase().slice(1)}'s file.`);
 		}
 		if (page === 0) {
