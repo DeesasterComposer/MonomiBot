@@ -106,7 +106,8 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.1.6.1";
+var version = "3.1.6.2";
+var shuffleState = 0;
 
 /*Birthday Notifications*/
 var currentDate = new Date();
@@ -540,7 +541,6 @@ client.on("ready", () => { //When Monomi is turned on.
 	}
 	setTimeout(shutdown, 86400000); //24 Restart Period
 
-	var shuffleState = 0;
 	shuffleStatus(shuffleState);
 });
 
