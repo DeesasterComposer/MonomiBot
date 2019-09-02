@@ -82,7 +82,7 @@ function shuffleStatus(iteration) {
 		client.user.setPresence({ //Sets Monomi's discord status to help
 			status: 'dnd',
 			game: {
-				name: "Try 'm!help'!"
+				name: "'m!help' for help"
 			}
 		})
 		shuffleState++;
@@ -125,7 +125,7 @@ function shuffleStatus(iteration) {
 		});
 		shuffleState = 0;
 	}
-	setTimeout(recallStatusShuffle, 60000);
+	setTimeout(recallStatusShuffle, 30000);
 }
 function recallStatusShuffle() {
 	shuffleStatus(shuffleState);
@@ -139,7 +139,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.1.6.6";
+var version = "3.1.6.7";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
