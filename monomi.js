@@ -91,16 +91,36 @@ function shuffleStatus(iteration) {
 		client.user.setPresence({ //Sets Monomi's discord status to version
 			status: 'dnd',
 			game: {
-				name: `v${version} of Monomi`
+				name: `v${version} of MonomiBot`
 			}
 		});
 		shuffleState++;
 	}
 	else if (iteration === 2) {
+		splashStatuses = [
+			"with mice",
+			"Danganronpa",
+			"Your Turn to Die",
+			"Komaeda like a fool",
+			"the nice guy",
+			"Minecraft",
+			"with people's hearts",
+			"God",
+			"devil's advocate",
+			"Ultra Despair Girls",
+			"with Monokuma",
+			"with the Monokubs",
+			"cute",
+			"dumb",
+			"stupid",
+			"dead",
+			"with lives",
+			"the piano"
+		]
 		client.user.setPresence({ //Sets Monomi's discord status to version
 			status: 'dnd',
 			game: {
-				name: `with mice`
+				name: `${random(splashStatuses)}`
 			}
 		});
 		shuffleState = 0;
@@ -119,7 +139,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.1.6.5";
+var version = "3.1.6.6";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
