@@ -78,7 +78,7 @@ function checkBirthdays(birthday) {
 	return birthday.day === currentDateFixed.getDate().toString() && birthday.month === (currentDateFixed.getMonth() + 1).toString();
 }
 function shuffleStatus(iteration) {
-	if (iteration % 1) {
+	if (iteration % 2 === 1) {
 		client.user.setPresence({ //Sets Monomi's discord status
 			status: 'dnd',
 			game: {
@@ -86,7 +86,7 @@ function shuffleStatus(iteration) {
 			}
 		});
 	}
-	else if (iteration % 0) {
+	else if (iteration % 2 === 0) {
 		client.user.setPresence({ //Sets Monomi's discord status
 			status: 'dnd',
 			game: {
