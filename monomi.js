@@ -95,7 +95,7 @@ function shuffleStatus(iteration) {
 		})
 	}
 	shuffleState++;
-	setTimeout(shuffleStatus, 60000);
+	setTimeout(shuffleStatus(shuffleState), 1000);
 }
 
 /*Radio Variables*/ //NOW OBSOLETE
