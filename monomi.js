@@ -78,24 +78,37 @@ function checkBirthdays(birthday) {
 	return birthday.day === currentDateFixed.getDate().toString() && birthday.month === (currentDateFixed.getMonth() + 1).toString();
 }
 function shuffleStatus(iteration) {
-	if (iteration % 2 === 1) {
-		client.user.setPresence({ //Sets Monomi's discord status
-			status: 'dnd',
-			game: {
-				name: `Running v${version}`
-			}
-		});
-	}
-	else if (iteration % 2 === 0) {
-		client.user.setPresence({ //Sets Monomi's discord status
+	if (iteration === 0) {
+		client.user.setPresence({ //Sets Monomi's discord status to help
 			status: 'dnd',
 			game: {
 				name: "Try 'm!help'!"
 			}
 		})
+		shuffleState++;
 	}
-	shuffleState++;
-	setTimeout(shuffleStatus(shuffleState), 1000);
+	else if (iteration === 1) {
+		client.user.setPresence({ //Sets Monomi's discord status to version
+			status: 'dnd',
+			game: {
+				name: `v${version} of Monomi`
+			}
+		});
+		shuffleState++;
+	}
+	else if (iteration === 2) {
+		client.user.setPresence({ //Sets Monomi's discord status to version
+			status: 'dnd',
+			game: {
+				name: `with mice`
+			}
+		});
+		shuffleState = 0;
+	}
+	setTimeout(recallStatusShuffle, 60000);
+}
+function recallStatusShuffle() {
+	shuffleStatus(shuffleState);
 }
 
 /*Radio Variables*/ //NOW OBSOLETE
@@ -106,7 +119,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.1.6.2";
+var version = "3.1.6.5";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
