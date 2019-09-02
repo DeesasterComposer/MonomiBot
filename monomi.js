@@ -520,6 +520,13 @@ const monomi_trial7 = "https://imgur.com/cP4pGHR.png" //Mushrooms BDSM
 const monomi_trial8 = "https://imgur.com/pDtdNiZ.png" //Scared BDSM
 
 client.on("ready", () => { //When Monomi is turned on.
+	client.user.setPresence({ //Sets Monomi's discord status
+		status: 'online',
+		game: {
+			name: "Turning on!"
+		}
+	});
+
 	//Initializes the inbox location.
 	const inboxGuild = client.guilds.find('id', '480549161201041418');
 	const inboxChannel = inboxGuild.channels.find('name', 'monomi-inbox');
