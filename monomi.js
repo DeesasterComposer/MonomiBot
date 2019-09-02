@@ -1532,7 +1532,7 @@ client.on("message", (message) => { //When a message is sent.
 			if (args[2] === "monomi_trial8") {
 				var url = monomi_trial8
 			}
-			
+
 			message.delete(0);
 			nativeChannel.send(message.content.substring(`m!monomisay ${args[0]} ${args[1]} ${args[2]}`.length), {files: [url]});
 			inboxChannel.send(`${message.author.username} made Monomi say, "${message.content.substring(`m!monomisay ${args[0]} ${args[1]} ${args[2]}`.length)}" with the "${args[2]}" sprite.`);
@@ -1973,7 +1973,7 @@ client.on("message", (message) => { //When a message is sent.
 			if (args[0].toLowerCase().search("loreto") != -1) { page = 6 }
 			if (args[0].toLowerCase().search("mori") != -1) { page = 7 }
 			if (args[0].toLowerCase().search("piper") != -1) { page = 8 }
-			if (args[0].toLowerCase().search("sanchia") != -1) { page = 8 }
+			if (args[0].toLowerCase().search("sanchia") != -1) { page = 9 }
 			if (args[0].toLowerCase().search("adam") != -1 || args[0].toLowerCase().search("koinu") != -1) { page = 10 }
 			if (args[0].toLowerCase().search("amon") != -1) { page = 11 }
 			if (args[0].toLowerCase().search("kaoru") != -1) { page = 12 }
