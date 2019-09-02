@@ -77,6 +77,26 @@ function checkBirthdays(birthday) {
 	const birthdayChannel = kaenoShinjomuServer.channels.find('name', 'birthdays');
 	return birthday.day === currentDateFixed.getDate().toString() && birthday.month === (currentDateFixed.getMonth() + 1).toString();
 }
+function shuffleStatus() {
+	if (shuffleState % 1) {
+		client.user.setPresence({ //Sets Monomi's discord status
+			status: 'dnd',
+			game: {
+				name: `Running v${version}`
+			}
+		});
+	}
+	else if (shuffleState % 0) {
+		client.user.setPresence({ //Sets Monomi's discord status
+			status: 'dnd',
+			game: {
+				name: "Try 'm!help'!"
+			}
+		})
+	}
+	shuffleState++;
+	setTimeout(shuffleStatus, 60000);
+}
 
 /*Radio Variables*/ //NOW OBSOLETE
 var list = "";
@@ -86,7 +106,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.1.6.0";
+var version = "3.1.6.1";
 
 /*Birthday Notifications*/
 var currentDate = new Date();
@@ -520,12 +540,8 @@ client.on("ready", () => { //When Monomi is turned on.
 	}
 	setTimeout(shutdown, 86400000); //24 Restart Period
 
-	client.user.setPresence({ //Sets Monomi's discord status
-		status: 'dnd',
-		game: {
-			name: "Try 'm!help'!"
-		}
-	});
+	var shuffleState = 0;
+	shuffleStatus();
 });
 
 client.on('guildMemberAdd', member => { //Upon the joining of a member to a guild.
