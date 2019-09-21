@@ -160,7 +160,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.1.7.1";
+var version = "3.1.7.2";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -1621,7 +1621,7 @@ client.on("message", (message) => { //When a message is sent.
 		inboxChannel.send(`${message.author.username} made Monomi say, "${message.content.substring(`m!monomisay ${args[0]} ${args[1]}`.length)}"`)
 	}
 
-	//Kaeno Commands
+	//Killing Game Commands
 	if (command === "roster" || command === "class" || command === "r") {
 		let embed = new Discord.RichEmbed()
 			.setColor(13959168)
@@ -2106,140 +2106,172 @@ client.on("message", (message) => { //When a message is sent.
 	if (command === "roomies") {
 		let embed = new Discord.RichEmbed()
 			.setColor(13959168)
-		
-		rooms = [
-			{
-				number: "1 (C1)",
-				description: "Aemele and Junko's room is very dark. On one wall, pictures of various people are found. Another wall seems to be painted to look like a sewer. There is a constant sound of dripping water but upon further examination, it is just a music player on loop. There are two identical twin sized beds on one side of the room with a nightstand beside each. On each stand is a clown-shaped lamp, resembling a popular 2017 movie character. There is a bathroom and a closet on the left wall.",
-				people: ["Aemele", "Junko"]
-			},
-			{
-				number: "2 (C1)",
-				description: "Renata, Cecilio, and Daichi's room has a metal, military-style bunk bed that sits on the south side of the room, and a matching single bed on the north. Beside the beds are metal dressers and lockers, meant to serve as storage units for the students. The room is quite modest overall, with cream-painted walls and a simple ivory tile floor. A red pentagram has been spray-painted to the floor. On the wall between the beds, there is an oil painting of what appears to be Monokuma, one half of him dressed in the robes of Jesus, and the other half with a devil horn and pitchfork. A gay pride flag hangs beside the painting, and underneath both of them, like a shrine of sorts, sits a metal nightstand with copes of the Bible and the Satanic Bible on it. The bathroom is beside the door.",
-				people: ["Renata", "Cecilio", "Daichi"]
-			},
-			{
-				number: "3 (C1)",
-				description: "Dia and the Tenome's room is extremely modern-looking, to the point of being boring and bland, starting with the walls being a boring, off-white color. Despite the expensive-looking furniture, the colors are dark and muted, adding no personality whatsoever to the room. It is also very cold. Next to the door is a sleek, black coat rack, and on the left wall is a desk, supported by the wall rather than the floor, and a chair with it. On the north wall, there is a queen-sized, black-sheeted bed, and an identical one across from it. The floor is rosewood and a black shag rug covers part of the floor. On the south wall is a wardrobe and dresser, both black in color. On the left wall, by the desk, is the bathroom, which matches the blandness of the main room.",
-				people: ["Dia", "Tenome"]
-			},
-			{
-				number: "4 (C1)",
-				description: "Nikki and Federico's room is very reminiscent of a busy elementary classroom. The walls, which were painted to have living crayons and the such, are decorated with inspirational posters, one being Monokuma hanging from a tree with the words 'HANG IN THERE' written on it. There is a rug on the floor, the kind one would find in a classroom, which is very piano-based. There is a cartoon image of a piano in the middle, surrounded by various musical notes. Twin beds are located beside each other, and a bathroom and rather large closet are located on the left wall.",
-				people: ["Nikki", "Federico"]
-			},
-			{
-				number: "5 (C2)",
-				description: "Jomei and Ryoushi's room is very fiery—literally. The walls are covered in Hotwheel-looking flame designs. On the south wall is a book shelf, but upon opening the books, one would find that all the pages are burnt. There is a distinct smell of fire and smoke that fills the room at all times, though it is especially prevalent at night. There are two queen beds located opposite to each other and on the left wall, there are two separate closets and a bathroom.",
-				people: ["Ryoushi", "Jomei"]
-			},
-			{
-				number: "6 (C2)",
-				description: "Areli, Mariko, and Ruslan's room is best described as a meat locker. Upon entering, visitors are met with a sharp chill. In a corner of the room, bloodied meat hangs, by string from the ceiling, causing a constant dripping sound as the blood slowly drains into a bucket. The room is devoid of almost any color, being mostly entirely white. Three cots lie on the ground, with fur blankets laid upon them to protect students from the cold. There are boxes across from each cot for storage. There is no bathroom.",
-				people: ["Areli","Mariko","Ruslan"]
-			},
-			{
-				number: "7 (C2)",
-				description: "Charles and Inugami's room screams American pride. It sticks to freedom's color scheme, which is red, white, and blue. The walls are painted in red and white stripes, and the entirety of the furniture is blue. The floor is hardwood. Spanning most of the left wall is the flag of the United States of America; there is also a mini-fridge, stocked with all types of milk, ranging from chocolate to soy to half-and-half. On the ceiling are glowing stars that glow vibrantly in the dark. There are two dressers on the south wall, fittingly painted red, white, and blue. Two patriotic queen sizes beds complete the look, one underneath the flag and the other on the adjacent wall. The bathroom is located on the empty wall.",
-				people: ["Charles", "Inugami"]
-			},
-			{
-				number: "8 (C2)",
-				description: "Melchor and Magami's room is very... dramatic. From the dark, moody lighting to the contrasting ivory furniture, it screams the word. On the other hand, the room is actually rather charming, despite being incredibly visually busy. It looks to be quite the mess, like a show or protest had just occurred. The occasional bright color streaks the wall. A table stands in the middle of the room with a bouquet of a dozen roses, half of them wilted. On the south wall is a bunk bed with a nightstand beside it. On the left wall, there is a closet and bathroom.",
-				people: ["Melchor", "Megami"]
-			},
-			{
-				number: "9 (C3)",
-				description: "Ayuma and Santo's room is shrouded in a haunting aura. As soon as you step in, the scent of death is overwhelming, and the colors are extremely dulled down. The floor of the room is tiled. The left wall is lined with fridges, each suspiciously the size of a human body. Cabinets are found across from the fridges, and carry an assortment of medical tools and clothing. In place of beds, there are two dissection tables, complete with a drain in the center to rid of any unnecessary fluids. The floor tiles appear to be stained with blood. There is no bathroom.",
-				people: ["Ayuma", "Santo"]
-			},
-			{
-				number: "10 (C3)",
-				description: "Shinji and Wolfgang's room is probably the most normal room on the train. The walls inside are navy blue, giving the room a rather distinguished feel. The periodic table is hung up on the left wall, but almost every element is blacked out. The remaining elements spell out 'LiFeSPan.' A table sits below it with various candles, a Newton's cradle, and a box for first aid. There are two identical twin sized beds as well, separated by two nightstands. The bathroom and closet are located on the left wall.",
-				people: ["Shinji", "Wolfgang"]
-			},
-			{
-				number: "11 (C3)",
-				description: "Kumi and Kirakira's room is very cute and soft. The walls are painted a pastel pink hue, and matching carpet covers the floor. The walls are entirely covered in posters of various magical girl characters, and of popular K-Pop girl groups. There are two queen-sized Sailor Moon themed beds with two nightstands in-between them. Across from the beds are a pair of dressers. There is also a spotlight in a corner beside the beds, controlled by a panel by the door. Beside the spotlight is the bathroom, and underneath it is a shelf, where manga, albums, stuffed animals, and a pink stereo are stored.",
-				people: ["Kumi", "Kirakira"]
-			},
-			{
-				number: "12 (Car 3)",
-				description: "Piper and Isago's room is chaotic down to every last detail, it looks as though a tornado ran through the place or, in other words, the Gods have been at war. Various parts of the room are singed and burnt, as though they had been struck by lightning or set on fire. The colors are also eye-bleeding, from the bright assortment of hues on the wall to the vibrant pink carpet. There are two queen beds, each piled high with brightly colored, tack blankets. Cat print, camouflage, whatever you can think of, there is a blanket of it in their room. There are also two wooden dressers in the back of the room, both covered almost entirely in stickers and making it near impossible to tell that they are wooden. Beside them is the bathroom.",
-				people: ["Piper", "Isago"]
-			}
-		]
-
-		if (args[0]) {
-			if (args[0] === "1" || args[0].toLowerCase().search("aemele") != -1 || args[0].toLowerCase().search("junko") != -1) {
-				page = 1;
-			}
-			else if (args[0] === "2" || args[0].toLowerCase().search("renata") != -1 || args[0].toLowerCase().search("cecilio") != -1 || args[0].toLowerCase().search("daichi") != -1) {
-				page = 2;
-			}
-			else if (args[0] === "3" || args[0].toLowerCase().search("dia") != -1 || args[0].toLowerCase().search("tenome") != -1) {
-				page = 3;
-			}
-			else if (args[0] === "4" || args[0].toLowerCase().search("nikki") != -1 || args[0].toLowerCase().search("federico") != -1) {
-				page = 4;
-			}
-			else if (args[0] === "5" || args[0].toLowerCase().search("jomei") != -1 || args[0].toLowerCase().search("ryoushi") != -1) {
-				page = 5;
-			}
-			else if (args[0] === "6" || args[0].toLowerCase().search("areli") != -1 || args[0].toLowerCase().search("mariko") != -1 || args[0].toLowerCase().search("ruslan") != -1) {
-				page = 6;
-			}
-			else if (args[0] === "7" || args[0].toLowerCase().search("charles") != -1 || args[0].toLowerCase().search("inu") != -1) {
-				page = 7;
-			}
-			else if (args[0] === "8" || args[0].toLowerCase().search("mel") != -1 || args[0].toLowerCase().search("megami") != -1) {
-				page = 8;
-			}
-			else if (args[0] === "9" || args[0].toLowerCase().search("ayuma") != -1 || args[0].toLowerCase().search("santo") != -1) {
-				page = 9;
-			}
-			else if (args[0] === "10" || args[0].toLowerCase().search("shinji") != -1 || args[0].toLowerCase().search("wolf") != -1) {
-				page = 10;
-			}
-			else if (args[0] === "11" || args[0].toLowerCase().search("kumi") != -1 || args[0].toLowerCase().search("kira") != -1) {
-				page = 11;
-			}
-			else if (args[0] === "12" || args[0].toLowerCase().search("piper") != -1 || args[0].toLowerCase().search("isago") != -1) {
-				page = 12;
-			}
-			else {
-				if (Number.isInteger(args[1] * 1) === true) {
-					return message.channel.send("I'm sorry, but this room does not exist!  Please make sure that you entered the correct information!")
+		if (message.guild.id != "598739324464267274" && message.guild.id != "617202043597226009") {
+			rooms = [
+				{
+					number: "1 (C1)",
+					description: "Aemele and Junko's room is very dark. On one wall, pictures of various people are found. Another wall seems to be painted to look like a sewer. There is a constant sound of dripping water but upon further examination, it is just a music player on loop. There are two identical twin sized beds on one side of the room with a nightstand beside each. On each stand is a clown-shaped lamp, resembling a popular 2017 movie character. There is a bathroom and a closet on the left wall.",
+					people: ["Aemele", "Junko"]
+				},
+				{
+					number: "2 (C1)",
+					description: "Renata, Cecilio, and Daichi's room has a metal, military-style bunk bed that sits on the south side of the room, and a matching single bed on the north. Beside the beds are metal dressers and lockers, meant to serve as storage units for the students. The room is quite modest overall, with cream-painted walls and a simple ivory tile floor. A red pentagram has been spray-painted to the floor. On the wall between the beds, there is an oil painting of what appears to be Monokuma, one half of him dressed in the robes of Jesus, and the other half with a devil horn and pitchfork. A gay pride flag hangs beside the painting, and underneath both of them, like a shrine of sorts, sits a metal nightstand with copes of the Bible and the Satanic Bible on it. The bathroom is beside the door.",
+					people: ["Renata", "Cecilio", "Daichi"]
+				},
+				{
+					number: "3 (C1)",
+					description: "Dia and the Tenome's room is extremely modern-looking, to the point of being boring and bland, starting with the walls being a boring, off-white color. Despite the expensive-looking furniture, the colors are dark and muted, adding no personality whatsoever to the room. It is also very cold. Next to the door is a sleek, black coat rack, and on the left wall is a desk, supported by the wall rather than the floor, and a chair with it. On the north wall, there is a queen-sized, black-sheeted bed, and an identical one across from it. The floor is rosewood and a black shag rug covers part of the floor. On the south wall is a wardrobe and dresser, both black in color. On the left wall, by the desk, is the bathroom, which matches the blandness of the main room.",
+					people: ["Dia", "Tenome"]
+				},
+				{
+					number: "4 (C1)",
+					description: "Nikki and Federico's room is very reminiscent of a busy elementary classroom. The walls, which were painted to have living crayons and the such, are decorated with inspirational posters, one being Monokuma hanging from a tree with the words 'HANG IN THERE' written on it. There is a rug on the floor, the kind one would find in a classroom, which is very piano-based. There is a cartoon image of a piano in the middle, surrounded by various musical notes. Twin beds are located beside each other, and a bathroom and rather large closet are located on the left wall.",
+					people: ["Nikki", "Federico"]
+				},
+				{
+					number: "5 (C2)",
+					description: "Jomei and Ryoushi's room is very fiery—literally. The walls are covered in Hotwheel-looking flame designs. On the south wall is a book shelf, but upon opening the books, one would find that all the pages are burnt. There is a distinct smell of fire and smoke that fills the room at all times, though it is especially prevalent at night. There are two queen beds located opposite to each other and on the left wall, there are two separate closets and a bathroom.",
+					people: ["Ryoushi", "Jomei"]
+				},
+				{
+					number: "6 (C2)",
+					description: "Areli, Mariko, and Ruslan's room is best described as a meat locker. Upon entering, visitors are met with a sharp chill. In a corner of the room, bloodied meat hangs, by string from the ceiling, causing a constant dripping sound as the blood slowly drains into a bucket. The room is devoid of almost any color, being mostly entirely white. Three cots lie on the ground, with fur blankets laid upon them to protect students from the cold. There are boxes across from each cot for storage. There is no bathroom.",
+					people: ["Areli","Mariko","Ruslan"]
+				},
+				{
+					number: "7 (C2)",
+					description: "Charles and Inugami's room screams American pride. It sticks to freedom's color scheme, which is red, white, and blue. The walls are painted in red and white stripes, and the entirety of the furniture is blue. The floor is hardwood. Spanning most of the left wall is the flag of the United States of America; there is also a mini-fridge, stocked with all types of milk, ranging from chocolate to soy to half-and-half. On the ceiling are glowing stars that glow vibrantly in the dark. There are two dressers on the south wall, fittingly painted red, white, and blue. Two patriotic queen sizes beds complete the look, one underneath the flag and the other on the adjacent wall. The bathroom is located on the empty wall.",
+					people: ["Charles", "Inugami"]
+				},
+				{
+					number: "8 (C2)",
+					description: "Melchor and Magami's room is very... dramatic. From the dark, moody lighting to the contrasting ivory furniture, it screams the word. On the other hand, the room is actually rather charming, despite being incredibly visually busy. It looks to be quite the mess, like a show or protest had just occurred. The occasional bright color streaks the wall. A table stands in the middle of the room with a bouquet of a dozen roses, half of them wilted. On the south wall is a bunk bed with a nightstand beside it. On the left wall, there is a closet and bathroom.",
+					people: ["Melchor", "Megami"]
+				},
+				{
+					number: "9 (C3)",
+					description: "Ayuma and Santo's room is shrouded in a haunting aura. As soon as you step in, the scent of death is overwhelming, and the colors are extremely dulled down. The floor of the room is tiled. The left wall is lined with fridges, each suspiciously the size of a human body. Cabinets are found across from the fridges, and carry an assortment of medical tools and clothing. In place of beds, there are two dissection tables, complete with a drain in the center to rid of any unnecessary fluids. The floor tiles appear to be stained with blood. There is no bathroom.",
+					people: ["Ayuma", "Santo"]
+				},
+				{
+					number: "10 (C3)",
+					description: "Shinji and Wolfgang's room is probably the most normal room on the train. The walls inside are navy blue, giving the room a rather distinguished feel. The periodic table is hung up on the left wall, but almost every element is blacked out. The remaining elements spell out 'LiFeSPan.' A table sits below it with various candles, a Newton's cradle, and a box for first aid. There are two identical twin sized beds as well, separated by two nightstands. The bathroom and closet are located on the left wall.",
+					people: ["Shinji", "Wolfgang"]
+				},
+				{
+					number: "11 (C3)",
+					description: "Kumi and Kirakira's room is very cute and soft. The walls are painted a pastel pink hue, and matching carpet covers the floor. The walls are entirely covered in posters of various magical girl characters, and of popular K-Pop girl groups. There are two queen-sized Sailor Moon themed beds with two nightstands in-between them. Across from the beds are a pair of dressers. There is also a spotlight in a corner beside the beds, controlled by a panel by the door. Beside the spotlight is the bathroom, and underneath it is a shelf, where manga, albums, stuffed animals, and a pink stereo are stored.",
+					people: ["Kumi", "Kirakira"]
+				},
+				{
+					number: "12 (Car 3)",
+					description: "Piper and Isago's room is chaotic down to every last detail, it looks as though a tornado ran through the place or, in other words, the Gods have been at war. Various parts of the room are singed and burnt, as though they had been struck by lightning or set on fire. The colors are also eye-bleeding, from the bright assortment of hues on the wall to the vibrant pink carpet. There are two queen beds, each piled high with brightly colored, tack blankets. Cat print, camouflage, whatever you can think of, there is a blanket of it in their room. There are also two wooden dressers in the back of the room, both covered almost entirely in stickers and making it near impossible to tell that they are wooden. Beside them is the bathroom.",
+					people: ["Piper", "Isago"]
 				}
-				else if (Number.isInteger(args[1] * 1) === false) {
-					return message.channel.send("I'm sorry, but this student does not exist!  Please make sure that you entered the correct information!")
+			]
+
+			if (args[0]) {
+				if (args[0] === "1" || args[0].toLowerCase().search("aemele") != -1 || args[0].toLowerCase().search("junko") != -1) {
+					page = 1;
 				}
-			}
+				else if (args[0] === "2" || args[0].toLowerCase().search("renata") != -1 || args[0].toLowerCase().search("cecilio") != -1 || args[0].toLowerCase().search("daichi") != -1) {
+					page = 2;
+				}
+				else if (args[0] === "3" || args[0].toLowerCase().search("dia") != -1 || args[0].toLowerCase().search("tenome") != -1) {
+					page = 3;
+				}
+				else if (args[0] === "4" || args[0].toLowerCase().search("nikki") != -1 || args[0].toLowerCase().search("federico") != -1) {
+					page = 4;
+				}
+				else if (args[0] === "5" || args[0].toLowerCase().search("jomei") != -1 || args[0].toLowerCase().search("ryoushi") != -1) {
+					page = 5;
+				}
+				else if (args[0] === "6" || args[0].toLowerCase().search("areli") != -1 || args[0].toLowerCase().search("mariko") != -1 || args[0].toLowerCase().search("ruslan") != -1) {
+					page = 6;
+				}
+				else if (args[0] === "7" || args[0].toLowerCase().search("charles") != -1 || args[0].toLowerCase().search("inu") != -1) {
+					page = 7;
+				}
+				else if (args[0] === "8" || args[0].toLowerCase().search("mel") != -1 || args[0].toLowerCase().search("megami") != -1) {
+					page = 8;
+				}
+				else if (args[0] === "9" || args[0].toLowerCase().search("ayuma") != -1 || args[0].toLowerCase().search("santo") != -1) {
+					page = 9;
+				}
+				else if (args[0] === "10" || args[0].toLowerCase().search("shinji") != -1 || args[0].toLowerCase().search("wolf") != -1) {
+					page = 10;
+				}
+				else if (args[0] === "11" || args[0].toLowerCase().search("kumi") != -1 || args[0].toLowerCase().search("kira") != -1) {
+					page = 11;
+				}
+				else if (args[0] === "12" || args[0].toLowerCase().search("piper") != -1 || args[0].toLowerCase().search("isago") != -1) {
+					page = 12;
+				}
+				else {
+					if (Number.isInteger(args[1] * 1) === true) {
+						return message.channel.send("I'm sorry, but this room does not exist!  Please make sure that you entered the correct information!")
+					}
+					else if (Number.isInteger(args[1] * 1) === false) {
+						return message.channel.send("I'm sorry, but this student does not exist!  Please make sure that you entered the correct information!")
+					}
+				}
 
-			room = rooms[page - 1];
-			if (room.people.length === 2) {
-				roomInhabitants = room.people[0] + " and " + room.people[1];
-			}
-			else if (room.people.length === 3) {
-				roomInhabitants = room.people[0] + ", " + room.people[1] + " and " + room.people[2];
-			}
-			roomTitle = "Room #" + room.number + ": " + roomInhabitants;
-
-			embed.setDescription(room.description);
-			embed.setAuthor(roomTitle);
-			return message.channel.send(embed);
-		}
-		else {
-			embed.setAuthor("Killing School Ride Room Arrangements");
-			for (x = 0; x < 12; x++) {
-				room = rooms[x];
+				room = rooms[page - 1];
 				if (room.people.length === 2) {
 					roomInhabitants = room.people[0] + " and " + room.people[1];
 				}
 				else if (room.people.length === 3) {
 					roomInhabitants = room.people[0] + ", " + room.people[1] + " and " + room.people[2];
 				}
-				embed.addField(`Room #${room.number}`, `${roomInhabitants}`)
+				roomTitle = "Room #" + room.number + ": " + roomInhabitants;
+
+				embed.setDescription(room.description);
+				embed.setAuthor(roomTitle);
+				return message.channel.send(embed);
+			}
+			else {
+				embed.setAuthor("Killing School Ride Room Arrangements");
+				for (x = 0; x < 12; x++) {
+					room = rooms[x];
+					if (room.people.length === 2) {
+						roomInhabitants = room.people[0] + " and " + room.people[1];
+					}
+					else if (room.people.length === 3) {
+						roomInhabitants = room.people[0] + ", " + room.people[1] + " and " + room.people[2];
+					}
+					embed.addField(`Room #${room.number}`, `${roomInhabitants}`)
+				}
+				return message.channel.send(embed);
+			}
+		}
+		else {
+			cabins = [
+				{
+					name: "Polar",
+					people: ["Daichi Kurosawa", "Lilith Biancalana", "Mori Hibana", "Piper McCullough", "Tomomi Kashichi", "Xiao Ruohan"]
+				},
+				{
+					name: "Grizzly",
+					people: ["Daishi Kurosawa", "Amon Nkosi Kamizu Femi", "Chava Hazzan", "Kiku Sugimoto", "Loreto Prochorillo", "Pippin Malt Barley"]
+				},
+				{
+					name: "Koala",
+					people: ["Adam Satou", "Ginny", "Haruna (HRNN)", "Kaoru Saitou", "Sanchia Siguenza-Laverde"]
+				},
+			]
+
+			embed.setAuthor("Summer Killing Game Cabin Arrangements");
+			for (x = 0; x < 3; x++) {
+				cabin = cabins[x];
+				for (y = cabin.people.length; y > 0; y--) {
+					if (y === 1) {
+						cabinInhabitants += "and " + cabin.people[y];
+					}
+					else {
+						cabinInhabitants += cabin.people + ", ";
+					}
+				}
+				embed.addField(`${cabin.name} Cabin`, `${cabinInhabitants}`)
 			}
 			return message.channel.send(embed);
 		}
