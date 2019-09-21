@@ -2013,6 +2013,8 @@ client.on("message", (message) => { //When a message is sent.
 				{ studentID: "Name: Sanchia Candelaria Inés de Siguenza-Laverde\nTalent: Graffiti Artist\nSex: Female\nStatus: Alive\n\nShoe Size: 5\nHeight: 5'1\"\nWeight: 112\nBlood Type: B\nBirthday: 09/07\nAge: 17", studentIDPicture: "https://imgur.com/HCGutAi.png" },
 				{ studentID: "Name: Adam Satou\nOnline Alias: KOINU\nTalent: Stenographer\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'11\"\nWeight: 160\nBlood Type: AB\nBirthday: 08/06\nAge: 17", studentIDPicture: "" },
 				{ studentID: "Name: Amon Nkosi Kamizu Femi\nTalent: Romantic\nSex: Male\nStatus: Alive\n\nShoe Size: 8\nHeight: 6'0\"\nWeight: 164\nBlood Type: AB\nBirthday: 02/01\nAge: 17", studentIDPicture: "https://imgur.com/jtFndRU.png" },
+				{ studentID: "Name: Daichi Kurosawa\nTalent: Brother\nSex: Male\nStatus: Deceased", studentIDPicture: "" },
+				{ studentID: "Name: Daishi Kurosawa\nTalent: Brother\nSex: Male\nStatus: Deceased", studentIDPicture: "" },
 				{ studentID: "Name: Kaoru Saitou\nTalent: Survivalist\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 5'10\"\nWeight: 150\nBlood Type: AB\nBirthday: 07/04\nAge: 16", studentIDPicture: "https://imgur.com/EHY8Neq.png" },
 				{ studentID: "Name: Pippin Barley Malt\nTalent: Confectioner\nSex: Male\nStatus: Alive\n\nShoe Size: 12\nHeight: 6'10\"\nWeight: 152\nBlood Type: N/A\nBirthday: N/A\nAge: N/A", studentIDPicture: "https://imgur.com/vsuuOIS.png" },
 				{ studentID: "Name: Tomomi Kashichi\nTalent: Technician\nSex: Male\nStatus: Alive\n\nShoe Size: 10.5\nHeight: 5'8\"\nWeight: 137\nBlood Type: A\nBirthday: 04/27\nAge: 17", studentIDPicture: "https://imgur.com/5rcYSKh.png" },
@@ -2021,13 +2023,13 @@ client.on("message", (message) => { //When a message is sent.
 			]
 
 			if (args.length === 0) {
-				message.channel.send("```##  Sex and Name                Talent\n1   F Chava Hazzan              ARG Developer\n2   F Ginny                     Test Subject\n3   F Haruna (HRNN)             Artificial Intelligence\n4   F Kiku Sugimoto             Video Game Designer\n5   F Lilith Biancalana         Fashionista\n6   F Loreto Prochorillo        Folklorico\n7   F Mori Hibana               Hypnotist\n8   F Piper McCullough          Cadet\n9   F Sanchia Siguenza-Laverde  Graffiti Artist\n10  M Adam Satou                Stenographer\n11  M Amon Femi                 Romantic\n12  M Kaoru Saitou              Survivalist\n13  M Pippin Malt               Confectioner\n14  M Tomomi Kashichi           Technician\n15  M Xiao Ruohan               Qin Player\n1.  . Nathan Character B        Plague Doctor\n\n    Mastermind\n    Information Unavailable.\n\n    Deceased Students\n    Soon.```");
+				message.channel.send("```##  Sex and Name                Talent\n1   F Chava Hazzan              ARG Developer\n2   F Ginny                     Test Subject\n3   F Haruna (HRNN)             Artificial Intelligence\n4   F Kiku Sugimoto             Video Game Designer\n5   F Lilith Biancalana         Fashionista\n6   F Loreto Prochorillo        Folklorico\n7   F Mori Hibana               Hypnotist\n8   F Piper McCullough          Cadet\n9   F Sanchia Siguenza-Laverde  Graffiti Artist\n10  M Adam Satou                Stenographer\n11  M Amon Femi                 Romantic\n14  M Kaoru Saitou              Survivalist\n15  M Pippin Malt               Confectioner\n16  M Tomomi Kashichi           Technician\n17  M Xiao Ruohan               Qin Player\n1.  . Nathan Character B        Plague Doctor\n\n    Mastermind\n    Information Unavailable.\n\n    Deceased Students\n12  M Daichi Kurosawa                 Forger\n13  M Daishi Kurosawa                 Brother```");
 				inboxChannel.send(`${message.author.username} has looked at the DR:GA roster.`);
 				return;
 			}
 			if (args[0] === "total") {
 				message.channel.send("```##  Sex and Name                Shoe Size    Height    Weight    Blood Type    Birthday    Age     Talent\n1   F Chava Hazzan              8            4'9\"      90        O             10/28       17      ARG Developer\n2   F Ginny                     6            4'10\"     110       N/A           01/01       16      Test Subject\n3   F Haruna (HRNN)             6            5'2\"      135       N/A           02/11       7 mths  Artificial Intelligence\n4   F Kiku Sugimoto             6            5'6\"      138       B             06/08       17      Video Game Designer\n5   F Lilith Sonnet Biancalana  7            5'11\"     132       AB            10/30       18      Fashionista\n6   F Loreto Prochorillo        7.5          5'6\"      148       O             03/02       18      Folklorico\n7   F Mori Hibana               8            5'7\"      142       B             01/04       17      Hypnotist\n8   F Piper McCullough          5            5'1\"      102       O             03/23       15      Cadet\n9   F Sanchia Siguenza-Laverde  5            5'1\"      112       B             09/07       17      Graffiti Artist\n```");
-				message.channel.send("```10  M Adam Satou                10           5'11\"     160       AB            08/06       17      Stenographer\n11  M Amon Nkosi Kazumi Femi    8            6'0\"      164       AB            02/01       17      Romantic\n12  M Kaoru Saitou              11           5'10\"     150       AB            07/04       16      Survivalist\n13  M Pippin Barley Malt        12           6'10\"     152       N/A           N/A         N/A     Confectioner\n14  M Tomomi Kashichi           10.5         5'8\"      137       A             04/27       17      Technician\n15  M Xiao Ruohan               5            5'3\"      110       AB            01/23       15      Qin Player\n16  . Nathan Character B        #            #'#\"      1##       _             ##/##       1#      Plague Doctor\n\n	Mastermind\n    Information Unavailable.\n\n    Deceased Students\n    Soon.```");
+				message.channel.send("```10  M Adam Satou                10           5'11\"     160       AB            08/06       17      Stenographer\n11  M Amon Nkosi Kazumi Femi    8            6'0\"      164       AB            02/01       17      Romantic\n12  M Daichi Kurosawa           _            _'_\"      ___       __            __/__       __      Forger\n13  M Daishi Kurosawa           _            _'_\"      ___       __            __/__       __      Brother\n14  M Kaoru Saitou              11           5'10\"     150       AB            07/04       16      Survivalist\n15  M Pippin Barley Malt        12           6'10\"     152       N/A           N/A         N/A     Confectioner\n16  M Tomomi Kashichi           10.5         5'8\"      137       A             04/27       17      Technician\n17  M Xiao Ruohan               5            5'3\"      110       AB            01/23       15      Qin Player\n18  . Nathan Character B        #            #'#\"      1##       _             ##/##       1#      Plague Doctor\n\n	Mastermind\n    Information Unavailable.\n\n    Deceased Students\n    Soon.```");
 				inboxChannel.send(`${message.author.username} has looked at the full version of the DR:GA roster.`);
 				return;
 			}
@@ -2055,11 +2057,13 @@ client.on("message", (message) => { //When a message is sent.
 			if (args[0].toLowerCase().search("sanchia") != -1) { page = 9 }
 			if (args[0].toLowerCase().search("adam") != -1 || args[0].toLowerCase().search("koinu") != -1) { page = 10 }
 			if (args[0].toLowerCase().search("amon") != -1) { page = 11 }
-			if (args[0].toLowerCase().search("kaoru") != -1) { page = 12 }
-			if (args[0].toLowerCase().search("pippin") != -1) { page = 13 }
-			if (args[0].toLowerCase().search("tomomi") != -1) { page = 14 }
-			if (args[0].toLowerCase().search("xiao") != -1 || args[0].toLowerCase().search("ruohan") != -1 || args[0].toLowerCase().search("zhujun") != -1) { page = 15 }
-			if (args[0].toLowerCase().search("nathan character b") != -1) { page = 16 }
+			if (args[0].toLowerCase().search("daichi") != -1) { page = 12 }
+			if (args[0].toLowerCase().search("daishi") != -1) { page = 13 }
+			if (args[0].toLowerCase().search("kaoru") != -1) { page = 14 }
+			if (args[0].toLowerCase().search("pippin") != -1) { page = 15 }
+			if (args[0].toLowerCase().search("tomomi") != -1) { page = 16 }
+			if (args[0].toLowerCase().search("xiao") != -1 || args[0].toLowerCase().search("ruohan") != -1 || args[0].toLowerCase().search("zhujun") != -1) { page = 17 }
+			if (args[0].toLowerCase().search("nathan character b") != -1) { page = 18 }
 			inboxChannel.send(`${message.author.username} has looked at ${args[0].toUpperCase().slice(0, 1)}${args[0].toLowerCase().slice(1)}'s file.`);
 		}
 		if (page === 0) {
