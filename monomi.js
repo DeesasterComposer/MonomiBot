@@ -2263,15 +2263,11 @@ client.on("message", (message) => { //When a message is sent.
 			embed.setAuthor("Summer Killing Game Cabin Arrangements");
 			for (x = 0; x < 3; x++) {
 				cabin = cabins[x];
-				for (y = cabin.people.length; y > 0; y--) {
-					if (y === 1) {
-						cabinInhabitants += "and " + cabin.people[y];
-					}
-					else {
-						cabinInhabitants += cabin.people + ", ";
-					}
+				cabinInhabitants = "";
+				for (y = 0; y < cabin.people.length; y++) {
+					cabinInhabitants += cabin.people[y] + "\n";
 				}
-				embed.addField(`${cabin.name} Cabin`, `${cabinInhabitants}`)
+				embed.addField(`${cabin.name} Cabin`, `${cabinInhabitants}`);
 			}
 			return message.channel.send(embed);
 		}
