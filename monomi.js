@@ -160,7 +160,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.1.7.4";
+var version = "3.1.7.5";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -2106,7 +2106,7 @@ client.on("message", (message) => { //When a message is sent.
 	if (command === "roomies") {
 		let embed = new Discord.RichEmbed()
 			.setColor(13959168)
-		if (message.guild.id != "598739324464267274" && message.guild.id != "617202043597226009") {
+		if (message.guild.id != "598739324464267274" && message.guild.id != "617202043597226009") { //Kaeno V3
 			rooms = [
 				{
 					number: "1 (C1)",
@@ -2244,7 +2244,7 @@ client.on("message", (message) => { //When a message is sent.
 				return message.channel.send(embed);
 			}
 		}
-		else {
+		else { //Getaway
 			cabins = [
 				{
 					name: "Polar",
@@ -2279,7 +2279,7 @@ client.on("message", (message) => { //When a message is sent.
 			gameName = "Fanganronpa Games";
 			embedDescription += "__**Kaeno Shinjomu**__\n[**CLASS 01**](https://imgur.com/a/YKlnXcm)\n[**CLASS 01 REVAMPED**](https://imgur.com/a/5HxXTfJ)\n[**CLASS 02**](https://imgur.com/a/W6lSVxl)\n[**CLASS 02 GLITCHED**](https://imgur.com/a/qqOupuD)\n[**ULTRA DESPAIR GIRLS**](https://imgur.com/a/tBC6sWb)\n[**CLASS 03**](https://imgur.com/a/7JX0shS)\n\n__**Danganronpa: A Getaway**__\n[**CAMP CLASS 01**](https://imgur.com/a/2cX6tHS)"
 		}
-		else if (message.guild.id === "598739324464267274" || message.guild.id != "617202043597226009") {
+		else if (message.guild.id === "598739324464267274" || message.guild.id === "617202043597226009") {
 			gameName = "Danganronpa: A Getaway";
 			embedDescription += "[**CAMP CLASS 01**](https://imgur.com/a/2cX6tHS)"
 		}
@@ -2294,7 +2294,7 @@ client.on("message", (message) => { //When a message is sent.
 				color: 15285149
 			}
 		})
-		inboxChannel.send(`${message.author.username} has asked Monomi for the class sprites masterposts.`);
+		inboxChannel.send(`${message.author.username} has asked Monomi for the ${gameName} class sprites masterposts.`);
 		return;
 	}
 
