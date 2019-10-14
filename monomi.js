@@ -160,7 +160,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.2.0.0";
+var version = "3.2.0.1";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -2067,7 +2067,7 @@ client.on("message", (message) => { //When a message is sent.
 			inboxChannel.send(`${message.author.username} has looked at ${args[0].toUpperCase().slice(0, 1)}${args[0].toLowerCase().slice(1)}'s file.`);
 		}
 		else if (message.guild.id === "633119665178017793" || (message.guild.id === "480549161201041418" && command === "rbab")) { //Bed and Bloodshed
-			guestList = [
+			classList = [
 				{ studentID: "Name: Aika Mahaya\nTalent: Digital Composer\nSex: Female\nStatus: Alive\n\nShoe Size: 9\nHeight: 5'6\"\nWeight: 137\nBlood Type: B\nBirthday: 06/21\nAge: 17", studentIDPicture: "https://imgur.com/mvO4tTk.png" },
 				{ studentID: "Name: Chava Hazzan\nOnline Alias: crawler190\nTalent: ARG Developer\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 4'9\"\nWeight: 90\nBlood Type: O\nBirthday: 10/28\nAge: 17", studentIDPicture: "https://imgur.com/HnyakxE.png" },
 				{ studentID: "Name: Dia Ramos\nTalent: Cheerleader\nSex: Female\nStatus: Alive\n\nShoe Size: 7.5\nHeight: 5'2\"\nWeight: 117\nBlood Type: O\nBirthday: 08/10\nAge: 18", studentIDPicture: "https://imgur.com/BJvyrMy.png" },
@@ -2096,14 +2096,14 @@ client.on("message", (message) => { //When a message is sent.
 				return;
 			}
 
-			let pageAmount = guestList.length;
+			let pageAmount = classList.length;
 			let x = 0;
 			while (x < pageAmount) {
-				thumbnail = guestList[x].studentIDPicture;
+				thumbnail = classList[x].studentIDPicture;
 				if (thumbnail === "") {
 					thumbnail = "https://imgur.com/OVPTMGn.png";
 				};
-				currentPage = { text: guestList[x].studentID, thumbnail: thumbnail }
+				currentPage = { text: classList[x].studentID, thumbnail: thumbnail }
 				pages.push(currentPage);
 				x++;
 			}
