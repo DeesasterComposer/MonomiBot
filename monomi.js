@@ -2073,7 +2073,7 @@ client.on("message", (message) => { //When a message is sent.
 				{ studentID: "Name: Dia Ramos\nTalent: Cheerleader\nSex: Female\nStatus: Alive\n\nShoe Size: 7.5\nHeight: 5'2\"\nWeight: 117\nBlood Type: O\nBirthday: 08/10\nAge: 18", studentIDPicture: "https://imgur.com/BJvyrMy.png" },
 				{ studentID: "Name: Eriko S\nTalent: Journalist\nSex: Female\nStatus: Alive\n\nShoe Size:\nHeight:\nWeight:\nBlood Type:\nBirthday:\nAge:", studentIDPicture: "" },
 				{ studentID: "Name: Kiku Sugimoto\nOnline Alias: DELTA\nTalent: Video Game Designer\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'6\"\nWeight: 138\nBlood Type: B\nBirthday: 06/08\nAge: 17", studentIDPicture: "https://imgur.com/Jv3MLRz.png" },
-				{ studentID: "Name: Pia Adesso\nTalent: Anthropologist\nSex: Female\nStatus: Alive\n\nShoe Size:\nHeight:\nWeight:\nBlood Type:\nBirthday:\nAge: 15", studentIDPicture: "" }
+				{ studentID: "Name: Pia Adesso\nTalent: Anthropologist\nSex: Female\nStatus: Alive\n\nShoe Size:\nHeight:\nWeight:\nBlood Type:\nBirthday:\nAge: 15", studentIDPicture: "" },
 				{ studentID: "Name: Piper McCullough\nTalent: Cadet\nSex: Female\nStatus: Alive\n\nShoe Size: 5\nHeight: 5'1\"\nWeight: 102\nBlood Type: O\nBirthday: 03/23\nAge: 15", studentIDPicture: "https://imgur.com/0e5h2h4.png" },
 				{ studentID: "Name: Mahina Keawe\nTalent: \nSex: Female\nStatus: Alive\n\nShoe Size:\nHeight:\nWeight:\nBlood Type:\nBirthday:\nAge:", studentIDPicture: "" },
 				{ studentID: "Name: Riko Ramuda\nTalent: Concept Artist\nSex: Female\nStatus: Alive\n\nShoe Size: 11\nHeight: 5'3\"\nWeight: 123\nBlood Type: AB\nBirthday: 10/25\nAge:16", studentIDPicture: "https://imgur.com/cu5izjM.png" },
