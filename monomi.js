@@ -2086,7 +2086,8 @@ client.on("message", (message) => { //When a message is sent.
 			]
 
 			if (args.length === 0) {
-				message.channel.send("```##  Sex and Name                Talent\n```");
+				message.channel.send("```Rm#  Sex and Name                Talent\n101  Nathan B                          \n102  Piper McCullough            Cadet\n103  Souma Shimizi               Poet\n104  Pia Adesso                  Anthropologist\n105  Dia Ramos                   Cheerleader\n106  Hakaku Himura               Test Subject\n107  Riko Ramuda                 Concept Artist\n108  Aika Mahaya                 Digital Composer\n109  Chava Hazzan                ARG Developer\n110  Denis Adesso-Mori           Sculptor\n111  Vinny B                           \n112  Eriko S                     Journalist\n113  Mahina Keawe                      \n114  Asahi Fukuzawa              Violinist\n115  Harvey Orkins               Medium\n116  Kiku Sugimoto               Video Game Designer```");
+				//message.channel.send("```202  Haruna Hattori              Artficial Intelligence\n202  Kaoru Saitou                Survivalist\n203  Masami Nii                  Guitarist\n204  Edith Reuter-Protz          ???\n204  Matilda Spitzenreiter       Club Leader```");
 				inboxChannel.send(`${message.author.username} has looked at the DR:BAB roster.`);
 				return;
 			}
