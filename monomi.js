@@ -160,7 +160,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.2.0.1";
+var version = "3.2.0.4";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -2071,23 +2071,27 @@ client.on("message", (message) => { //When a message is sent.
 				{ studentID: "Name: Aika Mahaya\nTalent: Digital Composer\nSex: Female\nStatus: Alive\n\nShoe Size: 9\nHeight: 5'6\"\nWeight: 137\nBlood Type: B\nBirthday: 06/21\nAge: 17", studentIDPicture: "https://imgur.com/mvO4tTk.png" },
 				{ studentID: "Name: Chava Hazzan\nOnline Alias: crawler190\nTalent: ARG Developer\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 4'9\"\nWeight: 90\nBlood Type: O\nBirthday: 10/28\nAge: 17", studentIDPicture: "https://imgur.com/HnyakxE.png" },
 				{ studentID: "Name: Dia Ramos\nTalent: Cheerleader\nSex: Female\nStatus: Alive\n\nShoe Size: 7.5\nHeight: 5'2\"\nWeight: 117\nBlood Type: O\nBirthday: 08/10\nAge: 18", studentIDPicture: "https://imgur.com/BJvyrMy.png" },
-				{ studentID: "Name: Eriko S\nTalent: Journalist\nSex: Female\nStatus: Alive\n\nShoe Size:\nHeight:\nWeight:\nBlood Type:\nBirthday:\nAge:", studentIDPicture: "" },
+				//{ studentID: "Name: Edith Freya Reuter-Protz\nTalent: ???\nSex: Female\nStatus: Alive\n\nShoe Size: 9\nHeight: 5'10\"\nWeight: 144\nBlood Type: AB\nBirthday: 10/19\nAge: 18", studentIDPicture: "" },
+				{ studentID: "Name: Eriko Shingo\nTalent: Journalist\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'5\"\nWeight: 125\nBlood Type: AB\nBirthday: 07/21\nAge: 16", studentIDPicture: "" },
 				{ studentID: "Name: Kiku Sugimoto\nOnline Alias: DELTA\nTalent: Video Game Designer\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'6\"\nWeight: 138\nBlood Type: B\nBirthday: 06/08\nAge: 17", studentIDPicture: "https://imgur.com/Jv3MLRz.png" },
-				{ studentID: "Name: Pia Adesso\nTalent: Anthropologist\nSex: Female\nStatus: Alive\n\nShoe Size:\nHeight:\nWeight:\nBlood Type:\nBirthday:\nAge: 15", studentIDPicture: "" },
+				//{ studentID: "Name: Humanity Replicated in a Neural Network (HRNN)\nNickname: Haruna Hattori\nTalent: Artificial Intelligence\nSex: N/A\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'2\"\nWeight: 135\nBlood Type: N/A\nBirthday: 02/11\nAge: 7 months (14)", studentIDPicture: ".png" },
+				{ studentID: "Name: Pia Adesso\nTalent: Anthropologist\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'4\"\nWeight: 122\nBlood Type: B\nBirthday: 07/15\nAge: 15", studentIDPicture: "" },
 				{ studentID: "Name: Piper McCullough\nTalent: Cadet\nSex: Female\nStatus: Alive\n\nShoe Size: 5\nHeight: 5'1\"\nWeight: 102\nBlood Type: O\nBirthday: 03/23\nAge: 15", studentIDPicture: "https://imgur.com/0e5h2h4.png" },
-				{ studentID: "Name: Mahina Keawe\nTalent: \nSex: Female\nStatus: Alive\n\nShoe Size:\nHeight:\nWeight:\nBlood Type:\nBirthday:\nAge:", studentIDPicture: "" },
+				{ studentID: "Name: Mahina Keawe\nTalent: Fursuiter\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'3\"\nWeight: 158\nBlood Type: O\nBirthday: 04/07\nAge: 16", studentIDPicture: "" },
+				//{ studentID: "Name: Matilda Spitzenreiter\nTalent: Club Leader\nSex: Female\nStatus: Alive\n\nShoe Size: 11\nHeight: 5'8\"\nWeight: 140\nBlood Type: O\nBirthday: 10/01\nAge: 18", studentIDPicture: "" },
 				{ studentID: "Name: Riko Ramuda\nTalent: Concept Artist\nSex: Female\nStatus: Alive\n\nShoe Size: 11\nHeight: 5'3\"\nWeight: 123\nBlood Type: AB\nBirthday: 10/25\nAge:16", studentIDPicture: "https://imgur.com/cu5izjM.png" },
 				{ studentID: "Name: Asahi Fukuzawa\nTalent: Violinist\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'7\"\nWeight: 124\nBlood Type: O\nBirthday: 08/27\nAge: 18", studentIDPicture: "https://imgur.com/0I6Zc4L.png" },
-				{ studentID: "Name: Denis Adesso-Mori\nTalent: Sculptor\nSex: Male\nStatus: Alive\n\nShoe Size:\nHeight:\nWeight:\nBlood Type:\nBirthday:\nAge: 18", studentIDPicture: "" },
-				{ studentID: "Name: Hakaku Himura\nTalent: Test Subject\nSex: Male\nStatus: Alive\n\nShoe Size:\nHeight:\nWeight:\nBlood Type:\nBirthday:\nAge: 14", studentIDPicture: "" },
-				{ studentID: "Name: Harvey Orkins\nTalent: Medium\nSex: Male\nStatus: Alive\n\nShoe Size:\nHeight:\nWeight:\nBlood Type:\nBirthday:\nAge: ", studentIDPicture: "" },
+				{ studentID: "Name: Denis Adesso-Mori\nTalent: Sculptor\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 6'2\"\nWeight: 149\nBlood Type: A\nBirthday: 09/09\nAge: 18", studentIDPicture: "" },
+				{ studentID: "Name: Hakaku Himura\nTalent: Test Subject\nSex: Male\nStatus: Alive\n\nShoe Size: 5\nHeight: 4'10\"\nWeight: 72\nBlood Type: O\nBirthday:\nAge: 14", studentIDPicture: "" },
+				{ studentID: "Name: Harvey Orkins\nTalent: Medium\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 6'4\"\nWeight: 215\nBlood Type: B\nBirthday: 11/01\nAge: 17 ", studentIDPicture: "" },
 				//{ studentID: "Name: Kaoru Saitou\nTalent: Survivalist\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 5'10\"\nWeight: 150\nBlood Type: AB\nBirthday: 07/04\nAge: 16", studentIDPicture: "https://imgur.com/EHY8Neq.png" },
+				//{ studentID: "Name: Masami Nii\nTalent: Guitarist\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 143\nBlood Type: B\nBirthday: 05/25\nAge: 17", studentIDPicture: ".png" },
 				{ studentID: "Name: Souma Shimizu\nReal Name: Naoki Ishida\nTalent: Manipulator (Poet)\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 130\nBlood Type: AB\nBirthday: 03/20\nAge: 17\n\n\n\nPoems:\nmy stacy left me\nof course, it's a fucking chad\nno one understands\n\ni'll get her back\nand that chad will be wacked\nsouma is better than chad\n\nA poem by Souma.\n\n\nmy heart burns\nbut not for you\nfor stacy\nfuck chad", studentIDPicture: "https://imgur.com/QJRlcfI.png" },
 			]
 
 			if (args.length === 0) {
-				message.channel.send("```Rm#  Sex and Name                Talent\n101  Nathan B                          \n102  Piper McCullough            Cadet\n103  Souma Shimizi               Poet\n104  Pia Adesso                  Anthropologist\n105  Dia Ramos                   Cheerleader\n106  Hakaku Himura               Test Subject\n107  Riko Ramuda                 Concept Artist\n108  Aika Mahaya                 Digital Composer\n109  Chava Hazzan                ARG Developer\n110  Denis Adesso-Mori           Sculptor\n111  Vinny B                           \n112  Eriko S                     Journalist\n113  Mahina Keawe                      \n114  Asahi Fukuzawa              Violinist\n115  Harvey Orkins               Medium\n116  Kiku Sugimoto               Video Game Designer```");
-				//message.channel.send("```202  Haruna Hattori              Artficial Intelligence\n202  Kaoru Saitou                Survivalist\n203  Masami Nii                  Guitarist\n204  Edith Reuter-Protz          ???\n204  Matilda Spitzenreiter       Club Leader```");
+				message.channel.send("```Rm#  Sex and Name                Talent\n101  _ Nathan B                       \n102  _ Piper McCullough          Cadet\n103  M Souma Shimizu             Poet\n104  F Pia Adesso                Anthropologist\n105  F Dia Ramos                 Cheerleader\n106  M Hakaku Himura             Test Subject\n107  F Riko Ramuda               Concept Artist\n108  F Aika Mahaya               Digital Composer\n109  F Chava Hazzan              ARG Developer\n110  M Denis Adesso-Mori         Sculptor\n111  _ Vinny B                         \n112  F Eriko S                   Journalist\n113  F Mahina Keawe                   Fursuiter\n114  M Asahi Fukuzawa            Violinist\n115  M Harvey Orkins             Medium\n116  F Kiku Sugimoto             Video Game Designer```");
+				//message.channel.send("```202    Haruna Hattori            Artficial Intelligence\n202  M Kaoru Saitou              Survivalist\n203  M Masami Nii                Guitarist\n204  F Edith Reuter-Protz        ???\n204  F Matilda Spitzenreiter     Club Leader```");
 				inboxChannel.send(`${message.author.username} has looked at the DR:BAB roster.`);
 				return;
 			}
