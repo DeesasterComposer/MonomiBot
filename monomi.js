@@ -160,7 +160,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.2.0.4";
+var version = "3.2.0.5";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
