@@ -160,7 +160,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.2.0.5";
+var version = "3.2.0.6";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -2081,6 +2081,7 @@ client.on("message", (message) => { //When a message is sent.
 				//{ studentID: "Name: Matilda Spitzenreiter\nTalent: Club Leader\nSex: Female\nStatus: Alive\n\nShoe Size: 11\nHeight: 5'8\"\nWeight: 140\nBlood Type: O\nBirthday: 10/01\nAge: 18", studentIDPicture: "" },
 				{ studentID: "Name: Riko Ramuda\nTalent: Concept Artist\nSex: Female\nStatus: Alive\n\nShoe Size: 11\nHeight: 5'3\"\nWeight: 123\nBlood Type: AB\nBirthday: 10/25\nAge:16", studentIDPicture: "https://imgur.com/cu5izjM.png" },
 				{ studentID: "Name: Asahi Fukuzawa\nTalent: Violinist\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'7\"\nWeight: 124\nBlood Type: O\nBirthday: 08/27\nAge: 18", studentIDPicture: "https://imgur.com/0I6Zc4L.png" },
+				{ studentID: "Name: Cecilio Gonzalo Calles Cárdenas\nTalent: Pilot\nSex: Male\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'8\"\nWeight: 157\nBlood Type: B\nBirthday: 05/03\nAge: 17", studentIDPicture: "" },
 				{ studentID: "Name: Denis Adesso-Mori\nTalent: Sculptor\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 6'2\"\nWeight: 149\nBlood Type: A\nBirthday: 09/09\nAge: 18", studentIDPicture: "" },
 				{ studentID: "Name: Hakaku Himura\nTalent: Test Subject\nSex: Male\nStatus: Alive\n\nShoe Size: 5\nHeight: 4'10\"\nWeight: 72\nBlood Type: O\nBirthday:\nAge: 14", studentIDPicture: "" },
 				{ studentID: "Name: Harvey Orkins\nTalent: Medium\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 6'4\"\nWeight: 215\nBlood Type: B\nBirthday: 11/01\nAge: 17 ", studentIDPicture: "" },
@@ -2091,7 +2092,7 @@ client.on("message", (message) => { //When a message is sent.
 			]
 
 			if (args.length === 0) {
-				message.channel.send("```Rm#  Sex and Name                Talent\n101  M Oliver Bennett            Plague Doctor\n102  F Piper McCullough          Cadet\n103  M Souma Shimizu             Poet\n104  F Pia Adesso                Anthropologist\n105  F Dia Ramos                 Cheerleader\n106  M Hakaku Himura             Test Subject\n107  F Riko Ramuda               Concept Artist\n108  F Aika Mahaya               Digital Composer\n109  F Chava Hazzan              ARG Developer\n110  M Denis Adesso-Mori         Sculptor\n111  _ Vinny B                         \n112  F Eriko S                   Journalist\n113  F Mahina Keawe              Fursuiter\n114  M Asahi Fukuzawa            Violinist\n115  M Harvey Orkins             Medium\n116  F Kiku Sugimoto             Video Game Designer```");
+				message.channel.send("```Rm#  Sex and Name                Talent\n101  M Oliver Bennett            Plague Doctor\n102  F Piper McCullough          Cadet\n103  M Souma Shimizu             Poet\n104  F Pia Adesso                Anthropologist\n105  F Dia Ramos                 Cheerleader\n106  M Hakaku Himura             Test Subject\n107  F Riko Ramuda               Concept Artist\n108  F Aika Mahaya               Digital Composer\n109  F Chava Hazzan              ARG Developer\n110  M Denis Adesso-Mori         Sculptor\n111  M Cecilio Cárdenas          Pilot\n112  F Eriko S                   Journalist\n113  F Mahina Keawe              Fursuiter\n114  M Asahi Fukuzawa            Violinist\n115  M Harvey Orkins             Medium\n116  F Kiku Sugimoto             Video Game Designer```");
 				//message.channel.send("```202    Haruna Hattori            Artficial Intelligence\n202  M Kaoru Saitou              Survivalist\n203  M Masami Nii                Guitarist\n204  F Edith Reuter-Protz        ???\n204  F Matilda Spitzenreiter     Club Leader```");
 				inboxChannel.send(`${message.author.username} has looked at the DR:BAB roster.`);
 				return;
@@ -2127,14 +2128,17 @@ client.on("message", (message) => { //When a message is sent.
 			//if (args[0].toLowerCase().search("matilda") != -1) { page = 11 }
 			if (args[0].toLowerCase().search("riko") != -1) { page = 9 }
 			if (args[0].toLowerCase().search("asahi") != -1) { page = 10 }
-			if (args[0].toLowerCase().search("denis") != -1) { page = 11 }
-			if (args[0].toLowerCase().search("hakaku") != -1) { page = 12 }
-			if (args[0].toLowerCase().search("harvey") != -1) { page = 13 }
-			//if (args[0].toLowerCase().search("kaoru") != -1) { page = 14 }
-			//if (args[0].toLowerCase().search("masami") != -1) { page = 15 }
-			if (args[0].toLowerCase().search("oliver") != -1) { page = 14 }
-			if (args[0].toLowerCase().search("souma") != -1) { page = 15 }
-			if (args[0].toLowerCase().search("vinnyb") != -1) { page = 16 }
+			if (args[1].toLowerCase().search("cecil") != -1 && args[1].toLowerCase().search("cecilio") === -1) {
+				return message.reply("**No.**");
+			}
+			if (args[1].toLowerCase().search("cecilio") != -1) { page = 11 }
+			if (args[0].toLowerCase().search("denis") != -1) { page = 12 }
+			if (args[0].toLowerCase().search("hakaku") != -1) { page = 13 }
+			if (args[0].toLowerCase().search("harvey") != -1) { page = 14 }
+			//if (args[0].toLowerCase().search("kaoru") != -1) { page = 15 }
+			//if (args[0].toLowerCase().search("masami") != -1) { page = 16 }
+			if (args[0].toLowerCase().search("oliver") != -1) { page = 15 }
+			if (args[0].toLowerCase().search("souma") != -1) { page = 16 }
 
 			inboxChannel.send(`${message.author.username} has looked at ${args[0].toUpperCase().slice(0, 1)}${args[0].toLowerCase().slice(1)}'s file.`);
 		}
