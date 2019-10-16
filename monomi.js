@@ -160,7 +160,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.2.0.6";
+var version = "3.2.0.7";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -2126,7 +2126,7 @@ client.on("message", (message) => { //When a message is sent.
 			if (args[0].toLowerCase().search("piper") != -1) { page = 7 }
 			if (args[0].toLowerCase().search("mahina") != -1) { page = 8 }
 			//if (args[0].toLowerCase().search("matilda") != -1) { page = 11 }
-			if (args[0].toLowerCase().search("riko") != -1) { page = 9 }
+			if (args[0].toLowerCase().search("riko") != -1 && args[0].toLowerCase().search("eriko") === -1) { page = 9 }
 			if (args[0].toLowerCase().search("asahi") != -1) { page = 10 }
 			if (args[0].toLowerCase().search("cecil") != -1 && args[0].toLowerCase().search("cecilio") === -1) {
 				return message.reply("**No.**");
