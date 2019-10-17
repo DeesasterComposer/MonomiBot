@@ -160,7 +160,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.2.0.7";
+var version = "3.2.1.0";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -1622,7 +1622,7 @@ client.on("message", (message) => { //When a message is sent.
 	}
 
 	//Killing Game Commands
-	if (command === "roster" || command === "class" || command === "r" || (message.guild.id === "480549161201041418" && (command === "rks" || command === "rga" || command === "rbab"))) {
+	if (command === "roster" || command === "class" || command === "r" || command === "rks" || command === "rga" || command === "rbab") {
 		let embed = new Discord.RichEmbed()
 			.setColor(13959168)
 		
@@ -1630,7 +1630,7 @@ client.on("message", (message) => { //When a message is sent.
 		let page = 0;
 
 		studentID = "";
-		if (message.guild.id === "455218035507331072" || (message.guild.id === "480549161201041418" && command === "rks")) { //Kaeno Shinjomu
+		if (message.guild.id === "455218035507331072" || command === "rks") { //Kaeno Shinjomu
 			if (args.length < 1 || args[0] != "1" && args[0] != "2" && args[0] != "3" && args[0] != "4" && args[0].toLowerCase() != "u" && args[0].toLowerCase() != "talents") {
 				return message.channel.send("Please specify which class (1, 2, 3, 4, U, or talents) you're checking the roster for!")
 			}
@@ -2000,7 +2000,7 @@ client.on("message", (message) => { //When a message is sent.
 				return message.channel.send("```2    Jeweler              Kagami Hannei\n2    Inventor             Hideo Takayama\n2    Lawyer               Ale del Prieto\n3    Lion Tamer           Areli Vepkhia\n2    Lucky Student        Kouki Yoshida\n3    Luthier              Ruslan Eun-Kyung Kraus\n2    Maid                 Saeko Kiyomizu\n1    Makeup Artist        Aiko Hikaru\n3    Magical Girl         Kirakira Kyuti\n1    Magician             Anya Sakaguchi\n2    Manipulator (Poet)   Souma Shimizu\n3    Martial Artist       Mariko Nakamura\n1    Matchmaker           Shiba Mikio\n3    Milkman              Charles Miller\n1    Model                Megu Kojima\n3    Mythologist          Isago Achikita\n2    Opera Singer         Arisa Shokuhou\n3    Pianist              Federico Navarro\n3    Pilot                Cecilio Gonzalo Calles Cárdenas\n2    Philanthropist       Yuuya Michimiya\n3    Physicist            Shinji Minoru\n2    Poet (Manipulator)   Souma Shimizu\n1    Prince               Kiro Karasu\n2    Puppeteer            Hana Kageriri\n3    Pyromaniac           Jomei Hoshino\n2    Ringmaster           Fenikku Hinotama\n3    Rock Star            Kumiko Yeun\n3    Satanist             Daichi Ichihara\n1    Singer               Kyoung-mi Park\n2    Spy                  Isha Kalki\n3    Stalker              Aemele Dèjré\n3    Storyteller          Ryoushi Nobuori\n2    Surgeon              Eiji Ryozo\n2    Swimmer              Katashi Maeda\n1    Swordsman            Minako Kaoru\n2    Technician           Tomomi Kashichi\n1    Tennis Player        Jeong Park\n2    Theologist           Michel Voigt\n1    Therapist            Tenshi Kawada\n3    Tragedian            Megami Himura\n4    Voice Actor          Agnes María Camila Zalweski-Chavarría\n2    Violinist            Asahi Fukuzawa\n1    Woodworker           Kazuya Harada```");
 			}
 		}
-		else if (message.guild.id === "598739324464267274" || message.guild.id === "617202043597226009" || (message.guild.id === "480549161201041418" && command === "rga")) { //DR:GA Roster
+		else if (message.guild.id === "598739324464267274" || message.guild.id === "617202043597226009" || command === "rga") { //DR:GA Roster
 			classList = [
 				{ studentID: "Name: Chava Hazzan\nOnline Alias: crawler190\nTalent: ARG Developer\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 4'9\"\nWeight: 90\nBlood Type: O\nBirthday: 10/28\nAge: 17", studentIDPicture: "https://imgur.com/7dWnfXm.png" },
 				{ studentID: "Name: Ginny\nTalent: Test Subject\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 4'10\"\nWeight: 110\nBlood Type: N/A\nBirthday: 01/01\nAge: 16", studentIDPicture: "https://imgur.com/MJHmP1m.png" },
@@ -2066,7 +2066,7 @@ client.on("message", (message) => { //When a message is sent.
 			if (args[0].toLowerCase().search("nathan character b") != -1) { page = 18 }
 			inboxChannel.send(`${message.author.username} has looked at ${args[0].toUpperCase().slice(0, 1)}${args[0].toLowerCase().slice(1)}'s file.`);
 		}
-		else if (message.guild.id === "633119665178017793" || (message.guild.id === "480549161201041418" && command === "rbab")) { //Bed and Bloodshed
+		else if (message.guild.id === "633119665178017793" || command === "rbab") { //Bed and Bloodshed
 			classList = [
 				{ studentID: "Name: Aika Mahaya\nTalent: Digital Composer\nSex: Female\nStatus: Alive\n\nShoe Size: 9\nHeight: 5'6\"\nWeight: 137\nBlood Type: B\nBirthday: 06/21\nAge: 17", studentIDPicture: "https://imgur.com/mvO4tTk.png" },
 				{ studentID: "Name: Chava Hazzan\nOnline Alias: crawler190\nTalent: ARG Developer\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 4'9\"\nWeight: 90\nBlood Type: O\nBirthday: 10/28\nAge: 17", studentIDPicture: "https://imgur.com/HnyakxE.png" },
@@ -2079,15 +2079,15 @@ client.on("message", (message) => { //When a message is sent.
 				{ studentID: "Name: Piper McCullough\nTalent: Cadet\nSex: Female\nStatus: Alive\n\nShoe Size: 5\nHeight: 5'1\"\nWeight: 102\nBlood Type: O\nBirthday: 03/23\nAge: 15", studentIDPicture: "https://imgur.com/0e5h2h4.png" },
 				{ studentID: "Name: Mahina Keawe\nTalent: Fursuiter\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'3\"\nWeight: 158\nBlood Type: O\nBirthday: 04/07\nAge: 16", studentIDPicture: "" },
 				//{ studentID: "Name: Matilda Spitzenreiter\nTalent: Club Leader\nSex: Female\nStatus: Alive\n\nShoe Size: 11\nHeight: 5'8\"\nWeight: 140\nBlood Type: O\nBirthday: 10/01\nAge: 18", studentIDPicture: "" },
-				{ studentID: "Name: Riko Ramuda\nTalent: Concept Artist\nSex: Female\nStatus: Alive\n\nShoe Size: 11\nHeight: 5'3\"\nWeight: 123\nBlood Type: AB\nBirthday: 10/25\nAge:16", studentIDPicture: "https://imgur.com/cu5izjM.png" },
+				{ studentID: "Name: Riko Ramuda\nTalent: Concept Artist\nSex: Female\nStatus: Alive\n\nShoe Size: 11\nHeight: 5'3\"\nWeight: 123\nBlood Type: AB\nBirthday: 10/25\nAge: 16", studentIDPicture: "https://imgur.com/cu5izjM.png" },
 				{ studentID: "Name: Asahi Fukuzawa\nTalent: Violinist\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'7\"\nWeight: 124\nBlood Type: O\nBirthday: 08/27\nAge: 18", studentIDPicture: "https://imgur.com/0I6Zc4L.png" },
 				{ studentID: "Name: Cecilio Gonzalo Calles Cárdenas\nTalent: Pilot\nSex: Male\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'8\"\nWeight: 157\nBlood Type: B\nBirthday: 05/03\nAge: 17", studentIDPicture: "" },
 				{ studentID: "Name: Denis Adesso-Mori\nTalent: Sculptor\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 6'2\"\nWeight: 149\nBlood Type: A\nBirthday: 09/09\nAge: 18", studentIDPicture: "" },
-				{ studentID: "Name: Hakaku Himura\nTalent: Test Subject\nSex: Male\nStatus: Alive\n\nShoe Size: 5\nHeight: 4'10\"\nWeight: 72\nBlood Type: O\nBirthday:\nAge: 14", studentIDPicture: "" },
+				{ studentID: "Name: Hakaku Himura\nTalent: Test Subject\nSex: Male\nStatus: Alive\n\nShoe Size: 5\nHeight: 4'10\"\nWeight: 72\nBlood Type: O\nBirthday: 03/14\nAge: 14", studentIDPicture: "" },
 				{ studentID: "Name: Harvey Orkins\nTalent: Medium\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 6'4\"\nWeight: 215\nBlood Type: B\nBirthday: 11/01\nAge: 17 ", studentIDPicture: "" },
 				//{ studentID: "Name: Kaoru Saitou\nTalent: Survivalist\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 5'10\"\nWeight: 150\nBlood Type: AB\nBirthday: 07/04\nAge: 16", studentIDPicture: "https://imgur.com/EHY8Neq.png" },
 				//{ studentID: "Name: Masami Nii\nTalent: Guitarist\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 143\nBlood Type: B\nBirthday: 05/25\nAge: 17", studentIDPicture: ".png" },
-				{ studentID: "Name: Oliver Bennett\nTalent: Plague Doctor\nSex: Male\nStatus: Alive\n\nShoe Size:\nHeight:\nWeight:\nBlood Type:\nBirthday:\nAge:", studentIDPicture: "" },
+				{ studentID: "Name: Oliver Bennett\nTalent: Plague Doctor\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 6'1\"\nWeight: 145\nBlood Type: AB\nBirthday: 10/16\nAge: 18", studentIDPicture: "" },
 				{ studentID: "Name: Souma Shimizu\nReal Name: Naoki Ishida\nTalent: Poet\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 130\nBlood Type: AB\nBirthday: 03/20\nAge: 17\n\n\n\nPoems:\nmy stacy left me\nof course, it's a fucking chad\nno one understands\n\ni'll get her back\nand that chad will be wacked\nsouma is better than chad\n\nA poem by Souma.\n\n\nmy heart burns\nbut not for you\nfor stacy\nfuck chad", studentIDPicture: "https://imgur.com/QJRlcfI.png" },
 			]
 
@@ -2098,7 +2098,7 @@ client.on("message", (message) => { //When a message is sent.
 				return;
 			}
 			if (args[0] === "total") {
-				message.channel.send("```##  Sex and Name                Shoe Size    Height    Weight    Blood Type    Birthday    Age     Talent\n```");
+				message.channel.send("```Rm#  Sex and Name                Shoe Size    Height    Weight    Blood Type    Birthday    Age     Talent\n```");
 				inboxChannel.send(`${message.author.username} has looked at the full version of the DR:BAB roster.`);
 				return;
 			}
