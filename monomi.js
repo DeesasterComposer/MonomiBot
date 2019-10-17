@@ -160,7 +160,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.2.1.1";
+var version = "3.2.1.2";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -1630,7 +1630,7 @@ client.on("message", (message) => { //When a message is sent.
 		let page = 0;
 
 		studentID = "";
-		if (command === "rks" || message.guild.id === "455218035507331072") { //Kaeno Shinjomu
+		if ((command === "rks" && message.guild.id != "455218035507331072") || message.guild.id === "455218035507331072") { //Kaeno Shinjomu
 			if (args.length < 1 || args[0] != "1" && args[0] != "2" && args[0] != "3" && args[0] != "4" && args[0].toLowerCase() != "u" && args[0].toLowerCase() != "talents") {
 				return message.channel.send("Please specify which class (1, 2, 3, 4, U, or talents) you're checking the roster for!")
 			}
@@ -2000,7 +2000,7 @@ client.on("message", (message) => { //When a message is sent.
 				return message.channel.send("```2    Jeweler              Kagami Hannei\n2    Inventor             Hideo Takayama\n2    Lawyer               Ale del Prieto\n3    Lion Tamer           Areli Vepkhia\n2    Lucky Student        Kouki Yoshida\n3    Luthier              Ruslan Eun-Kyung Kraus\n2    Maid                 Saeko Kiyomizu\n1    Makeup Artist        Aiko Hikaru\n3    Magical Girl         Kirakira Kyuti\n1    Magician             Anya Sakaguchi\n2    Manipulator (Poet)   Souma Shimizu\n3    Martial Artist       Mariko Nakamura\n1    Matchmaker           Shiba Mikio\n3    Milkman              Charles Miller\n1    Model                Megu Kojima\n3    Mythologist          Isago Achikita\n2    Opera Singer         Arisa Shokuhou\n3    Pianist              Federico Navarro\n3    Pilot                Cecilio Gonzalo Calles Cárdenas\n2    Philanthropist       Yuuya Michimiya\n3    Physicist            Shinji Minoru\n2    Poet (Manipulator)   Souma Shimizu\n1    Prince               Kiro Karasu\n2    Puppeteer            Hana Kageriri\n3    Pyromaniac           Jomei Hoshino\n2    Ringmaster           Fenikku Hinotama\n3    Rock Star            Kumiko Yeun\n3    Satanist             Daichi Ichihara\n1    Singer               Kyoung-mi Park\n2    Spy                  Isha Kalki\n3    Stalker              Aemele Dèjré\n3    Storyteller          Ryoushi Nobuori\n2    Surgeon              Eiji Ryozo\n2    Swimmer              Katashi Maeda\n1    Swordsman            Minako Kaoru\n2    Technician           Tomomi Kashichi\n1    Tennis Player        Jeong Park\n2    Theologist           Michel Voigt\n1    Therapist            Tenshi Kawada\n3    Tragedian            Megami Himura\n4    Voice Actor          Agnes María Camila Zalweski-Chavarría\n2    Violinist            Asahi Fukuzawa\n1    Woodworker           Kazuya Harada```");
 			}
 		}
-		else if (command === "rga" || message.guild.id === "598739324464267274" || message.guild.id === "617202043597226009") { //DR:GA Roster
+		else if ((command === "rga" && (message.guild.id != "598739324464267274" || message.guild.id != "617202043597226009")) || (message.guild.id === "598739324464267274" || message.guild.id === "617202043597226009")) { //DR:GA Roster
 			classList = [
 				{ studentID: "Name: Chava Hazzan\nOnline Alias: crawler190\nTalent: ARG Developer\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 4'9\"\nWeight: 90\nBlood Type: O\nBirthday: 10/28\nAge: 17", studentIDPicture: "https://imgur.com/7dWnfXm.png" },
 				{ studentID: "Name: Ginny\nTalent: Test Subject\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 4'10\"\nWeight: 110\nBlood Type: N/A\nBirthday: 01/01\nAge: 16", studentIDPicture: "https://imgur.com/MJHmP1m.png" },
@@ -2066,7 +2066,7 @@ client.on("message", (message) => { //When a message is sent.
 			if (args[0].toLowerCase().search("nathan character b") != -1) { page = 18 }
 			inboxChannel.send(`${message.author.username} has looked at ${args[0].toUpperCase().slice(0, 1)}${args[0].toLowerCase().slice(1)}'s file.`);
 		}
-		else if (command === "rbab" || message.guild.id === "633119665178017793") { //Bed and Bloodshed
+		else if ((command === "rbab" && message.guild.id != "633119665178017793") || message.guild.id === "633119665178017793") { //Bed and Bloodshed
 			classList = [
 				{ studentID: "Name: Aika Mahaya\nTalent: Digital Composer\nSex: Female\nStatus: Alive\n\nShoe Size: 9\nHeight: 5'6\"\nWeight: 137\nBlood Type: B\nBirthday: 06/21\nAge: 17", studentIDPicture: "https://imgur.com/mvO4tTk.png" },
 				{ studentID: "Name: Chava Hazzan\nOnline Alias: crawler190\nTalent: ARG Developer\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 4'9\"\nWeight: 90\nBlood Type: O\nBirthday: 10/28\nAge: 17", studentIDPicture: "https://imgur.com/HnyakxE.png" },
