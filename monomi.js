@@ -160,7 +160,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.2.1.5";
+var version = "3.2.1.6";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -1511,6 +1511,9 @@ client.on("message", (message) => { //When a message is sent.
 			}
 			else if (guildID === "dee") {
 				guildID = "480549161201041418";
+			}
+			else if (guildID === "bab") {
+				guildID = "633119665178017793";
 			}
 		}
 
