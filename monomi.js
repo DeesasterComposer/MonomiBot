@@ -872,12 +872,12 @@ client.on("message", (message) => { //When a message is sent.
 	const args = message.content.slice(prefix.length).trim().split(/ +/g);
 	const command = args.shift().toLowerCase();
 
-	if (message.guild.id === "633119665178017793") {
+	/*if (message.guild.id === "633119665178017793") {
 		client.user.setAvatar("https://imgur.com/hGsnkpE.png");
 	}
 	else {
 		client.user.setAvatar("https://imgur.com/qPus4i8.png");
-	}
+	}*/
 
 	//Help Command
 	if (command === "help" || command === "h") {
