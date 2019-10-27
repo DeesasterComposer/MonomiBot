@@ -149,13 +149,6 @@ function recallStatusShuffle() {
 	shuffleStatus(shuffleState);
 }
 
-/*Radio Variables*/ //NOW OBSOLETE
-var list = "";
-var servers = {};
-var loopSetting = false;
-var loopQueueSetting = false;
-var currentlyPlaying = null;
-
 /*Important Info*/
 var version = "3.3.0.0";
 var shuffleState = 0;
@@ -5641,7 +5634,7 @@ client.on("message", (message) => { //When a message is sent.
 	if (command === "ping") {
 		inboxChannel.send(`${message.author.username} has pinged!`);
 		message.channel.send("Pong!");
-		return MM_InProgress = false;
+		MM_InProgress = false;
 	}
 	if (command === "version" || command === "v") {
 		message.channel.send(`This is version ${version} of MonomiBot!`);
@@ -5657,193 +5650,6 @@ client.on("message", (message) => { //When a message is sent.
 				}]
 			}
 		})
-	}
-
-	//Radio //Now obsolete
-	if (!servers[message.guild.id]) servers[message.guild.id] = {
-		queue: []
-	}
-	var server = servers[message.guild.id];
-	if (command === "play" || command === "p") {
-		if (!args[0]) {
-			return message.channel.send(":x: Please provide a link to your music.")
-		};
-		if (!message.member.voiceChannel) {
-			return message.channel.send(":x: You must be in a voice channel to use this command.")
-		};
-		if (!ytdl.validateURL(args[0])) {
-			return message.channel.send(":x: Please provide a valid YouTube URL.")
-		};
-
-		ytdl.getInfo(args[0], function (err, info) {
-
-			videoTitle = info.title;
-			videoUrl = info.video_url;
-
-			server.queue.push({
-				title: videoTitle,
-				url: videoUrl
-			});
-			if (currentlyPlaying === null) {
-				message.channel.send(`:notes: Now playing \`${info.title}\`.`)
-			}
-			if (currentlyPlaying != null) {
-				message.channel.send(`:notes: Added \`${info.title}\` to the queue.`)
-			}
-			if (!message.guild.voiceConnection) message.member.voiceChannel.join().then(function (connection) {
-				play(connection, message)
-			});
-			inboxChannel.send(`${message.author.username} asked Monomi to play \`${info.title}\`.`)
-		})
-	}
-	if (command === "remove" || command === "rm") {
-		if (!message.member.voiceChannel) {
-			return message.channel.send(":x: You must be in a voice channel to use this command.")
-		};
-		if (!message.guild.voiceConnection) {
-			return message.channel.send(":x: Monomi isn't currently in any voice channels, use `m!radio play [song]` to summon Monomi.")
-		};
-		if (args[0] && Number.isInteger(args[0] * 1) === true) {
-			x = args[0] * 1;
-			if (server.queue[x]) {
-				message.channel.send(`:white_check_mark: \`${server.queue[x].title}\` has been removed from the queue.`);
-				server.queue.splice(x, 1);
-				inboxChannel.send(`${message.author.username} asked Monomi to remove a song.`)
-				return;
-			} else {
-				return message.channel.send(":x: This song does not exist within the queue, please make sure you entered the correct number.")
-			}
-		}
-		return message.channel.send(":x: Please specify which song you would like to remove.");
-	}
-	if (command === "move" || command === "m") {
-		if (!args[1]) {
-			return message.channel.send(":x: Please specify which item you're moving and to where.")
-		};
-		var queueShiftFrom = parseInt(args[0], 10);
-		var queueShiftTo = parseInt(args[1], 10);
-
-		if (Number.isInteger(queueShiftFrom) === false || Number.isInteger(queueShiftTo) === false) {
-			return message.channel.send(":x: The positions provided to Monomi are not integers, please use valid positions.")
-		};
-		if (queueShiftFrom === 0 || queueShiftTo === 0) {
-			return message.channel.send(":x: You cannot move the song that is currently playing.")
-		};
-		if (server.queue.length < queueShiftFrom || server.queue.length < queueShiftTo) {
-			return message.channel.send(":x: The positions provided to Monomi are not in the queue, please use valid positions.")
-		};
-
-		inboxChannel.send(`${message.author.username} asked Monomi to move a song in the queue.`)
-
-		move(server.queue, queueShiftFrom, queueShiftTo, message);
-	}
-	if (command === "queue" || command === "q") {
-		if (!message.guild.voiceConnection) {
-			return message.channel.send(":x: Monomi isn't currently in any voice channels, use `m!radio play [song]` to summon Monomi.")
-		};
-		var upNext = "";
-		inboxChannel.send(`${message.author.username} asked Monomi for the queue.`)
-		if (server.queue.length > 1) {
-			for (x in server.queue) {
-				upNext += `\`${x}.\` [${server.queue[x].title}](${server.queue[x].url})\n\n`
-			}
-			upNext = upNext.substring(`\`0.\` [${server.queue[0].title}](${server.queue[0].url})\n\n`.length);
-			message.channel.send({
-				embed: {
-					color: 15474730,
-					title: "Current Queue:",
-					fields: [{
-							name: "\n__Now Playing:__",
-							value: `[${currentlyPlaying.title}](${currentlyPlaying.url})\n\n`
-						},
-						{
-							name: ":arrow_down_small: __Up Next:__ :arrow_down_small:",
-							value: `${upNext}`
-						}
-					]
-				}
-			});
-			return;
-		} else {
-			message.channel.send({
-				embed: {
-					color: 15474730,
-					title: "Current Queue:",
-					fields: [{
-						name: "__Now Playing:__",
-						value: `[${currentlyPlaying.title}](${currentlyPlaying.url})`
-					}]
-				}
-			});
-			return;
-		}
-	}
-	if (command === "loop" || command === "l") {
-		if (!message.member.voiceChannel) {
-			return message.channel.send(":x: You must be in a voice channel to use this command.")
-		};
-		if (!message.guild.voiceConnection) {
-			return message.channel.send(":x: Monomi isn't currently in any voice channels, use `m!radio play [song]` to summon Monomi.")
-		};
-		if (loopSetting === false) {
-			message.channel.send(":repeat_one: Monomi will now play this song on loop.");
-			loopSetting = true;
-			inboxChannel.send(`${message.author.username} asked Monomi to play the current song on loop.`)
-			return;
-		}
-		if (loopSetting === true) {
-			message.channel.send(":no_entry_sign: Monomi will no longer play the song on loop.");
-			loopSetting = false;
-			inboxChannel.send(`${message.author.username} asked Monomi to stop playing the current song on loop.`)
-			return;
-		}
-	}
-	if (command === "loopqueue" || command === "lq" || command === "qloop" || command === "loopq") {
-		if (!message.member.voiceChannel) {
-			return message.channel.send(":x: You must be in a voice channel to use this command.")
-		};
-		if (!message.guild.voiceConnection) {
-			return message.channel.send(":x: Monomi isn't currently in any voice channels, use `m!radio play [song]` to summon Monomi.")
-		};
-		if (loopQueueSetting === false) {
-			message.channel.send(":repeat: Monomi will now play this queue on loop.");
-			loopQueueSetting = true;
-			inboxChannel.send(`${message.author.username} asked Monomi to play the current queue on loop.`)
-			return;
-		}
-		if (loopQueueSetting === true) {
-			message.channel.send(":no_entry_sign: Monomi will no longer play the queue on loop.");
-			loopQueueSetting = false;
-			inboxChannel.send(`${message.author.username} is asked Monomi to stop playing the current queue on loop.`)
-			return;
-		}
-	}
-	if (command === "skip" || command === "next") {
-		if (!message.member.voiceChannel) {
-			return message.channel.send(":x: You must be in a voice channel to use this command.")
-		};
-		if (server.dispatcher) {
-			message.channel.send(`:fast_forward: As per request, Monomi has skipped \`${currentlyPlaying.title}\`.`)
-			server.dispatcher.end();
-			inboxChannel.send(`${message.author.username} asked Monomi to skip the current song.`)
-			return;
-		}
-		return message.channel.send(":x: Monomi isn't currently in any voice channels, use `m!radio play [song]` to summon Monomi.");
-	}
-	if (command === "disconnect" || command === "dc" || command === "dis" || command === "d" || command === "clear" || command === "cl" || command === "fuckoff" || command === "leave") {
-		if (!message.member.voiceChannel) {
-			return message.channel.send(":x: You must be in a voice channel to use this command.")
-		};
-		if (!message.guild.voiceConnection) {
-			return message.channel.send(":x: Monomi isn't currently in any voice channels, use `m!radio play [song]` to summon Monomi.")
-		};
-		for (var i = server.queue.length; i > -1; i--) {
-			server.queue.pop();
-		}
-		message.channel.send(":door: Monomi has left the classroom.");
-		currentlyPlaying = null;
-		inboxChannel.send(`${message.author.username} asked Monomi to stop playing music and leave.`)
-		return message.guild.voiceConnection.disconnect();
 	}
 
 	client.user.setAvatar("https://imgur.com/qPus4i8.png");
