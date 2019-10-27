@@ -876,7 +876,7 @@ client.on("message", (message) => { //When a message is sent.
 		client.user.setAvatar("https://imgur.com/hGsnkpE.png");
 	}
 	else {
-		Client.user.setAvatar("https://imgur.com/qPus4i8.png");
+		client.user.setAvatar("https://imgur.com/qPus4i8.png");
 	}
 
 	//Help Command
