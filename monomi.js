@@ -150,7 +150,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.3.0.0";
+var version = "3.3.0.1";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -866,7 +866,7 @@ client.on("message", (message) => { //When a message is sent.
 		client.user.setAvatar("https://imgur.com/hGsnkpE.png");
 	}
 	else {
-		client.user.setAvatar("https://imgur.com/qPus4i8.png");
+		client.user.setAvatar("https://vignette.wikia.nocookie.net/danganronpa/images/d/da/Monomi_Illustration.png/revision/latest?cb=20170530055038");
 	}
 
 	//Help Command
@@ -5652,7 +5652,7 @@ client.on("message", (message) => { //When a message is sent.
 		})
 	}
 
-	client.user.setAvatar("https://imgur.com/qPus4i8.png");
+	client.user.setAvatar("https://vignette.wikia.nocookie.net/danganronpa/images/d/da/Monomi_Illustration.png/revision/latest?cb=20170530055038");
 });
 
 client.login(process.env.BOT_TOKEN)
