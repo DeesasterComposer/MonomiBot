@@ -150,7 +150,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.3.0.1";
+var version = "3.3.0.3";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
