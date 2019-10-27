@@ -5845,6 +5845,8 @@ client.on("message", (message) => { //When a message is sent.
 		inboxChannel.send(`${message.author.username} asked Monomi to stop playing music and leave.`)
 		return message.guild.voiceConnection.disconnect();
 	}
+
+	client.user.setAvatar("https://imgur.com/qPus4i8.png");
 });
 
 client.login(process.env.BOT_TOKEN)
