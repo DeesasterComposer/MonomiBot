@@ -866,7 +866,7 @@ client.on("message", (message) => { //When a message is sent.
 		client.user.setAvatar("https://imgur.com/hGsnkpE.png");
 	}
 	else {
-		client.user.setAvatar("https://vignette.wikia.nocookie.net/danganronpa/images/d/da/Monomi_Illustration.png/revision/latest?cb=20170530055038");
+		client.user.setAvatar("https://imgur.com/mxaptVR.png");
 	}
 
 	//Help Command
@@ -5652,7 +5652,7 @@ client.on("message", (message) => { //When a message is sent.
 		})
 	}
 
-	client.user.setAvatar("https://vignette.wikia.nocookie.net/danganronpa/images/d/da/Monomi_Illustration.png/revision/latest?cb=20170530055038");
+	client.user.setAvatar("https://imgur.com/mxaptVR.png");
 });
 
 client.login(process.env.BOT_TOKEN)
