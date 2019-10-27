@@ -160,7 +160,7 @@ var loopQueueSetting = false;
 var currentlyPlaying = null;
 
 /*Important Info*/
-var version = "3.2.1.6";
+var version = "3.3.0.0";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -542,11 +542,11 @@ function generateMurderScenario() { //Generates a murder scenario
 }
 
 /*Sprites*/
-const monomi_01 = "https://i.imgur.com/qPus4i8.png" //Idle
-const monomi_02 = "https://i.imgur.com/osGVXUm.png" //Tilted "Oh?"
-const monomi_03 = "https://i.imgur.com/9O57oZQ.png" //Questioning
-const monomi_04 = "https://i.imgur.com/wlLTX25.png" //Confident
-const monomi_05 = "https://i.imgur.com/ykA22jB.png" //Daydreaming
+const monomi_01 = "https://imgur.com/qPus4i8.png" //Idle
+const monomi_02 = "https://imgur.com/osGVXUm.png" //Tilted "Oh?"
+const monomi_03 = "https://imgur.com/9O57oZQ.png" //Questioning
+const monomi_04 = "https://imgur.com/wlLTX25.png" //Confident
+const monomi_05 = "https://imgur.com/ykA22jB.png" //Daydreaming
 const monomi_06 = "https://imgur.com/fPfgtia.png" //Uwah cute!!
 const monomi_07 = "https://imgur.com/tuHesOr.png" //Arms out
 const monomi_08 = "https://imgur.com/wcPxyrp.png" //Waving
@@ -668,8 +668,8 @@ client.on("message", (message) => { //When a message is sent.
 	//Monomi Harassment
 	if (message.content.toLowerCase().startsWith("i want monomi to fuck me") || message.content.toLowerCase().startsWith("fuck me monomi") || message.content.toLowerCase().startsWith("i want monomi to vore me") || message.content.toLowerCase().startsWith("vore me monomi")) {
 		if (message.author.id === "334575513857163266") {
-			inboxChannel.send("Twyla has given Monomi her consent if she would like to... do you know what.");
-			message.channel.send(`If that's what you want me to do, Twyla-chan... I'll gladly do it...`);
+			inboxChannel.send("Mello has given Monomi her consent if she would like to... do you know what.");
+			message.channel.send(`If that's what you want me to do, Mello-chan... I'll gladly do it...`);
 			message.channel.send({
 				embed: {
 					color: 15285149,
@@ -698,8 +698,8 @@ client.on("message", (message) => { //When a message is sent.
 	}
 	if (message.content.toLowerCase().startsWith("i want to fuck monomi") || message.content.toLowerCase().startsWith("i want to vore monomi")) {
 		if (message.author.id === "334575513857163266") {
-			inboxChannel.send("Monomi has given Twyla her consent if she would like to... do you know what.");
-			message.channel.send(`If that's what you want to do to me, Twyla-chan... be my guest...`);
+			inboxChannel.send("Monomi has given Mello her consent if she would like to... do you know what.");
+			message.channel.send(`If that's what you want to do to me, Mello-chan... be my guest...`);
 			message.channel.send({
 				embed: {
 					color: 15285149,
@@ -871,6 +871,13 @@ client.on("message", (message) => { //When a message is sent.
 	//Obtains the arguments and command, respectively, from the message.
 	const args = message.content.slice(prefix.length).trim().split(/ +/g);
 	const command = args.shift().toLowerCase();
+
+	if (message.guild.id === "633119665178017793") {
+		client.user.setAvatar("https://imgur.com/hGsnkpE.png");
+	}
+	else {
+		Client.user.setAvatar("https://imgur.com/qPus4i8.png");
+	}
 
 	//Help Command
 	if (command === "help" || command === "h") {
@@ -2093,6 +2100,7 @@ client.on("message", (message) => { //When a message is sent.
 				{ studentID: "Name: Oliver Bennett\nTalent: Plague Doctor\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 6'1\"\nWeight: 145\nBlood Type: AB\nBirthday: 10/16\nAge: 18", studentIDPicture: "" },
 				{ studentID: "Name: Souma Shimizu\nReal Name: Naoki Ishida\nTalent: Poet\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 130\nBlood Type: AB\nBirthday: 03/20\nAge: 17\n\n\n\nPoems:\nmy stacy left me\nof course, it's a fucking chad\nno one understands\n\ni'll get her back\nand that chad will be wacked\nsouma is better than chad\n\nA poem by Souma.\n\n\nmy heart burns\nbut not for you\nfor stacy\nfuck chad", studentIDPicture: "https://imgur.com/QJRlcfI.png" },
 			]
+
 
 			if (args.length === 0) {
 				message.channel.send("```Rm#  Sex and Name                Talent\n101  M Oliver Bennett            Plague Doctor\n102  F Piper McCullough          Cadet\n103  M Souma Shimizu             Poet\n104  F Pia Adesso                Anthropologist\n105  F Dia Ramos                 Cheerleader\n106  M Hakaku Himura             Test Subject\n107  F Riko Ramuda               Concept Artist\n108  F Aika Mahaya               Digital Composer\n109  F Chava Hazzan              ARG Developer\n110  M Denis Adesso-Mori         Sculptor\n111  M Cecilio Cárdenas          Pilot\n112  F Eriko Shingo              Journalist\n113  F Mahina Keawe              Fursuiter\n114  M Asahi Fukuzawa            Violinist\n115  M Harvey Orkins             Medium\n116  F Kiku Sugimoto             Video Game Designer```");
