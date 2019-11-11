@@ -2064,36 +2064,35 @@ client.on("message", (message) => { //When a message is sent.
 				{ studentID: "Name: Aika Mahaya\nTalent: Digital Composer\nSex: Female\nStatus: Alive\n\nShoe Size: 9\nHeight: 5'6\"\nWeight: 137\nBlood Type: B\nBirthday: 06/21\nAge: 17", studentIDPicture: "https://imgur.com/mvO4tTk.png" },
 				{ studentID: "Name: Chava Hazzan\nOnline Alias: crawler190\nTalent: ARG Developer\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 4'9\"\nWeight: 90\nBlood Type: O\nBirthday: 10/28\nAge: 17", studentIDPicture: "https://imgur.com/HnyakxE.png" },
 				{ studentID: "Name: Dia Victoria Ramos\nTalent: Cheerleader\nSex: Female\nStatus: Alive\n\nShoe Size: 7.5\nHeight: 5'2\"\nWeight: 117\nBlood Type: O\nBirthday: 08/10\nAge: 18", studentIDPicture: "https://imgur.com/BJvyrMy.png" },
-				//{ studentID: "Name: Edith Freya Reuter-Protz\nTalent: ???\nSex: Female\nStatus: Alive\n\nShoe Size: 9\nHeight: 5'10\"\nWeight: 144\nBlood Type: AB\nBirthday: 10/19\nAge: 18", studentIDPicture: "" },
+				{ studentID: "Name: Edith Freya Reuter-Protz\nTalent: ???\nSex: Female\nStatus: Alive\n\nShoe Size: 9\nHeight: 5'10\"\nWeight: 144\nBlood Type: AB\nBirthday: 10/19\nAge: 18", studentIDPicture: "" },
 				{ studentID: "Name: Eriko Shingo\nTalent: Journalist\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'5\"\nWeight: 125\nBlood Type: AB\nBirthday: 07/21\nAge: 16", studentIDPicture: "" },
 				{ studentID: "Name: Kiku Sugimoto\nOnline Alias: DELTA\nTalent: Video Game Designer\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'6\"\nWeight: 138\nBlood Type: B\nBirthday: 06/08\nAge: 17", studentIDPicture: "https://imgur.com/Jv3MLRz.png" },
-				//{ studentID: "Name: Haruna Hattori\nTalent: Artificial Intelligence\nSex: N/A\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'2\"\nWeight: 135\nBlood Type: N/A\nBirthday: 02/11\nAge: 7 months (14)", studentIDPicture: ".png" },
+				{ studentID: "Name: Haruna Hattori\nTalent: Artificial Intelligence\nSex: N/A\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'2\"\nWeight: 135\nBlood Type: N/A\nBirthday: 02/11\nAge: 7 months (14)", studentIDPicture: ".png" },
 				{ studentID: "Name: Pia Adesso\nTalent: Anthropologist\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'4\"\nWeight: 122\nBlood Type: B\nBirthday: 07/15\nAge: 15", studentIDPicture: "" },
 				{ studentID: "Name: Piper McCullough\nTalent: Cadet\nSex: Female\nStatus: Alive\n\nShoe Size: 5\nHeight: 5'1\"\nWeight: 102\nBlood Type: O\nBirthday: 03/23\nAge: 15", studentIDPicture: "https://imgur.com/0e5h2h4.png" },
 				{ studentID: "Name: Mahina Keawe\nTalent: Fursuiter\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'3\"\nWeight: 158\nBlood Type: O\nBirthday: 04/07\nAge: 16", studentIDPicture: "" },
-				//{ studentID: "Name: Matilda Spitzenreiter\nTalent: Club Leader\nSex: Female\nStatus: Alive\n\nShoe Size: 11\nHeight: 5'8\"\nWeight: 140\nBlood Type: O\nBirthday: 10/01\nAge: 18", studentIDPicture: "" },
+				{ studentID: "Name: Matilda Spitzenreiter\nTalent: Club Leader\nSex: Female\nStatus: Alive\n\nShoe Size: 11\nHeight: 5'8\"\nWeight: 140\nBlood Type: O\nBirthday: 10/01\nAge: 18", studentIDPicture: "" },
 				{ studentID: "Name: Riko Ramuda\nTalent: Concept Artist\nSex: Female\nStatus: Deceased\n\nShoe Size: 11\nHeight: 5'3\"\nWeight: 123\nBlood Type: AB\nBirthday: 10/25\nAge: 16", studentIDPicture: "https://imgur.com/FxrX6z7.png" },
 				{ studentID: "Name: Asahi Fukuzawa\nTalent: Violinist\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'7\"\nWeight: 124\nBlood Type: O\nBirthday: 08/27\nAge: 18", studentIDPicture: "https://imgur.com/0I6Zc4L.png" },
 				{ studentID: "Name: Cecilio Gonzalo Calles Cárdenas\nTalent: Pilot\nSex: Male\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'8\"\nWeight: 157\nBlood Type: B\nBirthday: 05/03\nAge: 17", studentIDPicture: "" },
 				{ studentID: "Name: Denis Adesso-Mori\nTalent: Sculptor\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 6'2\"\nWeight: 149\nBlood Type: A\nBirthday: 09/09\nAge: 18", studentIDPicture: "" },
 				{ studentID: "Name: Hakaku Himura\nTalent: Test Subject\nSex: Male\nStatus: Alive\n\nShoe Size: 5\nHeight: 4'10\"\nWeight: 72\nBlood Type: O\nBirthday: 03/14\nAge: 14", studentIDPicture: "" },
 				{ studentID: "Name: Harvey Orkins\nTalent: Medium\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 6'4\"\nWeight: 215\nBlood Type: B\nBirthday: 11/01\nAge: 17 ", studentIDPicture: "" },
-				//{ studentID: "Name: Kaoru Saitou\nTalent: Survivalist\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 5'10\"\nWeight: 150\nBlood Type: AB\nBirthday: 07/04\nAge: 16", studentIDPicture: "https://imgur.com/EHY8Neq.png" },
-				//{ studentID: "Name: Masami Nii\nTalent: Guitarist\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 143\nBlood Type: B\nBirthday: 05/25\nAge: 17", studentIDPicture: ".png" },
+				{ studentID: "Name: Kaoru Saitou\nTalent: Survivalist\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 5'10\"\nWeight: 150\nBlood Type: AB\nBirthday: 07/04\nAge: 16", studentIDPicture: "https://imgur.com/EHY8Neq.png" },
+				{ studentID: "Name: Masami Nii\nTalent: Guitarist\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 143\nBlood Type: B\nBirthday: 05/25\nAge: 17", studentIDPicture: ".png" },
 				{ studentID: "Name: Oliver Bennett\nTalent: Plague Doctor\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 6'1\"\nWeight: 145\nBlood Type: AB\nBirthday: 10/16\nAge: 18", studentIDPicture: "" },
 				{ studentID: "Name: Souma Shimizu\nReal Name: Naoki Ishida\nTalent: Poet\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 130\nBlood Type: AB\nBirthday: 03/20\nAge: 17\n\n\n\nPoems:\nmy stacy left me\nof course, it's a fucking chad\nno one understands\n\ni'll get her back\nand that chad will be wacked\nsouma is better than chad\n\nA poem by Souma.\n\n\nmy heart burns\nbut not for you\nfor stacy\nfuck chad", studentIDPicture: "https://imgur.com/QJRlcfI.png" },
 			]
 
 
 			if (args.length === 0) {
-				message.channel.send("```Rm#  Sex and Name                Talent\n101  M Oliver Bennett            Plague Doctor\n102  F Piper McCullough          Cadet\n103  M Souma Shimizu             Poet\n104  F Pia Adesso                Anthropologist\n105  F Dia Ramos                 Cheerleader\n106  M Hakaku Himura             Test Subject\n108  F Aika Mahaya               Digital Composer\n109  F Chava Hazzan              ARG Developer\n110  M Denis Adesso-Mori         Sculptor\n111  M Cecilio Calles            Pilot\n112  F Eriko Shingo              Journalist\n113  F Mahina Keawe              Fursuiter\n114  M Asahi Fukuzawa            Violinist\n115  M Harvey Orkins             Medium\n116  F Kiku Sugimoto             Video Game Designer\n\n     Mastermind\n     Information Unavailable.\n\n     Deceased Students\n107  F Riko Ramuda               Concept Artist```");
-				//message.channel.send("```202    Haruna Hattori            Artficial Intelligence\n202  M Kaoru Saitou              Survivalist\n203  M Masami Nii                Guitarist\n204  F Edith Reuter-Protz        ???\n204  F Matilda Spitzenreiter     Club Leader```");
+				message.channel.send("```Rm#  Sex and Name                Talent\n101  M Oliver Bennett            Plague Doctor\n102  F Piper McCullough          Cadet\n103  M Souma Shimizu             Poet\n104  F Pia Adesso                Anthropologist\n105  F Dia Ramos                 Cheerleader\n106  M Hakaku Himura             Test Subject\n108  F Aika Mahaya               Digital Composer\n109  F Chava Hazzan              ARG Developer\n110  M Denis Adesso-Mori         Sculptor\n111  M Cecilio Calles            Pilot\n112  F Eriko Shingo              Journalist\n114  M Asahi Fukuzawa            Violinist\n115  M Harvey Orkins             Medium\n116  F Kiku Sugimoto             Video Game Designer\n202    Haruna Hattori            Artficial Intelligence\n202  M Kaoru Saitou              Survivalist\n203  M Masami Nii                Guitarist\n204  F Edith Reuter-Protz        ???\n204  F Matilda Spitzenreiter     Club Leader\n\n     Mastermind\n     Information Unavailable.\n\n     Deceased Students\n107  F Riko Ramuda               Concept Artist\n113  F Mahina Keawe              Fursuiter```");
 				inboxChannel.send(`${message.author.username} has looked at the DR:BAB roster.`);
 				return;
 			}
 			if (args[0] === "total") {
 				message.channel.send("```Rm#  Sex and Name                        Shoe Size    Height    Weight    Blood Type    Birthday    Age     Talent\n101  M Oliver Bennett                    11           6'1\"      145       AB            10/16       18      Plague Doctor\n102  F Piper McCullough                  5            5'1\"      102       O             03/23       15      Cadet\n103  M Souma Shimizu                     10           5'10\"     130       AB            03/20       17      Poet\n104  F Pia Adesso                        6            5'4\"      122       B             07/15       15      Anthropologist\n105  F Dia Victoria Ramos                7.5          5'2\"      117       O             08/10       18      Cheerleader\n106  M Hakaku Himura                     5            4'10\"     72        O             03/14       14      Test Subject\n108  F Aika Mahaya                       9            5'6\"      137       B             06/21       17      Digital Composer\n109  F Chava Hazzan                      8            4'9\"      90        O             10/28       17      ARG Developer\n110  M Denis Adesso-Mori                 10           6'2\"      149       A             09/09       18      Sculptor\n111  M Cecilio Gonzalo Calles Cárdenas   8            5'8\"      157       B             05/03       17      Pilot\n```");
-				message.channel.send("```112  F Eriko Shingo                      8            5'5\"      125       AB            07/21       16      Journalist\n113  F Mahina Keawe                      6            5'3\"      158       O             04/07       16      Fursuiter\n114  M Asahi Fukuzawa                    10           5'7\"      124       O             08/27       18      Violinist\n115  M Harvey Orkins                     11           6'4\"      215       B             11/01       17      Medium\n116  F Kiku Sugimoto                     6            5'6\"      138       B             06/08       17      Video Game Designer\n\n     Mastermind\n     Information Unavailable.\n\n     Deceased Students\n107  F Riko Ramuda                       11           5'3\"      123       AB            10/25       16      Concept Artist```");
+				message.channel.send("```112  F Eriko Shingo                      8            5'5\"      125       AB            07/21       16      Journalist\n114  M Asahi Fukuzawa                    10           5'7\"      124       O             08/27       18      Violinist\n115  M Harvey Orkins                     11           6'4\"      215       B             11/01       17      Medium\n116  F Kiku Sugimoto                     6            5'6\"      138       B             06/08       17      Video Game Designer\n\n     Mastermind\n     Information Unavailable.\n\n     Deceased Students\n107  F Riko Ramuda                       11           5'3\"      123       AB            10/25       16      Concept Artist\n113  F Mahina Keawe                      6            5'3\"      158       O             04/07       16      Fursuiter```");
 				inboxChannel.send(`${message.author.username} has looked at the full version of the DR:BAB roster.`);
 				return;
 			}
@@ -2113,27 +2112,27 @@ client.on("message", (message) => { //When a message is sent.
 			if (args[0].toLowerCase().search("aika") != -1) { page = 1 }
 			if (args[0].toLowerCase().search("chava") != -1) { page = 2 }
 			if (args[0].toLowerCase().search("dia") != -1) { page = 3 }
-			//if (args[0].toLowerCase().search("edith") != -1) { page = 4 }
-			if (args[0].toLowerCase().search("eriko") != -1) { page = 4 }
-			//if (args[0].toLowerCase().search("haruna") != -1 || args[0].toLowerCase().search("hrnn") != -1) { page = 6 }
-			if (args[0].toLowerCase().search("kiku") != -1 || args[0].toLowerCase().search("delta") != -1) { page = 5 }
-			if (args[0].toLowerCase().search("pia") != -1) { page = 6 }
-			if (args[0].toLowerCase().search("piper") != -1) { page = 7 }
-			if (args[0].toLowerCase().search("mahina") != -1) { page = 8 }
-			//if (args[0].toLowerCase().search("matilda") != -1) { page = 11 }
-			if (args[0].toLowerCase().search("riko") != -1 && args[0].toLowerCase().search("eriko") === -1) { page = 9 }
-			if (args[0].toLowerCase().search("asahi") != -1) { page = 10 }
+			if (args[0].toLowerCase().search("edith") != -1) { page = 4 }
+			if (args[0].toLowerCase().search("eriko") != -1) { page = 5 }
+			if (args[0].toLowerCase().search("haruna") != -1 || args[0].toLowerCase().search("hrnn") != -1) { page = 6 }
+			if (args[0].toLowerCase().search("kiku") != -1 || args[0].toLowerCase().search("delta") != -1) { page = 7 }
+			if (args[0].toLowerCase().search("pia") != -1) { page = 8 }
+			if (args[0].toLowerCase().search("piper") != -1) { page = 9 }
+			if (args[0].toLowerCase().search("mahina") != -1) { page = 10 }
+			if (args[0].toLowerCase().search("matilda") != -1) { page = 11 }
+			if (args[0].toLowerCase().search("riko") != -1 && args[0].toLowerCase().search("eriko") === -1) { page = 12 }
+			if (args[0].toLowerCase().search("asahi") != -1) { page = 13 }
 			if (args[0].toLowerCase().search("cecil") != -1 && args[0].toLowerCase().search("cecilio") === -1) {
 				return message.reply("**No.**");
 			}
-			if (args[0].toLowerCase().search("cecilio") != -1) { page = 11 }
-			if (args[0].toLowerCase().search("denis") != -1) { page = 12 }
-			if (args[0].toLowerCase().search("hakaku") != -1) { page = 13 }
-			if (args[0].toLowerCase().search("harvey") != -1) { page = 14 }
-			//if (args[0].toLowerCase().search("kaoru") != -1) { page = 15 }
-			//if (args[0].toLowerCase().search("masami") != -1) { page = 16 }
-			if (args[0].toLowerCase().search("oliver") != -1) { page = 15 }
-			if (args[0].toLowerCase().search("souma") != -1) { page = 16 }
+			if (args[0].toLowerCase().search("cecilio") != -1) { page = 14 }
+			if (args[0].toLowerCase().search("denis") != -1) { page = 15 }
+			if (args[0].toLowerCase().search("hakaku") != -1) { page = 16 }
+			if (args[0].toLowerCase().search("harvey") != -1) { page = 17 }
+			if (args[0].toLowerCase().search("kaoru") != -1) { page = 18 }
+			if (args[0].toLowerCase().search("masami") != -1) { page = 19 }
+			if (args[0].toLowerCase().search("oliver") != -1) { page = 20 }
+			if (args[0].toLowerCase().search("souma") != -1) { page = 21 }
 
 			inboxChannel.send(`${message.author.username} has looked at ${args[0].toUpperCase().slice(0, 1)}${args[0].toLowerCase().slice(1)}'s file.`);
 		}
