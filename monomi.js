@@ -151,7 +151,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.4.0.16";
+var version = "3.4.0.17";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -5654,18 +5654,22 @@ client.on("message", (message) => { //When a message is sent.
 						.setTitle(`Dee's Nuts, ${res.players.online}/${res.players.max} are online`)
 						//.setThumbnail(res.favicon)
 						.setDescription(`Currently running on version ${res.version.name}`)
-						if (res.players.online > 0) {
+					if (res.players.online > 0) {
+						if (res.players.online === 1) {
+							embedServer.addfield("Players online:", res.players.sample[0].name);
+						}
+						else if (res.players.online >= 2) {
 							players = res.players.sample;
 							message.channel.send(players.toString());
 							onlinePlayers = "";
 							for (x in players) {
 								onlinePlayers += players[x].name + "\n";
-								message.channel.send(players[x].name);
-								message.channel.send(onlinePlayers)
 								x++;
 							}
-							embedServer.addfield("Players online:", onlinePlayers)
+							embedServer.addfield("Players online:", onlinePlayers);
 						}
+					}
+					message.channel.send(onlinePlayers);
 					message.channel.send(embedServer);
 				}
 			}, 3000);
