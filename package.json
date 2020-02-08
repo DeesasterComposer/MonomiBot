@@ -8,7 +8,7 @@
     "npm": "^6.4.1",
     "opusscript": "^0.0.6",
     "randomize": "^0.0.4",
-    "mc-ping": "^0.1.0"
+    "mc-ping-updated": "^0.1.0"
   },
   "devDependencies": {},
   "scripts": {

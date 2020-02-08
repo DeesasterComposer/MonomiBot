@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const random = require('randomize');
-const mcping = require('mc-ping')
+const mcping = require('mc-ping-updated')
 
 /*Functions*/
 function play(connection, message) {
