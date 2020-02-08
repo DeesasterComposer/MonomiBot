@@ -151,7 +151,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.4.0.22";
+var version = "3.4.0.23";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -5669,11 +5669,11 @@ client.on("message", (message) => { //When a message is sent.
 							x++;
 						}
 					}
-					//.setThumbnail(res.favicon)
-					embedServer.setDescription(`The server is online and currently running version ${res.version.name}.`)
-					embedServer.addfield(`Players Online (${res.players.online}/${res.players.max}):`, `${onlinePlayers}`);
-					message.channel.send(embedServer);
 				}
+				//.setThumbnail(res.favicon)
+				embedServer.setDescription(`The server is online and currently running version ${res.version.name}.`)
+				embedServer.addfield(`Players Online (${res.players.online}/${res.players.max}):`, `${onlinePlayers}`);
+				message.channel.send(embedServer);
 			}, 3000);
 		}
 	}
