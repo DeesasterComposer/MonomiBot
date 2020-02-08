@@ -151,7 +151,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.4.0.24";
+var version = "3.4.0.25";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -5649,7 +5649,7 @@ client.on("message", (message) => { //When a message is sent.
 					let embedServer = new Discord.RichEmbed()
 						.setColor(13959168)
 						.setTitle(`Dee's Nuts (75.132.14.83:25565)`)
-						.setDescription("The server is not currently online.")
+						.setDescription("The server is not currently online.");
 					message.channel.send(embedServer);
 				}
 				else {
@@ -5673,7 +5673,7 @@ client.on("message", (message) => { //When a message is sent.
 						.setColor(13959168)
 						.setTitle(`Dee's Nuts (75.132.14.83:25565)`)
 						.setDescription(`The server is online and currently running version ${res.version.name}.`)
-						.addfield(`Players Online (${res.players.online}/${res.players.max}):`, `${onlinePlayers}`);
+						.addField(`Players Online (${res.players.online}/${res.players.max}):`, `${onlinePlayers}`);
 					message.channel.send(embedServer);
 				}
 			}, 3000);
