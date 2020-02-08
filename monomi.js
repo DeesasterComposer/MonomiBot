@@ -151,7 +151,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.4.0.19";
+var version = "3.4.0.20";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -5656,9 +5656,12 @@ client.on("message", (message) => { //When a message is sent.
 						.setDescription(`Currently running on version ${res.version.name}`)
 					if (res.players.online > 0) {
 						if (res.players.online === 1) {
-							embedServer.addfield("Players online:", res.players.sample[0].name);
+							onlinePlayers = res.players.sample[0].name;
 						}
-						else if (res.players.online >= 2) {
+						else if (res.players.online === 2) {
+							onlinePlayers = `${res.players.sample[0].name} and ${res.players.sample[1].name}`
+						}
+						else if (res.players.online > 2) {
 							players = res.players.sample;
 							onlinePlayers = "";
 							for (x in players) {
@@ -5670,10 +5673,9 @@ client.on("message", (message) => { //When a message is sent.
 								}
 								x++;
 							}
-							embedServer.addfield("Players online:", onlinePlayers);
 						}
+						embedServer.addfield('Players online:', `${onlinePlayers}`);
 					}
-					message.channel.send(onlinePlayers);
 					message.channel.send(embedServer);
 				}
 			}, 3000);
