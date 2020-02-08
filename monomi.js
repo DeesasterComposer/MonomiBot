@@ -151,7 +151,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.4.0.4";
+var version = "3.4.0.5";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -5659,7 +5659,7 @@ client.on("message", (message) => { //When a message is sent.
 							players = res.players.sample;
 							message.channel.send(players[0]);
 							onlinePlayers = "";
-							for (x in res.players.sample) {
+							for (x in players) {
 								onlinePlayers = onlinePlayers + players[x].name + "\n";
 								x++;
 							}
