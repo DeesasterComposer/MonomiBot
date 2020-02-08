@@ -151,7 +151,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.4.0.7";
+var version = "3.4.0.8";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -5658,9 +5658,10 @@ client.on("message", (message) => { //When a message is sent.
 						if (res.players.online != 0) {
 							players = res.players.sample;
 							onlinePlayers = "";
-							for (x in players) {
-								onlinePlayers = onlinePlayers + players[x-1].name + "\n";
-								x++;
+							index = 0;
+							while (index < players.length) {
+								onlinePlayers = onlinePlayers + players[index].name + "\n";
+								index++;
 							}
 							embed.addfield("Players online:", onlinePlayers)
 						}
