@@ -151,7 +151,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.4.0.1";
+var version = "3.4.0.2";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -5646,7 +5646,7 @@ client.on("message", (message) => { //When a message is sent.
 		else {
 			mcping('75.132.14.83', 25565, function (err, res) {
 				if (err) {
-					message.channel.send("The server is not currently up!")
+					message.channel.send("The server is not currently online!")
 					console.error(err);
 				}
 				else {
@@ -5655,6 +5655,14 @@ client.on("message", (message) => { //When a message is sent.
 						.setTitle(`Dee's Nuts, ${res.players.online}/${res.players.max} are online`)
 						//.setThumbnail(res.favicon)
 						.setDescription(`Currently running on version ${res.version.name}`)
+						if (res.players.online != 0) {
+							onlinePlayers = "";
+							for (x in res.players.sample) {
+								onlinePlayers = onlinePlayers + `\n${res.players.sample[x].name}\n`;
+								x++;
+							}
+							embed.addfield("Players online:", onlinePlayers)
+						}
 					message.channel.send(embedServer);
 				}
 			}, 3000);
