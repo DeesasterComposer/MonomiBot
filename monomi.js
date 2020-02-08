@@ -151,7 +151,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.4.0.13";
+var version = "3.4.0.14";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -5654,15 +5654,15 @@ client.on("message", (message) => { //When a message is sent.
 						.setTitle(`Dee's Nuts, ${res.players.online}/${res.players.max} are online`)
 						//.setThumbnail(res.favicon)
 						.setDescription(`Currently running on version ${res.version.name}`)
-						if (res.players.online != 0) {
+						/*if (res.players.online != 0) {
 							players = res.players.sample;
 							onlinePlayers = "";
 							for (x in players) {
 								onlinePlayers += players[x].name + "\n";
 								x++;
 							}
-							embed.addfield("Players online:", players.toString())
-						}
+							embed.addfield("Players online:", onlinePlayers)
+						}*/
 					message.channel.send(embedServer);
 				}
 			}, 3000);
