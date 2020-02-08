@@ -151,7 +151,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.4.0.15";
+var version = "3.4.0.16";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -5656,12 +5656,15 @@ client.on("message", (message) => { //When a message is sent.
 						.setDescription(`Currently running on version ${res.version.name}`)
 						if (res.players.online > 0) {
 							players = res.players.sample;
+							message.channel.send(players.toString());
 							onlinePlayers = "";
 							for (x in players) {
 								onlinePlayers += players[x].name + "\n";
+								message.channel.send(players[x].name);
+								message.channel.send(onlinePlayers)
 								x++;
 							}
-							embed.addfield("Players online:", onlinePlayers)
+							embedServer.addfield("Players online:", onlinePlayers)
 						}
 					message.channel.send(embedServer);
 				}
