@@ -5645,39 +5645,33 @@ client.on("message", (message) => { //When a message is sent.
 		}
 		else {
 			mcping('75.132.14.83', 25565, function (err, res) {
+				let embedServer = new Discord.RichEmbed()
+					.setColor(13959168)
+					.setTitle(`Dee's Nuts (75.132.14.83:25565)`);
+				
 				if (err) {
-					message.channel.send("The server is not currently online!")
-					message.channel.send(err.toString());
+					embedServer.setDescription("The server is not currently online.")
 				}
 				else {
-					let embedServer = new Discord.RichEmbed()
-						.setColor(13959168)
-						.setTitle(`Dee's Nuts, ${res.players.online}/${res.players.max} are online`)
-						//.setThumbnail(res.favicon)
-						.setDescription(`Currently running on version ${res.version.name}`)
-					if (res.players.online > 0) {
-						if (res.players.online === 1) {
-							onlinePlayers = `${res.players.sample[0].name}`;
-						}
-						else if (res.players.online === 2) {
-							onlinePlayers = `${res.players.sample[0].name} and ${res.players.sample[1].name}`
-						}
-						else if (res.players.online > 2) {
-							players = res.players.sample;
-							onlinePlayers = "";
-							for (x in players) {
-								if (x+1 === players.length) {
-									onlinePlayers += "and " + players[x].name;
-								}
-								else {
-									onlinePlayers += players[x].name + ", ";
-								}
-								x++;
+					onlinePlayers = "";
+					players = res.players.sample;
+					if (res.players.online === 0) {
+						onlinePlayers = "No players are online"
+					} 
+					else if (res.players.online > 0) {
+						for (x in players) {
+							if (x + 1 === players.length) {
+								onlinePlayers += players[x].name;
 							}
+							else {
+								onlinePlayers += players[x].name + "\n";
+							}
+							x++;
 						}
-						message.channel.send(onlinePlayers)
-						//embedServer.addfield('Players online:', `${onlinePlayers}`);
 					}
+					//.setThumbnail(res.favicon)
+					embedServer.setDescription(`The server is online and currently running version ${res.version.name}.`)
+					embedServer.addfield(`Players Online (${res.players.online}/${res.players.max}):`, `${onlinePlayers}`);
 					message.channel.send(embedServer);
 				}
 			}, 3000);
