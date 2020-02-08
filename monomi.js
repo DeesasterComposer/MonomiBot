@@ -5656,9 +5656,11 @@ client.on("message", (message) => { //When a message is sent.
 						//.setThumbnail(res.favicon)
 						.setDescription(`Currently running on version ${res.version.name}`)
 						if (res.players.online != 0) {
+							players = res.players.sample;
+							message.channel.send(players);
 							onlinePlayers = "";
 							for (x in res.players.sample) {
-								onlinePlayers = onlinePlayers + `\n${res.players.sample[x].name}\n`;
+								onlinePlayers = onlinePlayers + players[x].name + "\n";
 								x++;
 							}
 							embed.addfield("Players online:", onlinePlayers)
