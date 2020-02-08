@@ -151,7 +151,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.4.0.18";
+var version = "3.4.0.19";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -5660,10 +5660,14 @@ client.on("message", (message) => { //When a message is sent.
 						}
 						else if (res.players.online >= 2) {
 							players = res.players.sample;
-							message.channel.send(players.toString());
 							onlinePlayers = "";
 							for (x in players) {
-								onlinePlayers.concat(players[x].name.toString(), "\n");
+								if (x+1 === players.length) {
+									onlinePlayers += "and " + players[x].name;
+								}
+								else {
+									onlinePlayers += players[x].name + ", ";
+								}
 								x++;
 							}
 							embedServer.addfield("Players online:", onlinePlayers);
