@@ -5653,7 +5653,7 @@ client.on("message", (message) => { //When a message is sent.
 					let embedServer = new Discord.RichEmbed()
 						.setColor(13959168)
 						.setTitle(`Dee's Nuts, ${res.players.online}/${res.players.max} are online`)
-						.setThumbnail(res.favicon)
+						//.setThumbnail(res.favicon)
 						.setDescription(`Currently running on version ${res.version.name}`)
 					message.channel.send(embedServer);
 				}
