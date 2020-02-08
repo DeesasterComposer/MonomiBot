@@ -151,7 +151,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.4.0.0";
+var version = "3.4.0.1";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -5640,16 +5640,22 @@ client.on("message", (message) => { //When a message is sent.
 		}
 	}
 	//Minecraft Commands
-	if (command === "mc") {
+	if (command === "mc" && message.guild.id === "641826067232849939") {
 		if (args[0] === "recipes") {
 		}
 		else {
 			mcping('75.132.14.83', 25565, function (err, res) {
 				if (err) {
-					message.channel.send(err);
+					message.channel.send("The server is not currently up!")
+					console.error(err);
 				}
 				else {
-					message.channel.send(res);
+					let embedServer = new Discord.RichEmbed()
+						.setColor(13959168)
+						.setTitle(`Dee's Nuts, ${res.players.online}/${res.players.max} are online`)
+						.setThumbnail(res.favicon)
+						.setDescription(`Currently running on version ${res.version.name}`)
+					message.channel.send(embedServer);
 				}
 			}, 3000);
 		}
