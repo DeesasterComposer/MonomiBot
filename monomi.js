@@ -151,7 +151,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.4.0.21";
+var version = "3.4.0.22";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -5647,6 +5647,7 @@ client.on("message", (message) => { //When a message is sent.
 			mcping('75.132.14.83', 25565, function (err, res) {
 				if (err) {
 					message.channel.send("The server is not currently online!")
+					message.channel.send(err.toString());
 				}
 				else {
 					let embedServer = new Discord.RichEmbed()
@@ -5675,7 +5676,7 @@ client.on("message", (message) => { //When a message is sent.
 							}
 						}
 						message.channel.send(onlinePlayers)
-						embedServer.addfield('Players online:', `${onlinePlayers}`);
+						//embedServer.addfield('Players online:', `${onlinePlayers}`);
 					}
 					message.channel.send(embedServer);
 				}
