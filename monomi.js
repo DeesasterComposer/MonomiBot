@@ -5639,6 +5639,21 @@ client.on("message", (message) => { //When a message is sent.
 			return message.channel.send(embed);
 		}
 	}
+	//Minecraft Commands
+	if (command === "mc") {
+		if (args[0] === "recipes") {
+		}
+		else {
+			mcping('75.132.14.83', 25565, function (err, res) {
+				if (err) {
+					message.channel.send(err);
+				}
+				else {
+					message.channel.send(res);
+				}
+			}, 3000);
+		}
+	}
 
 	//Utility Commands
 	if (command === "ping") {
