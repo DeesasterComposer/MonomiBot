@@ -151,7 +151,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.4.0.8";
+var version = "3.4.0.10";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -5657,10 +5657,12 @@ client.on("message", (message) => { //When a message is sent.
 						.setDescription(`Currently running on version ${res.version.name}`)
 						if (res.players.online != 0) {
 							players = res.players.sample;
+							message.channel.send(players[0].name);
+							message.channel.send(players[1].name);
 							onlinePlayers = "";
 							index = 0;
 							while (index < players.length) {
-								onlinePlayers = onlinePlayers + players[index].name + "\n";
+								onlinePlayers = onlinePlayers + players[index].name.toString() + "\n";
 								index++;
 							}
 							embed.addfield("Players online:", onlinePlayers)
