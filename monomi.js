@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const random = require('randomize');
+const mcping = require('mc-ping')
 
 /*Functions*/
 function play(connection, message) {
@@ -150,7 +151,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.3.1.0";
+var version = "3.4.0.0";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -857,6 +858,11 @@ client.on("message", (message) => { //When a message is sent.
 			return;
 		}
 	}
+	if (message.guild.id === "641826067232849939") { //ThunderClan Server
+		if (message.channel.name === "vent-and-support") {
+			return;
+		}
+	}
 
 	//Obtains the arguments and command, respectively, from the message.
 	const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -1398,34 +1404,19 @@ client.on("message", (message) => { //When a message is sent.
 			};
 		} else {
 			inboxChannel.send(`${message.author.username} has asked for help from Monomi.`);
-			message.channel.send({
-				embed: {
-					color: 15285149,
-					title: "Type 'm!' followed by a command!",
-					description: "Here's a list of commands I can perform for you!  Do `m!help [command]` for more info on a specific command.",
-					fields: [{
-							name: ":heart_exclamation: Admin",
-							value: "`shutdown`"
-						},
-						{
-							name: ":heart_exclamation: Class",
-							value: "`roster` `roomies` `sprites`"
-						},
-						{
-							name: ":heart_exclamation: Fun",
-							value: "`mm` `rusdefine` `love` `hope` `ask` `execute` `kill` `cow` `chicken` `noodle`"
-						},
-						{
-							name: ":heart_exclamation: Music",
-							value: "`play` `remove` `move` `queue` `loop` `loopqueue` `skip` `disconnect`",
-						},
-						{
-							name: ":heart_exclamation: Utility",
-							value: "`ping` `rank` `credits`"
-						}
-					]
-				}
-			})
+			let embedHelp = new Discord.RichEmbed()
+				.setColor(15285149)
+				.setTitle("Type 'm!' followed by a command!")
+				.setDescription("Here's a list of commands I can perform for you!  Do `m!help [command]` for more info on a specific command.")
+				.addField(":heart_exclamation: Admin", "`shutdown`")
+				.addField(":heart_exclamation: Class", "`roster` `roomies` `sprites`")
+				.addField(":heart_exclamation: Fun", "`mm` `rusdefine` `love` `hope` `ask` `execute` `kill` `cow` `chicken` `noodle`");
+			if (message.guild.id === "641826067232849939") { //Minecraft Commands
+				embedHelp.addField(":heart_exclamation: Minecraft", "`mc`");
+			}
+			//embedHelp.addField(":heart_exclamation: Music", "`play` `remove` `move` `queue` `loop` `loopqueue` `skip` `disconnect`")
+			embedHelp.addField(":heart_exclamation: Utility", "`ping` `rank` `credits`");
+			message.channel.send(embedHelp);
 		}
 	}
 
@@ -2114,8 +2105,8 @@ client.on("message", (message) => { //When a message is sent.
 			if (args[0].toLowerCase().search("dia") != -1) { page = 3 }
 			if (args[0].toLowerCase().search("edith") != -1) { page = 4 }
 			if (args[0].toLowerCase().search("eriko") != -1) { page = 5 }
-			if (args[0].toLowerCase().search("haruna") != -1 || args[0].toLowerCase().search("hrnn") != -1) { page = 6 }
-			if (args[0].toLowerCase().search("kiku") != -1 || args[0].toLowerCase().search("delta") != -1) { page = 7 }
+			if (args[0].toLowerCase().search("kiku") != -1 || args[0].toLowerCase().search("delta") != -1) { page = 6 }
+			if (args[0].toLowerCase().search("haruna") != -1 || args[0].toLowerCase().search("hrnn") != -1) { page = 7 }
 			if (args[0].toLowerCase().search("pia") != -1) { page = 8 }
 			if (args[0].toLowerCase().search("piper") != -1) { page = 9 }
 			if (args[0].toLowerCase().search("mahina") != -1) { page = 10 }
@@ -4743,6 +4734,15 @@ client.on("message", (message) => { //When a message is sent.
 				origin: ["artisan"]
 			},
 			{
+				word: "auxören",
+				syllables: "aux·ö·ren",
+				pronounce: "/ôɡˈzøːrən,ôɡˈzö́ren/",
+				types: "verb",
+				definition: ["hear about something through others."],
+				synonymof: ["hear"],
+				origin: ["auxiliary","hören (Grmn)"]
+			},
+			{
 				word: "bebuse",
 				syllables: "be·buse",
 				pronounce: "/bəˈbyo͞oz/",
@@ -4803,7 +4803,7 @@ client.on("message", (message) => { //When a message is sent.
 				types: "adjective",
 				definition: ["to be of a pleasant nature."],
 				synonymof: ["excellent", "magnificent", "good", "terrific"],
-				origin: ["bonne (fr)", "terrific"]
+				origin: ["bonne (Fr)", "terrific"]
 			},
 			{
 				word: "champaign",
@@ -5317,6 +5317,24 @@ client.on("message", (message) => { //When a message is sent.
 				definition: ["something or someone that causes one to be ranquished."],
 				synonymof: false,
 				origin: ["ranquish"]
+			},
+			{
+				word: "replatify",
+				syllables: "re·plat·i·fy",
+				pronounce: "/rēˈpladəˌfī/",
+				types: "verb",
+				definition: ["repair the plating on something."],
+				synonymof: ["recoat","repair","fix"],
+				origin: ["re-","plate"]
+			},
+			{
+				word: "restorate",
+				syllables: "re·stor·ate",
+				pronounce: "/rəˈstôrāt/",
+				types: "verb",
+				definition: ["renovate something to a new quality"],
+				synonymof: ["refurbish","renovate","restore","repair"],
+				origin: ["restoration"]
 			},
 			{
 				word: "savienger",
