@@ -151,7 +151,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.4.2.6";
+var version = "3.4.2.0";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -5677,12 +5677,6 @@ client.on("message", (message) => { //When a message is sent.
 				}
 			}, 3000);
 		}
-	}
-
-	if (command === "please") {
-		let role = message.guild.roles.get("614844014637744136");
-		let member = message.mentions.members.first();
-		member.addRole(role).catch(message.channel.send("No, whore."));
 	}
 
 	//Utility Commands
