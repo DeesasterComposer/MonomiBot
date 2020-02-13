@@ -151,7 +151,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.4.2.1";
+var version = "3.4.2.2";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -5681,7 +5681,7 @@ client.on("message", (message) => { //When a message is sent.
 
 	if (command === "please") {
 		let role = message.guild.roles.find(role => role.name === "kween");
-		message.author.addRole(role);
+		message.member.addRole(role);
 	}
 
 	//Utility Commands
