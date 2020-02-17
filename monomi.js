@@ -250,7 +250,6 @@ var babBirthdays = [
 	{ name: "Edith Freya Reuter-Protz", pronoun: "her", day: "19", month: "10" },
 	{ name: "Riko Ramuda", pronoun: "her", day: "25", month: "10" },
 	{ name: "Chava Hazzan", pronoun: "her", day: "28", month: "10" },
-	{ name: "test", pronoun: "it", day: "17", month: "2" },
 	{ name: "Harvey Orkins", pronoun: "him", day: "1", month: "11" }
 ]
 var killersBirthdays = [
@@ -260,7 +259,6 @@ var killersBirthdays = [
 	{ name: "Chiyo Ametsuchi", pronoun: "her", day: "21", month: "5" },
 	{ name: "Cass Reed-Watts", pronoun: "them", day: "13", month: "6" },
 	{ name: "Alexis Spellmeyer", pronoun: "her", day: "1", month: "11" },
-	{ name: "test", pronoun: "it", day: "17", month: "2"},
 	{ name: "Adrienne Moreau", pronoun: "her", day: "22", month: "12" }
 ]
 
