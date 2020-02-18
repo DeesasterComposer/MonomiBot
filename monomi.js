@@ -149,7 +149,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.4.3.0";
+var version = "3.4.4.0";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -160,10 +160,8 @@ var kaenoBirthdays = [
 	{ name: "Junko Saitou", pronoun: "them", day: "6", month: "1" },
 	{ name: "Aurélie Cartier", pronoun: "her", day: "9", month: "1" },
 	{ name: "Charles 'Chad' Miller", pronoun: "him", day: "11", month: "1" },
-	{ name: "Aika Mahaya", pronoun: "her", day: "21", month: "6" },
 	{ name: "Anzu Kofuku", pronoun: "him", day: "25", month: "1" },
 	{ name: "Shinji Minoru", pronoun: "him", day: "27", month: "1" },
-	{ name: "Anaelle Hamaan", pronoun: "her", day: "20", month: "6" },
 	{ name: "Ximena Colomar", pronoun: "her", day: "7", month: "2" },
 	{ name: "Santo Verdugo Bautista", pronoun: "**it**", day: "11", month: "2" },
 	{ name: "Federico Navarro", pronoun: "**it**", day: "16", month: "2" },
@@ -195,6 +193,8 @@ var kaenoBirthdays = [
 	{ name: "Tenshi Kawada", pronoun: "him", day: "11", month: "6" },
 	{ name: "Aiko Hikaru", pronoun: "him", day: "14", month: "6" },
 	{ name: "Kumiko Yeun", pronoun: "her", day: "16", month: "6" },
+	{ name: "Anaelle Hamaan", pronoun: "her", day: "20", month: "6" },
+	{ name: "Aika Mahaya", pronoun: "her", day: "21", month: "6" },
 	{ name: "Yuna Akahoshi", pronoun: "her", day: "25", month: "6" },
 	{ name: "Miyuki Ataru", pronoun: "him", day: "23", month: "7" },
 	{ name: "Minako Kaoru", pronoun: "her", day: "7", month: "8" },
@@ -1663,8 +1663,8 @@ client.on("message", (message) => { //When a message is sent.
 
 		studentID = "";
 		if (command === "rks" || message.guild.id === "455218035507331072") { //Kaeno Shinjomu
-			if (args.length < 1 || args[0] != "1" && args[0] != "2" && args[0] != "3" && args[0] != "4" && args[0].toLowerCase() != "u" && args[0].toLowerCase() != "talents") {
-				return message.channel.send("Please specify which class (1, 2, 3, 4, U, or talents) you're checking the roster for!")
+			if (args.length < 1 || args[0] != "1" && args[0] != "2" && args[0] != "3" && args[0].toLowerCase() != "talents" && args[0].toLowerCase() != "oog") {
+				return message.channel.send("Please specify which class (1, 2, 3, \"talents\", or \"oog\") you're checking the roster for!")
 			}
 			if (args[0] === "1") { //Class 01 (Kaeno Shinjomu Academy, The Killing School Game)
 				classList = [
@@ -1953,83 +1953,35 @@ client.on("message", (message) => { //When a message is sent.
 					inboxChannel.send(`${message.author.username} has looked at ${args[1].toUpperCase().slice(0, 1)}${args[1].toLowerCase().slice(1)}'s file from the third class.`)
 				}
 			}
-			if (args[0] === "4") { //Class 04 ()
-				classList = [
-					{ studentID: "Name: Agnes María Camila Zalweski-Chavarría\nTalent: Voice Actor\nSex: Male\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'2\"\nWeight: 112\nBlood Type: A\nBirthday: 04/21\nAge: 14", studentIDPicture: "" },
-					{ studentID: "Name: Miyuki Hayashi\nTalent: Fire Dancer\nSex: Female\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'5\"\nWeight: 120\nBlood Type: B\nBirthday: 05/24\nAge: 18", studentIDPicture: "" }
-				]
-				
-				if (args.length === 1) {
-					message.channel.send("Sorry, but we haven't had a fourth class yet!");
-					inboxChannel.send(`${message.author.username} has looked at the fourth class' roster.`);
-					return;
-				}
-				if (args[1] === "total") {
-					message.channel.send("Sorry, but we haven't had a fourth class yet!");
-					inboxChannel.send(`${message.author.username} has looked at the full version of the fourth class' roster.`);
-					return;
-				}
-
-				let pageAmount = 2;
-				let x = 0;
-				while (x < pageAmount) {
-					thumbnail = classList[x].studentIDPicture;
-					if (thumbnail === "") {
-						thumbnail = "https://imgur.com/OVPTMGn.png";
-					};
-					currentPage = {
-						text: classList[x].studentID,
-						thumbnail: thumbnail
-					}
-					pages.push(currentPage);
-					x++;
-				}
-
-				if (args[1] === "NUMBER" || args[1].toLowerCase().search("aggi") != -1 || args[1].toLowerCase().search("agnes") != -1) {page = 1}
-				if (args[1] === "NUMBER" || args[1].toLowerCase().search("miyuki") != -1) {page = 2}
-				if (Number.isInteger(args[1] * 1) === true) {
-					inboxChannel.send(`${message.author.username} has looked at student ${args[1]}'s file from the third class.`)
-				}
-				if (Number.isInteger(args[1] * 1) === false) {
-					inboxChannel.send(`${message.author.username} has looked at ${args[1].toUpperCase().slice(0, 1)}${args[1].toLowerCase().slice(1)}'s file from the third class.`)
-				}
-			}
-			if (args[0].toLowerCase() === "u") { //Ultra Despair Girls Arc
-				classList = [
-					{ studentID: "Name: Kotone Fukuzawa\nTalent: Anarchist\nSex: Female\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'6\"\nWeight: 121\nBlood Type: AB\nBirthday: 11/04\nAge: 16", studentIDPicture: "https://imgur.com/OTttz9N.png" },
-					{ studentID: "Name: Monobi\nStatus: Alive\n\nHeight: Uhh probably pretty short\nWeight: Probably pretty heavy\nBirthday: Uhh some date I guess\nAge: I'd imagine like maybe three years old", studentIDPicture: "https://imgur.com/CiGJlAd.png" }
-				]
-				
-				if (args.length === 1) {
-					message.channel.send("Sorry, but we haven't explored the outside world yet!");
-					inboxChannel.send(`${message.author.username} has looked at the UDG roster.`);
-					return;
-				}
-				if (args[1] === "total") {
-					message.channel.send("Sorry, but we haven't explored the outside world yet!");
-					inboxChannel.send(`${message.author.username} has looked at the full version of the UDG roster.`);
-					return;
-				}
-
-				let pageAmount = 2;
-				let x = 0;
-				while (x < pageAmount) {
-					thumbnail = classList[x].studentIDPicture;
-					if (thumbnail === "") {
-						thumbnail = "https://imgur.com/OVPTMGn.png";
-					};
-					currentPage = {text: classList[x].studentID, thumbnail: thumbnail}
-					pages.push(currentPage);
-					x++;
-				}
-
-				if (args[1].toLowerCase().search("kotone") != -1) {page = 1}
-				if (args[1].toLowerCase().search("monobi") != -1) {page = 2}
-				inboxChannel.send(`${message.author.username} has looked at ${args[1].toUpperCase().slice(0, 1)}${args[1].toLowerCase().slice(1)}'s file.`);
-			}
 			if (args[0] === "talents") {
 				message.channel.send("```Cl.  Talent               Name\n3    Activist             Melchor Guadalupe Paz de la Cruz\n1    Actress              Ara Ayao\n3    Adult Film Actress   Nikki Cox\n1    Animal Caretaker     Jacek Żeglarski\n1    Archer               Théo Dubois\n2    Assassin             Chika Miyasaki\n1    Astronomer           Hoshi Chiura\n1    Balance (Blogger)    Masayuuki Taisho\n1    Baseball Player      Miyuki Ataru\n2    Birdwatcher          Kaipo Uilani Iona\n2    Biologist            Tsuyo Kogiyumi\n1    Blogger (Balance)    Masayuuki Taisho\n2    Bomb Maker           Monika Minami\n1    Botanist             Yukine Sakurai\n1    Boxer                Tezuku Imou\n3    Cadet                Piper McCullough\n3    Cheerleader          Dia Ramos\n2    Chemist              Eiichi Ryozo\n1    Chess Champion       Noriko Suzuki\n2    Clairvoyant          Akiko\n3    Combat Medic         Wolfgang Schwarz\n2    Conspiracy Theorist  Chikako Kaetsu\n3    Coroner              Santo Verdugo Bautista\n3    Counselor            Ayuma Tanaka\n1    Counterfeiter        Anzu Kofuku\n1    Cryptologist         Hachi Hiruma\n1    Dancer               Ryu Akahoshi\n2    Daredevil            Sora Kenshin\n1    Detective            Cheisu Maeda\n1    Digital Composer     Aika Mahaya\n2    Doll Maker           Yuna Akahoshi\n1    Fashion Designer     Anaelle Hamaan\n1    Figure Skater        Aurélie Cartier\nX    Fire Dancer          Miyuki Hayashi\n2    Florist              Kyabetsu Retasu\n1    Fortnite Gamer       Stella Hunter\n2    Fútbol Player        Rosendo Paulo Ochoa Merlo\n1    Gambler              S'ad Ludópata\n3    Ghostwriter          Tenome\n3    Graffiti Artist      Inugami Uzuki\n1    Hacker               Ximena Colomar\n3    Heiress              Renata de Santis\n3    Horror Novelist      Junko Saitou\n1    Hypnotist            Mori Hibana```");
 				return message.channel.send("```2    Jeweler              Kagami Hannei\n2    Inventor             Hideo Takayama\n2    Lawyer               Ale del Prieto\n3    Lion Tamer           Areli Vepkhia\n2    Lucky Student        Kouki Yoshida\n3    Luthier              Ruslan Eun-Kyung Kraus\n2    Maid                 Saeko Kiyomizu\n1    Makeup Artist        Aiko Hikaru\n3    Magical Girl         Kirakira Kyuti\n1    Magician             Anya Sakaguchi\n2    Manipulator (Poet)   Souma Shimizu\n3    Martial Artist       Mariko Nakamura\n1    Matchmaker           Shiba Mikio\n3    Milkman              Charles Miller\n1    Model                Megu Kojima\n3    Mythologist          Isago Achikita\n2    Opera Singer         Arisa Shokuhou\n3    Pianist              Federico Navarro\n3    Pilot                Cecilio Gonzalo Calles Cárdenas\n2    Philanthropist       Yuuya Michimiya\n3    Physicist            Shinji Minoru\n2    Poet (Manipulator)   Souma Shimizu\n1    Prince               Kiro Karasu\n2    Puppeteer            Hana Kageriri\n3    Pyromaniac           Jomei Hoshino\n2    Ringmaster           Fenikku Hinotama\n3    Rock Star            Kumiko Yeun\n3    Satanist             Daichi Ichihara\n1    Singer               Kyoung-mi Park\n2    Spy                  Isha Kalki\n3    Stalker              Aemele Dèjré\n3    Storyteller          Ryoushi Nobuori\n2    Surgeon              Eiji Ryozo\n2    Swimmer              Katashi Maeda\n1    Swordsman            Minako Kaoru\n2    Technician           Tomomi Kashichi\n1    Tennis Player        Jeong Park\n2    Theologist           Michel Voigt\n1    Therapist            Tenshi Kawada\n3    Tragedian            Megami Himura\n4    Voice Actor          Agnes María Camila Zalweski-Chavarría\n2    Violinist            Asahi Fukuzawa\n1    Woodworker           Kazuya Harada```");
+			}
+			if (args[0] === "oog") {
+				message.channel.send("Sorry! This feature is under construction. It'll be ready soon!");
+				return;
+
+				characterList = [
+					//Fukuzawa Family
+					{ studentID: "Name: Kotone Fukuzawa\nAffiliation: Sister of Asahi Fukuzawa\nSex: Female\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'6\"\nWeight: 121\nBlood Type: AB\nBirthday: 11/04\nAge: 16", studentIDPicture: "https://imgur.com/OTttz9N.png", group: "Fukuzawa Family" },
+					{ studentID: "Name: Miu Fukuzawa\nAffiliation: Half-Sister of Asahi Fukuzawa\nSex: Female\nStatus: Alive\n\nShoe Size: #\nHeight: #'#\"\nWeight: 1##\nBlood Type: \_\_\nBirthday: ##/##\nAge: 1#", studentIDPicture: "", group: "Fukuzawa Family" },
+					{ studentID: "Name: Etsuko Fukuzawa\nAffiliation: Mother of Asahi Fukuzawa\nSex: Female\nStatus: Alive\n\nShoe Size: #\nHeight: #'#\"\nWeight: 1##\nBlood Type: \_\_\nBirthday: ##/##\nAge: 1#", studentIDPicture: "", group: "Fukuzawa Family" },
+					{ studentID: "Name: Isamu Fukuzawa\nAffiliation: Father of Asahi Fukuzawa\nSex: Male\nStatus: Alive\n\nShoe Size: #\nHeight: #'#\"\nWeight: 1##\nBlood Type: \_\_\nBirthday: ##/##\nAge: 1#", studentIDPicture: "", group: "Fukuzawa Family" },
+
+					//Mahaya Family
+					{ studentID: "Name: Chiyoko Tachibana\nAffiliation: Mother of Aika Mahaya\nSex: Female\nStatus: Alive\n\nShoe Size: #\nHeight: #'#\"\nWeight: 1##\nBlood Type: \_\_\nBirthday: ##/##\nAge: ##", studentIDPicture: "", group: "Mahaya Family" },
+					{ studentID: "Name: Hibiki Mahaya\nAffiliation: Father of Aika Mahaya\nSex: Male\nStatus: Deceased\n\nShoe Size: #\nHeight: #'#\"\nWeight: 1##\nBlood Type: \_\_\nBirthday: ##/##\nAge: ##", studentIDPicture: "", group: "Mahaya Family" },
+					
+					//Mikio Family
+					{ studentID: "Name: Homura Mikio\nAffiliation: Sister of Shiba Mikio\nSex: Male\nStatus: Deceased\n\nShoe Size: #\nHeight: #'#\"\nWeight: 1##\nBlood Type: \_\_\nBirthday: ##/##\nAge: ##", studentIDPicture: "", group: "Mikio Family" },
+
+					//Uzuki Family
+					{ studentID: "Name: Kaguya Uzuki\nAffiliation: Sister of Inugami Uzuki\nSex: Female\nStatus: Alive\n\nShoe Size: #\nHeight: #'#\"\nWeight: 1##\nBlood Type: \_\_\nBirthday: ##/##\nAge: 1#", studentIDPicture: "", group: "Uzuki Family" },
+					{ studentID: "Name: Urashima Uzuki\nAffiliation: Sister of Inugami Uzuki\nSex: Female\nStatus: Alive\n\nShoe Size: #\nHeight: #'#\"\nWeight: 1##\nBlood Type: \_\_\nBirthday: ##/##\nAge: 1#", studentIDPicture: "", group: "Uzuki Family" },
+
+					//Monoclones
+					{ studentID: "Name: Monobi\nStatus: Alive\n\nHeight: Uhh probably pretty short\nWeight: Probably pretty heavy\nBirthday: Uhh some date I guess\nAge: I'd imagine like maybe three years old", studentIDPicture: "https://imgur.com/CiGJlAd.png", group: "Monoclones" }
+				];
 			}
 		}
 		else if (command === "rga" || message.guild.id === "617202043597226009") { //DR:GA Roster
