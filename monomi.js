@@ -258,7 +258,7 @@ var killersBirthdays = [
 	{ name: "Mazal Adatto", pronoun: "him", day: "8", month: "4" },
 	{ name: "Chiyo Ametsuchi", pronoun: "her", day: "21", month: "5" },
 	{ name: "Cass Reed-Watts", pronoun: "them", day: "13", month: "6" },
-	{ name: "Alexis Spellmeyer", pronoun: "her", day: "1", month: "11" },
+	{ name: "Alexis Spellmeyer", pronoun: "him", day: "1", month: "11" },
 	{ name: "Adrienne Moreau", pronoun: "her", day: "22", month: "12" }
 ]
 
