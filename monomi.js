@@ -149,7 +149,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.4.4.2";
+var version = "3.4.4.3";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -251,7 +251,7 @@ var babBirthdays = [
 	{ name: "Riko Ramuda", pronoun: "her", day: "25", month: "10" },
 	{ name: "Chava Hazzan", pronoun: "her", day: "28", month: "10" },
 	{ name: "Harvey Orkins", pronoun: "him", day: "1", month: "11" }
-]
+];
 var killersBirthdays = [
 	{ name: "Frankie Liao", pronoun: "him", day: "15", month: "2" },
 	{ name: "Ludwig Addair", pronoun: "him", day: "6", month: "4" },
@@ -260,7 +260,7 @@ var killersBirthdays = [
 	{ name: "Cass Reed-Watts", pronoun: "them", day: "13", month: "6" },
 	{ name: "Alexis Spellmeyer", pronoun: "him", day: "1", month: "11" },
 	{ name: "Adrienne Moreau", pronoun: "her", day: "22", month: "12" }
-]
+];
 
 /*Murder Mystery*/
 MM_InProgress = false;
@@ -1891,7 +1891,7 @@ client.on("message", (message) => { //When a message is sent.
 				]
 				
 				if (args.length === 1) {
-					message.channel.send("```##  Sex and Name                          Talent\n1   F Aemele Dèjré                        Stalker\n2   F Dia Ramos                           Cheerleader\n3   F Kumiko Yeun                         Rock Star\n4   F Inugami Uzuki                       Graffiti Artist\n6   F Junko Saitou                        Horror Novelist\n8   F Mariko Murakami                     Martial Artist\n9   F Megami Himura                       Tragedian\n10  F Nikki Cox                           Teacher\n12  F Renata de Santis                    Heiress\n13  M Areli Vepkhia                       Lion Tamer\n14  M Ayuma Tanaka                        Counselor\n15  M Cecilio Calles Cárdenas                     Pilot\n17  M Daichi Ichihara                     Satanist\n19  M Jomei Hoshino                       Pyromaniac\n20  M Melchor Guadalupe Paz de la Cruz    Activist\n21  M Ruslan Eun-Kyung Kraus              Luthier\n23  M Santo Verdugo Bautista              Coroner\n24  M Shinji Minoru                       Physicist\n26  M Wolfgang Schwarz                    Combat Medic\n\n    Mastermind\n    Unknown\n\n    Deceased Students\n5   F Isago Achikita                      Mythologist\n7   F Kirakira Kyuti                      Magical Girl\n11  F Piper McCullough                    Cadet\n16  M Charles Miller                      Milkman\n18  M Federico Navarro                    Pianist\n22  M Ryoushi Nobuori                     Storyteller\n25  M Tenome                              Ghostwriter```");
+					message.channel.send("```##  Sex and Name                          Talent\n1   F Aemele Dèjré                        Stalker\n2   F Dia Ramos                           Cheerleader\n3   F Kumiko Yeun                         Rock Star\n4   F Inugami Uzuki                       Graffiti Artist\n6   F Junko Saitou                        Horror Novelist\n8   F Mariko Murakami                     Martial Artist\n9   F Megami Himura                       Tragedian\n10  F Nikki Cox                           Teacher\n12  F Renata de Santis                    Heiress\n13  M Areli Vepkhia                       Lion Tamer\n14  M Ayuma Tanaka                        Counselor\n15  M Cecilio Calles Cárdenas             Pilot\n17  M Daichi Ichihara                     Satanist\n19  M Jomei Hoshino                       Pyromaniac\n20  M Melchor Guadalupe Paz de la Cruz    Activist\n21  M Ruslan Eun-Kyung Kraus              Luthier\n23  M Santo Verdugo Bautista              Coroner\n24  M Shinji Minoru                       Physicist\n26  M Wolfgang Schwarz                    Combat Medic\n\n    Mastermind\n    Unknown\n\n    Deceased Students\n5   F Isago Achikita                      Mythologist\n7   F Kirakira Kyuti                      Magical Girl\n11  F Piper McCullough                    Cadet\n16  M Charles Miller                      Milkman\n18  M Federico Navarro                    Pianist\n22  M Ryoushi Nobuori                     Storyteller\n25  M Tenome                              Ghostwriter```");
 					inboxChannel.send(`${message.author.username} has looked at the third class' roster.`);
 					return;
 				}
@@ -2077,7 +2077,7 @@ client.on("message", (message) => { //When a message is sent.
 
 
 			if (args.length === 0) {
-				message.channel.send("```Rm#  Sex and Name                Talent\n101  M Oliver Bennett            Plague Doctor\n102  F Piper McCullough          Cadet\n103  M Souma Shimizu             Poet\n104  F Pia Adesso                Anthropologist\n105  F Dia Ramos                 Cheerleader\n106  M Hakaku Himura             Test Subject\n108  F Aika Mahaya               Digital Composer\n109  F Chava Hazzan              ARG Developer\n110  M Denis Adesso-Mori         Sculptor\n111  M Cecilio Calles    Pilot\n112  F Eriko Shingo              Journalist\n114  M Asahi Fukuzawa            Violinist\n115  M Harvey Orkins             Medium\n116  F Kiku Sugimoto             Video Game Designer\n202    Haruna Hattori            Artficial Intelligence\n202  M Kaoru Saitou              Survivalist\n203  M Masami Nii                Guitarist\n204  F Edith Reuter-Protz        ???\n204  F Matilda Spitzenreiter     Club Leader\n\n     Mastermind\n     Information Unavailable.\n\n     Deceased Students\n107  F Riko Ramuda               Concept Artist\n113  F Mahina Keawe              Fursuiter```");
+				message.channel.send("```Rm#  Sex and Name                Talent\n101  M Oliver Bennett            Plague Doctor\n102  F Piper McCullough          Cadet\n103  M Souma Shimizu             Poet\n104  F Pia Adesso                Anthropologist\n105  F Dia Ramos                 Cheerleader\n106  M Hakaku Himura             Test Subject\n108  F Aika Mahaya               Digital Composer\n109  F Chava Hazzan              ARG Developer\n110  M Denis Adesso-Mori         Sculptor\n111  M Cecilio Calles            Pilot\n112  F Eriko Shingo              Journalist\n114  M Asahi Fukuzawa            Violinist\n115  M Harvey Orkins             Medium\n116  F Kiku Sugimoto             Video Game Designer\n202    Haruna Hattori            Artficial Intelligence\n202  M Kaoru Saitou              Survivalist\n203  M Masami Nii                Guitarist\n204  F Edith Reuter-Protz        ???\n204  F Matilda Spitzenreiter     Club Leader\n\n     Mastermind\n     Information Unavailable.\n\n     Deceased Students\n107  F Riko Ramuda               Concept Artist\n113  F Mahina Keawe              Fursuiter```");
 				inboxChannel.send(`${message.author.username} has looked at the DR:BAB roster.`);
 				return;
 			}
