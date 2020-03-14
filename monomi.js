@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const random = require('randomize');
-const mcping = require('mc-ping-updated')
 
 /*Functions*/
 function play(connection, message) {
@@ -149,7 +148,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.4.4.3";
+var version = "3.4.4.4";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -1456,9 +1455,6 @@ client.on("message", (message) => { //When a message is sent.
 				.addField(":heart_exclamation: Admin", "`shutdown`")
 				.addField(":heart_exclamation: Class", "`roster` `roomies` `sprites`")
 				.addField(":heart_exclamation: Fun", "`mm` `rusdefine` `love` `hope` `ask` `execute` `kill` `cow` `chicken` `noodle`");
-			if (message.guild.id === "641826067232849939") { //Minecraft Commands
-				embedHelp.addField(":heart_exclamation: Minecraft", "`mc`");
-			}
 			//embedHelp.addField(":heart_exclamation: Music", "`play` `remove` `move` `queue` `loop` `loopqueue` `skip` `disconnect`")
 			embedHelp.addField(":heart_exclamation: Utility", "`ping` `rank` `credits`");
 			message.channel.send(embedHelp);
@@ -2059,9 +2055,9 @@ client.on("message", (message) => { //When a message is sent.
 				{ studentID: "Name: Eriko Shingo\nTalent: Journalist\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'5\"\nWeight: 125\nBlood Type: AB\nBirthday: 07/21\nAge: 16", studentIDPicture: "https://imgur.com/f7b6ELA.png" },
 				{ studentID: "Name: Kiku Sugimoto\nOnline Alias: DELTA\nTalent: Video Game Designer\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'6\"\nWeight: 138\nBlood Type: B\nBirthday: 06/08\nAge: 17", studentIDPicture: "https://imgur.com/Jv3MLRz.png" },
 				{ studentID: "Name: Haruna Hattori\nTalent: Artificial Intelligence\nSex: N/A\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'2\"\nWeight: 135\nBlood Type: N/A\nBirthday: 02/11\nAge: 7 months (14)", studentIDPicture: "https://imgur.com/jAGQGjV.png" },
-				{ studentID: "Name: Pia Adesso\nTalent: Anthropologist\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'4\"\nWeight: 122\nBlood Type: B\nBirthday: 07/15\nAge: 15", studentIDPicture: "" },
+				{ studentID: "Name: Pia Adesso\nTalent: Anthropologist\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'4\"\nWeight: 122\nBlood Type: B\nBirthday: 07/15\nAge: 15", studentIDPicture: "https://imgur.com/vlY9mZN.png" },
 				{ studentID: "Name: Piper McCullough\nTalent: Cadet\nSex: Female\nStatus: Alive\n\nShoe Size: 5\nHeight: 5'1\"\nWeight: 102\nBlood Type: O\nBirthday: 03/23\nAge: 15", studentIDPicture: "https://imgur.com/0e5h2h4.png" },
-				{ studentID: "Name: Mahina Keawe\nTalent: Fursuiter\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'3\"\nWeight: 158\nBlood Type: O\nBirthday: 04/07\nAge: 16", studentIDPicture: "" },
+				{ studentID: "Name: Mahina Keawe\nTalent: Fursuiter\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'3\"\nWeight: 158\nBlood Type: O\nBirthday: 04/07\nAge: 16", studentIDPicture: "https://imgur.com/IzNEvA2.png" },
 				{ studentID: "Name: Matilda Spitzenreiter\nTalent: Club Leader\nSex: Female\nStatus: Alive\n\nShoe Size: 11\nHeight: 5'8\"\nWeight: 140\nBlood Type: O\nBirthday: 10/01\nAge: 18", studentIDPicture: "https://imgur.com/JLPE6r1.png" },
 				{ studentID: "Name: Riko Ramuda\nTalent: Concept Artist\nSex: Female\nStatus: Deceased\n\nShoe Size: 11\nHeight: 5'3\"\nWeight: 123\nBlood Type: AB\nBirthday: 10/25\nAge: 16", studentIDPicture: "https://imgur.com/FxrX6z7.png" },
 				{ studentID: "Name: Asahi Fukuzawa\nTalent: Violinist\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'7\"\nWeight: 124\nBlood Type: O\nBirthday: 08/27\nAge: 18", studentIDPicture: "https://imgur.com/0I6Zc4L.png" },
@@ -2336,7 +2332,7 @@ client.on("message", (message) => { //When a message is sent.
 	if (command === "sprites") {
 		embedDescription = "Click on a link to view the masterposts containing all sprites for their respective classes.\n\n";
 		gameName = "";
-		if (message.guild.id === "480549161201041418") {
+		if (message.guild.id === "480549161201041418" || message.guild.id === "641826067232849939") {
 			gameName = "Fanganronpa Games";
 			embedDescription += "__**Kaeno Shinjomu**__\n[**CLASS 01**](https://imgur.com/a/YKlnXcm)\n[**CLASS 01 REVAMPED**](https://imgur.com/a/5HxXTfJ)\n[**CLASS 02**](https://imgur.com/a/W6lSVxl)\n[**CLASS 02 GLITCHED**](https://imgur.com/a/qqOupuD)\n[**ULTRA DESPAIR GIRLS**](https://imgur.com/a/tBC6sWb)\n[**CLASS 03**](https://imgur.com/a/7JX0shS)\n\n__**Danganronpa: A Getaway**__\n[**CAMP CLASS 01**](https://imgur.com/a/2cX6tHS)\n\n__**Danganronpa: Bed and Bloodshed**__\n[**GUEST GROUP 01**](https://imgur.com/a/epVZpvM)"
 		}
@@ -5637,45 +5633,6 @@ client.on("message", (message) => { //When a message is sent.
 
 			embed.setDescription(descData);
 			return message.channel.send(embed);
-		}
-	}
-	//Minecraft Commands
-	if (command === "mc" && message.guild.id === "641826067232849939") {
-		if (args[0] === "recipes") {
-		}
-		else {
-			mcping('75.132.14.83', 25565, function (err, res) {
-				if (err) {
-					let embedServer = new Discord.RichEmbed()
-						.setColor(13959168)
-						.setTitle(`Dee's Nuts (75.132.14.83:25565)`)
-						.setDescription("The server is not currently online.");
-					message.channel.send(embedServer);
-				}
-				else {
-					onlinePlayers = "";
-					players = res.players.sample;
-					if (res.players.online === 0) {
-						onlinePlayers = "No players are online"
-					} 
-					else if (res.players.online > 0) {
-						for (x in players) {
-							if (x + 1 === players.length) {
-								onlinePlayers += players[x].name;
-							}
-							else {
-								onlinePlayers += players[x].name + "\n";
-							}
-							x++;
-						}
-					}
-					let embedServer = new Discord.RichEmbed()
-						.setColor(13959168)
-						.setTitle(`Dee's Nuts (75.132.14.83:25565)`)
-						.setDescription(`The server is online and currently running version ${res.version.name}.\n\n**Players Online (${res.players.online}/${res.players.max}):**\n${onlinePlayers}`);
-					message.channel.send(embedServer);
-				}
-			}, 3000);
 		}
 	}
 
