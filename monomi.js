@@ -148,7 +148,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.5.0.1";
+var version = "3.5.0.2";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -2118,7 +2118,7 @@ client.on("message", (message) => { //When a message is sent.
 			if (args[0].toLowerCase().search("mahina") != -1) { page = 10 }
 			if (args[0].toLowerCase().search("mariko") != -1) { page = 11 }
 			if (args[0].toLowerCase().search("matilda") != -1) { page = 12 }
-			if (args[0].toLowerCase().search("riko") != -1 && args[0].toLowerCase().search("eriko") === -1) { page = 13 }
+			if (args[0].toLowerCase().search("riko") != -1 && args[0].toLowerCase().search("eriko") === -1 && args[0].toLowerCase().search("mariko") === -1) { page = 13 }
 			if (args[0].toLowerCase().search("asahi") != -1) { page = 14 }
 			if (args[0].toLowerCase().search("ayumu") != -1) { page = 15 }
 			if (args[0].toLowerCase().search("cecil") != -1 && args[0].toLowerCase().search("cecilio") === -1) {
