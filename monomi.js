@@ -964,7 +964,7 @@ client.on("message", (message) => { //When a message is sent.
 	}
 
 	//Punching Monomi
-	if ((message.content.toLowerCase().search("punch") != -1 || message.content.toLowerCase().search("kick") != -1 || message.content.toLowerCase().search("kill") != -1 || message.content.toLowerCase().search("hurt") != -1 || message.content.toLowerCase().search("destroy") != -1 || message.content.toLowerCase().search("annihilate") != -1 || message.content.toLowerCase().search("deck") != -1 || message.content.toLowerCase().search("shred") != -1) && message.content.toLowerCase().search("monomi") != -1) {
+	if ((message.content.toLowerCase().search("punch") != -1 || message.content.toLowerCase().search("kick") != -1 || message.content.toLowerCase().search("kill") != -1 || message.content.toLowerCase().search("hurt") != -1 || message.content.toLowerCase().search("destroy") != -1 || message.content.toLowerCase().search("annihilate") != -1 || message.content.toLowerCase().search("deck") != -1 || message.content.toLowerCase().search("shred") != -1 || message.content.toLowerCase().search("shoot") != -1) && message.content.toLowerCase().search("monomi") != -1) {
 		possibleSprites = [
 			monomi_20,
 			monomi_20,
