@@ -889,11 +889,11 @@ client.on("message", (message) => { //When a message is sent.
 	}
 
 	//Duane!
-	if (message.content.search("https://media.discordapp.net/attachments/641838806730801162/674100198934446121/IdleOddballDinosaur-size_restricted.gif" != -1)) {
+	/*if (message.content.search("https://media.discordapp.net/attachments/641838806730801162/674100198934446121/IdleOddballDinosaur-size_restricted.gif" != -1)) {
 		inboxChannel.send(`${message.author.username} has shown Monomi Duane!`);
 		message.channel.send("Duane!");
 		return
-	}
+	}*/
 
 	if (!message.content.toLowerCase().startsWith(prefix)) return;
 	if (message.guild.id === "455218035507331072") { //Kaeno Shinjomu Discord
