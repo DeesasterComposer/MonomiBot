@@ -148,7 +148,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.5.0.5";
+var version = "3.6.0.0";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -768,12 +768,48 @@ client.on("message", (message) => { //When a message is sent.
 	}
 	if (message.content.toLowerCase().startsWith("fuck off monomi") || message.content.toLowerCase().startsWith("fuck you monomi") || message.content.toLowerCase().startsWith("go away monomi") || message.content.toLowerCase().startsWith("die monomi") || message.content.toLowerCase().startsWith("go die monomi") || message.content.toLowerCase().startsWith("monomi die") || message.content.toLowerCase().startsWith("i hate monomi") || message.content.toLowerCase().startsWith("i hate you monomi")) {
 		inboxChannel.send(`${message.author.username} told Monomi to fuck off.`);
-		message.channel.send(`What did I do? I'm sorry...`);
+		possibleSprites = [
+			monomi_11,
+			monomi_12,
+			monomi_13,
+			monomi_14,
+			monomi_15,
+			monomi_16,
+			monomi_17,
+			monomi_18,
+			monomi_19
+		];
+		possiblePhrases = [
+			"What did I do? I'm sorry...",
+			"I'm sorry... what did I do?",
+			"Please don't be mad at me!",
+			"You're making me sad...",
+			"I'm sorry! Please don't be mad at me...",
+			"I'm sorry!!!",
+			"You're hurting my feelings..."
+		];
+		
+		if (message.author.id == "474336126409244674") {
+			possiblePhrases = [
+				"What did I do? I'm sorry, Syd...",
+				"I'm sorry, Syd... what did I do?",
+				"Please don't be mad at me, Syd!",
+				"You're making me sad, Syd...",
+				"I'm sorry, Syd! Please don't be mad at me...",
+				"Syd, I'm sorry!!!",
+				"You're hurting my feelings, Syd..."
+			];
+		}
+
+		spriteChoice = random(possibleSprites);
+		phraseChoice = random(possiblePhrases);
+
+		message.channel.send(phraseChoice);
 		message.channel.send({
 			embed: {
 				color: 15285149,
 				"image": {
-					"url": monomi_15
+					"url": spriteChoice
 				}
 			}
 		}).then(msg => {
@@ -858,6 +894,16 @@ client.on("message", (message) => { //When a message is sent.
 	if (message.content.toLowerCase().search("mouse") != -1 || message.content.toLowerCase().search("mice") != -1) {
 		inboxChannel.send(`${message.author.username} has scared Monomi with mice.`);
 		message.channel.send("Noooooooooo... Not miiiiiiiiice...! They're gonna chew through my ears...!");
+		
+		possibleSprites = [
+			monomi_14,
+			monomi_15,
+			monomi_16,
+			monomi_19
+		];
+
+		spriteChoice = random(possibleSprites);
+
 		message.channel.send({
 			embed: {
 				color: 15285149,
@@ -892,6 +938,61 @@ client.on("message", (message) => { //When a message is sent.
 	if (message.content.toLowerCase().search("https://media.discordapp.net/attachments/641838806730801162/674100198934446121/idleoddballdinosaur-size_restricted.gif") != -1 || message.content.toLowerCase().search("https://media.discordapp.net/attachments/645864020959559680/676624472190746627/unknown.gif") != -1 || message.content.toLowerCase().search("https://media.discordapp.net/attachments/645864020959559680/676628845293731870/unknown.gif") != -1) {
 		inboxChannel.send(`${message.author.username} has shown Monomi Duane!`);
 		message.channel.send("Duane!");
+		return
+	}
+
+	//Vocal Percussion
+	if (message.content.toLowerCase().search("vocal percussion on a whole other level") != -1 || message.content.toLowerCase().search("vocal percussion on a whole 'nother level") != -1 || message.content.toLowerCase().search("vocal percussion on a whole nother level") != -1) {
+		inboxChannel.send(`${message.author.username} has summoned Monomi's JoJo Brainrot.`);
+		message.channel.send("Coming from my mind!");
+		message.channel.send({
+			embed: {
+				color: 15285149,
+				"image": {
+					"url": monomi_09
+				}
+			}
+		}).then(msg => {
+			msg.delete(10000)
+		});
+		return;
+	}
+
+	//Punching Monomi
+	if ((message.content.toLowerCase().search("punch") != -1 || message.content.toLowerCase().search("kick") != -1 || message.content.toLowerCase().search("kill") != -1 || message.content.toLowerCase().search("hurt") != -1 || message.content.toLowerCase().search("destroy") != -1 || message.content.toLowerCase().search("annihilate") != -1) && message.content.toLowerCase().search("monomi") != -1) {
+		possibleSprites = [
+			monomi_20,
+			monomi_21
+		];
+		possiblePhrases = [
+			"Ow!",
+			"Ouch!",
+			"Ouchie!",
+			"Owie!",
+			"Hey!",
+			"That's not funny!",
+			"Ow...",
+			"Ouch...",
+			"Owie...",
+			"Ouchie...",
+			"Hey...",
+			"That's not funny...",
+		];
+
+		spriteChoice = random(possibleSprites);
+		phraseChoice = random(possiblePhrases);
+
+		message.channel.send(phraseChoice);
+		message.channel.send({
+			embed: {
+				color: 15285149,
+				"image": {
+					"url": spriteChoice
+				}
+			}
+		}).then(msg => {
+			msg.delete(10000)
+		});
 		return
 	}
 
