@@ -148,8 +148,10 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.6.0.0";
+var version = "3.6.1.0";
 var shuffleState = 0;
+var mouseTriggers = 0;
+var ottoTriggers = 0;
 
 /*Birthday Notifications*/
 var currentDate = new Date();
@@ -893,22 +895,25 @@ client.on("message", (message) => { //When a message is sent.
 	//Mouse
 	if (message.content.toLowerCase().search("mouse") != -1 || message.content.toLowerCase().search("mice") != -1) {
 		inboxChannel.send(`${message.author.username} has scared Monomi with mice.`);
-		message.channel.send("Noooooooooo... Not miiiiiiiiice...! They're gonna chew through my ears...!");
-		
 		possibleSprites = [
 			monomi_14,
 			monomi_15,
 			monomi_16,
 			monomi_19
 		];
-
 		spriteChoice = random(possibleSprites);
+		
+		if (mouseTriggers < 3) { message.channel.send("Noooooooooo... Not miiiiiiiiice...! They're gonna chew through my ears...!");}
+		if (mouseTriggers === 3) { message.channel.send("Maybe mice aren't so bad."); spriteChoice = monomi_01;}
+		if (mouseTriggers > 3) { return; }
+
+		mouseTriggers++;
 
 		message.channel.send({
 			embed: {
 				color: 15285149,
 				"image": {
-					"url": monomi_14
+					"url": spriteChoice
 				}
 			}
 		}).then(msg => {
@@ -959,8 +964,11 @@ client.on("message", (message) => { //When a message is sent.
 	}
 
 	//Punching Monomi
-	if ((message.content.toLowerCase().search("punch") != -1 || message.content.toLowerCase().search("kick") != -1 || message.content.toLowerCase().search("kill") != -1 || message.content.toLowerCase().search("hurt") != -1 || message.content.toLowerCase().search("destroy") != -1 || message.content.toLowerCase().search("annihilate") != -1) && message.content.toLowerCase().search("monomi") != -1) {
+	if ((message.content.toLowerCase().search("punch") != -1 || message.content.toLowerCase().search("kick") != -1 || message.content.toLowerCase().search("kill") != -1 || message.content.toLowerCase().search("hurt") != -1 || message.content.toLowerCase().search("destroy") != -1 || message.content.toLowerCase().search("annihilate") != -1 || message.content.toLowerCase().search("deck") != -1 || message.content.toLowerCase().search("shred") != -1) && message.content.toLowerCase().search("monomi") != -1) {
 		possibleSprites = [
+			monomi_20,
+			monomi_20,
+			monomi_20,
 			monomi_20,
 			monomi_21
 		];
@@ -994,6 +1002,13 @@ client.on("message", (message) => { //When a message is sent.
 			msg.delete(10000)
 		});
 		return
+	}
+
+	//Otto Trigger
+	if (message.guild.id === "641826067232849939" && (message.content.toLowerCase().search("otto") != -1 || message.content.toLowerCase().search("octavio") != -1) && ottoTriggers < 2) {
+		if (ottoTriggers === 0) {message.channel.send("Really fucking hate that guy.")}
+		if (ottoTriggers === 1) {message.channel.send("Still really fucking hate that guy.")}
+		ottoTriggers++;
 	}
 
 	if (!message.content.toLowerCase().startsWith(prefix)) return;
