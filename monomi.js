@@ -148,7 +148,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.5.0.2";
+var version = "3.5.0.4";
 var shuffleState = 0;
 
 /*Birthday Notifications*/
@@ -888,7 +888,14 @@ client.on("message", (message) => { //When a message is sent.
 		return
 	}
 
-	if (!message.content.startsWith(prefix)) return;
+	//Duane!
+	if (message.content.search("https://media.discordapp.net/attachments/641838806730801162/674100198934446121/IdleOddballDinosaur-size_restricted.gif" != -1)) {
+		inboxChannel.send(`${message.author.username} has shown Monomi Duane!`);
+		message.channel.send("Duane!");
+		return
+	}
+
+	if (!message.content.toLowerCase().startsWith(prefix)) return;
 	if (message.guild.id === "455218035507331072") { //Kaeno Shinjomu Discord
 		if (message.channel.name === "introduction" || message.channel.name === "rules" || message.channel.name === "server-info" || message.channel.name === "announcements") {
 			return message.channel.send("Please don't use me in this channel!  Thank you!").then(msg => {
