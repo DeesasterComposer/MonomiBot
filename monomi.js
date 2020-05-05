@@ -148,7 +148,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.6.1.0";
+var version = "3.6.1.1";
 var shuffleState = 0;
 var mouseTriggers = 0;
 var ottoTriggers = 0;
@@ -768,7 +768,7 @@ client.on("message", (message) => { //When a message is sent.
 		});
 		return
 	}
-	if (message.content.toLowerCase().startsWith("fuck off monomi") || message.content.toLowerCase().startsWith("fuck you monomi") || message.content.toLowerCase().startsWith("go away monomi") || message.content.toLowerCase().startsWith("die monomi") || message.content.toLowerCase().startsWith("go die monomi") || message.content.toLowerCase().startsWith("monomi die") || message.content.toLowerCase().startsWith("i hate monomi") || message.content.toLowerCase().startsWith("i hate you monomi")) {
+	if (message.content.toLowerCase().startsWith("fuck off monomi") || message.content.toLowerCase().startsWith("kill yourself monomi") || message.content.toLowerCase().startsWith("fuck you monomi") || message.content.toLowerCase().startsWith("go away monomi") || message.content.toLowerCase().startsWith("die monomi") || message.content.toLowerCase().startsWith("go die monomi") || message.content.toLowerCase().startsWith("monomi die") || message.content.toLowerCase().startsWith("i hate monomi") || message.content.toLowerCase().startsWith("i hate you monomi")) {
 		inboxChannel.send(`${message.author.username} told Monomi to fuck off.`);
 		possibleSprites = [
 			monomi_11,
