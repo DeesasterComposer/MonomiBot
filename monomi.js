@@ -194,7 +194,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.6.1.2";
+var version = "3.6.1.2-1";
 var shuffleState = 0;
 var mouseTriggers = 0;
 var ottoTriggers = 0;
@@ -721,7 +721,7 @@ client.on("message", (message) => { //When a message is sent.
 
 
 	//Rise And Shine, Ursine
-	if (message.content.toLowerCase().startsWith("he is all that remains of a once powerful nation")) {
+	if (message.content.toLowerCase().search("he is all that remains of a once powerful nation") != -1) {
 		message.channel.send("Right now, you're on the threshold of an amazing adventure.");
 		message.channel.send({
 			embed: {
@@ -737,7 +737,7 @@ client.on("message", (message) => { //When a message is sent.
 	}
 
 	//I love you!
-	if (message.content.toLowerCase().startsWith("i love you monomi") || message.content.toLowerCase().startsWith("i love you, monomi") || message.content.toLowerCase().startsWith("i love monomi") || message.content.toLowerCase().startsWith("monomi i love you")) {
+	if ((message.content.toLowerCase().search("love") != -1 || message.content.toLowerCase().search("luv") != -1 || message.content.toLowerCase().search("<3") != -1 || message.content.toLowerCase().search("wuv") != -1) && (message.content.toLowerCase().search("dont") === -1 && message.content.toLowerCase().search("don't") === -1 && message.content.toLowerCase().search("not") === -1 && message.content.toLowerCase().search("couldn't") === -1 && message.content.toLowerCase().search("couldnt") === -1 && message.content.toLowerCase().search("never") === -1) && message.content.toLowerCase().search("monomi") != -1) {
 		inboxChannel.send(`${message.author.username} loves Monomi!`);
 		message.channel.send(`I love you too, ${message.author.username}!`);
 		message.channel.send({
@@ -754,7 +754,7 @@ client.on("message", (message) => { //When a message is sent.
 	}
 
 	//Monomi Harassment
-	if (message.content.toLowerCase().startsWith("i want monomi to fuck me") || message.content.toLowerCase().startsWith("fuck me monomi") || message.content.toLowerCase().startsWith("i want monomi to vore me") || message.content.toLowerCase().startsWith("vore me monomi")) {
+	if ((message.content.toLowerCase().search("fuck me") != -1 || message.content.toLowerCase().search("vore me") != -1) && message.content.toLowerCase().search("monomi") != -1) {
 		if (message.author.id === "334575513857163266") {
 			inboxChannel.send("Mello has given Monomi her consent if she would like to... do you know what.");
 			message.channel.send(`If that's what you want me to do, Mello-chan... I'll gladly do it...`);
@@ -784,7 +784,7 @@ client.on("message", (message) => { //When a message is sent.
 		});
 		return
 	}
-	if (message.content.toLowerCase().startsWith("i want to fuck monomi") || message.content.toLowerCase().startsWith("i want to vore monomi")) {
+	if ((message.content.toLowerCase().search("want to vore") != -1 || message.content.toLowerCase().search("wanna vore") != -1 || message.content.toLowerCase().search("want to fuck") != -1 || message.content.toLowerCase().search("wanna fuck") != -1 || message.content.toLowerCase().search("gonna vore") != -1 || message.content.toLowerCase().search("gonna fuck") != -1 || message.content.toLowerCase().search("ill fuck") != -1 || message.content.toLowerCase().search("i'll fuck") != -1 || message.content.toLowerCase().search("ill vore") != -1 || message.content.toLowerCase().search("i'll vore") != -1) && message.content.toLowerCase().search("monomi") != -1) {
 		if (message.author.id === "334575513857163266") {
 			inboxChannel.send("Monomi has given Mello her consent if she would like to... do you know what.");
 			message.channel.send(`If that's what you want to do to me, Mello-chan... be my guest...`);
@@ -814,7 +814,7 @@ client.on("message", (message) => { //When a message is sent.
 		});
 		return
 	}
-	if (message.content.toLowerCase().startsWith("fuck off monomi") || message.content.toLowerCase().startsWith("kill yourself monomi") || message.content.toLowerCase().startsWith("fuck you monomi") || message.content.toLowerCase().startsWith("go away monomi") || message.content.toLowerCase().startsWith("die monomi") || message.content.toLowerCase().startsWith("go die monomi") || message.content.toLowerCase().startsWith("monomi die") || message.content.toLowerCase().startsWith("i hate monomi") || message.content.toLowerCase().startsWith("i hate you monomi")) {
+	if ((message.content.toLowerCase().search("fuck off") != -1 || message.content.toLowerCase().search("fuck you") != -1 || message.content.toLowerCase().search("go away") != -1 || message.content.toLowerCase().search("kill yourself") != -1 || message.content.toLowerCase().search("die") != -1 || message.content.toLowerCase().search("i hate") != -1 || message.content.toLowerCase().search("whore") != -1 || message.content.toLowerCase().search("bitch") != -1 || message.content.toLowerCase().search("cunt") != -1 || message.content.toLowerCase().search("slut") != -1 || message.content.toLowerCase().search("cocksucker") != -1 || message.content.toLowerCase().search("pussy") != -1 || message.content.toLowerCase().search("dumbass") != -1 || message.content.toLowerCase().search("eat shit") != -1 || message.content.toLowerCase().search("stop breathing") != -1) && message.content.toLowerCase().search("monomi") != -1) {
 		inboxChannel.send(`${message.author.username} told Monomi to fuck off.`);
 		possibleSprites = [
 			monomi_11,
@@ -949,9 +949,9 @@ client.on("message", (message) => { //When a message is sent.
 		];
 		spriteChoice = random(possibleSprites);
 		
-		if (mouseTriggers < 3) { message.channel.send("Noooooooooo... Not miiiiiiiiice...! They're gonna chew through my ears...!");}
-		if (mouseTriggers === 3) { message.channel.send("Maybe mice aren't so bad."); spriteChoice = monomi_01;}
-		if (mouseTriggers > 3) { return; }
+		if (mouseTriggers < 2) { message.channel.send("Noooooooooo... Not miiiiiiiiice...! They're gonna chew through my ears...!");}
+		if (mouseTriggers === 2) { message.channel.send("Maybe mice aren't so bad."); spriteChoice = monomi_01;}
+		if (mouseTriggers > 2) { return; }
 
 		mouseTriggers++;
 
@@ -969,7 +969,7 @@ client.on("message", (message) => { //When a message is sent.
 	}
 
 	//Kill This Clown
-	if (message.content.toLowerCase().startsWith("monomi kill this clown") || message.content.toLowerCase().startsWith("monomi, kill this clown")) {
+	if (message.content.toLowerCase().search("monomi") != -1 && message.content.toLowerCase().search("kill this clown") != -1) {
 		inboxChannel.send(`${message.author.username} has asked Monomi to kill this clown.`);
 		message.channel.send("I'm on it!");
 		message.channel.send({
@@ -2672,162 +2672,169 @@ client.on("message", (message) => { //When a message is sent.
 		}
 	}
 	if (command === "love" || command === "ship") {
-		if (args.length > 1) {
-			if (args[0].search("@") != -1 && args[1].search("@") != -1) {
-				if (args[0].search("@everyone") === -1 && args[1].search("@everyone") === -1) {
-					if (args[0].search("@here") === -1 && args[1].search("@here") === -1) {
-						if (args[0].search("<@&") === -1 && args[1].search("<@&") === -1) {
-							if (args[0] === args[1]) {
-								let title = `${client.users.find('id', message.mentions.members.first().id).username} :heart: ${client.users.find('id', message.mentions.members.first().id).username}`;
-								message.channel.send({
-									embed: {
-										color: 15285149,
-										title: title,
-										description: "Self-love is important!\n\nLove Meter: 100%\n████████████████████████████████████████",
-										"image": {
-											"url": "https://imgur.com/Ng95j3a.gif"
-										}
-									}
-								});
-								inboxChannel.send(`${message.author.username} checked their self-love meter, which was at 100%!`)
-							} else {
-								meters = ["▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,0%",
-									"▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,1%",
-									"▆▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,2%",
-									"█▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,3%",
-									"█▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,4%",
-									"██▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,5%",
-									"██▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,6%",
-									"██▆▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,7%",
-									"███▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,8%",
-									"███▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,9%",
-									"████▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,10%",
-									"████▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,11%",
-									"████▆▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,12%",
-									"█████▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,13%",
-									"█████▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,14%",
-									"██████▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,15%",
-									"██████▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,16%",
-									"██████▆▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,17%",
-									"███████▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,18%",
-									"███████▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,19%",
-									"████████▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,20%",
-									"████████▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,21%",
-									"████████▆▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,22%",
-									"█████████▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,23%",
-									"█████████▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,24%",
-									"██████████▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,25%",
-									"██████████▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,26%",
-									"██████████▆▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,27%",
-									"███████████▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,28%",
-									"███████████▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,29%",
-									"████████████▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,30%",
-									"████████████▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,31%",
-									"████████████▆▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,32%",
-									"█████████████▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,33%",
-									"█████████████▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,34%",
-									"██████████████▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,35%",
-									"██████████████▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,36%",
-									"██████████████▆▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,37%",
-									"███████████████▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,38%",
-									"███████████████▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,39%",
-									"████████████████▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,40%",
-									"████████████████▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,41%",
-									"████████████████▆▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,42%",
-									"█████████████████▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,43%",
-									"█████████████████▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,44%",
-									"██████████████████▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,45%",
-									"██████████████████▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,46%",
-									"██████████████████▆▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,47%",
-									"███████████████████▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,48%",
-									"███████████████████▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,49%",
-									"████████████████████▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,50%",
-									"████████████████████▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,51%",
-									"████████████████████▆▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,52%",
-									"█████████████████████▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,53%",
-									"█████████████████████▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,54%",
-									"██████████████████████▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,55%",
-									"██████████████████████▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,56%",
-									"██████████████████████▆▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,57%",
-									"███████████████████████▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,58%",
-									"███████████████████████▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,59%",
-									"████████████████████████▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,60%",
-									"████████████████████████▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,61%",
-									"████████████████████████▆▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,62%",
-									"█████████████████████████▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁,63%",
-									"█████████████████████████▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁,64%",
-									"██████████████████████████▁▁▁▁▁▁▁▁▁▁▁▁▁▁,65%",
-									"██████████████████████████▃▁▁▁▁▁▁▁▁▁▁▁▁▁,66%",
-									"██████████████████████████▆▁▁▁▁▁▁▁▁▁▁▁▁▁,67%",
-									"███████████████████████████▂▁▁▁▁▁▁▁▁▁▁▁▁,68%",
-									"███████████████████████████▅▁▁▁▁▁▁▁▁▁▁▁▁,69%",
-									"████████████████████████████▁▁▁▁▁▁▁▁▁▁▁▁,70%",
-									"████████████████████████████▃▁▁▁▁▁▁▁▁▁▁▁,71%",
-									"████████████████████████████▆▁▁▁▁▁▁▁▁▁▁▁,72%",
-									"█████████████████████████████▂▁▁▁▁▁▁▁▁▁▁,73%",
-									"█████████████████████████████▅▁▁▁▁▁▁▁▁▁▁,74%",
-									"██████████████████████████████▁▁▁▁▁▁▁▁▁▁,75%",
-									"██████████████████████████████▃▁▁▁▁▁▁▁▁▁,76%",
-									"██████████████████████████████▆▁▁▁▁▁▁▁▁▁,77%",
-									"███████████████████████████████▂▁▁▁▁▁▁▁▁,78%",
-									"███████████████████████████████▅▁▁▁▁▁▁▁▁,79%",
-									"████████████████████████████████▁▁▁▁▁▁▁▁,80%",
-									"████████████████████████████████▃▁▁▁▁▁▁▁,81%",
-									"████████████████████████████████▆▁▁▁▁▁▁▁,82%",
-									"█████████████████████████████████▂▁▁▁▁▁▁,83%",
-									"█████████████████████████████████▅▁▁▁▁▁▁,84%",
-									"██████████████████████████████████▁▁▁▁▁▁,85%",
-									"██████████████████████████████████▃▁▁▁▁▁,86%",
-									"██████████████████████████████████▆▁▁▁▁▁,87%",
-									"███████████████████████████████████▂▁▁▁▁,88%",
-									"███████████████████████████████████▅▁▁▁▁,89%",
-									"████████████████████████████████████▁▁▁▁,90%",
-									"████████████████████████████████████▃▁▁▁,91%",
-									"████████████████████████████████████▆▁▁▁,92%",
-									"█████████████████████████████████████▂▁▁,93%",
-									"█████████████████████████████████████▅▁▁,94%",
-									"██████████████████████████████████████▁▁,95%",
-									"██████████████████████████████████████▃▁,96%",
-									"██████████████████████████████████████▆▁,97%",
-									"███████████████████████████████████████▂,98%",
-									"███████████████████████████████████████▅,99%",
-									"████████████████████████████████████████,100%"
-								]
-								let loveMeter = random(meters);
-								let loveScore = loveMeter.split(",")
-								let title = `${client.users.find('id', message.mentions.members.first().id).username} :heart: ${client.users.find('id', message.mentions.members.last().id).username}`
-								message.channel.send({
-									embed: {
-										color: 15285149,
-										title: title,
-										description: `Love Meter: ${loveScore[1]}\n${loveScore[0]}`,
-										"image": {
-											"url": "https://imgur.com/Ng95j3a.gif"
-										}
-									}
-								});
-								inboxChannel.send(`${message.author.username} checked the love meter of ${client.users.find('id', message.mentions.members.first().id).username} and ${client.users.find('id', message.mentions.members.last().id).username}, which was at ${loveScore[1]}!`)
-							}
-						} else {
-							inboxChannel.send(`${message.author.username} tried to check a love meter involving a role.`)
-							message.channel.send("You can't check the love meter of roles! Please specify who your checking the love meter of!")
-						}
-					} else {
-						inboxChannel.send(`${message.author.username} tried to check the love meter of everyone.`)
-						message.channel.send("Woah there! You can't check the love meter of *everyone*! Please specify who your checking the love meter of!")
-					}
-				} else {
-					inboxChannel.send(`${message.author.username} tried to check the love meter of everyone.`)
-					message.channel.send("Woah there! You can't check the love meter of *everyone*! Please specify who your checking the love meter of!")
-				}
-			} else {
-				inboxChannel.send(`${message.author.username} tried to check a love meter, but didn't specify two people.`)
-				message.channel.send("Please specify who your checking the love meter of using their Discord tags!")
-			}
-		} else {
-			inboxChannel.send(`${message.author.username} tried to check a love meter, but didn't specify two people.`)
-			message.channel.send("Please specify who your checking the love meter of!")
+		if (args.length < 2) { //Missing input
+			inboxChannel.send(`${message.author.username} tried to check a love meter, but didn't specify two people.`);
+			message.channel.send("Please specify who your checking the love meter of!");
+			return;
 		}
+		if (args[0].toLowerCase() === "is" && args[1].toLowerCase === "love") {
+			message.channel.send("I see no difference.");
+			return;
+		}
+		if (args[0].search("@") === -1 && args[1].search("@") === -1) { //One or both is not a person
+			inboxChannel.send(`${message.author.username} tried to check a love meter, but didn't specify two people.`)
+			message.channel.send("Please specify who your checking the love meter of using their Discord tags!");
+			return;
+		}
+		if (args[0].search("@everyone") === -1 && args[1].search("@everyone") === -1 && args[0].search("@here") === -1 && args[1].search("@here") === -1) { //Everyone
+			inboxChannel.send(`${message.author.username} tried to check the love meter of everyone.`)
+			message.channel.send("Woah there! You can't check the love meter of *everyone*! Please specify who your checking the love meter of!");
+			return;
+		}
+		if (args[0].search("<@&") === -1 && args[1].search("<@&") === -1) { //Roles
+			inboxChannel.send(`${message.author.username} tried to check a love meter involving a role.`)
+			message.channel.send("You can't check the love meter of roles! Please specify who your checking the love meter of!");
+			return;
+		}
+		if (args[0] === args[1]) { //Self Love
+			let title = `${client.users.find('id', message.mentions.members.first().id).username} :heart: ${client.users.find('id', message.mentions.members.first().id).username}`;
+			message.channel.send({
+				embed: {
+					color: 15285149,
+					title: title,
+					description: "Self-love is important!\n\nLove Meter: 100%\n████████████████████████████████████████",
+					"image": {
+						"url": "https://imgur.com/Ng95j3a.gif"
+					}
+				}
+			});
+			inboxChannel.send(`${message.author.username} checked their self-love meter, which was at 100%!`)
+		}
+
+		meters = ["▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,0%",
+			"▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,1%",
+			"▆▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,2%",
+			"█▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,3%",
+			"█▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,4%",
+			"██▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,5%",
+			"██▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,6%",
+			"██▆▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,7%",
+			"███▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,8%",
+			"███▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,9%",
+			"████▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,10%",
+			"████▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,11%",
+			"████▆▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,12%",
+			"█████▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,13%",
+			"█████▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,14%",
+			"██████▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,15%",
+			"██████▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,16%",
+			"██████▆▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,17%",
+			"███████▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,18%",
+			"███████▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,19%",
+			"████████▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,20%",
+			"████████▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,21%",
+			"████████▆▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,22%",
+			"█████████▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,23%",
+			"█████████▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,24%",
+			"██████████▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,25%",
+			"██████████▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,26%",
+			"██████████▆▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,27%",
+			"███████████▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,28%",
+			"███████████▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,29%",
+			"████████████▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,30%",
+			"████████████▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,31%",
+			"████████████▆▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,32%",
+			"█████████████▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,33%",
+			"█████████████▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,34%",
+			"██████████████▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,35%",
+			"██████████████▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,36%",
+			"██████████████▆▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,37%",
+			"███████████████▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,38%",
+			"███████████████▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,39%",
+			"████████████████▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,40%",
+			"████████████████▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,41%",
+			"████████████████▆▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,42%",
+			"█████████████████▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,43%",
+			"█████████████████▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,44%",
+			"██████████████████▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,45%",
+			"██████████████████▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,46%",
+			"██████████████████▆▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,47%",
+			"███████████████████▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,48%",
+			"███████████████████▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,49%",
+			"████████████████████▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,50%",
+			"████████████████████▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,51%",
+			"████████████████████▆▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,52%",
+			"█████████████████████▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,53%",
+			"█████████████████████▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,54%",
+			"██████████████████████▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,55%",
+			"██████████████████████▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,56%",
+			"██████████████████████▆▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,57%",
+			"███████████████████████▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,58%",
+			"███████████████████████▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,59%",
+			"████████████████████████▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,60%",
+			"████████████████████████▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,61%",
+			"████████████████████████▆▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,62%",
+			"█████████████████████████▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁,63%",
+			"█████████████████████████▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁,64%",
+			"██████████████████████████▁▁▁▁▁▁▁▁▁▁▁▁▁▁,65%",
+			"██████████████████████████▃▁▁▁▁▁▁▁▁▁▁▁▁▁,66%",
+			"██████████████████████████▆▁▁▁▁▁▁▁▁▁▁▁▁▁,67%",
+			"███████████████████████████▂▁▁▁▁▁▁▁▁▁▁▁▁,68%",
+			"███████████████████████████▅▁▁▁▁▁▁▁▁▁▁▁▁,69%",
+			"████████████████████████████▁▁▁▁▁▁▁▁▁▁▁▁,70%",
+			"████████████████████████████▃▁▁▁▁▁▁▁▁▁▁▁,71%",
+			"████████████████████████████▆▁▁▁▁▁▁▁▁▁▁▁,72%",
+			"█████████████████████████████▂▁▁▁▁▁▁▁▁▁▁,73%",
+			"█████████████████████████████▅▁▁▁▁▁▁▁▁▁▁,74%",
+			"██████████████████████████████▁▁▁▁▁▁▁▁▁▁,75%",
+			"██████████████████████████████▃▁▁▁▁▁▁▁▁▁,76%",
+			"██████████████████████████████▆▁▁▁▁▁▁▁▁▁,77%",
+			"███████████████████████████████▂▁▁▁▁▁▁▁▁,78%",
+			"███████████████████████████████▅▁▁▁▁▁▁▁▁,79%",
+			"████████████████████████████████▁▁▁▁▁▁▁▁,80%",
+			"████████████████████████████████▃▁▁▁▁▁▁▁,81%",
+			"████████████████████████████████▆▁▁▁▁▁▁▁,82%",
+			"█████████████████████████████████▂▁▁▁▁▁▁,83%",
+			"█████████████████████████████████▅▁▁▁▁▁▁,84%",
+			"██████████████████████████████████▁▁▁▁▁▁,85%",
+			"██████████████████████████████████▃▁▁▁▁▁,86%",
+			"██████████████████████████████████▆▁▁▁▁▁,87%",
+			"███████████████████████████████████▂▁▁▁▁,88%",
+			"███████████████████████████████████▅▁▁▁▁,89%",
+			"████████████████████████████████████▁▁▁▁,90%",
+			"████████████████████████████████████▃▁▁▁,91%",
+			"████████████████████████████████████▆▁▁▁,92%",
+			"█████████████████████████████████████▂▁▁,93%",
+			"█████████████████████████████████████▅▁▁,94%",
+			"██████████████████████████████████████▁▁,95%",
+			"██████████████████████████████████████▃▁,96%",
+			"██████████████████████████████████████▆▁,97%",
+			"███████████████████████████████████████▂,98%",
+			"███████████████████████████████████████▅,99%",
+			"████████████████████████████████████████,100%"
+		]
+		let loveMeter = random(meters);
+		let loveScore = loveMeter.split(",")
+		let title = `${client.users.find('id', message.mentions.members.first().id).username} :heart: ${client.users.find('id', message.mentions.members.last().id).username}`
+
+		//The MATH
+		let loveVariableA = client.users.find('discriminator', message.mentions.members.first().discriminator);
+		let loveVariableB = client.users.find('discriminator', message.mentions.members.last().discriminator);
+
+		message.channel.send(`A: ${loveVariableA} and B: ${loveVariableB}`)
+		return;
+
+		message.channel.send({
+			embed: {
+				color: 15285149,
+				title: title,
+				description: `Love Meter: ${loveScore[1]}\n${loveScore[0]}`,
+				"image": {
+					"url": "https://imgur.com/Ng95j3a.gif"
+				}
+			}
+		});
+		inboxChannel.send(`${message.author.username} checked the love meter of ${client.users.find('id', message.mentions.members.first().id).username} and ${client.users.find('id', message.mentions.members.last().id).username}, which was at ${loveScore[1]}!`)
 	}
 	if (command === "hope") {
 		const hope0 = client.emojis.find("name", "Hope0")
@@ -2876,7 +2883,7 @@ client.on("message", (message) => { //When a message is sent.
 	if (command === "ask") {
 		if (message.content.length > 6) {
 			var question = message.content.substring("m!ask ".length);
-			var hasOr = question.toLowerCase().search("or");
+			var hasOr = question.toLowerCase().search(" or ");
 			if (hasOr != -1) {
 				var arrayOr = question.split(" or ");
 				let answerOr = random(arrayOr);
@@ -4041,12 +4048,6 @@ client.on("message", (message) => { //When a message is sent.
 						name: "Eito Ryozo",
 						desc: "Iͯͧͤ̀̽͑̃ͫ̎͐͌͋ͬ͆̃̚͜҉̶̡̟̦͉̣̠̱̺̫̟̪̦̦̘̞͟'̧̺̠̝̳͉̪͔̗ͥ̑̈́ͫ̌̇̈́mͧͫ̉̓̚҉̴̨̻̳̲̭̮̩̟̼͙̞̦̮̺ ̷̨̼̘̩͇͉̙͙͙̰̜̲͙̣̯͛̍ͦͧͩ͊̃ͬ̿͞h̵͇̦̦̺̻̻͇ͥ̃́̂͐̏̕e̴ͬ̾̇̄͐̎ͮͨͥ̈ͯ̄̽ͣͯ҉̮̥̠̠̣̹̻͕̳͇͍r͓̙͎̼̠̝͔͍̭̪̯̜͚̖̹̝͛̋̾̐̓ͯͧͤ͛͂͒͘͘͟͞é̴̡͎̘͍͈̟͈͈͎̘̍͒ͩͫ̐ͤ̂͒̆̑̏͋̿͒̿̾.̵̈ͨ̈́͗͏̼̪̮͖̘̦̭̩̭͉̘͍͟͡",
 						img: "https://imgur.com/M4cALh8.png"
-					},
-					/*2+*/
-					{
-						name: "Luca Schwarz",
-						desc: "He was lost to time.",
-						img: "https://imgur.com/mz4UEx1.png"
 					},
 					/*{name:"Monobi",clues:["","",""],img:"https://imgur.com/CiGJlAd.png",imgDead:"https://imgur.com/WPWHetx.png"},
 					{name:"Monomi",clues:["","",""],img:"https://imgur.com/OokvPxl.png",imgDead:"https://imgur.com/eTreUA6.png"},
