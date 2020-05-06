@@ -2823,24 +2823,24 @@ client.on("message", (message) => { //When a message is sent.
 		loveVariableB = args[3];
 		
 		let loveFactor = (parseInt(loveVariableA) + parseInt(loveVariableB));
-		if (loveFactor < 1000 && loveFactor > 99) { 
+		if (loveFactor < 2000 && loveFactor > 99) { 
 			message.channel.send("Yup I'm in here hehe");
 			let loveRating = parseInt(loveFactor.toString().slice(0, 1)) + parseInt(loveFactor.toString().slice(1, 2)) + parseInt(loveFactor.toString().slice(2, 3));
 		}
-		else if (loveFactor < 100 && loveFactor > 9) { 
+		if (loveFactor < 100 && loveFactor > 9) { 
 			message.channel.send("Oop!");
 			let loveRating = parseInt(loveFactor.toString().slice(0, 1)) + parseInt(loveFactor.toString().slice(1, 2));
 		}
-		else if (loveFactor < 10) { 
+		if (loveFactor < 10) { 
 			message.channel.send("Oh boy!!!");
 			let loveRating = loveFactor;
 		}
-		else {
+		if (loveFactor >= 2000) {
 			loveFactor = loveFactor / 2;
 			let loveRating = parseInt(loveFactor.toString().slice(0, 2)) + parseInt(loveFactor.toString().slice(2, 4));
 		}
 
-		if (loveRating > 100) {loveRating = parseInt((loveRating%100)/2);}
+		if (loveRating > 100) {loveRating = loveRating%100;}
 		let loveMeter = meters[loveRating];
 		let loveScore = loveMeter.split(",")
 
