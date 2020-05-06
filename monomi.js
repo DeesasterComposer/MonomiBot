@@ -194,7 +194,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.6.1.2-21";
+var version = "3.6.1.2-22";
 var shuffleState = 0;
 var mouseTriggers = 0;
 var ottoTriggers = 0;
@@ -2672,6 +2672,9 @@ client.on("message", (message) => { //When a message is sent.
 		}
 	}
 	if (command === "love" || command === "ship") {
+		message.channel.send("Sorry, this command is off limits right now until Dee manages to work out my bugs!");
+		return;
+		
 		if (args.length < 2) { //Missing input
 			inboxChannel.send(`${message.author.username} tried to check a love meter, but didn't specify two people.`);
 			message.channel.send("Please specify who your checking the love meter of!");
