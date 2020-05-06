@@ -194,7 +194,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.6.1.2-20";
+var version = "3.6.1.2-21";
 var shuffleState = 0;
 var mouseTriggers = 0;
 var ottoTriggers = 0;
@@ -2819,8 +2819,8 @@ client.on("message", (message) => { //When a message is sent.
 		let loveVariableA = client.users.find('id', message.mentions.members.first().id).discriminator;
 		let loveVariableB = client.users.find('id', message.mentions.members.last().id).discriminator;
 
-		loveVariableA = args[2];
-		loveVariableB = args[3];
+		//loveVariableA = args[2];
+		//loveVariableB = args[3];
 		
 		let loveFactor = (parseInt(loveVariableA) + parseInt(loveVariableB));
 		if (loveFactor < 2000 && loveFactor > 99) { 
@@ -2836,7 +2836,7 @@ client.on("message", (message) => { //When a message is sent.
 			let loveRating = loveFactor;
 		}
 		if (loveFactor >= 2000) {
-			loveFactor = loveFactor / 2;
+			loveFactor = parseInt(loveFactor / 2);
 			let loveRating = parseInt(loveFactor.toString().slice(0, 2)) + parseInt(loveFactor.toString().slice(2, 4));
 		}
 
