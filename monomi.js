@@ -194,7 +194,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.6.1.2-4";
+var version = "3.6.1.2-5";
 var shuffleState = 0;
 var mouseTriggers = 0;
 var ottoTriggers = 0;
@@ -2821,7 +2821,7 @@ client.on("message", (message) => { //When a message is sent.
 		let loveVariableA = client.users.find('id', message.mentions.members.first().id).discriminator;
 		let loveVariableB = client.users.find('id', message.mentions.members.last().id).discriminator;
 
-		message.channel.send(`A: ${loveVariableA} and B: ${loveVariableB}`)
+		message.channel.send(`Division: ${loveVariableA/1000} and Remainder: ${loveVariableA%1000}`)
 		return;
 
 		message.channel.send({
