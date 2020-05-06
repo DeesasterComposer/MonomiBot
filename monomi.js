@@ -194,7 +194,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.6.1.2-18";
+var version = "3.6.1.2-19";
 var shuffleState = 0;
 var mouseTriggers = 0;
 var ottoTriggers = 0;
@@ -2819,17 +2819,20 @@ client.on("message", (message) => { //When a message is sent.
 		let loveVariableA = client.users.find('id', message.mentions.members.first().id).discriminator;
 		let loveVariableB = client.users.find('id', message.mentions.members.last().id).discriminator;
 
-		loveVariableA = parseInt(args[2]);
-		loveVariableB = parseInt(args[3]);
+		loveVariableA = args[2];
+		loveVariableB = args[3];
 		
 		let loveFactor = (parseInt(loveVariableA) + parseInt(loveVariableB));
 		if (loveFactor < 1000 && loveFactor > 99) { 
+			message.channel.send("Yup I'm in here hehe");
 			let loveRating = parseInt(loveFactor.toString().slice(0, 1)) + parseInt(loveFactor.toString().slice(1, 2)) + parseInt(loveFactor.toString().slice(2, 3));
 		}
 		else if (loveFactor < 100 && loveFactor > 9) { 
+			message.channel.send("Oop!");
 			let loveRating = parseInt(loveFactor.toString().slice(0, 1)) + parseInt(loveFactor.toString().slice(1, 2));
 		}
 		else if (loveFactor < 10) { 
+			message.channel.send("Oh boy!!!");
 			let loveRating = loveFactor;
 		}
 		else {
