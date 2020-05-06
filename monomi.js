@@ -194,7 +194,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.6.1.2-1";
+var version = "3.6.1.2-2";
 var shuffleState = 0;
 var mouseTriggers = 0;
 var ottoTriggers = 0;
@@ -2681,17 +2681,17 @@ client.on("message", (message) => { //When a message is sent.
 			message.channel.send("I see no difference.");
 			return;
 		}
-		if (args[0].search("@") === -1 && args[1].search("@") === -1) { //One or both is not a person
+		if (args[0].search("@") != -1 || args[1].search("@") != -1) { //One or both is not a person
 			inboxChannel.send(`${message.author.username} tried to check a love meter, but didn't specify two people.`)
 			message.channel.send("Please specify who your checking the love meter of using their Discord tags!");
 			return;
 		}
-		if (args[0].search("@everyone") === -1 && args[1].search("@everyone") === -1 && args[0].search("@here") === -1 && args[1].search("@here") === -1) { //Everyone
+		if (args[0].search("@everyone") != -1 || args[1].search("@everyone") != -1 || args[0].search("@here") != -1 || args[1].search("@here") != -1) { //Everyone
 			inboxChannel.send(`${message.author.username} tried to check the love meter of everyone.`)
 			message.channel.send("Woah there! You can't check the love meter of *everyone*! Please specify who your checking the love meter of!");
 			return;
 		}
-		if (args[0].search("<@&") === -1 && args[1].search("<@&") === -1) { //Roles
+		if (args[0].search("<@&") != -1 || args[1].search("<@&") != -1) { //Roles
 			inboxChannel.send(`${message.author.username} tried to check a love meter involving a role.`)
 			message.channel.send("You can't check the love meter of roles! Please specify who your checking the love meter of!");
 			return;
