@@ -194,7 +194,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.6.1.2-2";
+var version = "3.6.1.2-3";
 var shuffleState = 0;
 var mouseTriggers = 0;
 var ottoTriggers = 0;
@@ -2681,7 +2681,7 @@ client.on("message", (message) => { //When a message is sent.
 			message.channel.send("I see no difference.");
 			return;
 		}
-		if (args[0].search("@") != -1 || args[1].search("@") != -1) { //One or both is not a person
+		if (args[0].search("@") === -1 || args[1].search("@") === -1) { //One or both is not a person
 			inboxChannel.send(`${message.author.username} tried to check a love meter, but didn't specify two people.`)
 			message.channel.send("Please specify who your checking the love meter of using their Discord tags!");
 			return;
