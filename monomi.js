@@ -2818,11 +2818,11 @@ client.on("message", (message) => { //When a message is sent.
 		//The MATH
 		let loveVariableA = client.users.find('id', message.mentions.members.first().id).discriminator;
 		let loveVariableB = client.users.find('id', message.mentions.members.last().id).discriminator;
-		let loveFactor = (Integer.parseInt(loveVariableA) + Integer.parseInt(loveVariableB))/2;
+		let loveFactor = (parseInt(loveVariableA) + parseInt(loveVariableB))/2;
 		message.channel.send(`Love Factor: ${loveFactor}`);
-		let loveRating = Integer.parseInt(loveFactor.toString().slice(0, 1)) + Integer.parseInt(loveFactor.toString().slice(2, 3));
-		message.channel.send(`Love Partial A: ${Integer.parseInt(loveFactor.toString().slice(0, 1))}`);
-		message.channel.send(`Love Partial B: ${Integer.parseInt(loveFactor.toString().slice(2, 3))}`);
+		let loveRating = parseInt(loveFactor.toString().slice(0, 1)) + parseInt(loveFactor.toString().slice(2, 3));
+		message.channel.send(`Love Partial A: ${parseInt(loveFactor.toString().slice(0, 1))}`);
+		message.channel.send(`Love Partial B: ${parseInt(loveFactor.toString().slice(2, 3))}`);
 		message.channel.send(`Love Rating: ${loveRating}`);
 
 		let loveMeter = meters[loveRating - 1];
