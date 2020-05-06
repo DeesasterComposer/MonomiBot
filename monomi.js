@@ -194,7 +194,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.6.1.2-15";
+var version = "3.6.1.2-16";
 var shuffleState = 0;
 var mouseTriggers = 0;
 var ottoTriggers = 0;
@@ -2818,9 +2818,22 @@ client.on("message", (message) => { //When a message is sent.
 		//The MATH
 		let loveVariableA = client.users.find('id', message.mentions.members.first().id).discriminator;
 		let loveVariableB = client.users.find('id', message.mentions.members.last().id).discriminator;
-		let loveFactor = (parseInt(loveVariableA) + parseInt(loveVariableB))/2;
-		if (loveFactor < 1000) { loveRating = parseInt(loveFactor.toString().slice(0, 2)) + parseInt(loveFactor.toString().slice(1, 3)) + parseInt(loveFactor.toString().slice(2, 4)); }
-		else { let loveRating = parseInt(loveFactor.toString().slice(0, 2)) + parseInt(loveFactor.toString().slice(2, 4)); }
+		
+		let loveFactor = (parseInt(loveVariableA) + parseInt(loveVariableB));
+		if (loveFactor < 1000 && loveFactor > 99) { 
+			let loveRating = parseInt(loveFactor.toString().slice(0, 2)) + parseInt(loveFactor.toString().slice(1, 3)) + parseInt(loveFactor.toString().slice(2));
+		}
+		else if (loveFactor < 100 && loveFactor > 9) { 
+			let loveRating = parseInt(loveFactor.toString().slice(0, 2)) + parseInt(loveFactor.toString().slice(1));
+		}
+		else if (loveFactor < 10) { 
+			let loveRating = loveFactor;
+		}
+		else {
+			loveFactor = loveFactor / 2;
+			let loveRating = parseInt(loveFactor.toString().slice(0, 2)) + parseInt(loveFactor.toString().slice(2, 4));
+		}
+
 		if (loveRating > 100) {loveRating = parseInt((loveRating%100)/2);}
 		let loveMeter = meters[loveRating];
 		let loveScore = loveMeter.split(",")
