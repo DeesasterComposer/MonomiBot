@@ -194,7 +194,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.6.1.2-12";
+var version = "3.6.1.2-13";
 var shuffleState = 0;
 var mouseTriggers = 0;
 var ottoTriggers = 0;
@@ -2819,16 +2819,9 @@ client.on("message", (message) => { //When a message is sent.
 		let loveVariableA = client.users.find('id', message.mentions.members.first().id).discriminator;
 		let loveVariableB = client.users.find('id', message.mentions.members.last().id).discriminator;
 		let loveFactor = (parseInt(loveVariableA) + parseInt(loveVariableB))/2;
-		message.channel.send(`Love Factor: ${loveFactor}`);
-		let loveRating = parseInt(loveFactor.toString().slice(0, 1)) + parseInt(loveFactor.toString().slice(2, 3));
-		message.channel.send(`Love Partial A: ${parseInt(loveFactor.toString().slice(0, 1))}`);
-		message.channel.send(`Love Partial B: ${parseInt(loveFactor.toString().slice(2, 3))}`);
-		message.channel.send(`Love Rating: ${loveRating}`);
-
-		let loveMeter = meters[loveRating - 1];
+		let loveRating = parseInt(loveFactor.toString().slice(0, 2)) + parseInt(loveFactor.toString().slice(2, 4));
+		let loveMeter = meters[loveRating];
 		let loveScore = loveMeter.split(",")
-
-		message.channel.send(`Love Score: ${loveScore[1]}`);
 
 		message.channel.send({
 			embed: {
