@@ -1831,6 +1831,9 @@ client.on("message", (message) => { //When a message is sent.
 		let page = 0;
 
 		studentID = "";
+		if ((command === "r" || command === "roster" || command === "class") && message.guild.id === "712075335318896712") {
+			return message.channel.send("Please use either m!rks or m!rbab to access student IDs in this server!");
+		}
 		if (command === "rks" || message.guild.id === "455218035507331072") { //Kaeno Shinjomu
 			if (args.length < 1 || args[0] != "1" && args[0] != "2" && args[0] != "3" && args[0].toLowerCase() != "talents" && args[0].toLowerCase() != "oog") {
 				return message.channel.send("Please specify which class (1, 2, 3, \"talents\", or \"oog\") you're checking the roster for!")
@@ -2517,7 +2520,7 @@ client.on("message", (message) => { //When a message is sent.
 	if (command === "sprites") {
 		embedDescription = "Click on a link to view the masterposts containing all sprites for their respective classes.\n\n";
 		gameName = "";
-		if (message.guild.id === "480549161201041418" || message.guild.id === "641826067232849939") {
+		if (message.guild.id === "480549161201041418" || message.guild.id === "641826067232849939" || message.guild.id === "712075335318896712") {
 			gameName = "Fanganronpa Games";
 			embedDescription += "__**Kaeno Shinjomu**__\n[**CLASS 01**](https://imgur.com/a/YKlnXcm)\n[**CLASS 01 REVAMPED**](https://imgur.com/a/5HxXTfJ)\n[**CLASS 02**](https://imgur.com/a/W6lSVxl)\n[**CLASS 02 GLITCHED**](https://imgur.com/a/qqOupuD)\n[**ULTRA DESPAIR GIRLS**](https://imgur.com/a/tBC6sWb)\n[**CLASS 03**](https://imgur.com/a/7JX0shS)\n\n__**Danganronpa: A Getaway**__\n[**CAMP CLASS 01**](https://imgur.com/a/2cX6tHS)\n\n__**Danganronpa: Bed and Bloodshed**__\n[**GUEST GROUP 01**](https://imgur.com/a/epVZpvM)"
 		}
