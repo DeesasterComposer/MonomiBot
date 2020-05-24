@@ -202,116 +202,114 @@ var ottoTriggers = 0;
 /*Birthday Notifications*/
 var currentDate = new Date();
 var currentDateFixed = new Date(currentDate - (300 * 60 * 1000));
-var kaenoBirthdays = [
-	{ name: "Mori Hibana", pronoun: "her", day: "4", month: "1" },
-	{ name: "Junko Saitou", pronoun: "them", day: "6", month: "1" },
-	{ name: "Aurélie Cartier", pronoun: "her", day: "9", month: "1" },
-	{ name: "Charles 'Chad' Miller", pronoun: "him", day: "11", month: "1" },
-	{ name: "Anzu Kofuku", pronoun: "him", day: "25", month: "1" },
-	{ name: "Shinji Minoru", pronoun: "him", day: "27", month: "1" },
-	{ name: "Ximena Colomar", pronoun: "her", day: "7", month: "2" },
-	{ name: "Santo Verdugo Bautista", pronoun: "**it**", day: "11", month: "2" },
-	{ name: "Federico Navarro", pronoun: "**it**", day: "16", month: "2" },
-	{ name: "Kyabetsu Retasu", pronoun: "him", day: "17", month: "2" },
-	{ name: "Melchor Guadalupe Paz de la Cruz", pronoun: "him", day: "29", month: "2" },
-	{ name: "Ruslan Eun-Kyung Kraus", pronoun: "ihm", day: "2", month: "3" },
-	{ name: "Akiko", pronoun: "her", day: "13", month: "3" },
-	{ name: "Chika Miyasaki and Souma Shimizu", pronoun: "them both", day: "20", month: "3" },
-	{ name: "Piper McCullough", pronoun: "her", day: "23", month: "3" },
-	{ name: "Inugami Izuki", pronoun: "her", day: "24", month: "3" },
-	{ name: "Théo Dubois", pronoun: "him", day: "27", month: "3" },
-	{ name: "Monika Minami", pronoun: "her", day: "1", month: "4" },
-	{ name: "Anya Sakaguchi and S'ad Ludópata", pronoun: "them both", day: "10", month: "4" },
-	{ name: "Ryu Akahoshi", pronoun: "him", day: "6", month: "4" },
-	{ name: "Yuuya Michimiya", pronoun: "him", day: "13", month: "4" },
-	{ name: "Megu Kojima", pronoun: "her", day: "15", month: "4" },
-	{ name: "Tomomi Kashichi", pronoun: "him", day: "17", month: "4" },
-	{ name: "Katashi Maeda", pronoun: "him", day: "20", month: "4" },
-	{ name: "Chikako Kaetsu", pronoun: "**it**", day: "26", month: "4" },
-	{ name: "Cecilio Calles Cárdenas", pronoun: "him", day: "3", month: "5" },
-	{ name: "Megami Himura", pronoun: "her", day: "15", month: "5" },
-	{ name: "Ale del Prieto", pronoun: "him", day: "22", month: "5" },
-	{ name: "Stella Hunter", pronoun: "her", day: "24", month: "5" },
-	{ name: "Fenikku Hinotama, Jeong and Kyoung-mi Park", pronoun: "them all", day: "29", month: "5" },
-	{ name: "Isha Kalki", pronoun: "him", day: "31", month: "5" },
-	{ name: "Sora Kenshin", pronoun: "him", day: "1", month: "6" },
-	{ name: "Eiichi Ryozo", pronoun: "him", day: "6", month: "6" },
-	{ name: "Noriko Suzuki", pronoun: "her", day: "9", month: "6" },
-	{ name: "Tenshi Kawada", pronoun: "him", day: "11", month: "6" },
-	{ name: "Aiko Hikaru", pronoun: "him", day: "14", month: "6" },
-	{ name: "Kumiko Yeun", pronoun: "her", day: "16", month: "6" },
-	{ name: "Anaelle Hamaan", pronoun: "her", day: "20", month: "6" },
-	{ name: "Aika Mahaya", pronoun: "her", day: "21", month: "6" },
-	{ name: "Yuna Akahoshi", pronoun: "her", day: "25", month: "6" },
-	{ name: "Miyuki Ataru", pronoun: "him", day: "23", month: "7" },
-	{ name: "Minako Kaoru", pronoun: "her", day: "7", month: "8" },
-	{ name: "Dia Ramos and Rosendo Paulo Ochoa Merlo", pronoun: "them both", day: "10", month: "8" },
-	{ name: "Renata de Santis", pronoun: "her", day: "11", month: "8" },
-	{ name: "Kazuya Harada", pronoun: "him", day: "13", month: "8" },
-	{ name: "Ara Ayao", pronoun: "her", day: "15", month: "8" },
-	{ name: "Kiro Karasu", pronoun: "him", day: "17", month: "8" },
-	{ name: "Tsuyo Kogiyumi", pronoun: "her", day: "25", month: "8" },
-	{ name: "Asahi Fukuzawa", pronoun: "him", day: "27", month: "8" },
-	{ name: "Aemele Dèjré", pronoun: "her", day: "1", month: "9" },
-	{ name: "Kira Kurushimi", pronoun: "her", day: "7", month: "9" },
-	{ name: "Nikki Boniface", pronoun: "à elle", day: "8", month: "9" },
-	{ name: "Kagami Hannei", pronoun: "her", day: "14", month: "9" },
-	{ name: "Kouki Yoshida and Saeko Kiyomizu", pronoun: "them both", day: "15", month: "9" },
-	{ name: "Daichi Ichihara", pronoun: "him", day: "23", month: "9" },
-	{ name: "Jacek Żeglarski", pronoun: "him", day: "3", month: "10" },
-	{ name: "Kaipo Uilani Iona", pronoun: "him", day: "13", month: "10" },
-	{ name: "Ayuma Tanaka", pronoun: "him", day: "17", month: "10" },
-	{ name: "Areli Vephkia", pronoun: "him", day: "29", month: "10" },
-	{ name: "Hoshi Chiura and Tezuku Imou", pronoun: "them both", day: "31", month: "10" },
-	{ name: "Eiji Ryozo", pronoun: "her", day: "1", month: "11" },
-	{ name: "Kotone Fukuzawa and Shiba Mikio", pronoun: "them both", day: "4", month: "11" },
-	{ name: "Hachi Hiruma", pronoun: "her", day: "9", month: "11" },
-	{ name: "Hana Kageriri", pronoun: "her", day: "12", month: "11" },
-	{ name: "Arisa Shokuhou and Cheisu Maeda", pronoun: "them both", day: "13", month: "11" },
-	{ name: "Masayuuki Taisho", pronoun: "him", day: "25", month: "11" },
-	{ name: "Hideo Takayama", pronoun: "him", day: "2", month: "12" },
-	{ name: "Wolfgang Schwarz", pronoun: "ihm", day: "7", month: "12" },
-	{ name: "Mariko Murakami", pronoun: "her", day: "12", month: "12" },
-	{ name: "Yukine Sakurai", pronoun: "him", day: "13", month: "12" },
-	{ name: "Jomei Hoshino", pronoun: "him", day: "17", month: "12" },
-	{ name: "Michel Voigt and Ryoushi Nobuori", pronoun: "them both", day: "25", month: "12" }
-];
-var babBirthdays = [
-	{ name: "Haruna Hattori", pronoun: "her", day: "11", month: "2" },
-	{ name: "Satomi Shinoda", pronoun: "him", day: "13", month: "3" },
-	{ name: "Hakaku Himura", pronoun: "him", day: "14", month: "3" },
-	//{ name: "Souma Shimizu", pronoun: "him", day: "20", month: "3" }, //Already in Kaeno B-Days
-	//{ name: "Piper McCullough", pronoun: "her", day: "23", month: "3" }, //Already in Kaeno B-Days
-	{ name: "Mahina Keawe", pronoun: "him", day: "7", month: "4" },
-	//{ name: "Cecilio Calles Cárdenas", pronoun: "him", day: "3", month: "5" }, //Already in Kaeno B-Days
-	{ name: "Masami Nii", pronoun: "him", day: "25", month: "5" },
-	{ name: "Takeshi Shinoda", pronoun: "him", day: "29", month: "5" },
-	{ name: "Kiku Sugimoto", pronoun: "her", day: "8", month: "6" },
-	{ name: "Ayumu Shinoda", pronoun: "her", day: "18", month: "6" },
-	//{ name: "Aika Mahaya", pronoun: "her", day: "21", month: "6" }, //Already in Kaeno B-Days
-	{ name: "Kaoru Saitou", pronoun: "him", day: "4", month: "7" },
-	{ name: "Pia Adesso", pronoun: "her", day: "15", month: "7" },
-	{ name: "Eriko Shingo", pronoun: "her", day: "21", month: "7" },
-	//{ name: "Dia Victoria Ramos", pronoun: "her", day: "10", month: "8" }, //Already in Kaeno B-Days
-	//{ name: "Kiro Karasu", pronoun: "him", day: "17", month: "8" }, //Already in Kaeno B-Days
-	//{ name: "Asahi Fukuzawa", pronoun: "him", day: "27", month: "8" }, //Already in Kaeno B-Days
-	{ name: "Denis Adesso-Mori", pronoun: "him", day: "9", month: "9" },
-	{ name: "Oliver Bennett", pronoun: "him", day: "16", month: "10" },
-	{ name: "Matilda Spitzenreiter", pronoun: "her", day: "1", month: "10" },
-	{ name: "Edith Freya Reuter-Protz", pronoun: "her", day: "19", month: "10" },
-	{ name: "Riko Ramuda", pronoun: "her", day: "25", month: "10" },
-	{ name: "Chava Hazzan", pronoun: "her", day: "28", month: "10" },
-	{ name: "Harvey Orkins", pronoun: "him", day: "1", month: "11" }
-	//{ name: "Mariko Murakami", pronoun: "her", day: "12", month: "12" } //Already in Kaeno B-Days
-];
-var killersBirthdays = [
-	{ name: "Frankie Liao", pronoun: "him", day: "15", month: "2" },
-	{ name: "Ludwig Addair", pronoun: "him", day: "6", month: "4" },
-	{ name: "Mazal Adatto", pronoun: "him", day: "8", month: "4" },
-	{ name: "Chiyo Ametsuchi", pronoun: "her", day: "21", month: "5" },
-	{ name: "Cass Reed-Watts", pronoun: "them", day: "13", month: "6" },
-	{ name: "Alexis Spellmeyer", pronoun: "him", day: "1", month: "11" },
-	{ name: "Adrienne Moreau", pronoun: "her", day: "22", month: "12" }
+var birthdays = [
+	/*Kaeno Shinjomu Birthdays*/
+	{ categories: ["ks"], name: "Mori Hibana", pronoun: "her", day: "4", month: "1" },
+	{ categories: ["ks"], name: "Junko Saitou", pronoun: "them", day: "6", month: "1" },
+	{ categories: ["ks"], name: "Aurélie Cartier", pronoun: "her", day: "9", month: "1" },
+	{ categories: ["ks"], name: "Charles 'Chad' Miller", pronoun: "him", day: "11", month: "1" },
+	{ categories: ["ks"], name: "Anzu Kofuku", pronoun: "him", day: "25", month: "1" },
+	{ categories: ["ks"], name: "Shinji Minoru", pronoun: "him", day: "27", month: "1" },
+	{ categories: ["ks"], name: "Ximena Colomar", pronoun: "her", day: "7", month: "2" },
+	{ categories: ["ks"], name: "Santo Verdugo Bautista", pronoun: "**it**", day: "11", month: "2" },
+	{ categories: ["bab"], name: "Haruna Hattori", pronoun: "her", day: "11", month: "2" },
+	{ categories: ["killers"], name: "Frankie Liao", pronoun: "him", day: "15", month: "2" },
+	{ categories: ["ks"], name: "Federico Navarro", pronoun: "**it**", day: "16", month: "2" },
+	{ categories: ["ks"], name: "Kyabetsu Retasu", pronoun: "him", day: "17", month: "2" },
+	{ categories: ["ks"], name: "Melchor Guadalupe Paz de la Cruz", pronoun: "him", day: "29", month: "2" },
+	{ categories: ["ks"], name: "Ruslan Eun-Kyung Kraus", pronoun: "ihm", day: "2", month: "3" },
+	{ categories: ["ks"], name: "Akiko", pronoun: "her", day: "13", month: "3" },
+	{ categories: ["bab"], name: "Satomi Shinoda", pronoun: "him", day: "13", month: "3" },
+	{ categories: ["bab"], name: "Hakaku Himura", pronoun: "him", day: "14", month: "3" },
+	{ categories: ["ks"], name: "Chika Miyasaki", pronoun: "her", day: "20", month: "3" },
+	{ categories: ["ks","bab"], name: "Souma Shimizu", pronoun: "him", day: "20", month: "3" },
+	{ categories: ["ks","bab"], name: "Piper McCullough", pronoun: "her", day: "23", month: "3" },
+	{ categories: ["ks"], name: "Inugami Izuki", pronoun: "her", day: "24", month: "3" },
+	{ categories: ["ks"], name: "Théo Dubois", pronoun: "him", day: "27", month: "3" },
+	{ categories: ["ks"], name: "Monika Minami", pronoun: "her", day: "1", month: "4" },
+	{ categories: ["bab"], name: "Mahina Keawe", pronoun: "her", day: "7", month: "4" },
+	{ categories: ["ks"], name: "Anya Sakaguchi", pronoun: "her", day: "10", month: "4" },
+	{ categories: ["ks"], name: "S'ad Ludópata", pronoun: "him", day: "10", month: "4" },
+	{ categories: ["killers"], name: "Ludwig Addair", pronoun: "him", day: "6", month: "4" },
+	{ categories: ["ks"], name: "Ryu Akahoshi", pronoun: "him", day: "6", month: "4" },
+	{ categories: ["killers"], name: "Mazal Adatto", pronoun: "him", day: "8", month: "4" },
+	{ categories: ["ks"], name: "Yuuya Michimiya", pronoun: "him", day: "13", month: "4" },
+	{ categories: ["ks"], name: "Megu Kojima", pronoun: "her", day: "15", month: "4" },
+	{ categories: ["ks"], name: "Tomomi Kashichi", pronoun: "him", day: "17", month: "4" },
+	{ categories: ["ks"], name: "Katashi Maeda", pronoun: "him", day: "20", month: "4" },
+	{ categories: ["ks"], name: "Chikako Kaetsu", pronoun: "**it**", day: "26", month: "4" },
+	{ categories: ["ks","bab"], name: "Cecilio Calles Cárdenas", pronoun: "him", day: "3", month: "5" },
+	{ categories: ["ks"], name: "Megami Himura", pronoun: "her", day: "15", month: "5" },
+	{ categories: ["killers"], name: "Chiyo Ametsuchi", pronoun: "her", day: "21", month: "5" },
+	{ categories: ["ks"], name: "Ale del Prieto", pronoun: "him", day: "22", month: "5" },
+	{ categories: ["ks"], name: "Stella Hunter", pronoun: "her", day: "24", month: "5" },
+	{ categories: ["bab"], name: "Masami Nii", pronoun: "him", day: "25", month: "5" },
+	{ categories: ["ks"], name: "Fenikku Hinotama", pronoun: "him", day: "29", month: "5" },
+	{ categories: ["ks"], name: "Jeong and Kyoung-mi Park", pronoun: "them both", day: "29", month: "5" },
+	{ categories: ["bab"], name: "Takeshi Shinoda", pronoun: "him", day: "29", month: "5" },
+	{ categories: ["ks"], name: "Isha Kalki", pronoun: "him", day: "31", month: "5" },
+	{ categories: ["ks"], name: "Sora Kenshin", pronoun: "him", day: "1", month: "6" },
+	{ categories: ["ks"], name: "Eiichi Ryozo", pronoun: "him", day: "6", month: "6" },
+	{ categories: ["bab"], name: "Kiku Sugimoto", pronoun: "her", day: "8", month: "6" },
+	{ categories: ["ks"], name: "Noriko Suzuki", pronoun: "her", day: "9", month: "6" },
+	{ categories: ["ks"], name: "Tenshi Kawada", pronoun: "him", day: "11", month: "6" },
+	{ categories: ["killers"], name: "Cass Reed-Watts", pronoun: "them", day: "13", month: "6" },
+	{ categories: ["ks"], name: "Aiko Hikaru", pronoun: "him", day: "14", month: "6" },
+	{ categories: ["ks"], name: "Kumiko Yeun", pronoun: "her", day: "16", month: "6" },
+	{ categories: ["bab"], name: "Ayumu Shinoda", pronoun: "him", day: "18", month: "6" },
+	{ categories: ["ks"], name: "Anaelle Hamaan", pronoun: "her", day: "20", month: "6" },
+	{ categories: ["ks","bab"], name: "Aika Mahaya", pronoun: "her", day: "21", month: "6" },
+	{ categories: ["ks"], name: "Yuna Akahoshi", pronoun: "her", day: "25", month: "6" },
+	{ categories: ["bab"], name: "Kaoru Saitou", pronoun: "him", day: "4", month: "7" },
+	{ categories: ["bab"], name: "Pia Adesso", pronoun: "her", day: "15", month: "7" },
+	{ categories: ["bab"], name: "Eriko Shingo", pronoun: "her", day: "21", month: "7" },
+	{ categories: ["ks"], name: "Miyuki Ataru", pronoun: "him", day: "23", month: "7" },
+	{ categories: ["ks"], name: "Minako Kaoru", pronoun: "her", day: "7", month: "8" },
+	{ categories: ["ks","bab"], name: "Dia Ramos", pronoun: "her", day: "10", month: "8" },
+	{ categories: ["ks"], name: "Rosendo Paulo Ochoa Merlo", pronoun: "him", day: "10", month: "8" },
+	{ categories: ["ks"], name: "Renata de Santis", pronoun: "her", day: "11", month: "8" },
+	{ categories: ["ks"], name: "Kazuya Harada", pronoun: "him", day: "13", month: "8" },
+	{ categories: ["ks"], name: "Ara Ayao", pronoun: "her", day: "15", month: "8" },
+	{ categories: ["ks","bab"], name: "Kiro Karasu", pronoun: "him", day: "17", month: "8" },
+	{ categories: ["ks"], name: "Tsuyo Kogiyumi", pronoun: "her", day: "25", month: "8" },
+	{ categories: ["ks","bab"], name: "Asahi Fukuzawa", pronoun: "him", day: "27", month: "8" },
+	{ categories: ["ks"], name: "Aemele Dèjré", pronoun: "her", day: "1", month: "9" },
+	{ categories: ["ks"], name: "Kira Kurushimi", pronoun: "her", day: "7", month: "9" },
+	{ categories: ["ks"], name: "Nikki Boniface", pronoun: "à elle", day: "8", month: "9" },
+	{ categories: ["bab"], name: "Denis Adesso-Mori", pronoun: "him", day: "9", month: "9" },
+	{ categories: ["ks"], name: "Kagami Hannei", pronoun: "her", day: "14", month: "9" },
+	{ categories: ["ks"], name: "Kouki Yoshida", pronoun: "him", day: "15", month: "9" },
+	{ categories: ["ks"], name: "Saeko Kiyomizu", pronoun: "her", day: "15", month: "9" },
+	{ categories: ["ks"], name: "Daichi Ichihara", pronoun: "him", day: "23", month: "9" },
+	{ categories: ["bab"], name: "Matilda Spitzenreiter", pronoun: "her", day: "1", month: "10" },
+	{ categories: ["ks"], name: "Jacek Żeglarski", pronoun: "him", day: "3", month: "10" },
+	{ categories: ["ks"], name: "Kaipo Uilani Iona", pronoun: "him", day: "13", month: "10" },
+	{ categories: ["bab"], name: "Oliver Bennett", pronoun: "him", day: "16", month: "10" },
+	{ categories: ["ks"], name: "Ayuma Tanaka", pronoun: "him", day: "17", month: "10" },
+	{ categories: ["bab"], name: "Edith Freya Reuter-Protz", pronoun: "her", day: "19", month: "10" },
+	{ categories: ["bab"], name: "Riko Ramuda", pronoun: "her", day: "25", month: "10" },
+	{ categories: ["bab"], name: "Chava Hazzan", pronoun: "her", day: "28", month: "10" },
+	{ categories: ["ks"], name: "Areli Vephkia", pronoun: "him", day: "29", month: "10" },
+	{ categories: ["ks"], name: "Hoshi Chiura", pronoun: "him", day: "31", month: "10" },
+	{ categories: ["ks"], name: "Tezuku Imou", pronoun: "her", day: "31", month: "10" },
+	{ categories: ["ks"], name: "Eiji Ryozo", pronoun: "her", day: "1", month: "11" },
+	{ categories: ["killers"], name: "Alexis Spellmeyer", pronoun: "him", day: "1", month: "11" },
+	{ categories: ["bab"], name: "Harvey Orkins", pronoun: "him", day: "1", month: "11" },
+	{ categories: ["ks","bab"], name: "Kotone Fukuzawa", pronoun: "her", day: "4", month: "11" },
+	{ categories: ["ks"], name: "Shiba Mikio", pronoun: "him", day: "4", month: "11" },
+	{ categories: ["ks"], name: "Hachi Hiruma", pronoun: "her", day: "9", month: "11" },
+	{ categories: ["ks"], name: "Hana Kageriri", pronoun: "her", day: "12", month: "11" },
+	{ categories: ["ks"], name: "Arisa Shokuhou", pronoun: "her", day: "13", month: "11" },
+	{ categories: ["ks"], name: "Cheisu Maeda", pronoun: "him", day: "13", month: "11" },
+	{ categories: ["ks"], name: "Masayuuki Taisho", pronoun: "him", day: "25", month: "11" },
+	{ categories: ["ks"], name: "Hideo Takayama", pronoun: "him", day: "2", month: "12" },
+	{ categories: ["ks"], name: "Wolfgang Schwarz", pronoun: "ihm", day: "7", month: "12" },
+	{ categories: ["ks","bab"], name: "Mariko Murakami", pronoun: "her", day: "12", month: "12" },
+	{ categories: ["ks"], name: "Yukine Sakurai", pronoun: "him", day: "13", month: "12" },
+	{ categories: ["ks"], name: "Jomei Hoshino", pronoun: "him", day: "17", month: "12" },
+	{ categories: ["killers"], name: "Adrienne Moreau", pronoun: "her", day: "22", month: "12" },
+	{ categories: ["ks"], name: "Michel Voigt", pronoun: "him", day: "25", month: "12" },
+	{ categories: ["ks"], name: "Ryoushi Nobuori", pronoun: "him", day: "25", month: "12" }
 ];
 
 /*Murder Mystery*/
@@ -670,24 +668,23 @@ client.on("ready", () => { //When Monomi is turned on.
 		.setColor(15285149)
 		.setThumbnail("https://imgur.com/Pl5F5Cj.png");
 	
-	if (kaenoBirthdays.find(checkBirthdays) != undefined) {
-		todaysBirthday = kaenoBirthdays.find(checkBirthdays);
-		birthdayEmbed.setDescription(`${todaysBirthday.name}'s birthday is today! Wish ${todaysBirthday.pronoun} a happy birthday!`)
-		kaenoBirthdayChannel.send(birthdayEmbed);
+	if (birthdays.find(checkBirthdays) != undefined) {
+		todaysBirthdays = birthdays.filter(checkBirthdays);
+		birthdayEmbedDescription = "";
+		for (x in todaysBirthdays) {
+			birthdayEmbedDescription += `${todaysBirthdays[x].name}'s birthday is today! Wish ${todaysBirthdays[x].pronoun} a happy birthday!\n\n`;
+			x++;
+		}
+
+		upcomingBirthdays = birthdays.push(birthdays);
+		upcomingIndex = upcomingBirthdays.indexOf(todaysBirthdays.pop());
+		birthdayEmbedDescription += `**Upcoming Birthdays:**\n${upcomingBirthdays[upcomingIndex + 1].month}/${upcomingBirthdays[upcomingIndex + 1].day} - ${upcomingBirthdays[upcomingIndex + 1].name}\n${upcomingBirthdays[upcomingIndex + 2].month}/${upcomingBirthdays[upcomingIndex + 2].day} - ${upcomingBirthdays[upcomingIndex + 2].name}\n${upcomingBirthdays[upcomingIndex + 3].month}/${upcomingBirthdays[upcomingIndex + 3].day} - ${upcomingBirthdays[upcomingIndex + 3].name}`
+
+		birthdayEmbed.setDescription(birthdayEmbedDescription);
+		//kaenoBirthdayChannel.send(birthdayEmbed);
 		thunderClanBirthdayChannel.send(birthdayEmbed);
 	}
-	
-	if (killersBirthdays.find(checkBirthdays) != undefined) {
-		todaysBirthday = killersBirthdays.find(checkBirthdays);
-		birthdayEmbed.setDescription(`${todaysBirthday.name}'s birthday is today! Wish ${todaysBirthday.pronoun} a happy birthday!`)
-		thunderClanBirthdayChannel.send(birthdayEmbed);
-	}
-	
-	if (babBirthdays.find(checkBirthdays) != undefined) {
-		todaysBirthday = babBirthdays.find(checkBirthdays);
-		birthdayEmbed.setDescription(`${todaysBirthday.name}'s birthday is today! Wish ${todaysBirthday.pronoun} a happy birthday!`)
-		thunderClanBirthdayChannel.send(birthdayEmbed);
-	}
+
 	setTimeout(shutdown, 86400000); //24 Restart Period
 
 	shuffleStatus(shuffleState);
@@ -1051,7 +1048,7 @@ client.on("message", (message) => { //When a message is sent.
 	}
 
 	//Otto Trigger
-	if (message.guild.id === "641826067232849939" && (message.content.toLowerCase().search("otto") != -1 || message.content.toLowerCase().search("octavio") != -1) && ottoTriggers < 2) {
+	if (message.guild.id === "641826067232849939" && (message.content.toLowerCase().search("bottom") === -1 || message.content.toLowerCase().search("otto") != -1 || message.content.toLowerCase().search("octavio") != -1) && ottoTriggers < 2) {
 		if (ottoTriggers === 0) {message.channel.send("Really fucking hate that guy.")}
 		if (ottoTriggers === 1) {message.channel.send("Still really fucking hate that guy.")}
 		ottoTriggers++;
