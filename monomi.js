@@ -668,16 +668,18 @@ client.on("ready", () => { //When Monomi is turned on.
 		.setColor(15285149)
 		.setThumbnail("https://imgur.com/Pl5F5Cj.png");
 	
+	thunderClanBirthdayChannel.send("test 1");
+
 	if (birthdays.find(checkBirthdays) != undefined) {
-		thunderClanBirthdayChannel.send("test 1");
-		todaysBirthdays = birthdays.filter(checkBirthdays);
 		thunderClanBirthdayChannel.send("test 2");
+		todaysBirthdays = birthdays.filter(checkBirthdays);
+		thunderClanBirthdayChannel.send("test 3");
 		birthdayEmbedDescription = "";
 		for (x in todaysBirthdays) {
 			birthdayEmbedDescription += `${todaysBirthdays[x].name}'s birthday is today! Wish ${todaysBirthdays[x].pronoun} a happy birthday!\n\n`;
 			x++;
 		}
-		thunderClanBirthdayChannel.send("test 3");
+		thunderClanBirthdayChannel.send("test 4");
 
 		upcomingBirthdays = birthdays.push(birthdays);
 		upcomingIndex = upcomingBirthdays.indexOf(todaysBirthdays.pop());
