@@ -682,9 +682,7 @@ client.on("ready", () => { //When Monomi is turned on.
 		upcomingBirthdays = birthdays;
 		upcomingBirthdays.push(birthdays);
 		upcomingIndex = birthdays.indexOf(todaysBirthdays.pop());
-		birthdayEmbedDescription += `**Upcoming Birthdays:**\n`
-		
-		birthdayEmbedDescription += `${upcomingBirthdays[upcomingIndex + 1].month}/${upcomingBirthdays[upcomingIndex + 1].day} - ${upcomingBirthdays[upcomingIndex + 1].name}\n${upcomingBirthdays[upcomingIndex + 2].month}/${upcomingBirthdays[upcomingIndex + 2].day} - ${upcomingBirthdays[upcomingIndex + 2].name}\n${upcomingBirthdays[upcomingIndex + 3].month}/${upcomingBirthdays[upcomingIndex + 3].day} - ${upcomingBirthdays[upcomingIndex + 3].name}\n${upcomingBirthdays[upcomingIndex + 4].month}/${upcomingBirthdays[upcomingIndex + 4].day} - ${upcomingBirthdays[upcomingIndex + 4].name}\n${upcomingBirthdays[upcomingIndex + 5].month}/${upcomingBirthdays[upcomingIndex + 5].day} - ${upcomingBirthdays[upcomingIndex + 5].name}\n...and many more to come!`;
+		birthdayEmbedDescription += `**Upcoming Birthdays:**\n${upcomingBirthdays[upcomingIndex + 1].month}/${upcomingBirthdays[upcomingIndex + 1].day} - ${upcomingBirthdays[upcomingIndex + 1].name}\n${upcomingBirthdays[upcomingIndex + 2].month}/${upcomingBirthdays[upcomingIndex + 2].day} - ${upcomingBirthdays[upcomingIndex + 2].name}\n${upcomingBirthdays[upcomingIndex + 3].month}/${upcomingBirthdays[upcomingIndex + 3].day} - ${upcomingBirthdays[upcomingIndex + 3].name}\n${upcomingBirthdays[upcomingIndex + 4].month}/${upcomingBirthdays[upcomingIndex + 4].day} - ${upcomingBirthdays[upcomingIndex + 4].name}\n${upcomingBirthdays[upcomingIndex + 5].month}/${upcomingBirthdays[upcomingIndex + 5].day} - ${upcomingBirthdays[upcomingIndex + 5].name}\n...and many more to come!`;
 
 		birthdayEmbed.setDescription(birthdayEmbedDescription);
 		tempChannel.send(birthdayEmbed);
