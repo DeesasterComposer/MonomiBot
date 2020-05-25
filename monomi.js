@@ -194,7 +194,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.6.1.2-27";
+var version = "3.6.1.2-28";
 var shuffleState = 0;
 var mouseTriggers = 0;
 var ottoTriggers = 0;
@@ -663,7 +663,7 @@ client.on("ready", () => { //When Monomi is turned on.
 	const thunderClanServer = client.guilds.find('id', '641826067232849939');
 	const thunderClanBirthdayChannel = thunderClanServer.channels.find('name', 'birthdays');
 
-	const tempServer = clients.guilds.find('id', '633119665178017793');
+	const tempServer = client.guilds.find('id', '633119665178017793');
 	const tempChannel = tempServer.channels.find('name','dee-notes');
 	
 	let birthdayEmbed = new Discord.RichEmbed()
@@ -685,9 +685,9 @@ client.on("ready", () => { //When Monomi is turned on.
 		birthdayEmbedDescription += `**Upcoming Birthdays:**\n${upcomingBirthdays[upcomingIndex + 1].month}/${upcomingBirthdays[upcomingIndex + 1].day} - ${upcomingBirthdays[upcomingIndex + 1].name}\n${upcomingBirthdays[upcomingIndex + 2].month}/${upcomingBirthdays[upcomingIndex + 2].day} - ${upcomingBirthdays[upcomingIndex + 2].name}\n${upcomingBirthdays[upcomingIndex + 3].month}/${upcomingBirthdays[upcomingIndex + 3].day} - ${upcomingBirthdays[upcomingIndex + 3].name}\n${upcomingBirthdays[upcomingIndex + 4].month}/${upcomingBirthdays[upcomingIndex + 4].day} - ${upcomingBirthdays[upcomingIndex + 4].name}\n${upcomingBirthdays[upcomingIndex + 5].month}/${upcomingBirthdays[upcomingIndex + 5].day} - ${upcomingBirthdays[upcomingIndex + 5].name}\n...and many more to come!`;
 
 		birthdayEmbed.setDescription(birthdayEmbedDescription);
-		tempChannel.send(birthdayEmbed);
-		//kaenoBirthdayChannel.send(birthdayEmbed);
-		//thunderClanBirthdayChannel.send(birthdayEmbed);
+		//tempChannel.send(birthdayEmbed);
+		kaenoBirthdayChannel.send(birthdayEmbed);
+		thunderClanBirthdayChannel.send(birthdayEmbed);
 	}
 
 	setTimeout(shutdown, 86400000); //24 Restart Period
