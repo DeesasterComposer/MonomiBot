@@ -683,8 +683,8 @@ client.on("ready", () => { //When Monomi is turned on.
 		upcomingBirthdays.push(birthdays);
 		upcomingIndex = birthdays.indexOf(todaysBirthdays.pop());
 		birthdayEmbedDescription += `**Upcoming Birthdays:**\n`
-
-		birthdayEmbedDescription += `${upcomingBirthdays[upcomingIndex + 1].month}/${upcomingBirthdays[upcomingIndex + 1].day} - ${upcomingBirthdays[upcomingIndex + 1].name}\n${upcomingBirthdays[upcomingIndex + 2].month}/${upcomingBirthdays[upcomingIndex + 2].day} - ${upcomingBirthdays[upcomingIndex + 2].name}\n${upcomingBirthdays[upcomingIndex + 3].month}/${upcomingBirthdays[upcomingIndex + 3].day} - ${upcomingBirthdays[upcomingIndex + 3].name}\n${upcomingBirthdays[upcomingIndex + 4].month}/${upcomingBirthdays[upcomingIndex + 4].day} - ${upcomingBirthdays[upcomingIndex + 4].name}\n${upcomingBirthdays[upcomingIndex + 5].month}/${upcomingBirthdays[upcomingIndex + 5].day} - ${upcomingBirthdays[upcomingIndex + 5].name}\n...and many more to come!`
+		
+		birthdayEmbedDescription += `${upcomingBirthdays[upcomingIndex + 1].month}/${upcomingBirthdays[upcomingIndex + 1].day} - ${upcomingBirthdays[upcomingIndex + 1].name}\n${upcomingBirthdays[upcomingIndex + 2].month}/${upcomingBirthdays[upcomingIndex + 2].day} - ${upcomingBirthdays[upcomingIndex + 2].name}\n${upcomingBirthdays[upcomingIndex + 3].month}/${upcomingBirthdays[upcomingIndex + 3].day} - ${upcomingBirthdays[upcomingIndex + 3].name}\n${upcomingBirthdays[upcomingIndex + 4].month}/${upcomingBirthdays[upcomingIndex + 4].day} - ${upcomingBirthdays[upcomingIndex + 4].name}\n${upcomingBirthdays[upcomingIndex + 5].month}/${upcomingBirthdays[upcomingIndex + 5].day} - ${upcomingBirthdays[upcomingIndex + 5].name}\n...and many more to come!`;
 
 		birthdayEmbed.setDescription(birthdayEmbedDescription);
 		tempChannel.send(birthdayEmbed);
@@ -1055,7 +1055,7 @@ client.on("message", (message) => { //When a message is sent.
 	}
 
 	//Otto Trigger
-	if (message.guild.id === "641826067232849939" && (message.content.toLowerCase().search("bottom") === -1 && (message.content.toLowerCase().search("otto") != -1 || message.content.toLowerCase().search("octavio") != -1)) && ottoTriggers < 2) {
+	if (message.guild.id === "641826067232849939" && message.content.toLowerCase().search("bottom") === -1 && (message.content.toLowerCase().search("otto") != -1 || message.content.toLowerCase().search("octavio") != -1) && ottoTriggers < 2) {
 		if (ottoTriggers === 0) {message.channel.send("Really fucking hate that guy.")}
 		if (ottoTriggers === 1) {message.channel.send("Still really fucking hate that guy.")}
 		ottoTriggers++;
