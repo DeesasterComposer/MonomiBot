@@ -194,7 +194,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.6.1.2-28";
+var version = "3.6.1.2-29";
 var shuffleState = 0;
 var mouseTriggers = 0;
 var ottoTriggers = 0;
@@ -721,6 +721,29 @@ client.on("message", (message) => { //When a message is sent.
 	const inboxGuild = client.guilds.find('id', '480549161201041418');
 	const inboxChannel = inboxGuild.channels.find('name', 'monomi-inbox');
 
+	if (message.guild.id === "455218035507331072") { //Kaeno Shinjomu Discord
+		if (message.channel.name === "introduction" || message.channel.name === "rules" || message.channel.name === "server-info" || message.channel.name === "announcements") {
+			return message.channel.send("Please don't use me in this channel!  Thank you!").then(msg => {
+				message.delete(5000);
+				msg.delete(5000);
+			})
+		}
+	}
+	if (message.guild.id === "405902161411833856") { //Gaymers
+		if (message.channel.name === "rants-and-vents" || message.channel.name === "introductions" || message.channel.name === "announcements-and-server-discussion" || message.channel.name === "rules" || message.channel.name === "server-info") {
+			return;
+		}
+	}
+	if (message.guild.id === "598739324464267274") { //Edgeworths Server
+		if (message.channel.name === "rants-and-vents") {
+			return;
+		}
+	}
+	if (message.guild.id === "641826067232849939") { //ThunderClan Server
+		if (message.channel.name === "vent-and-support") {
+			return;
+		}
+	}
 
 	//Rise And Shine, Ursine
 	if (message.content.toLowerCase().search("he is all that remains of a once powerful nation") != -1) {
@@ -1060,29 +1083,6 @@ client.on("message", (message) => { //When a message is sent.
 	}
 
 	if (!message.content.toLowerCase().startsWith(prefix)) return;
-	if (message.guild.id === "455218035507331072") { //Kaeno Shinjomu Discord
-		if (message.channel.name === "introduction" || message.channel.name === "rules" || message.channel.name === "server-info" || message.channel.name === "announcements") {
-			return message.channel.send("Please don't use me in this channel!  Thank you!").then(msg => {
-				message.delete(5000);
-				msg.delete(5000);
-			})
-		}
-	}
-	if (message.guild.id === "405902161411833856") { //Gaymers
-		if (message.channel.name === "rants-and-vents" || message.channel.name === "introductions" || message.channel.name === "announcements-and-server-discussion" || message.channel.name === "rules" || message.channel.name === "server-info") {
-			return;
-		}
-	}
-	if (message.guild.id === "598739324464267274" ) { //Edgeworths Server
-		if (message.channel.name === "rants-and-vents") {
-			return;
-		}
-	}
-	if (message.guild.id === "641826067232849939") { //ThunderClan Server
-		if (message.channel.name === "vent-and-support") {
-			return;
-		}
-	}
 
 	//Obtains the arguments and command, respectively, from the message.
 	const args = message.content.slice(prefix.length).trim().split(/ +/g);
