@@ -194,7 +194,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.6.1.2-29";
+var version = "3.6.1.2-30";
 var shuffleState = 0;
 var mouseTriggers = 0;
 var ottoTriggers = 0;
@@ -745,341 +745,343 @@ client.on("message", (message) => { //When a message is sent.
 		}
 	}
 
-	//Rise And Shine, Ursine
-	if (message.content.toLowerCase().search("he is all that remains of a once powerful nation") != -1) {
-		message.channel.send("Right now, you're on the threshold of an amazing adventure.");
-		message.channel.send({
-			embed: {
-				color: 15285149,
-				"image": {
-					"url": monomi_09
-				}
-			}
-		}).then(msg => {
-			msg.delete(10000)
-		});
-		return
-	}
-
-	//I love you!
-	if ((message.content.toLowerCase().search("love") != -1 || message.content.toLowerCase().search("luv") != -1 || message.content.toLowerCase().search("<3") != -1 || message.content.toLowerCase().search("wuv") != -1) && (message.content.toLowerCase().search("dont") === -1 && message.content.toLowerCase().search("don't") === -1 && message.content.toLowerCase().search("not") === -1 && message.content.toLowerCase().search("couldn't") === -1 && message.content.toLowerCase().search("couldnt") === -1 && message.content.toLowerCase().search("never") === -1) && message.content.toLowerCase().search("monomi") != -1) {
-		inboxChannel.send(`${message.author.username} loves Monomi!`);
-		message.channel.send(`I love you too, ${message.author.username}!`);
-		message.channel.send({
-			embed: {
-				color: 15285149,
-				"image": {
-					"url": monomi_06
-				}
-			}
-		}).then(msg => {
-			msg.delete(10000)
-		});
-		return
-	}
-
-	//Monomi Harassment
-	if ((message.content.toLowerCase().search("fuck me") != -1 || message.content.toLowerCase().search("vore me") != -1) && message.content.toLowerCase().search("monomi") != -1) {
-		if (message.author.id === "334575513857163266") {
-			inboxChannel.send("Mello has given Monomi her consent if she would like to... do you know what.");
-			message.channel.send(`If that's what you want me to do, Mello-chan... I'll gladly do it...`);
+	if (message.content.toLowerCase().search(prefix) === -1) {
+		//Rise And Shine, Ursine
+		if (message.content.toLowerCase().search("he is all that remains of a once powerful nation") != -1) {
+			message.channel.send("Right now, you're on the threshold of an amazing adventure.");
 			message.channel.send({
 				embed: {
 					color: 15285149,
 					"image": {
-						"url": monomi_17
+						"url": monomi_09
 					}
 				}
 			}).then(msg => {
 				msg.delete(10000)
 			});
-			return;
+			return
 		}
-		inboxChannel.send(`${message.author.username} has confessed that they would like Monomi to fuck them.`);
-		message.channel.send(`Wha-wha?! You want me to do what, ${message.author.username}?`);
-		message.channel.send({
-			embed: {
-				color: 15285149,
-				"image": {
-					"url": monomi_19
-				}
-			}
-		}).then(msg => {
-			msg.delete(10000)
-		});
-		return
-	}
-	if ((message.content.toLowerCase().search("want to vore") != -1 || message.content.toLowerCase().search("wanna vore") != -1 || message.content.toLowerCase().search("want to fuck") != -1 || message.content.toLowerCase().search("wanna fuck") != -1 || message.content.toLowerCase().search("gonna vore") != -1 || message.content.toLowerCase().search("gonna fuck") != -1 || message.content.toLowerCase().search("ill fuck") != -1 || message.content.toLowerCase().search("i'll fuck") != -1 || message.content.toLowerCase().search("ill vore") != -1 || message.content.toLowerCase().search("i'll vore") != -1) && message.content.toLowerCase().search("monomi") != -1) {
-		if (message.author.id === "334575513857163266") {
-			inboxChannel.send("Monomi has given Mello her consent if she would like to... do you know what.");
-			message.channel.send(`If that's what you want to do to me, Mello-chan... be my guest...`);
+
+		//I love you!
+		if ((message.content.toLowerCase().search("love") != -1 || message.content.toLowerCase().search("luv") != -1 || message.content.toLowerCase().search("<3") != -1 || message.content.toLowerCase().search("wuv") != -1) && (message.content.toLowerCase().search("dont") === -1 && message.content.toLowerCase().search("don't") === -1 && message.content.toLowerCase().search("not") === -1 && message.content.toLowerCase().search("couldn't") === -1 && message.content.toLowerCase().search("couldnt") === -1 && message.content.toLowerCase().search("never") === -1) && message.content.toLowerCase().search("monomi") != -1) {
+			inboxChannel.send(`${message.author.username} loves Monomi!`);
+			message.channel.send(`I love you too, ${message.author.username}!`);
 			message.channel.send({
 				embed: {
 					color: 15285149,
 					"image": {
-						"url": monomi_17
+						"url": monomi_06
 					}
 				}
 			}).then(msg => {
 				msg.delete(10000)
 			});
-			return;
+			return
 		}
-		inboxChannel.send(`${message.author.username} has confessed that they would like to fuck Monomi.`);
-		message.channel.send(`Wha-wha?! You want to do what, ${message.author.username}?`);
-		message.channel.send({
-			embed: {
-				color: 15285149,
-				"image": {
-					"url": monomi_19
-				}
+
+		//Monomi Harassment
+		if ((message.content.toLowerCase().search("fuck me") != -1 || message.content.toLowerCase().search("vore me") != -1) && message.content.toLowerCase().search("monomi") != -1) {
+			if (message.author.id === "334575513857163266") {
+				inboxChannel.send("Mello has given Monomi her consent if she would like to... do you know what.");
+				message.channel.send(`If that's what you want me to do, Mello-chan... I'll gladly do it...`);
+				message.channel.send({
+					embed: {
+						color: 15285149,
+						"image": {
+							"url": monomi_17
+						}
+					}
+				}).then(msg => {
+					msg.delete(10000)
+				});
+				return;
 			}
-		}).then(msg => {
-			msg.delete(10000)
-		});
-		return
-	}
-	if ((message.content.toLowerCase().search("fuck off") != -1 || message.content.toLowerCase().search("fuck you") != -1 || message.content.toLowerCase().search("go away") != -1 || message.content.toLowerCase().search("kill yourself") != -1 || message.content.toLowerCase().search("die") != -1 || message.content.toLowerCase().search("i hate") != -1 || message.content.toLowerCase().search("whore") != -1 || message.content.toLowerCase().search("bitch") != -1 || message.content.toLowerCase().search("cunt") != -1 || message.content.toLowerCase().search("slut") != -1 || message.content.toLowerCase().search("cocksucker") != -1 || message.content.toLowerCase().search("pussy") != -1 || message.content.toLowerCase().search("dumbass") != -1 || message.content.toLowerCase().search("eat shit") != -1 || message.content.toLowerCase().search("stop breathing") != -1) && message.content.toLowerCase().search("monomi") != -1) {
-		inboxChannel.send(`${message.author.username} told Monomi to fuck off.`);
-		possibleSprites = [
-			monomi_11,
-			monomi_12,
-			monomi_13,
-			monomi_14,
-			monomi_15,
-			monomi_16,
-			monomi_17,
-			monomi_18,
-			monomi_19
-		];
-		possiblePhrases = [
-			"What did I do? I'm sorry...",
-			"I'm sorry... what did I do?",
-			"Please don't be mad at me!",
-			"You're making me sad...",
-			"I'm sorry! Please don't be mad at me...",
-			"I'm sorry!!!",
-			"You're hurting my feelings..."
-		];
-		
-		if (message.author.id == "474336126409244674") {
-			possiblePhrases = [
-				"What did I do? I'm sorry, Syd...",
-				"I'm sorry, Syd... what did I do?",
-				"Please don't be mad at me, Syd!",
-				"You're making me sad, Syd...",
-				"I'm sorry, Syd! Please don't be mad at me...",
-				"Syd, I'm sorry!!!",
-				"You're hurting my feelings, Syd..."
+			inboxChannel.send(`${message.author.username} has confessed that they would like Monomi to fuck them.`);
+			message.channel.send(`Wha-wha?! You want me to do what, ${message.author.username}?`);
+			message.channel.send({
+				embed: {
+					color: 15285149,
+					"image": {
+						"url": monomi_19
+					}
+				}
+			}).then(msg => {
+				msg.delete(10000)
+			});
+			return
+		}
+		if ((message.content.toLowerCase().search("want to vore") != -1 || message.content.toLowerCase().search("wanna vore") != -1 || message.content.toLowerCase().search("want to fuck") != -1 || message.content.toLowerCase().search("wanna fuck") != -1 || message.content.toLowerCase().search("gonna vore") != -1 || message.content.toLowerCase().search("gonna fuck") != -1 || message.content.toLowerCase().search("ill fuck") != -1 || message.content.toLowerCase().search("i'll fuck") != -1 || message.content.toLowerCase().search("ill vore") != -1 || message.content.toLowerCase().search("i'll vore") != -1) && message.content.toLowerCase().search("monomi") != -1) {
+			if (message.author.id === "334575513857163266") {
+				inboxChannel.send("Monomi has given Mello her consent if she would like to... do you know what.");
+				message.channel.send(`If that's what you want to do to me, Mello-chan... be my guest...`);
+				message.channel.send({
+					embed: {
+						color: 15285149,
+						"image": {
+							"url": monomi_17
+						}
+					}
+				}).then(msg => {
+					msg.delete(10000)
+				});
+				return;
+			}
+			inboxChannel.send(`${message.author.username} has confessed that they would like to fuck Monomi.`);
+			message.channel.send(`Wha-wha?! You want to do what, ${message.author.username}?`);
+			message.channel.send({
+				embed: {
+					color: 15285149,
+					"image": {
+						"url": monomi_19
+					}
+				}
+			}).then(msg => {
+				msg.delete(10000)
+			});
+			return
+		}
+		if ((message.content.toLowerCase().search("fuck off") != -1 || message.content.toLowerCase().search("fuck you") != -1 || message.content.toLowerCase().search("go away") != -1 || message.content.toLowerCase().search("kill yourself") != -1 || message.content.toLowerCase().search("die") != -1 || message.content.toLowerCase().search("i hate") != -1 || message.content.toLowerCase().search("whore") != -1 || message.content.toLowerCase().search("bitch") != -1 || message.content.toLowerCase().search("cunt") != -1 || message.content.toLowerCase().search("slut") != -1 || message.content.toLowerCase().search("cocksucker") != -1 || message.content.toLowerCase().search("pussy") != -1 || message.content.toLowerCase().search("dumbass") != -1 || message.content.toLowerCase().search("eat shit") != -1 || message.content.toLowerCase().search("stop breathing") != -1) && message.content.toLowerCase().search("monomi") != -1) {
+			inboxChannel.send(`${message.author.username} told Monomi to fuck off.`);
+			possibleSprites = [
+				monomi_11,
+				monomi_12,
+				monomi_13,
+				monomi_14,
+				monomi_15,
+				monomi_16,
+				monomi_17,
+				monomi_18,
+				monomi_19
 			];
+			possiblePhrases = [
+				"What did I do? I'm sorry...",
+				"I'm sorry... what did I do?",
+				"Please don't be mad at me!",
+				"You're making me sad...",
+				"I'm sorry! Please don't be mad at me...",
+				"I'm sorry!!!",
+				"You're hurting my feelings..."
+			];
+			
+			if (message.author.id == "474336126409244674") {
+				possiblePhrases = [
+					"What did I do? I'm sorry, Syd...",
+					"I'm sorry, Syd... what did I do?",
+					"Please don't be mad at me, Syd!",
+					"You're making me sad, Syd...",
+					"I'm sorry, Syd! Please don't be mad at me...",
+					"Syd, I'm sorry!!!",
+					"You're hurting my feelings, Syd..."
+				];
+			}
+
+			spriteChoice = random(possibleSprites);
+			phraseChoice = random(possiblePhrases);
+
+			message.channel.send(phraseChoice);
+			message.channel.send({
+				embed: {
+					color: 15285149,
+					"image": {
+						"url": spriteChoice
+					}
+				}
+			}).then(msg => {
+				msg.delete(10000)
+			});
+			return
 		}
 
-		spriteChoice = random(possibleSprites);
-		phraseChoice = random(possiblePhrases);
-
-		message.channel.send(phraseChoice);
-		message.channel.send({
-			embed: {
-				color: 15285149,
-				"image": {
-					"url": spriteChoice
+		//Johnny Johnny
+		if (message.content.toLowerCase().startsWith("monomi monomi")) {
+			message.channel.send("Yes papa?");
+			message.channel.send({
+				embed: {
+					color: 15285149,
+					"image": {
+						"url": monomi_03
+					}
 				}
-			}
-		}).then(msg => {
-			msg.delete(10000)
-		});
-		return
-	}
-
-	//Johnny Johnny
-	if (message.content.toLowerCase().startsWith("monomi monomi")) {
-		message.channel.send("Yes papa?");
-		message.channel.send({
-			embed: {
-				color: 15285149,
-				"image": {
-					"url": monomi_03
+			}).then(msg => {
+				msg.delete(10000)
+			});
+			return
+		}
+		if (message.content.toLowerCase().startsWith("working with monokuma")) {
+			message.channel.send("No papa.");
+			message.channel.send({
+				embed: {
+					color: 15285149,
+					"image": {
+						"url": monomi_18
+					}
 				}
-			}
-		}).then(msg => {
-			msg.delete(10000)
-		});
-		return
-	}
-	if (message.content.toLowerCase().startsWith("working with monokuma")) {
-		message.channel.send("No papa.");
-		message.channel.send({
-			embed: {
-				color: 15285149,
-				"image": {
-					"url": monomi_18
+			}).then(msg => {
+				msg.delete(10000)
+			});
+			return
+		}
+		if (message.content.toLowerCase().startsWith("eating sugar")) {
+			message.channel.send("No papa.");
+			message.channel.send({
+				embed: {
+					color: 15285149,
+					"image": {
+						"url": monomi_18
+					}
 				}
-			}
-		}).then(msg => {
-			msg.delete(10000)
-		});
-		return
-	}
-	if (message.content.toLowerCase().startsWith("eating sugar")) {
-		message.channel.send("No papa.");
-		message.channel.send({
-			embed: {
-				color: 15285149,
-				"image": {
-					"url": monomi_18
+			}).then(msg => {
+				msg.delete(10000)
+			});
+			return
+		}
+		if (message.content.toLowerCase().startsWith("telling lies")) {
+			message.channel.send("No papa.");
+			message.channel.send({
+				embed: {
+					color: 15285149,
+					"image": {
+						"url": monomi_19
+					}
 				}
-			}
-		}).then(msg => {
-			msg.delete(10000)
-		});
-		return
-	}
-	if (message.content.toLowerCase().startsWith("telling lies")) {
-		message.channel.send("No papa.");
-		message.channel.send({
-			embed: {
-				color: 15285149,
-				"image": {
-					"url": monomi_19
+			}).then(msg => {
+				msg.delete(10000)
+			});
+			return
+		}
+		if (message.content.toLowerCase().startsWith("open your mouth")) {
+			message.channel.send("Ha ha ha!");
+			message.channel.send({
+				embed: {
+					color: 15285149,
+					"image": {
+						"url": monomi_04
+					}
 				}
-			}
-		}).then(msg => {
-			msg.delete(10000)
-		});
-		return
-	}
-	if (message.content.toLowerCase().startsWith("open your mouth")) {
-		message.channel.send("Ha ha ha!");
-		message.channel.send({
-			embed: {
-				color: 15285149,
-				"image": {
-					"url": monomi_04
+			}).then(msg => {
+				msg.delete(10000)
+			});
+			return
+		}
+
+		//Mouse
+		if (message.content.toLowerCase().search("mouse") != -1 || message.content.toLowerCase().search("mice") != -1) {
+			inboxChannel.send(`${message.author.username} has scared Monomi with mice.`);
+			possibleSprites = [
+				monomi_14,
+				monomi_15,
+				monomi_16,
+				monomi_19
+			];
+			spriteChoice = random(possibleSprites);
+			
+			if (mouseTriggers < 2) { message.channel.send("Noooooooooo... Not miiiiiiiiice...! They're gonna chew through my ears...!");}
+			if (mouseTriggers === 2) { message.channel.send("Maybe mice aren't so bad."); spriteChoice = monomi_01;}
+			if (mouseTriggers > 2) { return; }
+
+			mouseTriggers++;
+
+			message.channel.send({
+				embed: {
+					color: 15285149,
+					"image": {
+						"url": spriteChoice
+					}
 				}
-			}
-		}).then(msg => {
-			msg.delete(10000)
-		});
-		return
-	}
+			}).then(msg => {
+				msg.delete(10000)
+			});
+			return;
+		}
 
-	//Mouse
-	if (message.content.toLowerCase().search("mouse") != -1 || message.content.toLowerCase().search("mice") != -1) {
-		inboxChannel.send(`${message.author.username} has scared Monomi with mice.`);
-		possibleSprites = [
-			monomi_14,
-			monomi_15,
-			monomi_16,
-			monomi_19
-		];
-		spriteChoice = random(possibleSprites);
-		
-		if (mouseTriggers < 2) { message.channel.send("Noooooooooo... Not miiiiiiiiice...! They're gonna chew through my ears...!");}
-		if (mouseTriggers === 2) { message.channel.send("Maybe mice aren't so bad."); spriteChoice = monomi_01;}
-		if (mouseTriggers > 2) { return; }
-
-		mouseTriggers++;
-
-		message.channel.send({
-			embed: {
-				color: 15285149,
-				"image": {
-					"url": spriteChoice
+		//Kill This Clown
+		if (message.content.toLowerCase().search("monomi") != -1 && message.content.toLowerCase().search("kill this clown") != -1) {
+			inboxChannel.send(`${message.author.username} has asked Monomi to kill this clown.`);
+			message.channel.send("I'm on it!");
+			message.channel.send({
+				embed: {
+					color: 15285149,
+					"image": {
+						"url": monomi_04
+					}
 				}
-			}
-		}).then(msg => {
-			msg.delete(10000)
-		});
-		return;
-	}
+			}).then(msg => {
+				msg.delete(10000)
+			});
+			return
+		}
 
-	//Kill This Clown
-	if (message.content.toLowerCase().search("monomi") != -1 && message.content.toLowerCase().search("kill this clown") != -1) {
-		inboxChannel.send(`${message.author.username} has asked Monomi to kill this clown.`);
-		message.channel.send("I'm on it!");
-		message.channel.send({
-			embed: {
-				color: 15285149,
-				"image": {
-					"url": monomi_04
+		//Duane!
+		if (message.content.toLowerCase().search("https://media.discordapp.net/attachments/641838806730801162/674100198934446121/idleoddballdinosaur-size_restricted.gif") != -1 || message.content.toLowerCase().search("https://media.discordapp.net/attachments/645864020959559680/676624472190746627/unknown.gif") != -1 || message.content.toLowerCase().search("https://media.discordapp.net/attachments/645864020959559680/676628845293731870/unknown.gif") != -1) {
+			inboxChannel.send(`${message.author.username} has shown Monomi Duane!`);
+			message.channel.send("Duane!");
+			return
+		}
+
+		//Vocal Percussion
+		if (message.content.toLowerCase().search("vocal percussion on a whole other level") != -1 || message.content.toLowerCase().search("vocal percussion on a whole 'nother level") != -1 || message.content.toLowerCase().search("vocal percussion on a whole nother level") != -1) {
+			inboxChannel.send(`${message.author.username} has summoned Monomi's JoJo Brainrot.`);
+			message.channel.send("Coming from my mind!");
+			message.channel.send({
+				embed: {
+					color: 15285149,
+					"image": {
+						"url": monomi_09
+					}
 				}
-			}
-		}).then(msg => {
-			msg.delete(10000)
-		});
-		return
-	}
+			}).then(msg => {
+				msg.delete(10000)
+			});
+			return;
+		}
 
-	//Duane!
-	if (message.content.toLowerCase().search("https://media.discordapp.net/attachments/641838806730801162/674100198934446121/idleoddballdinosaur-size_restricted.gif") != -1 || message.content.toLowerCase().search("https://media.discordapp.net/attachments/645864020959559680/676624472190746627/unknown.gif") != -1 || message.content.toLowerCase().search("https://media.discordapp.net/attachments/645864020959559680/676628845293731870/unknown.gif") != -1) {
-		inboxChannel.send(`${message.author.username} has shown Monomi Duane!`);
-		message.channel.send("Duane!");
-		return
-	}
+		//Punching Monomi
+		if ((message.content.toLowerCase().search("punch") != -1 || message.content.toLowerCase().search("kick") != -1 || message.content.toLowerCase().search("kill") != -1 || message.content.toLowerCase().search("hurt") != -1 || message.content.toLowerCase().search("destroy") != -1 || message.content.toLowerCase().search("annihilate") != -1 || message.content.toLowerCase().search("deck") != -1 || message.content.toLowerCase().search("shred") != -1 || message.content.toLowerCase().search("shoot") != -1) && message.content.toLowerCase().search("monomi") != -1) {
+			possibleSprites = [
+				monomi_20,
+				monomi_20,
+				monomi_20,
+				monomi_20,
+				monomi_21
+			];
+			possiblePhrases = [
+				"Ow!",
+				"Ouch!",
+				"Ouchie!",
+				"Owie!",
+				"Hey!",
+				"That's not funny!",
+				"Ow...",
+				"Ouch...",
+				"Owie...",
+				"Ouchie...",
+				"Hey...",
+				"That's not funny...",
+			];
 
-	//Vocal Percussion
-	if (message.content.toLowerCase().search("vocal percussion on a whole other level") != -1 || message.content.toLowerCase().search("vocal percussion on a whole 'nother level") != -1 || message.content.toLowerCase().search("vocal percussion on a whole nother level") != -1) {
-		inboxChannel.send(`${message.author.username} has summoned Monomi's JoJo Brainrot.`);
-		message.channel.send("Coming from my mind!");
-		message.channel.send({
-			embed: {
-				color: 15285149,
-				"image": {
-					"url": monomi_09
+			spriteChoice = random(possibleSprites);
+			phraseChoice = random(possiblePhrases);
+
+			message.channel.send(phraseChoice);
+			message.channel.send({
+				embed: {
+					color: 15285149,
+					"image": {
+						"url": spriteChoice
+					}
 				}
-			}
-		}).then(msg => {
-			msg.delete(10000)
-		});
-		return;
-	}
+			}).then(msg => {
+				msg.delete(10000)
+			});
+			return
+		}
 
-	//Punching Monomi
-	if ((message.content.toLowerCase().search("punch") != -1 || message.content.toLowerCase().search("kick") != -1 || message.content.toLowerCase().search("kill") != -1 || message.content.toLowerCase().search("hurt") != -1 || message.content.toLowerCase().search("destroy") != -1 || message.content.toLowerCase().search("annihilate") != -1 || message.content.toLowerCase().search("deck") != -1 || message.content.toLowerCase().search("shred") != -1 || message.content.toLowerCase().search("shoot") != -1) && message.content.toLowerCase().search("monomi") != -1) {
-		possibleSprites = [
-			monomi_20,
-			monomi_20,
-			monomi_20,
-			monomi_20,
-			monomi_21
-		];
-		possiblePhrases = [
-			"Ow!",
-			"Ouch!",
-			"Ouchie!",
-			"Owie!",
-			"Hey!",
-			"That's not funny!",
-			"Ow...",
-			"Ouch...",
-			"Owie...",
-			"Ouchie...",
-			"Hey...",
-			"That's not funny...",
-		];
-
-		spriteChoice = random(possibleSprites);
-		phraseChoice = random(possiblePhrases);
-
-		message.channel.send(phraseChoice);
-		message.channel.send({
-			embed: {
-				color: 15285149,
-				"image": {
-					"url": spriteChoice
-				}
-			}
-		}).then(msg => {
-			msg.delete(10000)
-		});
-		return
-	}
-
-	//Otto Trigger
-	if (message.guild.id === "641826067232849939" && message.content.toLowerCase().search("bottom") === -1 && (message.content.toLowerCase().search("otto") != -1 || message.content.toLowerCase().search("octavio") != -1) && ottoTriggers < 2) {
-		if (ottoTriggers === 0) {message.channel.send("Really fucking hate that guy.")}
-		if (ottoTriggers === 1) {message.channel.send("Still really fucking hate that guy.")}
-		ottoTriggers++;
+		//Otto Trigger
+		if (message.guild.id === "641826067232849939" && message.content.toLowerCase().search("bottom") === -1 && (message.content.toLowerCase().search("otto") != -1 || message.content.toLowerCase().search("octavio") != -1) && ottoTriggers < 2) {
+			if (ottoTriggers === 0) {message.channel.send("Really fucking hate that guy.")}
+			if (ottoTriggers === 1) {message.channel.send("Still really fucking hate that guy.")}
+			ottoTriggers++;
+		}
 	}
 
 	if (!message.content.toLowerCase().startsWith(prefix)) return;
@@ -1715,6 +1717,12 @@ client.on("message", (message) => { //When a message is sent.
 			else if (guildID === "thunderclan") {
 				guildID = "641826067232849939";
 			}
+			else if (guildID === "kk") {
+				guildID = "721589433018744913";
+			}
+			else if (guildID === "koogs") {
+				guildID = "396895853479985162";
+			}
 		}
 
 		var nativeGuild = client.guilds.find('id', guildID);
@@ -1825,7 +1833,7 @@ client.on("message", (message) => { //When a message is sent.
 	}
 
 	//Killing Game Commands
-	if (command === "roster" || command === "class" || command === "r" || command === "rks" || command === "rga" || command === "rbab") {
+	if (command === "roster" || command === "class" || command === "r" || command === "rks" || command === "rga" || command === "rbab" || command === "rkk") {
 		let embed = new Discord.RichEmbed()
 			.setColor(13959168)
 		
@@ -2255,7 +2263,6 @@ client.on("message", (message) => { //When a message is sent.
 				{ studentID: "Name: Tenome\nTalent: Ghostwriter\nSex: Male\nStatus: Alive\n\nShoe Size: ??\nHeight: ?'?\"\nWeight: ???\nBlood Type: ??\nBirthday: ??/??\nAge: 15", studentIDPicture: "https://imgur.com/bAbdgv7.png" },
 			]
 
-
 			if (args.length === 0) {
 				message.channel.send("```Rm#  Sex and Name                Talent\n101  M Oliver Bennett            Plague Doctor\n102  F Piper McCullough          Cadet\n103  M Souma Shimizu             Poet\n105  F Dia Ramos                 Cheerleader\n108  F Aika Mahaya               Digital Composer\n109  F Chava Hazzan              ARG Developer\n110  M Denis Adesso-Mori         Sculptor\n111  M Cecilio Calles            Pilot\n112  F Eriko Shingo              Journalist\n114  M Asahi Fukuzawa            Violinist\n115  M Harvey Orkins             Medium\n116  F Kiku Sugimoto             Video Game Designer\n202    Haruna Hattori            Artficial Intelligence\n202  M Kaoru Saitou              Survivalist\n203  M Masami Nii                Guitarist\n204  F Edith Reuter-Protz        ???\n204  F Matilda Spitzenreiter     Club Leader\n301  M Takeshi Shinoda           Mountaineer\n304  M Kiro Karasu               Prince\n305  M Ayumu Shinoda             Rhythm Gamer\n307  M Tenome                    Ghostwriter\n308  F Mariko Murakami           Martial Artist\n310  M Satomi Shinoda            Occult Specialist\n\n     Mastermind\n     Information Unavailable.\n\n     Deceased Students\n104  F Pia Adesso                Anthropologist\n106  M Hakaku Himura             Test Subject\n107  F Riko Ramuda               Concept Artist\n113  F Mahina Keawe              Fursuiter```");
 				inboxChannel.send(`${message.author.username} has looked at the DR:BAB roster.`);
@@ -2312,6 +2319,43 @@ client.on("message", (message) => { //When a message is sent.
 			if (args[0].toLowerCase().search("tenome") != -1) { page = 27 }
 
 			inboxChannel.send(`${message.author.username} has looked at ${args[0].toUpperCase().slice(0, 1)}${args[0].toLowerCase().slice(1)}'s file.`);
+		}
+		else if (command === "rkk" || message.guild.id === "721589433018744913" || message.guild.id === "396895853479985162") { //Koogshire Killers
+			message.channel.send("**Soon.**");
+
+			classList = [
+				{ studentID: "Name: Example\nTalent: Example\nSex: Male/Female\nStatus: Alive\n\nShoe Size: ## (In US Men's/Women's)\nHeight: #'#\"\nWeight: ### (in lbs)\nBlood Type: C\nBirthday: ##/##\nAge: ##", studentIDPicture: "" }
+			]
+
+			if (args.length === 0) {
+				message.channel.send("The roster has yet to be organized! Come back soon!");
+				return;
+				message.channel.send("```Rm#  Sex and Name                Talent\n101  M Oliver Bennett            Plague Doctor\n102  F Piper McCullough          Cadet\n103  M Souma Shimizu             Poet\n105  F Dia Ramos                 Cheerleader\n108  F Aika Mahaya               Digital Composer\n109  F Chava Hazzan              ARG Developer\n110  M Denis Adesso-Mori         Sculptor\n111  M Cecilio Calles            Pilot\n112  F Eriko Shingo              Journalist\n114  M Asahi Fukuzawa            Violinist\n115  M Harvey Orkins             Medium\n116  F Kiku Sugimoto             Video Game Designer\n202    Haruna Hattori            Artficial Intelligence\n202  M Kaoru Saitou              Survivalist\n203  M Masami Nii                Guitarist\n204  F Edith Reuter-Protz        ???\n204  F Matilda Spitzenreiter     Club Leader\n301  M Takeshi Shinoda           Mountaineer\n304  M Kiro Karasu               Prince\n305  M Ayumu Shinoda             Rhythm Gamer\n307  M Tenome                    Ghostwriter\n308  F Mariko Murakami           Martial Artist\n310  M Satomi Shinoda            Occult Specialist\n\n     Mastermind\n     Information Unavailable.\n\n     Deceased Students\n104  F Pia Adesso                Anthropologist\n106  M Hakaku Himura             Test Subject\n107  F Riko Ramuda               Concept Artist\n113  F Mahina Keawe              Fursuiter```");
+				inboxChannel.send(`${message.author.username} has looked at the DR:BAB roster.`);
+				return;
+			}
+			if (args[0] === "total") {
+				message.channel.send("The full roster has yet to be organized! Come back soon!");
+				return;
+				message.channel.send("```Rm#  Sex and Name                        Shoe Size    Height    Weight    Blood Type    Birthday    Age     Talent\n101  M Oliver Bennett                    11           6'1\"      145       AB            10/16       18      Plague Doctor\n102  F Piper McCullough                  5            5'1\"      102       O             03/23       15      Cadet\n103  M Souma Shimizu                     10           5'10\"     130       AB            03/20       17      Poet\n105  F Dia Victoria Ramos                7.5          5'2\"      117       O             08/10       18      Cheerleader\n108  F Aika Mahaya                       9            5'6\"      137       B             06/21       17      Digital Composer\n109  F Chava Hazzan                      8            4'9\"      90        O             10/28       17      ARG Developer\n110  M Denis Adesso-Mori                 10           6'2\"      149       A             09/09       18      Sculptor\n111  M Cecilio Calles Cárdenas           8            5'8\"      157       B             05/03       17      Pilot\n112  F Eriko Shingo                      8            5'5\"      125       AB            07/21       16      Journalist\n114  M Asahi Fukuzawa                    10           5'7\"      124       O             08/27       18      Violinist\n115  M Harvey Orkins                     11           6'4\"      215       B             11/01       17      Medium\n116  F Kiku Sugimoto                     6            5'6\"      138       B             06/08       17      Video Game Designer\n202  X Haruna Hattori                    6            5'2\"      135       N/A           02/11       1~      Artificial Intelligence\n202  M Kaoru Saitou                      11           5'10\"     150       AB            07/04       16      Survivalist\n```");
+				message.channel.send("```203  M Masami Nii                        10           5'10\"     143       B             05/25       17      Guitarist\n204  F Edith Freya Reuter-Protz          9            5'10\"     144       AB            10/19       18      ???\n204  F Matilda Spitzenreiter             11           5'8\"      140       O             10/01       18      Club Leader\n301  M Takeshi Shinoda                   10           5'3\"      135       B             05/29       17      Mountaineer\n304  M Kiro Karasu                       10           5'10\"     130       O             08/17       17      Prince\n305  M Ayumu Shinoda                     11           5'9\"      140       B             06/18       16      Rhythm Gamer\n307  M Tenome                            ??           ?'?\"      ???       ?             ??/??       15      Ghostwriter\n308  F Mariko Murakami                   8            5'6\"      125       AB            12/12       18      Martial Artist\n310  M Satomi Shinoda                    12           5'6\"      125       O             03/13       18      Occult Specialist\n\n     Mastermind\n     Information Unavailable.\n\n     Deceased Students\n104  F Pia Adesso                        6            5'4\"      122       B             07/15       15      Anthropologist\n106  M Hakaku Himura                     5            4'10\"     72        O             03/14       14      Test Subject\n107  F Riko Ramuda                       11           5'3\"      123       AB            10/25       16      Concept Artist\n113  F Mahina Keawe                      6            5'3\"      158       O             04/07       16      Fursuiter```");
+				inboxChannel.send(`${message.author.username} has looked at the full version of the DR:BAB roster.`);
+				return;
+			}
+
+			let pageAmount = classList.length;
+			let x = 0;
+			while (x < pageAmount) {
+				thumbnail = classList[x].studentIDPicture;
+				if (thumbnail === "") {
+					thumbnail = "https://imgur.com/OVPTMGn.png";
+				};
+				currentPage = { text: classList[x].studentID, thumbnail: thumbnail }
+				pages.push(currentPage);
+				x++;
+			}
+
+			if (args[0].toLowerCase().search("example") != -1) { page = 1 };
 		}
 		if (page === 0) {
 			return message.channel.send("I'm sorry, but this file does not exist!  Please make sure that you entered the correct information!")
@@ -2518,6 +2562,9 @@ client.on("message", (message) => { //When a message is sent.
 			}
 			return message.channel.send(embed);
 		}
+		else {
+			message.channel.send("Sorry, this feature isn't meant to work in this space!");
+		}
 	}
 	if (command === "sprites") {
 		embedDescription = "Click on a link to view the masterposts containing all sprites for their respective classes.\n\n";
@@ -2537,6 +2584,10 @@ client.on("message", (message) => { //When a message is sent.
 		else if (message.guild.id === "633119665178017793") { //Bed and Bloodshed
 			gameName = "Danganronpa: Bed and Bloodshed";
 			embedDescription += "__**Danganronpa: Bed and Bloodshed**__\n[**GUEST GROUP 01**](https://imgur.com/a/epVZpvM)";
+		}
+		else if (message.guild.id === "721589433018744913" || message.guild.if === "396895853479985162") {
+			gameName = "Koogshire: Wicked Killers";
+			embedDescription += "__**Koogshire: Wicked Killers**__\n[**GROUP 01**](https://www.youtube.com/watch?v=d4EviPTzllY)";
 		}
 		message.channel.send({
 			embed: { //Sends the student's info
@@ -3147,30 +3198,6 @@ client.on("message", (message) => { //When a message is sent.
 		message.channel.send("Fuck you.", {
 			file: "https://imgur.com/M4cALh8.png"
 		})
-	}
-	if (command === ":)") {
-		if (!servers[message.guild.id]) servers[message.guild.id] = {
-			queue: []
-		}
-		var server = servers[message.guild.id];
-
-		if (!message.member.voiceChannel) {
-			return message.channel.send(":x: You must be in a voice channel to use this command.")
-		};
-
-		server.queue.push({
-			title: "Something Special",
-			url: "https://www.youtube.com/watch?v=ZcoqR9Bwx1Y"
-		});
-		if (currentlyPlaying === null) {
-			message.channel.send(`:notes: Now playing something special.`)
-		}
-		if (currentlyPlaying != null) {
-			message.channel.send(`:notes: Added something special to the queue.`)
-		}
-		if (!message.guild.voiceConnection) message.member.voiceChannel.join().then(function (connection) {
-			play(connection, message)
-		});
 	}
 	if (command === "mm") {
 		if (MM_InProgress === true) {
@@ -5866,7 +5893,7 @@ client.on("message", (message) => { //When a message is sent.
 				title: "MonomiBot Credits",
 				fields: [{
 					name: ":heart_exclamation: Coded by:",
-					value: "Dee!"
+					value: "Dee#7134!"
 				}]
 			}
 		})
