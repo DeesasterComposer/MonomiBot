@@ -666,7 +666,7 @@ client.on("ready", () => { //When Monomi is turned on.
 	const tempServer = client.guilds.find('id', '633119665178017793');
 	const tempChannel = tempServer.channels.find('name','dee-notes');
 	
-	let birthdayEmbed = new Discord.RichEmbed()
+	let birthdayEmbed = new Discord.MessageEmbed()
 		.setTitle("Happy Birthday!")
 		.setColor(15285149)
 		.setThumbnail("https://imgur.com/Pl5F5Cj.png");
@@ -1626,7 +1626,7 @@ client.on("message", (message) => { //When a message is sent.
 			};
 		} else {
 			inboxChannel.send(`${message.author.username} has asked for help from Monomi.`);
-			let embedHelp = new Discord.RichEmbed()
+			let embedHelp = new Discord.MessageEmbed()
 				.setColor(15285149)
 				.setTitle("Type 'm!' followed by a command!")
 				.setDescription("Here's a list of commands I can perform for you!  Do `m!help [command]` for more info on a specific command.")
@@ -1834,7 +1834,7 @@ client.on("message", (message) => { //When a message is sent.
 
 	//Killing Game Commands
 	if (command === "roster" || command === "class" || command === "r" || command === "rks" || command === "rga" || command === "rbab" || command === "rkk") {
-		let embed = new Discord.RichEmbed()
+		let embed = new Discord.MessageEmbed()
 			.setColor(13959168)
 		
 		let pages = [];
@@ -2395,7 +2395,7 @@ client.on("message", (message) => { //When a message is sent.
 		})
 	}
 	if (command === "roomies") {
-		let embed = new Discord.RichEmbed()
+		let embed = new Discord.MessageEmbed()
 			.setColor(13959168)
 		if (message.guild.id === "455218035507331072") { //Kaeno V3
 			rooms = [
@@ -2509,12 +2509,12 @@ client.on("message", (message) => { //When a message is sent.
 
 				room = rooms[page - 1];
 				if (room.people.length === 2) {
-					roomInhabitants = room.people[0] + " and " + room.people[1];
+					roomInhabitants = `${room.people[0]} and ${room.people[1]}`;
 				}
 				else if (room.people.length === 3) {
-					roomInhabitants = room.people[0] + ", " + room.people[1] + " and " + room.people[2];
+					roomInhabitants = `${room.people[0]}, ${room.people[1]} and ${room.people[2]}`;
 				}
-				roomTitle = "Room #" + room.number + ": " + roomInhabitants;
+				roomTitle = `Room #${room.number}: ${roomInhabitants}`;
 
 				embed.setDescription(room.description);
 				embed.setAuthor(roomTitle);
@@ -2525,10 +2525,10 @@ client.on("message", (message) => { //When a message is sent.
 				for (x = 0; x < 12; x++) {
 					room = rooms[x];
 					if (room.people.length === 2) {
-						roomInhabitants = room.people[0] + " and " + room.people[1];
+						roomInhabitants = `${room.people[0]} and ${room.people[1]}`;
 					}
 					else if (room.people.length === 3) {
-						roomInhabitants = room.people[0] + ", " + room.people[1] + " and " + room.people[2];
+						roomInhabitants = `${room.people[0]}, ${room.people[1]} and ${room.people[2]}`;
 					}
 					embed.addField(`Room #${room.number}`, `${roomInhabitants}`)
 				}
@@ -2651,7 +2651,7 @@ client.on("message", (message) => { //When a message is sent.
 		const filterE = (reaction, user) => reaction.emoji.name === '🇪' && user.id != user.bot && alreadyChosen.includes(user.id) === false;
 		var alreadyChosen = [];
 
-		let embed = new Discord.RichEmbed()
+		let embed = new Discord.MessageEmbed()
 			.setColor(13959168)
 			.setTitle("INVESTIGATION, ROUND 1")
 			.setDescription("**Option A** - Check the victim's body. You may ask questions about the victim's body--the state of it, anything on it, and so on.\n**Option B** - Check the surrounding room. Examine the room that the victim was found in and anything else inside of the room (excluding the victim).\n**Option C** - Check other rooms of your choice. You can choose a few rooms (amount of choices if proportional to how many rooms there are in the current map) to see if you can find any clues. If you do find something, you may ask as many questions about the room as you like\n**Option D** - Remember the events. You may ask question about how the body was discovered, who discovered it, when it was discovered, and so on.\n**Option E** - Ask about the victim. You may ask questions about the victim's behavior leading up to their discovery, their normal behavior, quirks about them, and so on.\n\nAny questions that are not within the boundaries of the option can and will be rejected an answer.\n\nRespond to this message with the option corresponding to your first pick! Whatever you end up learning is specific to only one of your characters.");
@@ -2730,7 +2730,7 @@ client.on("message", (message) => { //When a message is sent.
 
 		setTimeout(function(){ //Times Up! Round Two Time Baby
 			alreadyChosen = [];
-			let embed = new Discord.RichEmbed()
+			let embed = new Discord.MessageEmbed()
 				.setColor(13959168)
 				.setTitle("INVESTIGATION, ROUND 2")
 				.setDescription("**Option A** - Check the victim's body. You may ask questions about the victim's body--the state of it, anything on it, and so on.\n**Option B** - Check the surrounding room. Examine the room that the victim was found in and anything else inside of the room (excluding the victim).\n**Option C** - Check other rooms of your choice. You can choose a few rooms (amount of choices if proportional to how many rooms there are in the current map) to see if you can find any clues. If you do find something, you may ask as many questions about the room as you like\n**Option D** - Remember the events. You may ask question about how the body was discovered, who discovered it, when it was discovered, and so on.\n**Option E** - Ask about the victim. You may ask questions about the victim's behavior leading up to their discovery, their normal behavior, quirks about them, and so on.\n\nAny questions that are not within the boundaries of the option can and will be rejected an answer.\n\nRespond to this message with the option corresponding to your second pick! Whatever you end up learning is specific to your other character.");
@@ -2883,7 +2883,7 @@ client.on("message", (message) => { //When a message is sent.
 											color: 13959168,
 											author: {
 												name: mastermindName,
-												icon_url: client.users.find('id', mastermindId).avatarURL
+												icon_url: client.users.cache.find('id', mastermindId).avatarURL
 											},
 											"image": {
 												"url": "https://imgur.com/LFvOd9P.gif"
@@ -2908,7 +2908,7 @@ client.on("message", (message) => { //When a message is sent.
 											}
 										})
 									} else {
-										inboxChannel.send(`${message.author.username} has executed ${client.users.find('id', message.mentions.members.first().id).username}!`);
+										inboxChannel.send(`${message.author.username} has executed ${client.users.cache.find('id', message.mentions.members.first().id).username}!`);
 										message.channel.send({
 											embed: {
 												color: 13959168,
@@ -2969,7 +2969,7 @@ client.on("message", (message) => { //When a message is sent.
 			return;
 		}
 		if (args[0] === args[1]) { //Self Love
-			let title = `${client.users.find('id', message.mentions.members.first().id).username} :heart: ${client.users.find('id', message.mentions.members.first().id).username}`;
+			let title = `${client.users.cache.find('id', message.mentions.members.first().id).username} :heart: ${client.users.cache.find('id', message.mentions.members.first().id).username}`;
 			message.channel.send({
 				embed: {
 					color: 15285149,
@@ -3085,11 +3085,11 @@ client.on("message", (message) => { //When a message is sent.
 			"███████████████████████████████████████▅,99%",
 			"████████████████████████████████████████,100%"
 		]
-		let title = `${client.users.find('id', message.mentions.members.first().id).username} :heart: ${client.users.find('id', message.mentions.members.last().id).username}`
+		let title = `${client.users.cache.find('id', message.mentions.members.first().id).username} :heart: ${client.users.cache.find('id', message.mentions.members.last().id).username}`
 
 		//The MATH
-		let loveVariableA = client.users.find('id', message.mentions.members.first().id).discriminator;
-		let loveVariableB = client.users.find('id', message.mentions.members.last().id).discriminator;
+		let loveVariableA = client.users.cache.find('id', message.mentions.members.first().id).discriminator;
+		let loveVariableB = client.users.cache.find('id', message.mentions.members.last().id).discriminator;
 
 		//loveVariableA = args[2];
 		//loveVariableB = args[3];
@@ -3126,7 +3126,7 @@ client.on("message", (message) => { //When a message is sent.
 				}
 			}
 		});
-		inboxChannel.send(`${message.author.username} checked the love meter of ${client.users.find('id', message.mentions.members.first().id).username} and ${client.users.find('id', message.mentions.members.last().id).username}, which was at ${loveScore[1]}!`)
+		inboxChannel.send(`${message.author.username} checked the love meter of ${client.users.cache.find('id', message.mentions.members.first().id).username} and ${client.users.cache.find('id', message.mentions.members.last().id).username}, which was at ${loveScore[1]}!`)
 	}
 	if (command === "hope") {
 		const hope0 = client.emojis.find("name", "Hope0")
@@ -3141,7 +3141,7 @@ client.on("message", (message) => { //When a message is sent.
 			message.channel.send("Please specify a student!");
 			return;
 		}
-		if (client.users.find('id', message.mentions.members.first().id).bot === true) {
+		if (client.users.cache.find('id', message.mentions.members.first().id).bot === true) {
 			inboxChannel.send(`${message.author.username} tried to check the hope fragments of a bot.`)
 			message.channel.send("You can't have hope fragments with a bot!");
 			return;
@@ -3151,13 +3151,13 @@ client.on("message", (message) => { //When a message is sent.
 			message.channel.send("You can't have hope fragments with yourself, silly!");
 			return;
 		}
-		arr_hope = [`You have ${hope0} 0 hope fragments with ${client.users.find('id', message.mentions.members.first().id).username}.\n\nGo introduce yourself!,https://i.imgur.com/vqURCNE.png`,
-			`You have ${hope1} 1 hope fragment with ${client.users.find('id', message.mentions.members.first().id).username}.,https://i.imgur.com/Mktu16G.png`,
-			`You have ${hope2} 2 hope fragments with ${client.users.find('id', message.mentions.members.first().id).username}.,https://i.imgur.com/4owkJn1.png`,
-			`You have ${hope3} 3 hope fragments with ${client.users.find('id', message.mentions.members.first().id).username}.,https://i.imgur.com/cVXpySt.png`,
-			`You have ${hope4} 4 hope fragments with ${client.users.find('id', message.mentions.members.first().id).username}.,https://i.imgur.com/C2BFXaI.png`,
-			`You have ${hope5} 5 hope fragments with ${client.users.find('id', message.mentions.members.first().id).username}.,https://i.imgur.com/rOXG8SG.png`,
-			`You have all ${hope6} 6 hope fragments with ${client.users.find('id', message.mentions.members.first().id).username}.\n\nGreat job!,https://i.imgur.com/SdYnYZ5.png`
+		arr_hope = [`You have ${hope0} 0 hope fragments with ${client.users.cache.find('id', message.mentions.members.first().id).username}.\n\nGo introduce yourself!,https://i.imgur.com/vqURCNE.png`,
+			`You have ${hope1} 1 hope fragment with ${client.users.cache.find('id', message.mentions.members.first().id).username}.,https://i.imgur.com/Mktu16G.png`,
+			`You have ${hope2} 2 hope fragments with ${client.users.cache.find('id', message.mentions.members.first().id).username}.,https://i.imgur.com/4owkJn1.png`,
+			`You have ${hope3} 3 hope fragments with ${client.users.cache.find('id', message.mentions.members.first().id).username}.,https://i.imgur.com/cVXpySt.png`,
+			`You have ${hope4} 4 hope fragments with ${client.users.cache.find('id', message.mentions.members.first().id).username}.,https://i.imgur.com/C2BFXaI.png`,
+			`You have ${hope5} 5 hope fragments with ${client.users.cache.find('id', message.mentions.members.first().id).username}.,https://i.imgur.com/rOXG8SG.png`,
+			`You have all ${hope6} 6 hope fragments with ${client.users.cache.find('id', message.mentions.members.first().id).username}.\n\nGreat job!,https://i.imgur.com/SdYnYZ5.png`
 		];
 		hope = random(arr_hope).split(",");
 		message.channel.send({
@@ -3170,7 +3170,7 @@ client.on("message", (message) => { //When a message is sent.
 				}
 			}
 		});
-		inboxChannel.send(`${message.author.username} checked how many hope fragments they had with ${client.users.find('id', message.mentions.members.first().id).username}.`)
+		inboxChannel.send(`${message.author.username} checked how many hope fragments they had with ${client.users.cache.find('id', message.mentions.members.first().id).username}.`)
 	}
 	if (command === "ask") {
 		if (message.content.length > 6) {
@@ -3319,26 +3319,26 @@ client.on("message", (message) => { //When a message is sent.
 				return
 			}
 			if (message.channel.name === "nsfw") {
-				inboxChannel.send(`${message.author.username} has turned ${client.users.find('id', message.mentions.members.first().id).username} into Cow Ouma.`)
+				inboxChannel.send(`${message.author.username} has turned ${client.users.cache.find('id', message.mentions.members.first().id).username} into Cow Ouma.`)
 				message.channel.send({
 					embed: {
 						color: 15285149,
 						"image": {
 							"url": 'https://i.imgur.com/65eC9or.png'
 						},
-						title: `${client.users.find('id', message.mentions.members.first().id).username} has been turned into a cow!`
+						title: `${client.users.cache.find('id', message.mentions.members.first().id).username} has been turned into a cow!`
 					}
 				});
 				return
 			}
-			inboxChannel.send(`${message.author.username} has turned ${client.users.find('id', message.mentions.members.first().id).username} into a cow.`)
+			inboxChannel.send(`${message.author.username} has turned ${client.users.cache.find('id', message.mentions.members.first().id).username} into a cow.`)
 			message.channel.send({
 				embed: {
 					color: 15285149,
 					"image": {
 						"url": 'https://imgur.com/g7YyeYN.gif'
 					},
-					title: `${client.users.find('id', message.mentions.members.first().id).username} has been turned into a cow!`
+					title: `${client.users.cache.find('id', message.mentions.members.first().id).username} has been turned into a cow!`
 				}
 			});
 		} else {
@@ -3362,14 +3362,14 @@ client.on("message", (message) => { //When a message is sent.
 				message.channel.send("Wha-wha?!  I'm not going to turn myself into a chicken!");
 				return
 			}
-			inboxChannel.send(`${message.author.username} has turned ${client.users.find('id', message.mentions.members.first().id).username} into a cow.`)
+			inboxChannel.send(`${message.author.username} has turned ${client.users.cache.find('id', message.mentions.members.first().id).username} into a cow.`)
 			message.channel.send({
 				embed: {
 					color: 15285149,
 					"image": {
 						"url": "https://imgur.com/hiUuUm0.gif"
 					},
-					title: `${client.users.find('id', message.mentions.members.first().id).username} has been turned into a chicken!`
+					title: `${client.users.cache.find('id', message.mentions.members.first().id).username} has been turned into a chicken!`
 				}
 			});
 		} else {
@@ -3957,7 +3957,7 @@ client.on("message", (message) => { //When a message is sent.
 		murderType = random(murderRandomize);
 
 		if (args[0] === "debug") { //Debug Mode
-			let embed = new Discord.RichEmbed()
+			let embed = new Discord.MessageEmbed()
 				.setColor(13959168)
 				.setFooter(`Monomi's Murder Mystery | Debug Mode`);
 
@@ -4019,7 +4019,7 @@ client.on("message", (message) => { //When a message is sent.
 				else if (!args[2]) {
 					for (x = 0; x < students.length; x++) {
 						cluesData = "";
-						let embed = new Discord.RichEmbed()
+						let embed = new Discord.MessageEmbed()
 							.setColor(13959168)
 							.setFooter(`Monomi's Murder Mystery | Debug Mode`);
 						embed.setThumbnail(students[x].imgDead);
@@ -5979,7 +5979,7 @@ client.on("message", (message) => { //When a message is sent.
 		};
 		dictionarySize = words.length;
 
-		let embed = new Discord.RichEmbed()
+		let embed = new Discord.MessageEmbed()
 			.setColor(13959168)
 			.setAuthor("Official Ruslan Eun-Kyung Kraus Dictionary", "https://imgur.com/3jzc9fM.png")
 			.setFooter(`RusDefine | This dictionary contains ${dictionarySize} words.`);
@@ -6001,7 +6001,7 @@ client.on("message", (message) => { //When a message is sent.
 						break;
 					}
 					y++;
-					currentPage = currentPage + "· " + words.shift() + "\n";
+					currentPage = `${currentPage}· ${words.shift()}\n`;
 				}
 				pages.push(currentPage);
 				pageAmount--;
@@ -6059,10 +6059,10 @@ client.on("message", (message) => { //When a message is sent.
 				if (words[x].toString() === args[0].toLowerCase()) {
 					fieldData = "";
 					requestedWord = dictionary[x];
-					descData = "**" + requestedWord.syllables + "** " + requestedWord.pronounce;
+					descData = `**${requestedWord.syllables}** ${requestedWord.pronounce}`;
 					words.splice(words[x], 1, { word: 'hi' });
 					for (z in requestedWord.definition) {
-						fieldData = fieldData + ((z * 1) + 1) + ". " + requestedWord.definition[z] + "\n";
+						fieldData = `${fieldData}${((z * 1) + 1)}. ${requestedWord.definition[z]}\n`;
 					}
 					if (requestedWord.synonymof != false) {
 						fieldData = fieldData + "synonyms: ";
