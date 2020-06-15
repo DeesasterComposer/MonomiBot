@@ -11,6 +11,9 @@
     "mc-ping-updated": "^0.1.0"
   },
   "devDependencies": {},
+  "engines": {
+    "node": "12.x"
+  },
   "scripts": {
     "start": "node monomi.js"
   },
