@@ -710,7 +710,7 @@ client.on('guildMemberAdd', member => { //Upon the joining of a member to a guil
 	}).then(msg => {
 		msg.delete(60000)
 	});
-	member.addRole(member.guild.roles.find('id', '455218733980450825')); //Give the member the 'Ultimates' role.
+	member.roles.add(member.guild.roles.find('id', '455218733980450825')); //Give the member the 'Ultimates' role.
 });
 
 let prefix = "m!"; //Sets the command prefix to m!
@@ -2671,31 +2671,31 @@ client.on("message", (message) => { //When a message is sent.
 
 				checkA.on('collect', r => {
 					investigationBeginChannel.send(`${user.name} has chosen Option A for round one!`);
-					user.addRole(roleA1).catch(message.channel.send(console.error));
+					user.roles.add(roleA1).catch(message.channel.send(console.error));
 					alreadyChosen.push(user.id);
 				});
 
 				checkB.on('collect', r => {
 					investigationBeginChannel.send(`${user.name} has chosen Option B for round one!`);
-					user.addRole(roleB1);
+					user.roles.add(roleB1);
 					alreadyChosen.push(user.id);
 				});
 
 				checkC.on('collect', r => {
 					investigationBeginChannel.send(`${user.name} has chosen Option C for round one!`);
-					user.addRole(roleC1);
+					user.roles.add(roleC1);
 					alreadyChosen.push(user.id);
 				});
 
 				checkD.on('collect', r => {
 					investigationBeginChannel.send(`${user.name} has chosen Option D for round one!`);
-					user.addRole(roleD1);
+					user.roles.add(roleD1);
 					alreadyChosen.push(user.id);
 				});
 
 				checkE.on('collect', r => {
 					investigationBeginChannel.send(`${user.name} has chosen Option E for round one!`);
-					user.addRole(roleE1);
+					user.roles.add(roleE1);
 					alreadyChosen.push(user.id);
 				});
 			})
@@ -2750,31 +2750,31 @@ client.on("message", (message) => { //When a message is sent.
 
 					checkA.on('collect', r => {
 						investigationBeginChannel.send(`${user.name} has chosen Option A for round one!`);
-						user.addRole(roleA2).catch(message.channel.send(console.error));
+						user.roles.add(roleA2).catch(message.channel.send(console.error));
 						alreadyChosen.push(user.id);
 					});
 
 					checkB.on('collect', r => {
 						investigationBeginChannel.send(`${user.name} has chosen Option B for round one!`);
-						user.addRole(roleB2);
+						user.roles.add(roleB2);
 						alreadyChosen.push(user.id);
 					});
 
 					checkC.on('collect', r => {
 						investigationBeginChannel.send(`${user.name} has chosen Option C for round one!`);
-						user.addRole(roleC2);
+						user.roles.add(roleC2);
 						alreadyChosen.push(user.id);
 					});
 
 					checkD.on('collect', r => {
 						investigationBeginChannel.send(`${user.name} has chosen Option D for round one!`);
-						user.addRole(roleD2);
+						user.roles.add(roleD2);
 						alreadyChosen.push(user.id);
 					});
 
 					checkE.on('collect', r => {
 						investigationBeginChannel.send(`${user.name} has chosen Option E for round one!`);
-						user.addRole(roleE2);
+						user.roles.add(roleE2);
 						alreadyChosen.push(user.id);
 					});
 				})
