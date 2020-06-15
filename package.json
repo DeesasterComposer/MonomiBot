@@ -12,7 +12,7 @@
   },
   "devDependencies": {},
   "engines": {
-    "node": "12.x"
+    "node": "^12.18.0"
   },
   "scripts": {
     "start": "node monomi.js"
