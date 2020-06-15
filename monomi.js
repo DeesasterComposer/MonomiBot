@@ -30,6 +30,7 @@ function play(connection, message) {
 		}
 	});
 };
+
 function move(arr, queueShiftFrom, queueShiftTo, message) {
 	while (queueShiftFrom < 0) {
 		queueShiftFrom += arr.length;
@@ -46,6 +47,7 @@ function move(arr, queueShiftFrom, queueShiftTo, message) {
 	arr.splice(queueShiftTo, 0, arr.splice(queueShiftFrom, 1)[0]);
 	return message.channel.send(`:white_check_mark: Monomi has moved \`${arr[queueShiftTo].title}\` to position ${queueShiftTo}.`);
 };
+
 function shuffle(array) {
 	var currentIndex = array.length;
 	var temporaryValue, randomIndex;
@@ -61,37 +63,36 @@ function shuffle(array) {
 	}
 	return array;
 };
+
 function shutdown() {
-	const inboxGuild = client.guilds.find('id', '480549161201041418');
-	const inboxChannel = inboxGuild.channels.find('name', 'monomi-inbox');
-	
-	inboxChannel.send("Monomi has been turned off.")
 	console.log("Monomi has left the island!");
-	setTimeout(function () {process.exit()}, 1000);
+	setTimeout(function () {
+		process.exit()
+	}, 1000);
 };
+
 function checkBirthdays(birthday) {
 	return birthday.day === currentDateFixed.getDate().toString() && birthday.month === (currentDateFixed.getMonth() + 1).toString();
 }
+
 function shuffleStatus(iteration) {
 	if (iteration === 0) { //Sets Monomi's discord status to version
-		client.user.setPresence({ 
-			status: 'dnd',
-			game: {
+		client.user.setPresence({
+			activity: {
 				name: `v${version} of MonomiBot`
-			}
+			},
+			status: 'dnd'
 		})
 		shuffleState++;
-	}
-	else if (iteration === 1) { //Sets Monomi's discord status to help
-		client.user.setPresence({ 
-			status: 'dnd',
-			game: {
+	} else if (iteration === 1) { //Sets Monomi's discord status to help
+		client.user.setPresence({
+			activity: {
 				name: `'m!help' for help`
-			}
+			},
+			status: 'dnd'
 		});
 		shuffleState++;
-	}
-	else if (iteration === 2) { //Sets Monomi's Discord status to splash text
+	} else if (iteration === 2) { //Sets Monomi's Discord status to splash text
 		splashStatuses = [
 			"with mice",
 			"Komaeda like a fool",
@@ -180,21 +181,22 @@ function shuffleStatus(iteration) {
 			"Animal Crossing",
 		]
 		client.user.setPresence({ //Sets Monomi's discord status to version
-			status: 'dnd',
-			game: {
+			activity: {
 				name: `${random(splashStatuses)}`
-			}
+			},
+			status: 'dnd'
 		});
 		shuffleState = 0;
 	}
 	setTimeout(recallStatusShuffle, 20000);
 }
+
 function recallStatusShuffle() {
 	shuffleStatus(shuffleState);
 }
 
 /*Important Info*/
-var version = "3.6.1.2-31";
+var version = "3.7.0.0";
 var shuffleState = 0;
 var mouseTriggers = 0;
 var ottoTriggers = 0;
@@ -204,116 +206,753 @@ var currentDate = new Date();
 var currentDateFixed = new Date(currentDate - (300 * 60 * 1000));
 var birthdays = [
 	/*Kaeno Shinjomu Birthdays*/
-	{ categories: ["ks"], name: "Mori Hibana", pronoun: "her", day: "4", month: "1" },
-	{ categories: ["ks"], name: "Junko Saitou", pronoun: "them", day: "6", month: "1" },
-	{ categories: ["ks"], name: "Aurélie Cartier", pronoun: "her", day: "9", month: "1" },
-	{ categories: ["ks"], name: "Charles 'Chad' Miller", pronoun: "him", day: "11", month: "1" },
-	{ categories: ["ks"], name: "Anzu Kofuku", pronoun: "him", day: "25", month: "1" },
-	{ categories: ["ks"], name: "Shinji Minoru", pronoun: "him", day: "27", month: "1" },
-	{ categories: ["ks"], name: "Ximena Colomar", pronoun: "her", day: "7", month: "2" },
-	{ categories: ["ks"], name: "Santo Verdugo Bautista", pronoun: "**it**", day: "11", month: "2" },
-	{ categories: ["bab"], name: "Haruna Hattori", pronoun: "her", day: "11", month: "2" },
-	{ categories: ["killers"], name: "Frankie Liao", pronoun: "him", day: "15", month: "2" },
-	{ categories: ["ks"], name: "Federico Navarro", pronoun: "**it**", day: "16", month: "2" },
-	{ categories: ["ks"], name: "Kyabetsu Retasu", pronoun: "him", day: "17", month: "2" },
-	{ categories: ["ks"], name: "Melchor Guadalupe Paz de la Cruz", pronoun: "him", day: "29", month: "2" },
-	{ categories: ["ks"], name: "Ruslan Eun-Kyung Kraus", pronoun: "ihm", day: "2", month: "3" },
-	{ categories: ["ks"], name: "Akiko", pronoun: "her", day: "13", month: "3" },
-	{ categories: ["bab"], name: "Satomi Shinoda", pronoun: "him", day: "13", month: "3" },
-	{ categories: ["bab"], name: "Hakaku Himura", pronoun: "him", day: "14", month: "3" },
-	{ categories: ["ks"], name: "Chika Miyasaki", pronoun: "her", day: "20", month: "3" },
-	{ categories: ["ks","bab"], name: "Souma Shimizu", pronoun: "him", day: "20", month: "3" },
-	{ categories: ["ks","bab"], name: "Piper McCullough", pronoun: "her", day: "23", month: "3" },
-	{ categories: ["ks"], name: "Inugami Izuki", pronoun: "her", day: "24", month: "3" },
-	{ categories: ["ks"], name: "Théo Dubois", pronoun: "him", day: "27", month: "3" },
-	{ categories: ["ks"], name: "Monika Minami", pronoun: "her", day: "1", month: "4" },
-	{ categories: ["bab"], name: "Mahina Keawe", pronoun: "her", day: "7", month: "4" },
-	{ categories: ["ks"], name: "Anya Sakaguchi", pronoun: "her", day: "10", month: "4" },
-	{ categories: ["ks"], name: "S'ad Ludópata", pronoun: "him", day: "10", month: "4" },
-	{ categories: ["killers"], name: "Ludwig Addair", pronoun: "him", day: "6", month: "4" },
-	{ categories: ["ks"], name: "Ryu Akahoshi", pronoun: "him", day: "6", month: "4" },
-	{ categories: ["killers"], name: "Mazal Adatto", pronoun: "him", day: "8", month: "4" },
-	{ categories: ["ks"], name: "Yuuya Michimiya", pronoun: "him", day: "13", month: "4" },
-	{ categories: ["ks"], name: "Megu Kojima", pronoun: "her", day: "15", month: "4" },
-	{ categories: ["ks"], name: "Tomomi Kashichi", pronoun: "him", day: "17", month: "4" },
-	{ categories: ["ks"], name: "Katashi Maeda", pronoun: "him", day: "20", month: "4" },
-	{ categories: ["ks"], name: "Chikako Kaetsu", pronoun: "**it**", day: "26", month: "4" },
-	{ categories: ["ks","bab"], name: "Cecilio Calles Cárdenas", pronoun: "him", day: "3", month: "5" },
-	{ categories: ["ks"], name: "Megami Himura", pronoun: "her", day: "15", month: "5" },
-	{ categories: ["killers"], name: "Chiyo Ametsuchi", pronoun: "her", day: "21", month: "5" },
-	{ categories: ["ks"], name: "Ale del Prieto", pronoun: "him", day: "22", month: "5" },
-	{ categories: ["ks"], name: "Stella Hunter", pronoun: "her", day: "24", month: "5" },
-	{ categories: ["bab"], name: "Masami Nii", pronoun: "him", day: "25", month: "5" },
-	{ categories: ["ks"], name: "Fenikku Hinotama", pronoun: "him", day: "29", month: "5" },
-	{ categories: ["ks"], name: "Jeong and Kyoung-mi Park", pronoun: "them both", day: "29", month: "5" },
-	{ categories: ["bab"], name: "Takeshi Shinoda", pronoun: "him", day: "29", month: "5" },
-	{ categories: ["ks"], name: "Isha Kalki", pronoun: "him", day: "31", month: "5" },
-	{ categories: ["ks"], name: "Sora Kenshin", pronoun: "him", day: "1", month: "6" },
-	{ categories: ["ks"], name: "Eiichi Ryozo", pronoun: "him", day: "6", month: "6" },
-	{ categories: ["bab"], name: "Kiku Sugimoto", pronoun: "her", day: "8", month: "6" },
-	{ categories: ["ks"], name: "Noriko Suzuki", pronoun: "her", day: "9", month: "6" },
-	{ categories: ["ks"], name: "Tenshi Kawada", pronoun: "him", day: "11", month: "6" },
-	{ categories: ["killers"], name: "Cass Reed-Watts", pronoun: "them", day: "13", month: "6" },
-	{ categories: ["ks"], name: "Aiko Hikaru", pronoun: "him", day: "14", month: "6" },
-	{ categories: ["ks"], name: "Kumiko Yeun", pronoun: "her", day: "16", month: "6" },
-	{ categories: ["bab"], name: "Ayumu Shinoda", pronoun: "him", day: "18", month: "6" },
-	{ categories: ["ks"], name: "Anaelle Hamaan", pronoun: "her", day: "20", month: "6" },
-	{ categories: ["ks","bab"], name: "Aika Mahaya", pronoun: "her", day: "21", month: "6" },
-	{ categories: ["ks"], name: "Yuna Akahoshi", pronoun: "her", day: "25", month: "6" },
-	{ categories: ["bab"], name: "Kaoru Saitou", pronoun: "him", day: "4", month: "7" },
-	{ categories: ["bab"], name: "Pia Adesso", pronoun: "her", day: "15", month: "7" },
-	{ categories: ["bab"], name: "Eriko Shingo", pronoun: "her", day: "21", month: "7" },
-	{ categories: ["ks"], name: "Miyuki Ataru", pronoun: "him", day: "23", month: "7" },
-	{ categories: ["ks"], name: "Minako Kaoru", pronoun: "her", day: "7", month: "8" },
-	{ categories: ["ks","bab"], name: "Dia Ramos", pronoun: "her", day: "10", month: "8" },
-	{ categories: ["ks"], name: "Rosendo Paulo Ochoa Merlo", pronoun: "him", day: "10", month: "8" },
-	{ categories: ["ks"], name: "Renata de Santis", pronoun: "her", day: "11", month: "8" },
-	{ categories: ["ks"], name: "Kazuya Harada", pronoun: "him", day: "13", month: "8" },
-	{ categories: ["ks"], name: "Ara Ayao", pronoun: "her", day: "15", month: "8" },
-	{ categories: ["ks","bab"], name: "Kiro Karasu", pronoun: "him", day: "17", month: "8" },
-	{ categories: ["ks"], name: "Tsuyo Kogiyumi", pronoun: "her", day: "25", month: "8" },
-	{ categories: ["ks","bab"], name: "Asahi Fukuzawa", pronoun: "him", day: "27", month: "8" },
-	{ categories: ["ks"], name: "Aemele Dèjré", pronoun: "her", day: "1", month: "9" },
-	{ categories: ["ks"], name: "Kira Kurushimi", pronoun: "her", day: "7", month: "9" },
-	{ categories: ["ks"], name: "Nikki Boniface", pronoun: "à elle", day: "8", month: "9" },
-	{ categories: ["bab"], name: "Denis Adesso-Mori", pronoun: "him", day: "9", month: "9" },
-	{ categories: ["ks"], name: "Kagami Hannei", pronoun: "her", day: "14", month: "9" },
-	{ categories: ["ks"], name: "Kouki Yoshida", pronoun: "him", day: "15", month: "9" },
-	{ categories: ["ks"], name: "Saeko Kiyomizu", pronoun: "her", day: "15", month: "9" },
-	{ categories: ["ks"], name: "Daichi Ichihara", pronoun: "him", day: "23", month: "9" },
-	{ categories: ["bab"], name: "Matilda Spitzenreiter", pronoun: "her", day: "1", month: "10" },
-	{ categories: ["ks"], name: "Jacek Żeglarski", pronoun: "him", day: "3", month: "10" },
-	{ categories: ["ks"], name: "Kaipo Uilani Iona", pronoun: "him", day: "13", month: "10" },
-	{ categories: ["bab"], name: "Oliver Bennett", pronoun: "him", day: "16", month: "10" },
-	{ categories: ["ks"], name: "Ayuma Tanaka", pronoun: "him", day: "17", month: "10" },
-	{ categories: ["bab"], name: "Edith Freya Reuter-Protz", pronoun: "her", day: "19", month: "10" },
-	{ categories: ["bab"], name: "Riko Ramuda", pronoun: "her", day: "25", month: "10" },
-	{ categories: ["bab"], name: "Chava Hazzan", pronoun: "her", day: "28", month: "10" },
-	{ categories: ["ks"], name: "Areli Vephkia", pronoun: "him", day: "29", month: "10" },
-	{ categories: ["ks"], name: "Hoshi Chiura", pronoun: "him", day: "31", month: "10" },
-	{ categories: ["ks"], name: "Tezuku Imou", pronoun: "her", day: "31", month: "10" },
-	{ categories: ["ks"], name: "Eiji Ryozo", pronoun: "her", day: "1", month: "11" },
-	{ categories: ["killers"], name: "Alexis Spellmeyer", pronoun: "him", day: "1", month: "11" },
-	{ categories: ["bab"], name: "Harvey Orkins", pronoun: "him", day: "1", month: "11" },
-	{ categories: ["ks","bab"], name: "Kotone Fukuzawa", pronoun: "her", day: "4", month: "11" },
-	{ categories: ["ks"], name: "Shiba Mikio", pronoun: "him", day: "4", month: "11" },
-	{ categories: ["ks"], name: "Hachi Hiruma", pronoun: "her", day: "9", month: "11" },
-	{ categories: ["ks"], name: "Hana Kageriri", pronoun: "her", day: "12", month: "11" },
-	{ categories: ["ks"], name: "Arisa Shokuhou", pronoun: "her", day: "13", month: "11" },
-	{ categories: ["ks"], name: "Cheisu Maeda", pronoun: "him", day: "13", month: "11" },
-	{ categories: ["ks"], name: "Masayuuki Taisho", pronoun: "him", day: "25", month: "11" },
-	{ categories: ["ks"], name: "Hideo Takayama", pronoun: "him", day: "2", month: "12" },
-	{ categories: ["ks"], name: "Wolfgang Schwarz", pronoun: "ihm", day: "7", month: "12" },
-	{ categories: ["ks","bab"], name: "Mariko Murakami", pronoun: "her", day: "12", month: "12" },
-	{ categories: ["ks"], name: "Yukine Sakurai", pronoun: "him", day: "13", month: "12" },
-	{ categories: ["ks"], name: "Jomei Hoshino", pronoun: "him", day: "17", month: "12" },
-	{ categories: ["killers"], name: "Adrienne Moreau", pronoun: "her", day: "22", month: "12" },
-	{ categories: ["ks"], name: "Michel Voigt", pronoun: "him", day: "25", month: "12" },
-	{ categories: ["ks"], name: "Ryoushi Nobuori", pronoun: "him", day: "25", month: "12" }
+	{
+		categories: ["ks"],
+		name: "Mori Hibana",
+		pronoun: "her",
+		day: "4",
+		month: "1"
+	},
+	{
+		categories: ["ks"],
+		name: "Junko Saitou",
+		pronoun: "them",
+		day: "6",
+		month: "1"
+	},
+	{
+		categories: ["ks"],
+		name: "Aurélie Cartier",
+		pronoun: "her",
+		day: "9",
+		month: "1"
+	},
+	{
+		categories: ["ks"],
+		name: "Charles 'Chad' Miller",
+		pronoun: "him",
+		day: "11",
+		month: "1"
+	},
+	{
+		categories: ["ks"],
+		name: "Anzu Kofuku",
+		pronoun: "him",
+		day: "25",
+		month: "1"
+	},
+	{
+		categories: ["ks"],
+		name: "Shinji Minoru",
+		pronoun: "him",
+		day: "27",
+		month: "1"
+	},
+	{
+		categories: ["ks"],
+		name: "Ximena Colomar",
+		pronoun: "her",
+		day: "7",
+		month: "2"
+	},
+	{
+		categories: ["ks"],
+		name: "Santo Verdugo Bautista",
+		pronoun: "**it**",
+		day: "11",
+		month: "2"
+	},
+	{
+		categories: ["bab"],
+		name: "Haruna Hattori",
+		pronoun: "her",
+		day: "11",
+		month: "2"
+	},
+	{
+		categories: ["killers"],
+		name: "Frankie Liao",
+		pronoun: "him",
+		day: "15",
+		month: "2"
+	},
+	{
+		categories: ["ks"],
+		name: "Federico Navarro",
+		pronoun: "**it**",
+		day: "16",
+		month: "2"
+	},
+	{
+		categories: ["ks"],
+		name: "Kyabetsu Retasu",
+		pronoun: "him",
+		day: "17",
+		month: "2"
+	},
+	{
+		categories: ["ks"],
+		name: "Melchor Guadalupe Paz de la Cruz",
+		pronoun: "him",
+		day: "29",
+		month: "2"
+	},
+	{
+		categories: ["ks"],
+		name: "Ruslan Eun-Kyung Kraus",
+		pronoun: "ihm",
+		day: "2",
+		month: "3"
+	},
+	{
+		categories: ["ks"],
+		name: "Akiko",
+		pronoun: "her",
+		day: "13",
+		month: "3"
+	},
+	{
+		categories: ["bab"],
+		name: "Satomi Shinoda",
+		pronoun: "him",
+		day: "13",
+		month: "3"
+	},
+	{
+		categories: ["bab"],
+		name: "Hakaku Himura",
+		pronoun: "him",
+		day: "14",
+		month: "3"
+	},
+	{
+		categories: ["ks"],
+		name: "Chika Miyasaki",
+		pronoun: "her",
+		day: "20",
+		month: "3"
+	},
+	{
+		categories: ["ks", "bab"],
+		name: "Souma Shimizu",
+		pronoun: "him",
+		day: "20",
+		month: "3"
+	},
+	{
+		categories: ["ks", "bab"],
+		name: "Piper McCullough",
+		pronoun: "her",
+		day: "23",
+		month: "3"
+	},
+	{
+		categories: ["ks"],
+		name: "Inugami Izuki",
+		pronoun: "her",
+		day: "24",
+		month: "3"
+	},
+	{
+		categories: ["ks"],
+		name: "Théo Dubois",
+		pronoun: "him",
+		day: "27",
+		month: "3"
+	},
+	{
+		categories: ["ks"],
+		name: "Monika Minami",
+		pronoun: "her",
+		day: "1",
+		month: "4"
+	},
+	{
+		categories: ["bab"],
+		name: "Mahina Keawe",
+		pronoun: "her",
+		day: "7",
+		month: "4"
+	},
+	{
+		categories: ["ks"],
+		name: "Anya Sakaguchi",
+		pronoun: "her",
+		day: "10",
+		month: "4"
+	},
+	{
+		categories: ["ks"],
+		name: "S'ad Ludópata",
+		pronoun: "him",
+		day: "10",
+		month: "4"
+	},
+	{
+		categories: ["killers"],
+		name: "Ludwig Addair",
+		pronoun: "him",
+		day: "6",
+		month: "4"
+	},
+	{
+		categories: ["ks"],
+		name: "Ryu Akahoshi",
+		pronoun: "him",
+		day: "6",
+		month: "4"
+	},
+	{
+		categories: ["killers"],
+		name: "Mazal Adatto",
+		pronoun: "him",
+		day: "8",
+		month: "4"
+	},
+	{
+		categories: ["ks"],
+		name: "Yuuya Michimiya",
+		pronoun: "him",
+		day: "13",
+		month: "4"
+	},
+	{
+		categories: ["ks"],
+		name: "Megu Kojima",
+		pronoun: "her",
+		day: "15",
+		month: "4"
+	},
+	{
+		categories: ["ks"],
+		name: "Tomomi Kashichi",
+		pronoun: "him",
+		day: "17",
+		month: "4"
+	},
+	{
+		categories: ["ks"],
+		name: "Katashi Maeda",
+		pronoun: "him",
+		day: "20",
+		month: "4"
+	},
+	{
+		categories: ["ks"],
+		name: "Chikako Kaetsu",
+		pronoun: "**it**",
+		day: "26",
+		month: "4"
+	},
+	{
+		categories: ["ks", "bab"],
+		name: "Cecilio Calles Cárdenas",
+		pronoun: "him",
+		day: "3",
+		month: "5"
+	},
+	{
+		categories: ["ks"],
+		name: "Megami Himura",
+		pronoun: "her",
+		day: "15",
+		month: "5"
+	},
+	{
+		categories: ["killers"],
+		name: "Chiyo Ametsuchi",
+		pronoun: "her",
+		day: "21",
+		month: "5"
+	},
+	{
+		categories: ["ks"],
+		name: "Ale del Prieto",
+		pronoun: "him",
+		day: "22",
+		month: "5"
+	},
+	{
+		categories: ["ks"],
+		name: "Stella Hunter",
+		pronoun: "her",
+		day: "24",
+		month: "5"
+	},
+	{
+		categories: ["bab"],
+		name: "Masami Nii",
+		pronoun: "him",
+		day: "25",
+		month: "5"
+	},
+	{
+		categories: ["ks"],
+		name: "Fenikku Hinotama",
+		pronoun: "him",
+		day: "29",
+		month: "5"
+	},
+	{
+		categories: ["ks"],
+		name: "Jeong and Kyoung-mi Park",
+		pronoun: "them both",
+		day: "29",
+		month: "5"
+	},
+	{
+		categories: ["bab"],
+		name: "Takeshi Shinoda",
+		pronoun: "him",
+		day: "29",
+		month: "5"
+	},
+	{
+		categories: ["ks"],
+		name: "Isha Kalki",
+		pronoun: "him",
+		day: "31",
+		month: "5"
+	},
+	{
+		categories: ["ks"],
+		name: "Sora Kenshin",
+		pronoun: "him",
+		day: "1",
+		month: "6"
+	},
+	{
+		categories: ["ks"],
+		name: "Eiichi Ryozo",
+		pronoun: "him",
+		day: "6",
+		month: "6"
+	},
+	{
+		categories: ["bab"],
+		name: "Kiku Sugimoto",
+		pronoun: "her",
+		day: "8",
+		month: "6"
+	},
+	{
+		categories: ["ks"],
+		name: "Noriko Suzuki",
+		pronoun: "her",
+		day: "9",
+		month: "6"
+	},
+	{
+		categories: ["ks"],
+		name: "Tenshi Kawada",
+		pronoun: "him",
+		day: "11",
+		month: "6"
+	},
+	{
+		categories: ["killers"],
+		name: "Cass Reed-Watts",
+		pronoun: "them",
+		day: "13",
+		month: "6"
+	},
+	{
+		categories: ["ks"],
+		name: "Aiko Hikaru",
+		pronoun: "him",
+		day: "14",
+		month: "6"
+	},
+	{
+		categories: ["ks"],
+		name: "Kumiko Yeun",
+		pronoun: "her",
+		day: "16",
+		month: "6"
+	},
+	{
+		categories: ["bab"],
+		name: "Ayumu Shinoda",
+		pronoun: "him",
+		day: "18",
+		month: "6"
+	},
+	{
+		categories: ["ks"],
+		name: "Anaelle Hamaan",
+		pronoun: "her",
+		day: "20",
+		month: "6"
+	},
+	{
+		categories: ["ks", "bab"],
+		name: "Aika Mahaya",
+		pronoun: "her",
+		day: "21",
+		month: "6"
+	},
+	{
+		categories: ["ks"],
+		name: "Yuna Akahoshi",
+		pronoun: "her",
+		day: "25",
+		month: "6"
+	},
+	{
+		categories: ["bab"],
+		name: "Kaoru Saitou",
+		pronoun: "him",
+		day: "4",
+		month: "7"
+	},
+	{
+		categories: ["bab"],
+		name: "Pia Adesso",
+		pronoun: "her",
+		day: "15",
+		month: "7"
+	},
+	{
+		categories: ["bab"],
+		name: "Eriko Shingo",
+		pronoun: "her",
+		day: "21",
+		month: "7"
+	},
+	{
+		categories: ["ks"],
+		name: "Miyuki Ataru",
+		pronoun: "him",
+		day: "23",
+		month: "7"
+	},
+	{
+		categories: ["ks"],
+		name: "Minako Kaoru",
+		pronoun: "her",
+		day: "7",
+		month: "8"
+	},
+	{
+		categories: ["ks", "bab"],
+		name: "Dia Ramos",
+		pronoun: "her",
+		day: "10",
+		month: "8"
+	},
+	{
+		categories: ["ks"],
+		name: "Rosendo Paulo Ochoa Merlo",
+		pronoun: "him",
+		day: "10",
+		month: "8"
+	},
+	{
+		categories: ["ks"],
+		name: "Renata de Santis",
+		pronoun: "her",
+		day: "11",
+		month: "8"
+	},
+	{
+		categories: ["ks"],
+		name: "Kazuya Harada",
+		pronoun: "him",
+		day: "13",
+		month: "8"
+	},
+	{
+		categories: ["ks"],
+		name: "Ara Ayao",
+		pronoun: "her",
+		day: "15",
+		month: "8"
+	},
+	{
+		categories: ["ks", "bab"],
+		name: "Kiro Karasu",
+		pronoun: "him",
+		day: "17",
+		month: "8"
+	},
+	{
+		categories: ["ks"],
+		name: "Tsuyo Kogiyumi",
+		pronoun: "her",
+		day: "25",
+		month: "8"
+	},
+	{
+		categories: ["ks", "bab"],
+		name: "Asahi Fukuzawa",
+		pronoun: "him",
+		day: "27",
+		month: "8"
+	},
+	{
+		categories: ["ks"],
+		name: "Aemele Dèjré",
+		pronoun: "her",
+		day: "1",
+		month: "9"
+	},
+	{
+		categories: ["ks"],
+		name: "Kira Kurushimi",
+		pronoun: "her",
+		day: "7",
+		month: "9"
+	},
+	{
+		categories: ["ks"],
+		name: "Nikki Boniface",
+		pronoun: "à elle",
+		day: "8",
+		month: "9"
+	},
+	{
+		categories: ["bab"],
+		name: "Denis Adesso-Mori",
+		pronoun: "him",
+		day: "9",
+		month: "9"
+	},
+	{
+		categories: ["ks"],
+		name: "Kagami Hannei",
+		pronoun: "her",
+		day: "14",
+		month: "9"
+	},
+	{
+		categories: ["ks"],
+		name: "Kouki Yoshida",
+		pronoun: "him",
+		day: "15",
+		month: "9"
+	},
+	{
+		categories: ["ks"],
+		name: "Saeko Kiyomizu",
+		pronoun: "her",
+		day: "15",
+		month: "9"
+	},
+	{
+		categories: ["ks"],
+		name: "Daichi Ichihara",
+		pronoun: "him",
+		day: "23",
+		month: "9"
+	},
+	{
+		categories: ["bab"],
+		name: "Matilda Spitzenreiter",
+		pronoun: "her",
+		day: "1",
+		month: "10"
+	},
+	{
+		categories: ["ks"],
+		name: "Jacek Żeglarski",
+		pronoun: "him",
+		day: "3",
+		month: "10"
+	},
+	{
+		categories: ["ks"],
+		name: "Kaipo Uilani Iona",
+		pronoun: "him",
+		day: "13",
+		month: "10"
+	},
+	{
+		categories: ["bab"],
+		name: "Oliver Bennett",
+		pronoun: "him",
+		day: "16",
+		month: "10"
+	},
+	{
+		categories: ["ks"],
+		name: "Ayuma Tanaka",
+		pronoun: "him",
+		day: "17",
+		month: "10"
+	},
+	{
+		categories: ["bab"],
+		name: "Edith Freya Reuter-Protz",
+		pronoun: "her",
+		day: "19",
+		month: "10"
+	},
+	{
+		categories: ["bab"],
+		name: "Riko Ramuda",
+		pronoun: "her",
+		day: "25",
+		month: "10"
+	},
+	{
+		categories: ["bab"],
+		name: "Chava Hazzan",
+		pronoun: "her",
+		day: "28",
+		month: "10"
+	},
+	{
+		categories: ["ks"],
+		name: "Areli Vephkia",
+		pronoun: "him",
+		day: "29",
+		month: "10"
+	},
+	{
+		categories: ["ks"],
+		name: "Hoshi Chiura",
+		pronoun: "him",
+		day: "31",
+		month: "10"
+	},
+	{
+		categories: ["ks"],
+		name: "Tezuku Imou",
+		pronoun: "her",
+		day: "31",
+		month: "10"
+	},
+	{
+		categories: ["ks"],
+		name: "Eiji Ryozo",
+		pronoun: "her",
+		day: "1",
+		month: "11"
+	},
+	{
+		categories: ["killers"],
+		name: "Alexis Spellmeyer",
+		pronoun: "him",
+		day: "1",
+		month: "11"
+	},
+	{
+		categories: ["bab"],
+		name: "Harvey Orkins",
+		pronoun: "him",
+		day: "1",
+		month: "11"
+	},
+	{
+		categories: ["ks", "bab"],
+		name: "Kotone Fukuzawa",
+		pronoun: "her",
+		day: "4",
+		month: "11"
+	},
+	{
+		categories: ["ks"],
+		name: "Shiba Mikio",
+		pronoun: "him",
+		day: "4",
+		month: "11"
+	},
+	{
+		categories: ["ks"],
+		name: "Hachi Hiruma",
+		pronoun: "her",
+		day: "9",
+		month: "11"
+	},
+	{
+		categories: ["ks"],
+		name: "Hana Kageriri",
+		pronoun: "her",
+		day: "12",
+		month: "11"
+	},
+	{
+		categories: ["ks"],
+		name: "Arisa Shokuhou",
+		pronoun: "her",
+		day: "13",
+		month: "11"
+	},
+	{
+		categories: ["ks"],
+		name: "Cheisu Maeda",
+		pronoun: "him",
+		day: "13",
+		month: "11"
+	},
+	{
+		categories: ["ks"],
+		name: "Masayuuki Taisho",
+		pronoun: "him",
+		day: "25",
+		month: "11"
+	},
+	{
+		categories: ["ks"],
+		name: "Hideo Takayama",
+		pronoun: "him",
+		day: "2",
+		month: "12"
+	},
+	{
+		categories: ["ks"],
+		name: "Wolfgang Schwarz",
+		pronoun: "ihm",
+		day: "7",
+		month: "12"
+	},
+	{
+		categories: ["ks", "bab"],
+		name: "Mariko Murakami",
+		pronoun: "her",
+		day: "12",
+		month: "12"
+	},
+	{
+		categories: ["ks"],
+		name: "Yukine Sakurai",
+		pronoun: "him",
+		day: "13",
+		month: "12"
+	},
+	{
+		categories: ["ks"],
+		name: "Jomei Hoshino",
+		pronoun: "him",
+		day: "17",
+		month: "12"
+	},
+	{
+		categories: ["killers"],
+		name: "Adrienne Moreau",
+		pronoun: "her",
+		day: "22",
+		month: "12"
+	},
+	{
+		categories: ["ks"],
+		name: "Michel Voigt",
+		pronoun: "him",
+		day: "25",
+		month: "12"
+	},
+	{
+		categories: ["ks"],
+		name: "Ryoushi Nobuori",
+		pronoun: "him",
+		day: "25",
+		month: "12"
+	},
 ];
 
 /*Murder Mystery*/
 MM_InProgress = false;
+
 function generateOverlapClues(murderer, evidenceClue) { //Generates overlapping clues for murders
 	if ((murderer.name === "Aiko Hikaru" || murderer.name === "Shiba Mikio") && evidenceClue === "A heart-shaped pin was found at the scene.") {
 		falseAnswer1 = students[1];
@@ -559,6 +1198,7 @@ function generateOverlapClues(murderer, evidenceClue) { //Generates overlapping 
 		falseAnswer2 = students[84];
 	}
 }
+
 function generateHairClue(hairMurderer, hairA, hairB, hairC, hairD, hairE) { //Generates hair clues for murders
 	falseHair1 = random([hairA, hairB]);
 	falseHair2 = random([hairC, hairD, hairE]);
@@ -581,6 +1221,7 @@ function generateHairClue(hairMurderer, hairA, hairB, hairC, hairD, hairE) { //G
 		hairClue = `There were three strands of **${suspectHairs[0]}** hair found at the scene.`;
 	}
 }
+
 function generateMurderScenario() { //Generates a murder scenario
 	scenarios = [
 		`The victim was found in their dormitory's bathroom, propped against the wall of the shower.`,
@@ -646,26 +1287,22 @@ const monomi_trial8 = "https://imgur.com/pDtdNiZ.png" //Scared BDSM
 
 client.on("ready", () => { //When Monomi is turned on.
 	client.user.setPresence({ //Sets Monomi's discord status
-		status: 'online',
-		game: {
+		activity: {
 			name: "Turning on!"
-		}
+		},
+		status: 'online'
 	});
 
-	//Initializes the inbox location.
-	const inboxGuild = client.guilds.find('id', '480549161201041418');
-	const inboxChannel = inboxGuild.channels.find('name', 'monomi-inbox');
-	inboxChannel.send(`Monomi has been activated on ${currentDateFixed}.`);
 	console.log("Monomi has arrived on the island!");
-	
-	const kaenoShinjomuServer = client.guilds.find('id', '455218035507331072');
-	const kaenoBirthdayChannel = kaenoShinjomuServer.channels.find('name', 'birthdays');
-	const thunderClanServer = client.guilds.find('id', '641826067232849939');
-	const thunderClanBirthdayChannel = thunderClanServer.channels.find('name', 'birthdays');
 
-	const tempServer = client.guilds.find('id', '633119665178017793');
-	const tempChannel = tempServer.channels.find('name','dee-notes');
-	
+	const kaenoShinjomuServer = client.guilds.cache.find(guild => guild.id === '455218035507331072');
+	const kaenoBirthdayChannel = kaenoShinjomuServer.channels.cache.find(channel => channel.name === 'birthdays');
+	const thunderClanServer = client.guilds.cache.find(guild => guild.id === '641826067232849939');
+	const thunderClanBirthdayChannel = thunderClanServer.channels.cache.find(channel => channel.name === 'birthdays');
+
+	const tempServer = client.guilds.cache.find(guild => guild.id === '633119665178017793');
+	const tempChannel = tempServer.channels.cache.find(channel => channel.name === 'dee-notes');
+
 	let birthdayEmbed = new Discord.MessageEmbed()
 		.setTitle("Happy Birthday!")
 		.setColor(15285149)
@@ -697,35 +1334,37 @@ client.on("ready", () => { //When Monomi is turned on.
 
 client.on('guildMemberAdd', member => { //Upon the joining of a member to a guild.
 	if (member.guild.id != "455218035507331072") return; //Ignore it if the guild isn't the KS server.
-	const channel = member.guild.channels.find('name', 'general'); //Set channel to the 'general' channel.
+	const channel = member.guild.channels.cache.find(channel => channel.name === 'general'); //Set channel to the 'general' channel.
 	if (member.bot === true) return; //If the member is a bot, ignore it.
 	channel.send({
 		embed: { //Send a welcome message,
 			color: 15285149,
-			description: `Welcome to the classroom, ${member}.\nPlease introduce yourself to the class\nin ${member.guild.channels.find(channel => channel.name === "introduction").toString()}!`,
+			description: `Welcome to the classroom, ${member}.\nPlease introduce yourself to the class\nin ${member.guild.channels.cache.find(channel => channel.name === "introduction").toString()}!`,
 			"image": {
 				"url": monomi_08
 			}
 		}
 	}).then(msg => {
-		msg.delete({timeout:60000})
+		msg.delete({
+			timeout: 60000
+		})
 	});
-	member.roles.add(member.guild.roles.find('id', '455218733980450825')); //Give the member the 'Ultimates' role.
+	member.roles.add(member.guild.roles.cache.find(role => role.id === '455218733980450825')); //Give the member the 'Ultimates' role.
 });
 
 let prefix = "m!"; //Sets the command prefix to m!
 client.on("message", (message) => { //When a message is sent.
 	if (message.author.bot === true) return; //If the message is from a bot, ignore it.
 
-	//Initializes the inbox location.
-	const inboxGuild = client.guilds.find('id', '480549161201041418');
-	const inboxChannel = inboxGuild.channels.find('name', 'monomi-inbox');
-
 	if (message.guild.id === "455218035507331072") { //Kaeno Shinjomu Discord
 		if (message.channel.name === "introduction" || message.channel.name === "rules" || message.channel.name === "server-info" || message.channel.name === "announcements") {
 			return message.channel.send("Please don't use me in this channel!  Thank you!").then(msg => {
-				message.delete({timeout:5000});
-				msg.delete({timeout:5000});
+				message.delete({
+					timeout: 5000
+				});
+				msg.delete({
+					timeout: 5000
+				});
 			})
 		}
 	}
@@ -757,14 +1396,15 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				}
 			}).then(msg => {
-				msg.delete({timeout:10000})
+				msg.delete({
+					timeout: 10000
+				})
 			});
 			return
 		}
 
 		//I love you!
 		if ((message.content.toLowerCase().search("love") != -1 || message.content.toLowerCase().search("luv") != -1 || message.content.toLowerCase().search("<3") != -1 || message.content.toLowerCase().search("wuv") != -1) && (message.content.toLowerCase().search("dont") === -1 && message.content.toLowerCase().search("don't") === -1 && message.content.toLowerCase().search("not") === -1 && message.content.toLowerCase().search("couldn't") === -1 && message.content.toLowerCase().search("couldnt") === -1 && message.content.toLowerCase().search("never") === -1) && message.content.toLowerCase().search("monomi") != -1) {
-			inboxChannel.send(`${message.author.username} loves Monomi!`);
 			message.channel.send(`I love you too, ${message.author.username}!`);
 			message.channel.send({
 				embed: {
@@ -774,7 +1414,9 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				}
 			}).then(msg => {
-				msg.delete({timeout:10000})
+				msg.delete({
+					timeout: 10000
+				})
 			});
 			return
 		}
@@ -782,7 +1424,6 @@ client.on("message", (message) => { //When a message is sent.
 		//Monomi Harassment
 		if ((message.content.toLowerCase().search("fuck me") != -1 || message.content.toLowerCase().search("vore me") != -1) && message.content.toLowerCase().search("monomi") != -1) {
 			if (message.author.id === "334575513857163266") {
-				inboxChannel.send("Mello has given Monomi her consent if she would like to... do you know what.");
 				message.channel.send(`If that's what you want me to do, Mello-chan... I'll gladly do it...`);
 				message.channel.send({
 					embed: {
@@ -792,11 +1433,12 @@ client.on("message", (message) => { //When a message is sent.
 						}
 					}
 				}).then(msg => {
-					msg.delete({timeout:10000})
+					msg.delete({
+						timeout: 10000
+					})
 				});
 				return;
 			}
-			inboxChannel.send(`${message.author.username} has confessed that they would like Monomi to fuck them.`);
 			message.channel.send(`Wha-wha?! You want me to do what, ${message.author.username}?`);
 			message.channel.send({
 				embed: {
@@ -806,13 +1448,14 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				}
 			}).then(msg => {
-				msg.delete({timeout:10000})
+				msg.delete({
+					timeout: 10000
+				})
 			});
 			return
 		}
 		if ((message.content.toLowerCase().search("want to vore") != -1 || message.content.toLowerCase().search("wanna vore") != -1 || message.content.toLowerCase().search("want to fuck") != -1 || message.content.toLowerCase().search("wanna fuck") != -1 || message.content.toLowerCase().search("gonna vore") != -1 || message.content.toLowerCase().search("gonna fuck") != -1 || message.content.toLowerCase().search("ill fuck") != -1 || message.content.toLowerCase().search("i'll fuck") != -1 || message.content.toLowerCase().search("ill vore") != -1 || message.content.toLowerCase().search("i'll vore") != -1) && message.content.toLowerCase().search("monomi") != -1) {
 			if (message.author.id === "334575513857163266") {
-				inboxChannel.send("Monomi has given Mello her consent if she would like to... do you know what.");
 				message.channel.send(`If that's what you want to do to me, Mello-chan... be my guest...`);
 				message.channel.send({
 					embed: {
@@ -822,11 +1465,12 @@ client.on("message", (message) => { //When a message is sent.
 						}
 					}
 				}).then(msg => {
-					msg.delete({timeout:10000})
+					msg.delete({
+						timeout: 10000
+					})
 				});
 				return;
 			}
-			inboxChannel.send(`${message.author.username} has confessed that they would like to fuck Monomi.`);
 			message.channel.send(`Wha-wha?! You want to do what, ${message.author.username}?`);
 			message.channel.send({
 				embed: {
@@ -843,7 +1487,6 @@ client.on("message", (message) => { //When a message is sent.
 			return
 		}
 		if ((message.content.toLowerCase().search("fuck off") != -1 || message.content.toLowerCase().search("fuck you") != -1 || message.content.toLowerCase().search("go away") != -1 || message.content.toLowerCase().search("kill yourself") != -1 || message.content.toLowerCase().search("die") != -1 || message.content.toLowerCase().search("i hate") != -1 || message.content.toLowerCase().search("whore") != -1 || message.content.toLowerCase().search("bitch") != -1 || message.content.toLowerCase().search("cunt") != -1 || message.content.toLowerCase().search("slut") != -1 || message.content.toLowerCase().search("cocksucker") != -1 || message.content.toLowerCase().search("pussy") != -1 || message.content.toLowerCase().search("dumbass") != -1 || message.content.toLowerCase().search("eat shit") != -1 || message.content.toLowerCase().search("stop breathing") != -1) && message.content.toLowerCase().search("monomi") != -1) {
-			inboxChannel.send(`${message.author.username} told Monomi to fuck off.`);
 			possibleSprites = [
 				monomi_11,
 				monomi_12,
@@ -864,7 +1507,7 @@ client.on("message", (message) => { //When a message is sent.
 				"I'm sorry!!!",
 				"You're hurting my feelings..."
 			];
-			
+
 			if (message.author.id == "474336126409244674") {
 				possiblePhrases = [
 					"What did I do? I'm sorry, Syd...",
@@ -889,7 +1532,9 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				}
 			}).then(msg => {
-				msg.delete({timeout:10000})
+				msg.delete({
+					timeout: 10000
+				})
 			});
 			return
 		}
@@ -905,7 +1550,9 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				}
 			}).then(msg => {
-				msg.delete({timeout:10000})
+				msg.delete({
+					timeout: 10000
+				})
 			});
 			return
 		}
@@ -919,7 +1566,9 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				}
 			}).then(msg => {
-				msg.delete({timeout:10000})
+				msg.delete({
+					timeout: 10000
+				})
 			});
 			return
 		}
@@ -933,7 +1582,9 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				}
 			}).then(msg => {
-				msg.delete({timeout:10000})
+				msg.delete({
+					timeout: 10000
+				})
 			});
 			return
 		}
@@ -947,7 +1598,9 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				}
 			}).then(msg => {
-				msg.delete({timeout:10000})
+				msg.delete({
+					timeout: 10000
+				})
 			});
 			return
 		}
@@ -961,14 +1614,15 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				}
 			}).then(msg => {
-				msg.delete({timeout:10000})
+				msg.delete({
+					timeout: 10000
+				})
 			});
 			return
 		}
 
 		//Mouse
 		if (message.content.toLowerCase().search("mouse") != -1 || message.content.toLowerCase().search("mice") != -1) {
-			inboxChannel.send(`${message.author.username} has scared Monomi with mice.`);
 			possibleSprites = [
 				monomi_14,
 				monomi_15,
@@ -976,10 +1630,17 @@ client.on("message", (message) => { //When a message is sent.
 				monomi_19
 			];
 			spriteChoice = random(possibleSprites);
-			
-			if (mouseTriggers < 2) { message.channel.send("Noooooooooo... Not miiiiiiiiice...! They're gonna chew through my ears...!");}
-			if (mouseTriggers === 2) { message.channel.send("Maybe mice aren't so bad."); spriteChoice = monomi_01;}
-			if (mouseTriggers > 2) { return; }
+
+			if (mouseTriggers < 2) {
+				message.channel.send("Noooooooooo... Not miiiiiiiiice...! They're gonna chew through my ears...!");
+			}
+			if (mouseTriggers === 2) {
+				message.channel.send("Maybe mice aren't so bad.");
+				spriteChoice = monomi_01;
+			}
+			if (mouseTriggers > 2) {
+				return;
+			}
 
 			mouseTriggers++;
 
@@ -991,14 +1652,15 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				}
 			}).then(msg => {
-				msg.delete({timeout:10000})
+				msg.delete({
+					timeout: 10000
+				})
 			});
 			return;
 		}
 
 		//Kill This Clown
 		if (message.content.toLowerCase().search("monomi") != -1 && message.content.toLowerCase().search("kill this clown") != -1) {
-			inboxChannel.send(`${message.author.username} has asked Monomi to kill this clown.`);
 			message.channel.send("I'm on it!");
 			message.channel.send({
 				embed: {
@@ -1008,21 +1670,21 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				}
 			}).then(msg => {
-				msg.delete({timeout:10000})
+				msg.delete({
+					timeout: 10000
+				})
 			});
 			return
 		}
 
 		//Duane!
 		if (message.content.toLowerCase().search("https://media.discordapp.net/attachments/641838806730801162/674100198934446121/idleoddballdinosaur-size_restricted.gif") != -1 || message.content.toLowerCase().search("https://media.discordapp.net/attachments/645864020959559680/676624472190746627/unknown.gif") != -1 || message.content.toLowerCase().search("https://media.discordapp.net/attachments/645864020959559680/676628845293731870/unknown.gif") != -1) {
-			inboxChannel.send(`${message.author.username} has shown Monomi Duane!`);
 			message.channel.send("Duane!");
 			return
 		}
 
 		//Vocal Percussion
 		if (message.content.toLowerCase().search("vocal percussion on a whole other level") != -1 || message.content.toLowerCase().search("vocal percussion on a whole 'nother level") != -1 || message.content.toLowerCase().search("vocal percussion on a whole nother level") != -1) {
-			inboxChannel.send(`${message.author.username} has summoned Monomi's JoJo Brainrot.`);
 			message.channel.send("Coming from my mind!");
 			message.channel.send({
 				embed: {
@@ -1032,7 +1694,9 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				}
 			}).then(msg => {
-				msg.delete({timeout:10000})
+				msg.delete({
+					timeout: 10000
+				})
 			});
 			return;
 		}
@@ -1073,15 +1737,21 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				}
 			}).then(msg => {
-				msg.delete({timeout:10000})
+				msg.delete({
+					timeout: 10000
+				})
 			});
 			return
 		}
 
 		//Otto Trigger
 		if (message.guild.id === "641826067232849939" && message.content.toLowerCase().search("bottom") === -1 && (message.content.toLowerCase().search("otto") != -1 || message.content.toLowerCase().search("octavio") != -1) && ottoTriggers < 2) {
-			if (ottoTriggers === 0) {message.channel.send("Really fucking hate that guy.")}
-			if (ottoTriggers === 1) {message.channel.send("Still really fucking hate that guy.")}
+			if (ottoTriggers === 0) {
+				message.channel.send("Really fucking hate that guy.")
+			}
+			if (ottoTriggers === 1) {
+				message.channel.send("Still really fucking hate that guy.")
+			}
 			ottoTriggers++;
 		}
 	}
@@ -1095,7 +1765,6 @@ client.on("message", (message) => { //When a message is sent.
 	//Help Command
 	if (command === "help" || command === "h") {
 		if (args.length > 0) {
-			inboxChannel.send(`${message.author.username} has asked for help from Monomi on the "${args[0]}" command.`);
 			if (args[0] === 'love' || args[0] === 'ship') {
 				message.channel.send({
 					embed: {
@@ -1594,13 +2263,13 @@ client.on("message", (message) => { //When a message is sent.
 						color: 15285149,
 						title: "Command 'roomies'",
 						fields: [{
-							name: ":heart_exclamation: Usage",
-							value: "`m!roomies`\n`m!roomies [1-12]`\n`m!roomies [student]`",
-						},
-						{
-							name: ":heart_exclamation: Description",
-							value: "Monomi gives a list of every room on the killing school ride, as well as descriptions and inhabitants of each!"
-						}
+								name: ":heart_exclamation: Usage",
+								value: "`m!roomies`\n`m!roomies [1-12]`\n`m!roomies [student]`",
+							},
+							{
+								name: ":heart_exclamation: Description",
+								value: "Monomi gives a list of every room on the killing school ride, as well as descriptions and inhabitants of each!"
+							}
 						]
 					}
 				})
@@ -1611,23 +2280,22 @@ client.on("message", (message) => { //When a message is sent.
 						color: 15285149,
 						title: "Command 'version'",
 						fields: [{
-							name: ":heart_exclamation: Usage",
-							value: "`m!version`",
-						},
-						{
-							name: ":heart_exclamation: Aliases",
-							value: "`m!v`",
-						},
-						{
-							name: ":heart_exclamation: Description",
-							value: "Monomi tells the version of her programming she is running!"
-						}
+								name: ":heart_exclamation: Usage",
+								value: "`m!version`",
+							},
+							{
+								name: ":heart_exclamation: Aliases",
+								value: "`m!v`",
+							},
+							{
+								name: ":heart_exclamation: Description",
+								value: "Monomi tells the version of her programming she is running!"
+							}
 						]
 					}
 				})
 			};
 		} else {
-			inboxChannel.send(`${message.author.username} has asked for help from Monomi.`);
 			let embedHelp = new Discord.MessageEmbed()
 				.setColor(15285149)
 				.setTitle("Type 'm!' followed by a command!")
@@ -1649,8 +2317,7 @@ client.on("message", (message) => { //When a message is sent.
 					setTimeout(shutdown, timeoutValue);
 					message.channel.send(`Understood! In ${args[1]} minute(s), or ${timeoutValue} milliseconds, I will restart!`);
 				}
-			}
-			else {
+			} else {
 				message.channel.send("Good night, everyone!  Love love!");
 				message.channel.send({
 					embed: {
@@ -1660,7 +2327,9 @@ client.on("message", (message) => { //When a message is sent.
 						}
 					}
 				}).then(msg => {
-					msg.delete({timeout:5000})
+					msg.delete({
+						timeout: 5000
+					})
 				});
 				setTimeout(shutdown, 6000);
 			}
@@ -1674,9 +2343,10 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				}
 			}).then(msg => {
-				msg.delete({timeout:10000})
+				msg.delete({
+					timeout: 10000
+				})
 			});
-			inboxChannel.send(`${message.author.username} has tried to shut down Monomi.`);
 		}
 	}
 	if (command === "monomisay") {
@@ -1703,34 +2373,31 @@ client.on("message", (message) => { //When a message is sent.
 		if (Number.isInteger(guildID * 1) === false) {
 			if (guildID === "kaeno") {
 				guildID = "455218035507331072";
-			}
-			else if (guildID === "edgeworths") {
+			} else if (guildID === "edgeworths") {
 				guildID = "598739324464267274";
-			}
-			else if (guildID === "drga") {
+			} else if (guildID === "drga") {
 				guildID = "617202043597226009";
-			}
-			else if (guildID === "dee") {
+			} else if (guildID === "dee") {
 				guildID = "480549161201041418";
-			}
-			else if (guildID === "bab") {
+			} else if (guildID === "bab") {
 				guildID = "633119665178017793";
-			}
-			else if (guildID === "thunderclan") {
+			} else if (guildID === "thunderclan") {
 				guildID = "641826067232849939";
-			}
-			else if (guildID === "kk") {
+			} else if (guildID === "kk") {
 				guildID = "721589433018744913";
-			}
-			else if (guildID === "koogs") {
+			} else if (guildID === "koogs") {
 				guildID = "396895853479985162";
 			}
 		}
 
-		var nativeGuild = client.guilds.find('id', guildID);
-		if (nativeGuild === null) {return message.channel.send("Please use a valid server name or ID!");};
-		var nativeChannel = nativeGuild.channels.find('name', channelName.toLowerCase());
-		if (nativeChannel === null) {return message.channel.send("Please use a valid channel name!");};
+		var nativeGuild = client.guilds.cache.find(guild => guild.id === guildID);
+		if (nativeGuild === null) {
+			return message.channel.send("Please use a valid server name or ID!");
+		};
+		var nativeChannel = nativeGuild.channels.cache.find(channel => channel.name === channelName.toLowerCase());
+		if (nativeChannel === null) {
+			return message.channel.send("Please use a valid channel name!");
+		};
 		if (args[2].search("monomi_") != -1) {
 			if (args[2] === "monomi_01") {
 				var url = monomi_01
@@ -1824,21 +2491,21 @@ client.on("message", (message) => { //When a message is sent.
 			}
 
 			message.delete()
-			nativeChannel.send(message.content.substring(`m!monomisay ${args[0]} ${args[1]} ${args[2]}`.length), {files: [url]});
-			inboxChannel.send(`${message.author.username} made Monomi say, "${message.content.substring(`m!monomisay ${args[0]} ${args[1]} ${args[2]}`.length)}" with the "${args[2]}" sprite.`);
+			nativeChannel.send(message.content.substring(`m!monomisay ${args[0]} ${args[1]} ${args[2]}`.length), {
+				files: [url]
+			});
 			return;
 		};
 
 		message.delete();
 		nativeChannel.send(message.content.substring(`m!monomisay ${args[0]} ${args[1]}`.length));
-		inboxChannel.send(`${message.author.username} made Monomi say, "${message.content.substring(`m!monomisay ${args[0]} ${args[1]}`.length)}"`)
 	}
 
 	//Killing Game Commands
 	if (command === "roster" || command === "class" || command === "r" || command === "rks" || command === "rga" || command === "rbab" || command === "rkk") {
 		let embed = new Discord.MessageEmbed()
 			.setColor(13959168)
-		
+
 		let pages = [];
 		let page = 0;
 
@@ -1851,48 +2518,135 @@ client.on("message", (message) => { //When a message is sent.
 				return message.channel.send("Please specify which class (1, 2, 3, \"talents\", or \"oog\") you're checking the roster for!")
 			}
 			if (args[0] === "1") { //Class 01 (Kaeno Shinjomu Academy, The Killing School Game)
-				classList = [
-					{ studentID: "Name: Aika Mahaya\nTalent: Digital Composer\nSex: Female\nStatus: Deceased\n\nShoe Size: 9\nHeight: 5'6\"\nWeight: 137\nBlood Type: B\nBirthday: 06/21\nAge: 17", studentIDPicture: "https://imgur.com/sGjckJ3.png" },
-					{ studentID: "Name: Anaelle Hamaan\nTalent: Fashion Designer\nSex: Female\nStatus: Unknown\n\nShoe Size: Unavailable\nHeight: 5'2\"\nWeight: 104\nBlood Type: AB\nBirthday: 06/20\nAge: 16", studentIDPicture: "https://imgur.com/4HOZ1QT.png" },
-					{ studentID: "Name: Anya Sakaguchi\nTalent: Magician\nSex: Female\nStatus: Deceased\n\nShoe Size: Unavailable\nHeight: 5'4\"\nWeight: 104\nBlood Type: B\nBirthday: 04/10\nAge: 14", studentIDPicture: "" },
-					{ studentID: "Name: Ara Ayao\nTalent: Actress\nSex: Female\nStatus: Deceased\n\nShoe Size: 7\nHeight: 5'8\"\nWeight: 115\nBlood Type: B\nBirthday: 08/15\nAge: 17", studentIDPicture: "https://imgur.com/3fZhaHt.png" },
-					{ studentID: "Name: Aurélie Cartier\nTalent: Figure Skater\nSex: Female\nStatus: Deceased\n\nShoe Size: 7\nHeight: 5'7\"\nWeight: 115\nBlood Type: A\nBirthday: 01/09\nAge: 17", studentIDPicture: "" },
-					{ studentID: "Name: Hachi Hiruma\nTalent: Cryptologist\nSex: Female\nStatus: Deceased\n\nShoe Size: 7.5\nHeight: 5'7\"\nWeight: 139\nBlood Type: A\nBirthday: 11/09\nAge: 17\n\n\nPeed Herself: 13 Times", studentIDPicture: "https://imgur.com/GFrnNjz.png" },
-					{ studentID: "Name: Jeong Park\nTalent: Tennis Player\nSex: Female\nStatus: Deceased\n\nShoe Size: 6\nHeight: 5'5\"\nWeight: 105\nBlood Type: O\nBirthday: 05/29\nAge: 16", studentIDPicture: "https://imgur.com/JK7VKYy.png" },
-					{ studentID: "Name: Kyoung-mi Park\nTalent: Singer\nSex: Female\nStatus: Deceased\n\nShoe Size: 6\nHeight: 5'5\"\nWeight: 105\nBlood Type: O\nBirthday: 05/29\nAge: 16", studentIDPicture: "https://imgur.com/fZoA401.png" },
-					{ studentID: "Name: Megu Kojima\nTalent: Model\nSex: Female\nStatus: Deceased\n\nShoe Size: 6\nHeight: 5'5\"\nWeight: 99\nBlood Type: O\nBirthday: 04/15\nAge: 17", studentIDPicture: "" },
-					{ studentID: "Name: Minako Kaoru\nTalent: Swordsman\nSex: Female\nStatus: Deceased\n\nShoe Size: Unavailable\nHeight: 5'8\"\nWeight: 120\nBlood Type: O\nBirthday: 08/07\nAge: 16", studentIDPicture: "" },
-					{ studentID: "Name: Mori Hibana\nTalent: Hypnotist\nSex: Female\nStatus: Rescued\n\nShoe Size: 8\nHeight: 5'9\"\nWeight: 131\nBlood Type: B\nBirthday: 05/08\nAge: 17", studentIDPicture: "https://imgur.com/AFaAdCo.png" },
-					{ studentID: "Name: Noriko Suzuki\nTalent: Chess Champion\nSex: Female\nStatus: Deceased\n\nShoe Size: 7\nHeight: 5'3\"\nWeight: 110\nBlood Type: A\nBirthday: 06/09\nAge: 14", studentIDPicture: "" },
-					{ studentID: "Name: Stella Hunter\nTalent: Fortnite Gamer\nSex: Female\nStatus: Deceased\n\nShoe Size: Unavailable\nHeight: 5'2\"\nWeight: 102\nBlood Type: A\nBirthday: 05/24\nAge: 15\n\n\nFortnite Statistics:\nWins: 5,562\nMatches: 13,192\nWin %: 42.16\nKills: 107,180\nK/D: 14.05", studentIDPicture: "" },
-					{ studentID: "Name: Tezuku Imou\nTalent: Boxer\nSex: Female\nStatus: Deceased\n\nShoe Size: Unavailable\nHeight: 5'5\"\nWeight: 146\nBlood Type: O\nBirthday: 10/31\nAge: 16", studentIDPicture: "https://imgur.com/vqxvUSV.png"},
-					{ studentID: "Name: Ximena Colomar\nTalent: Hacker\nSex: Female\nStatus: Deceased\n\nShoe Size: 7\nHeight: 5'3\"\nWeight: 132\nBlood Type: O\nBirthday: 02/07\nAge: 17", studentIDPicture: "" },
-					{ studentID: "Name: Aiko Hikaru\nTalent: Makeup Artist\nSex: Male\nStatus: Deceased\n\nShoe Size: 8\nHeight: 5'8\"\nWeight: 135\nBlood Type: O\nBirthday: 06/14\nAge: 17", studentIDPicture: "https://imgur.com/9e2GDAr.png" },
-					{ studentID: "Name: Anzu Kofuku\nTalent: Counterfeiter\nSex: Male\nStatus: Deceased\n\nShoe Size: Unavailable\nHeight: 5'11\"\nWeight: 159\nBlood Type: AB\nBirthday: 01/25\nAge: 18", studentIDPicture: "" },
-					{ studentID: "Name: Cheisu Maeda\nTalent: Detective\nSex: Male\nStatus: Deceased\n\nShoe Size: 11\nHeight: 6'1\"\nWeight: 149\nBlood Type: B\nBirthday: 11/13\nAge: 17", studentIDPicture: "https://imgur.com/IaXHEeK.png" },
-					{ studentID: "Name: Hoshi Chiura\nTalent: Astronomer\nSex: Male\nStatus: Deceased\n\nShoe Size: 8\nHeight: 5'5\"\nWeight: 110\nBlood Type: A\nBirthday: 10/31\nAge: 16\n\n\nThree of Sevens:\nHoshi Chiura\nMasayuuki Taisho\nShiba Mikio", studentIDPicture: "https://imgur.com/OBjKPR9.png" },
-					{ studentID: "Name: Jacek Żeglarski\nTalent: Animal Caretaker\nSex: Male\nStatus: Deceased\n\nShoe Size: 10\nHeight: 5'8\"\nWeight: 162\nBlood Type: AB\nBirthday: 10/03\nAge: 15", studentIDPicture: "" },
-					{ studentID: "Name: Kazuya Harada\nTalent: Woodworker\nSex: Male\nStatus: Deceased\n\nShoe Size: Unavailable\nHeight: 5'9\"\nWeight: 145\nBlood Type: O\nBirthday: 08/13\nAge: 16", studentIDPicture: "" },
-					{ studentID: "Name: Kiro Karasu\nTalent: Prince\nSex: Male\nStatus: Deceased\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 130\nBlood Type: O\nBirthday: 08/17\nAge: 17", studentIDPicture: "https://imgur.com/KRlCn1w.png" },
-					{ studentID: "Name: Masayuuki Taisho\nTalent: Balance (Blogger)\nSex: Male\nStatus: Deceased\n\nShoe Size: 9\nHeight: 5'6\"\nWeight: 120\nBlood Type: AB\nBirthday: 11/25\nAge: 16", studentIDPicture: "https://imgur.com/CLYSgcS.png" },
-					{ studentID: "Name: Miyuki Ataru\nTalent: Baseball Player\nSex: Male\nStatus: Deceased\n\nShoe Size: Unavailable\nHeight: 6'2\"\nWeight: 140\nBlood Type: B\nBirthday: 07/23\nAge: 17", studentIDPicture:""},
-					{ studentID: "Name: Ryu Akahoshi\nTalent: Dancer\nSex: Male\nStatus: Rescued\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 150\nBlood Type: O\nBirthday: 04/06\nAge: 16", studentIDPicture: "" },
-					{ studentID: "Name: S'ad Ludópata\nTalent: Gambler\nSex: Male\nStatus: Deceased\n\nShoe Size: 10\nHeight: 6'0\"\nWeight: 144\nBlood Type: O\nBirthday: 04/10\nAge: 17\n\n\nRoyal Flush:\nCheisu Maeda, Detective (Ace of Spades)\nTenshi Kawada, Therapist (Jack of Spades)\nMasayuuki Taishi, Blogger (King of Diamonds)\nHachi Hiruma, Cryptologist (Queen of Clubs)\nS'ad Ludópata, Gambler (Ten of Clubs)", studentIDPicture: "https://imgur.com/AZzj22b.png" },
-					{ studentID: "Name: Shiba Mikio\nTalent: Matchmaker\nSex: Male\nStatus: Rescued\n\nShoe Size: 9\nHeight: 5'10\"\nWeight: 111\nBlood Type: O\nBirthday: 11/04\nAge: 17", studentIDPicture: "https://imgur.com/dYJgZl5.png" },
-					{ studentID: "Name: Tenshi Kawada\nTalent: Therapist\nSex: Male\nStatus: Deceased\n\nShoe Size: 10\nHeight: 5'8\"\nWeight: 120\nBlood Type: AB\nBirthday: 06/11\nAge: 17", studentIDPicture: "https://imgur.com/txWQ7vg.png" },
-					{ studentID: "Name: Théo Dubois\nTalent: Archer\nSex: Male\nStatus: Rescued\n\nShoe Size: Unavailable\nHeight: 5'7\"\nWeight: 141\nBlood Type: AB\nBirthday: 03/27\nAge: 17", studentIDPicture: "" },
-					{ studentID: "Name: Yukine Sakurai\nTalent: Botanist\nSex: Male\nStatus: Rescued\n\nShoe Size: 10.5\nHeight: 5'8\"\nWeight: 135\nBlood Type: O\nBirthday: 12/13\nAge: 16", studentIDPicture: "https://imgur.com/2RJbb52.png" }
+				classList = [{
+						studentID: "Name: Aika Mahaya\nTalent: Digital Composer\nSex: Female\nStatus: Deceased\n\nShoe Size: 9\nHeight: 5'6\"\nWeight: 137\nBlood Type: B\nBirthday: 06/21\nAge: 17",
+						studentIDPicture: "https://imgur.com/sGjckJ3.png"
+					},
+					{
+						studentID: "Name: Anaelle Hamaan\nTalent: Fashion Designer\nSex: Female\nStatus: Unknown\n\nShoe Size: Unavailable\nHeight: 5'2\"\nWeight: 104\nBlood Type: AB\nBirthday: 06/20\nAge: 16",
+						studentIDPicture: "https://imgur.com/4HOZ1QT.png"
+					},
+					{
+						studentID: "Name: Anya Sakaguchi\nTalent: Magician\nSex: Female\nStatus: Deceased\n\nShoe Size: Unavailable\nHeight: 5'4\"\nWeight: 104\nBlood Type: B\nBirthday: 04/10\nAge: 14",
+						studentIDPicture: ""
+					},
+					{
+						studentID: "Name: Ara Ayao\nTalent: Actress\nSex: Female\nStatus: Deceased\n\nShoe Size: 7\nHeight: 5'8\"\nWeight: 115\nBlood Type: B\nBirthday: 08/15\nAge: 17",
+						studentIDPicture: "https://imgur.com/3fZhaHt.png"
+					},
+					{
+						studentID: "Name: Aurélie Cartier\nTalent: Figure Skater\nSex: Female\nStatus: Deceased\n\nShoe Size: 7\nHeight: 5'7\"\nWeight: 115\nBlood Type: A\nBirthday: 01/09\nAge: 17",
+						studentIDPicture: ""
+					},
+					{
+						studentID: "Name: Hachi Hiruma\nTalent: Cryptologist\nSex: Female\nStatus: Deceased\n\nShoe Size: 7.5\nHeight: 5'7\"\nWeight: 139\nBlood Type: A\nBirthday: 11/09\nAge: 17\n\n\nPeed Herself: 13 Times",
+						studentIDPicture: "https://imgur.com/GFrnNjz.png"
+					},
+					{
+						studentID: "Name: Jeong Park\nTalent: Tennis Player\nSex: Female\nStatus: Deceased\n\nShoe Size: 6\nHeight: 5'5\"\nWeight: 105\nBlood Type: O\nBirthday: 05/29\nAge: 16",
+						studentIDPicture: "https://imgur.com/JK7VKYy.png"
+					},
+					{
+						studentID: "Name: Kyoung-mi Park\nTalent: Singer\nSex: Female\nStatus: Deceased\n\nShoe Size: 6\nHeight: 5'5\"\nWeight: 105\nBlood Type: O\nBirthday: 05/29\nAge: 16",
+						studentIDPicture: "https://imgur.com/fZoA401.png"
+					},
+					{
+						studentID: "Name: Megu Kojima\nTalent: Model\nSex: Female\nStatus: Deceased\n\nShoe Size: 6\nHeight: 5'5\"\nWeight: 99\nBlood Type: O\nBirthday: 04/15\nAge: 17",
+						studentIDPicture: ""
+					},
+					{
+						studentID: "Name: Minako Kaoru\nTalent: Swordsman\nSex: Female\nStatus: Deceased\n\nShoe Size: Unavailable\nHeight: 5'8\"\nWeight: 120\nBlood Type: O\nBirthday: 08/07\nAge: 16",
+						studentIDPicture: ""
+					},
+					{
+						studentID: "Name: Mori Hibana\nTalent: Hypnotist\nSex: Female\nStatus: Rescued\n\nShoe Size: 8\nHeight: 5'9\"\nWeight: 131\nBlood Type: B\nBirthday: 05/08\nAge: 17",
+						studentIDPicture: "https://imgur.com/AFaAdCo.png"
+					},
+					{
+						studentID: "Name: Noriko Suzuki\nTalent: Chess Champion\nSex: Female\nStatus: Deceased\n\nShoe Size: 7\nHeight: 5'3\"\nWeight: 110\nBlood Type: A\nBirthday: 06/09\nAge: 14",
+						studentIDPicture: ""
+					},
+					{
+						studentID: "Name: Stella Hunter\nTalent: Fortnite Gamer\nSex: Female\nStatus: Deceased\n\nShoe Size: Unavailable\nHeight: 5'2\"\nWeight: 102\nBlood Type: A\nBirthday: 05/24\nAge: 15\n\n\nFortnite Statistics:\nWins: 5,562\nMatches: 13,192\nWin %: 42.16\nKills: 107,180\nK/D: 14.05",
+						studentIDPicture: ""
+					},
+					{
+						studentID: "Name: Tezuku Imou\nTalent: Boxer\nSex: Female\nStatus: Deceased\n\nShoe Size: Unavailable\nHeight: 5'5\"\nWeight: 146\nBlood Type: O\nBirthday: 10/31\nAge: 16",
+						studentIDPicture: "https://imgur.com/vqxvUSV.png"
+					},
+					{
+						studentID: "Name: Ximena Colomar\nTalent: Hacker\nSex: Female\nStatus: Deceased\n\nShoe Size: 7\nHeight: 5'3\"\nWeight: 132\nBlood Type: O\nBirthday: 02/07\nAge: 17",
+						studentIDPicture: ""
+					},
+					{
+						studentID: "Name: Aiko Hikaru\nTalent: Makeup Artist\nSex: Male\nStatus: Deceased\n\nShoe Size: 8\nHeight: 5'8\"\nWeight: 135\nBlood Type: O\nBirthday: 06/14\nAge: 17",
+						studentIDPicture: "https://imgur.com/9e2GDAr.png"
+					},
+					{
+						studentID: "Name: Anzu Kofuku\nTalent: Counterfeiter\nSex: Male\nStatus: Deceased\n\nShoe Size: Unavailable\nHeight: 5'11\"\nWeight: 159\nBlood Type: AB\nBirthday: 01/25\nAge: 18",
+						studentIDPicture: ""
+					},
+					{
+						studentID: "Name: Cheisu Maeda\nTalent: Detective\nSex: Male\nStatus: Deceased\n\nShoe Size: 11\nHeight: 6'1\"\nWeight: 149\nBlood Type: B\nBirthday: 11/13\nAge: 17",
+						studentIDPicture: "https://imgur.com/IaXHEeK.png"
+					},
+					{
+						studentID: "Name: Hoshi Chiura\nTalent: Astronomer\nSex: Male\nStatus: Deceased\n\nShoe Size: 8\nHeight: 5'5\"\nWeight: 110\nBlood Type: A\nBirthday: 10/31\nAge: 16\n\n\nThree of Sevens:\nHoshi Chiura\nMasayuuki Taisho\nShiba Mikio",
+						studentIDPicture: "https://imgur.com/OBjKPR9.png"
+					},
+					{
+						studentID: "Name: Jacek Żeglarski\nTalent: Animal Caretaker\nSex: Male\nStatus: Deceased\n\nShoe Size: 10\nHeight: 5'8\"\nWeight: 162\nBlood Type: AB\nBirthday: 10/03\nAge: 15",
+						studentIDPicture: ""
+					},
+					{
+						studentID: "Name: Kazuya Harada\nTalent: Woodworker\nSex: Male\nStatus: Deceased\n\nShoe Size: Unavailable\nHeight: 5'9\"\nWeight: 145\nBlood Type: O\nBirthday: 08/13\nAge: 16",
+						studentIDPicture: ""
+					},
+					{
+						studentID: "Name: Kiro Karasu\nTalent: Prince\nSex: Male\nStatus: Deceased\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 130\nBlood Type: O\nBirthday: 08/17\nAge: 17",
+						studentIDPicture: "https://imgur.com/KRlCn1w.png"
+					},
+					{
+						studentID: "Name: Masayuuki Taisho\nTalent: Balance (Blogger)\nSex: Male\nStatus: Deceased\n\nShoe Size: 9\nHeight: 5'6\"\nWeight: 120\nBlood Type: AB\nBirthday: 11/25\nAge: 16",
+						studentIDPicture: "https://imgur.com/CLYSgcS.png"
+					},
+					{
+						studentID: "Name: Miyuki Ataru\nTalent: Baseball Player\nSex: Male\nStatus: Deceased\n\nShoe Size: Unavailable\nHeight: 6'2\"\nWeight: 140\nBlood Type: B\nBirthday: 07/23\nAge: 17",
+						studentIDPicture: ""
+					},
+					{
+						studentID: "Name: Ryu Akahoshi\nTalent: Dancer\nSex: Male\nStatus: Rescued\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 150\nBlood Type: O\nBirthday: 04/06\nAge: 16",
+						studentIDPicture: ""
+					},
+					{
+						studentID: "Name: S'ad Ludópata\nTalent: Gambler\nSex: Male\nStatus: Deceased\n\nShoe Size: 10\nHeight: 6'0\"\nWeight: 144\nBlood Type: O\nBirthday: 04/10\nAge: 17\n\n\nRoyal Flush:\nCheisu Maeda, Detective (Ace of Spades)\nTenshi Kawada, Therapist (Jack of Spades)\nMasayuuki Taishi, Blogger (King of Diamonds)\nHachi Hiruma, Cryptologist (Queen of Clubs)\nS'ad Ludópata, Gambler (Ten of Clubs)",
+						studentIDPicture: "https://imgur.com/AZzj22b.png"
+					},
+					{
+						studentID: "Name: Shiba Mikio\nTalent: Matchmaker\nSex: Male\nStatus: Rescued\n\nShoe Size: 9\nHeight: 5'10\"\nWeight: 111\nBlood Type: O\nBirthday: 11/04\nAge: 17",
+						studentIDPicture: "https://imgur.com/dYJgZl5.png"
+					},
+					{
+						studentID: "Name: Tenshi Kawada\nTalent: Therapist\nSex: Male\nStatus: Deceased\n\nShoe Size: 10\nHeight: 5'8\"\nWeight: 120\nBlood Type: AB\nBirthday: 06/11\nAge: 17",
+						studentIDPicture: "https://imgur.com/txWQ7vg.png"
+					},
+					{
+						studentID: "Name: Théo Dubois\nTalent: Archer\nSex: Male\nStatus: Rescued\n\nShoe Size: Unavailable\nHeight: 5'7\"\nWeight: 141\nBlood Type: AB\nBirthday: 03/27\nAge: 17",
+						studentIDPicture: ""
+					},
+					{
+						studentID: "Name: Yukine Sakurai\nTalent: Botanist\nSex: Male\nStatus: Rescued\n\nShoe Size: 10.5\nHeight: 5'8\"\nWeight: 135\nBlood Type: O\nBirthday: 12/13\nAge: 16",
+						studentIDPicture: "https://imgur.com/2RJbb52.png"
+					}
 				]
-				
+
 				if (args.length === 1) { //Class Roster Simple
 					message.channel.send("```##  Sex and Name          Talent\n11  F Mori Hibana         Hypnotist\n25  M Ryu Akahoshi        Dancer\n27  M Shiba Mikio         Matchmaker\n29  M Théo Dubois         Archer\n30  M Yukine Sakurai      Botanist\n\n    Mastermind\n23  M Masayuuki Taisho    Balance (Blogger)\n\n    Deceased Students\n1   F Aika Mahaya         Digital Composer\n2   F Anaelle Hamaan      Fashion Designer\n3   F Anya Sakaguchi      Magician\n4   F Ara Ayao            Actress\n5   F Aurélie Cartier     Figure Skater\n6   F Hachi Hiruma        Cryptologist\n7   F Jeong Park          Tennis Player\n8   F Kyoung-mi Park      Singer\n9   F Megu Kojima         Model\n10  F Minako Kaoru        Swordsman\n12  F Noriko Suzuki       Chess Champion\n13  F Stella Hunter       Fortnite Gamer\n14  F Tezuku Imou         Boxer\n15  F Ximena Colomar      Hacker\n16  M Aiko Hikaru         Makeup Artist\n17  M Anzu Kofuku         Counterfeiter\n18  M Cheisu Maeda        Detective\n19  M Hoshi Chiura        Astronomer\n20  M Jacek Żeglarski     Animal Caretaker\n21  M Kazuya Harada       Woodworker\n22  M Kiro Karasu         Prince\n24  M Miyuki Ataru        Baseball Player\n26  M S'ad Ludópata       Gambler\n28  M Tenshi Kawada       Therapist```")
-					inboxChannel.send(`${message.author.username} has looked at the first class' roster.`);
 					return;
 				}
 				if (args[1].toLowerCase() === "total") { //Class Roster Total
 					message.channel.send("```##  Sex and Name       Shoe Size    Height    Weight    Blood Type    Birthday    Age    Talent\n11  F Mori Hibana      8            5'9\"      132       B             01/04       17     Hypnotist\n25  M Ryu Akahoshi     10           5'10\"     150       O             04/06       16     Dancer\n27  M Shiba Mikio      9            5'10\"     111       O             11/04       17     Matchmaker\n29  M Théo Dubois      *            5'7\"      141       AB            03/27       17     Archer\n30  M Yukine Sakurai   10.5         5'8\"      135       O             12/13       16     Botanist\n\n    Mastermind\n23  M Masayuuki Taisho 9            5'6\"      120       AB            11/25       16     Balance (Blogger)\n\n    Deceased Students\n1   F Aika Mahaya      9            5'6\"      137       B             06/21       17     Digital Composer\n2   F Anaelle Hamaan   *            5'2\"      104       AB            06/20       16     Fashion Designer\n3   F Anya Sakaguchi   *            5'4\"      104       B             04/10       14     Magician\n4   F Ara Ayao         7            5'8\"      115       B             08/15       17     Actress\n5   F Aurélie Cartier  7            5'7\"      115       A             01/09       17     Figure Skater\n6   F Hachi Hiruma     7.5          5'7\"      139       A             11/09       17     Cryptologist\n7   F Jeong Park       6            5'5\"      105       O             05/29       16     Tennis Player\n8   F Kyoung-mi Park   6            5'5\"      105       O             05/29       16     Singer```");
 					message.channel.send("```9   F Megu Kojima      6            5'5\"      99        O             04/15       17     Model\n10  F Minako Kaoru     *            5'8\"      120       O             08/07       16     Swordsman\n12  F Noriko Suzuki    7            5'3\"      110       A             06/09       14     Chess Champion\n13  F Stella Hunter    *            5'2\"      102       A             05/24       15     Fortnite Gamer\n14  F Tezuku Imou      *            5'5\"      146       O             10/31       16     Boxer\n15  F Ximena Colomar   7            5'3\"      132       O             02/07       17     Hacker\n16  M Aiko Hikaru      8            5'8\"      135       O             06/14       17     Makeup Artist\n17  M Anzu Kofuku      *            5'11\"     159       AB            01/25       18     Counterfeiter\n18  M Cheisu Maeda     11           6'1\"      149       B             11/13       17     Detective\n19  M Hoshi Chiura     8            5'5\"      110       A             10/31       16     Astronomer\n20  M Jacek Żeglarski  10           5'8\"      162       AB            10/03       15     Animal Caretaker\n21  M Kazuya Harada    *            5'9\"      145       O             08/13       16     Woodworker\n22  M Kiro Karasu      10           5'10\"     130       O             08/17       17     Prince\n24  M Miyuki Ataru     *            6'2\"      140       B             07/23       17     Baseball Player\n26  M S'ad Ludópata    10           6'0\"      144       O             04/10       17     Gambler\n28  M Tenshi Kawada    10           5'8\"      120       AB            06/11       17     Therapist\n\n*Lost due to account deletion.```");
-					inboxChannel.send(`${message.author.username} has looked at the full version of the first class' roster.`);
 					return;
 				}
 
@@ -1903,90 +2657,228 @@ client.on("message", (message) => { //When a message is sent.
 					if (thumbnail === "") {
 						thumbnail = "https://imgur.com/OVPTMGn.png";
 					};
-					currentPage = {text:classList[x].studentID,thumbnail:thumbnail}
+					currentPage = {
+						text: classList[x].studentID,
+						thumbnail: thumbnail
+					}
 					pages.push(currentPage);
 					x++;
 				}
 
-				if (args[1] === "1" || args[1].toLowerCase().search("aika") != -1) {page = 1}
-				if (args[1] === "2" || args[1].toLowerCase().search("anaelle") != -1) {page = 2}
-				if (args[1] === "3" || args[1].toLowerCase().search("anya") != -1) {page = 3}
-				if (args[1] === "4" || args[1].toLowerCase().search("ara") != -1) {page = 4}
-				if (args[1] === "5" || args[1].toLowerCase().search("aurelie") != -1 || args[1].toLowerCase().search("aurélie") != -1) {page = 5}
-				if (args[1] === "6" || args[1].toLowerCase().search("hachi") != -1) {page = 6}
-				if (args[1] === "7" || args[1].toLowerCase().search("jeong") != -1) {page = 7}
-				if (args[1] === "8" || args[1].toLowerCase().search("kyoung") != -1) {page = 8}
-				if (args[1] === "9" || args[1].toLowerCase().search("megu") != -1) {page = 9}
-				if (args[1] === "10" || args[1].toLowerCase().search("minako") != -1) {page = 10}
-				if (args[1] === "11" || args[1].toLowerCase().search("mori") != -1) {page = 11}
-				if (args[1] === "12" || args[1].toLowerCase().search("noriko") != -1) {page = 12}
-				if (args[1] === "13" || args[1].toLowerCase().search("stella") != -1) {page = 13}
-				if (args[1] === "14" || args[1].toLowerCase().search("tezuku") != -1) {page = 14}
-				if (args[1] === "15" || args[1].toLowerCase().search("ximena") != -1) {page = 15}
-				if (args[1] === "16" || args[1].toLowerCase().search("aiko") != -1) {page = 16}
-				if (args[1] === "17" || args[1].toLowerCase().search("anzu") != -1) {page = 17}
-				if (args[1] === "18" || args[1].toLowerCase().search("cheisu") != -1) {page = 18}
-				if (args[1] === "19" || args[1].toLowerCase().search("hoshi") != -1) {page = 19}
-				if (args[1] === "20" || args[1].toLowerCase().search("jacek") != -1) {page = 20}
-				if (args[1] === "21" || args[1].toLowerCase().search("kazuya") != -1) {page = 21}
-				if (args[1] === "22" || args[1].toLowerCase().search("kiro") != -1) {page = 22}
-				if (args[1] === "23" || args[1].toLowerCase().search("yuuki") != -1) {page = 23}
-				if (args[1] === "24" || args[1].toLowerCase().search("miyuki") != -1) {page = 24}
-				if (args[1] === "25" || args[1].toLowerCase().search("ryu") != -1) {page = 25}
-				if (args[1] === "26" || args[1].toLowerCase().search("s'ad") != -1) {page = 26}
-				if (args[1] === "27" || args[1].toLowerCase().search("shiba") != -1) {page = 27}
-				if (args[1] === "28" || args[1].toLowerCase().search("tenshi") != -1) {page = 28}
-				if (args[1] === "29" || args[1].toLowerCase().search("theo") != -1 || args[1].toLowerCase().search("théo") != -1) {page = 29}
-				if (args[1] === "30" || args[1].toLowerCase().search("yukine") != -1 || args[1].toLowerCase().search("who") != -1) {page = 30}
-				if (Number.isInteger(args[1] * 1) === true) {
-					inboxChannel.send(`${message.author.username} has looked at student ${args[1]}'s file from the first class.`)
+				if (args[1] === "1" || args[1].toLowerCase().search("aika") != -1) {
+					page = 1
 				}
-				if (Number.isInteger(args[1] * 1) === false) {
-					inboxChannel.send(`${message.author.username} has looked at ${args[1].toUpperCase().slice(0, 1)}${args[1].toLowerCase().slice(1)}'s file from the first class.`)
+				if (args[1] === "2" || args[1].toLowerCase().search("anaelle") != -1) {
+					page = 2
+				}
+				if (args[1] === "3" || args[1].toLowerCase().search("anya") != -1) {
+					page = 3
+				}
+				if (args[1] === "4" || args[1].toLowerCase().search("ara") != -1) {
+					page = 4
+				}
+				if (args[1] === "5" || args[1].toLowerCase().search("aurelie") != -1 || args[1].toLowerCase().search("aurélie") != -1) {
+					page = 5
+				}
+				if (args[1] === "6" || args[1].toLowerCase().search("hachi") != -1) {
+					page = 6
+				}
+				if (args[1] === "7" || args[1].toLowerCase().search("jeong") != -1) {
+					page = 7
+				}
+				if (args[1] === "8" || args[1].toLowerCase().search("kyoung") != -1) {
+					page = 8
+				}
+				if (args[1] === "9" || args[1].toLowerCase().search("megu") != -1) {
+					page = 9
+				}
+				if (args[1] === "10" || args[1].toLowerCase().search("minako") != -1) {
+					page = 10
+				}
+				if (args[1] === "11" || args[1].toLowerCase().search("mori") != -1) {
+					page = 11
+				}
+				if (args[1] === "12" || args[1].toLowerCase().search("noriko") != -1) {
+					page = 12
+				}
+				if (args[1] === "13" || args[1].toLowerCase().search("stella") != -1) {
+					page = 13
+				}
+				if (args[1] === "14" || args[1].toLowerCase().search("tezuku") != -1) {
+					page = 14
+				}
+				if (args[1] === "15" || args[1].toLowerCase().search("ximena") != -1) {
+					page = 15
+				}
+				if (args[1] === "16" || args[1].toLowerCase().search("aiko") != -1) {
+					page = 16
+				}
+				if (args[1] === "17" || args[1].toLowerCase().search("anzu") != -1) {
+					page = 17
+				}
+				if (args[1] === "18" || args[1].toLowerCase().search("cheisu") != -1) {
+					page = 18
+				}
+				if (args[1] === "19" || args[1].toLowerCase().search("hoshi") != -1) {
+					page = 19
+				}
+				if (args[1] === "20" || args[1].toLowerCase().search("jacek") != -1) {
+					page = 20
+				}
+				if (args[1] === "21" || args[1].toLowerCase().search("kazuya") != -1) {
+					page = 21
+				}
+				if (args[1] === "22" || args[1].toLowerCase().search("kiro") != -1) {
+					page = 22
+				}
+				if (args[1] === "23" || args[1].toLowerCase().search("yuuki") != -1) {
+					page = 23
+				}
+				if (args[1] === "24" || args[1].toLowerCase().search("miyuki") != -1) {
+					page = 24
+				}
+				if (args[1] === "25" || args[1].toLowerCase().search("ryu") != -1) {
+					page = 25
+				}
+				if (args[1] === "26" || args[1].toLowerCase().search("s'ad") != -1) {
+					page = 26
+				}
+				if (args[1] === "27" || args[1].toLowerCase().search("shiba") != -1) {
+					page = 27
+				}
+				if (args[1] === "28" || args[1].toLowerCase().search("tenshi") != -1) {
+					page = 28
+				}
+				if (args[1] === "29" || args[1].toLowerCase().search("theo") != -1 || args[1].toLowerCase().search("théo") != -1) {
+					page = 29
+				}
+				if (args[1] === "30" || args[1].toLowerCase().search("yukine") != -1 || args[1].toLowerCase().search("who") != -1) {
+					page = 30
 				}
 
 			}
 			if (args[0] === "2") { //Class 02 (Hope's Peak Academy/The Mall, The Killing School Trip)
-				classList = [
-					{ studentID: "Name: Akiko _______\nTalent: Clairvoyent\nSex: Female \nStatus: Rescued\n\nShoe Size: 6.5\nHeight: 5'4\"\nWeight: 103\nBlood Type: B\nBirthday: 03/13\nAge: 16", studentIDPicture: "https://imgur.com/Cpdhi9T.png" },
-					{ studentID: "Name: Arisa Shokuhou\nTalent: Opera Singer\nSex: Female\nStatus: Rescued\n\nShoe Size: 6\nHeight: 5'2\"\nWeight: 106\nBlood Type: A\nBirthday: 11/13\nAge: 17", studentIDPicture: "" },
-					{ studentID: "Name: Chika Miyasaki\nTalent: Assassin\nSex: Female\nStatus: Contained\n\nShoe Size: 4\nHeight: 5'2\"\nWeight: 92\nBlood Type: A\nBirthday: 03/20\nAge: 16", studentIDPicture: "https://imgur.com/zZmXZ3L.png" },
-					{ studentID: "Name: Eiji Ryozo\nTalent: Surgeon\nSex: Female\nStatus: Rescued\n\nShoe Size: 8\nHeight: 5'7\"\nWeight: 111\nBlood Type: B\nBirthday: 11/01\nAge: 16", studentIDPicture: "https://imgur.com/JTrNk47.png" },
-					{ studentID: "Name: Hana Kageriri\nTalent: Puppeteer\nSex: Female\nStatus: Rescued\n\nShoe Size: 9\nHeight: 5'5\"\nWeight: 105\nBlood Type: B\nBirthday: 11/12\nAge: 17", studentIDPicture: "https://imgur.com/c210v7y.png" },
-					{ studentID: "Name: Kagami Hannei\nTalent: Jeweler\nSex: Female\nStatus: Rescued\n\nShoe Size: 7.5\nHeight: 5'11\"\nWeight: 129\nBlood Type: A\nBirthday: 09/14\nAge: 18", studentIDPicture: "https://imgur.com/PZVqARe.png" },
-					{ studentID: "Name: Monika Minami\nTalent: Bomb Maker\nSex: Female\nStatus: Rescued\n\nShoe Size: 6.5\nHeight: 4'9\"\nWeight: 80\nBlood Type: AB\nBirthday: 04/01\nAge: 15", studentIDPicture: "" },
-					{ studentID: "Name: Saeko Kiyomizu\nTalent: Maid\nSex: Female\nStatus: Rescued\n\nShoe Size: 6/6.5\nHeight: 5'7\"\nWeight: 110\nBlood Type: O\nBirthday: 09/15\nAge: 17", studentIDPicture: "https://imgur.com/AKg0jAY.png" },
-					{ studentID: "Name: Tsuyo Kogiyumi\nTalent: Biologist\nSex: Female\nStatus: Rescued\n\nShoe Size: 6\nHeight: 5'1\"\nWeight: 104\nBlood Type: O\nBirthday: 08/25\nAge: 17", studentIDPicture: "https://imgur.com/jHf6p7i.png" },
-					{ studentID: "Name: Yuna Akahoshi\nTalent: Doll Maker\nSex: Female\nStatus: Rescued\n\nShoe Size: 6\nHeight: 5'3\"\nWeight: 110\nBlood Type: A\nBirthday: 06/25\nAge: 15", studentIDPicture: "" },
-					{ studentID: "Name: Ale del Prieto\nTalent: Lawyer\nSex: Male\nStatus: Rescued\n\nShoe Size: 6\nHeight: 5'6\"\nWeight: 124\nBlood Type: AB\nBirthday: 05/22\nAge: 18", studentIDPicture: "https://imgur.com/Sag0SRp.png" },
-					{ studentID: "Name: Asahi Fukuzawa\nTalent: Violinist\nSex: Male\nStatus: Rescued\n\nShoe Size: 10\nHeight: 5'7\"\nWeight: 124\nBlood Type: O\nBirthday: 08/27\nAge: 18", studentIDPicture: "https://imgur.com/GdXygwN.png" },
-					{ studentID: "Name: Chikako Kaetsu\nTalent: Conspiracy Theorist\nSex: Male\nStatus: Rescued\n\nShoe Size: 7.5\nHeight: 5'8\"\nWeight: 142\nBlood Type: O\nBirthday: 04/26\nAge: 18", studentIDPicture: "https://imgur.com/4yEQVlf.png" },
-					{ studentID: "Name: Eiichi Ryozo\nTalent: Chemist\nSex: Male\nStatus: Rescued\n\nShoe Size: 10\nHeight: 6'0\"\nWeight: 137\nBlood Type: AB\nBirthday: 06/06\nAge: 18", studentIDPicture: "https://imgur.com/BCdEZNm.png" },
-					{ studentID: "Name: Fenikku Hinotama\nTalent: Ringmaster\nSex: Male\nStatus: Rescued\n\nShoe Size: 8\nHeight: 5'1\"\nWeight: 95\nBlood Type: O\nBirthday: 05/29\nAge: 14", studentIDPicture: "https://imgur.com/snh70TO.png" },
-					{ studentID: "Name: Hideo Takayama\nTalent: Inventor\nSex: Male\nStatus: Rescued\n\nShoe Size: 10\nHeight: 6'2\"\nWeight: 193\nBlood Type: AB\nBirthday: 12/02\nAge: 18\n\n\nHideo loves AI dick.", studentIDPicture: "https://imgur.com/9WXv5Q9.png" },
-					{ studentID: "Name: Isha Kalki\nTalent: Spy\nSex: Male\nStatus: Rescued\n\nShoe Size: 5\nHeight: 5'1\"\nWeight: 95\nBlood Type: O\nBirthday: 05/31\nAge: 16", studentIDPicture: "https://imgur.com/xj1HMXu.png" },
-					{ studentID: "Name: Kaipo Uilani Iona\nTalent: Birdwatcher\nSex: Male\nStatus: Rescued\n\nShoe Size: 7\nHeight: 5'2\"\nWeight: 98\nBlood Type: O\nBirthday: 10/13\nAge: 15", studentIDPicture: "https://imgur.com/WQFawIm.png" },
-					{ studentID: "Name: Katashi Maeda\nTalent: Swimmer\nSex: Male\nStatus: Rescued\n\nShoe Size: 9\nHeight: 5'8\"\nWeight: 157\nBlood Type: O\nBirthday: 04/20\nAge: 17", studentIDPicture: "" },
-					{ studentID: "Name: Kouki Yoshida\nTalent: Lucky Student\nSex: Male\nStatus: Terminated\n\nShoe Size: 9\nHeight: 5'11\"\nWeight: 140\nBlood Type: B\nBirthday: 09/15\nAge: 18", studentIDPicture: "https://imgur.com/jRRhUog.png" },
-					{ studentID: "Name: Kyabetsu Retasu\nTalent: Florist\nSex: Male\nStatus: Rescued\n\nShoe Size: 8\nHeight: 5'9\"\nWeight: 147\nBlood Type: AB\nBirthday: 02/17\nAge: 16", studentIDPicture: "https://imgur.com/CgLyIGN.png" },
-					{ studentID: "Name: Michel Voigt\nTalent: Theologist\nSex: Male\nStatus: Rescued\n\nShoe Size: 8\nHeight: 5'5\"\nWeight: 119\nBlood Type: A\nBirthday: 12/25\nAge: 16", studentIDPicture: "" },
-					{ studentID: "Name: Rosendo Paulo Ochoa Merlo\nTalent: Fútbol Player\nSex: Male\nStatus: Rescued\n\nShoe Size: 5.5\nHeight: 5'1\"\nWeight: 110\nBlood Type: O\nBirthday: 08/10\nAge: 15", studentIDPicture: "https://imgur.com/uwXd769.png" },
-					{ studentID: "Name: Sora Kenshin\nAlias: The Silencer\nTalent: Daredevil\nSex: Male\nStatus: Rescued\n\nShoe Size: 11\nHeight: 5'9\"\nWeight: 120\nBlood Type: AB\nBirthday: 06/01\nAge: 17", studentIDPicture: "https://imgur.com/wdNGgRH.png" },
-					{ studentID: "Name: Souma Shimizu\nReal Name: Naoki Ishida\nTalent: Manipulator (Poet)\nSex: Male\nStatus: Rescued\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 130\nBlood Type: AB\nBirthday: 03/20\nAge: 17\n\n\n\nPoems:\nmy stacy left me\nof course, it's a fucking chad\nno one understands\n\ni'll get her back\nand that chad will be wacked\nsouma is better than chad\n\nA poem by Souma.\n\n\nmy heart burns\nbut not for you\nfor stacy\nfuck chad", studentIDPicture: "https://imgur.com/9CoACWR.png" },
-					{ studentID: "Name: Tomomi Kashichi\nTalent: Technician\nSex: Male\nStatus: Rescued\n\nShoe Size: 10.5\nHeight: 5'8\"\nWeight: 137\nBlood Type: A\nBirthday: 04/27\nAge: 17", studentIDPicture: "https://imgur.com/OVjt8y0.png" },
-					{ studentID: "Name: Yuuya Michimiya\nTalent: Philanthropist\nSex: Male\nStatus: Rescued\n\nShoe Size: 9\nHeight: 5'6\"\nWeight: 148\nBlood Type: AB\nBirthday: 04/13\nAge: 16", studentIDPicture: "" },
-					{ studentID: "Name: Eito Ryozo\nTalent: Psychologist\nSex: Male\nStatus: Deceased\n\nShoe Size: N/A\nHeight: N/A\nWeight: N/A\nBlood Type: N/A\nBirthday: N/A\nAge: 14", studentIDPicture: "https://imgur.com/M4cALh8.png" }
+				classList = [{
+						studentID: "Name: Akiko _______\nTalent: Clairvoyent\nSex: Female \nStatus: Rescued\n\nShoe Size: 6.5\nHeight: 5'4\"\nWeight: 103\nBlood Type: B\nBirthday: 03/13\nAge: 16",
+						studentIDPicture: "https://imgur.com/Cpdhi9T.png"
+					},
+					{
+						studentID: "Name: Arisa Shokuhou\nTalent: Opera Singer\nSex: Female\nStatus: Rescued\n\nShoe Size: 6\nHeight: 5'2\"\nWeight: 106\nBlood Type: A\nBirthday: 11/13\nAge: 17",
+						studentIDPicture: ""
+					},
+					{
+						studentID: "Name: Chika Miyasaki\nTalent: Assassin\nSex: Female\nStatus: Contained\n\nShoe Size: 4\nHeight: 5'2\"\nWeight: 92\nBlood Type: A\nBirthday: 03/20\nAge: 16",
+						studentIDPicture: "https://imgur.com/zZmXZ3L.png"
+					},
+					{
+						studentID: "Name: Eiji Ryozo\nTalent: Surgeon\nSex: Female\nStatus: Rescued\n\nShoe Size: 8\nHeight: 5'7\"\nWeight: 111\nBlood Type: B\nBirthday: 11/01\nAge: 16",
+						studentIDPicture: "https://imgur.com/JTrNk47.png"
+					},
+					{
+						studentID: "Name: Hana Kageriri\nTalent: Puppeteer\nSex: Female\nStatus: Rescued\n\nShoe Size: 9\nHeight: 5'5\"\nWeight: 105\nBlood Type: B\nBirthday: 11/12\nAge: 17",
+						studentIDPicture: "https://imgur.com/c210v7y.png"
+					},
+					{
+						studentID: "Name: Kagami Hannei\nTalent: Jeweler\nSex: Female\nStatus: Rescued\n\nShoe Size: 7.5\nHeight: 5'11\"\nWeight: 129\nBlood Type: A\nBirthday: 09/14\nAge: 18",
+						studentIDPicture: "https://imgur.com/PZVqARe.png"
+					},
+					{
+						studentID: "Name: Monika Minami\nTalent: Bomb Maker\nSex: Female\nStatus: Rescued\n\nShoe Size: 6.5\nHeight: 4'9\"\nWeight: 80\nBlood Type: AB\nBirthday: 04/01\nAge: 15",
+						studentIDPicture: ""
+					},
+					{
+						studentID: "Name: Saeko Kiyomizu\nTalent: Maid\nSex: Female\nStatus: Rescued\n\nShoe Size: 6/6.5\nHeight: 5'7\"\nWeight: 110\nBlood Type: O\nBirthday: 09/15\nAge: 17",
+						studentIDPicture: "https://imgur.com/AKg0jAY.png"
+					},
+					{
+						studentID: "Name: Tsuyo Kogiyumi\nTalent: Biologist\nSex: Female\nStatus: Rescued\n\nShoe Size: 6\nHeight: 5'1\"\nWeight: 104\nBlood Type: O\nBirthday: 08/25\nAge: 17",
+						studentIDPicture: "https://imgur.com/jHf6p7i.png"
+					},
+					{
+						studentID: "Name: Yuna Akahoshi\nTalent: Doll Maker\nSex: Female\nStatus: Rescued\n\nShoe Size: 6\nHeight: 5'3\"\nWeight: 110\nBlood Type: A\nBirthday: 06/25\nAge: 15",
+						studentIDPicture: ""
+					},
+					{
+						studentID: "Name: Ale del Prieto\nTalent: Lawyer\nSex: Male\nStatus: Rescued\n\nShoe Size: 6\nHeight: 5'6\"\nWeight: 124\nBlood Type: AB\nBirthday: 05/22\nAge: 18",
+						studentIDPicture: "https://imgur.com/Sag0SRp.png"
+					},
+					{
+						studentID: "Name: Asahi Fukuzawa\nTalent: Violinist\nSex: Male\nStatus: Rescued\n\nShoe Size: 10\nHeight: 5'7\"\nWeight: 124\nBlood Type: O\nBirthday: 08/27\nAge: 18",
+						studentIDPicture: "https://imgur.com/GdXygwN.png"
+					},
+					{
+						studentID: "Name: Chikako Kaetsu\nTalent: Conspiracy Theorist\nSex: Male\nStatus: Rescued\n\nShoe Size: 7.5\nHeight: 5'8\"\nWeight: 142\nBlood Type: O\nBirthday: 04/26\nAge: 18",
+						studentIDPicture: "https://imgur.com/4yEQVlf.png"
+					},
+					{
+						studentID: "Name: Eiichi Ryozo\nTalent: Chemist\nSex: Male\nStatus: Rescued\n\nShoe Size: 10\nHeight: 6'0\"\nWeight: 137\nBlood Type: AB\nBirthday: 06/06\nAge: 18",
+						studentIDPicture: "https://imgur.com/BCdEZNm.png"
+					},
+					{
+						studentID: "Name: Fenikku Hinotama\nTalent: Ringmaster\nSex: Male\nStatus: Rescued\n\nShoe Size: 8\nHeight: 5'1\"\nWeight: 95\nBlood Type: O\nBirthday: 05/29\nAge: 14",
+						studentIDPicture: "https://imgur.com/snh70TO.png"
+					},
+					{
+						studentID: "Name: Hideo Takayama\nTalent: Inventor\nSex: Male\nStatus: Rescued\n\nShoe Size: 10\nHeight: 6'2\"\nWeight: 193\nBlood Type: AB\nBirthday: 12/02\nAge: 18\n\n\nHideo loves AI dick.",
+						studentIDPicture: "https://imgur.com/9WXv5Q9.png"
+					},
+					{
+						studentID: "Name: Isha Kalki\nTalent: Spy\nSex: Male\nStatus: Rescued\n\nShoe Size: 5\nHeight: 5'1\"\nWeight: 95\nBlood Type: O\nBirthday: 05/31\nAge: 16",
+						studentIDPicture: "https://imgur.com/xj1HMXu.png"
+					},
+					{
+						studentID: "Name: Kaipo Uilani Iona\nTalent: Birdwatcher\nSex: Male\nStatus: Rescued\n\nShoe Size: 7\nHeight: 5'2\"\nWeight: 98\nBlood Type: O\nBirthday: 10/13\nAge: 15",
+						studentIDPicture: "https://imgur.com/WQFawIm.png"
+					},
+					{
+						studentID: "Name: Katashi Maeda\nTalent: Swimmer\nSex: Male\nStatus: Rescued\n\nShoe Size: 9\nHeight: 5'8\"\nWeight: 157\nBlood Type: O\nBirthday: 04/20\nAge: 17",
+						studentIDPicture: ""
+					},
+					{
+						studentID: "Name: Kouki Yoshida\nTalent: Lucky Student\nSex: Male\nStatus: Terminated\n\nShoe Size: 9\nHeight: 5'11\"\nWeight: 140\nBlood Type: B\nBirthday: 09/15\nAge: 18",
+						studentIDPicture: "https://imgur.com/jRRhUog.png"
+					},
+					{
+						studentID: "Name: Kyabetsu Retasu\nTalent: Florist\nSex: Male\nStatus: Rescued\n\nShoe Size: 8\nHeight: 5'9\"\nWeight: 147\nBlood Type: AB\nBirthday: 02/17\nAge: 16",
+						studentIDPicture: "https://imgur.com/CgLyIGN.png"
+					},
+					{
+						studentID: "Name: Michel Voigt\nTalent: Theologist\nSex: Male\nStatus: Rescued\n\nShoe Size: 8\nHeight: 5'5\"\nWeight: 119\nBlood Type: A\nBirthday: 12/25\nAge: 16",
+						studentIDPicture: ""
+					},
+					{
+						studentID: "Name: Rosendo Paulo Ochoa Merlo\nTalent: Fútbol Player\nSex: Male\nStatus: Rescued\n\nShoe Size: 5.5\nHeight: 5'1\"\nWeight: 110\nBlood Type: O\nBirthday: 08/10\nAge: 15",
+						studentIDPicture: "https://imgur.com/uwXd769.png"
+					},
+					{
+						studentID: "Name: Sora Kenshin\nAlias: The Silencer\nTalent: Daredevil\nSex: Male\nStatus: Rescued\n\nShoe Size: 11\nHeight: 5'9\"\nWeight: 120\nBlood Type: AB\nBirthday: 06/01\nAge: 17",
+						studentIDPicture: "https://imgur.com/wdNGgRH.png"
+					},
+					{
+						studentID: "Name: Souma Shimizu\nReal Name: Naoki Ishida\nTalent: Manipulator (Poet)\nSex: Male\nStatus: Rescued\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 130\nBlood Type: AB\nBirthday: 03/20\nAge: 17\n\n\n\nPoems:\nmy stacy left me\nof course, it's a fucking chad\nno one understands\n\ni'll get her back\nand that chad will be wacked\nsouma is better than chad\n\nA poem by Souma.\n\n\nmy heart burns\nbut not for you\nfor stacy\nfuck chad",
+						studentIDPicture: "https://imgur.com/9CoACWR.png"
+					},
+					{
+						studentID: "Name: Tomomi Kashichi\nTalent: Technician\nSex: Male\nStatus: Rescued\n\nShoe Size: 10.5\nHeight: 5'8\"\nWeight: 137\nBlood Type: A\nBirthday: 04/27\nAge: 17",
+						studentIDPicture: "https://imgur.com/OVjt8y0.png"
+					},
+					{
+						studentID: "Name: Yuuya Michimiya\nTalent: Philanthropist\nSex: Male\nStatus: Rescued\n\nShoe Size: 9\nHeight: 5'6\"\nWeight: 148\nBlood Type: AB\nBirthday: 04/13\nAge: 16",
+						studentIDPicture: ""
+					},
+					{
+						studentID: "Name: Eito Ryozo\nTalent: Psychologist\nSex: Male\nStatus: Deceased\n\nShoe Size: N/A\nHeight: N/A\nWeight: N/A\nBlood Type: N/A\nBirthday: N/A\nAge: 14",
+						studentIDPicture: "https://imgur.com/M4cALh8.png"
+					}
 				]
-			
+
 				if (args.length === 1) {
 					message.channel.send("```##  Sex and Name          Talent\n9   F Tsuyo Kogiyumi      Biologist\n12  M Asahi Fukuzawa      Violinist\n15  M Fenikku Hinotama    Ringmaster\n16  M Hideo Takayama      Inventor\n25  M Souma Shimizu       Manipulator (Poet)\n\n    Mastermind\n3   F Chika Miyasaki      Assassin\n\n    Deceased Students\n1   F Akiko _______       Clairvoyant\n2   F Arisa Shokuhou      Opera Singer\n4   F Eiji Ryozo          Surgeon\n5   F Hana Kageriri       Puppeteer\n6   F Kagami Hannei       Jeweler\n7   F Monika Minami       Bomb Maker\n8   F Saeko Kiyomizu      Maid\n10  F Yuna Akahoshi       Doll Maker\n11  M Ale del Prieto      Lawyer\n13  M Chikako Kaetsu      Conspiracy Theorist\n14  M Eiichi Ryozo        Chemist\n17  M Isha Kalki          Spy\n18  M Kaipo Uilani Iona   Birdwatcher\n19  M Katashi Maeda       Swimmer\n20  M Kouki Yoshida       Lucky Student\n21  M Kyabetsu Retasu     Florist\n22  M Michel Voigt        Theologist\n23  M Renzo Ochoa         Fútbol Player\n24  M Sora Kenshin        Daredevil\n26  M Tomomi Kashichi     Technician\n27  M Yuuya Michimiya     Philanthropist```");
-					inboxChannel.send(`${message.author.username} has looked at the second class' roster.`);
 					return;
 				}
 				if (args[1].toLowerCase() === "total") {
 					message.channel.send("```##  Sex and Name        Shoe Size    Height    Weight    Blood Type    Birthday    Age    Talent\n9   F Tsuyo Kogiyumi    6            5'1\"      104       O             08/25       17     Biologist\n12  M Asahi Fukuzawa    10           5'7\"      124       O             08/27       18     Violinist\n15  M Fenikku Hinotama  8            5'1\"      95        O             05/29       14     Ringmaster\n16  M Hideo Takayama    10           6'2\"      193       AB            12/02       18     Inventor\n25  M Souma Shimizu     10           5'10\"     130       AB            03/20       17     Manipulator (Poet)\n\n    Mastermind\n3   F Chika Miyasaki    4            5'2\"      92        A             03/20       16     Assassin\n\n    Deceased Students\n1   F Akiko _______     6.5          5'4\"      103       B             03/13       16     Clairvoyant\n2   F Arisa Shokuhou    6            5'2\"      106       A             11/13       17     Opera Singer\n4   F Eiji Ryozo        8            5'7\"      111       B             11/01       16     Surgeon\n5   F Hana Kageriri     9            5'5\"      105       B             11/12       17     Puppeteer\n6   F Kagami Hannei     7.5          5'11\"     129       A             09/14       18     Jeweler\n7   F Monika Minami     6.5          4'9\"      80        AB            04/01       15     Bomb Maker\n8   F Saeko Kiyomizu    6/6.5        5'7\"      110       O             09/15       17     Maid```");
 					message.channel.send("```\n10  F Yuna Akahoshi     6            5'3\"      110       A             06/25       15     Doll Maker\n11  M Ale del Prieto    6            5'6\"      124       AB            05/22       18     Lawyer\n13  M Chikako Kaetsu    7.5          5'8\"      142       O             04/26       18     Conspiracy Theorist\n14  M Eiichi Ryozo      10           6'0\"      137       AB            06/06       18     Chemist\n17  M Isha Kalki        5            5'1\"      95        O             05/31       16     Spy\n18  M Kaipo Uilani Iona 7            5'2\"      98        O             10/13       15     Birdwatcher\n19  M Katashi Maeda     9            5'8\"      157       O             04/20       17     Swimmer\n20  M Kouki Yoshida     9            5'11\"     140       B             09/15       18     Lucky Student\n21  M Kyabetsu Retasu   8            5'9\"      147       AB            02/17       16     Florist\n22  M Michel Voigt      8            5'5\"      119       A             12/25       16     Theologist\n23  M Renzo Ochoa       5.5          5'1\"      110       O             08/10       15     Fútbol Player\n24  M Sora Kenshin      11           5'9\"      120       AB            06/01       17     Daredevil\n26  M Tomomi Kashichi   10.5         5'8\"      137       A             04/17       17     Technician\n27  M Yuuya Michimiya   9            5'6\"      148       AB            04/13       16     Philanthropist\n```");
-					inboxChannel.send(`${message.author.username} has looked at the full version of the second class' roster.`);
 					return;
 				}
 
@@ -2004,85 +2896,210 @@ client.on("message", (message) => { //When a message is sent.
 					pages.push(currentPage);
 					x++;
 				}
-				
-				if (args[1] === "1" || args[1].toLowerCase().search("akiko") != -1) {page = 1}
-				if (args[1] === "2" || args[1].toLowerCase().search("arisa") != -1) {page = 2}
-				if (args[1] === "3" || (args[1].toLowerCase().search("chika") != -1 && args[1].toLowerCase().search("chikako") === -1)) {page = 3}
-				if (args[1] === "4" || args[1].toLowerCase().search("eiji") != -1) {page = 4}
-				if (args[1] === "5" || args[1].toLowerCase().search("hana") != -1) {page = 5}
-				if (args[1] === "6" || args[1].toLowerCase().search("kagami") != -1 || args[1].toLowerCase().search("bitch") != -1) {page = 6}
-				if (args[1] === "7" || args[1].toLowerCase().search("monika") != -1) {page = 7}
-				if (args[1] === "8" || args[1].toLowerCase().search("saeko") != -1) {page = 8}
-				if (args[1] === "9" || args[1].toLowerCase().search("tsuyo") != -1) {page = 9}
-				if (args[1] === "10" || args[1].toLowerCase().search("yuna") != -1) {page = 10}
-				if (args[1] === "11" || args[1].toLowerCase().search("ale") != -1) {page = 11}
-				if (args[1] === "12" || args[1].toLowerCase().search("asahi") != -1) {page = 12}
-				if (args[1] === "13" || args[1].toLowerCase().search("chikako") != -1 || (args[1].toLowerCase().search("chik") != -1 && args[1].toLowerCase().search("chika") === -1)) {page = 13}
-				if (args[1] === "14" || args[1].toLowerCase().search("eiichi") != -1) {page = 14}
-				if (args[1] === "15" || args[1].toLowerCase().search("fenikku") != -1) {page = 15}
-				if (args[1] === "16" || args[1].toLowerCase().search("hideo") != -1) {page = 16}
-				if (args[1] === "17" || args[1].toLowerCase().search("isha") != -1) {page = 17}
-				if (args[1] === "18" || args[1].toLowerCase().search("kaipo") != -1) {page = 18}
-				if (args[1] === "19" || args[1].toLowerCase().search("katashi") != -1) {page = 19}
-				if (args[1] === "20" || args[1].toLowerCase().search("kouki") != -1) {page = 20}
-				if (args[1] === "21" || args[1].toLowerCase().search("kyabetsu") != -1) {page = 21}
-				if (args[1] === "22" || args[1].toLowerCase().search("michel") != -1) {page = 22}
-				if (args[1] === "23" || args[1].toLowerCase().search("renzo") != -1 || args[1].toLowerCase().search("rosendo") != -1) {page = 23}
-				if (args[1] === "24" || args[1].toLowerCase().search("sora") != -1 || args[1].toLowerCase().search("silencer") != -1 || (args[1].toLowerCase().search("the") != -1 && args[2].toLowerCase().search("silencer") != -1)) {page = 24}
-				if (args[1] === "25" || args[1].toLowerCase().search("souma") != -1 || args[1].toLowerCase().search("naoki") != -1) {page = 25}
-				if (args[1] === "26" || args[1].toLowerCase().search("tomomi") != -1) {page = 26}
-				if (args[1] === "27" || args[1].toLowerCase().search("yuuya") != -1) {page = 27}
-				if (args[1].toLowerCase().search("eito") != -1) {page = 28}
+
+				if (args[1] === "1" || args[1].toLowerCase().search("akiko") != -1) {
+					page = 1
+				}
+				if (args[1] === "2" || args[1].toLowerCase().search("arisa") != -1) {
+					page = 2
+				}
+				if (args[1] === "3" || (args[1].toLowerCase().search("chika") != -1 && args[1].toLowerCase().search("chikako") === -1)) {
+					page = 3
+				}
+				if (args[1] === "4" || args[1].toLowerCase().search("eiji") != -1) {
+					page = 4
+				}
+				if (args[1] === "5" || args[1].toLowerCase().search("hana") != -1) {
+					page = 5
+				}
+				if (args[1] === "6" || args[1].toLowerCase().search("kagami") != -1 || args[1].toLowerCase().search("bitch") != -1) {
+					page = 6
+				}
+				if (args[1] === "7" || args[1].toLowerCase().search("monika") != -1) {
+					page = 7
+				}
+				if (args[1] === "8" || args[1].toLowerCase().search("saeko") != -1) {
+					page = 8
+				}
+				if (args[1] === "9" || args[1].toLowerCase().search("tsuyo") != -1) {
+					page = 9
+				}
+				if (args[1] === "10" || args[1].toLowerCase().search("yuna") != -1) {
+					page = 10
+				}
+				if (args[1] === "11" || args[1].toLowerCase().search("ale") != -1) {
+					page = 11
+				}
+				if (args[1] === "12" || args[1].toLowerCase().search("asahi") != -1) {
+					page = 12
+				}
+				if (args[1] === "13" || args[1].toLowerCase().search("chikako") != -1 || (args[1].toLowerCase().search("chik") != -1 && args[1].toLowerCase().search("chika") === -1)) {
+					page = 13
+				}
+				if (args[1] === "14" || args[1].toLowerCase().search("eiichi") != -1) {
+					page = 14
+				}
+				if (args[1] === "15" || args[1].toLowerCase().search("fenikku") != -1) {
+					page = 15
+				}
+				if (args[1] === "16" || args[1].toLowerCase().search("hideo") != -1) {
+					page = 16
+				}
+				if (args[1] === "17" || args[1].toLowerCase().search("isha") != -1) {
+					page = 17
+				}
+				if (args[1] === "18" || args[1].toLowerCase().search("kaipo") != -1) {
+					page = 18
+				}
+				if (args[1] === "19" || args[1].toLowerCase().search("katashi") != -1) {
+					page = 19
+				}
+				if (args[1] === "20" || args[1].toLowerCase().search("kouki") != -1) {
+					page = 20
+				}
+				if (args[1] === "21" || args[1].toLowerCase().search("kyabetsu") != -1) {
+					page = 21
+				}
+				if (args[1] === "22" || args[1].toLowerCase().search("michel") != -1) {
+					page = 22
+				}
+				if (args[1] === "23" || args[1].toLowerCase().search("renzo") != -1 || args[1].toLowerCase().search("rosendo") != -1) {
+					page = 23
+				}
+				if (args[1] === "24" || args[1].toLowerCase().search("sora") != -1 || args[1].toLowerCase().search("silencer") != -1 || (args[1].toLowerCase().search("the") != -1 && args[2].toLowerCase().search("silencer") != -1)) {
+					page = 24
+				}
+				if (args[1] === "25" || args[1].toLowerCase().search("souma") != -1 || args[1].toLowerCase().search("naoki") != -1) {
+					page = 25
+				}
+				if (args[1] === "26" || args[1].toLowerCase().search("tomomi") != -1) {
+					page = 26
+				}
+				if (args[1] === "27" || args[1].toLowerCase().search("yuuya") != -1) {
+					page = 27
+				}
+				if (args[1].toLowerCase().search("eito") != -1) {
+					page = 28
+				}
 				if (args[1].toLowerCase().search("junko") != -1 && args[1].toLowerCase().search("inu") != -1 && message.author.id === "334575513857163266") {
-					possibleReplies = ["how long will it take you, Mel...","**Mel.**","jesus christ! How many times is this going to happen, Mel?","I will literally vore you if you do that again, Mel.","***Mel.***","do it one more time, I dare you Mel.","you've got to be doing this on purpose now, right Mel?","I've had it up to here with you, Mel.","stop doing this, Mel!","why do you keep doing this, Mel?"];
+					possibleReplies = ["how long will it take you, Mel...", "**Mel.**", "jesus christ! How many times is this going to happen, Mel?", "I will literally vore you if you do that again, Mel.", "***Mel.***", "do it one more time, I dare you Mel.", "you've got to be doing this on purpose now, right Mel?", "I've had it up to here with you, Mel.", "stop doing this, Mel!", "why do you keep doing this, Mel?"];
 					return message.reply(random(possibleReplies));
-				}
-				if (Number.isInteger(args[1] * 1) === true) {
-					inboxChannel.send(`${message.author.username} has looked at student ${args[1]}'s file from the second class.`)
-				}
-				if (Number.isInteger(args[1] * 1) === false) {
-					inboxChannel.send(`${message.author.username} has looked at ${args[1].toUpperCase().slice(0, 1)}${args[1].toLowerCase().slice(1)}'s file from the second class.`)
 				}
 			}
 			if (args[0] === "3") { //Class 03 (Monokuma Train, Killing School Ride)
-				classList = [
-					{ studentID: "Name: Aemele Dèjré\nTalent: Stalker\nSex: Female\nStatus: Alive\n\nShoe Size: 5\nHeight: 5'5\"\nWeight: 114\nBlood Type: B\nBirthday: 09/01\nAge: 18", studentIDPicture: "https://imgur.com/nxt9OCI.png" },
-					{ studentID: "Name: Dia Ramos\nTalent: Cheerleader\nSex: Female\nStatus: Alive\n\nShoe Size: 7.5\nHeight: 5'2\"\nWeight: 117\nBlood Type: O\nBirthday: 08/10\nAge: 18", studentIDPicture: "https://imgur.com/luniZC4.png" },
-					{ studentID: "Name: Kumiko Yeun\nStage Name: KUMI!\nTalent: Rock Star\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'7\"\nWeight: 103\nBlood Type: AB\nBirthday: 06/16\nAge: 18", studentIDPicture: "" },
-					{ studentID: "Name: Inugami Uzuki\nTalent: Graffiti Artist\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'6\"\nWeight: 135\nBlood Type: O\nBirthday: 03/24\nAge: 17", studentIDPicture: "https://imgur.com/ZHW10pn.png" },
-					{ studentID: "Name: Isago Achikita\nTalent: Mythologist\nSex: Female\nStatus: Deceased\n\nShoe Size: 6.5\nHeight: 5'5\"\nWeight: 119\nBlood Type: AB\nBirthday: 02/29\nAge: 18", studentIDPicture: "https://imgur.com/KNHhTlL.png" },
-					{ studentID: "Name: Junko Saitou\nPen Name: Kisei Keukegen\nTalent: Horror Novelist\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'5\"\nWeight: 109\nBlood Type: AB\nBirthday: 01/06\nAge: 18", studentIDPicture: "https://imgur.com/TZeW9L7.png" },
-					{ studentID: "Name: Kira Kurushimi\nStage Name: Kirakira Kyuti\nTalent: Magical Girl\nSex: Female\nStatus: Deceased\n\nShoe Size: 6 (Children's)\nHeight: 4'11\"\nWeight: 97\nBlood Type: A\nBirthday: 09/07\nAge: 14", studentIDPicture: "https://imgur.com/OJF4cgL.png" },
-					{ studentID: "Name: Mariko Murakami\nTalent: Martial Artist\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'6\"\nWeight: 125\nBlood Type: AB\nBirthday: 12/12\nAge: 18", studentIDPicture: "https://imgur.com/9RRSa6h.png" },
-					{ studentID: "Name: Megami Himura\nTalent: Tragedian\nSex: Female\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'5\"\nWeight: 110\nBlood Type: A\nBirthday: 05/15\nAge: 16", studentIDPicture: "" },
-					{ studentID: "Name: Agnès Boniface\nPseudonym: Nikki Cox\nTalent: Adult Film Actress\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'9\"\nWeight: 131\nBlood Type: B\nBirthday: 09/08\nAge: 19", studentIDPicture: "https://imgur.com/zvw2WGR.png" },
-					{ studentID: "Name: Piper McCullough\nTalent: Cadet\nSex: Female\nStatus: Deceased\n\nShoe Size: 5\nHeight: 5'1\"\nWeight: 102\nBlood Type: O\nBirthday: 03/23\nAge: 15", studentIDPicture: "https://imgur.com/yuOgons.png" },
-					{ studentID: "Name: Renata de Santis\nTalent: Heiress\nSex: Female\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'7\"\nWeight: 115\nBlood Type: B\nBirthday: 08/11\nAge: 17", studentIDPicture: "https://imgur.com/Dgij3oX.png" },
-					{ studentID: "Name: Areli Vepkhia\nTalent: Lion Tamer\nSex: Male\nStatus: Alive\n\nShoe Size: 12\nHeight: 6'5\"\nWeight: 260\nBlood Type: O\nBirthday: 10/29\nAge: 18", studentIDPicture: "https://imgur.com/4IQsA40.png" },
-					{ studentID: "Name: Ayuma Tanaka\nTalent: Counselor\nSex: Male\nStatus: Alive\n\nShoe Size: 9\nHeight: 5'4\"\nWeight: 150\nBlood Type: B\nBirthday: 10/17\nAge: 18", studentIDPicture: "" },
-					{ studentID: "Name: Cecilio Calles Cárdenas\nTalent: Pilot\nSex: Male\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'8\"\nWeight: 157\nBlood Type: B\nBirthday: 05/03\nAge: 17", studentIDPicture: "https://imgur.com/8mpbRMJ.png" },
-					{ studentID: "Name: Charles Miller\nTalent: Milkman\nSex: Male\nStatus: Deceased\n\nShoe Size: 9\nHeight: 5'11\"\nWeight: 143\nBlood Type: Chocolate\nBirthday: 01/11\nAge: 18", studentIDPicture: "https://imgur.com/YKzsYOU.png" },
-					{ studentID: "Name: Daichi Ichihara\nTalent: Satanist\nSex: Male\nStatus: Alive\n\nShoe Size: 9\nHeight: 5'8\"\nWeight: 143\nBlood Type: O\nBirthday: 09/23\nAge: 17", studentIDPicture: "https://imgur.com/qT8oKQu.png" },
-					{ studentID: "Name: Federico Navarro\nTalent: Pianist\nSex: Male\nStatus: Deceased\n\nShoe Size: 5\nHeight: 5'0\"\nWeight: 99\nBlood Type: A\nBirthday: 02/16\nAge: 15", studentIDPicture: "https://imgur.com/MeXyfga.png" },
-					{ studentID: "Name: Jomei Hoshino\nTalent: Pyromaniac\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'11\"\nWeight: 152\nBlood Type: B\nBirthday: 12/17\nAge: 18", studentIDPicture: "https://imgur.com/YywS5LK.png" },
-					{ studentID: "Name: Melchor Guadalupe Paz de la Cruz\nTalent: Activist\nSex: Male\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'11\"\nWeight: 110\nBlood Type: A\nBirthday: 02/29\nAge: 17", studentIDPicture: "https://imgur.com/9cVr7mL.png" },
-					{ studentID: "Name: Ruslan Eun-Kyung Kraus\nTalent: Luthier\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 6'1\"\nWeight: 157\nBlood Type: B\nBirthday: 03/02\nAge: 17", studentIDPicture: "https://imgur.com/8LA7hg8.png" },
-					{ studentID: "Name: Ryoushi Nobuori\nTalent: Storyteller\nSex: Male\nStatus: Deceased\n\nShoe Size: 7\nHeight: 5'6\"\nWeight: 111\nBlood Type: A\nBirthday: 12/25\nAge: 16", studentIDPicture: "https://imgur.com/9se7jzq.png" },
-					{ studentID: "Name: Santo Verdugo Bautista\nTalent: Coroner\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 128\nBlood Type: O\nBirthday: 02/11\nAge: 17", studentIDPicture: "https://imgur.com/PoUqQIr.png" },
-					{ studentID: "Name: Shinji Minoru\nTalent: Physicist\nSex: Male\nStatus: Alive\n\nShoe Size: 9\nHeight: 5'10\"\nWeight: 125\nBlood Type: AB\nBirthday: 01/27\nAge: 18", studentIDPicture: "" },
-					{ studentID: "Name: Tenome\nTalent: Ghostwriter\nSex: Male\nStatus: Deceased\n\nShoe Size: ??\nHeight: ?'?\"\nWeight: ???\nBlood Type: ??\nBirthday: ??/??\nAge: 15", studentIDPicture: "https://imgur.com/TM8FYjl.png" },
-					{ studentID: "Name: Wolfgang Schwarz\nTalent: Combat Medic\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 6'5\"\nWeight: 246\nBlood Type: A\nBirthday: 12/07\nAge: ??", studentIDPicture: "https://imgur.com/iHn6DX9.png" },
+				classList = [{
+						studentID: "Name: Aemele Dèjré\nTalent: Stalker\nSex: Female\nStatus: Alive\n\nShoe Size: 5\nHeight: 5'5\"\nWeight: 114\nBlood Type: B\nBirthday: 09/01\nAge: 18",
+						studentIDPicture: "https://imgur.com/nxt9OCI.png"
+					},
+					{
+						studentID: "Name: Dia Ramos\nTalent: Cheerleader\nSex: Female\nStatus: Alive\n\nShoe Size: 7.5\nHeight: 5'2\"\nWeight: 117\nBlood Type: O\nBirthday: 08/10\nAge: 18",
+						studentIDPicture: "https://imgur.com/luniZC4.png"
+					},
+					{
+						studentID: "Name: Kumiko Yeun\nStage Name: KUMI!\nTalent: Rock Star\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'7\"\nWeight: 103\nBlood Type: AB\nBirthday: 06/16\nAge: 18",
+						studentIDPicture: ""
+					},
+					{
+						studentID: "Name: Inugami Uzuki\nTalent: Graffiti Artist\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'6\"\nWeight: 135\nBlood Type: O\nBirthday: 03/24\nAge: 17",
+						studentIDPicture: "https://imgur.com/ZHW10pn.png"
+					},
+					{
+						studentID: "Name: Isago Achikita\nTalent: Mythologist\nSex: Female\nStatus: Deceased\n\nShoe Size: 6.5\nHeight: 5'5\"\nWeight: 119\nBlood Type: AB\nBirthday: 02/29\nAge: 18",
+						studentIDPicture: "https://imgur.com/KNHhTlL.png"
+					},
+					{
+						studentID: "Name: Junko Saitou\nPen Name: Kisei Keukegen\nTalent: Horror Novelist\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'5\"\nWeight: 109\nBlood Type: AB\nBirthday: 01/06\nAge: 18",
+						studentIDPicture: "https://imgur.com/TZeW9L7.png"
+					},
+					{
+						studentID: "Name: Kira Kurushimi\nStage Name: Kirakira Kyuti\nTalent: Magical Girl\nSex: Female\nStatus: Deceased\n\nShoe Size: 6 (Children's)\nHeight: 4'11\"\nWeight: 97\nBlood Type: A\nBirthday: 09/07\nAge: 14",
+						studentIDPicture: "https://imgur.com/OJF4cgL.png"
+					},
+					{
+						studentID: "Name: Mariko Murakami\nTalent: Martial Artist\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'6\"\nWeight: 125\nBlood Type: AB\nBirthday: 12/12\nAge: 18",
+						studentIDPicture: "https://imgur.com/9RRSa6h.png"
+					},
+					{
+						studentID: "Name: Megami Himura\nTalent: Tragedian\nSex: Female\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'5\"\nWeight: 110\nBlood Type: A\nBirthday: 05/15\nAge: 16",
+						studentIDPicture: ""
+					},
+					{
+						studentID: "Name: Agnès Boniface\nPseudonym: Nikki Cox\nTalent: Adult Film Actress\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'9\"\nWeight: 131\nBlood Type: B\nBirthday: 09/08\nAge: 19",
+						studentIDPicture: "https://imgur.com/zvw2WGR.png"
+					},
+					{
+						studentID: "Name: Piper McCullough\nTalent: Cadet\nSex: Female\nStatus: Deceased\n\nShoe Size: 5\nHeight: 5'1\"\nWeight: 102\nBlood Type: O\nBirthday: 03/23\nAge: 15",
+						studentIDPicture: "https://imgur.com/yuOgons.png"
+					},
+					{
+						studentID: "Name: Renata de Santis\nTalent: Heiress\nSex: Female\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'7\"\nWeight: 115\nBlood Type: B\nBirthday: 08/11\nAge: 17",
+						studentIDPicture: "https://imgur.com/Dgij3oX.png"
+					},
+					{
+						studentID: "Name: Areli Vepkhia\nTalent: Lion Tamer\nSex: Male\nStatus: Alive\n\nShoe Size: 12\nHeight: 6'5\"\nWeight: 260\nBlood Type: O\nBirthday: 10/29\nAge: 18",
+						studentIDPicture: "https://imgur.com/4IQsA40.png"
+					},
+					{
+						studentID: "Name: Ayuma Tanaka\nTalent: Counselor\nSex: Male\nStatus: Alive\n\nShoe Size: 9\nHeight: 5'4\"\nWeight: 150\nBlood Type: B\nBirthday: 10/17\nAge: 18",
+						studentIDPicture: ""
+					},
+					{
+						studentID: "Name: Cecilio Calles Cárdenas\nTalent: Pilot\nSex: Male\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'8\"\nWeight: 157\nBlood Type: B\nBirthday: 05/03\nAge: 17",
+						studentIDPicture: "https://imgur.com/8mpbRMJ.png"
+					},
+					{
+						studentID: "Name: Charles Miller\nTalent: Milkman\nSex: Male\nStatus: Deceased\n\nShoe Size: 9\nHeight: 5'11\"\nWeight: 143\nBlood Type: Chocolate\nBirthday: 01/11\nAge: 18",
+						studentIDPicture: "https://imgur.com/YKzsYOU.png"
+					},
+					{
+						studentID: "Name: Daichi Ichihara\nTalent: Satanist\nSex: Male\nStatus: Alive\n\nShoe Size: 9\nHeight: 5'8\"\nWeight: 143\nBlood Type: O\nBirthday: 09/23\nAge: 17",
+						studentIDPicture: "https://imgur.com/qT8oKQu.png"
+					},
+					{
+						studentID: "Name: Federico Navarro\nTalent: Pianist\nSex: Male\nStatus: Deceased\n\nShoe Size: 5\nHeight: 5'0\"\nWeight: 99\nBlood Type: A\nBirthday: 02/16\nAge: 15",
+						studentIDPicture: "https://imgur.com/MeXyfga.png"
+					},
+					{
+						studentID: "Name: Jomei Hoshino\nTalent: Pyromaniac\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'11\"\nWeight: 152\nBlood Type: B\nBirthday: 12/17\nAge: 18",
+						studentIDPicture: "https://imgur.com/YywS5LK.png"
+					},
+					{
+						studentID: "Name: Melchor Guadalupe Paz de la Cruz\nTalent: Activist\nSex: Male\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'11\"\nWeight: 110\nBlood Type: A\nBirthday: 02/29\nAge: 17",
+						studentIDPicture: "https://imgur.com/9cVr7mL.png"
+					},
+					{
+						studentID: "Name: Ruslan Eun-Kyung Kraus\nTalent: Luthier\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 6'1\"\nWeight: 157\nBlood Type: B\nBirthday: 03/02\nAge: 17",
+						studentIDPicture: "https://imgur.com/8LA7hg8.png"
+					},
+					{
+						studentID: "Name: Ryoushi Nobuori\nTalent: Storyteller\nSex: Male\nStatus: Deceased\n\nShoe Size: 7\nHeight: 5'6\"\nWeight: 111\nBlood Type: A\nBirthday: 12/25\nAge: 16",
+						studentIDPicture: "https://imgur.com/9se7jzq.png"
+					},
+					{
+						studentID: "Name: Santo Verdugo Bautista\nTalent: Coroner\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 128\nBlood Type: O\nBirthday: 02/11\nAge: 17",
+						studentIDPicture: "https://imgur.com/PoUqQIr.png"
+					},
+					{
+						studentID: "Name: Shinji Minoru\nTalent: Physicist\nSex: Male\nStatus: Alive\n\nShoe Size: 9\nHeight: 5'10\"\nWeight: 125\nBlood Type: AB\nBirthday: 01/27\nAge: 18",
+						studentIDPicture: ""
+					},
+					{
+						studentID: "Name: Tenome\nTalent: Ghostwriter\nSex: Male\nStatus: Deceased\n\nShoe Size: ??\nHeight: ?'?\"\nWeight: ???\nBlood Type: ??\nBirthday: ??/??\nAge: 15",
+						studentIDPicture: "https://imgur.com/TM8FYjl.png"
+					},
+					{
+						studentID: "Name: Wolfgang Schwarz\nTalent: Combat Medic\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 6'5\"\nWeight: 246\nBlood Type: A\nBirthday: 12/07\nAge: ??",
+						studentIDPicture: "https://imgur.com/iHn6DX9.png"
+					},
 				]
-				
+
 				if (args.length === 1) {
 					message.channel.send("```##  Sex and Name                          Talent\n1   F Aemele Dèjré                        Stalker\n2   F Dia Ramos                           Cheerleader\n3   F Kumiko Yeun                         Rock Star\n4   F Inugami Uzuki                       Graffiti Artist\n6   F Junko Saitou                        Horror Novelist\n8   F Mariko Murakami                     Martial Artist\n9   F Megami Himura                       Tragedian\n10  F Nikki Cox                           Teacher\n12  F Renata de Santis                    Heiress\n13  M Areli Vepkhia                       Lion Tamer\n14  M Ayuma Tanaka                        Counselor\n15  M Cecilio Calles Cárdenas             Pilot\n17  M Daichi Ichihara                     Satanist\n19  M Jomei Hoshino                       Pyromaniac\n20  M Melchor Guadalupe Paz de la Cruz    Activist\n21  M Ruslan Eun-Kyung Kraus              Luthier\n23  M Santo Verdugo Bautista              Coroner\n24  M Shinji Minoru                       Physicist\n26  M Wolfgang Schwarz                    Combat Medic\n\n    Mastermind\n    Unknown\n\n    Deceased Students\n5   F Isago Achikita                      Mythologist\n7   F Kirakira Kyuti                      Magical Girl\n11  F Piper McCullough                    Cadet\n16  M Charles Miller                      Milkman\n18  M Federico Navarro                    Pianist\n22  M Ryoushi Nobuori                     Storyteller\n25  M Tenome                              Ghostwriter```");
-					inboxChannel.send(`${message.author.username} has looked at the third class' roster.`);
 					return;
 				}
 				if (args[1] === "total") {
 					message.channel.send("```##  Sex and Name         Shoe Size    Height    Weight    Blood Type    Birthday    Age    Talent\n1   F Aemele Dèjré       5            5\'5\"      114       B             09/01       18     Stalker\n2   F Dia Ramos          7.5          5\'2\"      117       O             08/10       18     Cheerleader\n3   F Kumiko Yeun        6            5\'7\"      103       AB            06/16       18     Rock Star\n4   F Inugami Uzuki      8            5\'6\"      135       O             03/24       17     Graffiti Artist\n6   F Junko Saitou       6            5\'5\"      109       AB            01/06       18     Horror Novelist\n8   F Mariko Murakami    8            5\'6\"      125       AB            12/12       18     Martial Artist\n9   F Megami Himura      7            5\'5\"      110       A             05/15       16     Tragedian\n10  F Nikki Cox          8            5\'9\"      131       B             09/08       19     Teacher\n12  F Renata de Santis   7            5\'7\"      115       B             08/11       17     Heiress\n13  M Areli Vepkhia      12           6\'5\"      260       O             10/29       18     Lion Tamer\n14  M Ayuma Tanaka       9            5\'4\"      150       B             10/17       18     Counselor\n15  M Cecilio Calles     8            5\'8\"      157       B             05/03       17     Pilot```");
 					message.channel.send("```17  M Daichi Ichihara    9            5\'8\"      143       O             09/23       17     Satanist\n19  M Jomei Hoshino      10           5\'11\"     152       B             12/17       18     Pyromaniac\n20  M Melchor de la Cruz 6            5\'11\"     110       A             02/29       17     Activist\n21  M Ruslan Kraus       10           6\'1\"      157       B             03/02       17     Luthier\n23  M Santo Bautista     10           5\'10\"     128       O             02/11       17     Coroner\n24  M Shinji Minoru      9            5\'10\"     125       AB            01/27       18     Physicist\n26  M Wolfgang Schwarz   11           6\'5\"      246       A             12/07       ??     Combat Medic\n\n    Mastermind\n    Unknown\n\n    Deceased Students\n5   F Isago Achikita     6.5          5\'5\"      119       AB            02/29       18     Mythologist\n7   F Kirakira Kyuti     6 (Child's)  4\'11\"     97        A             09/07       14     Magical Girl\n11  F Piper McCullough   5            5\'1\"      102       O             03/23       15     Cadet\n16  M Charles Miller     9            5\'11\"     143       C             01/11       18     Milkman\n18  M Federico Navarro   5            5\'0\"      99        A             02/16       15     Pianist\n22  M Ryoushi Nobuori    7            5\'6\"      111       A             12/25       16     Storyteller\n25  M Tenome             ??           ?\'?\"      ???       ?             ??/??       15     Ghostwriter```");
-					inboxChannel.send(`${message.author.username} has looked at the full version of the third class roster.`);
 					return;
 				}
 
@@ -2101,40 +3118,86 @@ client.on("message", (message) => { //When a message is sent.
 					x++;
 				}
 
-				if (args[1] === "1" || args[1].toLowerCase().search("aemele") != -1) {page = 1}
-				if (args[1] === "2" || args[1].toLowerCase().search("dia") != -1) {page = 2}
-				if (args[1] === "3" || args[1].toLowerCase().search("kumi") != -1 || args[1].toLowerCase().search("ga") != -1) {page = 3}
-				if (args[1] === "4" || args[1].toLowerCase().search("inu") != -1) {page = 4}
-				if (args[1] === "5" || args[1].toLowerCase().search("isago") != -1) {page = 5}
-				if (args[1] === "6" || args[1].toLowerCase().search("junko") != -1 || args[1].toLowerCase().search("byakko") != -1) {page = 6}
-				if (args[1] === "7" || args[1].toLowerCase().search("kira") != -1) {page = 7}
-				if (args[1] === "8" || args[1].toLowerCase().search("mariko") != -1) {page = 8}
-				if (args[1] === "9" || args[1].toLowerCase().search("megami") != -1) {page = 9}
-				if (args[1] === "10" || (args[1].toLowerCase().search("nikki") != -1 || args[1].toLowerCase().search("agnes") != -1)) {page = 10}
-				if (args[1] === "11" || args[1].toLowerCase().search("piper") != -1) {page = 11}
-				if (args[1] === "12" || args[1].toLowerCase().search("renata") != -1) {page = 12}
-				if (args[1] === "13" || args[1].toLowerCase().search("areli") != -1) {page = 13}
-				if (args[1] === "14" || args[1].toLowerCase().search("ayuma") != -1) {page = 14}
+				if (args[1] === "1" || args[1].toLowerCase().search("aemele") != -1) {
+					page = 1
+				}
+				if (args[1] === "2" || args[1].toLowerCase().search("dia") != -1) {
+					page = 2
+				}
+				if (args[1] === "3" || args[1].toLowerCase().search("kumi") != -1 || args[1].toLowerCase().search("ga") != -1) {
+					page = 3
+				}
+				if (args[1] === "4" || args[1].toLowerCase().search("inu") != -1) {
+					page = 4
+				}
+				if (args[1] === "5" || args[1].toLowerCase().search("isago") != -1) {
+					page = 5
+				}
+				if (args[1] === "6" || args[1].toLowerCase().search("junko") != -1 || args[1].toLowerCase().search("byakko") != -1) {
+					page = 6
+				}
+				if (args[1] === "7" || args[1].toLowerCase().search("kira") != -1) {
+					page = 7
+				}
+				if (args[1] === "8" || args[1].toLowerCase().search("mariko") != -1) {
+					page = 8
+				}
+				if (args[1] === "9" || args[1].toLowerCase().search("megami") != -1) {
+					page = 9
+				}
+				if (args[1] === "10" || (args[1].toLowerCase().search("nikki") != -1 || args[1].toLowerCase().search("agnes") != -1)) {
+					page = 10
+				}
+				if (args[1] === "11" || args[1].toLowerCase().search("piper") != -1) {
+					page = 11
+				}
+				if (args[1] === "12" || args[1].toLowerCase().search("renata") != -1) {
+					page = 12
+				}
+				if (args[1] === "13" || args[1].toLowerCase().search("areli") != -1) {
+					page = 13
+				}
+				if (args[1] === "14" || args[1].toLowerCase().search("ayuma") != -1) {
+					page = 14
+				}
 				if (args[1].toLowerCase().search("cecil") != -1 && args[1].toLowerCase().search("cecilio") === -1) {
 					return message.reply("**No.**");
 				}
-				if (args[1] === "15" || args[1].toLowerCase().search("cecilio") != -1) {page = 15}
-				if (args[1] === "16" || args[1].toLowerCase().search("charles") != -1 || args[1].toLowerCase().search("chad") != -1) {page = 16}
-				if (args[1] === "17" || args[1].toLowerCase().search("daichi") != -1) {page = 17}
-				if (args[1] === "18" || args[1].toLowerCase().search("federico") != -1 || args[1].toLowerCase().search("freddy") != -1) {page = 18}
-				if (args[1] === "19" || args[1].toLowerCase().search("jomei") != -1) {page = 19}
-				if (args[1] === "20" || args[1].toLowerCase().search("mel") != -1 && args[1].toLowerCase().search("aemele") === -1) {page = 20}
-				if (args[1] === "21" || args[1].toLowerCase().search("ruslan") != -1) {page = 21}
-				if (args[1] === "22" || args[1].toLowerCase().search("ryoushi") != -1) {page = 22}
-				if (args[1] === "23" || args[1].toLowerCase().search("santo") != -1) {page = 23}
-				if (args[1] === "24" || args[1].toLowerCase().search("shinji") != -1) {page = 24}
-				if (args[1] === "25" || args[1].toLowerCase().search("tenome") != -1) {page = 25}
-				if (args[1] === "26" || args[1].toLowerCase().search("wolf") != -1) {page = 26}
-				if (Number.isInteger(args[1] * 1) === true) {
-					inboxChannel.send(`${message.author.username} has looked at student ${args[1]}'s file from the third class.`)
+				if (args[1] === "15" || args[1].toLowerCase().search("cecilio") != -1) {
+					page = 15
 				}
-				if (Number.isInteger(args[1] * 1) === false) {
-					inboxChannel.send(`${message.author.username} has looked at ${args[1].toUpperCase().slice(0, 1)}${args[1].toLowerCase().slice(1)}'s file from the third class.`)
+				if (args[1] === "16" || args[1].toLowerCase().search("charles") != -1 || args[1].toLowerCase().search("chad") != -1) {
+					page = 16
+				}
+				if (args[1] === "17" || args[1].toLowerCase().search("daichi") != -1) {
+					page = 17
+				}
+				if (args[1] === "18" || args[1].toLowerCase().search("federico") != -1 || args[1].toLowerCase().search("freddy") != -1) {
+					page = 18
+				}
+				if (args[1] === "19" || args[1].toLowerCase().search("jomei") != -1) {
+					page = 19
+				}
+				if (args[1] === "20" || args[1].toLowerCase().search("mel") != -1 && args[1].toLowerCase().search("aemele") === -1) {
+					page = 20
+				}
+				if (args[1] === "21" || args[1].toLowerCase().search("ruslan") != -1) {
+					page = 21
+				}
+				if (args[1] === "22" || args[1].toLowerCase().search("ryoushi") != -1) {
+					page = 22
+				}
+				if (args[1] === "23" || args[1].toLowerCase().search("santo") != -1) {
+					page = 23
+				}
+				if (args[1] === "24" || args[1].toLowerCase().search("shinji") != -1) {
+					page = 24
+				}
+				if (args[1] === "25" || args[1].toLowerCase().search("tenome") != -1) {
+					page = 25
+				}
+				if (args[1] === "26" || args[1].toLowerCase().search("wolf") != -1) {
+					page = 26
 				}
 			}
 			if (args[0] === "talents") {
@@ -2147,58 +3210,148 @@ client.on("message", (message) => { //When a message is sent.
 
 				characterList = [
 					//Fukuzawa Family
-					{ studentID: "Name: Kotone Fukuzawa\nAffiliation: Sister of Asahi Fukuzawa\nSex: Female\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'6\"\nWeight: 121\nBlood Type: AB\nBirthday: 11/04\nAge: 16", studentIDPicture: "https://imgur.com/OTttz9N.png", group: "Fukuzawa Family" },
-					{ studentID: "Name: Miu Fukuzawa\nAffiliation: Half-Sister of Asahi Fukuzawa\nSex: Female\nStatus: Alive\n\nShoe Size: #\nHeight: #'#\"\nWeight: 1##\nBlood Type: \_\_\nBirthday: ##/##\nAge: 1#", studentIDPicture: "", group: "Fukuzawa Family" },
-					{ studentID: "Name: Etsuko Fukuzawa\nAffiliation: Mother of Asahi Fukuzawa\nSex: Female\nStatus: Alive\n\nShoe Size: #\nHeight: #'#\"\nWeight: 1##\nBlood Type: \_\_\nBirthday: ##/##\nAge: 1#", studentIDPicture: "", group: "Fukuzawa Family" },
-					{ studentID: "Name: Isamu Fukuzawa\nAffiliation: Father of Asahi Fukuzawa\nSex: Male\nStatus: Alive\n\nShoe Size: #\nHeight: #'#\"\nWeight: 1##\nBlood Type: \_\_\nBirthday: ##/##\nAge: 1#", studentIDPicture: "", group: "Fukuzawa Family" },
+					{
+						studentID: "Name: Kotone Fukuzawa\nAffiliation: Sister of Asahi Fukuzawa\nSex: Female\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'6\"\nWeight: 121\nBlood Type: AB\nBirthday: 11/04\nAge: 16",
+						studentIDPicture: "https://imgur.com/OTttz9N.png",
+						group: "Fukuzawa Family"
+					},
+					{
+						studentID: "Name: Miu Fukuzawa\nAffiliation: Half-Sister of Asahi Fukuzawa\nSex: Female\nStatus: Alive\n\nShoe Size: #\nHeight: #'#\"\nWeight: 1##\nBlood Type: \_\_\nBirthday: ##/##\nAge: 1#",
+						studentIDPicture: "",
+						group: "Fukuzawa Family"
+					},
+					{
+						studentID: "Name: Etsuko Fukuzawa\nAffiliation: Mother of Asahi Fukuzawa\nSex: Female\nStatus: Alive\n\nShoe Size: #\nHeight: #'#\"\nWeight: 1##\nBlood Type: \_\_\nBirthday: ##/##\nAge: 1#",
+						studentIDPicture: "",
+						group: "Fukuzawa Family"
+					},
+					{
+						studentID: "Name: Isamu Fukuzawa\nAffiliation: Father of Asahi Fukuzawa\nSex: Male\nStatus: Alive\n\nShoe Size: #\nHeight: #'#\"\nWeight: 1##\nBlood Type: \_\_\nBirthday: ##/##\nAge: 1#",
+						studentIDPicture: "",
+						group: "Fukuzawa Family"
+					},
 
 					//Mahaya Family
-					{ studentID: "Name: Chiyoko Tachibana\nAffiliation: Mother of Aika Mahaya\nSex: Female\nStatus: Alive\n\nShoe Size: #\nHeight: #'#\"\nWeight: 1##\nBlood Type: \_\_\nBirthday: ##/##\nAge: ##", studentIDPicture: "", group: "Mahaya Family" },
-					{ studentID: "Name: Hibiki Mahaya\nAffiliation: Father of Aika Mahaya\nSex: Male\nStatus: Deceased\n\nShoe Size: #\nHeight: #'#\"\nWeight: 1##\nBlood Type: \_\_\nBirthday: ##/##\nAge: ##", studentIDPicture: "", group: "Mahaya Family" },
-					
+					{
+						studentID: "Name: Chiyoko Tachibana\nAffiliation: Mother of Aika Mahaya\nSex: Female\nStatus: Alive\n\nShoe Size: #\nHeight: #'#\"\nWeight: 1##\nBlood Type: \_\_\nBirthday: ##/##\nAge: ##",
+						studentIDPicture: "",
+						group: "Mahaya Family"
+					},
+					{
+						studentID: "Name: Hibiki Mahaya\nAffiliation: Father of Aika Mahaya\nSex: Male\nStatus: Deceased\n\nShoe Size: #\nHeight: #'#\"\nWeight: 1##\nBlood Type: \_\_\nBirthday: ##/##\nAge: ##",
+						studentIDPicture: "",
+						group: "Mahaya Family"
+					},
+
 					//Mikio Family
-					{ studentID: "Name: Homura Mikio\nAffiliation: Sister of Shiba Mikio\nSex: Male\nStatus: Deceased\n\nShoe Size: #\nHeight: #'#\"\nWeight: 1##\nBlood Type: \_\_\nBirthday: ##/##\nAge: ##", studentIDPicture: "", group: "Mikio Family" },
+					{
+						studentID: "Name: Homura Mikio\nAffiliation: Sister of Shiba Mikio\nSex: Male\nStatus: Deceased\n\nShoe Size: #\nHeight: #'#\"\nWeight: 1##\nBlood Type: \_\_\nBirthday: ##/##\nAge: ##",
+						studentIDPicture: "",
+						group: "Mikio Family"
+					},
 
 					//Uzuki Family
-					{ studentID: "Name: Kaguya Uzuki\nAffiliation: Sister of Inugami Uzuki\nSex: Female\nStatus: Alive\n\nShoe Size: #\nHeight: #'#\"\nWeight: 1##\nBlood Type: \_\_\nBirthday: ##/##\nAge: 1#", studentIDPicture: "", group: "Uzuki Family" },
-					{ studentID: "Name: Urashima Uzuki\nAffiliation: Sister of Inugami Uzuki\nSex: Female\nStatus: Alive\n\nShoe Size: #\nHeight: #'#\"\nWeight: 1##\nBlood Type: \_\_\nBirthday: ##/##\nAge: 1#", studentIDPicture: "", group: "Uzuki Family" },
+					{
+						studentID: "Name: Kaguya Uzuki\nAffiliation: Sister of Inugami Uzuki\nSex: Female\nStatus: Alive\n\nShoe Size: #\nHeight: #'#\"\nWeight: 1##\nBlood Type: \_\_\nBirthday: ##/##\nAge: 1#",
+						studentIDPicture: "",
+						group: "Uzuki Family"
+					},
+					{
+						studentID: "Name: Urashima Uzuki\nAffiliation: Sister of Inugami Uzuki\nSex: Female\nStatus: Alive\n\nShoe Size: #\nHeight: #'#\"\nWeight: 1##\nBlood Type: \_\_\nBirthday: ##/##\nAge: 1#",
+						studentIDPicture: "",
+						group: "Uzuki Family"
+					},
 
 					//Monoclones
-					{ studentID: "Name: Monobi\nStatus: Alive\n\nHeight: Uhh probably pretty short\nWeight: Probably pretty heavy\nBirthday: Uhh some date I guess\nAge: I'd imagine like maybe three years old", studentIDPicture: "https://imgur.com/CiGJlAd.png", group: "Monoclones" }
+					{
+						studentID: "Name: Monobi\nStatus: Alive\n\nHeight: Uhh probably pretty short\nWeight: Probably pretty heavy\nBirthday: Uhh some date I guess\nAge: I'd imagine like maybe three years old",
+						studentIDPicture: "https://imgur.com/CiGJlAd.png",
+						group: "Monoclones"
+					}
 				];
 			}
-		}
-		else if (command === "rga" || message.guild.id === "617202043597226009") { //DR:GA Roster
-			classList = [
-				{ studentID: "Name: Chava Hazzan\nOnline Alias: crawler190\nTalent: ARG Developer\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 4'9\"\nWeight: 90\nBlood Type: O\nBirthday: 10/28\nAge: 17", studentIDPicture: "https://imgur.com/7dWnfXm.png" },
-				{ studentID: "Name: Ginny\nTalent: Test Subject\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 4'10\"\nWeight: 110\nBlood Type: N/A\nBirthday: 01/01\nAge: 16", studentIDPicture: "https://imgur.com/MJHmP1m.png" },
-				{ studentID: "Name: Humanity Replicated in a Neural Network (HRNN)\nNickname: Haruna\nTalent: Artificial Intelligence\nSex: N/A\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'2\"\nWeight: 135\nBlood Type: N/A\nBirthday: 02/11\nAge: 7 months (14)", studentIDPicture: "https://imgur.com/SaNTVW2.png" },
-				{ studentID: "Name: Kiku Sugimoto\nOnline Alias: DELTA\nTalent: Video Game Designer\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'6\"\nWeight: 138\nBlood Type: B\nBirthday: 06/08\nAge: 17", studentIDPicture: "https://imgur.com/qn0mdbM.png" },
-				{ studentID: "Name: Lilith Sonnet Biancalana\nTalent: Fashionista\nSex: Female\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'11\"\nWeight: 132\nBlood Type: AB\nBirthday: 10/30\nAge: 18", studentIDPicture: "https://imgur.com/WjvZHIw.png" },
-				{ studentID: "Name: Loreto Prochorillo\nTalent: Folklorico\nSex: Female\nStatus: Alive\n\nShoe Size: #\nHeight: #'#\"\nWeight: 1##\nBlood Type: _\nBirthday: ##/##\nAge: 18", studentIDPicture: "" },
-				{ studentID: "Name: Mori Hibana\nTalent: Hypnotist\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'7\"\nWeight: 142\nBlood Type: B\nBirthday: 01/04\nAge: 17", studentIDPicture: "https://imgur.com/AFaAdCo.png" },
-				{ studentID: "Name: Piper McCullough\nTalent: Cadet\nSex: Female\nStatus: Alive\n\nShoe Size: 5\nHeight: 5'1\"\nWeight: 102\nBlood Type: O\nBirthday: 03/23\nAge: 15", studentIDPicture: "https://imgur.com/Zxcprq2.png" },
-				{ studentID: "Name: Sanchia Candelaria Inés de Siguenza-Laverde\nTalent: Graffiti Artist\nSex: Female\nStatus: Alive\n\nShoe Size: 5\nHeight: 5'1\"\nWeight: 112\nBlood Type: B\nBirthday: 09/07\nAge: 17", studentIDPicture: "https://imgur.com/HCGutAi.png" },
-				{ studentID: "Name: Adam Satou\nOnline Alias: KOINU\nTalent: Stenographer\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'11\"\nWeight: 160\nBlood Type: AB\nBirthday: 08/06\nAge: 17", studentIDPicture: "" },
-				{ studentID: "Name: Amon Nkosi Kamizu Femi\nTalent: Romantic\nSex: Male\nStatus: Alive\n\nShoe Size: 8\nHeight: 6'0\"\nWeight: 164\nBlood Type: AB\nBirthday: 02/01\nAge: 17", studentIDPicture: "https://imgur.com/jtFndRU.png" },
-				{ studentID: "Name: Daichi Kurosawa\nTalent: Forger\nSex: Male\nStatus: Deceased", studentIDPicture: "" },
-				{ studentID: "Name: Daishi Kurosawa\nTalent: Brother\nSex: Male\nStatus: Deceased", studentIDPicture: "" },
-				{ studentID: "Name: Kaoru Saitou\nTalent: Survivalist\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 5'10\"\nWeight: 150\nBlood Type: AB\nBirthday: 07/04\nAge: 16", studentIDPicture: "https://imgur.com/EHY8Neq.png" },
-				{ studentID: "Name: Pippin Barley Malt\nTalent: Confectioner\nSex: Male\nStatus: Alive\n\nShoe Size: 12\nHeight: 6'10\"\nWeight: 152\nBlood Type: N/A\nBirthday: N/A\nAge: N/A", studentIDPicture: "https://imgur.com/vsuuOIS.png" },
-				{ studentID: "Name: Tomomi Kashichi\nTalent: Technician\nSex: Male\nStatus: Alive\n\nShoe Size: 10.5\nHeight: 5'8\"\nWeight: 137\nBlood Type: A\nBirthday: 04/27\nAge: 17", studentIDPicture: "https://imgur.com/5rcYSKh.png" },
-				{ studentID: "Name: Xiao Ruohan\nAlias: Zhujun\nTalent: Qin Player\nSex: Male\nStatus: Alive\n\nShoe Size: ##\nHeight: #'#\"\nWeight: ###\nBlood Type: _\nBirthday: ##/##\nAge: 15", studentIDPicture: "" },
-				{ studentID: "Name: Plagieus\nTalent: Plague Doctor\nSex: .\nStatus: Alive\n\nShoe Size: ##\nHeight: #'#\"\nWeight: ###\nBlood Type: _\nBirthday: ##/##\nAge: 1#", studentIDPicture: "" },
+		} else if (command === "rga" || message.guild.id === "617202043597226009") { //DR:GA Roster
+			classList = [{
+					studentID: "Name: Chava Hazzan\nOnline Alias: crawler190\nTalent: ARG Developer\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 4'9\"\nWeight: 90\nBlood Type: O\nBirthday: 10/28\nAge: 17",
+					studentIDPicture: "https://imgur.com/7dWnfXm.png"
+				},
+				{
+					studentID: "Name: Ginny\nTalent: Test Subject\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 4'10\"\nWeight: 110\nBlood Type: N/A\nBirthday: 01/01\nAge: 16",
+					studentIDPicture: "https://imgur.com/MJHmP1m.png"
+				},
+				{
+					studentID: "Name: Humanity Replicated in a Neural Network (HRNN)\nNickname: Haruna\nTalent: Artificial Intelligence\nSex: N/A\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'2\"\nWeight: 135\nBlood Type: N/A\nBirthday: 02/11\nAge: 7 months (14)",
+					studentIDPicture: "https://imgur.com/SaNTVW2.png"
+				},
+				{
+					studentID: "Name: Kiku Sugimoto\nOnline Alias: DELTA\nTalent: Video Game Designer\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'6\"\nWeight: 138\nBlood Type: B\nBirthday: 06/08\nAge: 17",
+					studentIDPicture: "https://imgur.com/qn0mdbM.png"
+				},
+				{
+					studentID: "Name: Lilith Sonnet Biancalana\nTalent: Fashionista\nSex: Female\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'11\"\nWeight: 132\nBlood Type: AB\nBirthday: 10/30\nAge: 18",
+					studentIDPicture: "https://imgur.com/WjvZHIw.png"
+				},
+				{
+					studentID: "Name: Loreto Prochorillo\nTalent: Folklorico\nSex: Female\nStatus: Alive\n\nShoe Size: #\nHeight: #'#\"\nWeight: 1##\nBlood Type: _\nBirthday: ##/##\nAge: 18",
+					studentIDPicture: ""
+				},
+				{
+					studentID: "Name: Mori Hibana\nTalent: Hypnotist\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'7\"\nWeight: 142\nBlood Type: B\nBirthday: 01/04\nAge: 17",
+					studentIDPicture: "https://imgur.com/AFaAdCo.png"
+				},
+				{
+					studentID: "Name: Piper McCullough\nTalent: Cadet\nSex: Female\nStatus: Alive\n\nShoe Size: 5\nHeight: 5'1\"\nWeight: 102\nBlood Type: O\nBirthday: 03/23\nAge: 15",
+					studentIDPicture: "https://imgur.com/Zxcprq2.png"
+				},
+				{
+					studentID: "Name: Sanchia Candelaria Inés de Siguenza-Laverde\nTalent: Graffiti Artist\nSex: Female\nStatus: Alive\n\nShoe Size: 5\nHeight: 5'1\"\nWeight: 112\nBlood Type: B\nBirthday: 09/07\nAge: 17",
+					studentIDPicture: "https://imgur.com/HCGutAi.png"
+				},
+				{
+					studentID: "Name: Adam Satou\nOnline Alias: KOINU\nTalent: Stenographer\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'11\"\nWeight: 160\nBlood Type: AB\nBirthday: 08/06\nAge: 17",
+					studentIDPicture: ""
+				},
+				{
+					studentID: "Name: Amon Nkosi Kamizu Femi\nTalent: Romantic\nSex: Male\nStatus: Alive\n\nShoe Size: 8\nHeight: 6'0\"\nWeight: 164\nBlood Type: AB\nBirthday: 02/01\nAge: 17",
+					studentIDPicture: "https://imgur.com/jtFndRU.png"
+				},
+				{
+					studentID: "Name: Daichi Kurosawa\nTalent: Forger\nSex: Male\nStatus: Deceased",
+					studentIDPicture: ""
+				},
+				{
+					studentID: "Name: Daishi Kurosawa\nTalent: Brother\nSex: Male\nStatus: Deceased",
+					studentIDPicture: ""
+				},
+				{
+					studentID: "Name: Kaoru Saitou\nTalent: Survivalist\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 5'10\"\nWeight: 150\nBlood Type: AB\nBirthday: 07/04\nAge: 16",
+					studentIDPicture: "https://imgur.com/EHY8Neq.png"
+				},
+				{
+					studentID: "Name: Pippin Barley Malt\nTalent: Confectioner\nSex: Male\nStatus: Alive\n\nShoe Size: 12\nHeight: 6'10\"\nWeight: 152\nBlood Type: N/A\nBirthday: N/A\nAge: N/A",
+					studentIDPicture: "https://imgur.com/vsuuOIS.png"
+				},
+				{
+					studentID: "Name: Tomomi Kashichi\nTalent: Technician\nSex: Male\nStatus: Alive\n\nShoe Size: 10.5\nHeight: 5'8\"\nWeight: 137\nBlood Type: A\nBirthday: 04/27\nAge: 17",
+					studentIDPicture: "https://imgur.com/5rcYSKh.png"
+				},
+				{
+					studentID: "Name: Xiao Ruohan\nAlias: Zhujun\nTalent: Qin Player\nSex: Male\nStatus: Alive\n\nShoe Size: ##\nHeight: #'#\"\nWeight: ###\nBlood Type: _\nBirthday: ##/##\nAge: 15",
+					studentIDPicture: ""
+				},
+				{
+					studentID: "Name: Plagieus\nTalent: Plague Doctor\nSex: .\nStatus: Alive\n\nShoe Size: ##\nHeight: #'#\"\nWeight: ###\nBlood Type: _\nBirthday: ##/##\nAge: 1#",
+					studentIDPicture: ""
+				},
 			]
 
 			if (args.length === 0) {
 				message.channel.send("```##  Sex and Name                Talent\n1   F Chava Hazzan              ARG Developer\n2   F Ginny                     Test Subject\n3   F Haruna (HRNN)             Artificial Intelligence\n4   F Kiku Sugimoto             Video Game Designer\n5   F Lilith Biancalana         Fashionista\n6   F Loreto Prochorillo        Folklorico\n7   F Mori Hibana               Hypnotist\n8   F Piper McCullough          Cadet\n9   F Sanchia Siguenza-Laverde  Graffiti Artist\n10  M Adam Satou                Stenographer\n11  M Amon Femi                 Romantic\n14  M Kaoru Saitou              Survivalist\n15  M Pippin Malt               Confectioner\n16  M Tomomi Kashichi           Technician\n17  M Xiao Ruohan               Qin Player\n1.  . Nathan Character B        Plague Doctor\n\n    Mastermind\n    Information Unavailable.\n\n    Deceased Students\n12  M Daichi Kurosawa           Forger\n13  M Daishi Kurosawa           Brother```");
-				inboxChannel.send(`${message.author.username} has looked at the DR:GA roster.`);
 				return;
 			}
 			if (args[0] === "total") {
 				message.channel.send("```##  Sex and Name                Shoe Size    Height    Weight    Blood Type    Birthday    Age     Talent\n1   F Chava Hazzan              8            4'9\"      90        O             10/28       17      ARG Developer\n2   F Ginny                     6            4'10\"     110       N/A           01/01       16      Test Subject\n3   F Haruna (HRNN)             6            5'2\"      135       N/A           02/11       7 mths  Artificial Intelligence\n4   F Kiku Sugimoto             6            5'6\"      138       B             06/08       17      Video Game Designer\n5   F Lilith Sonnet Biancalana  7            5'11\"     132       AB            10/30       18      Fashionista\n6   F Loreto Prochorillo        7.5          5'6\"      148       O             03/02       18      Folklorico\n7   F Mori Hibana               8            5'7\"      142       B             01/04       17      Hypnotist\n8   F Piper McCullough          5            5'1\"      102       O             03/23       15      Cadet\n9   F Sanchia Siguenza-Laverde  5            5'1\"      112       B             09/07       17      Graffiti Artist\n```");
 				message.channel.send("```10  M Adam Satou                10           5'11\"     160       AB            08/06       17      Stenographer\n11  M Amon Nkosi Kazumi Femi    8            6'0\"      164       AB            02/01       17      Romantic\n14  M Kaoru Saitou              11           5'10\"     150       AB            07/04       16      Survivalist\n15  M Pippin Barley Malt        12           6'10\"     152       N/A           N/A         N/A     Confectioner\n16  M Tomomi Kashichi           10.5         5'8\"      137       A             04/27       17      Technician\n17  M Xiao Ruohan               5            5'3\"      110       AB            01/23       15      Qin Player\n18  . Nathan Character B        #            #'#\"      1##       _             ##/##       1#      Plague Doctor\n\n	Mastermind\n    Information Unavailable.\n\n    Deceased Students\n12  M Daichi Kurosawa                                                                              Forger\n13  M Daishi Kurosawa                                                                              Brother```");
-				inboxChannel.send(`${message.author.username} has looked at the full version of the DR:GA roster.`);
 				return;
 			}
 
@@ -2209,71 +3362,186 @@ client.on("message", (message) => { //When a message is sent.
 				if (thumbnail === "") {
 					thumbnail = "https://imgur.com/OVPTMGn.png";
 				};
-				currentPage = { text: classList[x].studentID, thumbnail: thumbnail }
+				currentPage = {
+					text: classList[x].studentID,
+					thumbnail: thumbnail
+				}
 				pages.push(currentPage);
 				x++;
 			}
 
-			if (args[0].toLowerCase().search("chava") != -1) { page = 1 }
-			if (args[0].toLowerCase().search("ginny") != -1) { page = 2 }
-			if (args[0].toLowerCase().search("haruna") != -1 || args[0].toLowerCase().search("hrnn") != -1) { page = 3 }
-			if (args[0].toLowerCase().search("kiku") != -1 || args[0].toLowerCase().search("delta") != -1) { page = 4 }
-			if (args[0].toLowerCase().search("lilith") != -1) { page = 5 }
-			if (args[0].toLowerCase().search("loreto") != -1) { page = 6 }
-			if (args[0].toLowerCase().search("mori") != -1) { page = 7 }
-			if (args[0].toLowerCase().search("piper") != -1) { page = 8 }
-			if (args[0].toLowerCase().search("sanchia") != -1) { page = 9 }
-			if (args[0].toLowerCase().search("adam") != -1 || args[0].toLowerCase().search("koinu") != -1) { page = 10 }
-			if (args[0].toLowerCase().search("amon") != -1) { page = 11 }
-			if (args[0].toLowerCase().search("daichi") != -1) { page = 12 }
-			if (args[0].toLowerCase().search("daishi") != -1) { page = 13 }
-			if (args[0].toLowerCase().search("kaoru") != -1) { page = 14 }
-			if (args[0].toLowerCase().search("pippin") != -1) { page = 15 }
-			if (args[0].toLowerCase().search("tomomi") != -1) { page = 16 }
-			if (args[0].toLowerCase().search("xiao") != -1 || args[0].toLowerCase().search("ruohan") != -1 || args[0].toLowerCase().search("zhujun") != -1) { page = 17 }
-			if (args[0].toLowerCase().search("nathan character b") != -1) { page = 18 }
-			inboxChannel.send(`${message.author.username} has looked at ${args[0].toUpperCase().slice(0, 1)}${args[0].toLowerCase().slice(1)}'s file.`);
-		}
-		else if (command === "rbab" || message.guild.id === "633119665178017793") { //Bed and Bloodshed
-			classList = [
-				{ studentID: "Name: Aika Mahaya\nTalent: Digital Composer\nSex: Female\nStatus: Alive\n\nShoe Size: 9\nHeight: 5'6\"\nWeight: 137\nBlood Type: B\nBirthday: 06/21\nAge: 17", studentIDPicture: "https://imgur.com/mvO4tTk.png" },
-				{ studentID: "Name: Chava Hazzan\nOnline Alias: crawler190\nTalent: ARG Developer\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 4'9\"\nWeight: 90\nBlood Type: O\nBirthday: 10/28\nAge: 17", studentIDPicture: "https://imgur.com/HnyakxE.png" },
-				{ studentID: "Name: Dia Victoria Ramos\nTalent: Cheerleader\nSex: Female\nStatus: Alive\n\nShoe Size: 7.5\nHeight: 5'2\"\nWeight: 117\nBlood Type: O\nBirthday: 08/10\nAge: 18", studentIDPicture: "https://imgur.com/BJvyrMy.png" },
-				{ studentID: "Name: Edith Freya Reuter-Protz\nTalent: ???\nSex: Female\nStatus: Alive\n\nShoe Size: 9\nHeight: 5'10\"\nWeight: 144\nBlood Type: AB\nBirthday: 10/19\nAge: 18", studentIDPicture: "https://imgur.com/e6SC3SK.png" },
-				{ studentID: "Name: Eriko Shingo\nTalent: Journalist\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'5\"\nWeight: 125\nBlood Type: AB\nBirthday: 07/21\nAge: 16", studentIDPicture: "https://imgur.com/f7b6ELA.png" },
-				{ studentID: "Name: Kiku Sugimoto\nOnline Alias: DELTA\nTalent: Video Game Designer\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'6\"\nWeight: 138\nBlood Type: B\nBirthday: 06/08\nAge: 17", studentIDPicture: "https://imgur.com/Jv3MLRz.png" },
-				{ studentID: "Name: Haruna Hattori\nTalent: Artificial Intelligence\nSex: N/A\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'2\"\nWeight: 135\nBlood Type: N/A\nBirthday: 02/11\nAge: 7 months (14)", studentIDPicture: "https://imgur.com/jAGQGjV.png" },
-				{ studentID: "Name: Pia Adesso\nTalent: Anthropologist\nSex: Female\nStatus: Deceased\n\nShoe Size: 6\nHeight: 5'4\"\nWeight: 122\nBlood Type: B\nBirthday: 07/15\nAge: 15", studentIDPicture: "https://imgur.com/td2998n.png" },
-				{ studentID: "Name: Piper McCullough\nTalent: Cadet\nSex: Female\nStatus: Alive\n\nShoe Size: 5\nHeight: 5'1\"\nWeight: 102\nBlood Type: O\nBirthday: 03/23\nAge: 15", studentIDPicture: "https://imgur.com/0e5h2h4.png" },
-				{ studentID: "Name: Mahina Keawe\nTalent: Fursuiter\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'3\"\nWeight: 158\nBlood Type: O\nBirthday: 04/07\nAge: 16", studentIDPicture: "https://imgur.com/IzNEvA2.png" },
-				{ studentID: "Name: Mariko Murakami\nTalent: Martial Artist\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'6\"\nWeight: 125\nBlood Type: AB\nBirthday: 12/12\nAge: 18", studentIDPicture: "https://imgur.com/kQHHny2.png" },
-				{ studentID: "Name: Matilda Spitzenreiter\nTalent: Club Leader\nSex: Female\nStatus: Alive\n\nShoe Size: 11\nHeight: 5'8\"\nWeight: 140\nBlood Type: O\nBirthday: 10/01\nAge: 18", studentIDPicture: "https://imgur.com/JLPE6r1.png" },
-				{ studentID: "Name: Riko Ramuda\nTalent: Concept Artist\nSex: Female\nStatus: Deceased\n\nShoe Size: 11\nHeight: 5'3\"\nWeight: 123\nBlood Type: AB\nBirthday: 10/25\nAge: 16", studentIDPicture: "https://imgur.com/FxrX6z7.png" },
-				{ studentID: "Name: Asahi Fukuzawa\nTalent: Violinist\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'7\"\nWeight: 124\nBlood Type: O\nBirthday: 08/27\nAge: 18", studentIDPicture: "https://imgur.com/0I6Zc4L.png" },
-				{ studentID: "Name: Ayumu Shinoda\nTalent: Rhythm Gamer\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 5'9\"\nWeight: 140\nBlood Type: B\nBirthday: 06/18\nAge: 16", studentIDPicture: "https://imgur.com/TyL7ZkH.png" },
-				{ studentID: "Name: Cecilio Calles Cárdenas\nTalent: Pilot\nSex: Male\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'8\"\nWeight: 157\nBlood Type: B\nBirthday: 05/03\nAge: 17", studentIDPicture: "https://imgur.com/8mpbRMJ.png" },
-				{ studentID: "Name: Denis Adesso-Mori\nTalent: Sculptor\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 6'2\"\nWeight: 149\nBlood Type: A\nBirthday: 09/09\nAge: 18", studentIDPicture: "https://imgur.com/GmORip0.png" },
-				{ studentID: "Name: Hakaku Himura\nTalent: Test Subject\nSex: Male\nStatus: Deceased\n\nShoe Size: 5\nHeight: 4'10\"\nWeight: 72\nBlood Type: O\nBirthday: 03/14\nAge: 14", studentIDPicture: "https://imgur.com/IU5JSBY.png" },
-				{ studentID: "Name: Harvey Orkins\nTalent: Medium\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 6'4\"\nWeight: 215\nBlood Type: B\nBirthday: 11/01\nAge: 17 ", studentIDPicture: "https://imgur.com/rfezKBO.png" },
-				{ studentID: "Name: Kaoru Saitou\nTalent: Survivalist\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 5'10\"\nWeight: 150\nBlood Type: AB\nBirthday: 07/04\nAge: 16", studentIDPicture: "https://imgur.com/EHY8Neq.png" },
-				{ studentID: "Name: Kiro Karasu\nTalent: Prince\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 130\nBlood Type: O\nBirthday: 08/17\nAge: 17", studentIDPicture: "https://imgur.com/IVbCsXA.png" },
-				{ studentID: "Name: Masami Nii\nTalent: Guitarist\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 143\nBlood Type: B\nBirthday: 05/25\nAge: 17", studentIDPicture: "https://imgur.com/C0lXd7O.png" },
-				{ studentID: "Name: Oliver Bennett\nTalent: Plague Doctor\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 6'1\"\nWeight: 145\nBlood Type: AB\nBirthday: 10/16\nAge: 18", studentIDPicture: "" },
-				{ studentID: "Name: Satomi Shinoda\nTalent: Occult Specialist\nSex: Male\nStatus: Alive\n\nShoe Size: 12\nHeight: 5'6\"\nWeight: 125\nBlood Type: O\nBirthday: 03/13\nAge: 18", studentIDPicture: "https://imgur.com/voJNyg1.png" },
-				{ studentID: "Name: Souma Shimizu\nReal Name: Naoki Ishida\nTalent: Poet\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 130\nBlood Type: AB\nBirthday: 03/20\nAge: 17\n\n\n\nPoems:\nmy stacy left me\nof course, it's a fucking chad\nno one understands\n\ni'll get her back\nand that chad will be wacked\nsouma is better than chad\n\nA poem by Souma.\n\n\nmy heart burns\nbut not for you\nfor stacy\nfuck chad", studentIDPicture: "https://imgur.com/QJRlcfI.png" },
-				{ studentID: "Name: Takeshi Shinoda\nTalent: Mountaineer\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'3\"\nWeight: 135\nBlood Type: B\nBirthday: 05/29\nAge: 17", studentIDPicture: "https://imgur.com/6P3HAzC.png" },
-				{ studentID: "Name: Tenome\nTalent: Ghostwriter\nSex: Male\nStatus: Alive\n\nShoe Size: ??\nHeight: ?'?\"\nWeight: ???\nBlood Type: ??\nBirthday: ??/??\nAge: 15", studentIDPicture: "https://imgur.com/bAbdgv7.png" },
+			if (args[0].toLowerCase().search("chava") != -1) {
+				page = 1
+			}
+			if (args[0].toLowerCase().search("ginny") != -1) {
+				page = 2
+			}
+			if (args[0].toLowerCase().search("haruna") != -1 || args[0].toLowerCase().search("hrnn") != -1) {
+				page = 3
+			}
+			if (args[0].toLowerCase().search("kiku") != -1 || args[0].toLowerCase().search("delta") != -1) {
+				page = 4
+			}
+			if (args[0].toLowerCase().search("lilith") != -1) {
+				page = 5
+			}
+			if (args[0].toLowerCase().search("loreto") != -1) {
+				page = 6
+			}
+			if (args[0].toLowerCase().search("mori") != -1) {
+				page = 7
+			}
+			if (args[0].toLowerCase().search("piper") != -1) {
+				page = 8
+			}
+			if (args[0].toLowerCase().search("sanchia") != -1) {
+				page = 9
+			}
+			if (args[0].toLowerCase().search("adam") != -1 || args[0].toLowerCase().search("koinu") != -1) {
+				page = 10
+			}
+			if (args[0].toLowerCase().search("amon") != -1) {
+				page = 11
+			}
+			if (args[0].toLowerCase().search("daichi") != -1) {
+				page = 12
+			}
+			if (args[0].toLowerCase().search("daishi") != -1) {
+				page = 13
+			}
+			if (args[0].toLowerCase().search("kaoru") != -1) {
+				page = 14
+			}
+			if (args[0].toLowerCase().search("pippin") != -1) {
+				page = 15
+			}
+			if (args[0].toLowerCase().search("tomomi") != -1) {
+				page = 16
+			}
+			if (args[0].toLowerCase().search("xiao") != -1 || args[0].toLowerCase().search("ruohan") != -1 || args[0].toLowerCase().search("zhujun") != -1) {
+				page = 17
+			}
+			if (args[0].toLowerCase().search("nathan character b") != -1) {
+				page = 18
+			}
+		} else if (command === "rbab" || message.guild.id === "633119665178017793") { //Bed and Bloodshed
+			classList = [{
+					studentID: "Name: Aika Mahaya\nTalent: Digital Composer\nSex: Female\nStatus: Alive\n\nShoe Size: 9\nHeight: 5'6\"\nWeight: 137\nBlood Type: B\nBirthday: 06/21\nAge: 17",
+					studentIDPicture: "https://imgur.com/mvO4tTk.png"
+				},
+				{
+					studentID: "Name: Chava Hazzan\nOnline Alias: crawler190\nTalent: ARG Developer\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 4'9\"\nWeight: 90\nBlood Type: O\nBirthday: 10/28\nAge: 17",
+					studentIDPicture: "https://imgur.com/HnyakxE.png"
+				},
+				{
+					studentID: "Name: Dia Victoria Ramos\nTalent: Cheerleader\nSex: Female\nStatus: Alive\n\nShoe Size: 7.5\nHeight: 5'2\"\nWeight: 117\nBlood Type: O\nBirthday: 08/10\nAge: 18",
+					studentIDPicture: "https://imgur.com/BJvyrMy.png"
+				},
+				{
+					studentID: "Name: Edith Freya Reuter-Protz\nTalent: ???\nSex: Female\nStatus: Alive\n\nShoe Size: 9\nHeight: 5'10\"\nWeight: 144\nBlood Type: AB\nBirthday: 10/19\nAge: 18",
+					studentIDPicture: "https://imgur.com/e6SC3SK.png"
+				},
+				{
+					studentID: "Name: Eriko Shingo\nTalent: Journalist\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'5\"\nWeight: 125\nBlood Type: AB\nBirthday: 07/21\nAge: 16",
+					studentIDPicture: "https://imgur.com/f7b6ELA.png"
+				},
+				{
+					studentID: "Name: Kiku Sugimoto\nOnline Alias: DELTA\nTalent: Video Game Designer\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'6\"\nWeight: 138\nBlood Type: B\nBirthday: 06/08\nAge: 17",
+					studentIDPicture: "https://imgur.com/Jv3MLRz.png"
+				},
+				{
+					studentID: "Name: Haruna Hattori\nTalent: Artificial Intelligence\nSex: N/A\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'2\"\nWeight: 135\nBlood Type: N/A\nBirthday: 02/11\nAge: 7 months (14)",
+					studentIDPicture: "https://imgur.com/jAGQGjV.png"
+				},
+				{
+					studentID: "Name: Pia Adesso\nTalent: Anthropologist\nSex: Female\nStatus: Deceased\n\nShoe Size: 6\nHeight: 5'4\"\nWeight: 122\nBlood Type: B\nBirthday: 07/15\nAge: 15",
+					studentIDPicture: "https://imgur.com/td2998n.png"
+				},
+				{
+					studentID: "Name: Piper McCullough\nTalent: Cadet\nSex: Female\nStatus: Alive\n\nShoe Size: 5\nHeight: 5'1\"\nWeight: 102\nBlood Type: O\nBirthday: 03/23\nAge: 15",
+					studentIDPicture: "https://imgur.com/0e5h2h4.png"
+				},
+				{
+					studentID: "Name: Mahina Keawe\nTalent: Fursuiter\nSex: Female\nStatus: Alive\n\nShoe Size: 6\nHeight: 5'3\"\nWeight: 158\nBlood Type: O\nBirthday: 04/07\nAge: 16",
+					studentIDPicture: "https://imgur.com/IzNEvA2.png"
+				},
+				{
+					studentID: "Name: Mariko Murakami\nTalent: Martial Artist\nSex: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'6\"\nWeight: 125\nBlood Type: AB\nBirthday: 12/12\nAge: 18",
+					studentIDPicture: "https://imgur.com/kQHHny2.png"
+				},
+				{
+					studentID: "Name: Matilda Spitzenreiter\nTalent: Club Leader\nSex: Female\nStatus: Alive\n\nShoe Size: 11\nHeight: 5'8\"\nWeight: 140\nBlood Type: O\nBirthday: 10/01\nAge: 18",
+					studentIDPicture: "https://imgur.com/JLPE6r1.png"
+				},
+				{
+					studentID: "Name: Riko Ramuda\nTalent: Concept Artist\nSex: Female\nStatus: Deceased\n\nShoe Size: 11\nHeight: 5'3\"\nWeight: 123\nBlood Type: AB\nBirthday: 10/25\nAge: 16",
+					studentIDPicture: "https://imgur.com/FxrX6z7.png"
+				},
+				{
+					studentID: "Name: Asahi Fukuzawa\nTalent: Violinist\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'7\"\nWeight: 124\nBlood Type: O\nBirthday: 08/27\nAge: 18",
+					studentIDPicture: "https://imgur.com/0I6Zc4L.png"
+				},
+				{
+					studentID: "Name: Ayumu Shinoda\nTalent: Rhythm Gamer\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 5'9\"\nWeight: 140\nBlood Type: B\nBirthday: 06/18\nAge: 16",
+					studentIDPicture: "https://imgur.com/TyL7ZkH.png"
+				},
+				{
+					studentID: "Name: Cecilio Calles Cárdenas\nTalent: Pilot\nSex: Male\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'8\"\nWeight: 157\nBlood Type: B\nBirthday: 05/03\nAge: 17",
+					studentIDPicture: "https://imgur.com/8mpbRMJ.png"
+				},
+				{
+					studentID: "Name: Denis Adesso-Mori\nTalent: Sculptor\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 6'2\"\nWeight: 149\nBlood Type: A\nBirthday: 09/09\nAge: 18",
+					studentIDPicture: "https://imgur.com/GmORip0.png"
+				},
+				{
+					studentID: "Name: Hakaku Himura\nTalent: Test Subject\nSex: Male\nStatus: Deceased\n\nShoe Size: 5\nHeight: 4'10\"\nWeight: 72\nBlood Type: O\nBirthday: 03/14\nAge: 14",
+					studentIDPicture: "https://imgur.com/IU5JSBY.png"
+				},
+				{
+					studentID: "Name: Harvey Orkins\nTalent: Medium\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 6'4\"\nWeight: 215\nBlood Type: B\nBirthday: 11/01\nAge: 17 ",
+					studentIDPicture: "https://imgur.com/rfezKBO.png"
+				},
+				{
+					studentID: "Name: Kaoru Saitou\nTalent: Survivalist\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 5'10\"\nWeight: 150\nBlood Type: AB\nBirthday: 07/04\nAge: 16",
+					studentIDPicture: "https://imgur.com/EHY8Neq.png"
+				},
+				{
+					studentID: "Name: Kiro Karasu\nTalent: Prince\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 130\nBlood Type: O\nBirthday: 08/17\nAge: 17",
+					studentIDPicture: "https://imgur.com/IVbCsXA.png"
+				},
+				{
+					studentID: "Name: Masami Nii\nTalent: Guitarist\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 143\nBlood Type: B\nBirthday: 05/25\nAge: 17",
+					studentIDPicture: "https://imgur.com/C0lXd7O.png"
+				},
+				{
+					studentID: "Name: Oliver Bennett\nTalent: Plague Doctor\nSex: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 6'1\"\nWeight: 145\nBlood Type: AB\nBirthday: 10/16\nAge: 18",
+					studentIDPicture: ""
+				},
+				{
+					studentID: "Name: Satomi Shinoda\nTalent: Occult Specialist\nSex: Male\nStatus: Alive\n\nShoe Size: 12\nHeight: 5'6\"\nWeight: 125\nBlood Type: O\nBirthday: 03/13\nAge: 18",
+					studentIDPicture: "https://imgur.com/voJNyg1.png"
+				},
+				{
+					studentID: "Name: Souma Shimizu\nReal Name: Naoki Ishida\nTalent: Poet\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'10\"\nWeight: 130\nBlood Type: AB\nBirthday: 03/20\nAge: 17\n\n\n\nPoems:\nmy stacy left me\nof course, it's a fucking chad\nno one understands\n\ni'll get her back\nand that chad will be wacked\nsouma is better than chad\n\nA poem by Souma.\n\n\nmy heart burns\nbut not for you\nfor stacy\nfuck chad",
+					studentIDPicture: "https://imgur.com/QJRlcfI.png"
+				},
+				{
+					studentID: "Name: Takeshi Shinoda\nTalent: Mountaineer\nSex: Male\nStatus: Alive\n\nShoe Size: 10\nHeight: 5'3\"\nWeight: 135\nBlood Type: B\nBirthday: 05/29\nAge: 17",
+					studentIDPicture: "https://imgur.com/6P3HAzC.png"
+				},
+				{
+					studentID: "Name: Tenome\nTalent: Ghostwriter\nSex: Male\nStatus: Alive\n\nShoe Size: ??\nHeight: ?'?\"\nWeight: ???\nBlood Type: ??\nBirthday: ??/??\nAge: 15",
+					studentIDPicture: "https://imgur.com/bAbdgv7.png"
+				},
 			]
 
 			if (args.length === 0) {
 				message.channel.send("```Rm#  Sex and Name                Talent\n101  M Oliver Bennett            Plague Doctor\n102  F Piper McCullough          Cadet\n103  M Souma Shimizu             Poet\n105  F Dia Ramos                 Cheerleader\n108  F Aika Mahaya               Digital Composer\n109  F Chava Hazzan              ARG Developer\n110  M Denis Adesso-Mori         Sculptor\n111  M Cecilio Calles            Pilot\n112  F Eriko Shingo              Journalist\n114  M Asahi Fukuzawa            Violinist\n115  M Harvey Orkins             Medium\n116  F Kiku Sugimoto             Video Game Designer\n202    Haruna Hattori            Artficial Intelligence\n202  M Kaoru Saitou              Survivalist\n203  M Masami Nii                Guitarist\n204  F Edith Reuter-Protz        ???\n204  F Matilda Spitzenreiter     Club Leader\n301  M Takeshi Shinoda           Mountaineer\n304  M Kiro Karasu               Prince\n305  M Ayumu Shinoda             Rhythm Gamer\n307  M Tenome                    Ghostwriter\n308  F Mariko Murakami           Martial Artist\n310  M Satomi Shinoda            Occult Specialist\n\n     Mastermind\n     Information Unavailable.\n\n     Deceased Students\n104  F Pia Adesso                Anthropologist\n106  M Hakaku Himura             Test Subject\n107  F Riko Ramuda               Concept Artist\n113  F Mahina Keawe              Fursuiter```");
-				inboxChannel.send(`${message.author.username} has looked at the DR:BAB roster.`);
 				return;
 			}
 			if (args[0] === "total") {
 				message.channel.send("```Rm#  Sex and Name                        Shoe Size    Height    Weight    Blood Type    Birthday    Age     Talent\n101  M Oliver Bennett                    11           6'1\"      145       AB            10/16       18      Plague Doctor\n102  F Piper McCullough                  5            5'1\"      102       O             03/23       15      Cadet\n103  M Souma Shimizu                     10           5'10\"     130       AB            03/20       17      Poet\n105  F Dia Victoria Ramos                7.5          5'2\"      117       O             08/10       18      Cheerleader\n108  F Aika Mahaya                       9            5'6\"      137       B             06/21       17      Digital Composer\n109  F Chava Hazzan                      8            4'9\"      90        O             10/28       17      ARG Developer\n110  M Denis Adesso-Mori                 10           6'2\"      149       A             09/09       18      Sculptor\n111  M Cecilio Calles Cárdenas           8            5'8\"      157       B             05/03       17      Pilot\n112  F Eriko Shingo                      8            5'5\"      125       AB            07/21       16      Journalist\n114  M Asahi Fukuzawa                    10           5'7\"      124       O             08/27       18      Violinist\n115  M Harvey Orkins                     11           6'4\"      215       B             11/01       17      Medium\n116  F Kiku Sugimoto                     6            5'6\"      138       B             06/08       17      Video Game Designer\n202  X Haruna Hattori                    6            5'2\"      135       N/A           02/11       1~      Artificial Intelligence\n202  M Kaoru Saitou                      11           5'10\"     150       AB            07/04       16      Survivalist\n```");
 				message.channel.send("```203  M Masami Nii                        10           5'10\"     143       B             05/25       17      Guitarist\n204  F Edith Freya Reuter-Protz          9            5'10\"     144       AB            10/19       18      ???\n204  F Matilda Spitzenreiter             11           5'8\"      140       O             10/01       18      Club Leader\n301  M Takeshi Shinoda                   10           5'3\"      135       B             05/29       17      Mountaineer\n304  M Kiro Karasu                       10           5'10\"     130       O             08/17       17      Prince\n305  M Ayumu Shinoda                     11           5'9\"      140       B             06/18       16      Rhythm Gamer\n307  M Tenome                            ??           ?'?\"      ???       ?             ??/??       15      Ghostwriter\n308  F Mariko Murakami                   8            5'6\"      125       AB            12/12       18      Martial Artist\n310  M Satomi Shinoda                    12           5'6\"      125       O             03/13       18      Occult Specialist\n\n     Mastermind\n     Information Unavailable.\n\n     Deceased Students\n104  F Pia Adesso                        6            5'4\"      122       B             07/15       15      Anthropologist\n106  M Hakaku Himura                     5            4'10\"     72        O             03/14       14      Test Subject\n107  F Riko Ramuda                       11           5'3\"      123       AB            10/25       16      Concept Artist\n113  F Mahina Keawe                      6            5'3\"      158       O             04/07       16      Fursuiter```");
-				inboxChannel.send(`${message.author.username} has looked at the full version of the DR:BAB roster.`);
 				return;
 			}
 
@@ -2284,56 +3552,110 @@ client.on("message", (message) => { //When a message is sent.
 				if (thumbnail === "") {
 					thumbnail = "https://imgur.com/OVPTMGn.png";
 				};
-				currentPage = { text: classList[x].studentID, thumbnail: thumbnail }
+				currentPage = {
+					text: classList[x].studentID,
+					thumbnail: thumbnail
+				}
 				pages.push(currentPage);
 				x++;
 			}
 
-			if (args[0].toLowerCase().search("aika") != -1) { page = 1 }
-			if (args[0].toLowerCase().search("chava") != -1) { page = 2 }
-			if (args[0].toLowerCase().search("dia") != -1) { page = 3 }
-			if (args[0].toLowerCase().search("edith") != -1) { page = 4 }
-			if (args[0].toLowerCase().search("eriko") != -1) { page = 5 }
-			if (args[0].toLowerCase().search("kiku") != -1 || args[0].toLowerCase().search("delta") != -1) { page = 6 }
-			if (args[0].toLowerCase().search("haruna") != -1 || args[0].toLowerCase().search("hrnn") != -1) { page = 7 }
-			if (args[0].toLowerCase().search("pia") != -1) { page = 8 }
-			if (args[0].toLowerCase().search("piper") != -1) { page = 9 }
-			if (args[0].toLowerCase().search("mahina") != -1) { page = 10 }
-			if (args[0].toLowerCase().search("mariko") != -1) { page = 11 }
-			if (args[0].toLowerCase().search("matilda") != -1) { page = 12 }
-			if (args[0].toLowerCase().search("riko") != -1 && args[0].toLowerCase().search("eriko") === -1 && args[0].toLowerCase().search("mariko") === -1) { page = 13 }
-			if (args[0].toLowerCase().search("asahi") != -1) { page = 14 }
-			if (args[0].toLowerCase().search("ayumu") != -1) { page = 15 }
+			if (args[0].toLowerCase().search("aika") != -1) {
+				page = 1
+			}
+			if (args[0].toLowerCase().search("chava") != -1) {
+				page = 2
+			}
+			if (args[0].toLowerCase().search("dia") != -1) {
+				page = 3
+			}
+			if (args[0].toLowerCase().search("edith") != -1) {
+				page = 4
+			}
+			if (args[0].toLowerCase().search("eriko") != -1) {
+				page = 5
+			}
+			if (args[0].toLowerCase().search("kiku") != -1 || args[0].toLowerCase().search("delta") != -1) {
+				page = 6
+			}
+			if (args[0].toLowerCase().search("haruna") != -1 || args[0].toLowerCase().search("hrnn") != -1) {
+				page = 7
+			}
+			if (args[0].toLowerCase().search("pia") != -1) {
+				page = 8
+			}
+			if (args[0].toLowerCase().search("piper") != -1) {
+				page = 9
+			}
+			if (args[0].toLowerCase().search("mahina") != -1) {
+				page = 10
+			}
+			if (args[0].toLowerCase().search("mariko") != -1) {
+				page = 11
+			}
+			if (args[0].toLowerCase().search("matilda") != -1) {
+				page = 12
+			}
+			if (args[0].toLowerCase().search("riko") != -1 && args[0].toLowerCase().search("eriko") === -1 && args[0].toLowerCase().search("mariko") === -1) {
+				page = 13
+			}
+			if (args[0].toLowerCase().search("asahi") != -1) {
+				page = 14
+			}
+			if (args[0].toLowerCase().search("ayumu") != -1) {
+				page = 15
+			}
 			if (args[0].toLowerCase().search("cecil") != -1 && args[0].toLowerCase().search("cecilio") === -1) {
 				return message.reply("**No.**");
 			}
-			if (args[0].toLowerCase().search("cecilio") != -1) { page = 16 }
-			if (args[0].toLowerCase().search("denis") != -1) { page = 17 }
-			if (args[0].toLowerCase().search("hakaku") != -1) { page = 18 }
-			if (args[0].toLowerCase().search("harvey") != -1) { page = 19 }
-			if (args[0].toLowerCase().search("kaoru") != -1) { page = 20 }
-			if (args[0].toLowerCase().search("kiro") != -1) { page = 21 }
-			if (args[0].toLowerCase().search("masami") != -1) { page = 22 }
-			if (args[0].toLowerCase().search("oliver") != -1) { page = 23 }
-			if (args[0].toLowerCase().search("satomi") != -1) { page = 24 }
-			if (args[0].toLowerCase().search("souma") != -1) { page = 25 }
-			if (args[0].toLowerCase().search("takeshi") != -1) { page = 26 }
-			if (args[0].toLowerCase().search("tenome") != -1) { page = 27 }
-
-			inboxChannel.send(`${message.author.username} has looked at ${args[0].toUpperCase().slice(0, 1)}${args[0].toLowerCase().slice(1)}'s file.`);
-		}
-		else if (command === "rkk" || message.guild.id === "721589433018744913" || message.guild.id === "396895853479985162") { //Koogshire Killers
+			if (args[0].toLowerCase().search("cecilio") != -1) {
+				page = 16
+			}
+			if (args[0].toLowerCase().search("denis") != -1) {
+				page = 17
+			}
+			if (args[0].toLowerCase().search("hakaku") != -1) {
+				page = 18
+			}
+			if (args[0].toLowerCase().search("harvey") != -1) {
+				page = 19
+			}
+			if (args[0].toLowerCase().search("kaoru") != -1) {
+				page = 20
+			}
+			if (args[0].toLowerCase().search("kiro") != -1) {
+				page = 21
+			}
+			if (args[0].toLowerCase().search("masami") != -1) {
+				page = 22
+			}
+			if (args[0].toLowerCase().search("oliver") != -1) {
+				page = 23
+			}
+			if (args[0].toLowerCase().search("satomi") != -1) {
+				page = 24
+			}
+			if (args[0].toLowerCase().search("souma") != -1) {
+				page = 25
+			}
+			if (args[0].toLowerCase().search("takeshi") != -1) {
+				page = 26
+			}
+			if (args[0].toLowerCase().search("tenome") != -1) {
+				page = 27
+			}
+		} else if (command === "rkk" || message.guild.id === "721589433018744913" || message.guild.id === "396895853479985162") { //Koogshire Killers
 			message.channel.send("**Soon.**");
 
-			classList = [
-				{ studentID: "Name: Example\nTalent: Example\nSex: Male/Female\nStatus: Alive\n\nShoe Size: ## (In US Men's/Women's)\nHeight: #'#\"\nWeight: ### (in lbs)\nBlood Type: C\nBirthday: ##/##\nAge: ##", studentIDPicture: "" }
-			]
+			classList = [{
+				studentID: "Name: Example\nTalent: Example\nSex: Male/Female\nStatus: Alive\n\nShoe Size: ## (In US Men's/Women's)\nHeight: #'#\"\nWeight: ### (in lbs)\nBlood Type: C\nBirthday: ##/##\nAge: ##",
+				studentIDPicture: ""
+			}]
 
 			if (args.length === 0) {
 				message.channel.send("The roster has yet to be organized! Come back soon!");
 				return;
 				message.channel.send("```Rm#  Sex and Name                Talent\n101  M Oliver Bennett            Plague Doctor\n102  F Piper McCullough          Cadet\n103  M Souma Shimizu             Poet\n105  F Dia Ramos                 Cheerleader\n108  F Aika Mahaya               Digital Composer\n109  F Chava Hazzan              ARG Developer\n110  M Denis Adesso-Mori         Sculptor\n111  M Cecilio Calles            Pilot\n112  F Eriko Shingo              Journalist\n114  M Asahi Fukuzawa            Violinist\n115  M Harvey Orkins             Medium\n116  F Kiku Sugimoto             Video Game Designer\n202    Haruna Hattori            Artficial Intelligence\n202  M Kaoru Saitou              Survivalist\n203  M Masami Nii                Guitarist\n204  F Edith Reuter-Protz        ???\n204  F Matilda Spitzenreiter     Club Leader\n301  M Takeshi Shinoda           Mountaineer\n304  M Kiro Karasu               Prince\n305  M Ayumu Shinoda             Rhythm Gamer\n307  M Tenome                    Ghostwriter\n308  F Mariko Murakami           Martial Artist\n310  M Satomi Shinoda            Occult Specialist\n\n     Mastermind\n     Information Unavailable.\n\n     Deceased Students\n104  F Pia Adesso                Anthropologist\n106  M Hakaku Himura             Test Subject\n107  F Riko Ramuda               Concept Artist\n113  F Mahina Keawe              Fursuiter```");
-				inboxChannel.send(`${message.author.username} has looked at the DR:BAB roster.`);
 				return;
 			}
 			if (args[0] === "total") {
@@ -2341,7 +3663,6 @@ client.on("message", (message) => { //When a message is sent.
 				return;
 				message.channel.send("```Rm#  Sex and Name                        Shoe Size    Height    Weight    Blood Type    Birthday    Age     Talent\n101  M Oliver Bennett                    11           6'1\"      145       AB            10/16       18      Plague Doctor\n102  F Piper McCullough                  5            5'1\"      102       O             03/23       15      Cadet\n103  M Souma Shimizu                     10           5'10\"     130       AB            03/20       17      Poet\n105  F Dia Victoria Ramos                7.5          5'2\"      117       O             08/10       18      Cheerleader\n108  F Aika Mahaya                       9            5'6\"      137       B             06/21       17      Digital Composer\n109  F Chava Hazzan                      8            4'9\"      90        O             10/28       17      ARG Developer\n110  M Denis Adesso-Mori                 10           6'2\"      149       A             09/09       18      Sculptor\n111  M Cecilio Calles Cárdenas           8            5'8\"      157       B             05/03       17      Pilot\n112  F Eriko Shingo                      8            5'5\"      125       AB            07/21       16      Journalist\n114  M Asahi Fukuzawa                    10           5'7\"      124       O             08/27       18      Violinist\n115  M Harvey Orkins                     11           6'4\"      215       B             11/01       17      Medium\n116  F Kiku Sugimoto                     6            5'6\"      138       B             06/08       17      Video Game Designer\n202  X Haruna Hattori                    6            5'2\"      135       N/A           02/11       1~      Artificial Intelligence\n202  M Kaoru Saitou                      11           5'10\"     150       AB            07/04       16      Survivalist\n```");
 				message.channel.send("```203  M Masami Nii                        10           5'10\"     143       B             05/25       17      Guitarist\n204  F Edith Freya Reuter-Protz          9            5'10\"     144       AB            10/19       18      ???\n204  F Matilda Spitzenreiter             11           5'8\"      140       O             10/01       18      Club Leader\n301  M Takeshi Shinoda                   10           5'3\"      135       B             05/29       17      Mountaineer\n304  M Kiro Karasu                       10           5'10\"     130       O             08/17       17      Prince\n305  M Ayumu Shinoda                     11           5'9\"      140       B             06/18       16      Rhythm Gamer\n307  M Tenome                            ??           ?'?\"      ???       ?             ??/??       15      Ghostwriter\n308  F Mariko Murakami                   8            5'6\"      125       AB            12/12       18      Martial Artist\n310  M Satomi Shinoda                    12           5'6\"      125       O             03/13       18      Occult Specialist\n\n     Mastermind\n     Information Unavailable.\n\n     Deceased Students\n104  F Pia Adesso                        6            5'4\"      122       B             07/15       15      Anthropologist\n106  M Hakaku Himura                     5            4'10\"     72        O             03/14       14      Test Subject\n107  F Riko Ramuda                       11           5'3\"      123       AB            10/25       16      Concept Artist\n113  F Mahina Keawe                      6            5'3\"      158       O             04/07       16      Fursuiter```");
-				inboxChannel.send(`${message.author.username} has looked at the full version of the DR:BAB roster.`);
 				return;
 			}
 
@@ -2352,12 +3673,17 @@ client.on("message", (message) => { //When a message is sent.
 				if (thumbnail === "") {
 					thumbnail = "https://imgur.com/OVPTMGn.png";
 				};
-				currentPage = { text: classList[x].studentID, thumbnail: thumbnail }
+				currentPage = {
+					text: classList[x].studentID,
+					thumbnail: thumbnail
+				}
 				pages.push(currentPage);
 				x++;
 			}
 
-			if (args[0].toLowerCase().search("example") != -1) { page = 1 };
+			if (args[0].toLowerCase().search("example") != -1) {
+				page = 1
+			};
 		}
 		if (page === 0) {
 			return message.channel.send("I'm sorry, but this file does not exist!  Please make sure that you entered the correct information!")
@@ -2400,8 +3726,7 @@ client.on("message", (message) => { //When a message is sent.
 		let embed = new Discord.MessageEmbed()
 			.setColor(13959168)
 		if (message.guild.id === "455218035507331072") { //Kaeno V3
-			rooms = [
-				{
+			rooms = [{
 					number: "1 (C1)",
 					description: "Aemele and Junko's room is very dark. On one wall, pictures of various people are found. Another wall seems to be painted to look like a sewer. There is a constant sound of dripping water but upon further examination, it is just a music player on loop. There are two identical twin sized beds on one side of the room with a nightstand beside each. On each stand is a clown-shaped lamp, resembling a popular 2017 movie character. There is a bathroom and a closet on the left wall.",
 					people: ["Aemele", "Junko"]
@@ -2429,7 +3754,7 @@ client.on("message", (message) => { //When a message is sent.
 				{
 					number: "6 (C2)",
 					description: "Areli, Mariko, and Ruslan's room is best described as a meat locker. Upon entering, visitors are met with a sharp chill. In a corner of the room, bloodied meat hangs, by string from the ceiling, causing a constant dripping sound as the blood slowly drains into a bucket. The room is devoid of almost any color, being mostly entirely white. Three cots lie on the ground, with fur blankets laid upon them to protect students from the cold. There are boxes across from each cot for storage. There is no bathroom.",
-					people: ["Areli","Mariko","Ruslan"]
+					people: ["Areli", "Mariko", "Ruslan"]
 				},
 				{
 					number: "7 (C2)",
@@ -2466,45 +3791,32 @@ client.on("message", (message) => { //When a message is sent.
 			if (args[0]) {
 				if (args[0] === "1" || args[0].toLowerCase().search("aemele") != -1 || args[0].toLowerCase().search("junko") != -1) {
 					page = 1;
-				}
-				else if (args[0] === "2" || args[0].toLowerCase().search("renata") != -1 || args[0].toLowerCase().search("cecilio") != -1 || args[0].toLowerCase().search("daichi") != -1) {
+				} else if (args[0] === "2" || args[0].toLowerCase().search("renata") != -1 || args[0].toLowerCase().search("cecilio") != -1 || args[0].toLowerCase().search("daichi") != -1) {
 					page = 2;
-				}
-				else if (args[0] === "3" || args[0].toLowerCase().search("dia") != -1 || args[0].toLowerCase().search("tenome") != -1) {
+				} else if (args[0] === "3" || args[0].toLowerCase().search("dia") != -1 || args[0].toLowerCase().search("tenome") != -1) {
 					page = 3;
-				}
-				else if (args[0] === "4" || args[0].toLowerCase().search("nikki") != -1 || args[0].toLowerCase().search("federico") != -1) {
+				} else if (args[0] === "4" || args[0].toLowerCase().search("nikki") != -1 || args[0].toLowerCase().search("federico") != -1) {
 					page = 4;
-				}
-				else if (args[0] === "5" || args[0].toLowerCase().search("jomei") != -1 || args[0].toLowerCase().search("ryoushi") != -1) {
+				} else if (args[0] === "5" || args[0].toLowerCase().search("jomei") != -1 || args[0].toLowerCase().search("ryoushi") != -1) {
 					page = 5;
-				}
-				else if (args[0] === "6" || args[0].toLowerCase().search("areli") != -1 || args[0].toLowerCase().search("mariko") != -1 || args[0].toLowerCase().search("ruslan") != -1) {
+				} else if (args[0] === "6" || args[0].toLowerCase().search("areli") != -1 || args[0].toLowerCase().search("mariko") != -1 || args[0].toLowerCase().search("ruslan") != -1) {
 					page = 6;
-				}
-				else if (args[0] === "7" || args[0].toLowerCase().search("charles") != -1 || args[0].toLowerCase().search("inu") != -1) {
+				} else if (args[0] === "7" || args[0].toLowerCase().search("charles") != -1 || args[0].toLowerCase().search("inu") != -1) {
 					page = 7;
-				}
-				else if (args[0] === "8" || args[0].toLowerCase().search("mel") != -1 || args[0].toLowerCase().search("megami") != -1) {
+				} else if (args[0] === "8" || args[0].toLowerCase().search("mel") != -1 || args[0].toLowerCase().search("megami") != -1) {
 					page = 8;
-				}
-				else if (args[0] === "9" || args[0].toLowerCase().search("ayuma") != -1 || args[0].toLowerCase().search("santo") != -1) {
+				} else if (args[0] === "9" || args[0].toLowerCase().search("ayuma") != -1 || args[0].toLowerCase().search("santo") != -1) {
 					page = 9;
-				}
-				else if (args[0] === "10" || args[0].toLowerCase().search("shinji") != -1 || args[0].toLowerCase().search("wolf") != -1) {
+				} else if (args[0] === "10" || args[0].toLowerCase().search("shinji") != -1 || args[0].toLowerCase().search("wolf") != -1) {
 					page = 10;
-				}
-				else if (args[0] === "11" || args[0].toLowerCase().search("kumi") != -1 || args[0].toLowerCase().search("kira") != -1) {
+				} else if (args[0] === "11" || args[0].toLowerCase().search("kumi") != -1 || args[0].toLowerCase().search("kira") != -1) {
 					page = 11;
-				}
-				else if (args[0] === "12" || args[0].toLowerCase().search("piper") != -1 || args[0].toLowerCase().search("isago") != -1) {
+				} else if (args[0] === "12" || args[0].toLowerCase().search("piper") != -1 || args[0].toLowerCase().search("isago") != -1) {
 					page = 12;
-				}
-				else {
+				} else {
 					if (Number.isInteger(args[1] * 1) === true) {
 						return message.channel.send("I'm sorry, but this room does not exist!  Please make sure that you entered the correct information!")
-					}
-					else if (Number.isInteger(args[1] * 1) === false) {
+					} else if (Number.isInteger(args[1] * 1) === false) {
 						return message.channel.send("I'm sorry, but this student does not exist!  Please make sure that you entered the correct information!")
 					}
 				}
@@ -2512,8 +3824,7 @@ client.on("message", (message) => { //When a message is sent.
 				room = rooms[page - 1];
 				if (room.people.length === 2) {
 					roomInhabitants = `${room.people[0]} and ${room.people[1]}`;
-				}
-				else if (room.people.length === 3) {
+				} else if (room.people.length === 3) {
 					roomInhabitants = `${room.people[0]}, ${room.people[1]} and ${room.people[2]}`;
 				}
 				roomTitle = `Room #${room.number}: ${roomInhabitants}`;
@@ -2521,25 +3832,21 @@ client.on("message", (message) => { //When a message is sent.
 				embed.setDescription(room.description);
 				embed.setAuthor(roomTitle);
 				return message.channel.send(embed);
-			}
-			else {
+			} else {
 				embed.setAuthor("Killing School Ride Room Arrangements");
 				for (x = 0; x < 12; x++) {
 					room = rooms[x];
 					if (room.people.length === 2) {
 						roomInhabitants = `${room.people[0]} and ${room.people[1]}`;
-					}
-					else if (room.people.length === 3) {
+					} else if (room.people.length === 3) {
 						roomInhabitants = `${room.people[0]}, ${room.people[1]} and ${room.people[2]}`;
 					}
 					embed.addField(`Room #${room.number}`, `${roomInhabitants}`)
 				}
 				return message.channel.send(embed);
 			}
-		}
-		else if (message.guild.id === "598739324464267274" || message.guild.id === "617202043597226009") { //Getaway
-			cabins = [
-				{
+		} else if (message.guild.id === "598739324464267274" || message.guild.id === "617202043597226009") { //Getaway
+			cabins = [{
 					name: "Polar",
 					people: ["Daichi Kurosawa", "Lilith Biancalana", "Mori Hibana", "Piper McCullough", "Tomomi Kashichi", "Xiao Ruohan"]
 				},
@@ -2563,8 +3870,7 @@ client.on("message", (message) => { //When a message is sent.
 				embed.addField(`${cabin.name} Cabin`, `${cabinInhabitants}`);
 			}
 			return message.channel.send(embed);
-		}
-		else {
+		} else {
 			message.channel.send("Sorry, this feature isn't meant to work in this space!");
 		}
 	}
@@ -2574,20 +3880,16 @@ client.on("message", (message) => { //When a message is sent.
 		if (message.guild.id === "480549161201041418" || message.guild.id === "641826067232849939" || message.guild.id === "712075335318896712") {
 			gameName = "Fanganronpa Games";
 			embedDescription += "__**Kaeno Shinjomu**__\n[**CLASS 01**](https://imgur.com/a/YKlnXcm)\n[**CLASS 01 REVAMPED**](https://imgur.com/a/5HxXTfJ)\n[**CLASS 02**](https://imgur.com/a/W6lSVxl)\n[**CLASS 02 GLITCHED**](https://imgur.com/a/qqOupuD)\n[**ULTRA DESPAIR GIRLS**](https://imgur.com/a/tBC6sWb)\n[**CLASS 03**](https://imgur.com/a/7JX0shS)\n\n__**Danganronpa: A Getaway**__\n[**CAMP CLASS 01**](https://imgur.com/a/2cX6tHS)\n\n__**Danganronpa: Bed and Bloodshed**__\n[**GUEST GROUP 01**](https://imgur.com/a/epVZpvM)"
-		}
-		else if (message.guild.id === "598739324464267274" || message.guild.id === "617202043597226009") { //Getaway
+		} else if (message.guild.id === "598739324464267274" || message.guild.id === "617202043597226009") { //Getaway
 			gameName = "Danganronpa: A Getaway";
 			embedDescription += "[**CAMP CLASS 01**](https://imgur.com/a/2cX6tHS)"
-		}
-		else if (message.guild.id === "455218035507331072") { //Kaeno Shinjomu
+		} else if (message.guild.id === "455218035507331072") { //Kaeno Shinjomu
 			gameName = "Kaeno Shinjomu";
 			embedDescription += "[**CLASS 01**](https://imgur.com/a/YKlnXcm)\n[**CLASS 01 REVAMPED**](https://imgur.com/a/5HxXTfJ)\n[**CLASS 02**](https://imgur.com/a/W6lSVxl)\n[**CLASS 02 GLITCHED**](https://imgur.com/a/qqOupuD)\n[**ULTRA DESPAIR GIRLS**](https://imgur.com/a/tBC6sWb)\n[**CLASS 03**](https://imgur.com/a/7JX0shS)"
-		}
-		else if (message.guild.id === "633119665178017793") { //Bed and Bloodshed
+		} else if (message.guild.id === "633119665178017793") { //Bed and Bloodshed
 			gameName = "Danganronpa: Bed and Bloodshed";
 			embedDescription += "__**Danganronpa: Bed and Bloodshed**__\n[**GUEST GROUP 01**](https://imgur.com/a/epVZpvM)";
-		}
-		else if (message.guild.id === "721589433018744913" || message.guild.if === "396895853479985162") {
+		} else if (message.guild.id === "721589433018744913" || message.guild.if === "396895853479985162") {
 			gameName = "Koogshire: Wicked Killers";
 			embedDescription += "__**Koogshire: Wicked Killers**__\n[**GROUP 01**](https://www.youtube.com/watch?v=d4EviPTzllY)";
 		}
@@ -2598,16 +3900,19 @@ client.on("message", (message) => { //When a message is sent.
 				color: 15285149
 			}
 		})
-		inboxChannel.send(`${message.author.username} has asked Monomi for the ${gameName} class sprites masterposts.`);
 		return;
 	}
 
 	if (command === "investigation" && message.author.id === "105368288170622976" && message.guild.id === "721589433018744913") {
-		if (args.length == 0) {return message.channel.send("You must specify where you're starting this investigation.");}
-		
-		var investigationBeginGuild = client.guilds.find('id', message.guild.id);
-		var investigationBeginChannel = investigationBeginGuild.channels.find('name', args[0].toLowerCase());
-		if (investigationBeginChannel === null) {return message.channel.send("Please use a valid channel name!");}
+		if (args.length == 0) {
+			return message.channel.send("You must specify where you're starting this investigation.");
+		}
+
+		var investigationBeginGuild = client.guilds.cache.find(guild => guild.id === message.guild.id);
+		var investigationBeginChannel = investigationBeginGuild.channels.cache.find(channel => channel.name === args[0].toLowerCase());
+		if (investigationBeginChannel === null) {
+			return message.channel.send("Please use a valid channel name!");
+		}
 
 		var investigationChannelsRound1 = [
 			'invest-a1',
@@ -2623,27 +3928,25 @@ client.on("message", (message) => { //When a message is sent.
 			'invest-d2',
 			'invest-e2'
 		];
-		
-		var roleA1 = investigationBeginGuild.roles.find('name', 'Option A, Round 1');
-		var roleA2 = investigationBeginGuild.roles.find('name', 'Option A, Round 2');
-		var roleB1 = investigationBeginGuild.roles.find('name', 'Option B, Round 1');
-		var roleB2 = investigationBeginGuild.roles.find('name', 'Option B, Round 2');
-		var roleC1 = investigationBeginGuild.roles.find('name', 'Option C, Round 1');
-		var roleC2 = investigationBeginGuild.roles.find('name', 'Option C, Round 2');
-		var roleD1 = investigationBeginGuild.roles.find('name', 'Option D, Round 1');
-		var roleD2 = investigationBeginGuild.roles.find('name', 'Option D, Round 2');
-		var roleE1 = investigationBeginGuild.roles.find('name', 'Option E, Round 1');
-		var roleE2 = investigationBeginGuild.roles.find('name', 'Option E, Round 2');
+
+		var roleA1 = investigationBeginGuild.roles.cache.find(role => role.name === 'Option A, Round 1');
+		var roleA2 = investigationBeginGuild.roles.cache.find(role => role.name === 'Option A, Round 2');
+		var roleB1 = investigationBeginGuild.roles.cache.find(role => role.name === 'Option B, Round 1');
+		var roleB2 = investigationBeginGuild.roles.cache.find(role => role.name === 'Option B, Round 2');
+		var roleC1 = investigationBeginGuild.roles.cache.find(role => role.name === 'Option C, Round 1');
+		var roleC2 = investigationBeginGuild.roles.cache.find(role => role.name === 'Option C, Round 2');
+		var roleD1 = investigationBeginGuild.roles.cache.find(role => role.name === 'Option D, Round 1');
+		var roleD2 = investigationBeginGuild.roles.cache.find(role => role.name === 'Option D, Round 2');
+		var roleE1 = investigationBeginGuild.roles.cache.find(role => role.name === 'Option E, Round 1');
+		var roleE2 = investigationBeginGuild.roles.cache.find(role => role.name === 'Option E, Round 2');
 
 		investigationBeginGuild.channels.create('invest-a1', {
 			topic: `Check the victim's body. You may ask questions about the victim's body--the state of it, anything on it, and so on.`,
 			parent: 'The Trial Grounds',
-			permissionOverwrites: [
-				{
-					id: roleA1,
-					allow: ['VIEW_CHANNEL'],
-				}
-			]
+			permissionOverwrites: [{
+				id: roleA1,
+				allow: ['VIEW_CHANNEL'],
+			}]
 		}).catch(message.channel.send(console.error));
 
 		const filterA = (reaction, user) => reaction.emoji.name === '🇦' && user.id != user.bot && alreadyChosen.includes(user.id) === false;
@@ -2665,11 +3968,21 @@ client.on("message", (message) => { //When a message is sent.
 				msg.react('🇩');
 				msg.react('🇪');
 
-				const checkA = msg.createReactionCollector(filterA, {time: 60000});
-				const checkB = msg.createReactionCollector(filterB, {time: 60000});
-				const checkC = msg.createReactionCollector(filterC, {time: 60000});
-				const checkD = msg.createReactionCollector(filterD, {time: 60000});
-				const checkE = msg.createReactionCollector(filterE, {time: 60000});
+				const checkA = msg.createReactionCollector(filterA, {
+					time: 60000
+				});
+				const checkB = msg.createReactionCollector(filterB, {
+					time: 60000
+				});
+				const checkC = msg.createReactionCollector(filterC, {
+					time: 60000
+				});
+				const checkD = msg.createReactionCollector(filterD, {
+					time: 60000
+				});
+				const checkE = msg.createReactionCollector(filterE, {
+					time: 60000
+				});
 
 				checkA.on('collect', r => {
 					investigationBeginChannel.send(`${user.name} has chosen Option A for round one!`);
@@ -2702,35 +4015,35 @@ client.on("message", (message) => { //When a message is sent.
 				});
 			})
 		})
-		setTimeout(function(){ //Two Minutes Remain
+		setTimeout(function () { //Two Minutes Remain
 			for (x in investigationChannelsRound1) {
-				investigationBeginGuild.channels.find('name', `${investigationChannelsRound1[x]}`).send("You have two minutes remaining to ask questions!");
+				investigationBeginGuild.channels.cache.find(channel => channel.name === `${investigationChannelsRound1[x]}`).send("You have two minutes remaining to ask questions!");
 				x++;
 			};
 		}, 480000);
 
-		setTimeout(function(){ //One Minute Remains
+		setTimeout(function () { //One Minute Remains
 			for (x in investigationChannelsRound1) {
-				investigationBeginGuild.channels.find('name', `${investigationChannelsRound1[x]}`).send("You have one minute remaining to ask questions!");
+				investigationBeginGuild.channels.cache.find(channel => channel.name === `${investigationChannelsRound1[x]}`).send("You have one minute remaining to ask questions!");
 				x++;
 			};
 		}, 540000);
 
-		setTimeout(function(){ // Thirty Seconds Remain
+		setTimeout(function () { // Thirty Seconds Remain
 			for (x in investigationChannelsRound1) {
-				investigationBeginGuild.channels.find('name', `${investigationChannelsRound1[x]}`).send("You have thirty seconds remaining to ask questions!");
+				investigationBeginGuild.channels.cache.find(channel => channel.name === `${investigationChannelsRound1[x]}`).send("You have thirty seconds remaining to ask questions!");
 				x++;
 			};
 		}, 570000);
-		
-		setTimeout(function(){ // Ten Seconds Remain
+
+		setTimeout(function () { // Ten Seconds Remain
 			for (x in investigationChannelsRound1) {
-				investigationBeginGuild.channels.find('name', `${investigationChannelsRound1[x]}`).send("You have ten seconds remaining to ask questions!");
+				investigationBeginGuild.channels.cache.find(channel => channel.name === `${investigationChannelsRound1[x]}`).send("You have ten seconds remaining to ask questions!");
 				x++;
 			};
 		}, 590000);
 
-		setTimeout(function(){ //Times Up! Round Two Time Baby
+		setTimeout(function () { //Times Up! Round Two Time Baby
 			alreadyChosen = [];
 			let embed = new Discord.MessageEmbed()
 				.setColor(13959168)
@@ -2744,11 +4057,21 @@ client.on("message", (message) => { //When a message is sent.
 					msg.react('🇩');
 					msg.react('🇪');
 
-					const checkA = msg.createReactionCollector(filterA, {time: 60000});
-					const checkB = msg.createReactionCollector(filterB, {time: 60000});
-					const checkC = msg.createReactionCollector(filterC, {time: 60000});
-					const checkD = msg.createReactionCollector(filterD, {time: 60000});
-					const checkE = msg.createReactionCollector(filterE, {time: 60000});
+					const checkA = msg.createReactionCollector(filterA, {
+						time: 60000
+					});
+					const checkB = msg.createReactionCollector(filterB, {
+						time: 60000
+					});
+					const checkC = msg.createReactionCollector(filterC, {
+						time: 60000
+					});
+					const checkD = msg.createReactionCollector(filterD, {
+						time: 60000
+					});
+					const checkE = msg.createReactionCollector(filterE, {
+						time: 60000
+					});
 
 					checkA.on('collect', r => {
 						investigationBeginChannel.send(`${user.name} has chosen Option A for round one!`);
@@ -2783,28 +4106,28 @@ client.on("message", (message) => { //When a message is sent.
 			})
 			setTimeout(function () { //Two Minutes Remain
 				for (x in investigationChannelsRound2) {
-					investigationBeginGuild.channels.find('name', `${investigationChannelsRound2[x]}`).send("You have two minutes remaining to ask questions!");
+					investigationBeginGuild.channels.cache.find(channel => channel.name === `${investigationChannelsRound2[x]}`).send("You have two minutes remaining to ask questions!");
 					x++;
 				};
 			}, 480000);
 
 			setTimeout(function () { //One Minute Remains
 				for (x in investigationChannelsRound2) {
-					investigationBeginGuild.channels.find('name', `${investigationChannelsRound2[x]}`).send("You have one minute remaining to ask questions!");
+					investigationBeginGuild.channels.cache.find(channel => channel.name === `${investigationChannelsRound2[x]}`).send("You have one minute remaining to ask questions!");
 					x++;
 				};
 			}, 540000);
 
 			setTimeout(function () { // Thirty Seconds Remain
 				for (x in investigationChannelsRound2) {
-					investigationBeginGuild.channels.find('name', `${investigationChannelsRound2[x]}`).send("You have thirty seconds remaining to ask questions!");
+					investigationBeginGuild.channels.cache.find(channel => channel.name === `${investigationChannelsRound2[x]}`).send("You have thirty seconds remaining to ask questions!");
 					x++;
 				};
 			}, 570000);
 
 			setTimeout(function () { // Ten Seconds Remain
 				for (x in investigationChannelsRound2) {
-					investigationBeginGuild.channels.find('name', `${investigationChannelsRound2[x]}`).send("You have ten seconds remaining to ask questions!");
+					investigationBeginGuild.channels.cache.find(channel => channel.name === `${investigationChannelsRound2[x]}`).send("You have ten seconds remaining to ask questions!");
 					x++;
 				};
 			}, 590000);
@@ -2823,7 +4146,6 @@ client.on("message", (message) => { //When a message is sent.
 				var executeNext = executee.substring("<@&".length).split(">");
 				if (message.guild.roles.some(x => x.id === executeNext[0]) === false) {
 					if (executee.search("@everyone") != -1) {
-						inboxChannel.send(`${message.author.username} has executed everyone!`);
 						message.channel.send({
 							embed: {
 								color: 13959168,
@@ -2839,7 +4161,6 @@ client.on("message", (message) => { //When a message is sent.
 						})
 					} else {
 						if (executee.search("@here") != -1) {
-							inboxChannel.send(`${message.author.username} has executed everyone!`);
 							message.channel.send({
 								embed: {
 									color: 13959168,
@@ -2855,7 +4176,6 @@ client.on("message", (message) => { //When a message is sent.
 							})
 						} else {
 							if (message.mentions.members.first().id === "476831906835464205") {
-								inboxChannel.send(`${message.author.username} has executed Monomi.`);
 								message.channel.send({
 									embed: {
 										color: 13959168,
@@ -2879,13 +4199,12 @@ client.on("message", (message) => { //When a message is sent.
 									mastermindId = "278147425577730048";
 								}
 								if (message.mentions.members.first().id === mastermindId) {
-									inboxChannel.send(`${message.author.username} has executed ${mastermindName}, the mastermind.`);
 									message.channel.send({
 										embed: {
 											color: 13959168,
 											author: {
 												name: mastermindName,
-												icon_url: client.users.cache.find('id', mastermindId).avatarURL
+												icon_url: client.users.cache.find(user => user.id === mastermindId).avatarURL
 											},
 											"image": {
 												"url": "https://imgur.com/LFvOd9P.gif"
@@ -2895,7 +4214,6 @@ client.on("message", (message) => { //When a message is sent.
 									})
 								} else {
 									if (message.author.id === message.mentions.members.first().id) {
-										inboxChannel.send(`${message.author.username} has executed themselves.`);
 										message.channel.send({
 											embed: {
 												color: 13959168,
@@ -2910,7 +4228,6 @@ client.on("message", (message) => { //When a message is sent.
 											}
 										})
 									} else {
-										inboxChannel.send(`${message.author.username} has executed ${client.users.cache.find('id', message.mentions.members.first().id).username}!`);
 										message.channel.send({
 											embed: {
 												color: 13959168,
@@ -2930,24 +4247,20 @@ client.on("message", (message) => { //When a message is sent.
 						}
 					}
 				} else {
-					inboxChannel.send(`${message.author.username} has tried to execute a role.`);
 					message.channel.send("Please specify a person, rather than a role!");
 				}
 			} else {
-				inboxChannel.send(`${message.author.username} has tried to execute someone, but failed.`);
 				message.channel.send("Please specify who is being executed by using their Discord Tag!");
 			}
 		} else {
-			inboxChannel.send(`${message.author.username} has tried to execute someone, but failed.`);
 			message.channel.send("Please specify who is being executed!");
 		}
 	}
 	if (command === "love" || command === "ship") {
 		message.channel.send("Sorry, this command is off limits right now until Dee manages to work out my bugs!");
 		return;
-		
+
 		if (args.length < 2) { //Missing input
-			inboxChannel.send(`${message.author.username} tried to check a love meter, but didn't specify two people.`);
 			message.channel.send("Please specify who your checking the love meter of!");
 			return;
 		}
@@ -2956,22 +4269,19 @@ client.on("message", (message) => { //When a message is sent.
 			return;
 		}
 		if (args[0].search("@") === -1 || args[1].search("@") === -1) { //One or both is not a person
-			inboxChannel.send(`${message.author.username} tried to check a love meter, but didn't specify two people.`)
 			message.channel.send("Please specify who your checking the love meter of using their Discord tags!");
 			return;
 		}
 		if (args[0].search("@everyone") != -1 || args[1].search("@everyone") != -1 || args[0].search("@here") != -1 || args[1].search("@here") != -1) { //Everyone
-			inboxChannel.send(`${message.author.username} tried to check the love meter of everyone.`)
 			message.channel.send("Woah there! You can't check the love meter of *everyone*! Please specify who your checking the love meter of!");
 			return;
 		}
 		if (args[0].search("<@&") != -1 || args[1].search("<@&") != -1) { //Roles
-			inboxChannel.send(`${message.author.username} tried to check a love meter involving a role.`)
 			message.channel.send("You can't check the love meter of roles! Please specify who your checking the love meter of!");
 			return;
 		}
 		if (args[0] === args[1]) { //Self Love
-			let title = `${client.users.cache.find('id', message.mentions.members.first().id).username} :heart: ${client.users.cache.find('id', message.mentions.members.first().id).username}`;
+			let title = `${client.users.cache.find(user => user.id === message.mentions.members.first().id).username} :heart: ${client.users.cache.find(user => user.id === message.mentions.members.first().id).username}`;
 			message.channel.send({
 				embed: {
 					color: 15285149,
@@ -2982,7 +4292,6 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				}
 			});
-			inboxChannel.send(`${message.author.username} checked their self-love meter, which was at 100%!`)
 		}
 
 		meters = ["▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁,0%",
@@ -3087,25 +4396,25 @@ client.on("message", (message) => { //When a message is sent.
 			"███████████████████████████████████████▅,99%",
 			"████████████████████████████████████████,100%"
 		]
-		let title = `${client.users.cache.find('id', message.mentions.members.first().id).username} :heart: ${client.users.cache.find('id', message.mentions.members.last().id).username}`
+		let title = `${client.users.cache.find(user => user.id === message.mentions.members.first().id).username} :heart: ${client.users.cache.find(user => user.id === message.mentions.members.last().id).username}`
 
 		//The MATH
-		let loveVariableA = client.users.cache.find('id', message.mentions.members.first().id).discriminator;
-		let loveVariableB = client.users.cache.find('id', message.mentions.members.last().id).discriminator;
+		let loveVariableA = client.users.cache.find(user => user.id === message.mentions.members.first().id).discriminator;
+		let loveVariableB = client.users.cache.find(user => user.id === message.mentions.members.last().id).discriminator;
 
 		//loveVariableA = args[2];
 		//loveVariableB = args[3];
-		
+
 		let loveFactor = (parseInt(loveVariableA) + parseInt(loveVariableB));
-		if (loveFactor < 2000 && loveFactor > 99) { 
+		if (loveFactor < 2000 && loveFactor > 99) {
 			message.channel.send("Yup I'm in here hehe");
 			let loveRating = parseInt(loveFactor.toString().slice(0, 1)) + parseInt(loveFactor.toString().slice(1, 2)) + parseInt(loveFactor.toString().slice(2, 3));
 		}
-		if (loveFactor < 100 && loveFactor > 9) { 
+		if (loveFactor < 100 && loveFactor > 9) {
 			message.channel.send("Oop!");
 			let loveRating = parseInt(loveFactor.toString().slice(0, 1)) + parseInt(loveFactor.toString().slice(1, 2));
 		}
-		if (loveFactor < 10) { 
+		if (loveFactor < 10) {
 			message.channel.send("Oh boy!!!");
 			let loveRating = loveFactor;
 		}
@@ -3114,7 +4423,9 @@ client.on("message", (message) => { //When a message is sent.
 			let loveRating = parseInt(loveFactor.toString().slice(0, 2)) + parseInt(loveFactor.toString().slice(2, 4));
 		}
 
-		if (loveRating > 100) {loveRating = loveRating%100;}
+		if (loveRating > 100) {
+			loveRating = loveRating % 100;
+		}
 		let loveMeter = meters[loveRating];
 		let loveScore = loveMeter.split(",")
 
@@ -3128,38 +4439,34 @@ client.on("message", (message) => { //When a message is sent.
 				}
 			}
 		});
-		inboxChannel.send(`${message.author.username} checked the love meter of ${client.users.cache.find('id', message.mentions.members.first().id).username} and ${client.users.cache.find('id', message.mentions.members.last().id).username}, which was at ${loveScore[1]}!`)
 	}
 	if (command === "hope") {
-		const hope0 = client.emojis.find("name", "Hope0")
-		const hope1 = client.emojis.find("name", "Hope1")
-		const hope2 = client.emojis.find("name", "Hope2")
-		const hope3 = client.emojis.find("name", "Hope3")
-		const hope4 = client.emojis.find("name", "Hope4")
-		const hope5 = client.emojis.find("name", "Hope5")
-		const hope6 = client.emojis.find("name", "Hope6")
+		const hope0 = client.emojis.cache.find(emoji => emoji.name === "Hope0")
+		const hope1 = client.emojis.cache.find(emoji => emoji.name === "Hope1")
+		const hope2 = client.emojis.cache.find(emoji => emoji.name === "Hope2")
+		const hope3 = client.emojis.cache.find(emoji => emoji.name === "Hope3")
+		const hope4 = client.emojis.cache.find(emoji => emoji.name === "Hope4")
+		const hope5 = client.emojis.cache.find(emoji => emoji.name === "Hope5")
+		const hope6 = client.emojis.cache.find(emoji => emoji.name === "Hope6")
 		if (args.length === 0 || args[0].search("<@") === -1) {
-			inboxChannel.send(`${message.author.username} tried to check the hope fragments of someone, but failed to specify who.`)
 			message.channel.send("Please specify a student!");
 			return;
 		}
-		if (client.users.cache.find('id', message.mentions.members.first().id).bot === true) {
-			inboxChannel.send(`${message.author.username} tried to check the hope fragments of a bot.`)
+		if (client.users.cache.find(user => user.id === message.mentions.members.first().id).bot === true) {
 			message.channel.send("You can't have hope fragments with a bot!");
 			return;
 		}
 		if (message.mentions.members.first().id === message.author.id) {
-			inboxChannel.send(`${message.author.username} tried to check to how many hope fragments they had with themselves.`)
 			message.channel.send("You can't have hope fragments with yourself, silly!");
 			return;
 		}
-		arr_hope = [`You have ${hope0} 0 hope fragments with ${client.users.cache.find('id', message.mentions.members.first().id).username}.\n\nGo introduce yourself!,https://i.imgur.com/vqURCNE.png`,
-			`You have ${hope1} 1 hope fragment with ${client.users.cache.find('id', message.mentions.members.first().id).username}.,https://i.imgur.com/Mktu16G.png`,
-			`You have ${hope2} 2 hope fragments with ${client.users.cache.find('id', message.mentions.members.first().id).username}.,https://i.imgur.com/4owkJn1.png`,
-			`You have ${hope3} 3 hope fragments with ${client.users.cache.find('id', message.mentions.members.first().id).username}.,https://i.imgur.com/cVXpySt.png`,
-			`You have ${hope4} 4 hope fragments with ${client.users.cache.find('id', message.mentions.members.first().id).username}.,https://i.imgur.com/C2BFXaI.png`,
-			`You have ${hope5} 5 hope fragments with ${client.users.cache.find('id', message.mentions.members.first().id).username}.,https://i.imgur.com/rOXG8SG.png`,
-			`You have all ${hope6} 6 hope fragments with ${client.users.cache.find('id', message.mentions.members.first().id).username}.\n\nGreat job!,https://i.imgur.com/SdYnYZ5.png`
+		arr_hope = [`You have ${hope0} 0 hope fragments with ${client.users.cache.find(user => user.id === message.mentions.members.first().id).username}.\n\nGo introduce yourself!,https://i.imgur.com/vqURCNE.png`,
+			`You have ${hope1} 1 hope fragment with ${client.users.cache.find(user => user.id === message.mentions.members.first().id).username}.,https://i.imgur.com/Mktu16G.png`,
+			`You have ${hope2} 2 hope fragments with ${client.users.cache.find(user => user.id === message.mentions.members.first().id).username}.,https://i.imgur.com/4owkJn1.png`,
+			`You have ${hope3} 3 hope fragments with ${client.users.cache.find(user => user.id === message.mentions.members.first().id).username}.,https://i.imgur.com/cVXpySt.png`,
+			`You have ${hope4} 4 hope fragments with ${client.users.cache.find(user => user.id === message.mentions.members.first().id).username}.,https://i.imgur.com/C2BFXaI.png`,
+			`You have ${hope5} 5 hope fragments with ${client.users.cache.find(user => user.id === message.mentions.members.first().id).username}.,https://i.imgur.com/rOXG8SG.png`,
+			`You have all ${hope6} 6 hope fragments with ${client.users.cache.find(user => user.id === message.mentions.members.first().id).username}.\n\nGreat job!,https://i.imgur.com/SdYnYZ5.png`
 		];
 		hope = random(arr_hope).split(",");
 		message.channel.send({
@@ -3172,7 +4479,6 @@ client.on("message", (message) => { //When a message is sent.
 				}
 			}
 		});
-		inboxChannel.send(`${message.author.username} checked how many hope fragments they had with ${client.users.cache.find('id', message.mentions.members.first().id).username}.`)
 	}
 	if (command === "ask") {
 		if (message.content.length > 6) {
@@ -3181,21 +4487,18 @@ client.on("message", (message) => { //When a message is sent.
 			if (hasOr != -1) {
 				var arrayOr = question.split(" or ");
 				let answerOr = random(arrayOr);
-				inboxChannel.send(`${message.author.username} has asked Monomi, "${question}", and Monomi replied with, "${answerOr}"`);
 				message.channel.send(`I choose ${answerOr}!`);
 			} else {
 				var hasWho = question.toLowerCase().search("who");
 				if (hasWho != -1) {
 					var arrayWho = [`${message.guild.members.random()} did it!`, `It was ${message.guild.members.random()}.`, `${message.guild.members.random()}! It was them!`];
 					let answerWho = random(arrayWho);
-					inboxChannel.send(`${message.author.username} has asked Monomi, "${question}", and Monomi replied with, "${answerWho}"`);
 					message.channel.send(answerWho);
 				} else {
 					var hasWhy = question.toLowerCase().search("why");
 					if (hasWhy != -1) {
 						var arrayWhy = ["Oh, you know.", "Because.", "Why not?"];
 						let answerWhy = random(arrayWhy);
-						inboxChannel.send(`${message.author.username} has asked Monomi, "${question}", and Monomi replied with, "${answerWhy}"`);
 						message.channel.send(answerWhy);
 					} else {
 						var hasHow = question.toLowerCase().search("how");
@@ -3267,96 +4570,81 @@ client.on("message", (message) => { //When a message is sent.
 								'https://www.wikihow.com/Not-Get-Caught-Looking-at-Porn'
 							];
 							let answerHow = random(arrayHow);
-							inboxChannel.send(`${message.author.username} has asked Monomi, "${question}", and Monomi replied with ${answerHow}`);
 							message.channel.send(`Try this: ${answerHow}`);
 						} else {
 							if (question.toLowerCase().search("do you noodle") != -1) {
-								inboxChannel.send(`${message.author.username} asked Monomi if she noodle.  She does.`);
 								message.channel.send("Yes, I noodle!");
 								return;
 							}
 							if (question.toLowerCase().search("are you karkalicious") != -1) {
-								inboxChannel.send(`${message.author.username} asked Monomi if she was karkalicious.  She doesn't do kismesis.`);
 								message.channel.send("Yeah, I don't do kismesis.");
 								return;
 							}
 							if (question.toLowerCase().search("should i mine at night") != -1) {
-								inboxChannel.send(`${message.author.username} asked Monomi if they should mine at night or not.`);
 								message.channel.send("Don't mine at night!");
 								return;
 							}
 							if (question.toLowerCase().search("mastermind") != -1) {
-								inboxChannel.send(`${message.author.username} asked Monomi about the mastermind.`);
 								message.channel.send("I can't answer that.");
 								return;
 							}
 							var arrayElse = ['Absolutely!', 'Yup!', 'Yes!', 'Maybe so.', 'Maybe.', 'Oh, you know.', 'No.', 'Nope.', 'Absolutely not!'];
 							let answerElse = random(arrayElse);
-							inboxChannel.send(`${message.author.username} has asked Monomi, "${question}", and Monomi replied with, "${answerElse}"`);
 							message.channel.send(answerElse);
 						}
 					}
 				}
 			}
 		} else {
-			inboxChannel.send(`${message.author.username} tried to ask Monomi something, but failed.`);
 			message.channel.send("Please ask a question!");
 		}
 	}
 	if (command === "cow") {
 		if (args.length > 0 && args[0].search("@") != -1) {
 			if (args[0].search("&") != -1) {
-				inboxChannel.send(`${message.author.username} has tried to turn someone into a cow, but failed to specify who.`)
 				message.channel.send("Please specify the student that I'm turning into a cow!")
 				return
 			}
 			if (args[0].search("@everyone") != -1 || args[0].search("@here") != -1) {
-				inboxChannel.send(`${message.author.username} has tried to turn everyone into a cow.`)
 				message.channel.send("No way!  I'm not turning the entire class into cows!");
 				return
 			}
 			if (message.mentions.members.first().id === client.user.id) {
-				inboxChannel.send(`${message.author.username} has tried to turn Monomi into a cow.`)
 				message.channel.send("Wha-wha?!  I'm not going to turn myself into a cow!");
 				return
 			}
 			if (message.channel.name === "nsfw") {
-				inboxChannel.send(`${message.author.username} has turned ${client.users.cache.find('id', message.mentions.members.first().id).username} into Cow Ouma.`)
 				message.channel.send({
 					embed: {
 						color: 15285149,
 						"image": {
 							"url": 'https://i.imgur.com/65eC9or.png'
 						},
-						title: `${client.users.cache.find('id', message.mentions.members.first().id).username} has been turned into a cow!`
+						title: `${client.users.cache.find(user => user.id === message.mentions.members.first().id).username} has been turned into a cow!`
 					}
 				});
 				return
 			}
-			inboxChannel.send(`${message.author.username} has turned ${client.users.cache.find('id', message.mentions.members.first().id).username} into a cow.`)
 			message.channel.send({
 				embed: {
 					color: 15285149,
 					"image": {
 						"url": 'https://imgur.com/g7YyeYN.gif'
 					},
-					title: `${client.users.cache.find('id', message.mentions.members.first().id).username} has been turned into a cow!`
+					title: `${client.users.cache.find(user => user.id === message.mentions.members.first().id).username} has been turned into a cow!`
 				}
 			});
 		} else {
-			inboxChannel.send(`${message.author.username} has tried to turn someone into a cow, but failed to specify who.`)
 			message.channel.send("Please specify who I'm turning into a cow!")
 		}
 	}
 	if (command === "chicken") {
 		if (args.length > 0 && args[0].search("@") != -1) {
 			if (args[0].search("&") != -1) {
-				inboxChannel.send(`${message.author.username} has tried to turn someone into a chicken, but failed to specify who.`)
 				message.channel.send("Please specify the student that I'm turning into a chicken!")
 				return
 			}
 			if (args[0].search("@everyone") != -1 || args[0].search("@here") != -1) {
-				inboxChannel.send(`${message.author.username} has tried to turn everyone into a chicken.`)
 				message.channel.send("No way!  I'm not turning the entire class into chickens!");
 				return
 			}
@@ -3364,18 +4652,16 @@ client.on("message", (message) => { //When a message is sent.
 				message.channel.send("Wha-wha?!  I'm not going to turn myself into a chicken!");
 				return
 			}
-			inboxChannel.send(`${message.author.username} has turned ${client.users.cache.find('id', message.mentions.members.first().id).username} into a cow.`)
 			message.channel.send({
 				embed: {
 					color: 15285149,
 					"image": {
 						"url": "https://imgur.com/hiUuUm0.gif"
 					},
-					title: `${client.users.cache.find('id', message.mentions.members.first().id).username} has been turned into a chicken!`
+					title: `${client.users.cache.find(user => user.id === message.mentions.members.first().id).username} has been turned into a chicken!`
 				}
 			});
 		} else {
-			inboxChannel.send(`${message.author.username} has tried to turn someone into a chicken, but failed to specify who.`)
 			message.channel.send("Please specify who I'm turning into a chicken!")
 		}
 	}
@@ -3391,7 +4677,6 @@ client.on("message", (message) => { //When a message is sent.
 		];
 		killchoice = random(killgifs);
 		killarray = killchoice.split(" ||| ")
-		inboxChannel.send(`${message.author.username} has ordered Monokuma to hurt Monomi using his ${killarray[1]}!`)
 		message.channel.send({
 			embed: {
 				color: 13959168,
@@ -3435,517 +4720,603 @@ client.on("message", (message) => { //When a message is sent.
 		correctness = 0;
 		noIcon = "https://imgur.com/OVPTMGn.png";
 		students = [
-			/*1*/ /*0*/ {
+			/*1*/
+			/*0*/ {
 				name: "Aika Mahaya",
 				clues: ["blond", "The murderer left a footprint in size **8 or 9 women's** and size **6 or 7 men's**.", "There was a puddle of vomit at the scene.", "A music note hair pin was found on the ground of the scene.", "A necklace was found on the victim's body.", "A microphone with blood on it was found hidden away at the scene."],
 				img: "https://imgur.com/bwCpEuF.png",
 				imgDead: "https://imgur.com/sGjckJ3.png"
 			},
-			/*1*/ /*1*/ {
+			/*1*/
+			/*1*/ {
 				name: "Aiko Hikaru",
 				clues: ["pink", "The murderer left a footprint in size **10 or 11 women's** and size **8 or 9 men's**.", "A heart-shaped pin was found at the scene.", "There were smears of eye shadow found on the victim."],
 				img: "https://imgur.com/obSzp4m.png",
 				imgDead: "https://imgur.com/9e2GDAr.png"
 			},
-			/*1*/ /*2*/ {
+			/*1*/
+			/*2*/ {
 				name: "Anaelle Hamaan",
 				clues: ["brown", "The murderer did not leave any footprints.", "A scrap of black fabric was found in the victim's palm.", "A pair of scissors were found at the scene.", "The murderer's profile picture is Lisa Simpson.", "Shreds from a dress were found at the scene.", "A scrap of red and blue fabric was found clutched in the victim's hand.", "A scrap of striped fabric was found on the floor of the scene.", "A scrap of orange fabric was found at the scene."],
 				img: "https://imgur.com/Yz4wANs.png",
 				imgDead: "https://imgur.com/4HOZ1QT.png"
 			},
-			/*1*/ /*+3+*/ {
+			/*1*/
+			/*+3+*/ {
 				name: "Anya Sakaguchi",
 				clues: ["sunset", "The murderer did not leave any footprints.", "", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*1*/ /*+4+*/ {
+			/*1*/
+			/*+4+*/ {
 				name: "Anzu Kofuku",
 				clues: ["brown", "The murderer did not leave any footprints.", "A few pieces of currency were found in the victim's pocket.", "Coins were found in the victim's mouth.", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*1*/ /*5*/ {
+			/*1*/
+			/*5*/ {
 				name: "Ara Ayao",
 				clues: ["black", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "The scent of a sweet perfume lingers at the scene.", "The victim was wounded in six different areas on their body.", "The victim's body is badly mutilated."],
 				img: "https://imgur.com/2EO9cr4.png",
 				imgDead: "https://imgur.com/3fZhaHt.png"
 			},
-			/*1*/ /*+6+*/ {
+			/*1*/
+			/*+6+*/ {
 				name: "Aurélie Cartier",
 				clues: ["red", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "A bloody dance blade was found at the scene.", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*1*/ /*7*/ {
+			/*1*/
+			/*7*/ {
 				name: "Cheisu Maeda",
 				clues: ["blond", "The murderer left a footprint in size **12 or 13 women's** and size **10 or 11 men's**.", "A magnifying glass was found at the scene.", "Torn pieces of a burnt note were found at the scene.", "A silver ring was found at the scene."],
 				img: "https://imgur.com/j0rMrbk.png",
 				imgDead: "https://imgur.com/IaXHEeK.png"
 			},
-			/*1*/ /*8*/ {
+			/*1*/
+			/*8*/ {
 				name: "Hachi Hiruma",
 				clues: ["blond", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "On a nearby surface to the victim, there are thirteen notches carved into the wall.", "There were traces of a nicely scented dust at the scene.", "An empty journal was left near the victim.", "The temperature of the room the victim was found in was incredibly high.", "There was a yellow puddle of a mystery liquid found at the scene."],
 				img: "https://imgur.com/aEGV6Wc.png",
 				imgDead: "https://imgur.com/GFrnNjz.png"
 			},
-			/*1*/ /*9*/ {
+			/*1*/
+			/*9*/ {
 				name: "Hoshi Chiura",
 				clues: ["black", "The murderer left a footprint in size **10 or 11 women's** and size **8 or 9 men's**.", "A suicide note was found next to the victim.", "A scrap of orange fabric was found at the scene.", "A death poem was stuffed into the victim's pocket."],
 				img: "https://imgur.com/LpnuQFy.png",
 				imgDead: "https://imgur.com/OBjKPR9.png"
 			},
-			/*1*/ /*+10+*/ {
+			/*1*/
+			/*+10+*/ {
 				name: "Jacek Żeglarski",
 				clues: ["blond", "The murderer left a footprint in size **11 or 12 women's** and size **9 or 10 men's**.", "Pellets of animal feed were found near the body.", "A leash was fastened around the victim's neck."],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*1*/ /*11*/ {
+			/*1*/
+			/*11*/ {
 				name: "Jeong Park",
 				clues: ["black", "The murderer left a footprint in size **5 or 6 women's** and size **3 or 4 men's**.", "A bloody sports ball was found at the scene.", "There were smears of concealer found on the victim."],
 				img: "https://imgur.com/oSsUnKC.png",
 				imgDead: "https://imgur.com/JK7VKYy.png"
 			},
-			/*1*/ /*+12+*/ {
+			/*1*/
+			/*+12+*/ {
 				name: "Kazuya Harada",
 				clues: ["brown", "The murderer did not leave any footprints.", "A saw was found at the scene.", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*1*/ /*13*/ {
+			/*1*/
+			/*13*/ {
 				name: "Kiro Karasu",
 				clues: ["platinum blond", "The murderer left a footprint in size **11 or 12 women's** and size **9 or 10 men's**.", "An arrow was found at the scene.", "There were darts found in the victim's body."],
 				img: "https://imgur.com/S8F6cY0.png",
 				imgDead: "https://imgur.com/KRlCn1w.png"
 			},
-			/*1*/ /*14*/ {
+			/*1*/
+			/*14*/ {
 				name: "Kyoung-mi Park",
 				clues: ["black", "The murderer left a footprint in size **5 or 6 women's** and size **3 or 4 men's**.", "There were smears of eye shadow found on the victim.", "A microphone with blood on it was found hidden away at the scene."],
 				img: "https://imgur.com/8Cdt3c4.png",
 				imgDead: "https://imgur.com/fZoA401.png"
 			},
-			/*1*/ /*15*/ {
+			/*1*/
+			/*15*/ {
 				name: "Masayuuki Taisho",
 				clues: ["white", "The murderer left a footprint in size **11 or 12 women's** and size **9 or 10 men's**.", "A cat hair pin was found on the ground of the scene.", "A single, red eye contact was found at the scene."],
 				img: "https://imgur.com/slaH7mk.png",
 				imgDead: "https://imgur.com/CLYSgcS.png"
 			},
-			/*1*/ /*+16+*/ {
+			/*1*/
+			/*+16+*/ {
 				name: "Megu Kojima",
 				clues: ["black", "The murderer left a footprint in size **5 or 6 women's** and size **3 or 4 men's**.", "Shreds from a dress were found at the scene.", "The scent of a sweet perfume lingers at the scene.", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*1*/ /*17*/ {
+			/*1*/
+			/*17*/ {
 				name: "Minako Kaoru",
 				clues: ["pink", "The murderer did not leave any footprints.", "A custom-made knife was found at the scene.", "A sheath was slung around the victim's body.", "A bamboo sword was left at the scene."],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*1*/ /*+18+*/ {
+			/*1*/
+			/*+18+*/ {
 				name: "Miyuki Ataru",
 				clues: ["black", "The murderer did not leave any footprints.", "A bloody sports ball was found at the scene.", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*1*/ /*19*/ {
+			/*1*/
+			/*19*/ {
 				name: "Mori Hibana",
 				clues: ["brown", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "A pendulum was found at the scene.", "The victim had recently been drugged or poisoned."],
 				img: "https://imgur.com/AFaAdCo.png",
 				imgDead: "https://imgur.com/8gr4Hgg.png"
 			},
-			/*1*/ /*+20+*/ {
+			/*1*/
+			/*+20+*/ {
 				name: "Noriko Suzuki",
 				clues: ["black", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "A pawn was found tucked into the victim's pocket.", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*1*/ /*+21+*/ {
+			/*1*/
+			/*+21+*/ {
 				name: "Ryu Akahoshi",
 				clues: ["black", "The murderer left a footprint in size **11 or 12 women's** and size **9 or 10 men's**.", "", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*1*/ /*22*/ {
+			/*1*/
+			/*22*/ {
 				name: "S'ad Ludópata",
 				clues: ["brown", "The murderer left a footprint in size **12 or 13 women's** and size **10 or 11 men's**.", "The victim was crucified.", "A pIona string was found at the scene.", "A heart ring was found at the scene.", "A gold-plated ace was found at the scene.", "A mystery novel titled *The Kidnapped* was found at the scene.", "Coins were found in the victim's mouth."],
 				img: "https://imgur.com/GxVIfNW.png",
 				imgDead: "https://imgur.com/AZzj22b.png"
 			},
-			/*1*/ /*23*/ {
+			/*1*/
+			/*23*/ {
 				name: "Shiba Mikio",
 				clues: ["purple", "The murderer left a footprint in size **10 or 11 women's** and size **8 or 9 men's**.", "A suicide note was found next to the victim.", "Flowers petals were found at the scene.", "A heart-shaped pin was found at the scene.", "A love letter was left in the victim's hands."],
 				img: "https://imgur.com/dYJgZl5.png",
 				imgDead: "https://imgur.com/p51f8Vu.png"
 			},
-			/*1*/ /*+24+*/ {
+			/*1*/
+			/*+24+*/ {
 				name: "Stella Hunter",
 				clues: ["pink", "The murderer did not leave any footprints.", "", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*1*/ /*+25+*/ {
+			/*1*/
+			/*+25+*/ {
 				name: "Tenshi Kawada",
 				clues: ["black", "The murderer left a footprint in size **12 or 13 women's** and size **10 or 11 men's**.", "", ""],
 				img: "https://imgur.com/BzUAKy1.png",
 				imgDead: "https://imgur.com/txWQ7vg.png"
 			},
-			/*1*/ /*+26+*/ {
+			/*1*/
+			/*+26+*/ {
 				name: "Tezuku Imou",
 				clues: ["green", "The murderer did not leave any footprints.", "", ""],
 				img: "https://imgur.com/vqxvUSV.png",
 				imgDead: "https://imgur.com/vqxvUSV.png"
 			},
-			/*1*/ /*27*/ {
+			/*1*/
+			/*27*/ {
 				name: "Théo Dubois",
 				clues: ["black", "The murderer did not leave any footprints.", "The tip of an arrow was found at the scene.", "An arrow was found at the scene.", "A feather was found at the scene."],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*1*/ /*+28+*/ {
+			/*1*/
+			/*+28+*/ {
 				name: "Ximena Colomar",
 				clues: ["purple", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*1*/ /*29*/ {
+			/*1*/
+			/*29*/ {
 				name: "Yukine Sakurai",
 				clues: ["brown", "The murderer left a footprint in size **12 or 13 women's** and size **10 or 11 men's**.", "Rose petals were found around the victim's body.", "A lotus petal was found near the victim.", "Who?", "Flowers petals were found at the scene."],
 				img: "https://imgur.com/2RJbb52.png",
 				imgDead: "https://imgur.com/RQcTnkM.png"
 			},
-			/*2*/ /*+30+*/ {
+			/*2*/
+			/*+30+*/ {
 				name: "Akiko",
 				clues: ["purple", "The murderer left a footprint in size **5 or 6 women's** and size **3 or 4 men's**.", "", ""],
 				img: "https://imgur.com/Cpdhi9T.png",
 				imgDead: "https://imgur.com/m5AuVzR.png"
 			},
-			/*2*/ /*+31+*/ {
+			/*2*/
+			/*+31+*/ {
 				name: "Arisa Shokohou",
 				clues: ["brown", "The murderer left a footprint in size **5 or 6 women's** and size **3 or 4 men's**.", "", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*2*/ /*32*/ {
+			/*2*/
+			/*32*/ {
 				name: "Ale del Prieto",
 				clues: ["brown", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "A candy wrapper labeled 'Awake' was found at the scene.", "A silver ring was found at the scene.", "A set of defibrillation pads were found on the victim.", "A magnifying glass was found at the scene.", "A feather was found at the scene."],
 				img: "https://imgur.com/Sag0SRp.png",
 				imgDead: "https://imgur.com/QL0lrYX.png"
 			},
-			/*2*/ /*+33+*/ {
+			/*2*/
+			/*+33+*/ {
 				name: "Asahi Fukuzawa",
 				clues: ["black", "The murderer left a footprint in size **11 or 12 women's** and size **9 or 10 men's**.", "A necklace was found on the victim's body.", ""],
 				img: "https://imgur.com/GdXygwN.png",
 				imgDead: "https://imgur.com/Em8I0vn.png"
 			},
-			/*2*/ /*34*/ {
+			/*2*/
+			/*34*/ {
 				name: "Chika Miyasaki",
 				clues: ["strawberry blond", "The murderer left a footprint in size **4 or 5 women's** and size **2 or 3 men's**.", "The murder was executed incredibly extravagantly.", "A custom-made knife was found at the scene.", "Cups of strawberry soda were laid out on a table at the scene."],
 				img: "https://imgur.com/iuVJkKq.png",
 				imgDead: "https://imgur.com/zZmXZ3L.png"
 			},
-			/*2*/ /*35*/ {
+			/*2*/
+			/*35*/ {
 				name: "Chikako Kaetsu",
 				clues: ["blue-green", "The murderer left a footprint in size **9 or 10 women's** and size **7 or 8 men's**.", "A cross was carved into the victim's abdomen.", "A red string with tape on one end was found at the scene.", "There are the scribblings of a madman looking for an answer all over the scene."],
 				img: "https://imgur.com/4yEQVlf.png",
 				imgDead: "https://imgur.com/FWQz2dg.png"
 			},
-			/*2*/ /*36*/ {
+			/*2*/
+			/*36*/ {
 				name: "Eiichi Ryozo",
 				clues: ["black", "The murderer left a footprint in size **12 or 13 women's** and size **10 or 11 men's**.", "The victim's body is badly mutilated.", "The victim had recently been drugged or poisoned.", "A vial of poison was found at the scene.", "A broken bottle of poison was found at the scene."],
 				img: "https://imgur.com/BCdEZNm.png",
 				imgDead: "https://imgur.com/yT8Hw90.png"
 			},
-			/*2*/ /*37*/ {
+			/*2*/
+			/*37*/ {
 				name: "Eiji Ryozo",
 				clues: ["black", "The murderer left a footprint in size **8 or 9 women's** and size **6 or 7 men's**.", "A pair of scissors were found at the scene.", "The victim was killed with flawless medical precision.", "A saw was found at the scene."],
 				img: "https://imgur.com/JTrNk47.png",
 				imgDead: "https://imgur.com/yXcQod3.png"
 			},
-			/*2*/ /*38*/ {
+			/*2*/
+			/*38*/ {
 				name: "Fenikku Hinotama",
 				clues: ["brown", "The murderer left a footprint in size **9 or 10 women's** and size **7 or 8 men's**.", "An empty bottle of soda was found at the scene.", "A rainbow button was found at the scene.", "A bloody baton was found nearby the victim.", "A scrap of red and blue fabric was found clutched in the victim's hand."],
 				img: "https://imgur.com/snh70TO.png",
 				imgDead: "https://imgur.com/mrkyS90.png"
 			},
-			/*2*/ /*39*/ {
+			/*2*/
+			/*39*/ {
 				name: "Hana Kageriri",
 				clues: ["pink", "The murderer left a footprint in size **8 or 9 women's** and size **6 or 7 men's**.", "A wooden cross was found at the scene.", "The scent of a sweet perfume lingers at the scene.", "The victim was covered in a tangle of strings."],
 				img: "https://imgur.com/c210v7y.png",
 				imgDead: "https://imgur.com/DXvdBWV.png"
 			},
-			/*2*/ /*+40+*/ {
+			/*2*/
+			/*+40+*/ {
 				name: "Hideo Takayama",
 				clues: ["black", "The murderer left a footprint in size **12 or 13 women's** and size **10 or 11 men's**.", "Small pieces of machinery were found at the scene.", ""],
 				img: "https://imgur.com/9WXv5Q9.png",
 				imgDead: "https://imgur.com/Fho6zUC.png"
 			},
-			/*2*/ /*41*/ {
+			/*2*/
+			/*41*/ {
 				name: "Isha Kalki",
 				clues: ["red", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "A yellow hair clip was found on the ground of the scene.", "A black tennis shoe was left behind at the scene.", "The victim had recently been drugged or poisoned."],
 				img: "https://imgur.com/xj1HMXu.png",
 				imgDead: "https://imgur.com/W40ausU.png"
 			},
-			/*2*/ /*42*/ {
+			/*2*/
+			/*42*/ {
 				name: "Kagami Hannei",
 				clues: ["orange", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "A crime insignia was carved into the victim's shoulder blade.", "Shreds from a dress were found at the scene.", "A small, dripping trail of blood leads away from the body.", "A silver ring was found at the scene.", "A small bracelet was found at the scene.", "A gold, hoop earring was found at the scene.", "A necklace was found on the victim's body."],
 				img: "https://imgur.com/PZVqARe.png",
 				imgDead: "https://imgur.com/Z6itjUB.png"
 			},
-			/*2*/ /*43*/ {
+			/*2*/
+			/*43*/ {
 				name: "Kaipo Uilani Iona",
 				clues: ["brown", "The murderer left a footprint in size **8 or 9 women's** and size **6 or 7 men's**.", "The footprints appear to be from flip flops.", "Pellets of animal feed were found near the body.", "A feather was found at the scene."],
 				img: "https://imgur.com/WQFawIm.png",
 				imgDead: "https://imgur.com/ysWxzwW.png"
 			},
-			/*2*/ /*+44+*/ {
+			/*2*/
+			/*+44+*/ {
 				name: "Katashi Maeda",
 				clues: ["blond", "The murderer left a footprint in size **11 or 12 women's** and size **9 or 10 men's**.", "", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*2*/ /*45*/ {
+			/*2*/
+			/*45*/ {
 				name: "Kouki Yoshida",
 				clues: ["red", "The murderer left a footprint in size **10 or 11 women's** and size **8 or 9 men's**.", "There is no evidence of the killer touching the victim.", "A red ribbon was found at the scene.", "A penny, heads up, was found at the scene."],
 				img: "https://imgur.com/NIZr23N.png",
 				imgDead: "https://imgur.com/jRRhUog.png"
 			},
-			/*2*/ /*46*/ {
+			/*2*/
+			/*46*/ {
 				name: "Kyabetsu Retasu",
 				clues: ["green", "The murderer left a footprint in size **9 or 10 women's** and size **7 or 8 men's**.", "Rose petals were found around the victim's body.", "Flowers petals were found at the scene.", "The footprints appear to be from flip flops.", "A lotus petal was found near the victim.", "There is an apologetic note laid within the victim's hands, written in Japanese."],
 				img: "https://imgur.com/CgLyIGN.png",
 				imgDead: "https://imgur.com/bIJp1Pe.png"
 			},
-			/*2*/ /*47*/ {
+			/*2*/
+			/*47*/ {
 				name: "Michel Voigt",
 				clues: ["black", "The murderer left a footprint in size **10 or 11 women's** and size **8 or 9 men's**.", "The victim was crucified.", "A wooden cross was found at the scene."],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*2*/ /*+48+*/ {
+			/*2*/
+			/*+48+*/ {
 				name: "Monika Minami",
 				clues: ["blond", "The murderer left a footprint in size **6 or 7 women's** and size **4 or 5 men's**.", "", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*2*/ /*49*/ {
+			/*2*/
+			/*49*/ {
 				name: "Rosendo Paulo Ochoa Merlo",
 				clues: ["brown", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "A bloody sports ball was found at the scene.", "A necklace was found on the victim's body."],
 				img: "https://imgur.com/uwXd769.png",
 				imgDead: "https://imgur.com/xaeT5eO.png"
 			},
-			/*2*/ /*50*/ {
+			/*2*/
+			/*50*/ {
 				name: "Saeko Kiyomizu",
 				clues: ["black", "The murderer left a footprint in size **6 or 7 women's** and size **4 or 5 men's**.", "The victim was crucified.", "A shattered cup of tea was found at the scene.", "A vial of poison was found at the scene.", "A broken bottle of poison was found at the scene."],
 				img: "https://imgur.com/AKg0jAY.png",
 				imgDead: "https://imgur.com/tejkibh.png"
 			},
-			/*2*/ /*51*/ {
+			/*2*/
+			/*51*/ {
 				name: "Sora Kenshin",
 				clues: ["black", "The murderer left a footprint in size **12 or 13 women's** and size **10 or 11 men's**.", "A laceration was carved into the victim's arm in the shape of a cityscape."],
 				img: "https://imgur.com/wdNGgRH.png",
 				imgDead: "https://imgur.com/FIblYyB.png"
 			},
-			/*2*/ /*+52+*/ {
+			/*2*/
+			/*+52+*/ {
 				name: "Souma Shimizu",
 				clues: ["brown", "The murderer left a footprint in size **12 or 13 women's** and size **10 or 11 men's**.", "A red hair clip was found on the ground of the scene.", "A gun was found at the scene.", "A silver ring was found at the scene.", ""],
 				img: "https://imgur.com/9CoACWR.png",
 				imgDead: "https://imgur.com/KJm9xdB.png"
 			},
-			/*2*/ /*53*/ {
+			/*2*/
+			/*53*/ {
 				name: "Tomomi Kashichi",
 				clues: ["brown", "The murderer left a footprint in size **12 or 13 women's** and size **10 or 11 men's**.", "Small but valuable possessions were taken off of the body, most likely as a keepsake.", "Small pieces of machinery were found at the scene."],
 				img: "https://imgur.com/OVjt8y0.png",
 				imgDead: "https://imgur.com/7laDvmv.png"
 			},
-			/*2*/ /*54*/ {
+			/*2*/
+			/*54*/ {
 				name: "Tsuyo Kogiyumi",
 				clues: ["white", "The murderer left a footprint in size **5 or 6 women's** and size **3 or 4 men's**.", "A shattered test tube was found at the scene.", "The scent of a sweet perfume lingers at the scene.", "A necklace was found on the victim's body.", "A torn out page from a book was found at the scene."],
 				img: "https://imgur.com/jHf6p7i.png",
 				imgDead: "https://imgur.com/bo05YOC.png"
 			},
-			/*2*/ /*+55+*/ {
+			/*2*/
+			/*+55+*/ {
 				name: "Yuna Akahoshi",
 				clues: ["white", "The murderer left a footprint in size **6 or 7 women's** and size **4 or 5 men's**.", "", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*2*/ /*+56+*/ {
+			/*2*/
+			/*+56+*/ {
 				name: "Yuuya Michimiya",
 				clues: ["strawberry blond", "The murderer left a footprint in size **10 or 11 women's** and size **8 or 9 men's**.", "A few pieces of currency were found in the victim's pocket.", "Coins were found in the victim's mouth.", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*3*/ /*57*/ {
+			/*3*/
+			/*57*/ {
 				name: "Aemele Dèjré",
 				clues: ["green", "The murderer left a footprint in size **4 or 5 women's** and size **2 or 3 men's**.", "The victim was found in their favorite place.", "The victim was found without their clothing.", "The victim is covered in a mixture of sweat and saliva."],
 				img: "https://imgur.com/nxt9OCI.png",
 				imgDead: "https://imgur.com/igCOVGX.png"
 			},
-			/*4*/ /*+58+*/ {
+			/*4*/
+			/*+58+*/ {
 				name: "Agnes María Camila Zalweski-Chavarría",
 				clues: ["black", "The murderer left a footprint in size **8 or 9 women's** and size **6 or 7 men's**.", "", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*3*/ /*59*/ {
+			/*3*/
+			/*59*/ {
 				name: "Areli Vepkhia",
 				clues: ["black and white", "The murderer left a footprint in size **13 or 14 women's** and size **11 or 12 men's**.", "The victim's body is badly mutilated.", "There are scratch marks on the victim's abdomen.", "There is a large bite mark on the victim's arm.", "A snapped, orange headband was found at the scene."],
 				img: "https://imgur.com/4IQsA40.png",
 				imgDead: "https://imgur.com/yhR9yqN.png"
 			},
-			/*3*/ /*+60+*/ {
+			/*3*/
+			/*+60+*/ {
 				name: "Ayuma Tanaka",
 				clues: ["orange", "The murderer left a footprint in size **12 or 13 women's** and size **9 or 10 men's**.", "A golden ring was found near the victim's body.", "The victim was stabbed with a pocket knife.", "The scent of something burning lingers at the scene."],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*3*/ /*61*/ {
+			/*3*/
+			/*61*/ {
 				name: "Cecilio Calles Cárdenas",
 				clues: ["brown", "The murderer left a footprint in size **10 or 11 women's** and size **8 or 9 men's**.", "A patch of a country's flag was found in the pocket of the victim.", "A pair of goggles was found at the scene.", "The murder was performed very efficiently."],
 				img: "https://imgur.com/8mpbRMJ.png",
 				imgDead: "https://imgur.com/60Kgu5D.png"
 			},
-			/*3*/ /*62*/ {
+			/*3*/
+			/*62*/ {
 				name: "Daichi Ichihara",
 				clues: ["red", "The murderer left a footprint in size **11 or 12 women's** and size **9 or 10 men's**.", "The victim's body was set in the center of a pentagram.", "A wooden cross was found at the scene."],
 				img: "https://imgur.com/qT8oKQu.png",
 				imgDead: "https://imgur.com/SGynT97.png"
 			},
-			/*3*/ /*63*/ {
+			/*3*/
+			/*63*/ {
 				name: "Dia Ramos",
 				clues: ["purple", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "A gold, hoop earring was found at the scene.", "An orange scrunchy was found at the scene.", "There were smears of concealer found on the victim."],
 				img: "https://imgur.com/luniZC4.png",
 				imgDead: "https://imgur.com/yPCaMoU.png"
 			},
-			/*3*/ /*64*/ {
+			/*3*/
+			/*64*/ {
 				name: "Inugami Uzuki",
 				clues: ["red", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "The victim's body is badly mutilated.", "A mask was found at the scene.", "There are scratch marks on the victim's abdomen.", "Motor oil was found smeared on a nearby surface at the scene.", "Traces of spray paint was found on the victim's arms and hands.", "A leash was fastened around the victim's neck.", "There is a large bite mark on the victim's arm.", "A patch of a country's flag was found in the pocket of the victim."],
 				img: "https://imgur.com/ZHW10pn.png",
 				imgDead: "https://imgur.com/Qn5Eycg.png"
 			},
-			/*3*/ /*65*/ {
+			/*3*/
+			/*65*/ {
 				name: "Jomei Hoshino",
 				clues: ["blue", "The murderer left a footprint in size **11 or 12 women's** and size **9 or 10 men's**.", "The scent of something burning lingers at the scene.", "The victim's body is badly mutilated.", "The temperature of the room the victim was found in was incredibly high.", "There were traces of gasoline at the scene.", "The victim's body was completely burned.", "A lighter was found at the scene."],
 				img: "https://imgur.com/YywS5LK.png",
 				imgDead: "https://imgur.com/SaZa5dH.png"
 			},
-			/*3*/ /*66*/ {
+			/*3*/
+			/*66*/ {
 				name: "Junko Saitou",
 				clues: ["black", "The murderer left a footprint in size **6 or 7 women's** and size **4 or 5 men's**.", "A death poem was stuffed into the victim's pocket.", "A scrap of striped fabric was found on the floor of the scene.", "There was a puddle of vomit at the scene."],
 				img: "https://imgur.com/TZeW9L7.png",
 				imgDead: "https://imgur.com/FNk7e3E.png"
 			},
-			/*3*/ /*67*/ {
+			/*3*/
+			/*67*/ {
 				name: "Kirakira Kyuti",
 				clues: ["blond", "The murderer left a footprint in size **5 or 6 in children's**.", "There is no evidence of the killer touching the victim.", "A hair clip was found on the ground of the scene.", "A megaphone was found at the scene."],
 				img: "https://imgur.com/zz98AMQ.png",
 				imgDead: "https://imgur.com/OJF4cgL.png"
 			},
-			/*3*/ /*+68+*/ {
+			/*3*/
+			/*+68+*/ {
 				name: "Kumiko Yeun",
 				clues: ["black", "The murderer left a footprint in size **6 or 7 women's** and size **4 or 5 men's**.", "A microphone with blood on it was found hidden away at the scene.", ""],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*4*/ /*69*/ {
+			/*4*/
+			/*69*/ {
 				name: "Kyosuke Maki",
 				clues: ["brown", "The murderer left a footprint in size **11 or 12 women's** and size **9 or 10 men's**", "A red hair clip was found on the ground of the scene.", "The scent of a strong cologne lingers at the scene.", "The victim's body is badly mutilated."],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*3*/ /*70*/ {
+			/*3*/
+			/*70*/ {
 				name: "Mariko Murakami",
 				clues: ["purple", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "A scrap of black fabric was found in the victim's palm.", "A red hair pin was found at the scene.", "The victim was crucified.", "A bamboo sword was left at the scene."],
 				img: "https://imgur.com/9RRSa6h.png",
 				imgDead: "https://imgur.com/cAXqJnH.png"
 			},
-			/*3*/ /*71*/ {
+			/*3*/
+			/*71*/ {
 				name: "Megami Himura",
 				clues: ["blue", "The murderer left a footprint in size **6 or 7 women's** and size **4 or 5 men's**.", "Rose petals were found around the victim's body.", "Bobby pins were found at the scene.", "A scrap of striped fabric was found on the floor of the scene."],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*3*/ /*+72+*/ {
+			/*3*/
+			/*+72+*/ {
 				name: "Melchor Guadalupe Paz de la Cruz",
 				clues: ["brown", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "A megaphone was found at the scene.", ""],
 				img: "https://imgur.com/9cVr7mL.png",
 				imgDead: "https://imgur.com/PeLVeBZ.png"
 			},
-			/*_*/ /*73*/ {
+			/*_*/
+			/*73*/ {
 				name: "Miyuki Hayashi",
 				clues: ["blue", "The murderer left a footprint in size **6 or 7 women's** and size **4 or 5 men's**.", "The temperature of the room the victim was found in was incredibly high.", "The scent of something burning lingers at the scene.", "The victim's body is badly mutilated.", "A purple hair pin was found on the ground of the scene.", "There were smears of eye shadow found on the victim.", "There were traces of gasoline at the scene."],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*3*/ /*+74+*/ {
+			/*3*/
+			/*+74+*/ {
 				name: "Nikki Cox",
 				clues: ["orange", "The murderer left a footprint in size **8 or 9 women's** and size **6 or 7 men's**.", "", ""],
 				img: "https://i.imgur.com/llvFlee.png",
 				imgDead: "https://imgur.com/pu3hvDH.png"
 			},
-			/*3*/ /*+75+*/ {
+			/*3*/
+			/*+75+*/ {
 				name: "Renata de Santis",
 				clues: ["brown", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "", ""],
 				img: "https://imgur.com/Dgij3oX.png",
 				imgDead: "https://imgur.com/NSiPSIz.png"
 			},
-			/*3*/ /*76*/ {
+			/*3*/
+			/*76*/ {
 				name: "Ryoushi Nobuori",
 				clues: ["red-violet", "The murderer left a footprint in size **8 or 9 women's** and size **6 or 7 men's**.", "A mystery novel titled *The Kidnapped* was found at the scene.", "A torn out page from a book was found at the scene.", "A headband was found at the scene.", "A book full of children's stories was found at the scene."],
 				img: "https://imgur.com/r9KKua3.png",
 				imgDead: "https://imgur.com/9se7jzq.png"
 			},
-			/*3*/ /*+77+*/ {
+			/*3*/
+			/*+77+*/ {
 				name: "Santo Verdugo Bautista",
 				clues: ["brown", "The murderer left a footprint in size **11 or 12 women's** and size **9 or 10 men's**.", "The victim was found without their clothing.", "The victim was killed with flawless medical precision.", "An El Diablo chicle cigarillo was stuffed into the victim's mouth.", "A single Hummingbird alebrije earring was found at the scene.", "Photos of bodies were found at the scene.", "A gun was found at the scene."],
 				img: "https://imgur.com/PoUqQIr.png",
 				imgDead: "https://imgur.com/GVglgya.png"
 			},
-			/*3*/ /*78*/ {
+			/*3*/
+			/*78*/ {
 				name: "Shinji Minoru",
 				clues: ["brown", "The murderer left a foot print in size **11 or 12 women's** and size **9 or 10 men's**.", "A scribbled note was left behind at the scene.", "A blue pen was left behind at the scene.", "The victim had recently been drugged or poisoned."],
 				img: noIcon,
 				imgDead: noIcon
 			},
-			/*3*/ /*79*/ {
+			/*3*/
+			/*79*/ {
 				name: "Wolfgang Schwarz",
 				clues: ["black", "The murderer left a footprint in size **12 or 13 women's** and size **10 or 11 men's**.", "The scene faintly smells of pine trees.", "The victim was killed with flawless medical precision.", "A saw was found at the scene.", "A patch of a country's flag was found in the pocket of the victim.", ""],
 				img: "https://imgur.com/iHn6DX9.png",
 				imgDead: "https://imgur.com/pU54JIU.png"
 			},
-			/*U*/ /*+80+*/ {
+			/*U*/
+			/*+80+*/ {
 				name: "Kotone Fukuzawa",
 				clues: ["black", "The murderer left a footprint in size **7 or 8 women's** and size **5 or 6 men's**.", "The victim's body is badly mutilated.", ""],
 				img: "https://imgur.com/OTttz9N.png",
 				imgDead: "https://imgur.com/sEoHbXr.png"
 			},
-			/*3*/ /*+81+*/ {
+			/*3*/
+			/*+81+*/ {
 				name: "Ruslan Eun-Kyung Kraus",
 				clues: ["brown", "The murderer left a footprint in size **11 or 12 women's** and size **9 or 10 men's**.", "", ""],
 				img: "https://imgur.com/8LA7hg8.png",
 				imgDead: "https://imgur.com/ffO9rMi.png"
 			},
-			/*3*/ /*+82+*/ {
+			/*3*/
+			/*+82+*/ {
 				name: "Isago Achikita",
 				clues: ["pink", "The murderer left a footprint in size **6 or 7 women's** and size **4 or 5 men's**.", "Traces of gold leaf were found at the scene.", "A scrap of black fabric was found in the victim's palm."],
 				img: "https://imgur.com/YHZZoys.png",
 				imgDead: "https://imgur.com/KNHhTlL.png"
 			},
-			/*3*/ /*+83+*/ {
+			/*3*/
+			/*+83+*/ {
 				name: "Piper McCullough",
 				clues: ["green", "The murderer left a footprint in size **5 or 6 women's** and size **3 or 4 men's**.", "An American flag was tucked into the victim's clothing.", ""],
 				img: "https://imgur.com/Zxcprq2.png",
 				imgDead: "https://imgur.com/yuOgons.png"
 			},
-			/*3*/ /*+84+*/ {
+			/*3*/
+			/*+84+*/ {
 				name: "Charles Miller",
 				clues: ["blond", "The murderer left a footprint in size **10 or 11 women's** and size **8 or 9 men's**.", "An American flag was tucked into the victim's clothing.", "A carton of milk was found under the victim's body."],
 				img: "https://imgur.com/gbrgAJL.png",
 				imgDead: "https://imgur.com/YKzsYOU.png"
 			},
-			/*3*/ /*+85+*/ {
+			/*3*/
+			/*+85+*/ {
 				name: "Tenome",
 				clues: ["gray", "The murderer did not leave any footprints.", "", ""],
 				img: "https://imgur.com/7Pr58FI.png",
@@ -3981,16 +5352,13 @@ client.on("message", (message) => { //When a message is sent.
 					if (testResults[0] === "murder") {
 						resultsMurder += 1;
 						testResults.shift();
-					}
-					else if (testResults[0] === "doublemurder") {
+					} else if (testResults[0] === "doublemurder") {
 						resultsDoubleMurder += 1;
 						testResults.shift();
-					}
-					else if (testResults[0] === "suicide") {
+					} else if (testResults[0] === "suicide") {
 						resultsSuicide += 1;
 						testResults.shift();
-					}
-					else if (testResults[0] === "secret") {
+					} else if (testResults[0] === "secret") {
 						resultsSecret += 1;
 						testResults.shift();
 					}
@@ -4010,15 +5378,13 @@ client.on("message", (message) => { //When a message is sent.
 					for (y = 2; y < students[args[2]].clues.length; y++) {
 						if (students[args[2]].clues[y] != "") {
 							cluesData += `${y - 1}. ${students[args[2]].clues[y]}\n`;
-						}
-						else {
+						} else {
 							cluesData += `${y - 1}. Empty clue.\n`;
 						}
 					}
 					embed.addField("Clues", `${cluesData}`);
 					message.channel.send(embed);
-				}
-				else if (!args[2]) {
+				} else if (!args[2]) {
 					for (x = 0; x < students.length; x++) {
 						cluesData = "";
 						let embed = new Discord.MessageEmbed()
@@ -4032,8 +5398,7 @@ client.on("message", (message) => { //When a message is sent.
 						for (y = 2; y < students[x].clues.length; y++) {
 							if (students[x].clues[y] != "") {
 								cluesData += `${y - 1}. ${students[x].clues[y]}\n`;
-							}
-							else {
+							} else {
 								cluesData += `${y - 1}. Empty clue.\n`;
 							}
 						}
@@ -4043,8 +5408,7 @@ client.on("message", (message) => { //When a message is sent.
 				}
 			}
 			MM_InProgress = false;
-		}
-		else { //The Game
+		} else { //The Game
 			/*Murders*/
 			if (murderType === "murder") {
 				murderer = random(students);
@@ -4197,29 +5561,6 @@ client.on("message", (message) => { //When a message is sent.
 						.then(collected => {
 							MM_InProgress = false;
 							if (correctness === 1) {
-								inboxChannel.send({
-									embed: {
-										color: 15285149,
-										title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
-										"thumbnail": {
-											"url": "https://imgur.com/OokvPxl.png"
-										},
-										description: `${message.author.username} successfully identified the murderer.`,
-										fields: [{
-												"name": "Murderer:",
-												"value": `${murderer.name}`
-											},
-											{
-												"name": "Victim:",
-												"value": `${victim.name}`
-											},
-											{
-												"name": "Incorrect Answers:",
-												"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}\n${falseAnswer5.name}`
-											}
-										]
-									}
-								})
 								return message.channel.send({
 									embed: {
 										color: 164352,
@@ -4232,29 +5573,6 @@ client.on("message", (message) => { //When a message is sent.
 								})
 							};
 							if (correctness === 2) {
-								inboxChannel.send({
-									embed: {
-										color: 15285149,
-										title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
-										"thumbnail": {
-											"url": "https://imgur.com/eTreUA6.png"
-										},
-										description: `${message.author.username} didn't identify the murderer.`,
-										fields: [{
-												"name": "Murderer:",
-												"value": `${murderer.name}`
-											},
-											{
-												"name": "Victim:",
-												"value": `${victim.name}`
-											},
-											{
-												"name": "Incorrect Answers:",
-												"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}\n${falseAnswer5.name}`
-											}
-										]
-									}
-								})
 								return message.channel.send({
 									embed: {
 										color: 13959168,
@@ -4268,29 +5586,6 @@ client.on("message", (message) => { //When a message is sent.
 							};
 						}).catch(() => {
 							MM_InProgress = false;
-							inboxChannel.send({
-								embed: {
-									color: 15285149,
-									title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
-									"thumbnail": {
-										"url": "https://imgur.com/eTreUA6.png"
-									},
-									description: `${message.author.username} ran out of time before identifying the murderer.`,
-									fields: [{
-											"name": "Murderer:",
-											"value": `${murderer.name}`
-										},
-										{
-											"name": "Victim:",
-											"value": `${victim.name}`
-										},
-										{
-											"name": "Incorrect Answers:",
-											"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}\n${falseAnswer5.name}`
-										}
-									]
-								}
-							});
 							return message.channel.send({
 								embed: {
 									color: 13959168,
@@ -4559,29 +5854,6 @@ client.on("message", (message) => { //When a message is sent.
 												.then(collected => {
 													MM_InProgress = false;
 													if (correctness === 1) {
-														inboxChannel.send({
-															embed: {
-																color: 15285149,
-																title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
-																"thumbnail": {
-																	"url": "https://imgur.com/OokvPxl.png"
-																},
-																description: `${message.author.username} successfully identified the murderers.`,
-																fields: [{
-																		"name": "Murderers:",
-																		"value": `${murderer1.name} and ${murderer2.name}`
-																	},
-																	{
-																		"name": "Victims:",
-																		"value": `${victim1.name} and ${victim2.name}`
-																	},
-																	{
-																		"name": "Incorrect Answers:",
-																		"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}`
-																	}
-																]
-															}
-														})
 														return message.channel.send({
 															embed: {
 																color: 164352,
@@ -4594,29 +5866,6 @@ client.on("message", (message) => { //When a message is sent.
 														})
 													};
 													if (correctness === 2) {
-														inboxChannel.send({
-															embed: {
-																color: 15285149,
-																title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
-																"thumbnail": {
-																	"url": "https://imgur.com/eTreUA6.png"
-																},
-																description: `${message.author.username} didn't identify the second murderer.`,
-																fields: [{
-																		"name": "Murderers:",
-																		"value": `${murderer1.name} and ${murderer2.name}`
-																	},
-																	{
-																		"name": "Victims:",
-																		"value": `${victim1.name} and ${victim2.name}`
-																	},
-																	{
-																		"name": "Incorrect Answers:",
-																		"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}`
-																	}
-																]
-															}
-														})
 														return message.channel.send({
 															embed: {
 																color: 13959168,
@@ -4630,29 +5879,6 @@ client.on("message", (message) => { //When a message is sent.
 													};
 												}).catch(() => {
 													MM_InProgress = false;
-													inboxChannel.send({
-														embed: {
-															color: 15285149,
-															title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
-															"thumbnail": {
-																"url": "https://imgur.com/eTreUA6.png"
-															},
-															description: `${message.author.username} ran out of time before identifying the second murderer.`,
-															fields: [{
-																	"name": "Murderers:",
-																	"value": `${murderer1.name} and ${murderer2.name}`
-																},
-																{
-																	"name": "Victims:",
-																	"value": `${victim1.name} and ${victim2.name}`
-																},
-																{
-																	"name": "Incorrect Answers:",
-																	"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}`
-																}
-															]
-														}
-													})
 													return message.channel.send({
 														embed: {
 															color: 13959168,
@@ -4669,29 +5895,6 @@ client.on("message", (message) => { //When a message is sent.
 								};
 								if (correctness === 2) {
 									MM_InProgress = false;
-									inboxChannel.send({
-										embed: {
-											color: 15285149,
-											title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
-											"thumbnail": {
-												"url": "https://imgur.com/eTreUA6.png"
-											},
-											description: `${message.author.username} didn't identify the first murderer.`,
-											fields: [{
-													"name": "Murderers:",
-													"value": `${murderer1.name} and ${murderer2.name}`
-												},
-												{
-													"name": "Victims:",
-													"value": `${victim1.name} and ${victim2.name}`
-												},
-												{
-													"name": "Incorrect Answers:",
-													"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}`
-												}
-											]
-										}
-									})
 									return message.channel.send({
 										embed: {
 											color: 13959168,
@@ -4705,29 +5908,6 @@ client.on("message", (message) => { //When a message is sent.
 								}
 							}).catch(() => {
 								MM_InProgress = false;
-								inboxChannel.send({
-									embed: {
-										color: 15285149,
-										title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
-										"thumbnail": {
-											"url": "https://imgur.com/eTreUA6.png"
-										},
-										description: `${message.author.username} ran out of time before identifying the first murderer.`,
-										fields: [{
-												"name": "Murderers:",
-												"value": `${murderer1.name} and ${murderer2.name}`
-											},
-											{
-												"name": "Victims:",
-												"value": `${victim1.name} and ${victim2.name}`
-											},
-											{
-												"name": "Incorrect Answers:",
-												"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}`
-											}
-										]
-									}
-								})
 								return message.channel.send({
 									embed: {
 										color: 13959168,
@@ -4905,29 +6085,6 @@ client.on("message", (message) => { //When a message is sent.
 												.then(collected => {
 													MM_InProgress = false;
 													if (correctness === 1) {
-														inboxChannel.send({
-															embed: {
-																color: 15285149,
-																title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
-																"thumbnail": {
-																	"url": "https://imgur.com/OokvPxl.png"
-																},
-																description: `${message.author.username} successfully identified the murderer.`,
-																fields: [{
-																		"name": "Murderer:",
-																		"value": `${murderer.name}`
-																	},
-																	{
-																		"name": "Victims:",
-																		"value": `${victim1.name} and ${victim2.name}`
-																	},
-																	{
-																		"name": "Incorrect Answers:",
-																		"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}\n${falseAnswer5.name}`
-																	}
-																]
-															}
-														})
 														return message.channel.send({
 															embed: {
 																color: 164352,
@@ -4940,29 +6097,6 @@ client.on("message", (message) => { //When a message is sent.
 														})
 													};
 													if (correctness === 2) {
-														inboxChannel.send({
-															embed: {
-																color: 15285149,
-																title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
-																"thumbnail": {
-																	"url": "https://imgur.com/eTreUA6.png"
-																},
-																description: `${message.author.username} didn't identify the murderer.`,
-																fields: [{
-																		"name": "Murderer:",
-																		"value": `${murderer.name}`
-																	},
-																	{
-																		"name": "Victims:",
-																		"value": `${victim1.name} and ${victim2.name}`
-																	},
-																	{
-																		"name": "Incorrect Answers:",
-																		"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}\n${falseAnswer5.name}`
-																	}
-																]
-															}
-														})
 														return message.channel.send({
 															embed: {
 																color: 13959168,
@@ -4977,29 +6111,6 @@ client.on("message", (message) => { //When a message is sent.
 												}).catch(() => {
 													message.channel.send("Yuh");
 													MM_InProgress = false;
-													inboxChannel.send({
-														embed: {
-															color: 15285149,
-															title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
-															"thumbnail": {
-																"url": "https://imgur.com/eTreUA6.png"
-															},
-															description: `${message.author.username} ran out of time before identifying the murderer.`,
-															fields: [{
-																	"name": "Murderer:",
-																	"value": `${murderer.name}`
-																},
-																{
-																	"name": "Victims:",
-																	"value": `${victim1.name} and ${victim2.name}`
-																},
-																{
-																	"name": "Incorrect Answers:",
-																	"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}\n${falseAnswer5.name}`
-																}
-															]
-														}
-													})
 													return message.channel.send({
 														embed: {
 															color: 13959168,
@@ -5016,29 +6127,6 @@ client.on("message", (message) => { //When a message is sent.
 								};
 								if (correctness === 2) {
 									MM_InProgress = false;
-									inboxChannel.send({
-										embed: {
-											color: 15285149,
-											title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
-											"thumbnail": {
-												"url": "https://imgur.com/eTreUA6.png"
-											},
-											description: `${message.author.username} didn't identify the murderer.`,
-											fields: [{
-													"name": "Murderer:",
-													"value": `${murderer.name}`
-												},
-												{
-													"name": "Victims:",
-													"value": `${victim1.name} and ${victim2.name}`
-												},
-												{
-													"name": "Incorrect Answers:",
-													"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}\n${falseAnswer5.name}`
-												}
-											]
-										}
-									})
 									return message.channel.send({
 										embed: {
 											color: 13959168,
@@ -5052,29 +6140,6 @@ client.on("message", (message) => { //When a message is sent.
 								}
 							}).catch(() => {
 								MM_InProgress = false;
-								inboxChannel.send({
-									embed: {
-										color: 15285149,
-										title: `A game of Monomi's Murder Mystery was played by ${message.author.username}.`,
-										"thumbnail": {
-											"url": "https://imgur.com/eTreUA6.png"
-										},
-										description: `${message.author.username} ran out of time before identifying the murderer.`,
-										fields: [{
-												"name": "Murderer:",
-												"value": `${murderer.name}`
-											},
-											{
-												"name": "Victims:",
-												"value": `${victim1.name} and ${victim2.name}`
-											},
-											{
-												"name": "Incorrect Answers:",
-												"value": `${falseAnswer1.name}\n${falseAnswer2.name}\n${falseAnswer3.name}\n${falseAnswer4.name}\n${falseAnswer5.name}`
-											}
-										]
-									}
-								})
 								return message.channel.send({
 									embed: {
 										color: 13959168,
@@ -5112,8 +6177,7 @@ client.on("message", (message) => { //When a message is sent.
 		}
 	}
 	if (command === "rusdefine" || command === "russpeak") {
-		dictionary = [
-			{
+		dictionary = [{
 				word: "acomfort",
 				syllables: "a·com·fort",
 				pronounce: "/āˈkəmfərt/",
@@ -5145,18 +6209,18 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "af·fec·tion·er",
 				pronounce: "/əˈfekSH(ə)nər/",
 				types: "noun",
-				definition: ["a person who brings happiness or love to another.","someone who bears gifts."],
-				synonymof: ["friend","giftbearer"],
-				origin: ["affection","bringer"]
+				definition: ["a person who brings happiness or love to another.", "someone who bears gifts."],
+				synonymof: ["friend", "giftbearer"],
+				origin: ["affection", "bringer"]
 			},
 			{
 				word: "alipart",
 				syllables: "al·i·part",
 				pronounce: "/ˈaləˈpärt/",
 				types: "noun",
-				definition: ["an ingredient in a recipe.","an added ingredient."],
+				definition: ["an ingredient in a recipe.", "an added ingredient."],
 				synonymof: ["ingredient"],
-				origin: ["aliment (archaic)","part"]
+				origin: ["aliment (archaic)", "part"]
 			},
 			{
 				word: "anxieffy",
@@ -5164,7 +6228,7 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/aNGˈzīəfī/",
 				types: "verb",
 				definition: ["to induce someone or something with anxiety."],
-				synonymof: ["scare","terrificate","startle","stress out"],
+				synonymof: ["scare", "terrificate", "startle", "stress out"],
 				origin: ["anxiety"]
 			},
 			{
@@ -5181,8 +6245,8 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "ar·ti·san·ic",
 				pronounce: "/ˈärdəzənik/",
 				types: "adjective",
-				definition: ["being highly skilled in a skilled trade that involves making things by hand.","being an artisan."],
-				synonymof: ["talented","artful","skilled","crafty"],
+				definition: ["being highly skilled in a skilled trade that involves making things by hand.", "being an artisan."],
+				synonymof: ["talented", "artful", "skilled", "crafty"],
 				origin: ["artisan"]
 			},
 			{
@@ -5192,7 +6256,7 @@ client.on("message", (message) => { //When a message is sent.
 				types: "verb",
 				definition: ["hear about something through others."],
 				synonymof: ["hear"],
-				origin: ["auxiliary","hören (Grmn)"]
+				origin: ["auxiliary", "hören (Grmn)"]
 			},
 			{
 				word: "bebuse",
@@ -5200,8 +6264,8 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/bəˈbyo͞oz/",
 				types: "verb",
 				definition: ["be in bad shape, usually by way of violence and battery."],
-				synonymof: ["beat","batter","abuse","damage"],
-				origin: ["beat","abuse"]
+				synonymof: ["beat", "batter", "abuse", "damage"],
+				origin: ["beat", "abuse"]
 			},
 			{
 				word: "beforenoon",
@@ -5235,9 +6299,9 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "be·hid·ger",
 				pronounce: "/bəˈhijər, bēˈhijər/",
 				types: "verb",
-				definition: ["hinder (someone's) knowledge of a topic or subject.","prevent (someone) from learning about something."],
-				synonymof: ["shield","hide","protect from"],
-				origin: ["begrudingly","hinder"]
+				definition: ["hinder (someone's) knowledge of a topic or subject.", "prevent (someone) from learning about something."],
+				synonymof: ["shield", "hide", "protect from"],
+				origin: ["begrudingly", "hinder"]
 			},
 			{
 				word: "bequip",
@@ -5264,7 +6328,7 @@ client.on("message", (message) => { //When a message is sent.
 				types: "verb",
 				definition: ["to make people or animals battle one another."],
 				synonymof: ["pit"],
-				origin: ["champion","campaign"]
+				origin: ["champion", "campaign"]
 			},
 			{
 				word: "chewery",
@@ -5298,9 +6362,9 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "con·cre·ate",
 				pronounce: "/känkrēˈāt/",
 				types: "verb",
-				definition: ["create (something) out of lies.","falsify information."],
-				synonymof: ["lie","falsify","forge","fib","fabricate"],
-				origin: ["con","create"]
+				definition: ["create (something) out of lies.", "falsify information."],
+				synonymof: ["lie", "falsify", "forge", "fib", "fabricate"],
+				origin: ["con", "create"]
 			},
 			{
 				word: "cudpanion",
@@ -5308,8 +6372,8 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/ˈkədˈpanyən/",
 				types: "noun",
 				definition: ["a friend who is highly affectionate."],
-				synonymof: ["friend","*moirail*","companion","buddy"],
-				origin: ["cuddle","companion"]
+				synonymof: ["friend", "*moirail*", "companion", "buddy"],
+				origin: ["cuddle", "companion"]
 			},
 			{
 				word: "decaint",
@@ -5344,7 +6408,7 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/ˈdikSHəˌnerēəl/",
 				types: "adjective",
 				definition: ["having a large vocabulary and demonstrating proper use of such."],
-				synonymof: ["eloquent","articulate","fluent","well-spoken"],
+				synonymof: ["eloquent", "articulate", "fluent", "well-spoken"],
 				origin: ["diction"]
 			},
 			{
@@ -5362,7 +6426,7 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/ˈdifəlCHo͞oəs/",
 				types: "adjective",
 				definition: ["requiring greater effort than a typical task."],
-				synonymof: ["difficult","challenging","strenuous","demanding"],
+				synonymof: ["difficult", "challenging", "strenuous", "demanding"],
 				origin: ["difficult", "tumultuous"]
 			},
 			{
@@ -5380,7 +6444,7 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/inˈsēs,enˈsēs/",
 				types: "verb",
 				definition: ["to stop doing something."],
-				synonymof: ["stop","halt","end"],
+				synonymof: ["stop", "halt", "end"],
 				origin: ["cease"]
 			},
 			{
@@ -5388,8 +6452,8 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "en·ceased",
 				pronounce: "/inˈsēst,enˈsēst/",
 				types: "adjective",
-				definition: ["having been stopped.","being deceased."],
-				synonymof: ["stopped","deceased","dead"],
+				definition: ["having been stopped.", "being deceased."],
+				synonymof: ["stopped", "deceased", "dead"],
 				origin: ["encease"]
 			},
 			{
@@ -5398,7 +6462,7 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/inˈpān, enˈpān/",
 				types: "verb",
 				definition: ["to be inflicted with pain."],
-				synonymof: ["pain","hurt"],
+				synonymof: ["pain", "hurt"],
 				origin: false
 			},
 			{
@@ -5416,7 +6480,7 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/yo͞oˈfôrīz/",
 				types: "verb",
 				definition: ["make something or someone happy, typically to a high degree."],
-				synonymof: ["cheer", "gladden", "hearten","glücken"],
+				synonymof: ["cheer", "gladden", "hearten", "glücken"],
 				origin: ["euphoria"]
 			},
 			{
@@ -5433,9 +6497,9 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "fe·lize",
 				pronounce: "/ˈfēˌlīz/",
 				types: "verb",
-				definition: ["touch (someone)","touch (something) to learn about it"],
-				synonymof: ["touch","feel","explore"],
-				origin: ["feel","realize"]
+				definition: ["touch (someone)", "touch (something) to learn about it"],
+				synonymof: ["touch", "feel", "explore"],
+				origin: ["feel", "realize"]
 			},
 			{
 				word: "flayorsman",
@@ -5443,7 +6507,7 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/flāərzmən/",
 				types: "noun",
 				definition: ["*offensive*, a man who is attracted to other men."],
-				synonymof: ["f\*g","gay","homosexual"],
+				synonymof: ["f\*g", "gay", "homosexual"],
 				origin: false
 			},
 			{
@@ -5461,7 +6525,7 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/ɡônd/",
 				types: "noun",
 				definition: ["an injury to living tissue of any kind."],
-				synonymof: ["wound","injury","gash"],
+				synonymof: ["wound", "injury", "gash"],
 				origin: false
 			},
 			{
@@ -5469,7 +6533,7 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "glos·sen·ing",
 				pronounce: "/ɡläseniNG,ɡlôseniNG/",
 				types: "noun",
-				definition: ["a quick examination (of something).","a short look through of a book or text."],
+				definition: ["a quick examination (of something).", "a short look through of a book or text."],
 				synonymof: false,
 				origin: ["gloss over"]
 			},
@@ -5479,8 +6543,8 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/glǘckend/",
 				types: "adjective",
 				definition: ["made happy."],
-				synonymof: ["euphorized", "gladdened","cheered up"],
-				origin: ["glücklich (Grmn)","enlightened"]
+				synonymof: ["euphorized", "gladdened", "cheered up"],
+				origin: ["glücklich (Grmn)", "enlightened"]
 			},
 			{
 				word: "grimendous",
@@ -5488,8 +6552,8 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/ɡriˈmendəs/",
 				types: "adjective",
 				definition: ["very great in grimness."],
-				synonymof: ["dreadful","frightening","scary"],
-				origin: ["grim","tremendous"]
+				synonymof: ["dreadful", "frightening", "scary"],
+				origin: ["grim", "tremendous"]
 			},
 			{
 				word: "hardcoming",
@@ -5497,16 +6561,16 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/härdˈkəmiNG/",
 				types: "noun",
 				definition: ["something that is difficult to overcome."],
-				synonymof: ["obstacle","hardship","complication"],
-				origin: ["hardship","coming"]
+				synonymof: ["obstacle", "hardship", "complication"],
+				origin: ["hardship", "coming"]
 			},
 			{
 				word: "homemake",
 				syllables: "home·make",
 				pronounce: "/hōmmāk/",
 				types: "verb",
-				definition: ["turn a place into an environment suitable for living","settle somewhere"],
-				synonymof: ["inhabit","settle"],
+				definition: ["turn a place into an environment suitable for living", "settle somewhere"],
+				synonymof: ["inhabit", "settle"],
 				origin: false,
 			},
 			{
@@ -5515,7 +6579,7 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/ˌhäspəterēəsnəs/",
 				types: "noun",
 				definition: ["being generous and kind; friendly."],
-				synonymof: ["friendliness","hospitality","hospitableness","warmth"],
+				synonymof: ["friendliness", "hospitality", "hospitableness", "warmth"],
 				origin: ["hospitality"]
 			},
 			{
@@ -5534,7 +6598,7 @@ client.on("message", (message) => { //When a message is sent.
 				types: "noun",
 				definition: ["a burn."],
 				synonymof: ["burn"],
-				origin: ["incendiary","incineration"]
+				origin: ["incendiary", "incineration"]
 			},
 			{
 				word: "infigure",
@@ -5542,7 +6606,7 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/inˈfiɡyər/",
 				types: "verb",
 				definition: ["hold (someone) captive in an inescapable place."],
-				synonymof: ["trap","hold captive","confine"],
+				synonymof: ["trap", "hold captive", "confine"],
 				origin: false
 			},
 			{
@@ -5560,7 +6624,7 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/jōkˌpōk/",
 				types: "verb (phrase)",
 				definition: ["make fun of in a mocking way."],
-				synonymof: ["make fun","joke","satirize"],
+				synonymof: ["make fun", "joke", "satirize"],
 				origin: false
 			},
 			{
@@ -5586,9 +6650,9 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "lave·room",
 				pronounce: "/ˈlävro͞om,ˈlävro͝om/",
 				types: "noun",
-				definition: ["a room with a toilet, washbasin, and bath or shower; a bathroom.","a room where one washes themselves"],
-				synonymof: ["bathroom","lavatory","showerroom","washroom","restroom"],
-				origin: ["laver (fr)","room"]
+				definition: ["a room with a toilet, washbasin, and bath or shower; a bathroom.", "a room where one washes themselves"],
+				synonymof: ["bathroom", "lavatory", "showerroom", "washroom", "restroom"],
+				origin: ["laver (fr)", "room"]
 			},
 			{
 				word: "lax",
@@ -5596,7 +6660,7 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/laks/",
 				types: "verb",
 				definition: ["make or become less tense or anxious."],
-				synonymof: ["relax","unwind","loosen up","ease up/off"],
+				synonymof: ["relax", "unwind", "loosen up", "ease up/off"],
 				origin: ["relax"]
 			},
 			{
@@ -5624,7 +6688,7 @@ client.on("message", (message) => { //When a message is sent.
 				types: "noun",
 				definition: ["the state of being male."],
 				synonymof: false,
-				origin: ["male","reality"]
+				origin: ["male", "reality"]
 			},
 			{
 				word: "matrimarial",
@@ -5641,8 +6705,8 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/ˈmedəsəˈdāSH(ə)n/",
 				types: "noun",
 				definition: ["a treatment for an injury or illness."],
-				synonymof: ["medicine","treatment","surgery","therapy"],
-				origin: ["medication","sedation"]
+				synonymof: ["medicine", "treatment", "surgery", "therapy"],
+				origin: ["medication", "sedation"]
 			},
 			{
 				word: "misaction",
@@ -5651,7 +6715,7 @@ client.on("message", (message) => { //When a message is sent.
 				types: "noun",
 				definition: ["an action that was commited on accident."],
 				synonymof: ["accident"],
-				origin: ["misdeed","action"]
+				origin: ["misdeed", "action"]
 			},
 			{
 				word: "novemation",
@@ -5685,9 +6749,9 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "pa·le·o·rede",
 				pronounce: "/ˌpālēəˈrēd/",
 				types: "noun",
-				definition: ["old diction; archaic words.","*to Ruslan*, all English words, excluding Russpeak words."],
+				definition: ["old diction; archaic words.", "*to Ruslan*, all English words, excluding Russpeak words."],
 				synonymof: false,
-				origin: ["paleo- (grk)","rede (grmn)"]
+				origin: ["paleo- (grk)", "rede (grmn)"]
 			},
 			{
 				word: "paraphenomenal",
@@ -5703,9 +6767,9 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "personage",
 				pronounce: "/ˈpərs(ə)näj,ˈpərs(ə)näZH/",
 				types: "noun",
-				definition: ["areas of storage on one's body.","places on clothing where objects may be stored."],
-				synonymof: ["pockets","storage","baggage"],
-				origin: ["person","baggage"]
+				definition: ["areas of storage on one's body.", "places on clothing where objects may be stored."],
+				synonymof: ["pockets", "storage", "baggage"],
+				origin: ["person", "baggage"]
 			},
 			{
 				word: "pixelography",
@@ -5713,8 +6777,8 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/ˈpiksəläɡrəfē/",
 				types: "noun",
 				definition: ["a collection of digital images that, when put together, form an animated image."],
-				synonymof: ["video","gif","animation"],
-				origin: ["pixel","-ography"]
+				synonymof: ["video", "gif", "animation"],
+				origin: ["pixel", "-ography"]
 			},
 			{
 				word: "promitation",
@@ -5722,7 +6786,7 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/präməˈtāSH(ə)n/",
 				types: "noun",
 				definition: ["a call to action."],
-				synonymof: ["motive","reason"],
+				synonymof: ["motive", "reason"],
 				origin: false
 			},
 			{
@@ -5732,7 +6796,7 @@ client.on("message", (message) => { //When a message is sent.
 				types: "noun",
 				definition: ["an intrusive and often maligned thought."],
 				synonymof: false,
-				origin: ["psychological","atrocity"]
+				origin: ["psychological", "atrocity"]
 			},
 			{
 				word: "publishment",
@@ -5750,7 +6814,7 @@ client.on("message", (message) => { //When a message is sent.
 				types: "noun",
 				definition: ["bitter or resentful suffering."],
 				synonymof: false,
-				origin: ["rancor","anguish"]
+				origin: ["rancor", "anguish"]
 			},
 			{
 				word: "ranquish",
@@ -5759,7 +6823,7 @@ client.on("message", (message) => { //When a message is sent.
 				types: "verb",
 				definition: ["be very bitterly suffering over something."],
 				synonymof: false,
-				origin: ["rancor","anguish"]
+				origin: ["rancor", "anguish"]
 			},
 			{
 				word: "ranquishment",
@@ -5776,8 +6840,8 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/rēˈpladəˌfī/",
 				types: "verb",
 				definition: ["repair the plating on something."],
-				synonymof: ["recoat","repair","fix"],
-				origin: ["re-","plate"]
+				synonymof: ["recoat", "repair", "fix"],
+				origin: ["re-", "plate"]
 			},
 			{
 				word: "restorate",
@@ -5785,7 +6849,7 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/rəˈstôrāt/",
 				types: "verb",
 				definition: ["renovate something to a new quality"],
-				synonymof: ["refurbish","renovate","restore","repair"],
+				synonymof: ["refurbish", "renovate", "restore", "repair"],
 				origin: ["restoration"]
 			},
 			{
@@ -5794,8 +6858,8 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/ˈsāvyenjər/",
 				types: "noun",
 				definition: ["a person who has helped someone in a great time of need, often one of a life or death matter."],
-				synonymof: ["hero","idol","savior"],
-				origin: ["savior","avenger"]
+				synonymof: ["hero", "idol", "savior"],
+				origin: ["savior", "avenger"]
 			},
 			{
 				word: "say-so",
@@ -5803,7 +6867,7 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/ˈsā ˌsō/",
 				types: "noun",
 				definition: ["a claim, typically without evidence."],
-				synonymof: ["claim","statement"],
+				synonymof: ["claim", "statement"],
 				origin: false
 			},
 			{
@@ -5821,17 +6885,17 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/skrouvenj/",
 				types: "verb",
 				definition: ["search for whatever is available."],
-				synonymof: ["search","scavenge","scrounge"],
-				origin: ["scrounge","scavenge"]
+				synonymof: ["search", "scavenge", "scrounge"],
+				origin: ["scrounge", "scavenge"]
 			},
 			{
 				word: "self-flayor",
 				syllables: "self-fla·yor",
 				pronounce: "/ˌselfflāər/",
 				types: "noun",
-				definition: ["a homophobic person who is also gay, usually a man.","a gay homophobic man."],
+				definition: ["a homophobic person who is also gay, usually a man.", "a gay homophobic man."],
 				synonymof: ["gay homophobic"],
-				origin: ["self","flayorsman"]
+				origin: ["self", "flayorsman"]
 			},
 			{
 				word: "soulsman",
@@ -5840,7 +6904,7 @@ client.on("message", (message) => { //When a message is sent.
 				types: "noun",
 				definition: ["person, living or deceased."],
 				synonymof: false,
-				origin: ["soul","human"]
+				origin: ["soul", "human"]
 			},
 			{
 				word: "spendable",
@@ -5893,7 +6957,7 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/tärˈnənt/",
 				types: "noun",
 				definition: ["cloth used to compress or concele injuries."],
-				synonymof: ["bandage","dressing"],
+				synonymof: ["bandage", "dressing"],
 				origin: false
 			},
 			{
@@ -5902,8 +6966,8 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/ˈterəfəˌkāt/",
 				types: "verb",
 				definition: ["to induce a sense of terror or dread onto someone."],
-				synonymof: ["scare","spook","terrify"],
-				origin: ["terrify","allocate"]
+				synonymof: ["scare", "spook", "terrify"],
+				origin: ["terrify", "allocate"]
 			},
 			{
 				word: "thieverize",
@@ -5911,8 +6975,8 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/THēvəˌrīz/",
 				types: "verb",
 				definition: ["to steal something or from someone."],
-				synonymof: ["steal","snatch","take","theive"],
-				origin: ["theive","-ize"]
+				synonymof: ["steal", "snatch", "take", "theive"],
+				origin: ["theive", "-ize"]
 			},
 			{
 				word: "think-not-know-not",
@@ -5937,9 +7001,9 @@ client.on("message", (message) => { //When a message is sent.
 				syllables: "tran·qualm",
 				pronounce: "/trāNGkwä(l)m/",
 				types: "verb",
-				definition: ["become more at ease.","put someone at ease."],
-				synonymof: ["lax","comfort","calm down"],
-				origin: ["tranquil","quell","calm"]
+				definition: ["become more at ease.", "put someone at ease."],
+				synonymof: ["lax", "comfort", "calm down"],
+				origin: ["tranquil", "quell", "calm"]
 			},
 			{
 				word: "unenpain",
@@ -5947,7 +7011,7 @@ client.on("message", (message) => { //When a message is sent.
 				pronounce: "/ˌənˈinˈpān, ˌənˈenˈpān/",
 				types: "verb",
 				definition: ["to remove pain."],
-				synonymof: ["heal","aid","cure","sap"],
+				synonymof: ["heal", "aid", "cure", "sap"],
 				origin: ["enpain"]
 			},
 			{
@@ -6062,7 +7126,9 @@ client.on("message", (message) => { //When a message is sent.
 					fieldData = "";
 					requestedWord = dictionary[x];
 					descData = `**${requestedWord.syllables}** ${requestedWord.pronounce}`;
-					words.splice(words[x], 1, { word: 'hi' });
+					words.splice(words[x], 1, {
+						word: 'hi'
+					});
 					for (z in requestedWord.definition) {
 						fieldData = `${fieldData}${((z * 1) + 1)}. ${requestedWord.definition[z]}\n`;
 					}
@@ -6094,7 +7160,6 @@ client.on("message", (message) => { //When a message is sent.
 
 	//Utility Commands
 	if (command === "ping") {
-		inboxChannel.send(`${message.author.username} has pinged!`);
 		message.channel.send("Pong!");
 		MM_InProgress = false;
 	}
