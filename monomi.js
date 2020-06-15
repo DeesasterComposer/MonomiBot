@@ -708,7 +708,7 @@ client.on('guildMemberAdd', member => { //Upon the joining of a member to a guil
 			}
 		}
 	}).then(msg => {
-		msg.delete(60000)
+		msg.delete({timeout:60000})
 	});
 	member.roles.add(member.guild.roles.find('id', '455218733980450825')); //Give the member the 'Ultimates' role.
 });
@@ -724,8 +724,8 @@ client.on("message", (message) => { //When a message is sent.
 	if (message.guild.id === "455218035507331072") { //Kaeno Shinjomu Discord
 		if (message.channel.name === "introduction" || message.channel.name === "rules" || message.channel.name === "server-info" || message.channel.name === "announcements") {
 			return message.channel.send("Please don't use me in this channel!  Thank you!").then(msg => {
-				message.delete(5000);
-				msg.delete(5000);
+				message.delete({timeout:5000});
+				msg.delete({timeout:5000});
 			})
 		}
 	}
@@ -757,7 +757,7 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				}
 			}).then(msg => {
-				msg.delete(10000)
+				msg.delete({timeout:10000})
 			});
 			return
 		}
@@ -774,7 +774,7 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				}
 			}).then(msg => {
-				msg.delete(10000)
+				msg.delete({timeout:10000})
 			});
 			return
 		}
@@ -792,7 +792,7 @@ client.on("message", (message) => { //When a message is sent.
 						}
 					}
 				}).then(msg => {
-					msg.delete(10000)
+					msg.delete({timeout:10000})
 				});
 				return;
 			}
@@ -806,7 +806,7 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				}
 			}).then(msg => {
-				msg.delete(10000)
+				msg.delete({timeout:10000})
 			});
 			return
 		}
@@ -822,7 +822,7 @@ client.on("message", (message) => { //When a message is sent.
 						}
 					}
 				}).then(msg => {
-					msg.delete(10000)
+					msg.delete({timeout:10000})
 				});
 				return;
 			}
@@ -836,7 +836,9 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				}
 			}).then(msg => {
-				msg.delete(10000)
+				msg.delete({
+					timeout: 10000
+				})
 			});
 			return
 		}
@@ -887,7 +889,7 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				}
 			}).then(msg => {
-				msg.delete(10000)
+				msg.delete({timeout:10000})
 			});
 			return
 		}
@@ -903,7 +905,7 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				}
 			}).then(msg => {
-				msg.delete(10000)
+				msg.delete({timeout:10000})
 			});
 			return
 		}
@@ -917,7 +919,7 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				}
 			}).then(msg => {
-				msg.delete(10000)
+				msg.delete({timeout:10000})
 			});
 			return
 		}
@@ -931,7 +933,7 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				}
 			}).then(msg => {
-				msg.delete(10000)
+				msg.delete({timeout:10000})
 			});
 			return
 		}
@@ -945,7 +947,7 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				}
 			}).then(msg => {
-				msg.delete(10000)
+				msg.delete({timeout:10000})
 			});
 			return
 		}
@@ -959,7 +961,7 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				}
 			}).then(msg => {
-				msg.delete(10000)
+				msg.delete({timeout:10000})
 			});
 			return
 		}
@@ -989,7 +991,7 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				}
 			}).then(msg => {
-				msg.delete(10000)
+				msg.delete({timeout:10000})
 			});
 			return;
 		}
@@ -1006,7 +1008,7 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				}
 			}).then(msg => {
-				msg.delete(10000)
+				msg.delete({timeout:10000})
 			});
 			return
 		}
@@ -1030,7 +1032,7 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				}
 			}).then(msg => {
-				msg.delete(10000)
+				msg.delete({timeout:10000})
 			});
 			return;
 		}
@@ -1071,7 +1073,7 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				}
 			}).then(msg => {
-				msg.delete(10000)
+				msg.delete({timeout:10000})
 			});
 			return
 		}
@@ -1658,7 +1660,7 @@ client.on("message", (message) => { //When a message is sent.
 						}
 					}
 				}).then(msg => {
-					msg.delete(5000)
+					msg.delete({timeout:5000})
 				});
 				setTimeout(shutdown, 6000);
 			}
@@ -1672,7 +1674,7 @@ client.on("message", (message) => { //When a message is sent.
 					}
 				}
 			}).then(msg => {
-				msg.delete(10000)
+				msg.delete({timeout:10000})
 			});
 			inboxChannel.send(`${message.author.username} has tried to shut down Monomi.`);
 		}
@@ -1821,13 +1823,13 @@ client.on("message", (message) => { //When a message is sent.
 				var url = monomi_trial8
 			}
 
-			message.delete(0);
+			message.delete()
 			nativeChannel.send(message.content.substring(`m!monomisay ${args[0]} ${args[1]} ${args[2]}`.length), {files: [url]});
 			inboxChannel.send(`${message.author.username} made Monomi say, "${message.content.substring(`m!monomisay ${args[0]} ${args[1]} ${args[2]}`.length)}" with the "${args[2]}" sprite.`);
 			return;
 		};
 
-		message.delete(0);
+		message.delete();
 		nativeChannel.send(message.content.substring(`m!monomisay ${args[0]} ${args[1]}`.length));
 		inboxChannel.send(`${message.author.username} made Monomi say, "${message.content.substring(`m!monomisay ${args[0]} ${args[1]}`.length)}"`)
 	}
