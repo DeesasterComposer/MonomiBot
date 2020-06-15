@@ -2622,16 +2622,16 @@ client.on("message", (message) => { //When a message is sent.
 			'invest-e2'
 		];
 		
-		var roleA1 = guild.roles.find('name', 'Option A, Round 1');
-		var roleA2 = guild.roles.find('name', 'Option A, Round 2');
-		var roleB1 = guild.roles.find('name', 'Option B, Round 1');
-		var roleB2 = guild.roles.find('name', 'Option B, Round 2');
-		var roleC1 = guild.roles.find('name', 'Option C, Round 1');
-		var roleC2 = guild.roles.find('name', 'Option C, Round 2');
-		var roleD1 = guild.roles.find('name', 'Option D, Round 1');
-		var roleD2 = guild.roles.find('name', 'Option D, Round 2');
-		var roleE1 = guild.roles.find('name', 'Option E, Round 1');
-		var roleE2 = guild.roles.find('name', 'Option E, Round 2');
+		var roleA1 = investigationBeginGuild.roles.find('name', 'Option A, Round 1');
+		var roleA2 = investigationBeginGuild.roles.find('name', 'Option A, Round 2');
+		var roleB1 = investigationBeginGuild.roles.find('name', 'Option B, Round 1');
+		var roleB2 = investigationBeginGuild.roles.find('name', 'Option B, Round 2');
+		var roleC1 = investigationBeginGuild.roles.find('name', 'Option C, Round 1');
+		var roleC2 = investigationBeginGuild.roles.find('name', 'Option C, Round 2');
+		var roleD1 = investigationBeginGuild.roles.find('name', 'Option D, Round 1');
+		var roleD2 = investigationBeginGuild.roles.find('name', 'Option D, Round 2');
+		var roleE1 = investigationBeginGuild.roles.find('name', 'Option E, Round 1');
+		var roleE2 = investigationBeginGuild.roles.find('name', 'Option E, Round 2');
 
 		investigationBeginGuild.channels.create('invest-a1', {
 			topic: `Check the victim's body. You may ask questions about the victim's body--the state of it, anything on it, and so on.`,
