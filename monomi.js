@@ -194,7 +194,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.6.1.2-30";
+var version = "3.6.1.2-31";
 var shuffleState = 0;
 var mouseTriggers = 0;
 var ottoTriggers = 0;
@@ -2598,6 +2598,219 @@ client.on("message", (message) => { //When a message is sent.
 		})
 		inboxChannel.send(`${message.author.username} has asked Monomi for the ${gameName} class sprites masterposts.`);
 		return;
+	}
+
+	if (command === "investigation" && message.author.id === "105368288170622976" && message.guild.id === "721589433018744913") {
+		if (args.length == 0) {return message.channel.send("You must specify where you're starting this investigation.");}
+		
+		var investigationBeginGuild = client.guilds.find('id', message.guild.id);
+		var investigationBeginChannel = investigationBeginGuild.channels.find('name', args[0].toLowerCase());
+		if (investigationBeginChannel === null) {return message.channel.send("Please use a valid channel name!");}
+
+		var investigationChannelsRound1 = [
+			'invest-a1',
+			'invest-b1',
+			'invest-c1',
+			'invest-d1',
+			'invest-e1'
+		];
+		var investigationChannelsRound2 = [
+			'invest-a2',
+			'invest-b2',
+			'invest-c2',
+			'invest-d2',
+			'invest-e2'
+		];
+		
+		var roleA1 = guild.roles.find('name', 'Option A, Round 1');
+		var roleA2 = guild.roles.find('name', 'Option A, Round 2');
+		var roleB1 = guild.roles.find('name', 'Option B, Round 1');
+		var roleB2 = guild.roles.find('name', 'Option B, Round 2');
+		var roleC1 = guild.roles.find('name', 'Option C, Round 1');
+		var roleC2 = guild.roles.find('name', 'Option C, Round 2');
+		var roleD1 = guild.roles.find('name', 'Option D, Round 1');
+		var roleD2 = guild.roles.find('name', 'Option D, Round 2');
+		var roleE1 = guild.roles.find('name', 'Option E, Round 1');
+		var roleE2 = guild.roles.find('name', 'Option E, Round 2');
+
+		investigationBeginGuild.channels.create('invest-a1', {
+			topic: `Check the victim's body. You may ask questions about the victim's body--the state of it, anything on it, and so on.`,
+			parent: 'The Trial Grounds',
+			permissionOverwrites: [
+				{
+					id: roleA1,
+					allow: ['VIEW_CHANNEL'],
+				}
+			]
+		}).catch(message.channel.send(console.error));
+
+		const filterA = (reaction, user) => reaction.emoji.name === '🇦' && user.id != user.bot && alreadyChosen.includes(user.id) === false;
+		const filterB = (reaction, user) => reaction.emoji.name === '🇧' && user.id != user.bot && alreadyChosen.includes(user.id) === false;
+		const filterC = (reaction, user) => reaction.emoji.name === '🇨' && user.id != user.bot && alreadyChosen.includes(user.id) === false;
+		const filterD = (reaction, user) => reaction.emoji.name === '🇩' && user.id != user.bot && alreadyChosen.includes(user.id) === false;
+		const filterE = (reaction, user) => reaction.emoji.name === '🇪' && user.id != user.bot && alreadyChosen.includes(user.id) === false;
+		var alreadyChosen = [];
+
+		let embed = new Discord.RichEmbed()
+			.setColor(13959168)
+			.setTitle("INVESTIGATION, ROUND 1")
+			.setDescription("**Option A** - Check the victim's body. You may ask questions about the victim's body--the state of it, anything on it, and so on.\n**Option B** - Check the surrounding room. Examine the room that the victim was found in and anything else inside of the room (excluding the victim).\n**Option C** - Check other rooms of your choice. You can choose a few rooms (amount of choices if proportional to how many rooms there are in the current map) to see if you can find any clues. If you do find something, you may ask as many questions about the room as you like\n**Option D** - Remember the events. You may ask question about how the body was discovered, who discovered it, when it was discovered, and so on.\n**Option E** - Ask about the victim. You may ask questions about the victim's behavior leading up to their discovery, their normal behavior, quirks about them, and so on.\n\nAny questions that are not within the boundaries of the option can and will be rejected an answer.\n\nRespond to this message with the option corresponding to your first pick! Whatever you end up learning is specific to only one of your characters.");
+
+		investigationChannelBegin.send(embed).then(msg => {
+			msg.react('🇦').then(r => {
+				msg.react('🇧');
+				msg.react('🇨');
+				msg.react('🇩');
+				msg.react('🇪');
+
+				const checkA = msg.createReactionCollector(filterA, {time: 60000});
+				const checkB = msg.createReactionCollector(filterB, {time: 60000});
+				const checkC = msg.createReactionCollector(filterC, {time: 60000});
+				const checkD = msg.createReactionCollector(filterD, {time: 60000});
+				const checkE = msg.createReactionCollector(filterE, {time: 60000});
+
+				checkA.on('collect', r => {
+					investigationBeginChannel.send(`${user.name} has chosen Option A for round one!`);
+					user.addRole(roleA1).catch(message.channel.send(console.error));
+					alreadyChosen.push(user.id);
+				});
+
+				checkB.on('collect', r => {
+					investigationBeginChannel.send(`${user.name} has chosen Option B for round one!`);
+					user.addRole(roleB1);
+					alreadyChosen.push(user.id);
+				});
+
+				checkC.on('collect', r => {
+					investigationBeginChannel.send(`${user.name} has chosen Option C for round one!`);
+					user.addRole(roleC1);
+					alreadyChosen.push(user.id);
+				});
+
+				checkD.on('collect', r => {
+					investigationBeginChannel.send(`${user.name} has chosen Option D for round one!`);
+					user.addRole(roleD1);
+					alreadyChosen.push(user.id);
+				});
+
+				checkE.on('collect', r => {
+					investigationBeginChannel.send(`${user.name} has chosen Option E for round one!`);
+					user.addRole(roleE1);
+					alreadyChosen.push(user.id);
+				});
+			})
+		})
+		setTimeout(function(){ //Two Minutes Remain
+			for (x in investigationChannelsRound1) {
+				investigationBeginGuild.channels.find('name', `${investigationChannelsRound1[x]}`).send("You have two minutes remaining to ask questions!");
+				x++;
+			};
+		}, 480000);
+
+		setTimeout(function(){ //One Minute Remains
+			for (x in investigationChannelsRound1) {
+				investigationBeginGuild.channels.find('name', `${investigationChannelsRound1[x]}`).send("You have one minute remaining to ask questions!");
+				x++;
+			};
+		}, 540000);
+
+		setTimeout(function(){ // Thirty Seconds Remain
+			for (x in investigationChannelsRound1) {
+				investigationBeginGuild.channels.find('name', `${investigationChannelsRound1[x]}`).send("You have thirty seconds remaining to ask questions!");
+				x++;
+			};
+		}, 570000);
+		
+		setTimeout(function(){ // Ten Seconds Remain
+			for (x in investigationChannelsRound1) {
+				investigationBeginGuild.channels.find('name', `${investigationChannelsRound1[x]}`).send("You have ten seconds remaining to ask questions!");
+				x++;
+			};
+		}, 590000);
+
+		setTimeout(function(){ //Times Up! Round Two Time Baby
+			alreadyChosen = [];
+			let embed = new Discord.RichEmbed()
+				.setColor(13959168)
+				.setTitle("INVESTIGATION, ROUND 2")
+				.setDescription("**Option A** - Check the victim's body. You may ask questions about the victim's body--the state of it, anything on it, and so on.\n**Option B** - Check the surrounding room. Examine the room that the victim was found in and anything else inside of the room (excluding the victim).\n**Option C** - Check other rooms of your choice. You can choose a few rooms (amount of choices if proportional to how many rooms there are in the current map) to see if you can find any clues. If you do find something, you may ask as many questions about the room as you like\n**Option D** - Remember the events. You may ask question about how the body was discovered, who discovered it, when it was discovered, and so on.\n**Option E** - Ask about the victim. You may ask questions about the victim's behavior leading up to their discovery, their normal behavior, quirks about them, and so on.\n\nAny questions that are not within the boundaries of the option can and will be rejected an answer.\n\nRespond to this message with the option corresponding to your second pick! Whatever you end up learning is specific to your other character.");
+
+			investigationChannelBegin.send(embed).then(msg => {
+				msg.react('🇦').then(r => {
+					msg.react('🇧');
+					msg.react('🇨');
+					msg.react('🇩');
+					msg.react('🇪');
+
+					const checkA = msg.createReactionCollector(filterA, {time: 60000});
+					const checkB = msg.createReactionCollector(filterB, {time: 60000});
+					const checkC = msg.createReactionCollector(filterC, {time: 60000});
+					const checkD = msg.createReactionCollector(filterD, {time: 60000});
+					const checkE = msg.createReactionCollector(filterE, {time: 60000});
+
+					checkA.on('collect', r => {
+						investigationBeginChannel.send(`${user.name} has chosen Option A for round one!`);
+						user.addRole(roleA2).catch(message.channel.send(console.error));
+						alreadyChosen.push(user.id);
+					});
+
+					checkB.on('collect', r => {
+						investigationBeginChannel.send(`${user.name} has chosen Option B for round one!`);
+						user.addRole(roleB2);
+						alreadyChosen.push(user.id);
+					});
+
+					checkC.on('collect', r => {
+						investigationBeginChannel.send(`${user.name} has chosen Option C for round one!`);
+						user.addRole(roleC2);
+						alreadyChosen.push(user.id);
+					});
+
+					checkD.on('collect', r => {
+						investigationBeginChannel.send(`${user.name} has chosen Option D for round one!`);
+						user.addRole(roleD2);
+						alreadyChosen.push(user.id);
+					});
+
+					checkE.on('collect', r => {
+						investigationBeginChannel.send(`${user.name} has chosen Option E for round one!`);
+						user.addRole(roleE2);
+						alreadyChosen.push(user.id);
+					});
+				})
+			})
+			setTimeout(function () { //Two Minutes Remain
+				for (x in investigationChannelsRound2) {
+					investigationBeginGuild.channels.find('name', `${investigationChannelsRound2[x]}`).send("You have two minutes remaining to ask questions!");
+					x++;
+				};
+			}, 480000);
+
+			setTimeout(function () { //One Minute Remains
+				for (x in investigationChannelsRound2) {
+					investigationBeginGuild.channels.find('name', `${investigationChannelsRound2[x]}`).send("You have one minute remaining to ask questions!");
+					x++;
+				};
+			}, 540000);
+
+			setTimeout(function () { // Thirty Seconds Remain
+				for (x in investigationChannelsRound2) {
+					investigationBeginGuild.channels.find('name', `${investigationChannelsRound2[x]}`).send("You have thirty seconds remaining to ask questions!");
+					x++;
+				};
+			}, 570000);
+
+			setTimeout(function () { // Ten Seconds Remain
+				for (x in investigationChannelsRound2) {
+					investigationBeginGuild.channels.find('name', `${investigationChannelsRound2[x]}`).send("You have ten seconds remaining to ask questions!");
+					x++;
+				};
+			}, 590000);
+
+			setTimeout(function () { //Times Up! Investigation's over baby!
+
+			}, 600000);
+		}, 600000);
 	}
 
 	//Fun Commands
