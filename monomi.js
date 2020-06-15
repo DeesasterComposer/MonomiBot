@@ -196,7 +196,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.7.0.0";
+var version = "3.7.0.1";
 var shuffleState = 0;
 var mouseTriggers = 0;
 var ottoTriggers = 0;
@@ -3904,15 +3904,12 @@ client.on("message", (message) => { //When a message is sent.
 	}
 
 	if (command === "investigation" && message.author.id === "105368288170622976" && message.guild.id === "721589433018744913") {
-		if (args.length == 0) {
-			return message.channel.send("You must specify where you're starting this investigation.");
-		}
-
-		var investigationBeginGuild = client.guilds.cache.find(guild => guild.id === message.guild.id);
+		if (args.length == 0) {return message.channel.send("You must specify where you're starting this investigation.");}
+		
+		var investigationBeginGuild = client.guilds.cache.find(guild => guild.id === "721589433018744913");
 		var investigationBeginChannel = investigationBeginGuild.channels.cache.find(channel => channel.name === args[0].toLowerCase());
-		if (investigationBeginChannel === null) {
-			return message.channel.send("Please use a valid channel name!");
-		}
+		if (investigationBeginChannel === null) {return message.channel.send("Please use a valid channel name!");}
+		var investigationParentCategory = investigationBeginGuild.channels.cache.find(channel => channel.name.toLowerCase() === "the trial grounds");
 
 		var investigationChannelsRound1 = [
 			'invest-a1',
@@ -3928,215 +3925,378 @@ client.on("message", (message) => { //When a message is sent.
 			'invest-d2',
 			'invest-e2'
 		];
-
-		var roleA1 = investigationBeginGuild.roles.cache.find(role => role.name === 'Option A, Round 1');
-		var roleA2 = investigationBeginGuild.roles.cache.find(role => role.name === 'Option A, Round 2');
-		var roleB1 = investigationBeginGuild.roles.cache.find(role => role.name === 'Option B, Round 1');
-		var roleB2 = investigationBeginGuild.roles.cache.find(role => role.name === 'Option B, Round 2');
-		var roleC1 = investigationBeginGuild.roles.cache.find(role => role.name === 'Option C, Round 1');
-		var roleC2 = investigationBeginGuild.roles.cache.find(role => role.name === 'Option C, Round 2');
-		var roleD1 = investigationBeginGuild.roles.cache.find(role => role.name === 'Option D, Round 1');
-		var roleD2 = investigationBeginGuild.roles.cache.find(role => role.name === 'Option D, Round 2');
-		var roleE1 = investigationBeginGuild.roles.cache.find(role => role.name === 'Option E, Round 1');
-		var roleE2 = investigationBeginGuild.roles.cache.find(role => role.name === 'Option E, Round 2');
+		
+		var roleA1 = investigationBeginGuild.roles.cache.find(role => role.name === 'Option A, Round 1').id;
+		var roleA2 = investigationBeginGuild.roles.cache.find(role => role.name === 'Option A, Round 2').id;
+		var roleB1 = investigationBeginGuild.roles.cache.find(role => role.name === 'Option B, Round 1').id;
+		var roleB2 = investigationBeginGuild.roles.cache.find(role => role.name === 'Option B, Round 2').id;
+		var roleC1 = investigationBeginGuild.roles.cache.find(role => role.name === 'Option C, Round 1').id;
+		var roleC2 = investigationBeginGuild.roles.cache.find(role => role.name === 'Option C, Round 2').id;
+		var roleD1 = investigationBeginGuild.roles.cache.find(role => role.name === 'Option D, Round 1').id;
+		var roleD2 = investigationBeginGuild.roles.cache.find(role => role.name === 'Option D, Round 2').id;
+		var roleE1 = investigationBeginGuild.roles.cache.find(role => role.name === 'Option E, Round 1').id;
+		var roleE2 = investigationBeginGuild.roles.cache.find(role => role.name === 'Option E, Round 2').id;
 
 		investigationBeginGuild.channels.create('invest-a1', {
 			topic: `Check the victim's body. You may ask questions about the victim's body--the state of it, anything on it, and so on.`,
-			parent: 'The Trial Grounds',
-			permissionOverwrites: [{
-				id: roleA1,
-				allow: ['VIEW_CHANNEL'],
-			}]
-		}).catch(message.channel.send(console.error));
+			parent: investigationParentCategory.id,
+			permissionOverwrites: [
+				{
+					id: roleA1,
+					allow: ['VIEW_CHANNEL'],
+				},
+				{
+					id: '721589433018744913',
+					deny: ['VIEW_CHANNEL','SEND_MESSAGES'],
+				}
+			]
+		});
+		investigationBeginGuild.channels.create('invest-a2', {
+			topic: `Check the victim's body. You may ask questions about the victim's body--the state of it, anything on it, and so on.`,
+			parent: investigationParentCategory.id,
+			permissionOverwrites: [
+				{
+					id: roleA2,
+					allow: ['VIEW_CHANNEL'],
+				},
+				{
+					id: '721589433018744913',
+					deny: ['VIEW_CHANNEL','SEND_MESSAGES'],
+				}
+			]
+		});
+		
+		investigationBeginGuild.channels.create('invest-b1', {
+			topic: `Check the surrounding room. Examine the room that the victim was found in and anything else inside of the room (excluding the victim).`,
+			parent: investigationParentCategory.id,
+			permissionOverwrites: [
+				{
+					id: roleB1,
+					allow: ['VIEW_CHANNEL'],
+				},
+				{
+					id: '721589433018744913',
+					deny: ['VIEW_CHANNEL','SEND_MESSAGES'],
+				}
+			]
+		});
+		investigationBeginGuild.channels.create('invest-b2', {
+			topic: `Check the surrounding room. Examine the room that the victim was found in and anything else inside of the room (excluding the victim).`,
+			parent: investigationParentCategory.id,
+			permissionOverwrites: [
+				{
+					id: roleB2,
+					allow: ['VIEW_CHANNEL'],
+				},
+				{
+					id: '721589433018744913',
+					deny: ['VIEW_CHANNEL','SEND_MESSAGES'],
+				}
+			]
+		});
+		
+		investigationBeginGuild.channels.create('invest-c1', {
+			topic: `Check other rooms of your choice. You can choose a few rooms (amount of choices if proportional to how many rooms there are in the current map) to see if you can find any clues. If you do find something, you may ask as many questions about the room as you like.`,
+			parent: investigationParentCategory.id,
+			permissionOverwrites: [
+				{
+					id: roleC1,
+					allow: ['VIEW_CHANNEL'],
+				},
+				{
+					id: '721589433018744913',
+					deny: ['VIEW_CHANNEL','SEND_MESSAGES'],
+				}
+			]
+		});
+		investigationBeginGuild.channels.create('invest-c2', {
+			topic: `Check other rooms of your choice. You can choose a few rooms (amount of choices if proportional to how many rooms there are in the current map) to see if you can find any clues. If you do find something, you may ask as many questions about the room as you like.`,
+			parent: investigationParentCategory.id,
+			permissionOverwrites: [
+				{
+					id: roleC2,
+					allow: ['VIEW_CHANNEL'],
+				},
+				{
+					id: '721589433018744913',
+					deny: ['VIEW_CHANNEL','SEND_MESSAGES'],
+				}
+			]
+		});
+		
+		investigationBeginGuild.channels.create('invest-d1', {
+			topic: `Remember the events. You may ask question about how the body was discovered, who discovered it, when it was discovered, and so on.`,
+			parent: investigationParentCategory.id,
+			permissionOverwrites: [
+				{
+					id: roleD1,
+					allow: ['VIEW_CHANNEL'],
+				},
+				{
+					id: '721589433018744913',
+					deny: ['VIEW_CHANNEL','SEND_MESSAGES'],
+				}
+			]
+		});
+		investigationBeginGuild.channels.create('invest-d2', {
+			topic: `Remember the events. You may ask question about how the body was discovered, who discovered it, when it was discovered, and so on.`,
+			parent: investigationParentCategory.id,
+			permissionOverwrites: [
+				{
+					id: roleD2,
+					allow: ['VIEW_CHANNEL'],
+				},
+				{
+					id: '721589433018744913',
+					deny: ['VIEW_CHANNEL','SEND_MESSAGES'],
+				}
+			]
+		});
+		
+		investigationBeginGuild.channels.create('invest-e1', {
+			topic: `Ask about the victim. You may ask questions about the victim's behavior leading up to their discovery, their normal behavior, quirks about them, and so on.`,
+			parent: investigationParentCategory.id,
+			permissionOverwrites: [
+				{
+					id: roleE1,
+					allow: ['VIEW_CHANNEL'],
+				},
+				{
+					id: '721589433018744913',
+					deny: ['VIEW_CHANNEL','SEND_MESSAGES'],
+				}
+			]
+		});
+		investigationBeginGuild.channels.create('invest-e2', {
+			topic: `Ask about the victim. You may ask questions about the victim's behavior leading up to their discovery, their normal behavior, quirks about them, and so on.`,
+			parent: investigationParentCategory.id,
+			permissionOverwrites: [
+				{
+					id: roleE2,
+					allow: ['VIEW_CHANNEL'],
+				},
+				{
+					id: '721589433018744913',
+					deny: ['VIEW_CHANNEL','SEND_MESSAGES'],
+				}
+			]
+		});
 
-		const filterA = (reaction, user) => reaction.emoji.name === '🇦' && user.id != user.bot && alreadyChosen.includes(user.id) === false;
-		const filterB = (reaction, user) => reaction.emoji.name === '🇧' && user.id != user.bot && alreadyChosen.includes(user.id) === false;
-		const filterC = (reaction, user) => reaction.emoji.name === '🇨' && user.id != user.bot && alreadyChosen.includes(user.id) === false;
-		const filterD = (reaction, user) => reaction.emoji.name === '🇩' && user.id != user.bot && alreadyChosen.includes(user.id) === false;
-		const filterE = (reaction, user) => reaction.emoji.name === '🇪' && user.id != user.bot && alreadyChosen.includes(user.id) === false;
+		const filterA = (reaction, user) => reaction.emoji.name === '🇦' && !user.bot && alreadyChosen.includes(user.id) === false;
+		const filterB = (reaction, user) => reaction.emoji.name === '🇧' && !user.bot && alreadyChosen.includes(user.id) === false;
+		const filterC = (reaction, user) => reaction.emoji.name === '🇨' && !user.bot && alreadyChosen.includes(user.id) === false;
+		const filterD = (reaction, user) => reaction.emoji.name === '🇩' && !user.bot && alreadyChosen.includes(user.id) === false;
+		const filterE = (reaction, user) => reaction.emoji.name === '🇪' && !user.bot && alreadyChosen.includes(user.id) === false;
 		var alreadyChosen = [];
 
 		let embed = new Discord.MessageEmbed()
 			.setColor(13959168)
 			.setTitle("INVESTIGATION, ROUND 1")
-			.setDescription("**Option A** - Check the victim's body. You may ask questions about the victim's body--the state of it, anything on it, and so on.\n**Option B** - Check the surrounding room. Examine the room that the victim was found in and anything else inside of the room (excluding the victim).\n**Option C** - Check other rooms of your choice. You can choose a few rooms (amount of choices if proportional to how many rooms there are in the current map) to see if you can find any clues. If you do find something, you may ask as many questions about the room as you like\n**Option D** - Remember the events. You may ask question about how the body was discovered, who discovered it, when it was discovered, and so on.\n**Option E** - Ask about the victim. You may ask questions about the victim's behavior leading up to their discovery, their normal behavior, quirks about them, and so on.\n\nAny questions that are not within the boundaries of the option can and will be rejected an answer.\n\nRespond to this message with the option corresponding to your first pick! Whatever you end up learning is specific to only one of your characters.");
+			.setDescription("**Option A** - Check the victim's body. You may ask questions about the victim's body--the state of it, anything on it, and so on.\n**Option B** - Check the surrounding room. Examine the room that the victim was found in and anything else inside of the room (excluding the victim).\n**Option C** - Check other rooms of your choice. You can choose a few rooms (amount of choices if proportional to how many rooms there are in the current map) to see if you can find any clues. If you do find something, you may ask as many questions about the room as you like.\n**Option D** - Remember the events. You may ask question about how the body was discovered, who discovered it, when it was discovered, and so on.\n**Option E** - Ask about the victim. You may ask questions about the victim's behavior leading up to their discovery, their normal behavior, quirks about them, and so on.\n\nAny questions that are not within the boundaries of the option can and will be rejected an answer.\n\nRespond to this message with the option corresponding to your first pick! Whatever you end up learning is specific to only one of your characters.");
 
-		investigationChannelBegin.send(embed).then(msg => {
+		investigationBeginChannel.send(embed).then(msg => {
 			msg.react('🇦').then(r => {
 				msg.react('🇧');
 				msg.react('🇨');
 				msg.react('🇩');
 				msg.react('🇪');
 
-				const checkA = msg.createReactionCollector(filterA, {
-					time: 60000
-				});
-				const checkB = msg.createReactionCollector(filterB, {
-					time: 60000
-				});
-				const checkC = msg.createReactionCollector(filterC, {
-					time: 60000
-				});
-				const checkD = msg.createReactionCollector(filterD, {
-					time: 60000
-				});
-				const checkE = msg.createReactionCollector(filterE, {
-					time: 60000
-				});
+				const checkA = msg.createReactionCollector(filterA, {time: 60000});
+				const checkB = msg.createReactionCollector(filterB, {time: 60000});
+				const checkC = msg.createReactionCollector(filterC, {time: 60000});
+				const checkD = msg.createReactionCollector(filterD, {time: 60000});
+				const checkE = msg.createReactionCollector(filterE, {time: 60000});
 
-				checkA.on('collect', r => {
-					investigationBeginChannel.send(`${user.name} has chosen Option A for round one!`);
-					user.roles.add(roleA1).catch(message.channel.send(console.error));
+				checkA.on('collect', (reaction, user) => {
+					investigationBeginChannel.send(`${user.username} has chosen Option A for round one!`);
+					investigationBeginGuild.members.fetch(user.id).then(guildMember => {
+						guildMember.roles.add(roleA1);
+					});
 					alreadyChosen.push(user.id);
 				});
 
-				checkB.on('collect', r => {
-					investigationBeginChannel.send(`${user.name} has chosen Option B for round one!`);
-					user.roles.add(roleB1);
+				checkB.on('collect', (reaction, user) => {
+					investigationBeginChannel.send(`${user.username} has chosen Option B for round one!`);
+					investigationBeginGuild.members.fetch(user.id).then(guildMember => {
+						guildMember.roles.add(roleB1);
+					});
 					alreadyChosen.push(user.id);
 				});
 
-				checkC.on('collect', r => {
-					investigationBeginChannel.send(`${user.name} has chosen Option C for round one!`);
-					user.roles.add(roleC1);
+				checkC.on('collect', (reaction, user) => {
+					investigationBeginChannel.send(`${user.username} has chosen Option C for round one!`);
+					investigationBeginGuild.members.fetch(user.id).then(guildMember => {
+						guildMember.roles.add(roleC1);
+					});
 					alreadyChosen.push(user.id);
 				});
 
-				checkD.on('collect', r => {
-					investigationBeginChannel.send(`${user.name} has chosen Option D for round one!`);
-					user.roles.add(roleD1);
+				checkD.on('collect', (reaction, user) => {
+					investigationBeginChannel.send(`${user.username} has chosen Option D for round one!`);
+					investigationBeginGuild.members.fetch(user.id).then(guildMember => {
+						guildMember.roles.add(roleD1);
+					});
 					alreadyChosen.push(user.id);
 				});
 
-				checkE.on('collect', r => {
-					investigationBeginChannel.send(`${user.name} has chosen Option E for round one!`);
-					user.roles.add(roleE1);
+				checkE.on('collect', (reaction, user) => {
+					investigationBeginChannel.send(`${user.username} has chosen Option E for round one!`);
+					investigationBeginGuild.members.fetch(user.id).then(guildMember => {
+						guildMember.roles.add(roleE1);
+					});
 					alreadyChosen.push(user.id);
 				});
-			})
-		})
-		setTimeout(function () { //Two Minutes Remain
+			});
+		});
+		
+		setTimeout(function(){
+			for (x in investigationChannelsRound1) { //Open channels to questions
+				investigationBeginGuild.channels.cache.find(channel => channel.name === `${investigationChannelsRound1[x]}`).updateOverwrite(investigationBeginGuild.channels.cache.find(channel => channel.name === `${investigationChannelsRound1[x]}`).guild.roles.everyone, {SEND_MESSAGES: true});
+				investigationBeginGuild.channels.cache.find(channel => channel.name === `${investigationChannelsRound1[x]}`).send("Let the investigation begin!");
+				x++;
+			};
+		}, 60000);
+		
+		setTimeout(function(){ //Two Minutes Remain
 			for (x in investigationChannelsRound1) {
 				investigationBeginGuild.channels.cache.find(channel => channel.name === `${investigationChannelsRound1[x]}`).send("You have two minutes remaining to ask questions!");
 				x++;
 			};
-		}, 480000);
+		}, 540000);
 
-		setTimeout(function () { //One Minute Remains
+		setTimeout(function(){ //One Minute Remains
 			for (x in investigationChannelsRound1) {
 				investigationBeginGuild.channels.cache.find(channel => channel.name === `${investigationChannelsRound1[x]}`).send("You have one minute remaining to ask questions!");
 				x++;
 			};
-		}, 540000);
+		}, 600000);
 
-		setTimeout(function () { // Thirty Seconds Remain
+		setTimeout(function(){ // Thirty Seconds Remain
 			for (x in investigationChannelsRound1) {
 				investigationBeginGuild.channels.cache.find(channel => channel.name === `${investigationChannelsRound1[x]}`).send("You have thirty seconds remaining to ask questions!");
 				x++;
 			};
-		}, 570000);
-
-		setTimeout(function () { // Ten Seconds Remain
+		}, 630000);
+		
+		setTimeout(function(){ // Ten Seconds Remain
 			for (x in investigationChannelsRound1) {
 				investigationBeginGuild.channels.cache.find(channel => channel.name === `${investigationChannelsRound1[x]}`).send("You have ten seconds remaining to ask questions!");
 				x++;
 			};
-		}, 590000);
-
-		setTimeout(function () { //Times Up! Round Two Time Baby
+		}, 650000);
+	
+		setTimeout(function(){ //Times Up! Round Two Time Baby
+			for (x in investigationChannelsRound1) { //Close channels to questions
+				investigationBeginGuild.channels.cache.find(channel => channel.name === `${investigationChannelsRound1[x]}`).updateOverwrite(investigationBeginGuild.channels.cache.find(channel => channel.name === `${investigationChannelsRound1[x]}`).guild.roles.everyone, {SEND_MESSAGES: false});
+				x++;
+			};
 			alreadyChosen = [];
+			
 			let embed = new Discord.MessageEmbed()
 				.setColor(13959168)
 				.setTitle("INVESTIGATION, ROUND 2")
-				.setDescription("**Option A** - Check the victim's body. You may ask questions about the victim's body--the state of it, anything on it, and so on.\n**Option B** - Check the surrounding room. Examine the room that the victim was found in and anything else inside of the room (excluding the victim).\n**Option C** - Check other rooms of your choice. You can choose a few rooms (amount of choices if proportional to how many rooms there are in the current map) to see if you can find any clues. If you do find something, you may ask as many questions about the room as you like\n**Option D** - Remember the events. You may ask question about how the body was discovered, who discovered it, when it was discovered, and so on.\n**Option E** - Ask about the victim. You may ask questions about the victim's behavior leading up to their discovery, their normal behavior, quirks about them, and so on.\n\nAny questions that are not within the boundaries of the option can and will be rejected an answer.\n\nRespond to this message with the option corresponding to your second pick! Whatever you end up learning is specific to your other character.");
+				.setDescription("**Option A** - Check the victim's body. You may ask questions about the victim's body--the state of it, anything on it, and so on.\n**Option B** - Check the surrounding room. Examine the room that the victim was found in and anything else inside of the room (excluding the victim).\n**Option C** - Check other rooms of your choice. You can choose a few rooms (amount of choices if proportional to how many rooms there are in the current map) to see if you can find any clues. If you do find something, you may ask as many questions about the room as you like.\n**Option D** - Remember the events. You may ask question about how the body was discovered, who discovered it, when it was discovered, and so on.\n**Option E** - Ask about the victim. You may ask questions about the victim's behavior leading up to their discovery, their normal behavior, quirks about them, and so on.\n\nAny questions that are not within the boundaries of the option can and will be rejected an answer.\n\nRespond to this message with the option corresponding to your second pick! Whatever you end up learning is specific to your other character.");
 
-			investigationChannelBegin.send(embed).then(msg => {
+			investigationBeginChannel.send(embed).then(msg => {
 				msg.react('🇦').then(r => {
 					msg.react('🇧');
 					msg.react('🇨');
 					msg.react('🇩');
 					msg.react('🇪');
 
-					const checkA = msg.createReactionCollector(filterA, {
-						time: 60000
-					});
-					const checkB = msg.createReactionCollector(filterB, {
-						time: 60000
-					});
-					const checkC = msg.createReactionCollector(filterC, {
-						time: 60000
-					});
-					const checkD = msg.createReactionCollector(filterD, {
-						time: 60000
-					});
-					const checkE = msg.createReactionCollector(filterE, {
-						time: 60000
-					});
+					const checkA = msg.createReactionCollector(filterA, {time: 60000});
+					const checkB = msg.createReactionCollector(filterB, {time: 60000});
+					const checkC = msg.createReactionCollector(filterC, {time: 60000});
+					const checkD = msg.createReactionCollector(filterD, {time: 60000});
+					const checkE = msg.createReactionCollector(filterE, {time: 60000});
 
-					checkA.on('collect', r => {
-						investigationBeginChannel.send(`${user.name} has chosen Option A for round one!`);
-						user.roles.add(roleA2).catch(message.channel.send(console.error));
+					checkA.on('collect', (reaction, user) => {
+						investigationBeginChannel.send(`${user.username} has chosen Option A for round two!`);
+						investigationBeginGuild.members.fetch(user.id).then(guildMember => {
+							guildMember.roles.add(roleA2);
+						});
 						alreadyChosen.push(user.id);
 					});
 
-					checkB.on('collect', r => {
-						investigationBeginChannel.send(`${user.name} has chosen Option B for round one!`);
-						user.roles.add(roleB2);
+					checkB.on('collect', (reaction, user) => {
+						investigationBeginChannel.send(`${user.username} has chosen Option B for round two!`);
+						investigationBeginGuild.members.fetch(user.id).then(guildMember => {
+							guildMember.roles.add(roleB2);
+						});
 						alreadyChosen.push(user.id);
 					});
 
-					checkC.on('collect', r => {
-						investigationBeginChannel.send(`${user.name} has chosen Option C for round one!`);
-						user.roles.add(roleC2);
+					checkC.on('collect', (reaction, user) => {
+						investigationBeginChannel.send(`${user.username} has chosen Option C for round two!`);
+						investigationBeginGuild.members.fetch(user.id).then(guildMember => {
+							guildMember.roles.add(roleC2);
+						});
 						alreadyChosen.push(user.id);
 					});
 
-					checkD.on('collect', r => {
-						investigationBeginChannel.send(`${user.name} has chosen Option D for round one!`);
-						user.roles.add(roleD2);
+					checkD.on('collect', (reaction, user) => {
+						investigationBeginChannel.send(`${user.username} has chosen Option D for round two!`);
+						investigationBeginGuild.members.fetch(user.id).then(guildMember => {
+							guildMember.roles.add(roleD2);
+						});
 						alreadyChosen.push(user.id);
 					});
 
-					checkE.on('collect', r => {
-						investigationBeginChannel.send(`${user.name} has chosen Option E for round one!`);
-						user.roles.add(roleE2);
+					checkE.on('collect', (reaction, user) => {
+						investigationBeginChannel.send(`${user.username} has chosen Option E for round two!`);
+						investigationBeginGuild.members.fetch(user.id).then(guildMember => {
+							guildMember.roles.add(roleE2);
+						});
 						alreadyChosen.push(user.id);
 					});
-				})
-			})
+				});
+			});
+			
+			setTimeout(function(){
+				for (x in investigationChannelsRound2) { //Open channels to questions
+					investigationBeginGuild.channels.cache.find(channel => channel.name === `${investigationChannelsRound2[x]}`).updateOverwrite(investigationBeginGuild.channels.cache.find(channel => channel.name === `${investigationChannelsRound2[x]}`).guild.roles.everyone, {SEND_MESSAGES: true});
+					investigationBeginGuild.channels.cache.find(channel => channel.name === `${investigationChannelsRound2[x]}`).send("Let the investigation begin!");
+					x++;
+				};
+			}, 60000);
+			
 			setTimeout(function () { //Two Minutes Remain
 				for (x in investigationChannelsRound2) {
 					investigationBeginGuild.channels.cache.find(channel => channel.name === `${investigationChannelsRound2[x]}`).send("You have two minutes remaining to ask questions!");
 					x++;
 				};
-			}, 480000);
+			}, 540000);
 
 			setTimeout(function () { //One Minute Remains
 				for (x in investigationChannelsRound2) {
 					investigationBeginGuild.channels.cache.find(channel => channel.name === `${investigationChannelsRound2[x]}`).send("You have one minute remaining to ask questions!");
 					x++;
 				};
-			}, 540000);
+			}, 600000);
 
 			setTimeout(function () { // Thirty Seconds Remain
 				for (x in investigationChannelsRound2) {
 					investigationBeginGuild.channels.cache.find(channel => channel.name === `${investigationChannelsRound2[x]}`).send("You have thirty seconds remaining to ask questions!");
 					x++;
 				};
-			}, 570000);
+			}, 630000);
 
 			setTimeout(function () { // Ten Seconds Remain
 				for (x in investigationChannelsRound2) {
 					investigationBeginGuild.channels.cache.find(channel => channel.name === `${investigationChannelsRound2[x]}`).send("You have ten seconds remaining to ask questions!");
 					x++;
 				};
-			}, 590000);
+			}, 650000);
 
 			setTimeout(function () { //Times Up! Investigation's over baby!
-
-			}, 600000);
-		}, 600000);
+				for (x in investigationChannelsRound2) { //Close channels to questions
+					investigationBeginGuild.channels.cache.find(channel => channel.name === `${investigationChannelsRound2[x]}`).updateOverwrite(investigationBeginGuild.channels.cache.find(channel => channel.name === `${investigationChannelsRound2[x]}`).guild.roles.everyone, {SEND_MESSAGES: false});
+					x++;
+				};
+			}, 660000);
+		}, 660000);
 	}
+
 
 	//Fun Commands
 	if (command === "execute") {
