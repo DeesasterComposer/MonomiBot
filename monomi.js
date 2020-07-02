@@ -196,7 +196,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.8.0.2";
+var version = "3.8.1.0";
 var shuffleState = 0;
 var mouseTriggers = 0;
 var ottoTriggers = 0;
@@ -3005,7 +3005,7 @@ client.on("message", (message) => { //When a message is sent.
 				{ studentID: "Name: Isago Achikita\nTalent: Mytholoist\nGender: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'5\"\nWeight: 119\nBlood Type: B\nBirthday: 02/29\nAge: 18", studentIDPicture: "" },
 				{ studentID: "Name: István Adami\nTalent: Mortician\nGender: ¯\\_(ツ)\_/¯\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'3\"\nWeight: 114\nBlood Type: AB\nBirthday: 10/10\nAge: 18", studentIDPicture: "" },
 				{ studentID: "Name: Kenya Takanashi\nTalent: Clown\nGender: Male\nStatus: Alive\n\nShoe Size: 16\nHeight: 6'2\"\nWeight: 159\nBlood Type: A\nBirthday: 06/09\nAge: 18", studentIDPicture: "" },
-				{ studentID: "Name: Kotone Fukuzawa\nTalent: Flautist\nGender: Female\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'6\"\nWeight: 121\nBlood Type: AB\nBirthday: 11/04\nAge: 16", studentIDPicture: "" },
+				{ studentID: "Name: Kotone Fukuzawa\nTalent: Flautist\nGender: Female\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'6\"\nWeight: 121\nBlood Type: AB\nBirthday: 11/04\nAge: 16", studentIDPicture: "https://imgur.com/PYfzqDF.png" },
 				{ studentID: "Name: Matthias J. Aumann\nTalent: Zombie\nGender: Male\nStatus: Alive\n\nShoe Size: 15\nHeight: 6'5\"\nWeight: 239\nBlood Type: O\nBirthday: 05/13\nAge: 18", studentIDPicture: "" },
 				{ studentID: "Name: Pedro Archies II\nTalent: Chicken Farmer\nGender: Male\nStatus: Alive\n\nShoe Size: 11\nHeight: 5'10\"\nWeight: 185\nBlood Type: A\nBirthday: 07/25\nAge: 17", studentIDPicture: "" },
 				{ studentID: "Name: Reiko Nakamura\nTalent: Investigator\nGender: Female\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'7\"\nWeight: 105\nBlood Type: O\nBirthday: 11/17\nAge: 17", studentIDPicture: "" },
@@ -3098,7 +3098,7 @@ client.on("message", (message) => { //When a message is sent.
 	if (command === "roomies") {
 		let embed = new Discord.MessageEmbed()
 			.setColor(13959168)
-		if (message.guild.id === "455218035507331072") { //Kaeno V3
+		if (message.guild.id === "455218035507331072" || message.guild.id === "727347528479146005") { //Kaeno V3
 			rooms = [{
 					number: "1 (C1)",
 					description: "Aemele and Junko's room is very dark. On one wall, pictures of various people are found. Another wall seems to be painted to look like a sewer. There is a constant sound of dripping water but upon further examination, it is just a music player on loop. There are two identical twin sized beds on one side of the room with a nightstand beside each. On each stand is a clown-shaped lamp, resembling a popular 2017 movie character. There is a bathroom and a closet on the left wall.",
@@ -3262,9 +3262,12 @@ client.on("message", (message) => { //When a message is sent.
 		} else if (message.guild.id === "633119665178017793") { //Bed and Bloodshed
 			gameName = "Danganronpa: Bed and Bloodshed";
 			embedDescription += "__**Danganronpa: Bed and Bloodshed**__\n[**GUEST GROUP 01**](https://imgur.com/a/epVZpvM)";
-		} else if (message.guild.id === "721589433018744913" || message.guild.if === "396895853479985162") {
+		} else if (message.guild.id === "721589433018744913" || message.guild.id === "396895853479985162") { //Koogshire Killers
 			gameName = "Koogshire: Wicked Killers";
 			embedDescription += "__**Koogshire: Wicked Killers**__\n[**GROUP 01**](https://www.youtube.com/watch?v=d4EviPTzllY)";
+		} else if (message.guild.id === "727347528479146005") { //Reform
+			gameName = "Danganronpa: Reform";
+			embedDescription += "__**Danganronpa: Reform**__\n[**GROUP 01**](https://imgur.com/a/GKbImAE)";
 		}
 		message.channel.send({
 			embed: { //Sends the student's info
