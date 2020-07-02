@@ -3040,7 +3040,7 @@ client.on("message", (message) => { //When a message is sent.
 				x++;
 			}
 
-			if (args[0].toLowerCase().search("adomus") != -1) { page = 1 };
+			if (args[0].toLowerCase().search("adomas") != -1) { page = 1 };
 			if (args[0].toLowerCase().search("akira") != -1) { page = 2 };
 			if (args[0].toLowerCase().search("carlisle") != -1) { page = 3 };
 			if (args[0].toLowerCase().search("drusilla") != -1) { page = 4 };
