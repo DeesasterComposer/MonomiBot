@@ -196,7 +196,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.8.0.1";
+var version = "3.8.0.2";
 var shuffleState = 0;
 var mouseTriggers = 0;
 var ottoTriggers = 0;
