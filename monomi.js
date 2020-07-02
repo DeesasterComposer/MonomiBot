@@ -196,7 +196,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.8.1.0";
+var version = "3.8.1.1";
 var shuffleState = 0;
 var mouseTriggers = 0;
 var ottoTriggers = 0;
@@ -3002,7 +3002,7 @@ client.on("message", (message) => { //When a message is sent.
 				{ studentID: "Name: Florus Griffith\nTalent: Puppeteer\nGender: Male\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'5\"\nWeight: 125\nBlood Type: A\nBirthday: 10/31\nAge: 18", studentIDPicture: "" },
 				{ studentID: "Name: Fukase Deer\nTalent: Mascot Actor\nGender: Male\nStatus: Alive\n\nShoe Size: 9\nHeight: 5'8\"\nWeight: 130\nBlood Type: AB\nBirthday: 12/24\nAge: 17", studentIDPicture: "" },
 				{ studentID: "Name: Iekami-Triste Hanzō\nTalent: Faith Healer\nGender: Male\nStatus: Alive\n\nShoe Size: 12\nHeight: 5'6\"\nWeight: 127\nBlood Type: AB\nBirthday: 12/25\nAge: 18", studentIDPicture: "" },
-				{ studentID: "Name: Isago Achikita\nTalent: Mytholoist\nGender: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'5\"\nWeight: 119\nBlood Type: B\nBirthday: 02/29\nAge: 18", studentIDPicture: "" },
+				{ studentID: "Name: Isago Achikita\nTalent: Mytholoist\nGender: Female\nStatus: Alive\n\nShoe Size: 8\nHeight: 5'5\"\nWeight: 119\nBlood Type: B\nBirthday: 02/29\nAge: 18", studentIDPicture: "https://imgur.com/hjeA55A" },
 				{ studentID: "Name: István Adami\nTalent: Mortician\nGender: ¯\\_(ツ)\_/¯\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'3\"\nWeight: 114\nBlood Type: AB\nBirthday: 10/10\nAge: 18", studentIDPicture: "" },
 				{ studentID: "Name: Kenya Takanashi\nTalent: Clown\nGender: Male\nStatus: Alive\n\nShoe Size: 16\nHeight: 6'2\"\nWeight: 159\nBlood Type: A\nBirthday: 06/09\nAge: 18", studentIDPicture: "" },
 				{ studentID: "Name: Kotone Fukuzawa\nTalent: Flautist\nGender: Female\nStatus: Alive\n\nShoe Size: 7\nHeight: 5'6\"\nWeight: 121\nBlood Type: AB\nBirthday: 11/04\nAge: 16", studentIDPicture: "https://imgur.com/PYfzqDF.png" },
