@@ -196,7 +196,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.8.1.1";
+var version = "3.8.1.1-a";
 var shuffleState = 0;
 var mouseTriggers = 0;
 var ottoTriggers = 0;
@@ -2499,6 +2499,12 @@ client.on("message", (message) => { //When a message is sent.
 
 		message.delete();
 		nativeChannel.send(message.content.substring(`m!monomisay ${args[0]} ${args[1]}`.length));
+	}
+	if (command === "ottocheck") {
+		ismonomiinottoland = null;
+		ismonomiinottoland = client.guilds.cache.filter(guild => guild.channels.cache.find(channel => channel.name === "crytype"));
+		if (ismonomiinottoland === null) {return message.channel.send("Fucky wucky uh oh.")}
+		message.channel.send(`${ismonomiinottoland.name}, ${ismonomiinottoland.id}`);
 	}
 
 	//Killing Game Commands
