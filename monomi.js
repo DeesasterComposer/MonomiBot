@@ -196,7 +196,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.8.1.1-a";
+var version = "3.8.1.2";
 var shuffleState = 0;
 var mouseTriggers = 0;
 var ottoTriggers = 0;
@@ -1745,13 +1745,10 @@ client.on("message", (message) => { //When a message is sent.
 		}
 
 		//Otto Trigger
-		if (message.guild.id === "641826067232849939" && message.content.toLowerCase().search("bottom") === -1 && (message.content.toLowerCase().search("otto") != -1 || message.content.toLowerCase().search("octavio") != -1) && ottoTriggers < 2) {
-			if (ottoTriggers === 0) {
-				message.channel.send("Really fucking hate that guy.")
-			}
-			if (ottoTriggers === 1) {
-				message.channel.send("Still really fucking hate that guy.")
-			}
+		if (message.guild.id === "641826067232849939" && message.content.toLowerCase().search("bottom") === -1 && (message.content.toLowerCase().search("otto") != -1 || message.content.toLowerCase().search("octavio") != -1) && ottoTriggers < 3) {
+			if (ottoTriggers === 0) { message.channel.send("Really fucking hate that guy.") }
+			if (ottoTriggers === 1) { message.channel.send("Still really fucking hate that guy.") }
+			if (ottoTriggers === 2) { message.channel.send("https://docs.google.com/document/d/1s2jizxJjEk1TT2jYsGoF9Fx4m20NxUEsNa4EpJdQwUg/edit") }
 			ottoTriggers++;
 		}
 	}
@@ -2499,12 +2496,6 @@ client.on("message", (message) => { //When a message is sent.
 
 		message.delete();
 		nativeChannel.send(message.content.substring(`m!monomisay ${args[0]} ${args[1]}`.length));
-	}
-	if (command === "ottocheck") {
-		ismonomiinottoland = null;
-		ismonomiinottoland = client.guilds.cache.filter(guild => guild.channels.cache.find(channel => channel.name === "crytype"));
-		if (ismonomiinottoland === null) {return message.channel.send("Fucky wucky uh oh.")}
-		message.channel.send(`${ismonomiinottoland.name}, ${ismonomiinottoland.id}`);
 	}
 
 	//Killing Game Commands
