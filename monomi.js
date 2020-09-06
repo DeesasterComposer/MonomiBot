@@ -1300,9 +1300,6 @@ client.on("ready", () => { //When Monomi is turned on.
 	const thunderClanServer = client.guilds.cache.find(guild => guild.id === '641826067232849939');
 	const thunderClanBirthdayChannel = thunderClanServer.channels.cache.find(channel => channel.name === 'birthdays');
 
-	const tempServer = client.guilds.cache.find(guild => guild.id === '633119665178017793');
-	const tempChannel = tempServer.channels.cache.find(channel => channel.name === 'dee-notes');
-
 	let birthdayEmbed = new Discord.MessageEmbed()
 		.setTitle("Happy Birthday!")
 		.setColor(15285149)
