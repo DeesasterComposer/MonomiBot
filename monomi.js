@@ -196,7 +196,7 @@ function recallStatusShuffle() {
 }
 
 /*Important Info*/
-var version = "3.8.2.1";
+var version = "3.8.2.2";
 var shuffleState = 0;
 var mouseTriggers = 0;
 var ottoTriggers = 0;
@@ -1299,6 +1299,8 @@ client.on("ready", () => { //When Monomi is turned on.
 	const kaenoBirthdayChannel = kaenoShinjomuServer.channels.cache.find(channel => channel.name === 'birthdays');
 	const thunderClanServer = client.guilds.cache.find(guild => guild.id === '641826067232849939');
 	const thunderClanBirthdayChannel = thunderClanServer.channels.cache.find(channel => channel.name === 'birthdays');
+	const nikoServer = client.guilds.cache.find(guild => guild.id === '552679396453122048');
+	const nikoBirthdayChannel = nikoServer.channels.cache.find(channel => channel.name === 'birthdays');
 
 	let birthdayEmbed = new Discord.MessageEmbed()
 		.setTitle("Happy Birthday!")
@@ -1322,6 +1324,7 @@ client.on("ready", () => { //When Monomi is turned on.
 		//tempChannel.send(birthdayEmbed);
 		kaenoBirthdayChannel.send(birthdayEmbed);
 		thunderClanBirthdayChannel.send(birthdayEmbed);
+		nikoBirthdayChannel.send(birthdayEmbed);
 	}
 
 	setTimeout(shutdown, 86400000); //24 Restart Period
