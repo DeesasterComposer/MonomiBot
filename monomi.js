@@ -368,20 +368,6 @@ var birthdays = [
 		month: "4"
 	},
 	{
-		categories: ["bab"],
-		name: "Mahina Keawe",
-		pronoun: "her",
-		day: "7",
-		month: "4"
-	},
-	{
-		categories: ["ks"],
-		name: "Anya Sakaguchi",
-		pronoun: "her",
-		day: "10",
-		month: "4"
-	},
-	{
 		categories: ["ks"],
 		name: "S'ad Ludópata",
 		pronoun: "him",
@@ -403,10 +389,24 @@ var birthdays = [
 		month: "4"
 	},
 	{
+		categories: ["bab"],
+		name: "Mahina Keawe",
+		pronoun: "her",
+		day: "7",
+		month: "4"
+	},
+	{
 		categories: ["killers"],
 		name: "Mazal Adatto",
 		pronoun: "him",
 		day: "8",
+		month: "4"
+	},
+	{
+		categories: ["ks"],
+		name: "Anya Sakaguchi",
+		pronoun: "her",
+		day: "10",
 		month: "4"
 	},
 	{
